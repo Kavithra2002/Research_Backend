@@ -1,0 +1,2190 @@
+{
+  "income_statement": {
+    "status": "ok",
+    "data": {
+      "statement_title": "Statement of Profit or Loss",
+      "preamble": "Year ended 31 March",
+      "footnotes": "The accounting policies and notes on pages 77 through 120 form an integral part of the Financial Statements.",
+      "tables": [
+        {
+          "caption": "Financial Reports",
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "Group",
+              "",
+              "Company",
+              ""
+            ],
+            [
+              "",
+              "",
+              "2025",
+              "2024",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Revenue",
+                "3",
+                "4,090,982,962",
+                "3,613,513,053",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cost of Sales",
+                "",
+                "(754,725,104)",
+                "(788,805,269)",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Gross Profit",
+                "",
+                "3,336,257,858",
+                "2,824,707,784",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Income",
+                "15",
+                "31,720,996",
+                "22,452,045",
+                "60,238",
+                "529,152"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Administrative Expenses",
+                "",
+                "(1,729,491,104)",
+                "(1,607,978,646)",
+                "(4,641,381)",
+                "(547,745)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Marketing & Promotional Expenses",
+                "",
+                "(113,007,311)",
+                "(94,395,743)",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit from operations before the following items",
+                "",
+                "1,525,480,439",
+                "1,144,785,440",
+                "(4,581,143)",
+                "(18,593)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Depreciation & Amortisation",
+                "",
+                "(353,389,223)",
+                "(356,405,576)",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Finance Income",
+                "14.1",
+                "2,583,785",
+                "960,346",
+                "1,682",
+                "328,351"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Finance Costs",
+                "14.2",
+                "(560,782,751)",
+                "(885,030,460)",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Exchange Gain/(Loss) on Foreign Currency Loan Conversion",
+                "11.3",
+                "13,566,809",
+                "105,025,930",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) Before Tax",
+                "17",
+                "627,459,059",
+                "9,335,680",
+                "(4,579,461)",
+                "309,758"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Income Tax (Expenses)/Reversal",
+                "18",
+                "(193,664,802)",
+                "83,200,650",
+                "-",
+                "158,494"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) for the Year",
+                "",
+                "433,794,257",
+                "92,536,330",
+                "(4,579,461)",
+                "468,252"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Attributable to:",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Equity holders of the parent",
+                "",
+                "434,674,958",
+                "100,290,985",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Non controlling interests",
+                "",
+                "(880,701)",
+                "(7,754,655)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "433,794,257",
+                "92,536,330",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Earnings/(Loss) Per Share - Basic",
+                "19",
+                "0.722",
+                "0.167",
+                "(0.008)",
+                "0.001"
+              ],
+              "style": "data"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Income Statement / Statement of Profit or Loss"
+  },
+  "oci": {
+    "status": "ok",
+    "data": {
+      "statement_title": "Statement of Comprehensive Income",
+      "preamble": "Year ended 31 March",
+      "footnotes": "The accounting policies and notes on pages 77 through 120 form an integral part of the Financial Statements.",
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "Group",
+              "",
+              "Company",
+              ""
+            ],
+            [
+              "",
+              "",
+              "2025",
+              "2024",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Profit/(Loss) for the Year",
+                "",
+                "433,794,257",
+                "92,536,330",
+                "(4,579,461)",
+                "468,252"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Comprehensive Income",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Other comprehensive income not to be reclassified\nto Statement of Profit or Loss in subsequent period",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Actuarial Gains/ (Losses) on Post Employment Benefit Liability",
+                "12.1",
+                "1,160,158",
+                "(3,332,188)",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred Tax on Actuarial (gain)/ loss",
+                "18.2",
+                "(348,047)",
+                "999,657",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Revaluation Surplus of Freehold Land",
+                "10.2",
+                "548,496,250",
+                "-",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred Tax on Revaluation Surplus",
+                "18.2",
+                "(164,548,875)",
+                "-",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Comprehensive Income/(Loss) for the Year",
+                "",
+                "384,759,486",
+                "(2,332,531)",
+                "-",
+                "-"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Total Comprehensive Income/(Loss) for the Year",
+                "",
+                "818,553,743",
+                "90,203,799",
+                "(4,579,461)",
+                "468,252"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "Attributable to:",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Equity Holders of the Parent",
+                "",
+                "819,374,264",
+                "98,467,641",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Non Controlling Interests",
+                "",
+                "(820,521)",
+                "(8,263,842)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "818,553,743",
+                "90,203,799",
+                "",
+                ""
+              ],
+              "style": "total"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Other Comprehensive Income (OCI)"
+  },
+  "sofp": {
+    "status": "ok",
+    "data": {
+      "statement_title": "Statement of Financial Position",
+      "preamble": "As at 31 March",
+      "footnotes": "I certify that these Financial Statements are in compliance with the requirements of the Companies Act No 07 of 2007.\n\nC. S. R. S. Anthony\nDirector - Jetwing Hotels Ltd, Managing Agents\n\nThe Board of Directors is responsible for these Financial Statements. Signed for and on behalf of the Board by:\n\nDirector\n\nDirector\n\nThe accounting policies and notes on pages 77 through 120 form an integral part of the Financial Statements.\n03 June 2025\nColombo.",
+      "tables": [
+        {
+          "caption": "ASSETS",
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "Group",
+              "",
+              "Company",
+              ""
+            ],
+            [
+              "",
+              "",
+              "2025",
+              "2024",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Non-Current Assets",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Property, Plant and Equipment",
+                "4",
+                "9,588,324,784",
+                "9,055,224,445",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Right of use Assets",
+                "5",
+                "50,297,309",
+                "51,165,760",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Investments",
+                "7",
+                "1,621,480",
+                "1,364,363",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Investment in Subsidiaries",
+                "7",
+                "-",
+                "-",
+                "5,967,233,010",
+                "5,967,233,010"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred Tax Assets",
+                "18",
+                "28,401,188",
+                "218,739,283",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Intangible Assets",
+                "6",
+                "574,699,272",
+                "575,704,603",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "10,243,344,033",
+                "9,902,198,454",
+                "5,967,233,010",
+                "5,967,233,010"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Current Assets",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Inventories",
+                "8",
+                "97,670,930",
+                "109,202,895",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Trade and Other Receivables",
+                "9",
+                "417,198,780",
+                "514,937,325",
+                "2,679,869",
+                "2,120,446"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Income Tax Receivables",
+                "",
+                "1,268,331",
+                "1,268,331",
+                "158,494",
+                "158,494"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Current Financial Assets",
+                "7",
+                "45,049,517",
+                "1,578,983",
+                "-",
+                "1,578,983"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash at Bank and in Hand",
+                "16",
+                "142,092,074",
+                "63,284,164",
+                "316,860",
+                "1,332,595"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "704,089,632",
+                "690,272,298",
+                "3,155,223",
+                "5,190,518"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Total Assets",
+                "",
+                "10,947,433,665",
+                "10,592,470,752",
+                "5,970,388,233",
+                "5,972,423,528"
+              ],
+              "style": "total"
+            }
+          ]
+        },
+        {
+          "caption": "EQUITY AND LIABILITIES",
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "Group",
+              "",
+              "Company",
+              ""
+            ],
+            [
+              "",
+              "",
+              "2025",
+              "2024",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Equity Attributable to Equity holders of the Parent",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Stated Capital",
+                "10.1",
+                "6,009,276,455",
+                "6,009,276,455",
+                "6,009,276,455",
+                "6,009,276,455"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Revaluation Reserve",
+                "10.2",
+                "1,614,954,750",
+                "1,231,007,375",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Retained Earnings / (Losses)",
+                "",
+                "(3,362,631,530)",
+                "(3,798,085,419)",
+                "(44,358,475)",
+                "(39,779,014)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "4,261,599,675",
+                "3,442,225,411",
+                "5,964,917,980",
+                "5,969,497,441"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Non Controlling Interest",
+                "",
+                "(30,911,392)",
+                "(30,090,871)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Equity",
+                "",
+                "4,230,688,283",
+                "3,412,134,540",
+                "5,964,917,980",
+                "5,969,497,441"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "Non-Current Liabilities",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Interest Bearing Loans and Borrowings",
+                "11",
+                "3,121,092,751",
+                "3,888,482,782",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Post Employment Benefit Liabilities",
+                "12",
+                "62,928,795",
+                "53,456,682",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred Tax Liabilities",
+                "18",
+                "898,283,614",
+                "730,828,182",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "4,082,305,160",
+                "4,672,767,646",
+                "-",
+                "-"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Current Liabilities",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Interest Bearing Loans and Borrowings",
+                "11",
+                "2,066,861,299",
+                "1,980,847,680",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Trade and Other Payables",
+                "13",
+                "566,836,582",
+                "526,056,749",
+                "5,470,253",
+                "2,926,087"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Income Tax Payable",
+                "",
+                "742,341",
+                "664,137",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "2,634,440,222",
+                "2,507,568,566",
+                "5,470,253",
+                "2,926,087"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Total Liabilities",
+                "",
+                "6,716,745,382",
+                "7,180,336,212",
+                "5,470,253",
+                "2,926,087"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "Total Equity and Liabilities",
+                "",
+                "10,947,433,665",
+                "10,592,470,752",
+                "5,970,388,233",
+                "5,972,423,528"
+              ],
+              "style": "total"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Financial Position (Balance Sheet)"
+  },
+  "equity": {
+    "status": "ok",
+    "data": {
+      "statement_title": "Statement of Changes in Equity",
+      "preamble": null,
+      "footnotes": "The accounting policies and notes on pages 77 through 120 form an integral part of the Financial Statements.",
+      "tables": [
+        {
+          "caption": "Group",
+          "header_rows": [
+            [
+              "",
+              "",
+              "Attributable to Equity Holders of Parent",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Stated Capital",
+              "Revaluation Reserve",
+              "Retained Earnings",
+              "Total",
+              "Non-controlling Interest",
+              "Total"
+            ],
+            [
+              "",
+              "",
+              "(Note 10.1)",
+              "(Note 10.2)",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Balance as at 1 April 2023",
+                "",
+                "6,009,276,455",
+                "1,231,007,375",
+                "(3,896,526,059)",
+                "3,343,757,771",
+                "(21,827,029)",
+                "3,321,930,742"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "100,290,985",
+                "100,290,985",
+                "(7,754,655)",
+                "92,536,330"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Comprehensive Income/(Loss) for the year",
+                "",
+                "",
+                "",
+                "(1,823,345)",
+                "(1,823,345)",
+                "(509,187)",
+                "(2,332,532)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Comprehensive Income/(Loss) for the year",
+                "",
+                "",
+                "",
+                "98,467,640",
+                "98,467,640",
+                "(8,263,842)",
+                "90,203,798"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Balance as at 31 March 2024",
+                "",
+                "6,009,276,455",
+                "1,231,007,375",
+                "(3,798,058,419)",
+                "3,442,225,411",
+                "(30,090,871)",
+                "3,412,134,540"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "434,674,958",
+                "434,674,958",
+                "(880,701)",
+                "433,794,257"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Comprehensive Income/(Loss) for the year",
+                "",
+                "",
+                "383,947,375",
+                "751,931",
+                "384,699,306",
+                "60,180",
+                "384,759,486"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Comprehensive Income/(Loss) for the year",
+                "",
+                "",
+                "383,947,375",
+                "435,426,889",
+                "819,374,264",
+                "(820,521)",
+                "818,553,743"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Balance as at 31 March 2025",
+                "",
+                "6,009,276,455",
+                "1,614,954,750",
+                "(3,362,631,530)",
+                "4,261,599,675",
+                "(30,911,392)",
+                "4,230,688,283"
+              ],
+              "style": "data"
+            }
+          ]
+        },
+        {
+          "caption": "Company",
+          "header_rows": [
+            [
+              "",
+              "",
+              "Stated Capital",
+              "",
+              "Retained Earnings",
+              "Total"
+            ],
+            [
+              "",
+              "",
+              "LKR",
+              "",
+              "LKR",
+              "LKR"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Balance as at 01 April 2023",
+                "",
+                "6,009,276,455",
+                "",
+                "(40,247,266)",
+                "5,969,029,189"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "468,252",
+                "468,252"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Comprehensive Income/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Comprehensive Income/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "468,252",
+                "468,252"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Balance as at 31 March 2024",
+                "",
+                "6,009,276,455",
+                "",
+                "(39,779,014)",
+                "5,969,497,441"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "(4,579,461)",
+                "(4,579,461)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Comprehensive Income/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Comprehensive Income/(Loss) for the Year",
+                "",
+                "",
+                "",
+                "(4,579,461)",
+                "(4,579,461)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Balance as at 31 March 2025",
+                "",
+                "6,009,276,455",
+                "",
+                "(44,358,475)",
+                "5,964,917,980"
+              ],
+              "style": "data"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Changes in Equity"
+  },
+  "cash_flows": {
+    "status": "ok",
+    "data": {
+      "statement_title": "Statement of Cash Flows",
+      "preamble": "Year ended 31 March",
+      "footnotes": "The accounting policies and notes on pages 77 through 120 form an integral part of the Financial Statements.\nJetwing Symphony PLC | Annual Report 2024/25",
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "Group",
+              "Company"
+            ],
+            [
+              "",
+              "",
+              "2025",
+              "2024",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "LKR",
+              "LKR",
+              "LKR",
+              "LKR"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Cash Flows From /(Used in) Operating Activities",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) before Tax",
+                "",
+                "627,459,059",
+                "9,335,680",
+                "(4,579,461)",
+                "309,758"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Adjustments for :",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest Received",
+                "14.1",
+                "(2,583,785)",
+                "(960,346)",
+                "(1,682)",
+                "(328,351)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Depreciation & Amortization",
+                "17",
+                "353,389,223",
+                "356,405,576",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Finance Costs",
+                "14.2",
+                "560,782,751",
+                "885,300,460",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "(Profit)/Loss on Disposal Property, Plant and Equipment",
+                "17",
+                "1,924,584",
+                "2,811,353",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Fair value Gain on Sale of Investments",
+                "15",
+                "(109,757)",
+                "549,126",
+                "(60,238)",
+                "(529,152)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Exchange (Gain)/Loss on Foreign Currency Loan Conversion",
+                "11.3",
+                "13,566,809",
+                "(105,029,930)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Exchange (Gain)/Loss on Foreign Currency Deposits",
+                "",
+                "(7,037,699)",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Fair value (Gain)/Loss from other investments",
+                "15",
+                "(257,117)",
+                "(108,871)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Provision for Defined Benefit Obligation",
+                "12.1",
+                "18,371,951",
+                "15,071,471",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Operating Profit / (Loss) before Working Capital Changes",
+                "",
+                "1,538,372,381",
+                "1,162,010,267",
+                "(4,641,381)",
+                "(547,745)"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "(Increase) / Decrease in Inventories",
+                "",
+                "11,531,965",
+                "(12,480,519)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "(Increase) / Decrease in Trade and Other Receivables",
+                "",
+                "97,719,018",
+                "(294,282,459)",
+                "(3,614,422)",
+                "(72,180)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Increase / (Decrease) in Trade and Other Payables",
+                "",
+                "40,779,832",
+                "129,144,740",
+                "2,544,164",
+                "(2,264,978)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash Generated from/ (Used in) Operations",
+                "",
+                "1,688,403,196",
+                "984,392,029",
+                "(5,711,639)",
+                "(2,884,903)"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Finance Costs Paid",
+                "",
+                "(557,821,781)",
+                "(889,861,608)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Income Tax Paid",
+                "",
+                "(669,765)",
+                "(18,903)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Defined Benefit Plan Cost Paid Net of Transfers",
+                "12",
+                "(7,739,660)",
+                "(4,776,374)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net Cash Flows From/(Used in) Operating Activities",
+                "",
+                "1,122,171,990",
+                "89,735,144",
+                "(5,711,639)",
+                "(2,884,903)"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Cash Flows From/(Used in) Investing Activities",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Acquisition of Property, Plant and Equipment",
+                "4.6",
+                "(352,697,135)",
+                "(186,366,310)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Proceeds from Sale of Property, Plant and Equipment",
+                "",
+                "17,133,412",
+                "2,274,426",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Proceeds from Redemption of Units",
+                "",
+                "1,639,223",
+                "5,967,296",
+                "1,639,223",
+                "5,750,000"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Investment (made)/redeemed in Fixed Deposits",
+                "7.3.1",
+                "7,037,699",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Investment in Unit Trust",
+                "",
+                "(45,000,000)",
+                "(4,500,000)",
+                "",
+                "(4,500,000)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net Advance (Granted)/ Settled",
+                "",
+                "",
+                "",
+                "3,055,000",
+                "(1,550,000)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Short Term Loans Settled",
+                "",
+                "",
+                "",
+                "",
+                "3,889,649"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest Received",
+                "14.1",
+                "2,583,785",
+                "960,346",
+                "1,682",
+                "328,351"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net Cash Flows (Used in) Investing Activities",
+                "",
+                "(369,303,016)",
+                "(181,664,242)",
+                "4,695,904",
+                "3,918,000"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Cash Flows from Financing Activities",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Repayment of Lease Liabilities",
+                "11.2",
+                "(2,539,992)",
+                "(1,985,319)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Inter Company Loans Received",
+                "",
+                "",
+                "",
+                "",
+                "675,000,000"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Repayment of Intercompany Loans",
+                "",
+                "",
+                "",
+                "",
+                "(132,000,000)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Proceeds from Bank Loans",
+                "11.3",
+                "300,000,000",
+                "1,200,000,000",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Repayment of Bank Loans",
+                "11.3",
+                "(932,596,372)",
+                "(1,085,733,946)",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Proceeds from Grant",
+                "4.7",
+                "",
+                "",
+                "8,608,200",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net Cash Flows From/ (Used in) Financing Activities",
+                "",
+                "(635,136,364)",
+                "663,688,335",
+                "(1,015,735)",
+                "1,033,097"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Net Increase / (Decrease) in Cash and Cash Equivalents",
+                "",
+                "117,732,610",
+                "571,959,837",
+                "(1,015,735)",
+                "1,033,097"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Cash and Cash Equivalents at the beginning of the Year",
+                "16",
+                "(1,249,441,059)",
+                "(1,821,400,896)",
+                "1,332,595",
+                "299,498"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash and Cash Equivalents at the end of the Year",
+                "16",
+                "(1,131,708,449)",
+                "(1,249,441,059)",
+                "316,860",
+                "1,332,595"
+              ],
+              "style": "data"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Cash Flows"
+  },
+  "five_year_summary": {
+    "status": "ok",
+    "data": {
+      "statement_title": "Five Year Summary",
+      "preamble": "GROUP\nYear ended 31st March,",
+      "footnotes": "Jetwing Symphony PLC | Annual Report 2024/25",
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "",
+              "2025",
+              "2024",
+              "2023",
+              "2022",
+              "2021"
+            ],
+            [
+              "",
+              "",
+              "LKR '000",
+              "LKR '000",
+              "LKR '000",
+              "LKR '000",
+              "LKR '000"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "OPERATING RESULTS",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Revenue",
+                "",
+                "4,090,983",
+                "3,613,513",
+                "2,115,955",
+                "1,288,040",
+                "556,856"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) Before Taxation",
+                "",
+                "627,459",
+                "9,336",
+                "(765,194)",
+                "(912,419)",
+                "(828,504)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Taxation (Expense)/ Reversal",
+                "",
+                "(193,665)",
+                "83,201",
+                "132,999",
+                "16,387",
+                "(2,303)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit/(Loss) After Taxation",
+                "",
+                "433,794",
+                "92,536",
+                "(632,195)",
+                "(896,032)",
+                "(830,090)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "SHAREHOLDERS' FUNDS",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Stated Capital",
+                "",
+                "6,009,276",
+                "6,009,276",
+                "6,009,276",
+                "5,509,276",
+                "5,509,276"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Reserves",
+                "",
+                "1,614,955",
+                "1,231,007",
+                "1,231,007",
+                "1,646,345",
+                "1,004,858"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Retained Earnings / (Losses)",
+                "",
+                "(3,362,632)",
+                "(3,798,058)",
+                "(3,896,526)",
+                "(3,274,441)",
+                "(2,394,833)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Non Controlling Interest",
+                "",
+                "3,261,599",
+                "3,442,225",
+                "3,343,758",
+                "3,881,180",
+                "4,119,495"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "(30,911)",
+                "(30,091)",
+                "(28,871)",
+                "(5,039)",
+                "(3,482)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Shareholders' Funds",
+                "",
+                "4,230,688",
+                "3,412,134",
+                "3,358,644",
+                "3,876,141",
+                "4,124,127"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "LIABILITIES",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Interest Bearing Loans & Borrowings",
+                "",
+                "5,187,954",
+                "5,869,330",
+                "5,922,776",
+                "6,066,685",
+                "5,304,709"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Current Liabilities",
+                "",
+                "567,579",
+                "526,721",
+                "388,322",
+                "287,810",
+                "201,022"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Liabilities",
+                "",
+                "62,929",
+                "53,457",
+                "39,829",
+                "36,610",
+                "25,545"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred Tax liabilities",
+                "",
+                "898,284",
+                "730,828",
+                "749,462",
+                "370,287",
+                "251,637"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "TOTAL EQUITY AND LIABILITIES",
+                "",
+                "10,947,434",
+                "10,592,470",
+                "10,422,320",
+                "10,636,941",
+                "9,932,545"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "ASSETS",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Property, Plant & Equipment",
+                "",
+                "9,588,325",
+                "9,055,224",
+                "9,224,714",
+                "9,488,290",
+                "9,040,569"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Leasehold Property/Prepaid Lease Rent",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Right of Use Assets",
+                "",
+                "50,297",
+                "51,166",
+                "55,609",
+                "58,407",
+                "72,344"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred Tax Assets",
+                "",
+                "28,401",
+                "218,739",
+                "148,988",
+                "49,870",
+                "15,806"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Intangible Assets",
+                "",
+                "574,699",
+                "575,705",
+                "576,896",
+                "578,207",
+                "581,436"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Investments/Other Non-Current Financial Assets",
+                "",
+                "46,671",
+                "",
+                "2,943",
+                "3,595",
+                "135,729"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Current Assets",
+                "",
+                "659,040",
+                "688,693",
+                "412,518",
+                "326,438",
+                "161,412"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "TOTAL ASSETS",
+                "",
+                "10,947,434",
+                "10,592,470",
+                "10,422,320",
+                "10,636,941",
+                "9,932,545"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "CASH FLOW",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "From Operating Activities",
+                "",
+                "1,122,172",
+                "89,735",
+                "(78,087)",
+                "192,304",
+                "(195,737)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "From Investing Activities",
+                "",
+                "(369,303)",
+                "(181,664)",
+                "91,249",
+                "(63,982)",
+                "(85,455)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "From Financing Activities",
+                "",
+                "(635,136)",
+                "663,889",
+                "690,719",
+                "(85,908)",
+                "145,151"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net Cash Inflow/(Outflow)",
+                "",
+                "117,733",
+                "571,960",
+                "(667,557)",
+                "42,413",
+                "(136,041)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash & Cash Equivalents as at 31 March - Favourable / (Unfavourable)",
+                "",
+                "(1,131,708)",
+                "(1,249,441)",
+                "(1,821,401)",
+                "(1,143,844)",
+                "(1,186,257)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "KEY INDICATORS",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Earnings/(Loss) per Ordinary Share (LKR)",
+                "",
+                "0.72",
+                "0.17",
+                "(1.10)",
+                "(1.62)",
+                "(1.63)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net Assets per Ordinary Share (LKR)",
+                "",
+                "7.08",
+                "5.72",
+                "5.52",
+                "7.72",
+                "8.20"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Market Value per Share (LKR)",
+                "",
+                "11.50",
+                "9.00",
+                "7.10",
+                "10.50",
+                "9.00"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "No. of Operating Hotels",
+                "",
+                "7",
+                "7",
+                "6",
+                "6",
+                "6"
+              ],
+              "style": "data"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Five Year Summary / Achievements"
+  }
+}

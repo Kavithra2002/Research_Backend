@@ -1,0 +1,2339 @@
+{
+  "company": "company13",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company13\\Annual\\48914_2025.pdf",
+  "extracted_at": "2026-05-18T10:51:52",
+  "statements": {
+    "oci": {
+      "title": "Statement of Other Comprehensive Income",
+      "page_1based": 65,
+      "has_note_col": true,
+      "column_headers": [
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "For the year ended",
+          "note_col": "Note",
+          "amt_cols": [
+            "2025",
+            "2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "For the year ended 31 March,",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Revenue",
+          "is_section_header": false,
+          "note": "14",
+          "amounts_raw": [
+            "416,270,509",
+            "326,569,040"
+          ],
+          "amounts": [
+            416270509,
+            326569040
+          ]
+        },
+        {
+          "label": "Cost of sales",
+          "is_section_header": false,
+          "note": "15",
+          "amounts_raw": [
+            "(240,706,748)",
+            "(198,170,531)"
+          ],
+          "amounts": [
+            -240706748,
+            -198170531
+          ]
+        },
+        {
+          "label": "Gross profit",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "175,563,761",
+            "128,398,509"
+          ],
+          "amounts": [
+            175563761,
+            128398509
+          ]
+        },
+        {
+          "label": "Administrative expenses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(67,179,839)",
+            "(58,543,783)"
+          ],
+          "amounts": [
+            -67179839,
+            -58543783
+          ]
+        },
+        {
+          "label": "Selling and distribution expenses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(40,914,327)",
+            "(25,959,400)"
+          ],
+          "amounts": [
+            -40914327,
+            -25959400
+          ]
+        },
+        {
+          "label": "Profit from operations",
+          "is_section_header": false,
+          "note": "16",
+          "amounts_raw": [
+            "67,469,595",
+            "43,895,326"
+          ],
+          "amounts": [
+            67469595,
+            43895326
+          ]
+        },
+        {
+          "label": "Interest income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,368,640",
+            "4,677,036"
+          ],
+          "amounts": [
+            3368640,
+            4677036
+          ]
+        },
+        {
+          "label": "Finance expenses",
+          "is_section_header": false,
+          "note": "17",
+          "amounts_raw": [
+            "(14,025,828)",
+            "(13,623,022)"
+          ],
+          "amounts": [
+            -14025828,
+            -13623022
+          ]
+        },
+        {
+          "label": "Net finance expenses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(10,657,188)",
+            "(8,945,986)"
+          ],
+          "amounts": [
+            -10657188,
+            -8945986
+          ]
+        },
+        {
+          "label": "Profit before taxation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "56,812,407",
+            "34,949,340"
+          ],
+          "amounts": [
+            56812407,
+            34949340
+          ]
+        },
+        {
+          "label": "Income tax expenses",
+          "is_section_header": false,
+          "note": "19",
+          "amounts_raw": [
+            "(17,390,712)",
+            "(10,362,985)"
+          ],
+          "amounts": [
+            -17390712,
+            -10362985
+          ]
+        },
+        {
+          "label": "Profit after taxation Other comprehensive income Items that will not be re-classified to profit/ loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "39,421,695",
+            "24,586,355"
+          ],
+          "amounts": [
+            39421695,
+            24586355
+          ]
+        },
+        {
+          "label": "Surplus on retirement benefit obligation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(123,502)",
+            "105,297"
+          ],
+          "amounts": [
+            -123502,
+            105297
+          ]
+        },
+        {
+          "label": "Other comprehensive income for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(123,502)",
+            "105,297"
+          ],
+          "amounts": [
+            -123502,
+            105297
+          ]
+        },
+        {
+          "label": "Total comprehensive income Earning per share (Rs.) The financial statements are to be read in conjunction with the related form an these financial statements of the Company. Alpha Fire Services PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "39,298,193",
+            "24,691,652"
+          ],
+          "amounts": [
+            39298193,
+            24691652
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "For the year ended 31 March,",
+          "",
+          "2025",
+          "2024"
+        ],
+        [
+          "Revenue",
+          "14",
+          "416,270,509",
+          "326,569,040"
+        ],
+        [
+          "Cost of sales",
+          "15",
+          "(240,706,748)",
+          "(198,170,531)"
+        ],
+        [
+          "Gross profit",
+          "",
+          "175,563,761",
+          "128,398,509"
+        ],
+        [
+          "Administrative expenses",
+          "",
+          "(67,179,839)",
+          "(58,543,783)"
+        ],
+        [
+          "Selling and distribution expenses",
+          "",
+          "(40,914,327)",
+          "(25,959,400)"
+        ],
+        [
+          "Profit from operations",
+          "16",
+          "67,469,595",
+          "43,895,326"
+        ],
+        [
+          "Interest income",
+          "",
+          "3,368,640",
+          "4,677,036"
+        ],
+        [
+          "Finance expenses",
+          "17",
+          "(14,025,828)",
+          "(13,623,022)"
+        ],
+        [
+          "Net finance expenses",
+          "",
+          "(10,657,188)",
+          "(8,945,986)"
+        ],
+        [
+          "Profit before taxation",
+          "",
+          "56,812,407",
+          "34,949,340"
+        ],
+        [
+          "Income tax expenses",
+          "19",
+          "(17,390,712)",
+          "(10,362,985)"
+        ],
+        [
+          "Profit after taxation Other comprehensive income Items that will not be re-classified to profit/ loss",
+          "",
+          "39,421,695",
+          "24,586,355"
+        ],
+        [
+          "Surplus on retirement benefit obligation",
+          "",
+          "(123,502)",
+          "105,297"
+        ],
+        [
+          "Other comprehensive income for the year",
+          "",
+          "(123,502)",
+          "105,297"
+        ],
+        [
+          "Total comprehensive income Earning per share (Rs.) The financial statements are to be read in conjunction with the related form an these financial statements of the Company.  Alpha Fire Services PLC",
+          "",
+          "39,298,193",
+          "24,691,652"
+        ]
+      ]
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 64,
+      "has_note_col": true,
+      "column_headers": [
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "As at",
+          "note_col": "Note",
+          "amt_cols": [
+            "2025",
+            "2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "ALPHA FIRE SERVICES PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "As at 31 March,",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Property, plant & equipment",
+          "is_section_header": false,
+          "note": "2",
+          "amounts_raw": [
+            "78,084,584",
+            "72,407,471"
+          ],
+          "amounts": [
+            78084584,
+            72407471
+          ]
+        },
+        {
+          "label": "Term deposits",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "32,363,396",
+            "30,435,966"
+          ],
+          "amounts": [
+            32363396,
+            30435966
+          ]
+        },
+        {
+          "label": "Total non-current assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "110,447,980",
+            "102,843,437"
+          ],
+          "amounts": [
+            110447980,
+            102843437
+          ]
+        },
+        {
+          "label": "Current assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Inventories",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "172,478,167",
+            "83,548,022"
+          ],
+          "amounts": [
+            172478167,
+            83548022
+          ]
+        },
+        {
+          "label": "Trade and other receivables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "78,541,068",
+            "95,405,151"
+          ],
+          "amounts": [
+            78541068,
+            95405151
+          ]
+        },
+        {
+          "label": "Cash margin account",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,073,411",
+            "10,130,325"
+          ],
+          "amounts": [
+            4073411,
+            10130325
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "20,319,152",
+            "13,826,017"
+          ],
+          "amounts": [
+            20319152,
+            13826017
+          ]
+        },
+        {
+          "label": "Total current assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "275,411,798",
+            "202,909,515"
+          ],
+          "amounts": [
+            275411798,
+            202909515
+          ]
+        },
+        {
+          "label": "Total assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "385,859,778",
+            "305,752,952"
+          ],
+          "amounts": [
+            385859778,
+            305752952
+          ]
+        },
+        {
+          "label": "Equity and liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Equity",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated capital",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "76,429,460",
+            "76,429,460"
+          ],
+          "amounts": [
+            76429460,
+            76429460
+          ]
+        },
+        {
+          "label": "Revaluation reserve",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "23,880,760",
+            "23,880,760"
+          ],
+          "amounts": [
+            23880760,
+            23880760
+          ]
+        },
+        {
+          "label": "Retained earnings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "78,678,982",
+            "45,073,288"
+          ],
+          "amounts": [
+            78678982,
+            45073288
+          ]
+        },
+        {
+          "label": "Total equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "178,989,202",
+            "145,383,508"
+          ],
+          "amounts": [
+            178989202,
+            145383508
+          ]
+        },
+        {
+          "label": "Non-current liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Retirement benefits obligation",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "5,964,740",
+            "4,640,418"
+          ],
+          "amounts": [
+            5964740,
+            4640418
+          ]
+        },
+        {
+          "label": "Bank borrowings",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "6,333,326",
+            "1,833,317"
+          ],
+          "amounts": [
+            6333326,
+            1833317
+          ]
+        },
+        {
+          "label": "Deferred tax liabilities",
+          "is_section_header": false,
+          "note": "9",
+          "amounts_raw": [
+            "5,334,492",
+            "7,795,277"
+          ],
+          "amounts": [
+            5334492,
+            7795277
+          ]
+        },
+        {
+          "label": "Total non-current liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "17,632,558",
+            "14,269,012"
+          ],
+          "amounts": [
+            17632558,
+            14269012
+          ]
+        },
+        {
+          "label": "Current Liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Bank borrowings",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "3,833,321",
+            "10,591,125"
+          ],
+          "amounts": [
+            3833321,
+            10591125
+          ]
+        },
+        {
+          "label": "Amount due to related parties",
+          "is_section_header": false,
+          "note": "10",
+          "amounts_raw": [
+            "3,153,414",
+            "1,381,413"
+          ],
+          "amounts": [
+            3153414,
+            1381413
+          ]
+        },
+        {
+          "label": "Short term bank borrowings",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "68,401,094",
+            "33,196,850"
+          ],
+          "amounts": [
+            68401094,
+            33196850
+          ]
+        },
+        {
+          "label": "Trade and other payables 5 5",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "73,134,835",
+            ",482,406"
+          ],
+          "amounts": [
+            73134835,
+            482406
+          ]
+        },
+        {
+          "label": "Income tax payable",
+          "is_section_header": false,
+          "note": "13",
+          "amounts_raw": [
+            "19,602,715",
+            "11,929,987"
+          ],
+          "amounts": [
+            19602715,
+            11929987
+          ]
+        },
+        {
+          "label": "Bank overdrafts",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            "21,112,639",
+            "33,518,650"
+          ],
+          "amounts": [
+            21112639,
+            33518650
+          ]
+        },
+        {
+          "label": "Total current liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "189,238,018",
+            "146,100,432"
+          ],
+          "amounts": [
+            189238018,
+            146100432
+          ]
+        },
+        {
+          "label": "Total liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "206,870,576",
+            "160,369,444"
+          ],
+          "amounts": [
+            206870576,
+            160369444
+          ]
+        },
+        {
+          "label": "Total equity and liabilities The financial statements are to be read in conjunction with the which form an partof these financial statements of the Company.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "385,859,778",
+            "305,752,952"
+          ],
+          "amounts": [
+            385859778,
+            305752952
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "ALPHA FIRE SERVICES PLC",
+          "",
+          "",
+          ""
+        ],
+        [
+          "STATEMENT OF FINANCIAL POSITION",
+          "",
+          "",
+          ""
+        ],
+        [
+          "As at 31 March,",
+          "",
+          "2025",
+          "2024"
+        ],
+        [
+          "Assets",
+          "Note",
+          "Rs.",
+          "Rs."
+        ],
+        [
+          "Non-current assets",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Property, plant & equipment",
+          "2",
+          "78,084,584",
+          "72,407,471"
+        ],
+        [
+          "Term deposits",
+          "",
+          "32,363,396",
+          "30,435,966"
+        ],
+        [
+          "Total non-current assets",
+          "",
+          "110,447,980",
+          "102,843,437"
+        ],
+        [
+          "Current assets",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Inventories",
+          "",
+          "172,478,167",
+          "83,548,022"
+        ],
+        [
+          "Trade and other receivables",
+          "",
+          "78,541,068",
+          "95,405,151"
+        ],
+        [
+          "Cash margin account",
+          "",
+          "4,073,411",
+          "10,130,325"
+        ],
+        [
+          "Cash and cash equivalents",
+          "",
+          "20,319,152",
+          "13,826,017"
+        ],
+        [
+          "Total current assets",
+          "",
+          "275,411,798",
+          "202,909,515"
+        ],
+        [
+          "Total assets",
+          "",
+          "385,859,778",
+          "305,752,952"
+        ],
+        [
+          "Equity and liabilities",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Equity",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Stated capital",
+          "6",
+          "76,429,460",
+          "76,429,460"
+        ],
+        [
+          "Revaluation reserve",
+          "",
+          "23,880,760",
+          "23,880,760"
+        ],
+        [
+          "Retained earnings",
+          "",
+          "78,678,982",
+          "45,073,288"
+        ],
+        [
+          "Total equity",
+          "",
+          "178,989,202",
+          "145,383,508"
+        ],
+        [
+          "Non-current liabilities",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Retirement benefits obligation",
+          "7",
+          "5,964,740",
+          "4,640,418"
+        ],
+        [
+          "Bank borrowings",
+          "8",
+          "6,333,326",
+          "1,833,317"
+        ],
+        [
+          "Deferred tax liabilities",
+          "9",
+          "5,334,492",
+          "7,795,277"
+        ],
+        [
+          "Total non-current liabilities",
+          "",
+          "17,632,558",
+          "14,269,012"
+        ],
+        [
+          "Current Liabilities",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Bank borrowings",
+          "8",
+          "3,833,321",
+          "10,591,125"
+        ],
+        [
+          "Amount due to related parties",
+          "10",
+          "3,153,414",
+          "1,381,413"
+        ],
+        [
+          "Short term bank borrowings",
+          "11",
+          "68,401,094",
+          "33,196,850"
+        ],
+        [
+          "Trade and other payables 5 5",
+          "12",
+          "73,134,835",
+          ",482,406"
+        ],
+        [
+          "Income tax payable",
+          "13",
+          "19,602,715",
+          "11,929,987"
+        ],
+        [
+          "Bank overdrafts",
+          "5",
+          "21,112,639",
+          "33,518,650"
+        ],
+        [
+          "Total current liabilities",
+          "",
+          "189,238,018",
+          "146,100,432"
+        ],
+        [
+          "Total liabilities",
+          "",
+          "206,870,576",
+          "160,369,444"
+        ],
+        [
+          "Total equity and liabilities The financial statements are to be read in conjunction with the which form an partof these financial statements of the Company.",
+          "",
+          "385,859,778",
+          "305,752,952"
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 66,
+      "has_note_col": true,
+      "column_headers": [
+        "MMaarrcchh,,",
+        "Stated / capital",
+        "Revaluation",
+        "Retained / earnings",
+        "Col 5"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "FFoorr tthhee 3311",
+          "note_col": "yyeeaarr eennddeedd",
+          "amt_cols": [
+            "MMaarrcchh,,",
+            "Stated",
+            "Revaluation",
+            "Retained",
+            ""
+          ]
+        },
+        {
+          "label_col": "Total",
+          "note_col": "",
+          "amt_cols": [
+            "",
+            "capital",
+            "",
+            "earnings",
+            ""
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "FFoorr tthhee 3311",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance April",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2023",
+            "25,569,560",
+            "26,335,143",
+            "22,481,253",
+            "74,385,956"
+          ],
+          "amounts": [
+            2023,
+            25569560,
+            26335143,
+            22481253,
+            74385956
+          ]
+        },
+        {
+          "label": "Share the Note 6",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "50,859,900",
+            "-",
+            "-",
+            ""
+          ],
+          "amounts": [
+            null,
+            50859900,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "50,859,900"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            50859900
+          ]
+        },
+        {
+          "label": "Profit for 2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "-",
+            "4,586,355",
+            "24,586,355"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            4586355,
+            24586355
+          ]
+        },
+        {
+          "label": "Other the period",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "-",
+            "105,297",
+            "105,297"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            105297,
+            105297
+          ]
+        },
+        {
+          "label": "on assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "(2,454,383)",
+            "2,454,383",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            -2454383,
+            2454383,
+            null
+          ]
+        },
+        {
+          "label": "Dividend",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "-",
+            "(4,554,000)",
+            "(4,554,000)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -4554000,
+            -4554000
+          ]
+        },
+        {
+          "label": "Balance March Total the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2024",
+            "76,429,460",
+            "23,880,760",
+            "45,073,288",
+            "145,383,508"
+          ],
+          "amounts": [
+            2024,
+            76429460,
+            23880760,
+            45073288,
+            145383508
+          ]
+        },
+        {
+          "label": "Profit for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "-",
+            "39,421,695",
+            "39,421,695"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            39421695,
+            39421695
+          ]
+        },
+        {
+          "label": "Other the period",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "-",
+            "(123,502)",
+            "(123,502)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -123502,
+            -123502
+          ]
+        },
+        {
+          "label": "Dividend",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "-",
+            "(5,692,500)",
+            "(5,692,500)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -5692500,
+            -5692500
+          ]
+        },
+        {
+          "label": "Balance March The statements read in conjunction with notes, form an of these financial Company. Alpha Fire",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "76,429,460",
+            "23,880,760",
+            "78,678,981",
+            "178,989,201"
+          ],
+          "amounts": [
+            2025,
+            76429460,
+            23880760,
+            78678981,
+            178989201
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "FFoorr tthhee 3311",
+          "yyeeaarr eennddeedd",
+          "MMaarrcchh,,",
+          "Stated",
+          "Revaluation",
+          "Retained",
+          ""
+        ],
+        [
+          "Total",
+          "",
+          "",
+          "capital",
+          "",
+          "earnings",
+          ""
+        ],
+        [
+          "Balance April",
+          "as at 01",
+          "2023",
+          "25,569,560",
+          "26,335,143",
+          "22,481,253",
+          "74,385,956"
+        ],
+        [
+          "Share the Note 6",
+          "issued during",
+          "year -",
+          "50,859,900",
+          "-",
+          "-",
+          ""
+        ],
+        [
+          "Total the year",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "50,859,900"
+        ],
+        [
+          "Profit for 2",
+          "the year",
+          "",
+          "-",
+          "-",
+          "4,586,355",
+          "24,586,355"
+        ],
+        [
+          "Other the period",
+          "comprehensive",
+          "income for",
+          "-",
+          "-",
+          "105,297",
+          "105,297"
+        ],
+        [
+          "on assets",
+          "Depreciation transfer",
+          "revalued",
+          "-",
+          "(2,454,383)",
+          "2,454,383",
+          "-"
+        ],
+        [
+          "Dividend",
+          "Distribution",
+          "",
+          "-",
+          "-",
+          "(4,554,000)",
+          "(4,554,000)"
+        ],
+        [
+          "Balance March Total the year",
+          "as at 31",
+          "2024",
+          "76,429,460",
+          "23,880,760",
+          "45,073,288",
+          "145,383,508"
+        ],
+        [
+          "Profit for",
+          "the year",
+          "",
+          "-",
+          "-",
+          "39,421,695",
+          "39,421,695"
+        ],
+        [
+          "Other the period",
+          "comprehensive",
+          "income for",
+          "-",
+          "-",
+          "(123,502)",
+          "(123,502)"
+        ],
+        [
+          "Dividend",
+          "Distribution",
+          "",
+          "-",
+          "-",
+          "(5,692,500)",
+          "(5,692,500)"
+        ],
+        [
+          "Balance March The statements read in conjunction with notes, form an of these financial Company.  Alpha Fire",
+          "as at 31",
+          "2025",
+          "76,429,460",
+          "23,880,760",
+          "78,678,981",
+          "178,989,201"
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 67,
+      "has_note_col": true,
+      "column_headers": [
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "For the year ended",
+          "note_col": "Note",
+          "amt_cols": [
+            "2025",
+            "2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash flows from operating activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit before taxation Adjustments for:",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "56,812,407",
+            "34,949,340"
+          ],
+          "amounts": [
+            56812407,
+            34949340
+          ]
+        },
+        {
+          "label": "Depreciation of property plant and equipment 4",
+          "is_section_header": false,
+          "note": "2",
+          "amounts_raw": [
+            "4,609,795",
+            ",307,632"
+          ],
+          "amounts": [
+            4609795,
+            307632
+          ]
+        },
+        {
+          "label": "Provision for retirement benefit obligation",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "1,362,821",
+            "1,548,215"
+          ],
+          "amounts": [
+            1362821,
+            1548215
+          ]
+        },
+        {
+          "label": "Provision for slow moving inventory",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "1,342,884"
+          ],
+          "amounts": [
+            null,
+            1342884
+          ]
+        },
+        {
+          "label": "Interest income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(3,368,640)",
+            "(4,677,036)"
+          ],
+          "amounts": [
+            -3368640,
+            -4677036
+          ]
+        },
+        {
+          "label": "Loan interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "7,241,321",
+            "6,723,207"
+          ],
+          "amounts": [
+            7241321,
+            6723207
+          ]
+        },
+        {
+          "label": "Lease interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "20,936"
+          ],
+          "amounts": [
+            null,
+            20936
+          ]
+        },
+        {
+          "label": "Operating profit before changes in working capital Changes in working capital",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "66,657,704",
+            "44,215,178"
+          ],
+          "amounts": [
+            66657704,
+            44215178
+          ]
+        },
+        {
+          "label": "(Increase )/decrease in inventories",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(88,930,145)",
+            "(10,912,192)"
+          ],
+          "amounts": [
+            -88930145,
+            -10912192
+          ]
+        },
+        {
+          "label": "(Increase)/decrease in trade and other receivables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "16,864,083",
+            "(16,511,832)"
+          ],
+          "amounts": [
+            16864083,
+            -16511832
+          ]
+        },
+        {
+          "label": "Increase/ (decrease) in amount due to related parties",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,772,001",
+            "(11,216,722)"
+          ],
+          "amounts": [
+            1772001,
+            -11216722
+          ]
+        },
+        {
+          "label": "Increase/ (decrease) in trade and other payables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "17,652,430",
+            "63,610"
+          ],
+          "amounts": [
+            17652430,
+            63610
+          ]
+        },
+        {
+          "label": "Cash generated / (used in) from operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "14,016,072",
+            "5,638,042"
+          ],
+          "amounts": [
+            14016072,
+            5638042
+          ]
+        },
+        {
+          "label": "Income tax paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(12,178,768)",
+            "(2,846,790)"
+          ],
+          "amounts": [
+            -12178768,
+            -2846790
+          ]
+        },
+        {
+          "label": "Gratuity paid",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "(162,000)",
+            "(356,250)"
+          ],
+          "amounts": [
+            -162000,
+            -356250
+          ]
+        },
+        {
+          "label": "Net cash flow generated / (used in) from operating activities Cash flows from investing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,675,304",
+            "2,435,002"
+          ],
+          "amounts": [
+            1675304,
+            2435002
+          ]
+        },
+        {
+          "label": "Acquisition of property, plant and equipment",
+          "is_section_header": false,
+          "note": "2",
+          "amounts_raw": [
+            "(10,286,907)",
+            "(16,265,503)"
+          ],
+          "amounts": [
+            -10286907,
+            -16265503
+          ]
+        },
+        {
+          "label": "Interest income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,441,210",
+            "686,830"
+          ],
+          "amounts": [
+            1441210,
+            686830
+          ]
+        },
+        {
+          "label": "Investment in cash margin",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,056,914",
+            "(5,989,875)"
+          ],
+          "amounts": [
+            6056914,
+            -5989875
+          ]
+        },
+        {
+          "label": "Withdrawal of fixed deposits",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "2,629,370"
+          ],
+          "amounts": [
+            null,
+            2629370
+          ]
+        },
+        {
+          "label": "Net cash flow used in investing activities Cash flows from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,788,783)",
+            "(18,939,178)"
+          ],
+          "amounts": [
+            -2788783,
+            -18939178
+          ]
+        },
+        {
+          "label": "Share issued - rights issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "50,859,900"
+          ],
+          "amounts": [
+            null,
+            50859900
+          ]
+        },
+        {
+          "label": "Dividend paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(5,692,500)",
+            "(4,554,000)"
+          ],
+          "amounts": [
+            -5692500,
+            -4554000
+          ]
+        },
+        {
+          "label": "Long term loan received",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,000,000",
+            "-"
+          ],
+          "amounts": [
+            10000000,
+            null
+          ]
+        },
+        {
+          "label": "Long term loan paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(12,257,795)",
+            "(18,236,482)"
+          ],
+          "amounts": [
+            -12257795,
+            -18236482
+          ]
+        },
+        {
+          "label": "Short term loan (paid) / received",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "35,204,242",
+            "3,356,234"
+          ],
+          "amounts": [
+            35204242,
+            3356234
+          ]
+        },
+        {
+          "label": "Loan interest paid ( 6 , 7 2 3",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lease rental paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(418,474)"
+          ],
+          "amounts": [
+            null,
+            -418474
+          ]
+        },
+        {
+          "label": "Loan (settled)/obtained from related parties",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(10,000,000)"
+          ],
+          "amounts": [
+            null,
+            -10000000
+          ]
+        },
+        {
+          "label": "Net cash flow generated / (used in) from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "20,012,626",
+            "14,283,969"
+          ],
+          "amounts": [
+            20012626,
+            14283969
+          ]
+        },
+        {
+          "label": "Net changes in cash and cash equivalents during the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "18,899,146",
+            "(2,220,207)"
+          ],
+          "amounts": [
+            18899146,
+            -2220207
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(19,692,633)",
+            "(17,472,426)"
+          ],
+          "amounts": [
+            -19692633,
+            -17472426
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at end of the year The financial statements are to be read in conjunction with the related form an part of these financial statements of the Company. Alpha Fire Services PLC",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            "(793,487)",
+            "(19,692,633)"
+          ],
+          "amounts": [
+            -793487,
+            -19692633
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Rs. Rs.",
+          "Note",
+          "",
+          ""
+        ],
+        [
+          "Cash flows from operating activities",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Profit before taxation Adjustments for:",
+          "",
+          "56,812,407",
+          "34,949,340"
+        ],
+        [
+          "Depreciation of property plant and equipment 4",
+          "2",
+          "4,609,795",
+          ",307,632"
+        ],
+        [
+          "Provision for retirement benefit obligation",
+          "7",
+          "1,362,821",
+          "1,548,215"
+        ],
+        [
+          "Provision for slow moving inventory",
+          "",
+          "-",
+          "1,342,884"
+        ],
+        [
+          "Interest income",
+          "",
+          "(3,368,640)",
+          "(4,677,036)"
+        ],
+        [
+          "Loan interest",
+          "",
+          "7,241,321",
+          "6,723,207"
+        ],
+        [
+          "Lease interest",
+          "",
+          "-",
+          "20,936"
+        ],
+        [
+          "Operating profit before changes in working capital Changes in working capital",
+          "",
+          "66,657,704",
+          "44,215,178"
+        ],
+        [
+          "(Increase )/decrease in inventories",
+          "",
+          "(88,930,145)",
+          "(10,912,192)"
+        ],
+        [
+          "(Increase)/decrease in trade and other receivables",
+          "",
+          "16,864,083",
+          "(16,511,832)"
+        ],
+        [
+          "Increase/ (decrease) in amount due to related parties",
+          "",
+          "1,772,001",
+          "(11,216,722)"
+        ],
+        [
+          "Increase/ (decrease) in trade and other payables",
+          "",
+          "17,652,430",
+          "63,610"
+        ],
+        [
+          "Cash generated / (used in) from operations",
+          "",
+          "14,016,072",
+          "5,638,042"
+        ],
+        [
+          "Income tax paid",
+          "",
+          "(12,178,768)",
+          "(2,846,790)"
+        ],
+        [
+          "Gratuity paid",
+          "7",
+          "(162,000)",
+          "(356,250)"
+        ],
+        [
+          "Net cash flow generated / (used in) from operating activities Cash flows from investing activities",
+          "",
+          "1,675,304",
+          "2,435,002"
+        ],
+        [
+          "Acquisition of property, plant and equipment",
+          "2",
+          "(10,286,907)",
+          "(16,265,503)"
+        ],
+        [
+          "Interest income",
+          "",
+          "1,441,210",
+          "686,830"
+        ],
+        [
+          "Investment in cash margin",
+          "",
+          "6,056,914",
+          "(5,989,875)"
+        ],
+        [
+          "Withdrawal of fixed deposits",
+          "",
+          "-",
+          "2,629,370"
+        ],
+        [
+          "Net cash flow used in investing activities Cash flows from financing activities",
+          "",
+          "(2,788,783)",
+          "(18,939,178)"
+        ],
+        [
+          "Share issued - rights issue",
+          "",
+          "-",
+          "50,859,900"
+        ],
+        [
+          "Dividend paid",
+          "",
+          "(5,692,500)",
+          "(4,554,000)"
+        ],
+        [
+          "Long term loan received",
+          "",
+          "10,000,000",
+          "-"
+        ],
+        [
+          "Long term loan paid",
+          "",
+          "(12,257,795)",
+          "(18,236,482)"
+        ],
+        [
+          "Short term loan (paid) / received",
+          "",
+          "35,204,242",
+          "3,356,234"
+        ],
+        [
+          "Loan interest paid ( 6 , 7 2 3",
+          "",
+          "(7,241,321)",
+          ",207)"
+        ],
+        [
+          "Lease rental paid",
+          "",
+          "-",
+          "(418,474)"
+        ],
+        [
+          "Loan (settled)/obtained from related parties",
+          "",
+          "-",
+          "(10,000,000)"
+        ],
+        [
+          "Net cash flow generated / (used in) from financing activities",
+          "",
+          "20,012,626",
+          "14,283,969"
+        ],
+        [
+          "Net changes in cash and cash equivalents during the year",
+          "",
+          "18,899,146",
+          "(2,220,207)"
+        ],
+        [
+          "Cash and cash equivalents at beginning of the year",
+          "",
+          "(19,692,633)",
+          "(17,472,426)"
+        ],
+        [
+          "Cash and cash equivalents at end of the year The financial statements are to be read in conjunction with the related form an part of these financial statements of the Company.  Alpha Fire Services PLC",
+          "5",
+          "(793,487)",
+          "(19,692,633)"
+        ]
+      ]
+    },
+    "shareholder_info": {
+      "title": "Shareholder Information",
+      "page_1based": 51,
+      "has_note_col": false,
+      "column_headers": [
+        "Approval – approval party exempt Transactions – related confirm accepted obtain management and Advice – Seek expert advice the Meet and Committee information with the enable it to and on related the where transactions activities as Composition comprises financial year Committee members is",
+        "Review and for all transactions, under the Oversee party that they regular Clarifications – information regarding the conditions of external where evaluation of report its recommendations to Coordination – Audit discharge regulatory party Recommendations – Board of applicable, prior to Undertake any directed of two under met two given"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "proposed •Monitoring transactions conducted •Information rationale, •Professional professional necessary for •Reporting findings Committee statutory responsibilities Recommend Directors, approval of established the of Directors accordance ensuring transparency, Committee Services The Committee The operates the the objective of safeguarding the Attendance of",
+          "note_col": null,
+          "amt_cols": [
+            "Approval – approval party exempt Transactions – related confirm accepted obtain management and Advice – Seek expert advice the Meet and Committee information with the enable it to and on related the where transactions activities as Composition comprises financial year Committee members is",
+            "Review and for all transactions, under the Oversee party that they regular Clarifications – information regarding the conditions of external where evaluation of report its recommendations to Coordination – Audit discharge regulatory party Recommendations – Board of applicable, prior to Undertake any directed of two under met two given"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "RELATED PARTY TRANSACTIONS",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "REVIEW COMMITTEE REPORT",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "•Review and provide prior proposed related other than those Listing Rules.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "•Monitoring all ongoing transactions and that are conducted on commercial terms.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "•Information and Request and from regarding rationale, terms, related party",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "•Professional professional or advice necessary for the related party •Reporting – findings and the Board of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "•Audit Committee Share information the Committee to its statutory responsibilities related transactions.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "•Board INTRODUCTION Ensure such transactions are Recommend to conducted on normal commercial Directors, terms and at a safe distance. approval of T he Related Party Transactions execution. Review Committee (RPTRC) was Prevent undue advantage being established by the Board of •Other Duties – Undertake taken by Directors, Key Manage- Directors in accordance with Section other related -ment Personnel, or substantial 9 of the Listing Rules of the Colombo by the Board shareholders. Stock Exchange. The Committee is tasked with ensuring transparency, Committee fairness, and regulatory compliance in all related party dealings of Alpha Roles and Responsibilities Fire Services PLC. The Committee of Independent Mandate and Purpose Directors. The RPTRC carries out the following roles and responsibilities: The RPTRC operates with the During the primary objective of safeguarding review, the met •Regulatory Compliance – Ensure the interests of all shareholders. Its times. that the Company complies fully mandate is to: with the requirements of Section 9 of Attendance of is the CSE Listing Rules. Independently review and approve below: related party transactions. Alpha Fire Services PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "RELATED PARTY TRANSACTIONS",
+          "",
+          ""
+        ],
+        [
+          "REVIEW COMMITTEE REPORT",
+          "",
+          ""
+        ],
+        [
+          "•Review and provide prior proposed related other than those Listing Rules.",
+          "Approval –",
+          "Review and"
+        ],
+        [
+          "•Monitoring all ongoing transactions and that are conducted on commercial terms.",
+          "Transactions –",
+          "Oversee"
+        ],
+        [
+          "•Information and Request and from regarding rationale, terms, related party",
+          "",
+          "Clarifications –"
+        ],
+        [
+          "•Professional professional or advice necessary for the related party •Reporting – findings and the Board of",
+          "Advice – Seek",
+          "external"
+        ],
+        [
+          "•Audit Committee Share information the Committee to its statutory responsibilities related transactions.",
+          "",
+          "Coordination –"
+        ],
+        [
+          "•Board INTRODUCTION Ensure such transactions are Recommend to conducted on normal commercial Directors, terms and at a safe distance. approval of T he Related Party Transactions execution. Review Committee (RPTRC) was Prevent undue advantage being established by the Board of •Other Duties – Undertake taken by Directors, Key Manage- Directors in accordance with Section other related -ment Personnel, or substantial 9 of the Listing Rules of the Colombo by the Board shareholders. Stock Exchange. The Committee is tasked with ensuring transparency, Committee fairness, and regulatory compliance in all related party dealings of Alpha Roles and Responsibilities Fire Services PLC. The Committee of Independent Mandate and Purpose Directors. The RPTRC carries out the following roles and responsibilities: The RPTRC operates with the During the primary objective of safeguarding review, the met •Regulatory Compliance – Ensure the interests of all shareholders. Its times. that the Company complies fully mandate is to: with the requirements of Section 9 of Attendance of is the CSE Listing Rules. Independently review and approve below: related party transactions.  Alpha Fire Services PLC",
+          "",
+          "Recommendations –"
+        ]
+      ]
+    }
+  }
+}

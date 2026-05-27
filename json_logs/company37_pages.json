@@ -1,0 +1,253 @@
+{
+  "company": "company37",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company37\\Annual\\48223_2025.pdf",
+  "total_pdf_pages": 132,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T15:05:47",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        49
+      ],
+      "pdf_indices_0based": [
+        50
+      ],
+      "pdf_pages_1based": [
+        51
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        50
+      ],
+      "pdf_indices_0based": [
+        51
+      ],
+      "pdf_pages_1based": [
+        52
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        48
+      ],
+      "pdf_indices_0based": [
+        49,
+        50
+      ],
+      "pdf_pages_1based": [
+        50,
+        51
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        51
+      ],
+      "pdf_indices_0based": [
+        52
+      ],
+      "pdf_pages_1based": [
+        53
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        52
+      ],
+      "pdf_indices_0based": [
+        53
+      ],
+      "pdf_pages_1based": [
+        54
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        119
+      ],
+      "pdf_indices_0based": [
+        120,
+        121
+      ],
+      "pdf_pages_1based": [
+        121,
+        122
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary / Achievements",
+      "printed_pages": [
+        121
+      ],
+      "pdf_indices_0based": [
+        122
+      ],
+      "pdf_pages_1based": [
+        123
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        54
+      ],
+      "pdf_indices_0based": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119
+      ],
+      "pdf_pages_1based": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "page_count": 65,
+      "confirmed": true
+    }
+  }
+}

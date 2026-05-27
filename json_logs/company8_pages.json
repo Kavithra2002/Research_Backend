@@ -1,0 +1,231 @@
+{
+  "company": "company8",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company8\\Annual\\48575_2025.pdf",
+  "total_pdf_pages": 200,
+  "page_offset": 2,
+  "generated_at": "2026-05-22T11:09:32",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        119
+      ],
+      "pdf_indices_0based": [
+        120
+      ],
+      "pdf_pages_1based": [
+        121
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        120
+      ],
+      "pdf_indices_0based": [
+        121
+      ],
+      "pdf_pages_1based": [
+        122
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        118
+      ],
+      "pdf_indices_0based": [
+        119,
+        120
+      ],
+      "pdf_pages_1based": [
+        120,
+        121
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        121
+      ],
+      "pdf_indices_0based": [
+        122,
+        123
+      ],
+      "pdf_pages_1based": [
+        123,
+        124
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        123
+      ],
+      "pdf_indices_0based": [
+        124,
+        125
+      ],
+      "pdf_pages_1based": [
+        125,
+        126
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        184
+      ],
+      "pdf_indices_0based": [
+        185,
+        186,
+        187
+      ],
+      "pdf_pages_1based": [
+        186,
+        187,
+        188
+      ],
+      "page_count": 3,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        126
+      ],
+      "pdf_indices_0based": [
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184
+      ],
+      "pdf_pages_1based": [
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185
+      ],
+      "page_count": 58,
+      "confirmed": true
+    }
+  }
+}

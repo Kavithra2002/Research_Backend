@@ -1,0 +1,3220 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'/>
+<title>Testing view — company3</title>
+<style>
+:root{--bg:#0b0d12;--panel:#141820;--border:#1f2535;--text:#dde3f0;
+  --muted:#5a6480;--accent:#22d3ee;--neg:#fca5a5;--ok:#34d399;
+  --warn:#fbbf24;--err:#f87171;}
+*{box-sizing:border-box;}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:var(--bg);color:var(--text);}
+header{background:linear-gradient(90deg,#0c1220,#0b0d12);padding:1.2rem 2rem;
+  border-bottom:1px solid var(--border);}
+header h1{margin:0;font-size:1.4rem;color:#fff;}
+header .meta{color:var(--muted);font-size:0.78rem;margin-top:0.25rem;}
+main{padding:1.5rem 2rem;max-width:1500px;margin:0 auto;}
+.nav{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.4rem;
+  background:var(--panel);padding:0.6rem;border:1px solid var(--border);
+  border-radius:8px;}
+.nav a{padding:0.35rem 0.7rem;background:#1d2231;color:#cbd5e1;
+  text-decoration:none;border-radius:5px;font-size:0.78rem;}
+.nav a:hover{background:#2a3145;color:#fff;}
+section.stmt{margin-bottom:2rem;background:var(--panel);
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+section.stmt > .hd{padding:0.75rem 1.1rem;display:flex;justify-content:space-between;
+  align-items:center;color:#fff;font-weight:700;}
+section.stmt > .hd .badge{font-size:0.65rem;text-transform:uppercase;
+  background:rgba(0,0,0,0.25);padding:0.15rem 0.5rem;border-radius:4px;
+  letter-spacing:0.04em;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1rem;}
+@media (max-width:1100px){.split{grid-template-columns:1fr;}}
+.split > div{background:#0d1119;border:1px solid #1c2233;border-radius:6px;
+  padding:0.9rem;overflow:auto;max-height:780px;}
+.split h3{margin:0 0 0.6rem;color:#9ca3af;font-size:0.78rem;
+  text-transform:uppercase;letter-spacing:0.06em;}
+.split img{width:100%;border-radius:4px;border:1px solid #1c2233;
+  margin-bottom:0.5rem;display:block;}
+.split .pageno{color:var(--muted);font-size:0.7rem;margin:-0.3rem 0 0.5rem;
+  text-align:center;}
+table.fin{width:100%;border-collapse:collapse;font-size:0.78rem;
+  margin:0.5rem 0 1rem;table-layout:auto;}
+table.fin th,table.fin td{border-bottom:1px solid #1c2233;padding:0.42rem 0.55rem;
+  vertical-align:top;}
+table.fin thead th{background:#161b27;color:#9ca3af;text-align:right;
+  font-weight:600;font-size:0.72rem;text-transform:uppercase;
+  letter-spacing:0.04em;}
+table.fin thead th.lbl,table.fin thead th.ref{text-align:left;}
+table.fin td.num{text-align:right;font-variant-numeric:tabular-nums;
+  white-space:nowrap;}
+table.fin td.lbl{color:#e2e8f0;white-space:normal;word-break:break-word;
+  hyphens:auto;}
+table.fin td.ref{color:var(--muted);font-size:0.7rem;text-align:left;width:42px;}
+table.fin tr.section td{background:#1a2030;color:#67e8f9;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.04em;font-size:0.72rem;}
+table.fin tr.total td{background:#162132;font-weight:700;color:#fff;}
+table.fin tr.subtotal td{background:#10182a;font-weight:600;color:#e2e8f0;}
+table.fin tr.blank td{background:transparent;height:0.5rem;border-bottom:0;}
+table.fin .bold{font-weight:700;color:#fff;}
+
+/* Verbatim renderer - preserves multi-row headers exactly */
+table.fin.verbatim{table-layout:auto;}
+table.fin.verbatim thead th{text-align:right;font-weight:600;
+  text-transform:none;letter-spacing:0;font-size:0.74rem;color:#cbd5e1;
+  background:#161b27;border-bottom:1px solid #243046;
+  white-space:normal;word-break:break-word;vertical-align:bottom;}
+table.fin.verbatim thead th.lbl{text-align:left;}
+table.fin.verbatim thead th[colspan]{text-align:center;
+  border-bottom:1px solid #2a3245;color:#e2e8f0;font-weight:700;}
+table.fin.verbatim thead tr:last-child th{border-bottom:1px solid #67e8f9;}
+table.fin.verbatim td{font-size:0.78rem;}
+table.fin.verbatim td.num{white-space:nowrap;text-align:right;}
+table.fin.verbatim td.lbl{white-space:normal;word-break:normal;
+  overflow-wrap:break-word;max-width:340px;line-height:1.35;}
+/* Section banners can be long; let them wrap naturally onto multiple lines */
+table.fin.verbatim td.section-banner{white-space:normal;line-height:1.4;
+  text-transform:uppercase;letter-spacing:0.04em;}
+/* Note column (only added when the table actually has one) */
+table.fin.verbatim td.notecol,
+table.fin.verbatim th.notecol{text-align:left;color:var(--muted);
+  font-size:0.72rem;white-space:nowrap;width:1%;padding-right:0.9rem;}
+.stmt-title{color:#fff;font-size:0.95rem;font-weight:700;
+  letter-spacing:0.02em;margin:0 0 0.4rem;}
+.preamble{color:#9ca3af;font-size:0.78rem;margin:0 0 0.6rem;font-style:italic;}
+.footnotes{color:var(--muted);font-size:0.72rem;margin:0.7rem 0 0;
+  font-style:italic;line-height:1.4;}
+h4.tbl-caption{color:#67e8f9;margin:1.1rem 0 0.4rem;font-size:0.82rem;
+  text-transform:uppercase;letter-spacing:0.05em;}
+.neg{color:var(--neg);}
+.muted{color:var(--muted);}
+.unit{color:#67e8f9;font-size:0.72rem;margin:0 0 0.5rem;}
+.warn{color:var(--warn);}.err{color:var(--err);}
+pre.raw,details.rawjson pre{background:#0a0c12;color:#a5f3fc;
+  padding:0.8rem;font-size:0.7rem;border-radius:6px;border:1px solid #1c2233;
+  overflow:auto;max-height:380px;white-space:pre-wrap;word-break:break-word;}
+details.rawjson{margin-top:0.6rem;}
+details.rawjson summary,details.note summary{cursor:pointer;color:#9ca3af;
+  font-size:0.72rem;padding:0.3rem 0;}
+details.note{border:1px solid #1c2233;border-radius:6px;padding:0.4rem 0.8rem;
+  margin:0.4rem 0;background:#0d1119;}
+h4{color:#cbd5e1;margin:1rem 0 0.4rem;font-size:0.85rem;}
+h5{color:#94a3b8;margin:0.6rem 0 0.3rem;font-size:0.78rem;}
+table.kv{font-size:0.75rem;border-collapse:collapse;}
+table.kv td{padding:0.25rem 0.6rem 0.25rem 0;}
+table.kv td.lbl{color:var(--muted);}
+.toplink{display:inline-block;margin-bottom:0.6rem;color:var(--accent);
+  text-decoration:none;font-size:0.78rem;}
+.toplink:hover{text-decoration:underline;}
+
+/* testing.py-specific tweaks: highlight matching rows and stretch images */
+header .meta a{color:var(--accent);text-decoration:none;}
+header .meta a:hover{text-decoration:underline;}
+.summary-bar{display:flex;gap:0.5rem;flex-wrap:wrap;margin:0.4rem 0 1rem;}
+.summary-bar .pill{background:#161b27;border:1px solid #1f2535;border-radius:999px;
+  padding:0.2rem 0.7rem;color:#cbd5e1;font-size:0.7rem;}
+.summary-bar .pill.ok{border-color:#065f46;color:#34d399;}
+.summary-bar .pill.warn{border-color:#92400e;color:#fbbf24;}
+.summary-bar .pill.err{border-color:#7f1d1d;color:#f87171;}
+.empty-stmt{color:var(--muted);font-style:italic;padding:1rem;text-align:center;}
+.split > div{max-height:920px;}
+</style></head><body>
+<header id='top'>
+  <h1>company3 — Side-by-side comparison</h1>
+  <div class='meta'>Generated: 2026-05-26T15:14:45
+    &nbsp;|&nbsp; <a href='../index.html'>back to index</a>
+    &nbsp;|&nbsp; folder: <code>E:\AMBEON\script\testing\company3</code></div>
+  <div class='summary-bar'><span class='pill ok'>8 statement(s)</span><span class='pill'>12 captured image(s)</span></div>
+</header>
+<main>
+  <div class='nav'><a href='#income_statement'>Income Statement</a><a href='#oci'>Other Comprehensive Income (OCI)</a><a href='#sofp'>Statement of Financial Position</a><a href='#equity'>Statement of Changes in Equity</a><a href='#cash_flows'>Statement of Cash Flows</a><a href='#shareholder_info'>Shareholder Information</a><a href='#investor_info'>Investor Information</a><a href='#five_year_summary'>Five Year Summary</a></div>
+  
+        <section class="stmt" id="income_statement">
+          <div class="hd" style="background:#1a6b3c;">
+            <span>Income Statement</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 1 image(s)</h3>
+              <img src="captures/income_statement/page_0061.png" alt="page_0061.png"/><div class="pageno">page_0061.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='unit stmt-title'>Income Statement</p><p class='preamble'>Year ended 31 March</p><h4 class='tbl-caption'>Continuing Operations</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='notecol'>Notes</th><th class='num' colspan='2'>Group</th><th class='num' colspan='2'>Company</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>2025</th><th class='num'>2024</th><th class='num'>2025</th><th class='num'>2024</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th></tr></thead><tbody><tr class=''><td class='lbl'>Revenue</td><td class='notecol'>5</td><td class='num'>17,301,634,906</td><td class='num'>16,965,438,514</td><td class='num'>25,974,562</td><td class='num'>179,997,672</td></tr><tr class=''><td class='lbl'>Cost of Sales</td><td class='notecol'>6</td><td class='num'>(13,407,490,215)</td><td class='num'>(12,066,118,336)</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='subtotal'><td class='lbl'>Gross Profit</td><td class='notecol'></td><td class='num'>3,894,144,691</td><td class='num'>4,899,320,178</td><td class='num'>25,974,562</td><td class='num'>179,997,672</td></tr><tr class=''><td class='lbl'>Investment and Other Income</td><td class='notecol'>7</td><td class='num'>365,175,211</td><td class='num'>402,381,304</td><td class='num'>32,357,653</td><td class='num'>510,966,631</td></tr><tr class=''><td class='lbl'>Selling and Distribution Expenses</td><td class='notecol'></td><td class='num'>(429,245,635)</td><td class='num'>(507,999,792)</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Administrative Expenses</td><td class='notecol'></td><td class='num'>(2,230,779,804)</td><td class='num'>(2,252,003,464)</td><td class='num'>(57,067,435)</td><td class='num'>(75,503,658)</td></tr><tr class=''><td class='lbl'>Gain on change in Fair Value of Financial Assets<br/>Measured at Fair Value through Profit or Loss</td><td class='notecol'></td><td class='num'>1,085,834,767</td><td class='num'>335,120,174</td><td class='num'>7,925,554</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Change in Fair Value of Biological Assets</td><td class='notecol'>14</td><td class='num'>1,367,000</td><td class='num'>4,397,000</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Change in Fair Value of Investment Property</td><td class='notecol'>15</td><td class='num'>29,801,550</td><td class='num'>327,500,000</td><td class='num'>7,696,000</td><td class='num'>5,000,000</td></tr><tr class=''><td class='lbl'>Change in Fair Value of Investment in Subsidiary</td><td class='notecol'>16</td><td class='num'>-</td><td class='num'>-</td><td class='num'>1,125,324,503</td><td class='num'>384,741,767</td></tr><tr class=''><td class='lbl'>Finance Cost</td><td class='notecol'>8</td><td class='num'>(727,744,672)</td><td class='num'>(1,079,379,893)</td><td class='num'>(423,602,383)</td><td class='num'>(732,573,644)</td></tr><tr class=''><td class='lbl'>Share of Results of Equity Accounted Investee</td><td class='notecol'>29.1</td><td class='num'>(190,121,020)</td><td class='num'>82,100,724</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Gain on Disposal of Subsidiary</td><td class='notecol'>4</td><td class='num'>-</td><td class='num'>853,168,435</td><td class='num'>1</td><td class='num'>-</td></tr><tr class='subtotal'><td class='lbl'>Profit/(Loss) Before Income Tax from Continuing<br/>Operations</td><td class='notecol'>9</td><td class='num'>1,798,432,088</td><td class='num'>3,064,604,666</td><td class='num'>718,608,455</td><td class='num'>272,628,768</td></tr><tr class=''><td class='lbl'>Income Tax Expense</td><td class='notecol'>10</td><td class='num'>(206,174,058)</td><td class='num'>(517,123,881)</td><td class='num'>(2,301,687)</td><td class='num'>(1,483,815)</td></tr><tr class='subtotal'><td class='lbl'>Profit/(Loss) for the Year from Continuing Operations</td><td class='notecol'></td><td class='num'>1,592,258,030</td><td class='num'>2,547,480,785</td><td class='num'>716,306,768</td><td class='num'>271,144,953</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Discontinued Operations</td></tr><tr class=''><td class='lbl'>Loss after tax from discontinued operations for the year</td><td class='notecol'>4</td><td class='num'>-</td><td class='num'>(180,516,677)</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='total'><td class='lbl'>Profit/(Loss) for the year</td><td class='notecol'></td><td class='num'>1,592,258,030</td><td class='num'>2,366,964,108</td><td class='num'>716,306,768</td><td class='num'>271,144,953</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Profit / (Loss) Attributable to:</td></tr><tr class=''><td class='lbl'>Equity Holders of the Company</td><td class='notecol'></td><td class='num'>1,043,180,139</td><td class='num'>1,614,878,908</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Non - Controlling Interests</td><td class='notecol'></td><td class='num'>549,077,891</td><td class='num'>752,085,200</td><td class='num'></td><td class='num'></td></tr><tr class='total'><td class='lbl'></td><td class='notecol'></td><td class='num'>1,592,258,030</td><td class='num'>2,366,964,108</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Basic Earnings / (Loss) Per Share</td><td class='notecol'>11</td><td class='num'>1.04</td><td class='num'>1.61</td><td class='num'>0.71</td><td class='num'>0.27</td></tr><tr class=''><td class='lbl'>Basic Earnings / (Loss) Per Share from Continuing<br/>Operations</td><td class='notecol'>11</td><td class='num'>1.04</td><td class='num'>1.79</td><td class='num'>0.71</td><td class='num'>0.27</td></tr></tbody></table><p class='footnotes'>The Notes from pages 65 to 135 form an integral part of these Financial Statements.<br/>Figures in bracket indicate deductions.</p><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;statement_title&quot;: &quot;Income Statement&quot;,
+  &quot;preamble&quot;: &quot;Year ended 31 March&quot;,
+  &quot;footnotes&quot;: &quot;The Notes from pages 65 to 135 form an integral part of these Financial Statements.\nFigures in bracket indicate deductions.&quot;,
+  &quot;tables&quot;: [
+    {
+      &quot;caption&quot;: &quot;Continuing Operations&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;Notes&quot;,
+          &quot;Group&quot;,
+          &quot;&quot;,
+          &quot;Company&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Revenue&quot;,
+            &quot;5&quot;,
+            &quot;17,301,634,906&quot;,
+            &quot;16,965,438,514&quot;,
+            &quot;25,974,562&quot;,
+            &quot;179,997,672&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Cost of Sales&quot;,
+            &quot;6&quot;,
+            &quot;(13,407,490,215)&quot;,
+            &quot;(12,066,118,336)&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Gross Profit&quot;,
+            &quot;&quot;,
+            &quot;3,894,144,691&quot;,
+            &quot;4,899,320,178&quot;,
+            &quot;25,974,562&quot;,
+            &quot;179,997,672&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Investment and Other Income&quot;,
+            &quot;7&quot;,
+            &quot;365,175,211&quot;,
+            &quot;402,381,304&quot;,
+            &quot;32,357,653&quot;,
+            &quot;510,966,631&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Selling and Distribution Expenses&quot;,
+            &quot;&quot;,
+            &quot;(429,245,635)&quot;,
+            &quot;(507,999,792)&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Administrative Expenses&quot;,
+            &quot;&quot;,
+            &quot;(2,230,779,804)&quot;,
+            &quot;(2,252,003,464)&quot;,
+            &quot;(57,067,435)&quot;,
+            &quot;(75,503,658)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Gain on change in Fair Value of Financial Assets\nMeasured at Fair Value through Profit or Loss&quot;,
+            &quot;&quot;,
+            &quot;1,085,834,767&quot;,
+            &quot;335,120,174&quot;,
+            &quot;7,925,554&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Change in Fair Value of Biological Assets&quot;,
+            &quot;14&quot;,
+            &quot;1,367,000&quot;,
+            &quot;4,397,000&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Change in Fair Value of Investment Property&quot;,
+            &quot;15&quot;,
+            &quot;29,801,550&quot;,
+            &quot;327,500,000&quot;,
+            &quot;7,696,000&quot;,
+            &quot;5,000,000&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Change in Fair Value of Investment in Subsidiary&quot;,
+            &quot;16&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;,
+            &quot;1,125,324,503&quot;,
+            &quot;384,741,767&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Finance Cost&quot;,
+            &quot;8&quot;,
+            &quot;(727,744,672)&quot;,
+            &quot;(1,079,379,893)&quot;,
+            &quot;(423,602,383)&quot;,
+            &quot;(732,573,644)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Share of Results of Equity Accounted Investee&quot;,
+            &quot;29.1&quot;,
+            &quot;(190,121,020)&quot;,
+            &quot;82,100,724&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Gain on Disposal of Subsidiary&quot;,
+            &quot;4&quot;,
+            &quot;-&quot;,
+            &quot;853,168,435&quot;,
+            &quot;1&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit/(Loss) Before Income Tax from Continuing\nOperations&quot;,
+            &quot;9&quot;,
+            &quot;1,798,432,088&quot;,
+            &quot;3,064,604,666&quot;,
+            &quot;718,608,455&quot;,
+            &quot;272,628,768&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Income Tax Expense&quot;,
+            &quot;10&quot;,
+            &quot;(206,174,058)&quot;,
+            &quot;(517,123,881)&quot;,
+            &quot;(2,301,687)&quot;,
+            &quot;(1,483,815)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit/(Loss) for the Year from Continuing Operations&quot;,
+            &quot;&quot;,
+            &quot;1,592,258,030&quot;,
+            &quot;2,547,480,785&quot;,
+            &quot;716,306,768&quot;,
+            &quot;271,144,953&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Discontinued Operations&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Loss after tax from discontinued operations for the year&quot;,
+            &quot;4&quot;,
+            &quot;-&quot;,
+            &quot;(180,516,677)&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit/(Loss) for the year&quot;,
+            &quot;&quot;,
+            &quot;1,592,258,030&quot;,
+            &quot;2,366,964,108&quot;,
+            &quot;716,306,768&quot;,
+            &quot;271,144,953&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit / (Loss) Attributable to:&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Equity Holders of the Company&quot;,
+            &quot;&quot;,
+            &quot;1,043,180,139&quot;,
+            &quot;1,614,878,908&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Non - Controlling Interests&quot;,
+            &quot;&quot;,
+            &quot;549,077,891&quot;,
+            &quot;752,085,200&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;1,592,258,030&quot;,
+            &quot;2,366,964,108&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Basic Earnings / (Loss) Per Share&quot;,
+            &quot;11&quot;,
+            &quot;1.04&quot;,
+            &quot;1.61&quot;,
+            &quot;0.71&quot;,
+            &quot;0.27&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Basic Earnings / (Loss) Per Share from Continuing\nOperations&quot;,
+            &quot;11&quot;,
+            &quot;1.04&quot;,
+            &quot;1.79&quot;,
+            &quot;0.71&quot;,
+            &quot;0.27&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+            </div>
+          </div>
+        </section>
+        <section class="stmt" id="oci">
+          <div class="hd" style="background:#2e7d8a;">
+            <span>Other Comprehensive Income (OCI)</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 1 image(s)</h3>
+              <img src="captures/oci/page_0062.png" alt="page_0062.png"/><div class="pageno">page_0062.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='unit stmt-title'>Statement of Comprehensive Income</p><p class='preamble'>Year ended 31 March</p><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='notecol'>Notes</th><th class='num' colspan='2'>Group</th><th class='num' colspan='2'>Company</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>2025</th><th class='num'>2024</th><th class='num'>2025</th><th class='num'>2024</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th></tr></thead><tbody><tr class=''><td class='lbl'>Profit/(Loss) for the Year</td><td class='notecol'></td><td class='num'>1,592,258,030</td><td class='num'>2,366,964,108</td><td class='num'>716,306,768</td><td class='num'>271,144,953</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Other Comprehensive Income</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Items that will never be reclassified to profit or loss</td></tr><tr class=''><td class='lbl'>Actuarial Loss on Defined Benefit Plans</td><td class='notecol'>23</td><td class='num'>9,761,935</td><td class='num'>(6,296,125)</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Tax on Actuarial loss on Defined Benefit Plans</td><td class='notecol'>25</td><td class='num'>(2,661,801)</td><td class='num'>610,713</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Change in Fair Value of FVOCI Financial Assets</td><td class='notecol'></td><td class='num'>-</td><td class='num'>85,796,621</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Revaluation Gain on Land and Building</td><td class='notecol'></td><td class='num'>-</td><td class='num'>(325,000)</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Share of Other Comprehensive Income of Equity Accounted Investees</td><td class='notecol'>29</td><td class='num'>17,491,255</td><td class='num'>16,654,584</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='subtotal'><td class='lbl'></td><td class='notecol'></td><td class='num'>24,591,389</td><td class='num'>96,440,792</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Items that are or may be reclassified to profit or loss</td></tr><tr class=''><td class='lbl'>Functional/Foreign Currency translation Reserve</td><td class='notecol'></td><td class='num'>4,008,735</td><td class='num'>(10,478,253)</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='subtotal'><td class='lbl'></td><td class='notecol'></td><td class='num'>4,008,735</td><td class='num'>(10,478,253)</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='subtotal'><td class='lbl'>Total Other Comprehensive Income</td><td class='notecol'></td><td class='num'>28,600,124</td><td class='num'>85,962,539</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='total'><td class='lbl'>Total Comprehensive Income for the Year</td><td class='notecol'></td><td class='num'>1,620,858,154</td><td class='num'>2,452,926,646</td><td class='num'>716,306,768</td><td class='num'>271,144,953</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Total Comprehensive Income Attributable to:</td></tr><tr class=''><td class='lbl'>Equity Holders of the Company</td><td class='notecol'></td><td class='num'>1,064,052,184</td><td class='num'>1,690,767,294</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Non - Controlling Interests</td><td class='notecol'></td><td class='num'>556,805,970</td><td class='num'>762,159,352</td><td class='num'></td><td class='num'></td></tr><tr class='total'><td class='lbl'></td><td class='notecol'></td><td class='num'>1,620,858,154</td><td class='num'>2,452,926,646</td><td class='num'></td><td class='num'></td></tr></tbody></table><p class='footnotes'>The Notes from pages 65 to 135 form an integral part of these Financial Statements.<br/>Figures in bracket indicate deductions.</p><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;statement_title&quot;: &quot;Statement of Comprehensive Income&quot;,
+  &quot;preamble&quot;: &quot;Year ended 31 March&quot;,
+  &quot;footnotes&quot;: &quot;The Notes from pages 65 to 135 form an integral part of these Financial Statements.\nFigures in bracket indicate deductions.&quot;,
+  &quot;tables&quot;: [
+    {
+      &quot;caption&quot;: null,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;Notes&quot;,
+          &quot;Group&quot;,
+          &quot;&quot;,
+          &quot;Company&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Profit/(Loss) for the Year&quot;,
+            &quot;&quot;,
+            &quot;1,592,258,030&quot;,
+            &quot;2,366,964,108&quot;,
+            &quot;716,306,768&quot;,
+            &quot;271,144,953&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Comprehensive Income&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Items that will never be reclassified to profit or loss&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Actuarial Loss on Defined Benefit Plans&quot;,
+            &quot;23&quot;,
+            &quot;9,761,935&quot;,
+            &quot;(6,296,125)&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Tax on Actuarial loss on Defined Benefit Plans&quot;,
+            &quot;25&quot;,
+            &quot;(2,661,801)&quot;,
+            &quot;610,713&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Change in Fair Value of FVOCI Financial Assets&quot;,
+            &quot;&quot;,
+            &quot;-&quot;,
+            &quot;85,796,621&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Revaluation Gain on Land and Building&quot;,
+            &quot;&quot;,
+            &quot;-&quot;,
+            &quot;(325,000)&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Share of Other Comprehensive Income of Equity Accounted Investees&quot;,
+            &quot;29&quot;,
+            &quot;17,491,255&quot;,
+            &quot;16,654,584&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;24,591,389&quot;,
+            &quot;96,440,792&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Items that are or may be reclassified to profit or loss&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Functional/Foreign Currency translation Reserve&quot;,
+            &quot;&quot;,
+            &quot;4,008,735&quot;,
+            &quot;(10,478,253)&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;4,008,735&quot;,
+            &quot;(10,478,253)&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Other Comprehensive Income&quot;,
+            &quot;&quot;,
+            &quot;28,600,124&quot;,
+            &quot;85,962,539&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Comprehensive Income for the Year&quot;,
+            &quot;&quot;,
+            &quot;1,620,858,154&quot;,
+            &quot;2,452,926,646&quot;,
+            &quot;716,306,768&quot;,
+            &quot;271,144,953&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Comprehensive Income Attributable to:&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Equity Holders of the Company&quot;,
+            &quot;&quot;,
+            &quot;1,064,052,184&quot;,
+            &quot;1,690,767,294&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Non - Controlling Interests&quot;,
+            &quot;&quot;,
+            &quot;556,805,970&quot;,
+            &quot;762,159,352&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;1,620,858,154&quot;,
+            &quot;2,452,926,646&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+            </div>
+          </div>
+        </section>
+        <section class="stmt" id="sofp">
+          <div class="hd" style="background:#1e3a8a;">
+            <span>Statement of Financial Position</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 1 image(s)</h3>
+              <img src="captures/sofp/page_0063.png" alt="page_0063.png"/><div class="pageno">page_0063.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='unit stmt-title'>Statement of Financial Position</p><p class='preamble'>As at 31 March</p><h4 class='tbl-caption'>ASSETS</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='notecol'>Notes</th><th class='num' colspan='2'>Group</th><th class='num' colspan='2'>Company</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>2025</th><th class='num'>2024</th><th class='num'>2025</th><th class='num'>2024</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th></tr></thead><tbody><tr class='section'><td class='lbl section-banner' colspan='6'>Non-Current Assets</td></tr><tr class=''><td class='lbl'>Property, Plant &amp; Equipment</td><td class='notecol'>12</td><td class='num'>289,725,931</td><td class='num'>664,749,913</td><td class='num'>17,282</td><td class='num'>39,881</td></tr><tr class=''><td class='lbl'>Intangible Assets</td><td class='notecol'>13</td><td class='num'>1,384,587,545</td><td class='num'>1,196,294,065</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Biological Assets</td><td class='notecol'>14</td><td class='num'>84,891,950</td><td class='num'>83,524,595</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Investment Property</td><td class='notecol'>15</td><td class='num'>1,445,120,550</td><td class='num'>1,076,350,000</td><td class='num'>48,196,000</td><td class='num'>40,500,000</td></tr><tr class=''><td class='lbl'>Investment in Subsidiaries</td><td class='notecol'>16</td><td class='num'></td><td class='num'></td><td class='num'>9,382,307,700</td><td class='num'>8,824,742,767</td></tr><tr class=''><td class='lbl'>Investment in Equity Accounted Investee</td><td class='notecol'>29</td><td class='num'>907,700,438</td><td class='num'>1,124,039,068</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Other Financial Assets</td><td class='notecol'>17</td><td class='num'>49,294,904</td><td class='num'>8,805,369</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Right-of-Use Assets</td><td class='notecol'>28</td><td class='num'>405,087,518</td><td class='num'>381,354,582</td><td class='num'>-</td><td class='num'>1,800,664</td></tr><tr class=''><td class='lbl'>Deferred Tax Asset</td><td class='notecol'>25</td><td class='num'>128,045,820</td><td class='num'>68,483,639</td><td class='num'>3,040,520,982</td><td class='num'>8,324,783,312</td></tr><tr class='subtotal'><td class='lbl'>4,614,409,656</td><td class='notecol'></td><td class='num'>4,604,202,237</td><td class='num'>9,430,520,982</td><td class='num'></td><td class='num'></td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Current Assets</td></tr><tr class=''><td class='lbl'>Inventories</td><td class='notecol'>18</td><td class='num'>2,493,921,517</td><td class='num'>1,415,692,945</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Trade &amp; Other Receivables</td><td class='notecol'>19</td><td class='num'>7,125,867,902</td><td class='num'>8,135,097,473</td><td class='num'>579,212,702</td><td class='num'>528,162,849</td></tr><tr class=''><td class='lbl'>Other Financial Assets</td><td class='notecol'>17</td><td class='num'>13,422,302,704</td><td class='num'>6,936,942,402</td><td class='num'>1,176,092,022</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Income Tax Recoverable</td><td class='notecol'></td><td class='num'>11,843,159</td><td class='num'>17,592,109</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Cash &amp; Cash Equivalents</td><td class='notecol'>20</td><td class='num'>932,552,651</td><td class='num'>501,770,288</td><td class='num'>1,296,139</td><td class='num'>1,076,124</td></tr><tr class='subtotal'><td class='lbl'>23,986,307,933</td><td class='notecol'></td><td class='num'>17,025,462,216</td><td class='num'>1,235,417,863</td><td class='num'>529,238,973</td><td class='num'></td></tr><tr class='total'><td class='lbl'>Total Assets</td><td class='notecol'></td><td class='num'>28,600,717,589</td><td class='num'>21,629,664,453</td><td class='num'>10,665,938,845</td><td class='num'>8,854,022,285</td></tr></tbody></table><h4 class='tbl-caption'>EQUITY AND LIABILITIES</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='notecol'>Notes</th><th class='num' colspan='2'>Group</th><th class='num' colspan='2'>Company</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>2025</th><th class='num'>2024</th><th class='num'>2025</th><th class='num'>2024</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th></tr></thead><tbody><tr class='section'><td class='lbl section-banner' colspan='6'>Equity</td></tr><tr class=''><td class='lbl'>Stated Capital</td><td class='notecol'>21</td><td class='num'>1,053,643,405</td><td class='num'>1,053,643,405</td><td class='num'>1,053,643,405</td><td class='num'>1,053,643,405</td></tr><tr class=''><td class='lbl'>Other Components of Equity</td><td class='notecol'>21.1</td><td class='num'>(42,096,064)</td><td class='num'>190,477,776</td><td class='num'>258,820,263</td><td class='num'>258,820,263</td></tr><tr class=''><td class='lbl'>Retained Earnings</td><td class='notecol'></td><td class='num'>5,340,350,961</td><td class='num'>4,081,391,372</td><td class='num'>4,241,394,980</td><td class='num'>3,525,088,212</td></tr><tr class='subtotal'><td class='lbl'>Equity Attributable to Equity Holders of the Company</td><td class='notecol'></td><td class='num'>6,389,565,302</td><td class='num'>5,325,513,118</td><td class='num'>5,553,958,648</td><td class='num'>4,837,551,880</td></tr><tr class=''><td class='lbl'>Non Controlling Interests</td><td class='notecol'></td><td class='num'>3,949,914,041</td><td class='num'>4,057,564,860</td><td class='num'>-</td><td class='num'>-</td></tr><tr class='total'><td class='lbl'>Total Equity</td><td class='notecol'></td><td class='num'>10,339,479,343</td><td class='num'>9,382,567,978</td><td class='num'>5,553,958,648</td><td class='num'>4,837,651,880</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Non-Current Liabilities</td></tr><tr class=''><td class='lbl'>Other Financial Liabilities</td><td class='notecol'>27</td><td class='num'>347,936</td><td class='num'>347,936</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Interest Bearing Loans &amp; Borrowings</td><td class='notecol'>22</td><td class='num'>492,541,543</td><td class='num'>597,816,510</td><td class='num'>1,461,903,102</td><td class='num'>1,583,499,142</td></tr><tr class=''><td class='lbl'>Retirement Benefit Obligation</td><td class='notecol'>23</td><td class='num'>375,855,260</td><td class='num'>377,662,755</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Deferred Tax Liability</td><td class='notecol'>25</td><td class='num'>306,705,920</td><td class='num'>303,441,934</td><td class='num'>6,363,985</td><td class='num'>4,062,297</td></tr><tr class='subtotal'><td class='lbl'>1,175,450,659</td><td class='notecol'></td><td class='num'>1,278,911,235</td><td class='num'>1,468,267,087</td><td class='num'>1,587,561,439</td><td class='num'></td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Current Liabilities</td></tr><tr class=''><td class='lbl'>Trade and Other Payables</td><td class='notecol'>26</td><td class='num'>4,457,570,068</td><td class='num'>3,677,268,165</td><td class='num'>1,369,689</td><td class='num'>987,252</td></tr><tr class=''><td class='lbl'>Income Tax Payable</td><td class='notecol'></td><td class='num'>250,180,273</td><td class='num'>363,345,459</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Contract Liability</td><td class='notecol'>24</td><td class='num'>1,904,028,863</td><td class='num'>1,681,265,461</td><td class='num'>-</td><td class='num'>-</td></tr><tr class=''><td class='lbl'>Interest Bearing Loans &amp; Borrowings</td><td class='notecol'>22</td><td class='num'>10,473,364,383</td><td class='num'>5,245,845,075</td><td class='num'>3,642,343,421</td><td class='num'>2,427,821,714</td></tr><tr class='subtotal'><td class='lbl'>17,085,787,587</td><td class='notecol'></td><td class='num'>10,968,125,240</td><td class='num'>3,643,713,110</td><td class='num'>2,428,808,966</td><td class='num'></td></tr><tr class='total'><td class='lbl'>Total Equity and Liabilities</td><td class='notecol'></td><td class='num'>28,600,717,589</td><td class='num'>21,629,664,453</td><td class='num'>10,665,938,845</td><td class='num'>8,854,022,285</td></tr><tr class=''><td class='lbl'>Net Assets Per Share (Rs.)</td><td class='notecol'>11</td><td class='num'>6.37</td><td class='num'>5.31</td><td class='num'>5.54</td><td class='num'>4.82</td></tr></tbody></table><p class='footnotes'>The Notes from pages 65 to 135 form an integral part of these Financial Statements.<br/>Figures in brackets indicate deductions.<br/>15 August 2025<br/>Colombo</p><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;statement_title&quot;: &quot;Statement of Financial Position&quot;,
+  &quot;preamble&quot;: &quot;As at 31 March&quot;,
+  &quot;footnotes&quot;: &quot;The Notes from pages 65 to 135 form an integral part of these Financial Statements.\nFigures in brackets indicate deductions.\n15 August 2025\nColombo&quot;,
+  &quot;tables&quot;: [
+    {
+      &quot;caption&quot;: &quot;ASSETS&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;Notes&quot;,
+          &quot;Group&quot;,
+          &quot;&quot;,
+          &quot;Company&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Non-Current Assets&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Property, Plant &amp; Equipment&quot;,
+            &quot;12&quot;,
+            &quot;289,725,931&quot;,
+            &quot;664,749,913&quot;,
+            &quot;17,282&quot;,
+            &quot;39,881&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Intangible Assets&quot;,
+            &quot;13&quot;,
+            &quot;1,384,587,545&quot;,
+            &quot;1,196,294,065&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Biological Assets&quot;,
+            &quot;14&quot;,
+            &quot;84,891,950&quot;,
+            &quot;83,524,595&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Investment Property&quot;,
+            &quot;15&quot;,
+            &quot;1,445,120,550&quot;,
+            &quot;1,076,350,000&quot;,
+            &quot;48,196,000&quot;,
+            &quot;40,500,000&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Investment in Subsidiaries&quot;,
+            &quot;16&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;9,382,307,700&quot;,
+            &quot;8,824,742,767&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Investment in Equity Accounted Investee&quot;,
+            &quot;29&quot;,
+            &quot;907,700,438&quot;,
+            &quot;1,124,039,068&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Financial Assets&quot;,
+            &quot;17&quot;,
+            &quot;49,294,904&quot;,
+            &quot;8,805,369&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Right-of-Use Assets&quot;,
+            &quot;28&quot;,
+            &quot;405,087,518&quot;,
+            &quot;381,354,582&quot;,
+            &quot;-&quot;,
+            &quot;1,800,664&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Deferred Tax Asset&quot;,
+            &quot;25&quot;,
+            &quot;128,045,820&quot;,
+            &quot;68,483,639&quot;,
+            &quot;3,040,520,982&quot;,
+            &quot;8,324,783,312&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;4,614,409,656&quot;,
+            &quot;&quot;,
+            &quot;4,604,202,237&quot;,
+            &quot;9,430,520,982&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Current Assets&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Inventories&quot;,
+            &quot;18&quot;,
+            &quot;2,493,921,517&quot;,
+            &quot;1,415,692,945&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Trade &amp; Other Receivables&quot;,
+            &quot;19&quot;,
+            &quot;7,125,867,902&quot;,
+            &quot;8,135,097,473&quot;,
+            &quot;579,212,702&quot;,
+            &quot;528,162,849&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Financial Assets&quot;,
+            &quot;17&quot;,
+            &quot;13,422,302,704&quot;,
+            &quot;6,936,942,402&quot;,
+            &quot;1,176,092,022&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Income Tax Recoverable&quot;,
+            &quot;&quot;,
+            &quot;11,843,159&quot;,
+            &quot;17,592,109&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Cash &amp; Cash Equivalents&quot;,
+            &quot;20&quot;,
+            &quot;932,552,651&quot;,
+            &quot;501,770,288&quot;,
+            &quot;1,296,139&quot;,
+            &quot;1,076,124&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;23,986,307,933&quot;,
+            &quot;&quot;,
+            &quot;17,025,462,216&quot;,
+            &quot;1,235,417,863&quot;,
+            &quot;529,238,973&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Assets&quot;,
+            &quot;&quot;,
+            &quot;28,600,717,589&quot;,
+            &quot;21,629,664,453&quot;,
+            &quot;10,665,938,845&quot;,
+            &quot;8,854,022,285&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        }
+      ]
+    },
+    {
+      &quot;caption&quot;: &quot;EQUITY AND LIABILITIES&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;Notes&quot;,
+          &quot;Group&quot;,
+          &quot;&quot;,
+          &quot;Company&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Equity&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Stated Capital&quot;,
+            &quot;21&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;1,053,643,405&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Components of Equity&quot;,
+            &quot;21.1&quot;,
+            &quot;(42,096,064)&quot;,
+            &quot;190,477,776&quot;,
+            &quot;258,820,263&quot;,
+            &quot;258,820,263&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Retained Earnings&quot;,
+            &quot;&quot;,
+            &quot;5,340,350,961&quot;,
+            &quot;4,081,391,372&quot;,
+            &quot;4,241,394,980&quot;,
+            &quot;3,525,088,212&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Equity Attributable to Equity Holders of the Company&quot;,
+            &quot;&quot;,
+            &quot;6,389,565,302&quot;,
+            &quot;5,325,513,118&quot;,
+            &quot;5,553,958,648&quot;,
+            &quot;4,837,551,880&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Non Controlling Interests&quot;,
+            &quot;&quot;,
+            &quot;3,949,914,041&quot;,
+            &quot;4,057,564,860&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Equity&quot;,
+            &quot;&quot;,
+            &quot;10,339,479,343&quot;,
+            &quot;9,382,567,978&quot;,
+            &quot;5,553,958,648&quot;,
+            &quot;4,837,651,880&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Non-Current Liabilities&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Financial Liabilities&quot;,
+            &quot;27&quot;,
+            &quot;347,936&quot;,
+            &quot;347,936&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Interest Bearing Loans &amp; Borrowings&quot;,
+            &quot;22&quot;,
+            &quot;492,541,543&quot;,
+            &quot;597,816,510&quot;,
+            &quot;1,461,903,102&quot;,
+            &quot;1,583,499,142&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Retirement Benefit Obligation&quot;,
+            &quot;23&quot;,
+            &quot;375,855,260&quot;,
+            &quot;377,662,755&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Deferred Tax Liability&quot;,
+            &quot;25&quot;,
+            &quot;306,705,920&quot;,
+            &quot;303,441,934&quot;,
+            &quot;6,363,985&quot;,
+            &quot;4,062,297&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;1,175,450,659&quot;,
+            &quot;&quot;,
+            &quot;1,278,911,235&quot;,
+            &quot;1,468,267,087&quot;,
+            &quot;1,587,561,439&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Current Liabilities&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Trade and Other Payables&quot;,
+            &quot;26&quot;,
+            &quot;4,457,570,068&quot;,
+            &quot;3,677,268,165&quot;,
+            &quot;1,369,689&quot;,
+            &quot;987,252&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Income Tax Payable&quot;,
+            &quot;&quot;,
+            &quot;250,180,273&quot;,
+            &quot;363,345,459&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Contract Liability&quot;,
+            &quot;24&quot;,
+            &quot;1,904,028,863&quot;,
+            &quot;1,681,265,461&quot;,
+            &quot;-&quot;,
+            &quot;-&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Interest Bearing Loans &amp; Borrowings&quot;,
+            &quot;22&quot;,
+            &quot;10,473,364,383&quot;,
+            &quot;5,245,845,075&quot;,
+            &quot;3,642,343,421&quot;,
+            &quot;2,427,821,714&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;17,085,787,587&quot;,
+            &quot;&quot;,
+            &quot;10,968,125,240&quot;,
+            &quot;3,643,713,110&quot;,
+            &quot;2,428,808,966&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Equity and Liabilities&quot;,
+            &quot;&quot;,
+            &quot;28,600,717,589&quot;,
+            &quot;21,629,664,453&quot;,
+            &quot;10,665,938,845&quot;,
+            &quot;8,854,022,285&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Net Assets Per Share (Rs.)&quot;,
+            &quot;11&quot;,
+            &quot;6.37&quot;,
+            &quot;5.31&quot;,
+            &quot;5.54&quot;,
+            &quot;4.82&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+            </div>
+          </div>
+        </section>
+        <section class="stmt" id="equity">
+          <div class="hd" style="background:#6b21a8;">
+            <span>Statement of Changes in Equity</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 2 image(s)</h3>
+              <img src="captures/equity/page_0064.png" alt="page_0064.png"/><div class="pageno">page_0064.png</div><img src="captures/equity/page_0065.png" alt="page_0065.png"/><div class="pageno">page_0065.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='unit stmt-title'>Statement of Changes in Equity</p><p class='preamble'>Year ended 31 March 2025</p><h4 class='tbl-caption'>Statement of Changes in Equity - Group</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='notecol'>Notes</th><th class='num'>Stated Capital</th><th class='num'>Fair Value through OCI Reserve</th><th class='num'>Revaluation Reserve</th><th class='num'>Foreign/Functional currency translation Reserve</th><th class='num'>Retained Earnings</th><th class='num'>Total</th><th class='num'>Non Controlling Interests</th><th class='num'>Total Equity</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th></tr></thead><tbody><tr class=''><td class='lbl'>Balance as at 01 April 2023</td><td class='notecol'></td><td class='num'>1,053,643,405</td><td class='num'>(131,678,946)</td><td class='num'>1,132,409,840</td><td class='num'>(2,224,417)</td><td class='num'>1,582,595,942</td><td class='num'>3,634,745,824</td><td class='num'>4,404,805,955</td><td class='num'>8,039,551,779</td></tr><tr class=''><td class='lbl'>Profit for the year</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>1,614,878,907</td><td class='num'>1,614,878,907</td><td class='num'>752,205,802</td><td class='num'>2,366,964,708</td></tr><tr class=''><td class='lbl'>Other Comprehensive Income</td><td class='notecol'></td><td class='num'></td><td class='num'>69,864,188</td><td class='num'>(264,648)</td><td class='num'>(4,319,269)</td><td class='num'>10,608,115</td><td class='num'>75,888,387</td><td class='num'>10,074,152</td><td class='num'>85,962,539</td></tr><tr class=''><td class='lbl'>Total Comprehensive Income for the year</td><td class='notecol'></td><td class='num'></td><td class='num'>69,864,188</td><td class='num'>(264,648)</td><td class='num'>(4,319,269)</td><td class='num'>1,625,487,022</td><td class='num'>1,690,767,295</td><td class='num'>762,159,953</td><td class='num'>2,452,926,646</td></tr><tr class=''><td class='lbl'>Realization of Revaluation Reserve due to the Disposal of Subsidiary</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'>(955,368,470)</td><td class='num'></td><td class='num'>955,368,470</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Transfer from FVTOCI to Retained Earnings</td><td class='notecol'></td><td class='num'></td><td class='num'>82,059,497</td><td class='num'></td><td class='num'></td><td class='num'>(82,059,497)</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>De-recognition of Non controlling interest due to Disposal of Subsidiary</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>(961,247,553)</td><td class='num'>(961,247,553)</td></tr><tr class=''><td class='lbl'>Subsidiary Dividend to Minority Shareholders</td><td class='notecol'>36.1</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>(148,662,894)</td><td class='num'>(148,662,894)</td></tr><tr class=''><td class='lbl'>Balance as at 31 March 2024</td><td class='notecol'></td><td class='num'>1,053,643,405</td><td class='num'>20,244,739</td><td class='num'>176,776,723</td><td class='num'>(6,543,685)</td><td class='num'>4,081,391,937</td><td class='num'>5,325,513,118</td><td class='num'>4,057,054,860</td><td class='num'>9,382,567,978</td></tr><tr class=''><td class='lbl'>Profit for the year</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>1,043,180,139</td><td class='num'>1,043,180,139</td><td class='num'>549,077,891</td><td class='num'>1,592,258,030</td></tr><tr class=''><td class='lbl'>Other Comprehensive Income</td><td class='notecol'></td><td class='num'></td><td class='num'>2,114,622</td><td class='num'></td><td class='num'>187,542</td><td class='num'>2,087,204</td><td class='num'>7,728,078</td><td class='num'>28,060,124</td><td class='num'></td></tr><tr class=''><td class='lbl'>Total Comprehensive Income for the year</td><td class='notecol'></td><td class='num'></td><td class='num'>2,114,622</td><td class='num'></td><td class='num'>1,061,937,563</td><td class='num'>1,064,052,184</td><td class='num'>556,805,970</td><td class='num'>1,620,858,154</td><td class='num'></td></tr><tr class=''><td class='lbl'>Equity Share Disposal Loss</td><td class='notecol'></td><td class='num'></td><td class='num'>(9,907,277)</td><td class='num'></td><td class='num'></td><td class='num'>9,907,277</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Transfer from FVTOCI to Retained Earnings</td><td class='notecol'></td><td class='num'></td><td class='num'>(10,337,462)</td><td class='num'></td><td class='num'></td><td class='num'>10,337,462</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Reclassification adjustment made to Retained Earnings due to the Investment Property Transfer</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'>(176,776,723)</td><td class='num'></td><td class='num'>176,776,723</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Transactions with Non controlling Interest</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>(663,946,789)</td><td class='num'>(663,946,789)</td></tr><tr class=''><td class='lbl'>Balance as at 31 March 2025</td><td class='notecol'></td><td class='num'>1,053,643,405</td><td class='num'></td><td class='num'>(4,429,064)</td><td class='num'>5,340,350,961</td><td class='num'>6,389,565,302</td><td class='num'>3,949,914,041</td><td class='num'>10,339,479,343</td><td class='num'></td></tr></tbody></table><h4 class='tbl-caption'>Statement of Changes in Equity - Company</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='num'>Notes</th><th class='num'>Stated Capital</th><th class='num'>Amalgamation Reserve</th><th class='num'>Retained Earnings</th><th class='num'>Total Equity</th></tr><tr><th class='lbl'></th><th class='num'></th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th></tr></thead><tbody><tr class=''><td class='lbl'>Balance as at 01 April 2023</td><td class='num'></td><td class='num'>1,053,643,405</td><td class='num'>258,920,263</td><td class='num'>3,253,943,259</td><td class='num'>4,566,506,927</td></tr><tr class=''><td class='lbl'>Profit for the year</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>271,144,953</td><td class='num'>271,144,953</td></tr><tr class=''><td class='lbl'>Other Comprehensive Income</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Total Comprehensive Income for the year</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>271,144,953</td><td class='num'>271,144,953</td></tr><tr class=''><td class='lbl'>Balance as at 31 March 2024</td><td class='num'></td><td class='num'>1,053,643,405</td><td class='num'>258,920,263</td><td class='num'>3,525,088,212</td><td class='num'>4,837,651,880</td></tr><tr class=''><td class='lbl'>Profit for the year</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>716,306,768</td><td class='num'>716,306,768</td></tr><tr class=''><td class='lbl'>Other Comprehensive Income</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Total Comprehensive Income for the year</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'>716,306,768</td><td class='num'>716,306,768</td></tr><tr class=''><td class='lbl'>Balance as at 31 March 2025</td><td class='num'></td><td class='num'>1,053,643,405</td><td class='num'>258,920,263</td><td class='num'>4,241,394,980</td><td class='num'>5,553,958,648</td></tr></tbody></table><p class='footnotes'>The Notes from pages 65 to 135 form an integral part of these Financial Statements.<br/>Figures in bracket indicate deductions.</p><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;statement_title&quot;: &quot;Statement of Changes in Equity&quot;,
+  &quot;preamble&quot;: &quot;Year ended 31 March 2025&quot;,
+  &quot;footnotes&quot;: &quot;The Notes from pages 65 to 135 form an integral part of these Financial Statements.\nFigures in bracket indicate deductions.&quot;,
+  &quot;tables&quot;: [
+    {
+      &quot;caption&quot;: &quot;Statement of Changes in Equity - Group&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;Notes&quot;,
+          &quot;Stated Capital&quot;,
+          &quot;Fair Value through OCI Reserve&quot;,
+          &quot;Revaluation Reserve&quot;,
+          &quot;Foreign/Functional currency translation Reserve&quot;,
+          &quot;Retained Earnings&quot;,
+          &quot;Total&quot;,
+          &quot;Non Controlling Interests&quot;,
+          &quot;Total Equity&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Balance as at 01 April 2023&quot;,
+            &quot;&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;(131,678,946)&quot;,
+            &quot;1,132,409,840&quot;,
+            &quot;(2,224,417)&quot;,
+            &quot;1,582,595,942&quot;,
+            &quot;3,634,745,824&quot;,
+            &quot;4,404,805,955&quot;,
+            &quot;8,039,551,779&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;1,614,878,907&quot;,
+            &quot;1,614,878,907&quot;,
+            &quot;752,205,802&quot;,
+            &quot;2,366,964,708&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Comprehensive Income&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;69,864,188&quot;,
+            &quot;(264,648)&quot;,
+            &quot;(4,319,269)&quot;,
+            &quot;10,608,115&quot;,
+            &quot;75,888,387&quot;,
+            &quot;10,074,152&quot;,
+            &quot;85,962,539&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Comprehensive Income for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;69,864,188&quot;,
+            &quot;(264,648)&quot;,
+            &quot;(4,319,269)&quot;,
+            &quot;1,625,487,022&quot;,
+            &quot;1,690,767,295&quot;,
+            &quot;762,159,953&quot;,
+            &quot;2,452,926,646&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Realization of Revaluation Reserve due to the Disposal of Subsidiary&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(955,368,470)&quot;,
+            &quot;&quot;,
+            &quot;955,368,470&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Transfer from FVTOCI to Retained Earnings&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;82,059,497&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(82,059,497)&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;De-recognition of Non controlling interest due to Disposal of Subsidiary&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(961,247,553)&quot;,
+            &quot;(961,247,553)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Subsidiary Dividend to Minority Shareholders&quot;,
+            &quot;36.1&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(148,662,894)&quot;,
+            &quot;(148,662,894)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Balance as at 31 March 2024&quot;,
+            &quot;&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;20,244,739&quot;,
+            &quot;176,776,723&quot;,
+            &quot;(6,543,685)&quot;,
+            &quot;4,081,391,937&quot;,
+            &quot;5,325,513,118&quot;,
+            &quot;4,057,054,860&quot;,
+            &quot;9,382,567,978&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;1,043,180,139&quot;,
+            &quot;1,043,180,139&quot;,
+            &quot;549,077,891&quot;,
+            &quot;1,592,258,030&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Comprehensive Income&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2,114,622&quot;,
+            &quot;&quot;,
+            &quot;187,542&quot;,
+            &quot;2,087,204&quot;,
+            &quot;7,728,078&quot;,
+            &quot;28,060,124&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Comprehensive Income for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2,114,622&quot;,
+            &quot;&quot;,
+            &quot;1,061,937,563&quot;,
+            &quot;1,064,052,184&quot;,
+            &quot;556,805,970&quot;,
+            &quot;1,620,858,154&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Equity Share Disposal Loss&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(9,907,277)&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;9,907,277&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Transfer from FVTOCI to Retained Earnings&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(10,337,462)&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;10,337,462&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Reclassification adjustment made to Retained Earnings due to the Investment Property Transfer&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(176,776,723)&quot;,
+            &quot;&quot;,
+            &quot;176,776,723&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Transactions with Non controlling Interest&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(663,946,789)&quot;,
+            &quot;(663,946,789)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Balance as at 31 March 2025&quot;,
+            &quot;&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;&quot;,
+            &quot;(4,429,064)&quot;,
+            &quot;5,340,350,961&quot;,
+            &quot;6,389,565,302&quot;,
+            &quot;3,949,914,041&quot;,
+            &quot;10,339,479,343&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        }
+      ]
+    },
+    {
+      &quot;caption&quot;: &quot;Statement of Changes in Equity - Company&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;Notes&quot;,
+          &quot;Stated Capital&quot;,
+          &quot;Amalgamation Reserve&quot;,
+          &quot;Retained Earnings&quot;,
+          &quot;Total Equity&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Balance as at 01 April 2023&quot;,
+            &quot;&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;258,920,263&quot;,
+            &quot;3,253,943,259&quot;,
+            &quot;4,566,506,927&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;271,144,953&quot;,
+            &quot;271,144,953&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Comprehensive Income&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Comprehensive Income for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;271,144,953&quot;,
+            &quot;271,144,953&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Balance as at 31 March 2024&quot;,
+            &quot;&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;258,920,263&quot;,
+            &quot;3,525,088,212&quot;,
+            &quot;4,837,651,880&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;716,306,768&quot;,
+            &quot;716,306,768&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Other Comprehensive Income&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total Comprehensive Income for the year&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;716,306,768&quot;,
+            &quot;716,306,768&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Balance as at 31 March 2025&quot;,
+            &quot;&quot;,
+            &quot;1,053,643,405&quot;,
+            &quot;258,920,263&quot;,
+            &quot;4,241,394,980&quot;,
+            &quot;5,553,958,648&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+            </div>
+          </div>
+        </section>
+        <section class="stmt" id="cash_flows">
+          <div class="hd" style="background:#92400e;">
+            <span>Statement of Cash Flows</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 1 image(s)</h3>
+              <img src="captures/cash_flows/page_0066.png" alt="page_0066.png"/><div class="pageno">page_0066.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='unit stmt-title'>Statement of Cash Flows</p><p class='preamble'>Year ended 31 March 2025</p><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='notecol'>Notes</th><th class='num' colspan='2'>Group</th><th class='num' colspan='2'>Company</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>2025</th><th class='num'>2024</th><th class='num'>2025</th><th class='num'>2024</th></tr><tr><th class='lbl'></th><th class='notecol'></th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th><th class='num'>LKR</th></tr></thead><tbody><tr class='section'><td class='lbl section-banner' colspan='6'>Cash Flows from Operating Activities</td></tr><tr class=''><td class='lbl'>Profit/(Loss) before Tax from Continuing Operations</td><td class='notecol'></td><td class='num'>1,798,432,088</td><td class='num'>3,064,604,666</td><td class='num'>718,608,455</td><td class='num'>272,628,768</td></tr><tr class=''><td class='lbl'>Loss before Tax from Discontinuing Operations</td><td class='notecol'></td><td class='num'>(180,561,677)</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Adjustment for</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Depreciation of Property, Plant &amp; Equipment</td><td class='notecol'>12</td><td class='num'>83,751,116</td><td class='num'>119,096,642</td><td class='num'>22,599</td><td class='num'>39,373</td></tr><tr class=''><td class='lbl'>Amortization of Right of Use Assets</td><td class='notecol'>28</td><td class='num'>8,593,395</td><td class='num'>59,836,510</td><td class='num'>1,552,706</td><td class='num'>2,269,031</td></tr><tr class=''><td class='lbl'>Amortization of Intangible Assets</td><td class='notecol'>13</td><td class='num'>2,464,347</td><td class='num'>3,142,096</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Change in Fair Value of Financial Assets</td><td class='notecol'></td><td class='num'>(1,085,843,767)</td><td class='num'>(335,120,174)</td><td class='num'>(7,925,554)</td><td class='num'></td></tr><tr class=''><td class='lbl'>Gain on Disposal of Subsidiary</td><td class='notecol'>4.2</td><td class='num'></td><td class='num'>(672,651,758)</td><td class='num'>(1)</td><td class='num'></td></tr><tr class=''><td class='lbl'>Provision for Retirement Benefit Obligation</td><td class='notecol'>23</td><td class='num'>97,471,961</td><td class='num'>106,611,363</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Change in Fair Value of Investment Property</td><td class='notecol'>15</td><td class='num'>(29,801,550)</td><td class='num'>(327,500,000)</td><td class='num'>(7,696,000)</td><td class='num'>(5,000,000)</td></tr><tr class=''><td class='lbl'>Change in Fair Value of Investment in Subsidiary</td><td class='notecol'>16</td><td class='num'></td><td class='num'></td><td class='num'>(1,125,324,503)</td><td class='num'>(384,741,767)</td></tr><tr class=''><td class='lbl'>Impairment of Share of Results of Equity Accounted Investee</td><td class='notecol'>29</td><td class='num'>43,708,866</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Impairment / (Reversal) of Trade and Other Receivables</td><td class='notecol'>19.2</td><td class='num'>(706,115,785)</td><td class='num'>(95,962,828)</td><td class='num'></td><td class='num'>24,482,907</td></tr><tr class=''><td class='lbl'>Gain on changes in fair value of Biological Assets</td><td class='notecol'>14</td><td class='num'>1,367,000</td><td class='num'>(3,497,000)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Allowance/(Reversal) for Obsolete and Slow Moving Inventories</td><td class='notecol'>18</td><td class='num'>2,951,345</td><td class='num'>(4,696,996)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Profit from Disposal of Property Plant &amp; Equipment</td><td class='notecol'></td><td class='num'></td><td class='num'>(785,599)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Interest Expense</td><td class='notecol'></td><td class='num'>727,744,672</td><td class='num'>1,079,379,839</td><td class='num'>423,602,383</td><td class='num'>732,573,644</td></tr><tr class=''><td class='lbl'>Share of Results of Equity Accounted Investee</td><td class='notecol'>29</td><td class='num'>1,201,020</td><td class='num'>(2,180,027)</td><td class='num'></td><td class='num'></td></tr><tr class='subtotal'><td class='lbl'>Operating Profit before Working Capital Changes</td><td class='notecol'></td><td class='num'>1,183,361,708</td><td class='num'>2,728,489,415</td><td class='num'>2,840,086</td><td class='num'>642,251,956</td></tr><tr class=''><td class='lbl'>(Increase)/Decrease in Inventories</td><td class='notecol'></td><td class='num'>(1,081,791,198)</td><td class='num'>386,810,973</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>(Increase)/Decrease in Trade &amp; Other Receivables</td><td class='notecol'></td><td class='num'>1,734,171,738</td><td class='num'>(881,761,368)</td><td class='num'>465,709,260</td><td class='num'>(61,132,369)</td></tr><tr class=''><td class='lbl'>Increase/(Decrease) in Contract Liability</td><td class='notecol'></td><td class='num'>220,836,032</td><td class='num'>(1,022,760,688)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Increase/(Decrease) in Trade &amp; Other Payable</td><td class='notecol'></td><td class='num'>779,901,902</td><td class='num'>(1,298,075,027)</td><td class='num'>382,437</td><td class='num'>113,272</td></tr><tr class='subtotal'><td class='lbl'>Cash Generated from Operations</td><td class='notecol'></td><td class='num'>2,839,061,751</td><td class='num'>1,108,206,029</td><td class='num'>468,932,442</td><td class='num'>581,130,959</td></tr><tr class=''><td class='lbl'>Retirement Gratuity Paid/Transfers</td><td class='notecol'></td><td class='num'>(59,617,521)</td><td class='num'>(45,344,361)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Interest Paid</td><td class='notecol'></td><td class='num'>(501,656,205)</td><td class='num'>(498,230,359)</td><td class='num'>(189,435,002)</td><td class='num'>(337,791,044)</td></tr><tr class=''><td class='lbl'>Income Tax Paid</td><td class='notecol'></td><td class='num'>(373,099,758)</td><td class='num'>(530,429,535)</td><td class='num'></td><td class='num'></td></tr><tr class='subtotal'><td class='lbl'>Net Cash Flow Generated from/ (used in) Operating Activities</td><td class='notecol'></td><td class='num'>1,874,788,267</td><td class='num'>187,077,814</td><td class='num'>279,497,240</td><td class='num'>243,339,915</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Cash Flow from Investing Activities</td></tr><tr class=''><td class='lbl'>Acquisition of Property, Plant &amp; Equipment</td><td class='notecol'>12</td><td class='num'>(38,726,434)</td><td class='num'>(176,048,399)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Proceeds on disposal of Property, Plant &amp; Equipment</td><td class='notecol'></td><td class='num'></td><td class='num'>981,329</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Net cash inflow from disposal of subsidiary</td><td class='notecol'></td><td class='num'></td><td class='num'>2,813,237,721</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Investment in Subsidiaries</td><td class='notecol'></td><td class='num'>(799,169,176)</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Acquisition of Intangible Assets</td><td class='notecol'>13</td><td class='num'>(14,647,993)</td><td class='num'>(8,635,873)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Acquisition of Investment Properties</td><td class='notecol'>15</td><td class='num'>(9,869,000)</td><td class='num'></td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Acquisition of Other Financial Assets</td><td class='notecol'></td><td class='num'>(5,399,525,535)</td><td class='num'>(4,201,522,227)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Redemption of Preference Shares</td><td class='notecol'></td><td class='num'></td><td class='num'></td><td class='num'>30,000,000</td><td class='num'></td></tr><tr class=''><td class='lbl'>Proceeds / (Investment) in Other Financial Assets</td><td class='notecol'></td><td class='num'>(443,943)</td><td class='num'>392,994,444</td><td class='num'>(1,168,283,468)</td><td class='num'>679,229,611</td></tr><tr class='subtotal'><td class='lbl'>Net Cash Flow Generated from / (Used in) Investing Activities</td><td class='notecol'></td><td class='num'>(6,261,482,082)</td><td class='num'>621,572,996</td><td class='num'>(1,138,283,468)</td><td class='num'>679,229,611</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Cash Flow from Financing Activities</td></tr><tr class=''><td class='lbl'>Loan Received</td><td class='notecol'></td><td class='num'>158,273,238,926</td><td class='num'>209,848,321,556</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Dividend Paid to Non-Controlling Interest</td><td class='notecol'>36.1</td><td class='num'></td><td class='num'>(148,662,894)</td><td class='num'></td><td class='num'></td></tr><tr class=''><td class='lbl'>Lease Payments</td><td class='notecol'>22.1</td><td class='num'>(99,310,615)</td><td class='num'>(83,606,126)</td><td class='num'>(1,614,411)</td><td class='num'>(2,561,621)</td></tr><tr class=''><td class='lbl'>Repayment of Loans</td><td class='notecol'></td><td class='num'>(153,270,304,342)</td><td class='num'>(210,852,758,960)</td><td class='num'>824,174,982</td><td class='num'>(144,793,635)</td></tr><tr class='subtotal'><td class='lbl'>Net Cash Flow Generated from/ (Used in) Financing Activities</td><td class='notecol'></td><td class='num'>4,903,623,968</td><td class='num'>(1,246,522,426)</td><td class='num'>822,560,571</td><td class='num'>(747,355,256)</td></tr><tr class=''><td class='lbl'>Net foreign Exchange Difference</td><td class='notecol'></td><td class='num'>4,008,735</td><td class='num'>(10,478,253)</td><td class='num'></td><td class='num'></td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Cash &amp; Cash Equivalents</td></tr><tr class=''><td class='lbl'>Net increase/(decrease) in cash &amp; cash equivalents</td><td class='notecol'></td><td class='num'>520,938,890</td><td class='num'>(448,349,866)</td><td class='num'>(36,225,659)</td><td class='num'>175,214,467</td></tr><tr class=''><td class='lbl'>At the beginning of the year</td><td class='notecol'></td><td class='num'>220,315,468</td><td class='num'>668,665,334</td><td class='num'>(1,359,609)</td><td class='num'>(176,373,876)</td></tr><tr class=''><td class='lbl'>At the end of the year(Note A)</td><td class='notecol'>20</td><td class='num'>741,254,357</td><td class='num'>220,315,468</td><td class='num'>(37,585,268)</td><td class='num'>(1,359,609)</td></tr><tr class='section'><td class='lbl section-banner' colspan='6'>Note A-Cash and Equivalents are as follows</td></tr><tr class=''><td class='lbl'>Cash in Hand &amp; Bank</td><td class='notecol'></td><td class='num'>932,552,651</td><td class='num'>501,770,288</td><td class='num'>1,296,139</td><td class='num'>1,076,124</td></tr><tr class=''><td class='lbl'>Bank Overdraft</td><td class='notecol'></td><td class='num'>(191,298,294)</td><td class='num'>(281,454,820)</td><td class='num'>(38,881,405)</td><td class='num'>(2,435,733)</td></tr><tr class='total'><td class='lbl'></td><td class='notecol'></td><td class='num'>741,254,357</td><td class='num'>220,315,468</td><td class='num'>(37,585,268)</td><td class='num'>(1,359,609)</td></tr></tbody></table><p class='footnotes'>The Notes from pages 65 to 135 form an integral part of these Financial Statements.<br/>Figures in bracket indicate deductions</p><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;statement_title&quot;: &quot;Statement of Cash Flows&quot;,
+  &quot;preamble&quot;: &quot;Year ended 31 March 2025&quot;,
+  &quot;footnotes&quot;: &quot;The Notes from pages 65 to 135 form an integral part of these Financial Statements.\nFigures in bracket indicate deductions&quot;,
+  &quot;tables&quot;: [
+    {
+      &quot;caption&quot;: null,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;Notes&quot;,
+          &quot;Group&quot;,
+          &quot;&quot;,
+          &quot;Company&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;,
+          &quot;LKR&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Cash Flows from Operating Activities&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit/(Loss) before Tax from Continuing Operations&quot;,
+            &quot;&quot;,
+            &quot;1,798,432,088&quot;,
+            &quot;3,064,604,666&quot;,
+            &quot;718,608,455&quot;,
+            &quot;272,628,768&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Loss before Tax from Discontinuing Operations&quot;,
+            &quot;&quot;,
+            &quot;(180,561,677)&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Adjustment for&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Depreciation of Property, Plant &amp; Equipment&quot;,
+            &quot;12&quot;,
+            &quot;83,751,116&quot;,
+            &quot;119,096,642&quot;,
+            &quot;22,599&quot;,
+            &quot;39,373&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Amortization of Right of Use Assets&quot;,
+            &quot;28&quot;,
+            &quot;8,593,395&quot;,
+            &quot;59,836,510&quot;,
+            &quot;1,552,706&quot;,
+            &quot;2,269,031&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Amortization of Intangible Assets&quot;,
+            &quot;13&quot;,
+            &quot;2,464,347&quot;,
+            &quot;3,142,096&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Change in Fair Value of Financial Assets&quot;,
+            &quot;&quot;,
+            &quot;(1,085,843,767)&quot;,
+            &quot;(335,120,174)&quot;,
+            &quot;(7,925,554)&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Gain on Disposal of Subsidiary&quot;,
+            &quot;4.2&quot;,
+            &quot;&quot;,
+            &quot;(672,651,758)&quot;,
+            &quot;(1)&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Provision for Retirement Benefit Obligation&quot;,
+            &quot;23&quot;,
+            &quot;97,471,961&quot;,
+            &quot;106,611,363&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Change in Fair Value of Investment Property&quot;,
+            &quot;15&quot;,
+            &quot;(29,801,550)&quot;,
+            &quot;(327,500,000)&quot;,
+            &quot;(7,696,000)&quot;,
+            &quot;(5,000,000)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Change in Fair Value of Investment in Subsidiary&quot;,
+            &quot;16&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(1,125,324,503)&quot;,
+            &quot;(384,741,767)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Impairment of Share of Results of Equity Accounted Investee&quot;,
+            &quot;29&quot;,
+            &quot;43,708,866&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Impairment / (Reversal) of Trade and Other Receivables&quot;,
+            &quot;19.2&quot;,
+            &quot;(706,115,785)&quot;,
+            &quot;(95,962,828)&quot;,
+            &quot;&quot;,
+            &quot;24,482,907&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Gain on changes in fair value of Biological Assets&quot;,
+            &quot;14&quot;,
+            &quot;1,367,000&quot;,
+            &quot;(3,497,000)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Allowance/(Reversal) for Obsolete and Slow Moving Inventories&quot;,
+            &quot;18&quot;,
+            &quot;2,951,345&quot;,
+            &quot;(4,696,996)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Profit from Disposal of Property Plant &amp; Equipment&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;(785,599)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Interest Expense&quot;,
+            &quot;&quot;,
+            &quot;727,744,672&quot;,
+            &quot;1,079,379,839&quot;,
+            &quot;423,602,383&quot;,
+            &quot;732,573,644&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Share of Results of Equity Accounted Investee&quot;,
+            &quot;29&quot;,
+            &quot;1,201,020&quot;,
+            &quot;(2,180,027)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Operating Profit before Working Capital Changes&quot;,
+            &quot;&quot;,
+            &quot;1,183,361,708&quot;,
+            &quot;2,728,489,415&quot;,
+            &quot;2,840,086&quot;,
+            &quot;642,251,956&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;(Increase)/Decrease in Inventories&quot;,
+            &quot;&quot;,
+            &quot;(1,081,791,198)&quot;,
+            &quot;386,810,973&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;(Increase)/Decrease in Trade &amp; Other Receivables&quot;,
+            &quot;&quot;,
+            &quot;1,734,171,738&quot;,
+            &quot;(881,761,368)&quot;,
+            &quot;465,709,260&quot;,
+            &quot;(61,132,369)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Increase/(Decrease) in Contract Liability&quot;,
+            &quot;&quot;,
+            &quot;220,836,032&quot;,
+            &quot;(1,022,760,688)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Increase/(Decrease) in Trade &amp; Other Payable&quot;,
+            &quot;&quot;,
+            &quot;779,901,902&quot;,
+            &quot;(1,298,075,027)&quot;,
+            &quot;382,437&quot;,
+            &quot;113,272&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Cash Generated from Operations&quot;,
+            &quot;&quot;,
+            &quot;2,839,061,751&quot;,
+            &quot;1,108,206,029&quot;,
+            &quot;468,932,442&quot;,
+            &quot;581,130,959&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Retirement Gratuity Paid/Transfers&quot;,
+            &quot;&quot;,
+            &quot;(59,617,521)&quot;,
+            &quot;(45,344,361)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Interest Paid&quot;,
+            &quot;&quot;,
+            &quot;(501,656,205)&quot;,
+            &quot;(498,230,359)&quot;,
+            &quot;(189,435,002)&quot;,
+            &quot;(337,791,044)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Income Tax Paid&quot;,
+            &quot;&quot;,
+            &quot;(373,099,758)&quot;,
+            &quot;(530,429,535)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Net Cash Flow Generated from/ (used in) Operating Activities&quot;,
+            &quot;&quot;,
+            &quot;1,874,788,267&quot;,
+            &quot;187,077,814&quot;,
+            &quot;279,497,240&quot;,
+            &quot;243,339,915&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Cash Flow from Investing Activities&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Acquisition of Property, Plant &amp; Equipment&quot;,
+            &quot;12&quot;,
+            &quot;(38,726,434)&quot;,
+            &quot;(176,048,399)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Proceeds on disposal of Property, Plant &amp; Equipment&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;981,329&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Net cash inflow from disposal of subsidiary&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2,813,237,721&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Investment in Subsidiaries&quot;,
+            &quot;&quot;,
+            &quot;(799,169,176)&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Acquisition of Intangible Assets&quot;,
+            &quot;13&quot;,
+            &quot;(14,647,993)&quot;,
+            &quot;(8,635,873)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Acquisition of Investment Properties&quot;,
+            &quot;15&quot;,
+            &quot;(9,869,000)&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Acquisition of Other Financial Assets&quot;,
+            &quot;&quot;,
+            &quot;(5,399,525,535)&quot;,
+            &quot;(4,201,522,227)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Redemption of Preference Shares&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;30,000,000&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Proceeds / (Investment) in Other Financial Assets&quot;,
+            &quot;&quot;,
+            &quot;(443,943)&quot;,
+            &quot;392,994,444&quot;,
+            &quot;(1,168,283,468)&quot;,
+            &quot;679,229,611&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Net Cash Flow Generated from / (Used in) Investing Activities&quot;,
+            &quot;&quot;,
+            &quot;(6,261,482,082)&quot;,
+            &quot;621,572,996&quot;,
+            &quot;(1,138,283,468)&quot;,
+            &quot;679,229,611&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Cash Flow from Financing Activities&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Loan Received&quot;,
+            &quot;&quot;,
+            &quot;158,273,238,926&quot;,
+            &quot;209,848,321,556&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Dividend Paid to Non-Controlling Interest&quot;,
+            &quot;36.1&quot;,
+            &quot;&quot;,
+            &quot;(148,662,894)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Lease Payments&quot;,
+            &quot;22.1&quot;,
+            &quot;(99,310,615)&quot;,
+            &quot;(83,606,126)&quot;,
+            &quot;(1,614,411)&quot;,
+            &quot;(2,561,621)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Repayment of Loans&quot;,
+            &quot;&quot;,
+            &quot;(153,270,304,342)&quot;,
+            &quot;(210,852,758,960)&quot;,
+            &quot;824,174,982&quot;,
+            &quot;(144,793,635)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Net Cash Flow Generated from/ (Used in) Financing Activities&quot;,
+            &quot;&quot;,
+            &quot;4,903,623,968&quot;,
+            &quot;(1,246,522,426)&quot;,
+            &quot;822,560,571&quot;,
+            &quot;(747,355,256)&quot;
+          ],
+          &quot;style&quot;: &quot;subtotal&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Net foreign Exchange Difference&quot;,
+            &quot;&quot;,
+            &quot;4,008,735&quot;,
+            &quot;(10,478,253)&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Cash &amp; Cash Equivalents&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Net increase/(decrease) in cash &amp; cash equivalents&quot;,
+            &quot;&quot;,
+            &quot;520,938,890&quot;,
+            &quot;(448,349,866)&quot;,
+            &quot;(36,225,659)&quot;,
+            &quot;175,214,467&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;At the beginning of the year&quot;,
+            &quot;&quot;,
+            &quot;220,315,468&quot;,
+            &quot;668,665,334&quot;,
+            &quot;(1,359,609)&quot;,
+            &quot;(176,373,876)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;At the end of the year(Note A)&quot;,
+            &quot;20&quot;,
+            &quot;741,254,357&quot;,
+            &quot;220,315,468&quot;,
+            &quot;(37,585,268)&quot;,
+            &quot;(1,359,609)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Note A-Cash and Equivalents are as follows&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Cash in Hand &amp; Bank&quot;,
+            &quot;&quot;,
+            &quot;932,552,651&quot;,
+            &quot;501,770,288&quot;,
+            &quot;1,296,139&quot;,
+            &quot;1,076,124&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Bank Overdraft&quot;,
+            &quot;&quot;,
+            &quot;(191,298,294)&quot;,
+            &quot;(281,454,820)&quot;,
+            &quot;(38,881,405)&quot;,
+            &quot;(2,435,733)&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;741,254,357&quot;,
+            &quot;220,315,468&quot;,
+            &quot;(37,585,268)&quot;,
+            &quot;(1,359,609)&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+            </div>
+          </div>
+        </section>
+        <section class="stmt" id="shareholder_info">
+          <div class="hd" style="background:#065f46;">
+            <span>Shareholder Information</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 1 image(s)</h3>
+              <img src="captures/shareholder_info/page_0138.png" alt="page_0138.png"/><div class="pageno">page_0138.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='unit stmt-title'>Investor Information</p><p class='preamble'>The issued Ordinary Shares of Ambeon Capital PLC are listed with the Colombo Stock Exchange<br/>Share Structure as at 31 March 2025.</p><h4 class='tbl-caption'>Range of Shareholdings</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='num'></th><th class='num'>No. of Holders</th><th class='num'>Total Holding</th><th class='num'>% Holding</th></tr></thead><tbody><tr class=''><td class='lbl'>1 to 1,000 Shares</td><td class='num'></td><td class='num'>1,065</td><td class='num'>244,512</td><td class='num'>0.02</td></tr><tr class=''><td class='lbl'>1,001 to 10,000 Shares</td><td class='num'></td><td class='num'>549</td><td class='num'>2,417,315</td><td class='num'>0.24</td></tr><tr class=''><td class='lbl'>10,001 to 100,000 Shares</td><td class='num'></td><td class='num'>324</td><td class='num'>10,567,780</td><td class='num'>1.05</td></tr><tr class=''><td class='lbl'>100,001 to 1,000,000 Shares</td><td class='num'></td><td class='num'>138</td><td class='num'>43,031,278</td><td class='num'>4.29</td></tr><tr class=''><td class='lbl'>1,000,001 to 10,000,000 Shares</td><td class='num'></td><td class='num'>26</td><td class='num'>70,688,859</td><td class='num'>7.05</td></tr><tr class=''><td class='lbl'>Over 10,000,001 Shares</td><td class='num'></td><td class='num'>9</td><td class='num'>875,775,071</td><td class='num'>87.34</td></tr><tr class='total'><td class='lbl'></td><td class='num'></td><td class='num'>2111</td><td class='num'>1,002,724,815</td><td class='num'>100.00</td></tr></tbody></table><h4 class='tbl-caption'>Categories of Shareholders</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='num'></th><th class='num'>No. of Holders</th><th class='num'>Total Holding</th><th class='num'>% Holding</th></tr></thead><tbody><tr class=''><td class='lbl'>Local Individuals</td><td class='num'></td><td class='num'>1,912</td><td class='num'>44,689,979</td><td class='num'>4.46</td></tr><tr class=''><td class='lbl'>Local Institutions</td><td class='num'></td><td class='num'>184</td><td class='num'>936,222,748</td><td class='num'>93.37</td></tr><tr class=''><td class='lbl'>Foreign Individuals</td><td class='num'></td><td class='num'>12</td><td class='num'>1,562,272</td><td class='num'>0.16</td></tr><tr class=''><td class='lbl'>Foreign Institutions</td><td class='num'></td><td class='num'>3</td><td class='num'>20,248,816</td><td class='num'>2.02</td></tr><tr class='total'><td class='lbl'></td><td class='num'></td><td class='num'>2111</td><td class='num'>1,002,724,815</td><td class='num'>100.00</td></tr></tbody></table><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;statement_title&quot;: &quot;Investor Information&quot;,
+  &quot;preamble&quot;: &quot;The issued Ordinary Shares of Ambeon Capital PLC are listed with the Colombo Stock Exchange\nShare Structure as at 31 March 2025.&quot;,
+  &quot;footnotes&quot;: null,
+  &quot;tables&quot;: [
+    {
+      &quot;caption&quot;: &quot;Range of Shareholdings&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;No. of Holders&quot;,
+          &quot;Total Holding&quot;,
+          &quot;% Holding&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;1 to 1,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;1,065&quot;,
+            &quot;244,512&quot;,
+            &quot;0.02&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;1,001 to 10,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;549&quot;,
+            &quot;2,417,315&quot;,
+            &quot;0.24&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;10,001 to 100,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;324&quot;,
+            &quot;10,567,780&quot;,
+            &quot;1.05&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;100,001 to 1,000,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;138&quot;,
+            &quot;43,031,278&quot;,
+            &quot;4.29&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;1,000,001 to 10,000,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;26&quot;,
+            &quot;70,688,859&quot;,
+            &quot;7.05&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Over 10,000,001 Shares&quot;,
+            &quot;&quot;,
+            &quot;9&quot;,
+            &quot;875,775,071&quot;,
+            &quot;87.34&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2111&quot;,
+            &quot;1,002,724,815&quot;,
+            &quot;100.00&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        }
+      ]
+    },
+    {
+      &quot;caption&quot;: &quot;Categories of Shareholders&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;No. of Holders&quot;,
+          &quot;Total Holding&quot;,
+          &quot;% Holding&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Local Individuals&quot;,
+            &quot;&quot;,
+            &quot;1,912&quot;,
+            &quot;44,689,979&quot;,
+            &quot;4.46&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Local Institutions&quot;,
+            &quot;&quot;,
+            &quot;184&quot;,
+            &quot;936,222,748&quot;,
+            &quot;93.37&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Foreign Individuals&quot;,
+            &quot;&quot;,
+            &quot;12&quot;,
+            &quot;1,562,272&quot;,
+            &quot;0.16&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Foreign Institutions&quot;,
+            &quot;&quot;,
+            &quot;3&quot;,
+            &quot;20,248,816&quot;,
+            &quot;2.02&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2111&quot;,
+            &quot;1,002,724,815&quot;,
+            &quot;100.00&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+            </div>
+          </div>
+        </section>
+        <section class="stmt" id="investor_info">
+          <div class="hd" style="background:#0c4a6e;">
+            <span>Investor Information</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 2 image(s)</h3>
+              <img src="captures/investor_info/page_0138.png" alt="page_0138.png"/><div class="pageno">page_0138.png</div><img src="captures/investor_info/page_0139.png" alt="page_0139.png"/><div class="pageno">page_0139.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='unit stmt-title'>Investor Information</p><h4 class='tbl-caption'>Stock Exchange Listing</h4><table class='fin verbatim'><thead></thead><tbody><tr class=''><td class='lbl'>The issued Ordinary Shares of Ambeon Capital PLC are listed with the Colombo Stock Exchange</td><td class='num'></td><td class='num'></td><td class='num'></td></tr></tbody></table><h4 class='tbl-caption'>Share Information</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='num'></th><th class='num'>No. of Holders</th><th class='num'>Total Holding</th><th class='num'>% Holding</th></tr></thead><tbody><tr class='section'><td class='lbl section-banner' colspan='5'>Range of Shareholdings</td></tr><tr class=''><td class='lbl'>1 to 1,000 Shares</td><td class='num'></td><td class='num'>1,065</td><td class='num'>244,512</td><td class='num'>0.02</td></tr><tr class=''><td class='lbl'>1,001 to 10,000 Shares</td><td class='num'></td><td class='num'>549</td><td class='num'>2,417,315</td><td class='num'>0.24</td></tr><tr class=''><td class='lbl'>10,001 to 100,000 Shares</td><td class='num'></td><td class='num'>324</td><td class='num'>10,567,780</td><td class='num'>1.05</td></tr><tr class=''><td class='lbl'>100,001 to 1,000,000 Shares</td><td class='num'></td><td class='num'>138</td><td class='num'>43,031,278</td><td class='num'>4.29</td></tr><tr class=''><td class='lbl'>1,000,001 to 10,000,000 Shares</td><td class='num'></td><td class='num'>26</td><td class='num'>70,688,859</td><td class='num'>7.05</td></tr><tr class=''><td class='lbl'>Over 10,000,001 Shares</td><td class='num'></td><td class='num'>9</td><td class='num'>875,775,071</td><td class='num'>87.34</td></tr><tr class='total'><td class='lbl'></td><td class='num'></td><td class='num'>2111</td><td class='num'>1,002,724,815</td><td class='num'>100.00</td></tr><tr class='section'><td class='lbl section-banner' colspan='5'>Categories of Shareholders</td></tr><tr class=''><td class='lbl'>Local Individuals</td><td class='num'></td><td class='num'>1,912</td><td class='num'>44,689,979</td><td class='num'>4.46</td></tr><tr class=''><td class='lbl'>Local Institutions</td><td class='num'></td><td class='num'>184</td><td class='num'>936,222,748</td><td class='num'>93.37</td></tr><tr class=''><td class='lbl'>Foreign Individuals</td><td class='num'></td><td class='num'>12</td><td class='num'>1,562,272</td><td class='num'>0.16</td></tr><tr class=''><td class='lbl'>Foreign Institutions</td><td class='num'></td><td class='num'>3</td><td class='num'>20,248,816</td><td class='num'>2.02</td></tr><tr class='total'><td class='lbl'></td><td class='num'></td><td class='num'>2111</td><td class='num'>1,002,724,815</td><td class='num'>100.00</td></tr></tbody></table><h4 class='tbl-caption'>The Twenty Largest Shareholders of the Company as at 31 March 2025 Were;</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='num'></th><th class='num'>No. of Shares</th><th class='num'>%</th></tr></thead><tbody><tr class=''><td class='lbl'>1</td><td class='num'></td><td class='num'>Ambeon Consolidated (Private) Limited</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>501,427,024</td><td class='num'>50.01</td></tr><tr class=''><td class='lbl'>2</td><td class='num'></td><td class='num'>Seylan Bank PLC/ARRC Capital (Pvt) Ltd</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>81,526,332</td><td class='num'>8.13</td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>ARRC Capital (Pvt) Limited</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>51,190,106</td><td class='num'>5.11</td></tr><tr class='total'><td class='lbl'>Total</td><td class='num'></td><td class='num'>132,716,438</td><td class='num'>13.24</td></tr><tr class=''><td class='lbl'>3</td><td class='num'></td><td class='num'>DFCC Bank PLC/ATX Partners (Pvt) Ltd</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>107,670,813</td><td class='num'>10.74</td></tr><tr class=''><td class='lbl'>4</td><td class='num'></td><td class='num'>Seylan Bank PLC/Arcasia Investments &amp; Trading (Pvt) Ltd</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>75,175,000</td><td class='num'>7.50</td></tr><tr class=''><td class='lbl'>5</td><td class='num'></td><td class='num'>EMFI Capital Limited</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>19,663,436</td><td class='num'>1.96</td></tr><tr class=''><td class='lbl'>6</td><td class='num'></td><td class='num'>Aluthgama I.T. (Private) Limited</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>15,636,497</td><td class='num'>1.56</td></tr><tr class=''><td class='lbl'>7</td><td class='num'></td><td class='num'>Asia Securities (Pvt) Ltd (Trading Account)</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>12,030,000</td><td class='num'>1.20</td></tr><tr class=''><td class='lbl'>8</td><td class='num'></td><td class='num'>Hatton National Bank PLC/Ruwan Prasanna Sugathadasa</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>11,455,863</td><td class='num'>1.14</td></tr><tr class=''><td class='lbl'>9</td><td class='num'></td><td class='num'>Mr. Don Tiberius Sujeewa Handapangoda Mudalige</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>9,000,000</td><td class='num'>0.90</td></tr><tr class=''><td class='lbl'>10</td><td class='num'></td><td class='num'>Mr. Somadasa Palihawadana , Mrs. R S Daluwatta</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>6,500,000</td><td class='num'>0.65</td></tr><tr class=''><td class='lbl'>11</td><td class='num'></td><td class='num'>Seylan Bank PLC/ Pinnaduwage Aravinda De Silva</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>5,745,148</td><td class='num'>0.57</td></tr><tr class=''><td class='lbl'>12</td><td class='num'></td><td class='num'>Seylan Bank PLC/Gladstone Capital (Private) Limited</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>4,802,802</td><td class='num'>0.48</td></tr><tr class=''><td class='lbl'>13</td><td class='num'></td><td class='num'>Seylan Bank PLC/Karagoda Loku Gamage Udayananda</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>3,900,090</td><td class='num'>0.39</td></tr><tr class=''><td class='lbl'>14</td><td class='num'></td><td class='num'>Hatton National Bank PLC/Aprico Ataraxia Equity Income Fund</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>3,545,061</td><td class='num'>0.35</td></tr><tr class=''><td class='lbl'>15</td><td class='num'></td><td class='num'>PMF Finance PLC/M.S.Hamzadeen</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>3,488,629</td><td class='num'>0.35</td></tr><tr class=''><td class='lbl'>16</td><td class='num'></td><td class='num'>Commercial Bank of Ceylon PLC/Capital Trust Holdings Limited</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>3,000,000</td><td class='num'>0.30</td></tr><tr class=''><td class='lbl'>17</td><td class='num'></td><td class='num'>Mr. Thamarapathi Chatura Bandara Maranathota</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>2,453,507</td><td class='num'>0.24</td></tr><tr class=''><td class='lbl'>18</td><td class='num'></td><td class='num'>Mr. Karagoda Loku Gamage Udayananda</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>2,360,734</td><td class='num'>0.24</td></tr><tr class=''><td class='lbl'>19</td><td class='num'></td><td class='num'>DFCC Bank PLC/K.K.de Silva</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>2,257,168</td><td class='num'>0.23</td></tr><tr class=''><td class='lbl'>20</td><td class='num'></td><td class='num'>Senkadagala Finance PLC/K.L.G. Udayananda</td><td class='num'></td></tr><tr class=''><td class='lbl'></td><td class='num'></td><td class='num'>2,222,183</td><td class='num'>0.22</td></tr><tr class='total'><td class='lbl'>Sub Total</td><td class='num'></td><td class='num'>925,100,393</td><td class='num'>92.26</td></tr><tr class=''><td class='lbl'>Others</td><td class='num'></td><td class='num'>77,624,422</td><td class='num'>7.74</td></tr><tr class='total'><td class='lbl'>Grand Total</td><td class='num'></td><td class='num'>1,002,724,815</td><td class='num'>100.00</td></tr></tbody></table><h4 class='tbl-caption'>PUBLIC HOLDINGS</h4><table class='fin verbatim'><thead></thead><tbody><tr class=''><td class='lbl'>Percentage of Shares held by the Public</td><td class='num'></td><td class='num'>16.61%</td><td class='num'></td></tr><tr class=''><td class='lbl'>No of public share holders as at 31st March 2025</td><td class='num'></td><td class='num'>2,099</td><td class='num'></td></tr><tr class=''><td class='lbl'>a.</td><td class='num'></td><td class='num'>Existing Float adjusted Market Capitalisation - Rs. 4,430,006,028.00</td><td class='num'></td></tr><tr class=''><td class='lbl'>b.</td><td class='num'></td><td class='num'>Public Holding Percentage<br/>(minimum requirement 7.5%) - 16.61%</td><td class='num'></td></tr><tr class=''><td class='lbl'>c.</td><td class='num'></td><td class='num'>Option for Compliance - Option 1 of 7.13.1 (i) (b) of the Listing Rules as per quarterly analysis of 31st March 2025.</td><td class='num'></td></tr></tbody></table><h4 class='tbl-caption'>The Market Value of Ambeon Capital PLC Ordinary Shares:</h4><table class='fin verbatim'><thead><tr><th class='lbl'></th><th class='num'></th><th class='num'>2025</th><th class='num'>2024</th></tr></thead><tbody><tr class=''><td class='lbl'>Highest during the year</td><td class='num'></td><td class='num'>34.00</td><td class='num'>11.60</td></tr><tr class=''><td class='lbl'>Lowest during the year</td><td class='num'></td><td class='num'>5.50</td><td class='num'>6.60</td></tr><tr class=''><td class='lbl'>As at end of the year</td><td class='num'></td><td class='num'>26.60</td><td class='num'>7.30</td></tr></tbody></table><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;statement_title&quot;: &quot;Investor Information&quot;,
+  &quot;preamble&quot;: null,
+  &quot;footnotes&quot;: null,
+  &quot;tables&quot;: [
+    {
+      &quot;caption&quot;: &quot;Stock Exchange Listing&quot;,
+      &quot;header_rows&quot;: [],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;The issued Ordinary Shares of Ambeon Capital PLC are listed with the Colombo Stock Exchange&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        }
+      ]
+    },
+    {
+      &quot;caption&quot;: &quot;Share Information&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;No. of Holders&quot;,
+          &quot;Total Holding&quot;,
+          &quot;% Holding&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Range of Shareholdings&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;1 to 1,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;1,065&quot;,
+            &quot;244,512&quot;,
+            &quot;0.02&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;1,001 to 10,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;549&quot;,
+            &quot;2,417,315&quot;,
+            &quot;0.24&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;10,001 to 100,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;324&quot;,
+            &quot;10,567,780&quot;,
+            &quot;1.05&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;100,001 to 1,000,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;138&quot;,
+            &quot;43,031,278&quot;,
+            &quot;4.29&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;1,000,001 to 10,000,000 Shares&quot;,
+            &quot;&quot;,
+            &quot;26&quot;,
+            &quot;70,688,859&quot;,
+            &quot;7.05&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Over 10,000,001 Shares&quot;,
+            &quot;&quot;,
+            &quot;9&quot;,
+            &quot;875,775,071&quot;,
+            &quot;87.34&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2111&quot;,
+            &quot;1,002,724,815&quot;,
+            &quot;100.00&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Categories of Shareholders&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;section&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Local Individuals&quot;,
+            &quot;&quot;,
+            &quot;1,912&quot;,
+            &quot;44,689,979&quot;,
+            &quot;4.46&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Local Institutions&quot;,
+            &quot;&quot;,
+            &quot;184&quot;,
+            &quot;936,222,748&quot;,
+            &quot;93.37&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Foreign Individuals&quot;,
+            &quot;&quot;,
+            &quot;12&quot;,
+            &quot;1,562,272&quot;,
+            &quot;0.16&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Foreign Institutions&quot;,
+            &quot;&quot;,
+            &quot;3&quot;,
+            &quot;20,248,816&quot;,
+            &quot;2.02&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2111&quot;,
+            &quot;1,002,724,815&quot;,
+            &quot;100.00&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        }
+      ]
+    },
+    {
+      &quot;caption&quot;: &quot;The Twenty Largest Shareholders of the Company as at 31 March 2025 Were;&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;No. of Shares&quot;,
+          &quot;%&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;1&quot;,
+            &quot;&quot;,
+            &quot;Ambeon Consolidated (Private) Limited&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;501,427,024&quot;,
+            &quot;50.01&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;2&quot;,
+            &quot;&quot;,
+            &quot;Seylan Bank PLC/ARRC Capital (Pvt) Ltd&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;81,526,332&quot;,
+            &quot;8.13&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;ARRC Capital (Pvt) Limited&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;51,190,106&quot;,
+            &quot;5.11&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Total&quot;,
+            &quot;&quot;,
+            &quot;132,716,438&quot;,
+            &quot;13.24&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;3&quot;,
+            &quot;&quot;,
+            &quot;DFCC Bank PLC/ATX Partners (Pvt) Ltd&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;107,670,813&quot;,
+            &quot;10.74&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;4&quot;,
+            &quot;&quot;,
+            &quot;Seylan Bank PLC/Arcasia Investments &amp; Trading (Pvt) Ltd&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;75,175,000&quot;,
+            &quot;7.50&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;5&quot;,
+            &quot;&quot;,
+            &quot;EMFI Capital Limited&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;19,663,436&quot;,
+            &quot;1.96&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;6&quot;,
+            &quot;&quot;,
+            &quot;Aluthgama I.T. (Private) Limited&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;15,636,497&quot;,
+            &quot;1.56&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;7&quot;,
+            &quot;&quot;,
+            &quot;Asia Securities (Pvt) Ltd (Trading Account)&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;12,030,000&quot;,
+            &quot;1.20&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;8&quot;,
+            &quot;&quot;,
+            &quot;Hatton National Bank PLC/Ruwan Prasanna Sugathadasa&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;11,455,863&quot;,
+            &quot;1.14&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;9&quot;,
+            &quot;&quot;,
+            &quot;Mr. Don Tiberius Sujeewa Handapangoda Mudalige&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;9,000,000&quot;,
+            &quot;0.90&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;10&quot;,
+            &quot;&quot;,
+            &quot;Mr. Somadasa Palihawadana , Mrs. R S Daluwatta&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;6,500,000&quot;,
+            &quot;0.65&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;11&quot;,
+            &quot;&quot;,
+            &quot;Seylan Bank PLC/ Pinnaduwage Aravinda De Silva&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;5,745,148&quot;,
+            &quot;0.57&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;12&quot;,
+            &quot;&quot;,
+            &quot;Seylan Bank PLC/Gladstone Capital (Private) Limited&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;4,802,802&quot;,
+            &quot;0.48&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;13&quot;,
+            &quot;&quot;,
+            &quot;Seylan Bank PLC/Karagoda Loku Gamage Udayananda&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;3,900,090&quot;,
+            &quot;0.39&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;14&quot;,
+            &quot;&quot;,
+            &quot;Hatton National Bank PLC/Aprico Ataraxia Equity Income Fund&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;3,545,061&quot;,
+            &quot;0.35&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;15&quot;,
+            &quot;&quot;,
+            &quot;PMF Finance PLC/M.S.Hamzadeen&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;3,488,629&quot;,
+            &quot;0.35&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;16&quot;,
+            &quot;&quot;,
+            &quot;Commercial Bank of Ceylon PLC/Capital Trust Holdings Limited&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;3,000,000&quot;,
+            &quot;0.30&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;17&quot;,
+            &quot;&quot;,
+            &quot;Mr. Thamarapathi Chatura Bandara Maranathota&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2,453,507&quot;,
+            &quot;0.24&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;18&quot;,
+            &quot;&quot;,
+            &quot;Mr. Karagoda Loku Gamage Udayananda&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2,360,734&quot;,
+            &quot;0.24&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;19&quot;,
+            &quot;&quot;,
+            &quot;DFCC Bank PLC/K.K.de Silva&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2,257,168&quot;,
+            &quot;0.23&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;20&quot;,
+            &quot;&quot;,
+            &quot;Senkadagala Finance PLC/K.L.G. Udayananda&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;2,222,183&quot;,
+            &quot;0.22&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Sub Total&quot;,
+            &quot;&quot;,
+            &quot;925,100,393&quot;,
+            &quot;92.26&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Others&quot;,
+            &quot;&quot;,
+            &quot;77,624,422&quot;,
+            &quot;7.74&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Grand Total&quot;,
+            &quot;&quot;,
+            &quot;1,002,724,815&quot;,
+            &quot;100.00&quot;
+          ],
+          &quot;style&quot;: &quot;total&quot;
+        }
+      ]
+    },
+    {
+      &quot;caption&quot;: &quot;PUBLIC HOLDINGS&quot;,
+      &quot;header_rows&quot;: [],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Percentage of Shares held by the Public&quot;,
+            &quot;&quot;,
+            &quot;16.61%&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;No of public share holders as at 31st March 2025&quot;,
+            &quot;&quot;,
+            &quot;2,099&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;a.&quot;,
+            &quot;&quot;,
+            &quot;Existing Float adjusted Market Capitalisation - Rs. 4,430,006,028.00&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;b.&quot;,
+            &quot;&quot;,
+            &quot;Public Holding Percentage\n(minimum requirement 7.5%) - 16.61%&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;c.&quot;,
+            &quot;&quot;,
+            &quot;Option for Compliance - Option 1 of 7.13.1 (i) (b) of the Listing Rules as per quarterly analysis of 31st March 2025.&quot;,
+            &quot;&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        }
+      ]
+    },
+    {
+      &quot;caption&quot;: &quot;The Market Value of Ambeon Capital PLC Ordinary Shares:&quot;,
+      &quot;header_rows&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;2025&quot;,
+          &quot;2024&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        {
+          &quot;cells&quot;: [
+            &quot;Highest during the year&quot;,
+            &quot;&quot;,
+            &quot;34.00&quot;,
+            &quot;11.60&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;Lowest during the year&quot;,
+            &quot;&quot;,
+            &quot;5.50&quot;,
+            &quot;6.60&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        },
+        {
+          &quot;cells&quot;: [
+            &quot;As at end of the year&quot;,
+            &quot;&quot;,
+            &quot;26.60&quot;,
+            &quot;7.30&quot;
+          ],
+          &quot;style&quot;: &quot;data&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+            </div>
+          </div>
+        </section>
+        <section class="stmt" id="five_year_summary">
+          <div class="hd" style="background:#831843;">
+            <span>Five Year Summary</span>
+            <span class="badge">ok</span>
+          </div>
+          <div class="split">
+            <div>
+              <h3>Original captured page(s) — 3 image(s)</h3>
+              <img src="captures/five_year_summary/page_0140.png" alt="page_0140.png"/><div class="pageno">page_0140.png</div><img src="captures/five_year_summary/page_0141.png" alt="page_0141.png"/><div class="pageno">page_0141.png</div><img src="captures/five_year_summary/page_0142.png" alt="page_0142.png"/><div class="pageno">page_0142.png</div>
+            </div>
+            <div>
+              <h3>Extracted table</h3>
+              <a class="toplink" href="#top">^ back to top</a>
+              <p class='muted'>No periods.</p><details class="rawjson"><summary>Show raw JSON</summary><pre>{
+  &quot;status&quot;: &quot;parse_failed&quot;,
+  &quot;raw_response&quot;: &quot;{\n  \&quot;statement_title\&quot;: \&quot;Five Year Summary\&quot;,\n  \&quot;preamble\&quot;: \&quot;Five Year Summary of Profit or Loss\\nFor the year ended 31st March,\&quot;,\n  \&quot;footnotes\&quot;: null,\n  \&quot;tables\&quot;: [\n    {\n      \&quot;caption\&quot;: null,\n      \&quot;header_rows\&quot;: [\n        [\&quot;\&quot;, \&quot;\&quot;, \&quot;2025\&quot;, \&quot;2024\&quot;, \&quot;2023\&quot;, \&quot;2022\&quot;, \&quot;2021\&quot;],\n        [\&quot;\&quot;, \&quot;\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.000\&quot;]\n      ],\n      \&quot;rows\&quot;: [\n        {\&quot;cells\&quot;: [\&quot;Revenue\&quot;, \&quot;\&quot;, \&quot;17,301,635\&quot;, \&quot;16,965,438\&quot;, \&quot;20,658,634\&quot;, \&quot;14,013,564\&quot;, \&quot;9,856,162\&quot;], \&quot;style\&quot;: \&quot;data\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Cost of Sales\&quot;, \&quot;\&quot;, \&quot;(13,407,490)\&quot;, \&quot;(12,066,118)\&quot;, \&quot;(14,931,685)\&quot;, \&quot;(10,259,679)\&quot;, \&quot;(6,576,622)\&quot;], \&quot;style\&quot;: \&quot;data\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Investment and Other Income\&quot;, \&quot;\&quot;, \&quot;365,175\&quot;, \&quot;402,381\&quot;, \&quot;500,289\&quot;, \&quot;443,816\&quot;, \&quot;93,467\&quot;], \&quot;style\&quot;: \&quot;data\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Finance Cost\&quot;, \&quot;\&quot;, \&quot;(727,745)\&quot;, \&quot;(1,079,380)\&quot;, \&quot;(1,788,702)\&quot;, \&quot;(459,924)\&quot;, \&quot;(748,778)\&quot;], \&quot;style\&quot;: \&quot;data\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Profit /(Loss) Before Income Tax from\\nContinuing Operations\&quot;, \&quot;\&quot;, \&quot;1,798,432\&quot;, \&quot;3,064,605\&quot;, \&quot;1,431,829\&quot;, \&quot;884,473\&quot;, \&quot;(1,851,811)\&quot;], \&quot;style\&quot;: \&quot;subtotal\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Income Tax Expense\&quot;, \&quot;\&quot;, \&quot;(206,174)\&quot;, \&quot;(517,124)\&quot;, \&quot;(590,779)\&quot;, \&quot;(342,082)\&quot;, \&quot;(187,420)\&quot;], \&quot;style\&quot;: \&quot;data\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Profit/(Loss) for the Year from Continuing\\nOperations\&quot;, \&quot;\&quot;, \&quot;1,592,258\&quot;, \&quot;2,547,481\&quot;, \&quot;841,050\&quot;, \&quot;542,391\&quot;, \&quot;(2,039,231)\&quot;], \&quot;style\&quot;: \&quot;subtotal\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Profit/(Loss) after tax from discontinued\\noperations for the year\&quot;, \&quot;\&quot;, \&quot;\&quot;, \&quot;(180,517)\&quot;, \&quot;-\&quot;, \&quot;1,404,087\&quot;, \&quot;(244,298)\&quot;], \&quot;style\&quot;: \&quot;data\&quot;},\n        {\&quot;cells\&quot;: [\&quot;Profit/(Loss) for the year\&quot;, \&quot;\&quot;, \&quot;1,592,258\&quot;, \&quot;2,366,964\&quot;, \&quot;841,050\&quot;, \&quot;1,946,479\&quot;, \&quot;(2,283,529)\&quot;], \&quot;style\&quot;: \&quot;total\&quot;}\n      ]\n    }\n  ]\n}\n\n{\n  \&quot;statement_title\&quot;: \&quot;Five Year Summary\&quot;,\n  \&quot;preamble\&quot;: \&quot;Five Year Summary of Financial Position\\nAs at 31st March,\&quot;,\n  \&quot;footnotes\&quot;: null,\n  \&quot;tables\&quot;: [\n    {\n      \&quot;caption\&quot;: \&quot;ASSETS\&quot;,\n      \&quot;header_rows\&quot;: [\n        [\&quot;\&quot;, \&quot;\&quot;, \&quot;2025\&quot;, \&quot;2024\&quot;, \&quot;2023\&quot;, \&quot;2022\&quot;, \&quot;2021\&quot;],\n        [\&quot;\&quot;, \&quot;\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.000\&quot;, \&quot;Rs.0&quot;
+}</pre></details>
+            </div>
+          </div>
+        </section>
+</main>
+</body></html>

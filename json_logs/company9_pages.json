@@ -1,0 +1,225 @@
+{
+  "company": "company9",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company9\\Annual\\48810_2025.pdf",
+  "total_pdf_pages": 144,
+  "page_offset": 0,
+  "generated_at": "2026-05-22T11:09:57",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        66
+      ],
+      "pdf_indices_0based": [
+        65
+      ],
+      "pdf_pages_1based": [
+        66
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        67
+      ],
+      "pdf_indices_0based": [
+        66
+      ],
+      "pdf_pages_1based": [
+        67
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        68
+      ],
+      "pdf_indices_0based": [
+        67,
+        68
+      ],
+      "pdf_pages_1based": [
+        68,
+        69
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        70
+      ],
+      "pdf_indices_0based": [
+        69
+      ],
+      "pdf_pages_1based": [
+        70
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        72
+      ],
+      "pdf_indices_0based": [
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133
+      ],
+      "pdf_pages_1based": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134
+      ],
+      "page_count": 63,
+      "confirmed": false
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        135
+      ],
+      "pdf_indices_0based": [
+        134,
+        135,
+        136,
+        137
+      ],
+      "pdf_pages_1based": [
+        135,
+        136,
+        137,
+        138
+      ],
+      "page_count": 4,
+      "confirmed": false
+    }
+  }
+}

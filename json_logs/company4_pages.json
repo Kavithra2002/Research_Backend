@@ -1,0 +1,213 @@
+{
+  "company": "company4",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company4\\Annual\\1686_1749120442813.pdf",
+  "total_pdf_pages": 144,
+  "page_offset": 2,
+  "generated_at": "2026-05-22T11:03:54",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        73
+      ],
+      "pdf_indices_0based": [
+        74
+      ],
+      "pdf_pages_1based": [
+        75
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        74
+      ],
+      "pdf_indices_0based": [
+        75
+      ],
+      "pdf_pages_1based": [
+        76
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        72
+      ],
+      "pdf_indices_0based": [
+        73,
+        74
+      ],
+      "pdf_pages_1based": [
+        74,
+        75
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        75
+      ],
+      "pdf_indices_0based": [
+        76
+      ],
+      "pdf_pages_1based": [
+        77
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        76
+      ],
+      "pdf_indices_0based": [
+        77
+      ],
+      "pdf_pages_1based": [
+        78
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary / Achievements",
+      "printed_pages": [
+        133
+      ],
+      "pdf_indices_0based": [
+        134
+      ],
+      "pdf_pages_1based": [
+        135
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        78
+      ],
+      "pdf_indices_0based": [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131
+      ],
+      "pdf_pages_1based": [
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "page_count": 53,
+      "confirmed": true
+    }
+  }
+}

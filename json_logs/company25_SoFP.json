@@ -1,0 +1,2868 @@
+{
+  "company": "company25",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company25\\Annual\\47811_2025.pdf",
+  "extracted_at": "2026-05-18T11:35:03",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 6,
+      "has_note_col": true,
+      "column_headers": [
+        "Col 1",
+        "Page 1"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "ASSOCIATED",
+          "note_col": "",
+          "amt_cols": [
+            "Col 1",
+            "Page 1"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "FOR THE YEAR ENDED 31 MARCH 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Gross income 7",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,619,992,235",
+            "5,072,097,014"
+          ],
+          "amounts": [
+            5619992235,
+            5072097014
+          ]
+        },
+        {
+          "label": "Interest income Less :Interest expenses (",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            ",556,998,372",
+            "4,966,228,032"
+          ],
+          "amounts": [
+            556998372,
+            4966228032
+          ]
+        },
+        {
+          "label": "Net interest income 8 2",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",280,641,906",
+            ",149,998,184"
+          ],
+          "amounts": [
+            280641906,
+            149998184
+          ]
+        },
+        {
+          "label": "Fee and commission income 9 5",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "6,484,815",
+            "4,114,954"
+          ],
+          "amounts": [
+            6484815,
+            4114954
+          ]
+        },
+        {
+          "label": "Net trading income 10 6",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ",293,206"
+          ],
+          "amounts": [
+            null,
+            293206
+          ]
+        },
+        {
+          "label": "Other operating income 11 4",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "6,804,404",
+            "5,460,822"
+          ],
+          "amounts": [
+            6804404,
+            5460822
+          ]
+        },
+        {
+          "label": "Total operating income 2",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",343,635,769",
+            ",255,867,166"
+          ],
+          "amounts": [
+            343635769,
+            255867166
+          ]
+        },
+        {
+          "label": "Less: Impairment charges and other losses 12",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(340,247,341)",
+            "(457,282,106)"
+          ],
+          "amounts": [
+            -340247341,
+            -457282106
+          ]
+        },
+        {
+          "label": "Net operating income 1 Less: Operating expenses",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",003,388,428",
+            ",798,585,060"
+          ],
+          "amounts": [
+            3388428,
+            798585060
+          ]
+        },
+        {
+          "label": "Personnel expenses 13 Depreciation of property, equipment and amortisation of right-of-use of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(806,624,052)",
+            "(675,037,914)"
+          ],
+          "amounts": [
+            -806624052,
+            -675037914
+          ]
+        },
+        {
+          "label": "(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Amortisation of intangible assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(2,707,093)"
+          ],
+          "amounts": [
+            null,
+            -2707093
+          ]
+        },
+        {
+          "label": "Other operating expenses 14",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(250,471,092)"
+          ],
+          "amounts": [
+            null,
+            -250471092
+          ]
+        },
+        {
+          "label": "Profit before tax on financial services",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",777,509,592",
+            "801,118,700"
+          ],
+          "amounts": [
+            777509592,
+            801118700
+          ]
+        },
+        {
+          "label": "Less : Tax on financial services 15",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(194,246,795)"
+          ],
+          "amounts": [
+            null,
+            -194246795
+          ]
+        },
+        {
+          "label": "Profit before taxation",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",250,957,328",
+            "606,871,905"
+          ],
+          "amounts": [
+            250957328,
+            606871905
+          ]
+        },
+        {
+          "label": "Less: Income tax expense 16",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(288,588,053)"
+          ],
+          "amounts": [
+            null,
+            -288588053
+          ]
+        },
+        {
+          "label": "Net profit for the year Other comprehensive income/ (expense), net of tax Items that will never be reclassified to profit or loss Change in fair value of investments in equity at fair value through other comprehensive income",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "50,098,461",
+            "318,283,852"
+          ],
+          "amounts": [
+            50098461,
+            318283852
+          ]
+        },
+        {
+          "label": "Net changes in fair value of investment in equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,400,703)",
+            "2,151,758"
+          ],
+          "amounts": [
+            -1400703,
+            2151758
+          ]
+        },
+        {
+          "label": "Loss on remeasurement of defined benefit liability",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(23,626,912)",
+            "(12,846,790)"
+          ],
+          "amounts": [
+            -23626912,
+            -12846790
+          ]
+        },
+        {
+          "label": "Total other comprehensive expenses for the year, net of taxes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(25,027,615)",
+            "(10,695,032)"
+          ],
+          "amounts": [
+            -25027615,
+            -10695032
+          ]
+        },
+        {
+          "label": "Total comprehensive income for the year 3 Earnings per share Basic earnings per share (Rs.) 17 Figures in brackets indicate deductions. The accounting policies and notes on pages from 05 to 58 form an integral part of Financial Statements. Colombo 08th May 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "725,070,846",
+            "07,588,820"
+          ],
+          "amounts": [
+            725070846,
+            7588820
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "FOR THE YEAR ENDED 31 MARCH 2025",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Gross income 7",
+          "",
+          "5,619,992,235",
+          "5,072,097,014"
+        ],
+        [
+          "Interest income Less :Interest expenses (",
+          "5",
+          ",556,998,372",
+          "4,966,228,032"
+        ],
+        [
+          "Net interest income 8 2",
+          "3",
+          ",280,641,906",
+          ",149,998,184"
+        ],
+        [
+          "Fee and commission income 9 5",
+          "4",
+          "6,484,815",
+          "4,114,954"
+        ],
+        [
+          "Net trading income 10 6",
+          "(",
+          "295,356)",
+          ",293,206"
+        ],
+        [
+          "Other operating income 11 4",
+          "1",
+          "6,804,404",
+          "5,460,822"
+        ],
+        [
+          "Total operating income 2",
+          "3",
+          ",343,635,769",
+          ",255,867,166"
+        ],
+        [
+          "Less: Impairment charges and other losses 12",
+          "",
+          "(340,247,341)",
+          "(457,282,106)"
+        ],
+        [
+          "Net operating income 1 Less: Operating expenses",
+          "3",
+          ",003,388,428",
+          ",798,585,060"
+        ],
+        [
+          "Personnel expenses 13 Depreciation of property, equipment and amortisation of right-of-use of",
+          "",
+          "(806,624,052)",
+          "(675,037,914)"
+        ],
+        [
+          "(",
+          "",
+          "(75,283,379)",
+          "69,250,261)"
+        ],
+        [
+          "assets",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Amortisation of intangible assets",
+          "(",
+          "3,414,909)",
+          "(2,707,093)"
+        ],
+        [
+          "Other operating expenses 14",
+          "(",
+          "340,556,496)",
+          "(250,471,092)"
+        ],
+        [
+          "Profit before tax on financial services",
+          "1",
+          ",777,509,592",
+          "801,118,700"
+        ],
+        [
+          "Less : Tax on financial services 15",
+          "(",
+          "526,552,264)",
+          "(194,246,795)"
+        ],
+        [
+          "Profit before taxation",
+          "1",
+          ",250,957,328",
+          "606,871,905"
+        ],
+        [
+          "Less: Income tax expense 16",
+          "(",
+          "500,858,867)",
+          "(288,588,053)"
+        ],
+        [
+          "Net profit for the year Other comprehensive income/ (expense), net of tax Items that will never be reclassified to profit or loss Change in fair value of investments in equity at fair value through other comprehensive income",
+          "7",
+          "50,098,461",
+          "318,283,852"
+        ],
+        [
+          "Net changes in fair value of investment in equity",
+          "",
+          "(1,400,703)",
+          "2,151,758"
+        ],
+        [
+          "Loss on remeasurement of defined benefit liability",
+          "",
+          "(23,626,912)",
+          "(12,846,790)"
+        ],
+        [
+          "Total other comprehensive expenses for the year, net of taxes",
+          "",
+          "(25,027,615)",
+          "(10,695,032)"
+        ],
+        [
+          "Total comprehensive income for the year 3 Earnings per share Basic earnings per share (Rs.) 17 Figures in brackets indicate deductions. The accounting policies and notes on pages from 05 to 58 form an integral part of Financial Statements. Colombo 08th May 2025",
+          "",
+          "725,070,846",
+          "07,588,820"
+        ]
+      ]
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income",
+      "page_1based": 6,
+      "has_note_col": true,
+      "column_headers": [
+        "Col 1",
+        "Page 1"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "ASSOCIATED",
+          "note_col": "",
+          "amt_cols": [
+            "Col 1",
+            "Page 1"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "FOR THE YEAR ENDED 31 MARCH 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Gross income 7",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,619,992,235",
+            "5,072,097,014"
+          ],
+          "amounts": [
+            5619992235,
+            5072097014
+          ]
+        },
+        {
+          "label": "Interest income Less :Interest expenses (",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            ",556,998,372",
+            "4,966,228,032"
+          ],
+          "amounts": [
+            556998372,
+            4966228032
+          ]
+        },
+        {
+          "label": "Net interest income 8 2",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",280,641,906",
+            ",149,998,184"
+          ],
+          "amounts": [
+            280641906,
+            149998184
+          ]
+        },
+        {
+          "label": "Fee and commission income 9 5",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "6,484,815",
+            "4,114,954"
+          ],
+          "amounts": [
+            6484815,
+            4114954
+          ]
+        },
+        {
+          "label": "Net trading income 10 6",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ",293,206"
+          ],
+          "amounts": [
+            null,
+            293206
+          ]
+        },
+        {
+          "label": "Other operating income 11 4",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "6,804,404",
+            "5,460,822"
+          ],
+          "amounts": [
+            6804404,
+            5460822
+          ]
+        },
+        {
+          "label": "Total operating income 2",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",343,635,769",
+            ",255,867,166"
+          ],
+          "amounts": [
+            343635769,
+            255867166
+          ]
+        },
+        {
+          "label": "Less: Impairment charges and other losses 12",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(340,247,341)",
+            "(457,282,106)"
+          ],
+          "amounts": [
+            -340247341,
+            -457282106
+          ]
+        },
+        {
+          "label": "Net operating income 1 Less: Operating expenses",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",003,388,428",
+            ",798,585,060"
+          ],
+          "amounts": [
+            3388428,
+            798585060
+          ]
+        },
+        {
+          "label": "Personnel expenses 13 Depreciation of property, equipment and amortisation of right-of-use of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(806,624,052)",
+            "(675,037,914)"
+          ],
+          "amounts": [
+            -806624052,
+            -675037914
+          ]
+        },
+        {
+          "label": "(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Amortisation of intangible assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(2,707,093)"
+          ],
+          "amounts": [
+            null,
+            -2707093
+          ]
+        },
+        {
+          "label": "Other operating expenses 14",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(250,471,092)"
+          ],
+          "amounts": [
+            null,
+            -250471092
+          ]
+        },
+        {
+          "label": "Profit before tax on financial services",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",777,509,592",
+            "801,118,700"
+          ],
+          "amounts": [
+            777509592,
+            801118700
+          ]
+        },
+        {
+          "label": "Less : Tax on financial services 15",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(194,246,795)"
+          ],
+          "amounts": [
+            null,
+            -194246795
+          ]
+        },
+        {
+          "label": "Profit before taxation",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",250,957,328",
+            "606,871,905"
+          ],
+          "amounts": [
+            250957328,
+            606871905
+          ]
+        },
+        {
+          "label": "Less: Income tax expense 16",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(288,588,053)"
+          ],
+          "amounts": [
+            null,
+            -288588053
+          ]
+        },
+        {
+          "label": "Net profit for the year Other comprehensive income/ (expense), net of tax Items that will never be reclassified to profit or loss Change in fair value of investments in equity at fair value through other comprehensive income",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "50,098,461",
+            "318,283,852"
+          ],
+          "amounts": [
+            50098461,
+            318283852
+          ]
+        },
+        {
+          "label": "Net changes in fair value of investment in equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,400,703)",
+            "2,151,758"
+          ],
+          "amounts": [
+            -1400703,
+            2151758
+          ]
+        },
+        {
+          "label": "Loss on remeasurement of defined benefit liability",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(23,626,912)",
+            "(12,846,790)"
+          ],
+          "amounts": [
+            -23626912,
+            -12846790
+          ]
+        },
+        {
+          "label": "Total other comprehensive expenses for the year, net of taxes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(25,027,615)",
+            "(10,695,032)"
+          ],
+          "amounts": [
+            -25027615,
+            -10695032
+          ]
+        },
+        {
+          "label": "Total comprehensive income for the year 3 Earnings per share Basic earnings per share (Rs.) 17 Figures in brackets indicate deductions. The accounting policies and notes on pages from 05 to 58 form an integral part of Financial Statements. Colombo 08th May 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "725,070,846",
+            "07,588,820"
+          ],
+          "amounts": [
+            725070846,
+            7588820
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "FOR THE YEAR ENDED 31 MARCH 2025",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Gross income 7",
+          "",
+          "5,619,992,235",
+          "5,072,097,014"
+        ],
+        [
+          "Interest income Less :Interest expenses (",
+          "5",
+          ",556,998,372",
+          "4,966,228,032"
+        ],
+        [
+          "Net interest income 8 2",
+          "3",
+          ",280,641,906",
+          ",149,998,184"
+        ],
+        [
+          "Fee and commission income 9 5",
+          "4",
+          "6,484,815",
+          "4,114,954"
+        ],
+        [
+          "Net trading income 10 6",
+          "(",
+          "295,356)",
+          ",293,206"
+        ],
+        [
+          "Other operating income 11 4",
+          "1",
+          "6,804,404",
+          "5,460,822"
+        ],
+        [
+          "Total operating income 2",
+          "3",
+          ",343,635,769",
+          ",255,867,166"
+        ],
+        [
+          "Less: Impairment charges and other losses 12",
+          "",
+          "(340,247,341)",
+          "(457,282,106)"
+        ],
+        [
+          "Net operating income 1 Less: Operating expenses",
+          "3",
+          ",003,388,428",
+          ",798,585,060"
+        ],
+        [
+          "Personnel expenses 13 Depreciation of property, equipment and amortisation of right-of-use of",
+          "",
+          "(806,624,052)",
+          "(675,037,914)"
+        ],
+        [
+          "(",
+          "",
+          "(75,283,379)",
+          "69,250,261)"
+        ],
+        [
+          "assets",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Amortisation of intangible assets",
+          "(",
+          "3,414,909)",
+          "(2,707,093)"
+        ],
+        [
+          "Other operating expenses 14",
+          "(",
+          "340,556,496)",
+          "(250,471,092)"
+        ],
+        [
+          "Profit before tax on financial services",
+          "1",
+          ",777,509,592",
+          "801,118,700"
+        ],
+        [
+          "Less : Tax on financial services 15",
+          "(",
+          "526,552,264)",
+          "(194,246,795)"
+        ],
+        [
+          "Profit before taxation",
+          "1",
+          ",250,957,328",
+          "606,871,905"
+        ],
+        [
+          "Less: Income tax expense 16",
+          "(",
+          "500,858,867)",
+          "(288,588,053)"
+        ],
+        [
+          "Net profit for the year Other comprehensive income/ (expense), net of tax Items that will never be reclassified to profit or loss Change in fair value of investments in equity at fair value through other comprehensive income",
+          "7",
+          "50,098,461",
+          "318,283,852"
+        ],
+        [
+          "Net changes in fair value of investment in equity",
+          "",
+          "(1,400,703)",
+          "2,151,758"
+        ],
+        [
+          "Loss on remeasurement of defined benefit liability",
+          "",
+          "(23,626,912)",
+          "(12,846,790)"
+        ],
+        [
+          "Total other comprehensive expenses for the year, net of taxes",
+          "",
+          "(25,027,615)",
+          "(10,695,032)"
+        ],
+        [
+          "Total comprehensive income for the year 3 Earnings per share Basic earnings per share (Rs.) 17 Figures in brackets indicate deductions. The accounting policies and notes on pages from 05 to 58 form an integral part of Financial Statements. Colombo 08th May 2025",
+          "",
+          "725,070,846",
+          "07,588,820"
+        ]
+      ]
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 7,
+      "has_note_col": true,
+      "column_headers": [
+        "Col 1",
+        "Col 2"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Description",
+          "note_col": "Note",
+          "amt_cols": [
+            "Col 1",
+            "Col 2"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Note Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents 21 1",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "50,733,173",
+            "92,969,203"
+          ],
+          "amounts": [
+            50733173,
+            92969203
+          ]
+        },
+        {
+          "label": "Financial assets - amortised cost 22 6",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            ",587,989,431",
+            ",270,936,008"
+          ],
+          "amounts": [
+            587989431,
+            270936008
+          ]
+        },
+        {
+          "label": "Financial assets - recognised through profit or loss - measured at fair value 23 2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "6,534,372"
+          ],
+          "amounts": [
+            null,
+            6534372
+          ]
+        },
+        {
+          "label": "Loans and receivables 24",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            "98,569,640",
+            "498,634,959"
+          ],
+          "amounts": [
+            98569640,
+            498634959
+          ]
+        },
+        {
+          "label": "Lease rental receivables from customers 25 Financial assets - measured at fair value through other",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "13,209,698,331",
+            "10,541,944,016"
+          ],
+          "amounts": [
+            13209698331,
+            10541944016
+          ]
+        },
+        {
+          "label": "comprehensive income 27 3",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "1,046,206",
+            "7,096,782"
+          ],
+          "amounts": [
+            1046206,
+            7096782
+          ]
+        },
+        {
+          "label": "Investment properties 28",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "61,100,000",
+            "150,000,000"
+          ],
+          "amounts": [
+            61100000,
+            150000000
+          ]
+        },
+        {
+          "label": "Other assets 29 6",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "9,205,660",
+            "9,025,822"
+          ],
+          "amounts": [
+            9205660,
+            9025822
+          ]
+        },
+        {
+          "label": "Property, equipment and right-of-use of assets 30",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",187,542,565",
+            "1,120,205,526"
+          ],
+          "amounts": [
+            187542565,
+            1120205526
+          ]
+        },
+        {
+          "label": "Intangible assets 31 1",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "1,180,815",
+            "4,595,724"
+          ],
+          "amounts": [
+            1180815,
+            4595724
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            "85,244,360",
+            "385,244,360"
+          ],
+          "amounts": [
+            85244360,
+            385244360
+          ]
+        },
+        {
+          "label": "Total assets 1",
+          "is_section_header": false,
+          "note": "2",
+          "amounts_raw": [
+            "1,172,310,181",
+            "9,307,186,772"
+          ],
+          "amounts": [
+            1172310181,
+            9307186772
+          ]
+        },
+        {
+          "label": "Liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Dues to banks and other borrowings 33",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "723,726,558"
+          ],
+          "amounts": [
+            null,
+            723726558
+          ]
+        },
+        {
+          "label": "Deposits from customers 34",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,548,876,387",
+            "14,552,850,301"
+          ],
+          "amounts": [
+            15548876387,
+            14552850301
+          ]
+        },
+        {
+          "label": "Trade and other payables 35",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",074,346,056",
+            "515,758,598"
+          ],
+          "amounts": [
+            74346056,
+            515758598
+          ]
+        },
+        {
+          "label": "Current tax liability 36",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "00,117,235",
+            "103,998,753"
+          ],
+          "amounts": [
+            117235,
+            103998753
+          ]
+        },
+        {
+          "label": "Retirement benefit obligations 37 9",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "39,797,235",
+            "3,567,035"
+          ],
+          "amounts": [
+            39797235,
+            3567035
+          ]
+        },
+        {
+          "label": "Deferred tax liabilities 32 7",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "1,731,909",
+            "4,915,015"
+          ],
+          "amounts": [
+            1731909,
+            4915015
+          ]
+        },
+        {
+          "label": "Total liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "17,204,868,822",
+            "16,064,816,260"
+          ],
+          "amounts": [
+            17204868822,
+            16064816260
+          ]
+        },
+        {
+          "label": "Equity",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated capital 38",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "11,273,941",
+            "611,273,941"
+          ],
+          "amounts": [
+            11273941,
+            611273941
+          ]
+        },
+        {
+          "label": "Retained earnings 39 2",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",122,324,896",
+            ",286,168,002"
+          ],
+          "amounts": [
+            122324896,
+            286168002
+          ]
+        },
+        {
+          "label": "Other reserves 40",
+          "is_section_header": false,
+          "note": "2",
+          "amounts_raw": [
+            "33,842,522",
+            "344,928,569"
+          ],
+          "amounts": [
+            33842522,
+            344928569
+          ]
+        },
+        {
+          "label": "Total equity",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            ",967,441,359",
+            "3,242,370,512"
+          ],
+          "amounts": [
+            967441359,
+            3242370512
+          ]
+        },
+        {
+          "label": "Total liabilities and equity 1",
+          "is_section_header": false,
+          "note": "2",
+          "amounts_raw": [
+            "1,172,310,181",
+            "9,307,186,772"
+          ],
+          "amounts": [
+            1172310181,
+            9307186772
+          ]
+        },
+        {
+          "label": "Net asset value per share (Rs. ) The accounting policies and notes on pages from 05 to 58 form an integral part of these",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "35.01",
+            "28.61"
+          ],
+          "amounts": [
+            35.01,
+            28.61
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "As at",
+          "As at",
+          "",
+          ""
+        ],
+        [
+          "Note Rs.",
+          "Rs.",
+          "",
+          ""
+        ],
+        [
+          "Assets",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash and cash equivalents 21 1",
+          "1",
+          "50,733,173",
+          "92,969,203"
+        ],
+        [
+          "Financial assets - amortised cost 22 6",
+          "5",
+          ",587,989,431",
+          ",270,936,008"
+        ],
+        [
+          "Financial assets - recognised through profit or loss - measured at fair value 23 2",
+          "",
+          "-",
+          "6,534,372"
+        ],
+        [
+          "Loans and receivables 24",
+          "3",
+          "98,569,640",
+          "498,634,959"
+        ],
+        [
+          "Lease rental receivables from customers 25 Financial assets - measured at fair value through other",
+          "",
+          "13,209,698,331",
+          "10,541,944,016"
+        ],
+        [
+          "comprehensive income 27 3",
+          "1",
+          "1,046,206",
+          "7,096,782"
+        ],
+        [
+          "Investment properties 28",
+          "1",
+          "61,100,000",
+          "150,000,000"
+        ],
+        [
+          "Other assets 29 6",
+          "6",
+          "9,205,660",
+          "9,025,822"
+        ],
+        [
+          "Property, equipment and right-of-use of assets 30",
+          "1",
+          ",187,542,565",
+          "1,120,205,526"
+        ],
+        [
+          "Intangible assets 31 1",
+          "1",
+          "1,180,815",
+          "4,595,724"
+        ],
+        [
+          "Goodwill",
+          "3",
+          "85,244,360",
+          "385,244,360"
+        ],
+        [
+          "Total assets 1",
+          "2",
+          "1,172,310,181",
+          "9,307,186,772"
+        ],
+        [
+          "Liabilities",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Dues to banks and other borrowings 33",
+          "",
+          "-",
+          "723,726,558"
+        ],
+        [
+          "Deposits from customers 34",
+          "",
+          "15,548,876,387",
+          "14,552,850,301"
+        ],
+        [
+          "Trade and other payables 35",
+          "1",
+          ",074,346,056",
+          "515,758,598"
+        ],
+        [
+          "Current tax liability 36",
+          "4",
+          "00,117,235",
+          "103,998,753"
+        ],
+        [
+          "Retirement benefit obligations 37 9",
+          "1",
+          "39,797,235",
+          "3,567,035"
+        ],
+        [
+          "Deferred tax liabilities 32 7",
+          "4",
+          "1,731,909",
+          "4,915,015"
+        ],
+        [
+          "Total liabilities",
+          "",
+          "17,204,868,822",
+          "16,064,816,260"
+        ],
+        [
+          "Equity",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Stated capital 38",
+          "6",
+          "11,273,941",
+          "611,273,941"
+        ],
+        [
+          "Retained earnings 39 2",
+          "3",
+          ",122,324,896",
+          ",286,168,002"
+        ],
+        [
+          "Other reserves 40",
+          "2",
+          "33,842,522",
+          "344,928,569"
+        ],
+        [
+          "Total equity",
+          "3",
+          ",967,441,359",
+          "3,242,370,512"
+        ],
+        [
+          "Total liabilities and equity 1",
+          "2",
+          "1,172,310,181",
+          "9,307,186,772"
+        ],
+        [
+          "Net asset value per share (Rs. )  The accounting policies and notes on pages from 05 to 58 form an integral part of these",
+          "",
+          "35.01",
+          "28.61"
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 8,
+      "has_note_col": true,
+      "column_headers": [
+        "Stated Capital",
+        "Capital Reserves",
+        "Revaluation Reserve",
+        "General Reserve",
+        "Statutory Reserve Fund",
+        "Value Reserve",
+        "Regulatory Loss Allowance Reserve",
+        "Retained Earnings",
+        "Page 3 Total"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "ASSOCIATED",
+          "note_col": "COMPANY PLC",
+          "amt_cols": [
+            "Stated Capital",
+            "Capital Reserves",
+            "Revaluation Reserve",
+            "General Reserve",
+            "Statutory Reserve Fund",
+            "Value Reserve",
+            "Regulatory Loss Allowance Reserve",
+            "Retained Earnings",
+            "Page 3 Total"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "FOR THE YEAR ENDED 31 MARCH",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Fair",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Reserve",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as at 31 March 2023 3 3 1 1 1 1 2 2",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "11,273,941",
+            "2,864,774",
+            "1,982,185",
+            ",029,052",
+            "13,610,307",
+            "3,588,029",
+            "11,788,655",
+            ",018,644,749",
+            ",934,781,692"
+          ],
+          "amounts": [
+            11273941,
+            2864774,
+            1982185,
+            29052,
+            13610307,
+            3588029,
+            11788655,
+            18644749,
+            934781692
+          ]
+        },
+        {
+          "label": "Net profit for the year 3 3",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "18,283,852",
+            "18,283,852"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            18283852,
+            18283852
+          ]
+        },
+        {
+          "label": "Other comprehensive 2 ( (",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Transfers to/(from) during the year 1 2 (",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as at 31 March 2024 3 3 1 1 1 1 2 3",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "11,273,941",
+            "2,864,774",
+            "1,982,185",
+            ",029,052",
+            "29,524,500",
+            "5,739,787",
+            "33,788,272",
+            ",286,168,002",
+            ",242,370,512"
+          ],
+          "amounts": [
+            11273941,
+            2864774,
+            1982185,
+            29052,
+            29524500,
+            5739787,
+            33788272,
+            286168002,
+            242370512
+          ]
+        },
+        {
+          "label": "Net profit for the year 7 7",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "50,098,461",
+            "50,098,461"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            50098461,
+            50098461
+          ]
+        },
+        {
+          "label": "Other comprehensive expense net of ( ( (",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Transfers to/(from) during the year 3 ( ( 1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "09,685,346",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            9685346,
+            null
+          ]
+        },
+        {
+          "label": "Balance as at 31 March 2025 3 3 1 1 9 3 3 The accounting policies and notes on form an part of Financial Statements. Colombo 08th May 2025",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "11,273,941",
+            "2,864,774",
+            "1,982,185",
+            ",029,052",
+            "67,029,423",
+            "37,087",
+            "-",
+            ",122,324,897",
+            ",967,441,359"
+          ],
+          "amounts": [
+            11273941,
+            2864774,
+            1982185,
+            29052,
+            67029423,
+            37087,
+            null,
+            122324897,
+            967441359
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "FOR THE YEAR ENDED 31 MARCH",
+          "2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Fair",
+          "",
+          "Stated",
+          "Capital",
+          "Revaluation",
+          "General",
+          "Statutory",
+          "Value",
+          "Allowance",
+          "Retained",
+          ""
+        ],
+        [
+          "Reserve",
+          "",
+          "Capital",
+          "Reserves",
+          "Reserve",
+          "Reserve",
+          "Fund",
+          "Reserve",
+          "Reserve",
+          "Earnings",
+          "Total"
+        ],
+        [
+          "Balance as at 31 March 2023 3 3 1 1 1 1 2 2",
+          "6",
+          "11,273,941",
+          "2,864,774",
+          "1,982,185",
+          ",029,052",
+          "13,610,307",
+          "3,588,029",
+          "11,788,655",
+          ",018,644,749",
+          ",934,781,692"
+        ],
+        [
+          "Net profit for the year 3 3",
+          "",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "18,283,852",
+          "18,283,852"
+        ],
+        [
+          "Other comprehensive 2 ( (",
+          "income/(expense) ne t o f t a",
+          "x -",
+          "-",
+          "-",
+          "-",
+          "-",
+          ",151,758",
+          "-",
+          "12,846,790)",
+          "10,695,032)"
+        ],
+        [
+          "Transfers to/(from) during the year 1 2 (",
+          "",
+          "-",
+          "-",
+          "-",
+          "-",
+          "5,914,193",
+          "-",
+          "1,999,617",
+          "37,913,810)",
+          "-"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-"
+        ],
+        [
+          "Balance as at 31 March 2024 3 3 1 1 1 1 2 3",
+          "6",
+          "11,273,941",
+          "2,864,774",
+          "1,982,185",
+          ",029,052",
+          "29,524,500",
+          "5,739,787",
+          "33,788,272",
+          ",286,168,002",
+          ",242,370,512"
+        ],
+        [
+          "Net profit for the year 7 7",
+          "",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "50,098,461",
+          "50,098,461"
+        ],
+        [
+          "Other comprehensive expense net of ( ( (",
+          "tax",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "1,400,703)",
+          "-",
+          "23,626,912)",
+          "25,027,615)"
+        ],
+        [
+          "Transfers to/(from) during the year 3 ( ( 1",
+          "",
+          "-",
+          "-",
+          "-",
+          "-",
+          "7,504,923",
+          "13,401,997)",
+          "133,788,272)",
+          "09,685,346",
+          "-"
+        ],
+        [
+          "Balance as at 31 March 2025 3 3 1 1 9 3 3 The accounting policies and notes on form an part of Financial Statements. Colombo 08th May 2025",
+          "6",
+          "11,273,941",
+          "2,864,774",
+          "1,982,185",
+          ",029,052",
+          "67,029,423",
+          "37,087",
+          "-",
+          ",122,324,897",
+          ",967,441,359"
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 9,
+      "has_note_col": true,
+      "column_headers": [
+        "Col 1",
+        "Page 4"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "ASSOCIATED",
+          "note_col": "",
+          "amt_cols": [
+            "Col 1",
+            "Page 4"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Cash flows from operating activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Net profit before taxation Adjustments for; Depreciation of property and equipment and amortisation of right of use",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",250,957,328",
+            "606,871,905"
+          ],
+          "amounts": [
+            250957328,
+            606871905
+          ]
+        },
+        {
+          "label": "assets and intangible assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "78,698,288",
+            "71,957,353"
+          ],
+          "amounts": [
+            78698288,
+            71957353
+          ]
+        },
+        {
+          "label": "Profit on disposals of property and equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,116,883)",
+            "(1,738,086)"
+          ],
+          "amounts": [
+            -2116883,
+            -1738086
+          ]
+        },
+        {
+          "label": "Fair value gain on investment property",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(11,100,000)",
+            "(37,000,000)"
+          ],
+          "amounts": [
+            -11100000,
+            -37000000
+          ]
+        },
+        {
+          "label": "Provision for bad and doubtful debts",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            "40,247,341",
+            "457,282,106"
+          ],
+          "amounts": [
+            40247341,
+            457282106
+          ]
+        },
+        {
+          "label": "Provision for gratuity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "23,890,469",
+            "19,864,293"
+          ],
+          "amounts": [
+            23890469,
+            19864293
+          ]
+        },
+        {
+          "label": "Interest on borrowings",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "24,901,691",
+            "122,675,556"
+          ],
+          "amounts": [
+            24901691,
+            122675556
+          ]
+        },
+        {
+          "label": "Dividend receipt",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,072,050)",
+            "(1,505,341)"
+          ],
+          "amounts": [
+            -2072050,
+            -1505341
+          ]
+        },
+        {
+          "label": "Written off - Loans and advances",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(637,398,727)",
+            "(325,171,408)"
+          ],
+          "amounts": [
+            -637398727,
+            -325171408
+          ]
+        },
+        {
+          "label": "Operating profit before working capital changes",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",166,007,457",
+            "913,236,378"
+          ],
+          "amounts": [
+            166007457,
+            913236378
+          ]
+        },
+        {
+          "label": "Decrease/(increase) in financial investments",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "33,859,348",
+            "(2,383,041,545)"
+          ],
+          "amounts": [
+            33859348,
+            -2383041545
+          ]
+        },
+        {
+          "label": "Increase in loans and advances",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,270,537,610)",
+            "(1,063,511,256)"
+          ],
+          "amounts": [
+            -2270537610,
+            -1063511256
+          ]
+        },
+        {
+          "label": "Increase in ROU Asset",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(103,316,855)",
+            "(32,293,942)"
+          ],
+          "amounts": [
+            -103316855,
+            -32293942
+          ]
+        },
+        {
+          "label": "(Increase)/decrease in other assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(179,838)",
+            "28,006,111"
+          ],
+          "amounts": [
+            -179838,
+            28006111
+          ]
+        },
+        {
+          "label": "Increase in public deposits",
+          "is_section_header": false,
+          "note": "9",
+          "amounts_raw": [
+            "96,026,086",
+            "2,110,027,548"
+          ],
+          "amounts": [
+            96026086,
+            2110027548
+          ]
+        },
+        {
+          "label": "Increase in trade and other payables",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            "58,587,457",
+            "103,978,295"
+          ],
+          "amounts": [
+            58587457,
+            103978295
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(85,561,412)",
+            "(1,236,834,790)"
+          ],
+          "amounts": [
+            -85561412,
+            -1236834790
+          ]
+        },
+        {
+          "label": "Cash generated from/(used in) operations",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            ",080,446,045",
+            "(323,598,412)"
+          ],
+          "amounts": [
+            80446045,
+            -323598412
+          ]
+        },
+        {
+          "label": "Income tax paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(194,253,446)"
+          ],
+          "amounts": [
+            null,
+            -194253446
+          ]
+        },
+        {
+          "label": "Retirement benefits liabilities paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(2,854,000)"
+          ],
+          "amounts": [
+            null,
+            -2854000
+          ]
+        },
+        {
+          "label": "Interest paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(242,270,206)",
+            "-"
+          ],
+          "amounts": [
+            -242270206,
+            null
+          ]
+        },
+        {
+          "label": "Net cash generated from/(used in) operating activities Cash flows from investment activities",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            "99,236,641",
+            "(520,705,859)"
+          ],
+          "amounts": [
+            99236641,
+            -520705859
+          ]
+        },
+        {
+          "label": "Dividends received",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,072,050",
+            "1,505,341"
+          ],
+          "amounts": [
+            2072050,
+            1505341
+          ]
+        },
+        {
+          "label": "Purchase of property and equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(39,370,179)",
+            "(10,323,128)"
+          ],
+          "amounts": [
+            -39370179,
+            -10323128
+          ]
+        },
+        {
+          "label": "Purchase of intangible assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(13,595,263)"
+          ],
+          "amounts": [
+            null,
+            -13595263
+          ]
+        },
+        {
+          "label": "Proceeds from disposal of property and equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,183,501",
+            "1,870,418"
+          ],
+          "amounts": [
+            2183501,
+            1870418
+          ]
+        },
+        {
+          "label": "Net cash used in investing activities Cash flows from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(20,542,633)"
+          ],
+          "amounts": [
+            null,
+            -20542633
+          ]
+        },
+        {
+          "label": "Proceeds on borrowings 6",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "01,051,002"
+          ],
+          "amounts": [
+            null,
+            1051002
+          ]
+        },
+        {
+          "label": "Repayments of borrowings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Net cash (used in)/generated from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "601,051,002"
+          ],
+          "amounts": [
+            null,
+            601051002
+          ]
+        },
+        {
+          "label": "Net (decrease)/increase in cash and cash equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(42,236,030)",
+            "59,802,511"
+          ],
+          "amounts": [
+            -42236030,
+            59802511
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the beginning of the year",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "92,969,203",
+            "133,166,692"
+          ],
+          "amounts": [
+            92969203,
+            133166692
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year Cash and cash equivalents comprises",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "50,733,173",
+            "192,969,203"
+          ],
+          "amounts": [
+            50733173,
+            192969203
+          ]
+        },
+        {
+          "label": "Cash and bank balances",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "50,733,173",
+            "192,969,203"
+          ],
+          "amounts": [
+            50733173,
+            192969203
+          ]
+        },
+        {
+          "label": "Bank overdrafts",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "150,733,173",
+            "192,969,203"
+          ],
+          "amounts": [
+            150733173,
+            192969203
+          ]
+        },
+        {
+          "label": "The accounting policies and notes on pages from 05 to 58 form an integral part of these Colombo 08th May 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Rs.",
+          "Rs.",
+          "",
+          ""
+        ],
+        [
+          "Cash flows from operating activities",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Net profit before taxation Adjustments for; Depreciation of property and equipment and amortisation of right of use",
+          "1",
+          ",250,957,328",
+          "606,871,905"
+        ],
+        [
+          "assets and intangible assets",
+          "",
+          "78,698,288",
+          "71,957,353"
+        ],
+        [
+          "Profit on disposals of property and equipment",
+          "",
+          "(2,116,883)",
+          "(1,738,086)"
+        ],
+        [
+          "Fair value gain on investment property",
+          "",
+          "(11,100,000)",
+          "(37,000,000)"
+        ],
+        [
+          "Provision for bad and doubtful debts",
+          "3",
+          "40,247,341",
+          "457,282,106"
+        ],
+        [
+          "Provision for gratuity",
+          "",
+          "23,890,469",
+          "19,864,293"
+        ],
+        [
+          "Interest on borrowings",
+          "1",
+          "24,901,691",
+          "122,675,556"
+        ],
+        [
+          "Dividend receipt",
+          "",
+          "(2,072,050)",
+          "(1,505,341)"
+        ],
+        [
+          "Written off - Loans and advances",
+          "",
+          "(637,398,727)",
+          "(325,171,408)"
+        ],
+        [
+          "Operating profit before working capital changes",
+          "1",
+          ",166,007,457",
+          "913,236,378"
+        ],
+        [
+          "Decrease/(increase) in financial investments",
+          "7",
+          "33,859,348",
+          "(2,383,041,545)"
+        ],
+        [
+          "Increase in loans and advances",
+          "",
+          "(2,270,537,610)",
+          "(1,063,511,256)"
+        ],
+        [
+          "Increase in ROU Asset",
+          "",
+          "(103,316,855)",
+          "(32,293,942)"
+        ],
+        [
+          "(Increase)/decrease in other assets",
+          "",
+          "(179,838)",
+          "28,006,111"
+        ],
+        [
+          "Increase in public deposits",
+          "9",
+          "96,026,086",
+          "2,110,027,548"
+        ],
+        [
+          "Increase in trade and other payables",
+          "5",
+          "58,587,457",
+          "103,978,295"
+        ],
+        [
+          "",
+          "",
+          "(85,561,412)",
+          "(1,236,834,790)"
+        ],
+        [
+          "Cash generated from/(used in) operations",
+          "1",
+          ",080,446,045",
+          "(323,598,412)"
+        ],
+        [
+          "Income tax paid",
+          "(",
+          "227,526,198)",
+          "(194,253,446)"
+        ],
+        [
+          "Retirement benefits liabilities paid",
+          "(",
+          "11,413,000)",
+          "(2,854,000)"
+        ],
+        [
+          "Interest paid",
+          "",
+          "(242,270,206)",
+          "-"
+        ],
+        [
+          "Net cash generated from/(used in) operating activities Cash flows from investment activities",
+          "5",
+          "99,236,641",
+          "(520,705,859)"
+        ],
+        [
+          "Dividends received",
+          "",
+          "2,072,050",
+          "1,505,341"
+        ],
+        [
+          "Purchase of property and equipment",
+          "",
+          "(39,370,179)",
+          "(10,323,128)"
+        ],
+        [
+          "Purchase of intangible assets",
+          "",
+          "-",
+          "(13,595,263)"
+        ],
+        [
+          "Proceeds from disposal of property and equipment",
+          "",
+          "2,183,501",
+          "1,870,418"
+        ],
+        [
+          "Net cash used in investing activities Cash flows from financing activities",
+          "(",
+          "35,114,628)",
+          "(20,542,633)"
+        ],
+        [
+          "Proceeds on borrowings 6",
+          "",
+          "-",
+          "01,051,002"
+        ],
+        [
+          "Repayments of borrowings",
+          "(",
+          "606,358,043)",
+          "-"
+        ],
+        [
+          "Net cash (used in)/generated from financing activities",
+          "(",
+          "606,358,043)",
+          "601,051,002"
+        ],
+        [
+          "Net (decrease)/increase in cash and cash equivalents",
+          "",
+          "(42,236,030)",
+          "59,802,511"
+        ],
+        [
+          "Cash and cash equivalents at the beginning of the year",
+          "1",
+          "92,969,203",
+          "133,166,692"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year Cash and cash equivalents comprises",
+          "1",
+          "50,733,173",
+          "192,969,203"
+        ],
+        [
+          "Cash and bank balances",
+          "1",
+          "50,733,173",
+          "192,969,203"
+        ],
+        [
+          "Bank overdrafts",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year",
+          "",
+          "150,733,173",
+          "192,969,203"
+        ],
+        [
+          "The accounting policies and notes on pages from 05 to 58 form an integral part of these Colombo 08th May 2025",
+          "Financial",
+          "Statements.",
+          "-"
+        ]
+      ]
+    }
+  }
+}

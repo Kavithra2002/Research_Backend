@@ -1,0 +1,185 @@
+{
+  "company": "company41",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company41\\Annual\\48836_2025.pdf",
+  "total_pdf_pages": 89,
+  "page_offset": 0,
+  "generated_at": "2026-05-21T15:08:47",
+  "statements": {
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        43
+      ],
+      "pdf_indices_0based": [
+        42,
+        43
+      ],
+      "pdf_pages_1based": [
+        43,
+        44
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        45
+      ],
+      "pdf_indices_0based": [
+        44,
+        45
+      ],
+      "pdf_pages_1based": [
+        45,
+        46
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        47
+      ],
+      "pdf_indices_0based": [
+        46,
+        47
+      ],
+      "pdf_pages_1based": [
+        47,
+        48
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        49
+      ],
+      "pdf_indices_0based": [
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "pdf_pages_1based": [
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "page_count": 5,
+      "confirmed": false
+    },
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        56
+      ],
+      "pdf_indices_0based": [
+        55,
+        56,
+        57,
+        58,
+        59
+      ],
+      "pdf_pages_1based": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "page_count": 5,
+      "confirmed": false
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        61
+      ],
+      "pdf_indices_0based": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "pdf_pages_1based": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "page_count": 20,
+      "confirmed": false
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary / Achievements",
+      "printed_pages": [
+        81
+      ],
+      "pdf_indices_0based": [
+        80
+      ],
+      "pdf_pages_1based": [
+        81
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        83
+      ],
+      "pdf_indices_0based": [
+        82,
+        83,
+        84
+      ],
+      "pdf_pages_1based": [
+        83,
+        84,
+        85
+      ],
+      "page_count": 3,
+      "confirmed": false
+    }
+  }
+}

@@ -1,0 +1,2254 @@
+{
+  "income_statement": {
+    "status": "ok",
+    "data": {
+      "statement_title": "INCOME STATEMENT",
+      "preamble": "For the year ended 31st March",
+      "footnotes": "Figures in brackets indicate deductions.",
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              "Rs."
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Income",
+                "4",
+                "4,727,585,483",
+                "4,868,237,960"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest income",
+                "5",
+                "4,463,848,627",
+                "4,601,526,873"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest expenses",
+                "6",
+                "(2,317,453,659)",
+                "(2,807,119,126)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net interest income",
+                "",
+                "2,146,394,968",
+                "1,794,407,747"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Fee and commission income",
+                "7",
+                "161,223,502",
+                "162,374,288"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other operating income",
+                "8",
+                "102,513,354",
+                "104,336,799"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total operating income",
+                "",
+                "2,410,131,824",
+                "2,061,118,834"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Impairment charges for loans and receivables at amortised cost",
+                "9",
+                "(90,742,235)",
+                "(140,178,886)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net operating income",
+                "",
+                "2,319,389,589",
+                "1,920,939,948"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Operating expenses",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Personnel expenses",
+                "10",
+                "(808,700,738)",
+                "(666,359,880)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Depreciation and amortisation",
+                "",
+                "(158,552,117)",
+                "(83,285,795)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other operating expenses",
+                "11",
+                "(748,019,996)",
+                "(621,594,968)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Operating profit before Value Added Tax",
+                "",
+                "604,116,738",
+                "549,700,205"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Tax on financial services",
+                "",
+                "(176,104,253)",
+                "(200,218,616)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit before income tax",
+                "",
+                "428,012,485",
+                "349,481,589"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Income tax expense",
+                "12",
+                "(56,216,581)",
+                "(954,439)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit for the year",
+                "",
+                "371,795,904",
+                "348,527,150"
+              ],
+              "style": "subtotal"
+            },
+            {
+              "cells": [
+                "Basic earnings per share (Rs.)",
+                "",
+                "13.1",
+                "1.76"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Dividend per share (Rs.)",
+                "",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Income Statement / Statement of Profit or Loss"
+  },
+  "oci": {
+    "status": "ok",
+    "data": {
+      "statement_title": "STATEMENT OF OTHER COMPREHENSIVE INCOME",
+      "preamble": "For the year ended 31st March",
+      "footnotes": "Figures in brackets indicate deductions.\nThe accounting policies and notes on pages 173 to 229 form an integral part of these Financial Statements.\nColombo\n27th May 2025",
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              "Rs."
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Profit for the year",
+                "",
+                "371,795,904",
+                "348,527,150"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other comprehensive income",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Other comprehensive income to be re-classified\n to profit or loss in subsequent periods",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Fair value gain/ (loss) on investment in treasury bonds/ quoted shares",
+                "",
+                "6,718,438",
+                "(17,700,712)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "6,718,438",
+                "(17,700,712)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other comprehensive income not to be re-classified\n to profit or loss in subsequent periods",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Actuarial gain/ (loss) on retirement benefit plan",
+                "32.1",
+                "590,638",
+                "(6,847,983)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred tax effect on above",
+                "22",
+                "177,191",
+                "(2,054,395)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "767,829",
+                "(8,902,378)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other comprehensive income/ (expense) for the year net of tax",
+                "",
+                "7,486,267",
+                "(26,603,090)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total comprehensive income for the year net of tax",
+                "",
+                "379,282,171",
+                "321,924,060"
+              ],
+              "style": "data"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Other Comprehensive Income (OCI)"
+  },
+  "sofp": {
+    "status": "ok",
+    "data": {
+      "statement_title": "STATEMENT OF FINANCIAL POSITION",
+      "preamble": "As At 31st March",
+      "footnotes": null,
+      "tables": [
+        {
+          "caption": "ASSETS",
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              "Rs."
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Cash and cash equivalents",
+                "16",
+                "492,275,401",
+                "420,293,003"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Financial assets - fair value through other comprehensive income",
+                "17",
+                "1,144,263,733",
+                "932,991,845"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Loans and receivables at amortised cost",
+                "18",
+                "22,054,759,705",
+                "15,656,738,877"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Placements with banks and other financial institutions at amortised cost",
+                "19",
+                "452,604,465",
+                "342,772,502"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other assets",
+                "20",
+                "793,184,651",
+                "940,364,676"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Real estate stock",
+                "21",
+                "21,414,298",
+                "10,968,258"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deferred tax asset (net)",
+                "22",
+                "348,289,096",
+                "366,568,600"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Goodwill",
+                "23",
+                "564,545,746",
+                "564,545,746"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Brand value",
+                "23.1",
+                "235,880,000",
+                "235,880,000"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other intangible assets",
+                "24",
+                "41,967,542",
+                "12,685,655"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Property, plant and equipment",
+                "25",
+                "309,252,331",
+                "143,654,165"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Right-of-use of assets",
+                "26",
+                "150,817,678",
+                "126,493,713"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Investment properties",
+                "27",
+                "748,450,000",
+                "721,400,000"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total assets",
+                "",
+                "27,357,674,016",
+                "20,477,357,040"
+              ],
+              "style": "total"
+            }
+          ]
+        },
+        {
+          "caption": "LIABILITIES",
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              "Rs."
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Due to banks - bank overdrafts",
+                "16",
+                "699,093,409",
+                "233,790,663"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Deposits from customers",
+                "28",
+                "15,903,812,010",
+                "13,556,431,012"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest bearing borrowings",
+                "29",
+                "5,901,388,374",
+                "2,115,120,468"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Lease liability - right of use assets",
+                "30",
+                "53,552,165",
+                "60,455,219"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other liabilities",
+                "31",
+                "738,917,575",
+                "843,358,580"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Retirement benefits obligation",
+                "32",
+                "78,968,078",
+                "65,270,872"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total liabilities",
+                "",
+                "23,375,461,619",
+                "16,874,426,814"
+              ],
+              "style": "total"
+            }
+          ]
+        },
+        {
+          "caption": "EQUITY",
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "Stated capital",
+              "Statutory reserve fund",
+              "Regulatory loss allowance reserve",
+              "Revaluation reserve",
+              "Retained earnings",
+              "Total"
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              "Rs.",
+              "Rs.",
+              "Rs.",
+              "Rs.",
+              "Rs."
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "",
+                "",
+                "2,431,879,039",
+                "411,752,899",
+                "193,959,912",
+                "",
+                "803,499,774",
+                "3,982,212,397"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total equity",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "3,982,212,397"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "Total equity and liabilities",
+                "",
+                "27,357,674,016",
+                "20,477,357,040"
+              ],
+              "style": "total"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Financial Position (Balance Sheet)"
+  },
+  "equity": {
+    "status": "ok",
+    "data": {
+      "statement_title": "STATEMENT OF CHANGES IN EQUITY",
+      "preamble": "For the year ended 31st March",
+      "footnotes": "Figures in brackets indicate deductions.\nThe accounting policies and notes on pages 173 to 229 form an integral part of these Financial Statements.\nColombo\n27th May 2025",
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "Stated capital",
+              "Statutory reserve fund",
+              "Revaluation reserve",
+              "Non-distributable regulatory loss allowance reserve",
+              "Retained earnings",
+              "Total"
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              "Rs.",
+              "Rs.",
+              "Rs.",
+              "Rs.",
+              "Rs."
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Balance as at 31st March 2023",
+                "",
+                "2,431,879,039",
+                "375,736,747",
+                "141,120,773",
+                "",
+                "332,527,607",
+                "3,281,006,166"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit for the year",
+                "",
+                "-",
+                "-",
+                "-",
+                "-",
+                "348,527,150",
+                "348,527,150"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Transfer to statutory reserve",
+                "(Note 34.1)",
+                "-",
+                "17,426,357",
+                "-",
+                "-",
+                "(17,426,357)",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other comprehensive income\nnet of taxes",
+                "",
+                "-",
+                "-",
+                "-",
+                "-",
+                "(26,603,090)",
+                "(26,603,090)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Balance as at 31st March 2024",
+                "",
+                "2,431,879,039",
+                "393,163,104",
+                "141,120,773",
+                "",
+                "636,767,310",
+                "3,602,930,226"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit for the year",
+                "",
+                "-",
+                "-",
+                "-",
+                "-",
+                "371,795,904",
+                "371,795,904"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Transfer to statutory reserve",
+                "(Note 34.1)",
+                "-",
+                "18,589,795",
+                "-",
+                "-",
+                "(18,589,795)",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Transfer to regulatory loss\nallowance reserve",
+                "(Note 34.2)",
+                "-",
+                "-",
+                "-",
+                "193,959,912",
+                "(193,959,912)",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other comprehensive income\nnet of taxes",
+                "",
+                "-",
+                "-",
+                "-",
+                "-",
+                "7,486,267",
+                "7,486,267"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Balance as at 31st March 2025",
+                "",
+                "2,431,879,039",
+                "411,752,899",
+                "141,120,773",
+                "193,959,912",
+                "803,499,774",
+                "3,982,212,397"
+              ],
+              "style": "data"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Changes in Equity"
+  },
+  "cash_flows": {
+    "status": "ok",
+    "data": {
+      "statement_title": "STATEMENT OF CASH FLOWS",
+      "preamble": "For the year ended 31st March",
+      "footnotes": null,
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "2025",
+              "2024"
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              "Rs."
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Cash flows from operating activities",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Profit before income tax",
+                "",
+                "428,012,485",
+                "349,481,589"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Adjustment for:",
+                "",
+                "",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Depreciation and amortisation",
+                "",
+                "158,552,117",
+                "83,285,795"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit on disposal of property, plant and equipment",
+                "",
+                "(366,800)",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Impairment charges for loans and receivables at amortised cost",
+                "",
+                "90,742,233",
+                "140,178,886"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Finance expenses",
+                "",
+                "2,317,453,659",
+                "2,807,119,126"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Fair value gain on investment properties",
+                "",
+                "(27,050,000)",
+                "(31,083,535)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Investment income",
+                "",
+                "(169,005,387)",
+                "(692,272,117)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Provision for gratuity",
+                "",
+                "20,438,428",
+                "16,260,968"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Operating profit before working capital changes",
+                "",
+                "2,818,776,737",
+                "2,673,330,712"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Increase in loans and receivables to customers",
+                "",
+                "(6,486,762,433)",
+                "(2,857,906,512)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Decrease/ (increase) in other assets",
+                "",
+                "182,923,302",
+                "(282,923,878)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Increase in deposits from customers",
+                "",
+                "2,347,381,006",
+                "2,691,130,275"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Increase in other liabilities",
+                "",
+                "(67,983,671)",
+                "388,545,836"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Rent paid",
+                "",
+                "(1,205,665,059)",
+                "(2,612,176,483)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest paid",
+                "",
+                "(104,848,684)",
+                "(92,512,776)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Gratuity paid",
+                "",
+                "(5,829,946)",
+                "(10,646,831)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net cash (used in)/ generated from operating activities",
+                "",
+                "(3,283,792,240)",
+                "249,687,297"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash flows from investing activities",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Acquisition of property, plant and equipment and intangible assets",
+                "",
+                "(307,776,469)",
+                "(94,156,005)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Proceeds from sale of property, plant and equipment",
+                "",
+                "366,800",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Expenses incurred for real estate stock",
+                "",
+                "(163,000)",
+                "(311,640)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net change in financial assets - FVTOCI",
+                "",
+                "(211,250,396)",
+                "304,872,353"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net change in investments with bank and other financial institutions",
+                "",
+                "(82,420,246)",
+                "(111,283,752)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Investment income received",
+                "",
+                "150,716,981",
+                "704,145,498"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net cash (used in)/ generated from investing activities",
+                "",
+                "(450,526,330)",
+                "803,266,454"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash flows from financing activities",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Interest bearing borrowings obtained",
+                "",
+                "9,588,200,431",
+                "5,346,000,000"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Repayment of interest bearing borrowings",
+                "",
+                "(5,897,197,101)",
+                "(5,831,475,900)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest paid on borrowings",
+                "",
+                "(350,005,108)",
+                "(448,023,164)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net cash generated from/ (used in) financing activities",
+                "",
+                "3,349,998,222",
+                "(933,499,064)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net change in cash and cash equivalents",
+                "",
+                "(393,320,348)",
+                "19,454,687"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash and cash equivalents at the beginning of the year",
+                "",
+                "186,502,340",
+                "67,047,653"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash and cash equivalents at the end of the year",
+                "",
+                "(206,818,008)",
+                "186,502,340"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Analysis of cash and cash equivalents at the end of the year",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Cash in hand",
+                "",
+                "406,818,347",
+                "350,986,607"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash at bank",
+                "",
+                "85,457,054",
+                "69,306,396"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Bank overdrafts - secured",
+                "",
+                "(699,093,409)",
+                "(233,790,663)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "(206,818,008)",
+                "186,502,340"
+              ],
+              "style": "blank"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Statement of Cash Flows"
+  },
+  "shareholder_info": {
+    "status": "ok",
+    "data": {
+      "statement_title": "SHARE INFORMATION",
+      "preamble": null,
+      "footnotes": null,
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "",
+              "As at 31st March 2025",
+              "",
+              "",
+              "As at 31st March 2024",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "No. of Shareholders",
+              "No. of Shares",
+              "% of Shares",
+              "No. of Shareholders",
+              "No. of Shares",
+              "% of Shares"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "1-1000",
+                "",
+                "601",
+                "104,559",
+                "0.05",
+                "578",
+                "105,810",
+                "0.05"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "1,001 - 10,000",
+                "",
+                "147",
+                "559,971",
+                "0.27",
+                "190",
+                "762,107",
+                "0.36"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "10,001 - 100,000",
+                "",
+                "69",
+                "2,300,856",
+                "1.09",
+                "102",
+                "3,536,745",
+                "1.68"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "100,001 - 1,000,000",
+                "",
+                "16",
+                "4,594,592",
+                "2.18",
+                "28",
+                "7,566,207",
+                "3.58"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Over 1,000,000",
+                "",
+                "6",
+                "203,541,177",
+                "96.42",
+                "5",
+                "199,130,286",
+                "94.33"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total",
+                "",
+                "839",
+                "211,101,155",
+                "100.00",
+                "903",
+                "211,101,155",
+                "100.00"
+              ],
+              "style": "total"
+            }
+          ]
+        },
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "As at 31st March 2025",
+              "",
+              "As at 31st March 2024",
+              ""
+            ],
+            [
+              "",
+              "",
+              "No. of Shares",
+              "% of Shares",
+              "No. of Shares",
+              "% of Shares"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Residents",
+                "",
+                "210,655,553",
+                "99.79",
+                "211,041,047",
+                "99.97"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Non-Residents",
+                "",
+                "445,602",
+                "0.21",
+                "60,108",
+                "0.03"
+              ],
+              "style": "data"
+            }
+          ]
+        },
+        {
+          "caption": "PUBLIC HOLDING",
+          "header_rows": [
+            [
+              "",
+              "",
+              "2025",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Rs.",
+              ""
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Public Holding as at 31st March 2025",
+                "",
+                "12,952,342",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Number of Public Shareholders as at 31st March 2025",
+                "",
+                "832",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Public Holding of issued number of shares as at 31st March 2025",
+                "",
+                "6.14%",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Float adjusted market capitalisation",
+                "",
+                "Rs. 248,862,930",
+                ""
+              ],
+              "style": "data"
+            }
+          ]
+        },
+        {
+          "caption": "SHARE PRICE INFORMATION",
+          "header_rows": [
+            [
+              "",
+              "",
+              "2025",
+              "",
+              "2024",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Rs",
+              "Rs"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Highest",
+                "",
+                "20.00",
+                "",
+                "9.30",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Lowest",
+                "",
+                "17.00",
+                "",
+                "7.00",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Close",
+                "",
+                "19.20",
+                "",
+                "8.40",
+                ""
+              ],
+              "style": "data"
+            }
+          ]
+        },
+        {
+          "caption": "INVESTOR RATIOS",
+          "header_rows": [
+            [
+              "",
+              "",
+              "2025",
+              "",
+              "2024",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Rs",
+              "Rs"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Book Value",
+                "",
+                "18.86",
+                "",
+                "17.07",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "EPS",
+                "",
+                "1.76",
+                "",
+                "1.65",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Price Earnings Ratio",
+                "",
+                "10.91",
+                "",
+                "5.09",
+                ""
+              ],
+              "style": "data"
+            }
+          ]
+        },
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "",
+              "2025",
+              "",
+              "2024",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "DIRECTORS INTEREST IN SHARES",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Prakash Anand Schaffter",
+                "",
+                "10",
+                "",
+                "10",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Rajendra Thegarajah",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "N. S. S. Cooray",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "R. M. D. J. Ratnayake",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Nalin Karunaratne",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "K. M. M. Jabir",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Manohari Abeysekera",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Sandamali Chandrasekara",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Daniel Alphonsus",
+                "",
+                "10",
+                "",
+                "10",
+                ""
+              ],
+              "style": "data"
+            }
+          ]
+        },
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "",
+              "2025",
+              "",
+              "2024",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "CHIEF EXECUTIVE OFFICER'S /DIRECTOR SHAREHOLDING",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "K. M. M. Jabir",
+                "",
+                "-",
+                "",
+                "-",
+                ""
+              ],
+              "style": "data"
+            }
+          ]
+        },
+        {
+          "caption": "TOP 25 SHAREHOLDERS AS AT 31ST MARCH 2025",
+          "header_rows": [
+            [
+              "",
+              "No. of Shares",
+              "%"
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Janashakthi Ltd",
+                "93,644,438",
+                "44.36"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Seylan Bank PLC/Janashakthi Limited (collateral)",
+                "90,000,000",
+                "42.63"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Seylan Bank PLC/Janashakthi Capital Limited",
+                "11,810,999",
+                "5.59"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Peoples Leasing and Finance PLC/ Suhada Gas Distributors (Pvt) Ltd",
+                "3,907,927",
+                "1.85"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "DFCC Bank PLC/G.A.C. De Silva",
+                "2,138,299",
+                "1.01"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Commercial Bank of Ceylon PLC / Janashakthi Limited",
+                "555,057",
+                "0.26"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Assetline Finance Limited/Suhada Gas Distributors (Pvt) Ltd",
+                "537,017",
+                "0.25"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Ransinghe Arachchige Buddhika Kapila Kumara",
+                "500,000",
+                "0.24"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Samarapura Mudiyanselage Padmal Buddika Samarapperuma",
+                "460,690",
+                "0.22"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Imiya Pathrinahalage Indrani Lalitha Gunathilaka",
+                "406,750",
+                "0.19"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Lionel De Silva",
+                "385,448",
+                "0.18"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Saraswathi Vasudevan",
+                "325,759",
+                "0.15"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Leslie Premal Mendis",
+                "300,000",
+                "0.14"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Haloluwe Gedara Nilupul Gamini Haloluwa",
+                "246,886",
+                "0.12"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Sithampalam Umsehwary",
+                "167,915",
+                "0.08"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Buddhi Sudhanna Weerakoon",
+                "136,394",
+                "0.06"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Koggallana Durage Ananda Weerasinghe",
+                "133,400",
+                "0.06"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Warnakulasooriya Satambige Anthony Roshan Fernando",
+                "120,500",
+                "0.06"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Assetline Finance Limited/P.C.U. Ekanayaka",
+                "112,626",
+                "0.05"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Herath Mudiyanselage Saman Herath",
+                "105,450",
+                "0.05"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Citizens Development Business Finance PLC/K. D. C. Somalatha and K. Nandasiri",
+                "100,700",
+                "0.05"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Assetline Finance Limited/ W. C. Dewaraja",
+                "100,000",
+                "0.05"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Gunarathna Paliyaguruge Piyadasa Abeywickrama",
+                "99,950",
+                "0.05"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Rupasinghe Arachchige Tharindu Rupasinghe",
+                "87,020",
+                "0.04"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Others",
+                "2,678,416",
+                "1.27"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total",
+                "211,101,155",
+                "100.00"
+              ],
+              "style": "total"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Shareholder / Share Information"
+  },
+  "ten_year_summary": {
+    "status": "ok",
+    "data": {
+      "statement_title": "TEN YEAR ACHIEVEMENTS",
+      "preamble": "For the year ended 31st March",
+      "footnotes": null,
+      "tables": [
+        {
+          "caption": null,
+          "header_rows": [
+            [
+              "",
+              "Note",
+              "2025",
+              "2024",
+              "2023",
+              "2022"
+            ],
+            [
+              "",
+              "",
+              "Rs. '000",
+              "Rs. '000",
+              "Rs. '000",
+              "Rs. '000"
+            ]
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Operating Results Income",
+                "",
+                "4,727,585",
+                "4,868,238",
+                "3,820,227",
+                "2,972,209"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest Income",
+                "",
+                "4,463,849",
+                "4,601,527",
+                "3,593,059",
+                "2,709,169"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Interest Expenses",
+                "",
+                "(2,317,454)",
+                "(2,807,119)",
+                "(2,600,023)",
+                "(1,159,467)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Net Interest Income",
+                "",
+                "2,146,395",
+                "1,794,408",
+                "993,036",
+                "1,549,702"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Operating Expenses & Provisions",
+                "",
+                "(1,718,383)",
+                "(1,444,926)",
+                "(1,289,770)",
+                "(1,359,745)"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit Before Income Tax",
+                "",
+                "428,012",
+                "349,482",
+                "(69,566)",
+                "452,997"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Income Tax on Profit",
+                "",
+                "(56,216)",
+                "(954)",
+                "(2,480)",
+                ""
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Profit for the year",
+                "",
+                "371,796",
+                "348,527",
+                "(72,046)",
+                "452,997"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "blank"
+            },
+            {
+              "cells": [
+                "Balance Sheet Information",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Assets",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Loans & Advances to Customers",
+                "",
+                "22,054,759",
+                "15,658,739",
+                "12,941,011",
+                "14,125,812"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Financial Investments - Available for Sale",
+                "",
+                "1,144,264",
+                "932,992",
+                "1,262,914",
+                "725,705"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Cash and Cash Equivalents",
+                "",
+                "492,275",
+                "420,293",
+                "307,894",
+                "296,440"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Property, Plant & Equipment and Investment Assets",
+                "",
+                "1,057,708",
+                "865,054",
+                "761,050",
+                "746,656"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Assets",
+                "",
+                "2,608,668",
+                "2,600,279",
+                "2,196,005",
+                "1,832,633"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Assets",
+                "",
+                "27,357,674",
+                "20,477,357",
+                "17,468,873",
+                "17,272,246"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "Liabilities",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Deposits from Customers",
+                "",
+                "15,903,812",
+                "13,556,431",
+                "10,759,499",
+                "9,204,263"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Borrowings",
+                "",
+                "6,600,482",
+                "2,348,911",
+                "2,847,478",
+                "4,555,431"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Debentures and Preference Shares",
+                "",
+                "-",
+                "-",
+                "-",
+                "-"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Other Liabilities",
+                "",
+                "871,168",
+                "969,085",
+                "580,890",
+                "635,672"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Liabilities",
+                "",
+                "23,375,462",
+                "16,874,427",
+                "14,187,867",
+                "14,395,367"
+              ],
+              "style": "total"
+            },
+            {
+              "cells": [
+                "Capital Employed",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "style": "section"
+            },
+            {
+              "cells": [
+                "Stated Capital",
+                "",
+                "2,431,879",
+                "2,431,879",
+                "2,431,879",
+                "2,431,879"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Retained Profit & Reserve Fund",
+                "",
+                "1,550,333",
+                "1,171,051",
+                "849,127",
+                "900,000"
+              ],
+              "style": "data"
+            },
+            {
+              "cells": [
+                "Total Capital Employed",
+                "",
+                "3,982,212",
+                "3,602,930",
+                "3,281,006",
+                "3,331,879"
+              ],
+              "style": "total"
+            }
+          ]
+        }
+      ]
+    },
+    "title": "Ten Year Summary / Decade at a Glance"
+  }
+}

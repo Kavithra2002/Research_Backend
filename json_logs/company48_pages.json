@@ -1,0 +1,123 @@
+{
+  "company": "company48",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company48\\Annual\\48833_2025.pdf",
+  "total_pdf_pages": 57,
+  "page_offset": 1,
+  "generated_at": "2026-05-21T15:25:03",
+  "statements": {
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        24
+      ],
+      "pdf_indices_0based": [
+        24
+      ],
+      "pdf_pages_1based": [
+        25
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        25
+      ],
+      "pdf_indices_0based": [
+        25
+      ],
+      "pdf_pages_1based": [
+        26
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        26
+      ],
+      "pdf_indices_0based": [
+        26
+      ],
+      "pdf_pages_1based": [
+        27
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        27
+      ],
+      "pdf_indices_0based": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "pdf_pages_1based": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "page_count": 7,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        52
+      ],
+      "pdf_indices_0based": [
+        52,
+        53,
+        54
+      ],
+      "pdf_pages_1based": [
+        53,
+        54,
+        55
+      ],
+      "page_count": 3,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        1
+      ],
+      "pdf_indices_0based": [
+        1
+      ],
+      "pdf_pages_1based": [
+        2
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        24
+      ],
+      "pdf_indices_0based": [
+        24
+      ],
+      "pdf_pages_1based": [
+        25
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

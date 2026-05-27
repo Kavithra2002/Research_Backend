@@ -1,0 +1,18 @@
+{
+  "company": "company1",
+  "manifest_path": "E:\AMBEON\script\backend\json_logs\\company1_pages.json",
+  "captures_dir": "E:\AMBEON\script\backend\json_logs\\company1_captures",
+  "model": "gpt-4o-mini",
+  "option": "1",
+  "dry_run": false,
+  "generated_at": "2026-05-22T17:00:52",
+  "statements": [
+    "cash_flows",
+    "equity",
+    "income_statement",
+    "oci",
+    "shareholder_info",
+    "sofp",
+    "ten_year_summary"
+  ]
+}

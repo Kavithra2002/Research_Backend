@@ -1,0 +1,4517 @@
+{
+  "company": "company47",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company47\\Annual\\50745_2025.pdf",
+  "extracted_at": "2026-05-18T12:55:18",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 378,
+      "has_note_col": false,
+      "column_headers": [
+        "conditions and cash flows; payments lending consideration amount using premium on while the 2025",
+        "principal and other EIR, acquisition 2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "As financial measured at amortised of the following The business objective contractual The contractual of the financial specified of Principal the of instrument at recognition. Interest the arrangement typically consists of consideration for the of may for recognition, subsequently measured at amortised carrying the provision for impairment). Amortised calculated discount integral of the The amortisation included interest As at December",
+          "note_col": null,
+          "amt_cols": [
+            "conditions and cash flows; payments lending consideration amount using premium on while the 2025",
+            "principal and other EIR, acquisition 2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "'000",
+            "'000"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "5202 29. FINANCIAL ASSETS AT AMORTISED COST - DEBT AND OTHER FINANCIAL INSTRUMENTS",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "tropeR Accounting Policy",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "As per SLFRS 9, financial assets are measured at amortised cost if it meets both of the following is not",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "launnA designated at Fair Value Through Profit or Loss (FVTPL):",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "The asset is held within a business model whose objective is to hold assets to collect contractual cash and",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "The contractual terms of the financial asset give rise on specified dates to cash flows that are solely of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "and interest on the principal amount outstanding.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "CLP Principal is the fair value of instrument at initial recognition. Interest is the return within a basic arrangement",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "knaB typically consists of consideration for the time value of money, and credit risk. It may also include for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "basic lending risks such as liquidity risk as well as profit margin.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "slligraC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "After initial recognition, these assets are subsequently measured at amortised cost (gross carrying using the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "less provision for impairment). Amortised cost is calculated by taking into account any discount or",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "and fees and costs that are an integral part of the EIR. The amortisation is included in interest income losses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "arising from impairment are recognised in “Impairment losses on financial instruments and other",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit or Loss.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "As at 31 December Note",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Sri Lanka Government Securities - Treasury Bills and Bonds",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,277,110",
+            "3,119,166"
+          ],
+          "amounts": [
+            4277110,
+            3119166
+          ]
+        },
+        {
+          "label": "Investment in Debenture 29.1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "153,852",
+            "154,338"
+          ],
+          "amounts": [
+            153852,
+            154338
+          ]
+        },
+        {
+          "label": "Investment in Fixed Deposits",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "103,458",
+            "-"
+          ],
+          "amounts": [
+            103458,
+            null
+          ]
+        },
+        {
+          "label": "Gross financial assets at amortised cost",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,534,420",
+            "3,273,503"
+          ],
+          "amounts": [
+            4534420,
+            3273503
+          ]
+        },
+        {
+          "label": "Less: Provision for impairment 29.3",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,557)",
+            "(7,142)"
+          ],
+          "amounts": [
+            -2557,
+            -7142
+          ]
+        },
+        {
+          "label": "Net financial assets at amortised cost - Debt and other financial instruments Maturity analysis of Financial Assets at Amortised Cost - Debt and Other Financial Instruments is given 48 to Financial Statements. 29.1 Investment in Debenture",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,531,863",
+            "3,266,362"
+          ],
+          "amounts": [
+            4531863,
+            3266362
+          ]
+        },
+        {
+          "label": "Resus Energy PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "153,852",
+            "154,337"
+          ],
+          "amounts": [
+            153852,
+            154337
+          ]
+        },
+        {
+          "label": "Total investment in debenture 29.2 Analysis of gross financial assets at amortised cost - Debt and other financial instruments By collateralization",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "153,852",
+            "154,337"
+          ],
+          "amounts": [
+            153852,
+            154337
+          ]
+        },
+        {
+          "label": "Sri Lanka Government Securities pledged as collateral",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,090,985",
+            "401,995"
+          ],
+          "amounts": [
+            1090985,
+            401995
+          ]
+        },
+        {
+          "label": "Unencumbered",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,186,125",
+            "2,717,171"
+          ],
+          "amounts": [
+            3186125,
+            2717171
+          ]
+        },
+        {
+          "label": "All debt and other financial instruments as at 31 December 2025 and 2024 were denominated in Sri Rupees. Financial Reports • Notes to the Financial Statements",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,277,110",
+            "3,119,166"
+          ],
+          "amounts": [
+            4277110,
+            3119166
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "5202 29. FINANCIAL ASSETS AT AMORTISED COST - DEBT AND OTHER FINANCIAL INSTRUMENTS",
+          "",
+          ""
+        ],
+        [
+          "tropeR Accounting Policy",
+          "",
+          ""
+        ],
+        [
+          "As per SLFRS 9, financial assets are measured at amortised cost if it meets both of the following is not",
+          "conditions and",
+          ""
+        ],
+        [
+          "launnA designated at Fair Value Through Profit or Loss (FVTPL):",
+          "",
+          ""
+        ],
+        [
+          "The asset is held within a business model whose objective is to hold assets to collect contractual cash and",
+          "flows;",
+          ""
+        ],
+        [
+          "The contractual terms of the financial asset give rise on specified dates to cash flows that are solely of",
+          "payments",
+          "principal"
+        ],
+        [
+          "376",
+          "",
+          ""
+        ],
+        [
+          "and interest on the principal amount outstanding.",
+          "",
+          ""
+        ],
+        [
+          "CLP Principal is the fair value of instrument at initial recognition. Interest is the return within a basic arrangement",
+          "lending",
+          "and"
+        ],
+        [
+          "knaB typically consists of consideration for the time value of money, and credit risk. It may also include for",
+          "consideration",
+          "other"
+        ],
+        [
+          "basic lending risks such as liquidity risk as well as profit margin.",
+          "",
+          ""
+        ],
+        [
+          "slligraC",
+          "",
+          ""
+        ],
+        [
+          "After initial recognition, these assets are subsequently measured at amortised cost (gross carrying using the",
+          "amount",
+          "EIR,"
+        ],
+        [
+          "less provision for impairment). Amortised cost is calculated by taking into account any discount or",
+          "premium on",
+          "acquisition"
+        ],
+        [
+          "and fees and costs that are an integral part of the EIR. The amortisation is included in interest income losses",
+          "while the",
+          ""
+        ],
+        [
+          "arising from impairment are recognised in “Impairment losses on financial instruments and other",
+          "assets” in the",
+          "Statement of"
+        ],
+        [
+          "Profit or Loss.",
+          "",
+          ""
+        ],
+        [
+          "As at 31 December Note",
+          "2025",
+          "2024"
+        ],
+        [
+          "Rs. Rs.",
+          "'000",
+          "'000"
+        ],
+        [
+          "Sri Lanka Government Securities - Treasury Bills and Bonds",
+          "4,277,110",
+          "3,119,166"
+        ],
+        [
+          "Investment in Debenture 29.1",
+          "153,852",
+          "154,338"
+        ],
+        [
+          "Investment in Fixed Deposits",
+          "103,458",
+          "-"
+        ],
+        [
+          "Gross financial assets at amortised cost",
+          "4,534,420",
+          "3,273,503"
+        ],
+        [
+          "Less: Provision for impairment 29.3",
+          "(2,557)",
+          "(7,142)"
+        ],
+        [
+          "Net financial assets at amortised cost - Debt and other financial instruments Maturity analysis of Financial Assets at Amortised Cost - Debt and Other Financial Instruments is given 48 to Financial Statements. 29.1 Investment in Debenture",
+          "4,531,863",
+          "3,266,362"
+        ],
+        [
+          "Resus Energy PLC",
+          "153,852",
+          "154,337"
+        ],
+        [
+          "Total investment in debenture 29.2 Analysis of gross financial assets at amortised cost - Debt and other financial instruments By collateralization",
+          "153,852",
+          "154,337"
+        ],
+        [
+          "Sri Lanka Government Securities pledged as collateral",
+          "1,090,985",
+          "401,995"
+        ],
+        [
+          "Unencumbered",
+          "3,186,125",
+          "2,717,171"
+        ],
+        [
+          "All debt and other financial instruments as at 31 December 2025 and 2024 were denominated in Sri Rupees. Financial Reports • Notes to the Financial Statements",
+          "4,277,110",
+          "3,119,166"
+        ]
+      ]
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income",
+      "page_1based": 396,
+      "has_note_col": true,
+      "column_headers": [
+        "the unit credit Income, valuation involves determination assumptions are given in Note obligation. The future 2025",
+        "No.12 method. the making discount reviewed In Bonds rate is rates 2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "obligations the provisions for retirement gratuity compliance Gratuity of retirement gratuities determined qualified the projected Actuarial recognised as the Statement of Comprehensive The of determined actuarial valuation. The actuarial may developments the the of the of estimates significant uncertainties. at The assumptions at the of obligation slligraC appropriate discount the Management considers the interest of Government maturities, corresponding the expected duration of the mortality available mortality Estimated increases expected inflation",
+          "note_col": "Retirement benefit The costs of gains and the assumptions, long-term nature reporting determining the extrapolated publicly",
+          "amt_cols": [
+            "the unit credit Income, valuation involves determination assumptions are given in Note obligation. The future 2025",
+            "No.12 method. the making discount reviewed In Bonds rate is rates 2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "'000",
+            "'000"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "5202 40. BENEFIT OBLIGATIONS",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "tropeR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "obligations include the provisions made for retirement gratuity in compliance with Gratuity Act",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "launnA of 1983. retirement gratuities are determined by a qualified Actuary using the projected",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Actuarial losses are recognised as income or expense in the Statement of Comprehensive during the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "financial it arose.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "394 Basis of Measurement",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "The cost of defined benefit plan is determined using an actuarial valuation. The actuarial valuation making",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "CLP various which may differ from actual developments in the future. These include the determination of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "knaB rates, of return on assets, future salary increases, mortality rates and future pension Due to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the of these plans, such estimates are subject to significant uncertainties. All",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "slligraC at each date. The assumptions used to arrive at the value of defined benefit obligation is Note 40.2.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "appropriate discount rate, the Management considers the interest rates of Sri Lanka Government",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "with maturities, corresponding to the expected duration of the defined benefit mortality",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "based on available mortality tables. Estimated future salary increases are based on expected inflation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "and the salary revisions of the Bank.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as January",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "151,655",
+            "108,605"
+          ],
+          "amounts": [
+            151655,
+            108605
+          ]
+        },
+        {
+          "label": "Expenses in the Statement of Profit or Loss 40.1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "40,201",
+            "36,247"
+          ],
+          "amounts": [
+            40201,
+            36247
+          ]
+        },
+        {
+          "label": "Amounts defined benefits plan",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(9,881)",
+            "(16,775)"
+          ],
+          "amounts": [
+            -9881,
+            -16775
+          ]
+        },
+        {
+          "label": "Benefits those who left during the period",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(477)"
+          ],
+          "amounts": [
+            null,
+            -477
+          ]
+        },
+        {
+          "label": "Actuarial (gains)/losses recognised in OCI",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,965",
+            "24,055"
+          ],
+          "amounts": [
+            6965,
+            24055
+          ]
+        },
+        {
+          "label": "change in experience assumptions",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,459",
+            "28,713"
+          ],
+          "amounts": [
+            6459,
+            28713
+          ]
+        },
+        {
+          "label": "change in financial assumptions",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(2,555)"
+          ],
+          "amounts": [
+            null,
+            -2555
+          ]
+        },
+        {
+          "label": "change in demographic assumptions",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "506",
+            "(2,103)"
+          ],
+          "amounts": [
+            506,
+            -2103
+          ]
+        },
+        {
+          "label": "Balance December 40.1 Recognised in the Statement of Profit or Loss – Gratuity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "188,940",
+            "151,655"
+          ],
+          "amounts": [
+            188940,
+            151655
+          ]
+        },
+        {
+          "label": "Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Current",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "26,997",
+            "22,128"
+          ],
+          "amounts": [
+            26997,
+            22128
+          ]
+        },
+        {
+          "label": "Past",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "13,204",
+            "14,119"
+          ],
+          "amounts": [
+            13204,
+            14119
+          ]
+        },
+        {
+          "label": "40.2 Actuarial assumptions; An of the retirement benefit obligation was carried out as at 31 December 2025 by FIA, FIAI of Units Actuaries and Consultants (Pvt) Ltd, a firm of professional actuaries. The method the the fund is the ‘Projected Unit Credit Method (PUC)’, the method prescribed by the Lanka Standard ‘Employee Benefits’. Financial Notes to the Financial Statements",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "40,201",
+            "36,247"
+          ],
+          "amounts": [
+            40201,
+            36247
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "5202 40. BENEFIT OBLIGATIONS",
+          "RETIREMENT",
+          "",
+          ""
+        ],
+        [
+          "tropeR",
+          "Accounting Policy",
+          "",
+          ""
+        ],
+        [
+          "obligations include the provisions made for retirement gratuity in compliance with Gratuity Act",
+          "Retirement benefit",
+          "the",
+          "No.12"
+        ],
+        [
+          "launnA of 1983. retirement gratuities are determined by a qualified Actuary using the projected",
+          "The costs of",
+          "unit credit",
+          "method."
+        ],
+        [
+          "Actuarial losses are recognised as income or expense in the Statement of Comprehensive during the",
+          "gains and",
+          "Income,",
+          ""
+        ],
+        [
+          "financial it arose.",
+          "year in which",
+          "",
+          ""
+        ],
+        [
+          "394 Basis of Measurement",
+          "",
+          "",
+          ""
+        ],
+        [
+          "The cost of defined benefit plan is determined using an actuarial valuation. The actuarial valuation making",
+          "the",
+          "involves",
+          ""
+        ],
+        [
+          "CLP various which may differ from actual developments in the future. These include the determination of",
+          "assumptions,",
+          "",
+          "discount"
+        ],
+        [
+          "knaB rates, of return on assets, future salary increases, mortality rates and future pension Due to",
+          "expected rates",
+          "increases.",
+          ""
+        ],
+        [
+          "the of these plans, such estimates are subject to significant uncertainties. All",
+          "long-term nature",
+          "assumptions are",
+          "reviewed"
+        ],
+        [
+          "slligraC at each date. The assumptions used to arrive at the value of defined benefit obligation is Note 40.2.",
+          "reporting",
+          "given in",
+          "In"
+        ],
+        [
+          "appropriate discount rate, the Management considers the interest rates of Sri Lanka Government",
+          "determining the",
+          "",
+          "Bonds"
+        ],
+        [
+          "with maturities, corresponding to the expected duration of the defined benefit mortality",
+          "extrapolated",
+          "obligation. The",
+          "rate is"
+        ],
+        [
+          "based on available mortality tables. Estimated future salary increases are based on expected inflation",
+          "publicly",
+          "future",
+          "rates"
+        ],
+        [
+          "and the salary revisions of the Bank.",
+          "policy on",
+          "",
+          ""
+        ],
+        [
+          "Rs. Rs.",
+          "",
+          "'000",
+          "'000"
+        ],
+        [
+          "Balance as January",
+          "at 1",
+          "151,655",
+          "108,605"
+        ],
+        [
+          "Expenses in the Statement of Profit or Loss 40.1",
+          "recognised",
+          "40,201",
+          "36,247"
+        ],
+        [
+          "Amounts defined benefits plan",
+          "paid on",
+          "(9,881)",
+          "(16,775)"
+        ],
+        [
+          "Benefits those who left during the period",
+          "payable for",
+          "-",
+          "(477)"
+        ],
+        [
+          "Actuarial (gains)/losses recognised in OCI",
+          "",
+          "6,965",
+          "24,055"
+        ],
+        [
+          "change in experience assumptions",
+          "(Gains)/losses due to",
+          "6,459",
+          "28,713"
+        ],
+        [
+          "change in financial assumptions",
+          "(Gains)/losses due to",
+          "-",
+          "(2,555)"
+        ],
+        [
+          "change in demographic assumptions",
+          "(Gains)/losses due to",
+          "506",
+          "(2,103)"
+        ],
+        [
+          "Balance December 40.1 Recognised in the Statement of Profit or Loss – Gratuity",
+          "as at 31",
+          "188,940",
+          "151,655"
+        ],
+        [
+          "Rs. Rs.",
+          "",
+          "'000",
+          "'000"
+        ],
+        [
+          "Current",
+          "service cost",
+          "26,997",
+          "22,128"
+        ],
+        [
+          "Past",
+          "service cost",
+          "-",
+          "-"
+        ],
+        [
+          "Interest",
+          "cost",
+          "13,204",
+          "14,119"
+        ],
+        [
+          "40.2 Actuarial assumptions; An of the retirement benefit obligation was carried out as at 31 December 2025 by FIA, FIAI of Units Actuaries and Consultants (Pvt) Ltd, a firm of professional actuaries. The method the the fund is the ‘Projected Unit Credit Method (PUC)’, the method prescribed by the Lanka Standard ‘Employee Benefits’. Financial Notes to the Financial Statements",
+          "",
+          "40,201",
+          "36,247"
+        ]
+      ]
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 367,
+      "has_note_col": true,
+      "column_headers": [
+        "payable on hierarchy as of Hierarchy liabilities measurement is Level 1",
+        "discounted end of the fair value categorised. These Level 2",
+        "the first reporting period the amounts were Level 3",
+        "which which date, by on the Total"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "The of The recognises transfers of the Financial Instruments Measured at The following provides analysis of financial measured at as at reporting the the hierarchy the As at December slligraC",
+          "note_col": "the amount the fair value Value - Fair assets and fair value Note",
+          "amt_cols": [
+            "payable on hierarchy as of Hierarchy liabilities measurement is Level 1",
+            "discounted end of the fair value categorised. These Level 2",
+            "the first reporting period the amounts were Level 3",
+            "which which date, by on the Total"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "'000",
+            "'000",
+            "'000",
+            "'000"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "The fair value of a demand deposit is not less than demand, discounted from date on 5202",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the amount could be required to be paid.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "tropeR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "The Bank recognises transfers between levels of the end reporting during",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "launnA",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the change has occurred.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "22.1 Financial Instruments Measured at Fair Value The following table provides an analysis of financial measured at as at reporting 365 the level in the fair value hierarchy into which the based values recognised in the Statement of Financial CLP knaB As at 31 December Rs. Rs. Rs. Rs. slligraC (a) 2025 Financial Assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Derivative financial assets Financial assets measured",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "-",
+            "1,380",
+            "-",
+            "1,380"
+          ],
+          "amounts": [
+            null,
+            1380,
+            null,
+            1380
+          ]
+        },
+        {
+          "label": "at fair value through profit or loss Financial assets measured at fair value through other comprehensive income",
+          "is_section_header": false,
+          "note": "27",
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Government securities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,809,268",
+            "-",
+            "-",
+            "15,809,268"
+          ],
+          "amounts": [
+            15809268,
+            null,
+            null,
+            15809268
+          ]
+        },
+        {
+          "label": "Equity securities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "27,065",
+            "27,065"
+          ],
+          "amounts": [
+            null,
+            null,
+            27065,
+            27065
+          ]
+        },
+        {
+          "label": "Total assets at fair value",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,809,268",
+            "1,380",
+            "27,065",
+            "15,837,713"
+          ],
+          "amounts": [
+            15809268,
+            1380,
+            27065,
+            15837713
+          ]
+        },
+        {
+          "label": "Liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other financial liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "at fair value through profit or loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Derivative financial liabilities",
+          "is_section_header": false,
+          "note": "37",
+          "amounts_raw": [
+            "-",
+            "180",
+            "-",
+            "180"
+          ],
+          "amounts": [
+            null,
+            180,
+            null,
+            180
+          ]
+        },
+        {
+          "label": "Total liabilities at fair value (b) 2024 Financial Assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "180",
+            "-",
+            "180"
+          ],
+          "amounts": [
+            null,
+            180,
+            null,
+            180
+          ]
+        },
+        {
+          "label": "Derivative financial assets Financial assets measured at fair value",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "through profit or loss Financial assets measured at fair value through other comprehensive income",
+          "is_section_header": false,
+          "note": "27",
+          "amounts_raw": [
+            "-",
+            "2,324,912",
+            "-",
+            "2,324,912"
+          ],
+          "amounts": [
+            null,
+            2324912,
+            null,
+            2324912
+          ]
+        },
+        {
+          "label": "Government securities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,377,160",
+            "-",
+            "-",
+            "22,377,160"
+          ],
+          "amounts": [
+            22377160,
+            null,
+            null,
+            22377160
+          ]
+        },
+        {
+          "label": "Equity securities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "23,809",
+            "23,809"
+          ],
+          "amounts": [
+            null,
+            null,
+            23809,
+            23809
+          ]
+        },
+        {
+          "label": "Total assets at fair value",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,377,160",
+            "2,324,912",
+            "23,809",
+            "24,725,881"
+          ],
+          "amounts": [
+            22377160,
+            2324912,
+            23809,
+            24725881
+          ]
+        },
+        {
+          "label": "Liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other financial liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "at fair value through profit or loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Derivative financial liabilities",
+          "is_section_header": false,
+          "note": "37",
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total liabilities at fair value * There were no transfers between levels during the year under (2024-Nil). Financial Reports • Notes to the Financial",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "The fair value of a demand deposit is not less than demand, discounted from date on 5202",
+          "the amount",
+          "payable on",
+          "",
+          "the first",
+          "which"
+        ],
+        [
+          "the amount could be required to be paid.",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "tropeR",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "The Bank recognises transfers between levels of the end reporting during",
+          "the fair value",
+          "hierarchy as of",
+          "of the",
+          "period",
+          "which"
+        ],
+        [
+          "launnA",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "the change has occurred.",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "22.1 Financial Instruments Measured at Fair Value The following table provides an analysis of financial measured at as at reporting 365 the level in the fair value hierarchy into which the based values recognised in the Statement of Financial CLP knaB As at 31 December Rs. Rs. Rs. Rs. slligraC (a) 2025 Financial Assets",
+          "Value - Fair",
+          "Hierarchy",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Derivative financial assets Financial assets measured",
+          "26",
+          "-",
+          "1,380",
+          "-",
+          "1,380"
+        ],
+        [
+          "at fair value through profit or loss Financial assets measured at fair value through other comprehensive income",
+          "27",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Government securities",
+          "",
+          "15,809,268",
+          "-",
+          "-",
+          "15,809,268"
+        ],
+        [
+          "Equity securities",
+          "",
+          "-",
+          "-",
+          "27,065",
+          "27,065"
+        ],
+        [
+          "Total assets at fair value",
+          "",
+          "15,809,268",
+          "1,380",
+          "27,065",
+          "15,837,713"
+        ],
+        [
+          "Liabilities",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Other financial liabilities",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "at fair value through profit or loss",
+          "",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Derivative financial liabilities",
+          "37",
+          "-",
+          "180",
+          "-",
+          "180"
+        ],
+        [
+          "Total liabilities at fair value (b) 2024 Financial Assets",
+          "",
+          "-",
+          "180",
+          "-",
+          "180"
+        ],
+        [
+          "Derivative financial assets Financial assets measured at fair value",
+          "26",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "through profit or loss Financial assets measured at fair value through other comprehensive income",
+          "27",
+          "-",
+          "2,324,912",
+          "-",
+          "2,324,912"
+        ],
+        [
+          "Government securities",
+          "",
+          "22,377,160",
+          "-",
+          "-",
+          "22,377,160"
+        ],
+        [
+          "Equity securities",
+          "",
+          "-",
+          "-",
+          "23,809",
+          "23,809"
+        ],
+        [
+          "Total assets at fair value",
+          "",
+          "22,377,160",
+          "2,324,912",
+          "23,809",
+          "24,725,881"
+        ],
+        [
+          "Liabilities",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Other financial liabilities",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "at fair value through profit or loss",
+          "",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Derivative financial liabilities",
+          "37",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Total liabilities at fair value * There were no transfers between levels during the year under (2024-Nil). Financial Reports • Notes to the Financial",
+          "",
+          "-",
+          "-",
+          "-",
+          "-"
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 328,
+      "has_note_col": true,
+      "column_headers": [
+        "Col 1",
+        "Col 2",
+        "Stated capital",
+        "Statutory reserves",
+        "Retained earnings/ (losses)",
+        "Fair value through other comprehensive reserve",
+        "Total equity"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "",
+          "note_col": "",
+          "amt_cols": [
+            "Col 1",
+            "Col 2",
+            "Stated capital",
+            "Statutory reserves",
+            "Retained earnings/ (losses)",
+            "Fair value through other comprehensive reserve",
+            "Total equity"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "",
+            "",
+            "'000",
+            "'000",
+            "'000",
+            "'000",
+            "'000"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Note Page Fair",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "tropeR No. through",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "launnA",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as January 2024 326 CLP Total income year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "11,894,421",
+            "78,775",
+            "(1,176,968)",
+            "1,146,555",
+            "11,942,783"
+          ],
+          "amounts": [
+            null,
+            null,
+            11894421,
+            78775,
+            -1176968,
+            1146555,
+            11942783
+          ]
+        },
+        {
+          "label": "Profit for knaB",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "-",
+            "650,798",
+            "-",
+            "650,798"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            650798,
+            null,
+            650798
+          ]
+        },
+        {
+          "label": "Other net 43, 44 397",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "-",
+            "(16,838)",
+            "(409,110)",
+            "(425,948)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            -16838,
+            -409110,
+            -425948
+          ]
+        },
+        {
+          "label": "slligraC Total income year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "2024",
+            "-",
+            "-",
+            "633,960",
+            "(409,110)",
+            "224,850"
+          ],
+          "amounts": [
+            null,
+            2024,
+            null,
+            null,
+            633960,
+            -409110,
+            224850
+          ]
+        },
+        {
+          "label": "equity",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "directly in",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Issue of 42 397",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Transfer statutory 43, 44 397",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "32,540",
+            "(32,540)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            32540,
+            -32540,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total with equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "32,540",
+            "(32,540)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            32540,
+            -32540,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance December",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2024",
+            "",
+            "11,894,421",
+            "111,315",
+            "(575,548)",
+            "737,445",
+            "12,167,633"
+          ],
+          "amounts": [
+            2024,
+            null,
+            11894421,
+            111315,
+            -575548,
+            737445,
+            12167633
+          ]
+        },
+        {
+          "label": "Balance as January 2025 Total income year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "11,894,421",
+            "111,315",
+            "(575,548)",
+            "737,445",
+            "12,167,633"
+          ],
+          "amounts": [
+            null,
+            null,
+            11894421,
+            111315,
+            -575548,
+            737445,
+            12167633
+          ]
+        },
+        {
+          "label": "Profit for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "-",
+            "541,546",
+            "-",
+            "541,546"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            541546,
+            null,
+            541546
+          ]
+        },
+        {
+          "label": "Other net 43, 44 397 Total income/",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "-",
+            "(4,876)",
+            "(582,063)",
+            "(586.939)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            -4876,
+            -582063,
+            -586.939
+          ]
+        },
+        {
+          "label": "for the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "-",
+            "536,670",
+            "(582,063)",
+            "(45,393)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            536670,
+            -582063,
+            -45393
+          ]
+        },
+        {
+          "label": "equity",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "directly",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Issue of 42 397",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Transfer statutory 43, 44 397",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "27,077",
+            "(27,077)",
+            "-",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            27077,
+            -27077,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "27,077",
+            "(27,077)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            27077,
+            -27077,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance December Financial Equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "",
+            "11,894,421",
+            "138,392",
+            "(65,955)",
+            "155,382",
+            "12,122,240"
+          ],
+          "amounts": [
+            2025,
+            null,
+            11894421,
+            138392,
+            -65955,
+            155382,
+            12122240
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "5202",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Note Page Fair",
+          "",
+          "",
+          "",
+          "Stated",
+          "Statutory",
+          "Retained",
+          "value",
+          "Total"
+        ],
+        [
+          "tropeR No. through",
+          "",
+          "",
+          "",
+          "capital",
+          "reserves",
+          "earnings/",
+          "other",
+          "equity"
+        ],
+        [
+          "income",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "reserve",
+          ""
+        ],
+        [
+          "launnA",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Balance as January 2024 326 CLP Total income year",
+          "at 01",
+          "",
+          "",
+          "11,894,421",
+          "78,775",
+          "(1,176,968)",
+          "1,146,555",
+          "11,942,783"
+        ],
+        [
+          "Profit for knaB",
+          "the year",
+          "",
+          "",
+          "-",
+          "-",
+          "650,798",
+          "-",
+          "650,798"
+        ],
+        [
+          "Other net 43, 44 397",
+          "comprehensive",
+          "income/ (loss),",
+          "of tax",
+          "-",
+          "-",
+          "(16,838)",
+          "(409,110)",
+          "(425,948)"
+        ],
+        [
+          "slligraC Total income year",
+          "comprehensive",
+          "for the",
+          "2024",
+          "-",
+          "-",
+          "633,960",
+          "(409,110)",
+          "224,850"
+        ],
+        [
+          "equity",
+          "Transactions with",
+          "holders",
+          "recognised",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "directly in",
+          "equity",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Issue of 42 397",
+          "shares",
+          "",
+          "",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Transfer statutory 43, 44 397",
+          "to the",
+          "reserve fund",
+          "",
+          "-",
+          "32,540",
+          "(32,540)",
+          "-",
+          "-"
+        ],
+        [
+          "Total with equity",
+          "transactions",
+          "holders",
+          "",
+          "-",
+          "32,540",
+          "(32,540)",
+          "-",
+          "-"
+        ],
+        [
+          "Balance December",
+          "as at 31",
+          "2024",
+          "",
+          "11,894,421",
+          "111,315",
+          "(575,548)",
+          "737,445",
+          "12,167,633"
+        ],
+        [
+          "Balance as January 2025 Total income year",
+          "at 01",
+          "",
+          "",
+          "11,894,421",
+          "111,315",
+          "(575,548)",
+          "737,445",
+          "12,167,633"
+        ],
+        [
+          "Profit for",
+          "the year",
+          "",
+          "",
+          "-",
+          "-",
+          "541,546",
+          "-",
+          "541,546"
+        ],
+        [
+          "Other net 43, 44 397 Total income/",
+          "comprehensive",
+          "income/ (loss),",
+          "of tax",
+          "-",
+          "-",
+          "(4,876)",
+          "(582,063)",
+          "(586.939)"
+        ],
+        [
+          "for the",
+          "year 2025",
+          "",
+          "",
+          "-",
+          "-",
+          "536,670",
+          "(582,063)",
+          "(45,393)"
+        ],
+        [
+          "equity",
+          "Transactions with",
+          "holders",
+          "recognised",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "directly",
+          "in equity",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Issue of 42 397",
+          "shares",
+          "",
+          "",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Transfer statutory 43, 44 397",
+          "to the",
+          "reserve fund",
+          "",
+          "-",
+          "27,077",
+          "(27,077)",
+          "-",
+          ""
+        ],
+        [
+          "Total equity",
+          "transactions with",
+          "holders",
+          "",
+          "-",
+          "27,077",
+          "(27,077)",
+          "-",
+          "-"
+        ],
+        [
+          "Balance December Financial Equity",
+          "as at 31",
+          "2025",
+          "",
+          "11,894,421",
+          "138,392",
+          "(65,955)",
+          "155,382",
+          "12,122,240"
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 329,
+      "has_note_col": true,
+      "column_headers": [
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "For the year ended December",
+          "note_col": "Note",
+          "amt_cols": [
+            "2025",
+            "2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "'000",
+            "'000"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Cash flows from operating activities launnA",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit before income tax Adjustments for:",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,033,380",
+            "1,149,692"
+          ],
+          "amounts": [
+            1033380,
+            1149692
+          ]
+        },
+        {
+          "label": "Non-cash items included in profit before tax 411 327",
+          "is_section_header": false,
+          "note": "52",
+          "amounts_raw": [
+            "540,368",
+            "1,153,174"
+          ],
+          "amounts": [
+            540368,
+            1153174
+          ]
+        },
+        {
+          "label": "Dividend income 349",
+          "is_section_header": false,
+          "note": "13",
+          "amounts_raw": [
+            "(1,554)",
+            "(1,282)"
+          ],
+          "amounts": [
+            -1554,
+            -1282
+          ]
+        },
+        {
+          "label": "Interest paid on lease liability 386 CLP",
+          "is_section_header": false,
+          "note": "33.5",
+          "amounts_raw": [
+            "(80,864)",
+            "(75,545)"
+          ],
+          "amounts": [
+            -80864,
+            -75545
+          ]
+        },
+        {
+          "label": "Benefits paid on defined benefit plan 394 knaB",
+          "is_section_header": false,
+          "note": "40",
+          "amounts_raw": [
+            "(9,881)",
+            "(16,775)"
+          ],
+          "amounts": [
+            -9881,
+            -16775
+          ]
+        },
+        {
+          "label": "Operating profits before changes in operating assets and liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,481,449",
+            "2,209,264"
+          ],
+          "amounts": [
+            1481449,
+            2209264
+          ]
+        },
+        {
+          "label": "Net (increase)/decrease in operating assets 411 slligraC",
+          "is_section_header": false,
+          "note": "53",
+          "amounts_raw": [
+            "(10,215,149)",
+            "(11,071,882)"
+          ],
+          "amounts": [
+            -10215149,
+            -11071882
+          ]
+        },
+        {
+          "label": "Net increase/ (decrease) in operating liabilities 412",
+          "is_section_header": false,
+          "note": "54",
+          "amounts_raw": [
+            "11,732,158",
+            "9,446,304"
+          ],
+          "amounts": [
+            11732158,
+            9446304
+          ]
+        },
+        {
+          "label": "Cash generated from/(used in) operating activities before income tax",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,998,458",
+            "583,686"
+          ],
+          "amounts": [
+            2998458,
+            583686
+          ]
+        },
+        {
+          "label": "Income taxes paid 396",
+          "is_section_header": false,
+          "note": "41",
+          "amounts_raw": [
+            "(630,576)",
+            "(279,678)"
+          ],
+          "amounts": [
+            -630576,
+            -279678
+          ]
+        },
+        {
+          "label": "Net cash generated from/(used in) operating activities Cash flows from investing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,367,882",
+            "304,008"
+          ],
+          "amounts": [
+            2367882,
+            304008
+          ]
+        },
+        {
+          "label": "Net purchase of property, plant and equipment 379",
+          "is_section_header": false,
+          "note": "31",
+          "amounts_raw": [
+            "(220,596)",
+            "(231,473)"
+          ],
+          "amounts": [
+            -220596,
+            -231473
+          ]
+        },
+        {
+          "label": "Proceeds from sale of property, plant and equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "237",
+            "2,028"
+          ],
+          "amounts": [
+            237,
+            2028
+          ]
+        },
+        {
+          "label": "Net purchase of intangible assets 384",
+          "is_section_header": false,
+          "note": "32",
+          "amounts_raw": [
+            "(94,797)",
+            "(34,680)"
+          ],
+          "amounts": [
+            -94797,
+            -34680
+          ]
+        },
+        {
+          "label": "Dividends received 349",
+          "is_section_header": false,
+          "note": "13",
+          "amounts_raw": [
+            "1,554",
+            "1,282"
+          ],
+          "amounts": [
+            1554,
+            1282
+          ]
+        },
+        {
+          "label": "Net cash generated from/(used in) investing activities Cash flows from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(313,602)",
+            "(262,842)"
+          ],
+          "amounts": [
+            -313602,
+            -262842
+          ]
+        },
+        {
+          "label": "Payment of lease liability 386",
+          "is_section_header": false,
+          "note": "33.5",
+          "amounts_raw": [
+            "(122,516)",
+            "(101,145)"
+          ],
+          "amounts": [
+            -122516,
+            -101145
+          ]
+        },
+        {
+          "label": "Interest paid on perpetual debenture 345",
+          "is_section_header": false,
+          "note": "8.2",
+          "amounts_raw": [
+            "(165,450)",
+            "(223,350)"
+          ],
+          "amounts": [
+            -165450,
+            -223350
+          ]
+        },
+        {
+          "label": "Net cash generated from/(used in) financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(287,966)",
+            "(324,495)"
+          ],
+          "amounts": [
+            -287966,
+            -324495
+          ]
+        },
+        {
+          "label": "Net increase/(decrease) in cash and cash equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,766,314",
+            "283,328"
+          ],
+          "amounts": [
+            1766314,
+            283328
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,743,581",
+            "2,026,909"
+          ],
+          "amounts": [
+            1743581,
+            2026909
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year Reconciliation of cash and cash equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,509,895",
+            "1,743,581"
+          ],
+          "amounts": [
+            3509895,
+            1743581
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year (Gross) 369",
+          "is_section_header": false,
+          "note": "23",
+          "amounts_raw": [
+            "3,509,895",
+            "1,743,581"
+          ],
+          "amounts": [
+            3509895,
+            1743581
+          ]
+        },
+        {
+          "label": "Less: Impairment charges 370",
+          "is_section_header": false,
+          "note": "23.1",
+          "amounts_raw": [
+            "(73,608)",
+            "(28,465)"
+          ],
+          "amounts": [
+            -73608,
+            -28465
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year (Net) 369 The Notes to the Financial Statements disclosed on pages 328 to 442 form part of these Financial Reports • Statement of Cash Flows",
+          "is_section_header": false,
+          "note": "23",
+          "amounts_raw": [
+            "3,436,287",
+            "1,715,116"
+          ],
+          "amounts": [
+            3436287,
+            1715116
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Cash flows from operating activities launnA",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Profit before income tax Adjustments for:",
+          "",
+          "1,033,380",
+          "1,149,692"
+        ],
+        [
+          "Non-cash items included in profit before tax 411 327",
+          "52",
+          "540,368",
+          "1,153,174"
+        ],
+        [
+          "Dividend income 349",
+          "13",
+          "(1,554)",
+          "(1,282)"
+        ],
+        [
+          "Interest paid on lease liability 386 CLP",
+          "33.5",
+          "(80,864)",
+          "(75,545)"
+        ],
+        [
+          "Benefits paid on defined benefit plan 394 knaB",
+          "40",
+          "(9,881)",
+          "(16,775)"
+        ],
+        [
+          "Operating profits before changes in operating assets and liabilities",
+          "",
+          "1,481,449",
+          "2,209,264"
+        ],
+        [
+          "Net (increase)/decrease in operating assets 411 slligraC",
+          "53",
+          "(10,215,149)",
+          "(11,071,882)"
+        ],
+        [
+          "Net increase/ (decrease) in operating liabilities 412",
+          "54",
+          "11,732,158",
+          "9,446,304"
+        ],
+        [
+          "Cash generated from/(used in) operating activities before income tax",
+          "",
+          "2,998,458",
+          "583,686"
+        ],
+        [
+          "Income taxes paid 396",
+          "41",
+          "(630,576)",
+          "(279,678)"
+        ],
+        [
+          "Net cash generated from/(used in) operating activities Cash flows from investing activities",
+          "",
+          "2,367,882",
+          "304,008"
+        ],
+        [
+          "Net purchase of property, plant and equipment 379",
+          "31",
+          "(220,596)",
+          "(231,473)"
+        ],
+        [
+          "Proceeds from sale of property, plant and equipment",
+          "",
+          "237",
+          "2,028"
+        ],
+        [
+          "Net purchase of intangible assets 384",
+          "32",
+          "(94,797)",
+          "(34,680)"
+        ],
+        [
+          "Dividends received 349",
+          "13",
+          "1,554",
+          "1,282"
+        ],
+        [
+          "Net cash generated from/(used in) investing activities Cash flows from financing activities",
+          "",
+          "(313,602)",
+          "(262,842)"
+        ],
+        [
+          "Payment of lease liability 386",
+          "33.5",
+          "(122,516)",
+          "(101,145)"
+        ],
+        [
+          "Interest paid on perpetual debenture 345",
+          "8.2",
+          "(165,450)",
+          "(223,350)"
+        ],
+        [
+          "Net cash generated from/(used in) financing activities",
+          "",
+          "(287,966)",
+          "(324,495)"
+        ],
+        [
+          "Net increase/(decrease) in cash and cash equivalents",
+          "",
+          "1,766,314",
+          "283,328"
+        ],
+        [
+          "Cash and cash equivalents at the beginning of the year",
+          "",
+          "1,743,581",
+          "2,026,909"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year Reconciliation of cash and cash equivalents",
+          "",
+          "3,509,895",
+          "1,743,581"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year (Gross) 369",
+          "23",
+          "3,509,895",
+          "1,743,581"
+        ],
+        [
+          "Less: Impairment charges 370",
+          "23.1",
+          "(73,608)",
+          "(28,465)"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year (Net) 369 The Notes to the Financial Statements disclosed on pages 328 to 442 form part of these Financial Reports • Statement of Cash Flows",
+          "23",
+          "3,436,287",
+          "1,715,116"
+        ]
+      ]
+    },
+    "shareholder_info": {
+      "title": "Shareholder Information",
+      "page_1based": 256,
+      "has_note_col": true,
+      "column_headers": [
+        "reference for disclosures Changes in to the earnings & other capital Financial Financial the Financial Movements in Financial Amortised Overview of to the",
+        "compliance Equity Financial number of Cost - 2025 Financial"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Disclosure requirement Reference the relevant Reserves Appropriations Statements: reserves Corporate Responsibility the Statements: Property, Extents, locations, valuations the Significant the the Statements of the Statements: of Debentures the the Statements: Financial Borrowings Financial Statements",
+          "note_col": "Page necessary Statement of Notes 43 & Retained Community Note 31 to Note 31 to Notes 42 to Capital, Note 39 to Liabilities at Financial Notes 20 &",
+          "amt_cols": [
+            "reference for disclosures Changes in to the earnings & other capital Financial Financial the Financial Movements in Financial Amortised Overview of to the",
+            "compliance Equity Financial number of Cost - 2025 Financial"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Disclosure requirement Reference to reference and other Page/s",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "tropeR the relevant",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "statute/ rule",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "launnA 16. Reserves and Appropriations RBP 326",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "44 Statements: 397 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "reserves 398",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "17. Corporate Social Responsibility (CSR) RBP 126",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "CLP 18. Extents, locations, valuations and the LR 7.6 (VIII) the Statements: Property, 379 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "knaB number of buildings of the Bank’s land of- use assets 382",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "holdings and investment properties",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "slligraC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "19. Significant changes in the Bank’s fixed LR 7.6 (XII) the Statements 379 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "assets and the market value of land, if 382",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the value differs substantially from the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "book value",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "20. Issue of Shares and Debentures LR 7.6 (XIII)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "20.1 Issue of Shares by the Bank LR 7.6 (XIII) the Statements: Stated 397",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "of shares and Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "of Shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "458 20.2 Issue of Debentures by the Bank the Statements: Financial 392 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other Borrowings 393 21. Share information and Substantial Shareholdings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "21.1 Distribution Schedule of LR 7.6 (III) 4.1, 4.2 and 4.3 457 to Shareholdings, names and the LR 7.6 (IV) 459 number of shares held by the 20 LR 7.6 (X) largest holders of Voting & Non- LR 7.13.1 Voting shares and the percentage of such shares held, • float adjusted market capitalisation, public holding percentage, • number of public shareholders • option under which the Bank complies with the minimum public holding requirement. 21.2 Financial ratios and market price LR 7.6 (XI) 23 information 47 Statements 361 & Information on Earnings, Dividends, 400 Net Assets and Market Value per",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "459 share Information on listed debt securities Governance, Risk Management And Compliance • Statement of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Disclosure requirement Reference to reference and other Page/s",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the relevant tropeR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "statute/ rule",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "21.3 Information on shares traded and the LR 7.6 (IX) the Statements: Stated Capital 397 launnA",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "number of shares represented by the shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated Capital",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "458 255 21.4 Own Share Purchases CA S.64 own shares 21.5 Equitable Treatment to Shareholders RBP Responsibility for Financial 307 to CLP 308 knaB 22. Information on Directors’ Meetings slligraC and Board Committees 22.1 Directors’ Meetings RBP 180 to 230 Report Director - Board & 298 its committees 22.2 Board Committees RBP 273 to 296 23. Disclosure of Directors’ dealings in shares and debentures 23.1 Directors’ Interests in Ordinary Voting LR 7.6 (V) Report Directors 297 to and Non-voting Shares of the Bank 302 24. Employee Share Option Plans and LR 7.6 (XIV) does employee share Employee Share Purchase Schemes or schemes. 25. Directors’ Interests in Contracts RBP have voting on matters 303 or Proposed Contracts and in interested. Directors Remuneration and other benefits of direct interest in any other 405 to Directors during the year under review with the Bank, 410 “Directors’ interest in Note 51 to the Party Disclosures. LR 7.6 (XIV) enable the Non-Executive Bank to acquire Bank, other than via CA S.217 (2) (d) approval of loans to in ordinary course of with all applicable 26. Director’s and Officers’ Insurance CA S.218 financial year, paid an of an insurance Bank and the Directors, employees of the corporates as defined in the with commercial prohibits disclosure of of including the nature of the amount of the Governance, Risk Management And Compliance • Statement of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "5202",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Disclosure requirement Reference to reference and other Page/s",
+          "Page",
+          "for",
+          "compliance"
+        ],
+        [
+          "tropeR the relevant",
+          "necessary",
+          "disclosures",
+          ""
+        ],
+        [
+          "statute/ rule",
+          "",
+          "",
+          ""
+        ],
+        [
+          "launnA 16. Reserves and Appropriations RBP 326",
+          "Statement of",
+          "Changes in",
+          "Equity"
+        ],
+        [
+          "44 Statements: 397 to",
+          "Notes 43 &",
+          "to the",
+          "Financial"
+        ],
+        [
+          "reserves 398",
+          "Retained",
+          "earnings &",
+          "other"
+        ],
+        [
+          "254",
+          "",
+          "",
+          ""
+        ],
+        [
+          "17. Corporate Social Responsibility (CSR) RBP 126",
+          "Community",
+          "capital",
+          ""
+        ],
+        [
+          "CLP 18. Extents, locations, valuations and the LR 7.6 (VIII) the Statements: Property, 379 to",
+          "Note 31 to",
+          "Financial",
+          ""
+        ],
+        [
+          "knaB number of buildings of the Bank’s land of- use assets 382",
+          "Plant and",
+          "Equipment &",
+          "Right-"
+        ],
+        [
+          "holdings and investment properties",
+          "",
+          "",
+          ""
+        ],
+        [
+          "slligraC",
+          "",
+          "",
+          ""
+        ],
+        [
+          "19. Significant changes in the Bank’s fixed LR 7.6 (XII) the Statements 379 to",
+          "Note 31 to",
+          "Financial",
+          ""
+        ],
+        [
+          "assets and the market value of land, if 382",
+          "",
+          "",
+          ""
+        ],
+        [
+          "the value differs substantially from the",
+          "",
+          "",
+          ""
+        ],
+        [
+          "book value",
+          "",
+          "",
+          ""
+        ],
+        [
+          "20. Issue of Shares and Debentures LR 7.6 (XIII)",
+          "",
+          "",
+          ""
+        ],
+        [
+          "20.1 Issue of Shares by the Bank LR 7.6 (XIII) the Statements: Stated 397",
+          "Notes 42 to",
+          "Financial",
+          ""
+        ],
+        [
+          "of shares and Issue",
+          "Capital,",
+          "Movements in",
+          "number"
+        ],
+        [
+          "of Shares",
+          "New",
+          "",
+          ""
+        ],
+        [
+          "458 20.2 Issue of Debentures by the Bank the Statements: Financial 392 to",
+          "“Investor",
+          "Relations” -",
+          "Item 3"
+        ],
+        [
+          "Other Borrowings 393 21. Share information and Substantial Shareholdings",
+          "Liabilities at",
+          "Amortised",
+          "Cost -"
+        ],
+        [
+          "21.1 Distribution Schedule of LR 7.6 (III) 4.1, 4.2 and 4.3 457 to Shareholdings, names and the LR 7.6 (IV) 459 number of shares held by the 20 LR 7.6 (X) largest holders of Voting & Non- LR 7.13.1 Voting shares and the percentage of such shares held, • float adjusted market capitalisation, public holding percentage, • number of public shareholders • option under which the Bank complies with the minimum public holding requirement. 21.2 Financial ratios and market price LR 7.6 (XI) 23 information 47 Statements 361 & Information on Earnings, Dividends, 400 Net Assets and Market Value per",
+          "“Investor",
+          "Relations” -",
+          "Items 1, 2,"
+        ],
+        [
+          "459 share Information on listed debt securities Governance, Risk Management And Compliance • Statement of",
+          "“Investor",
+          "Relations” -",
+          "Item 5"
+        ],
+        [
+          "5202",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Disclosure requirement Reference to reference and other Page/s",
+          "Page",
+          "for",
+          "compliance"
+        ],
+        [
+          "the relevant tropeR",
+          "necessary",
+          "disclosures",
+          ""
+        ],
+        [
+          "statute/ rule",
+          "",
+          "",
+          ""
+        ],
+        [
+          "21.3 Information on shares traded and the LR 7.6 (IX) the Statements: Stated Capital 397 launnA",
+          "Note 42 to",
+          "Financial",
+          ""
+        ],
+        [
+          "number of shares represented by the shares",
+          "and",
+          "Movements in",
+          "number of"
+        ],
+        [
+          "Stated Capital",
+          "",
+          "",
+          ""
+        ],
+        [
+          "458 255 21.4 Own Share Purchases CA S.64 own shares 21.5 Equitable Treatment to Shareholders RBP Responsibility for Financial 307 to CLP 308 knaB 22. Information on Directors’ Meetings slligraC and Board Committees 22.1 Directors’ Meetings RBP 180 to 230 Report Director - Board & 298 its committees 22.2 Board Committees RBP 273 to 296 23. Disclosure of Directors’ dealings in shares and debentures 23.1 Directors’ Interests in Ordinary Voting LR 7.6 (V) Report Directors 297 to and Non-voting Shares of the Bank 302 24. Employee Share Option Plans and LR 7.6 (XIV) does employee share Employee Share Purchase Schemes or schemes. 25. Directors’ Interests in Contracts RBP have voting on matters 303 or Proposed Contracts and in interested. Directors Remuneration and other benefits of direct interest in any other 405 to Directors during the year under review with the Bank, 410 “Directors’ interest in Note 51 to the Party Disclosures. LR 7.6 (XIV) enable the Non-Executive Bank to acquire Bank, other than via  CA S.217 (2) (d) approval of loans to in ordinary course of with all applicable  26. Director’s and Officers’ Insurance CA S.218 financial year, paid an of an insurance Bank and the Directors, employees of the corporates as defined in the with commercial prohibits disclosure of of including the nature of the amount of the  Governance, Risk Management And Compliance • Statement of",
+          "“Investor",
+          "Relations” -",
+          "Item 3"
+        ]
+      ]
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "page_1based": 256,
+      "has_note_col": true,
+      "column_headers": [
+        "reference for disclosures Changes in to the earnings & other capital Financial Financial the Financial Movements in Financial Amortised Overview of to the",
+        "compliance Equity Financial number of Cost - 2025 Financial"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Disclosure requirement Reference the relevant Reserves Appropriations Statements: reserves Corporate Responsibility the Statements: Property, Extents, locations, valuations the Significant the the Statements of the Statements: of Debentures the the Statements: Financial Borrowings Financial Statements",
+          "note_col": "Page necessary Statement of Notes 43 & Retained Community Note 31 to Note 31 to Notes 42 to Capital, Note 39 to Liabilities at Financial Notes 20 &",
+          "amt_cols": [
+            "reference for disclosures Changes in to the earnings & other capital Financial Financial the Financial Movements in Financial Amortised Overview of to the",
+            "compliance Equity Financial number of Cost - 2025 Financial"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Disclosure requirement Reference to reference and other Page/s",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "tropeR the relevant",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "statute/ rule",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "launnA 16. Reserves and Appropriations RBP 326",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "44 Statements: 397 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "reserves 398",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "17. Corporate Social Responsibility (CSR) RBP 126",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "CLP 18. Extents, locations, valuations and the LR 7.6 (VIII) the Statements: Property, 379 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "knaB number of buildings of the Bank’s land of- use assets 382",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "holdings and investment properties",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "slligraC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "19. Significant changes in the Bank’s fixed LR 7.6 (XII) the Statements 379 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "assets and the market value of land, if 382",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the value differs substantially from the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "book value",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "20. Issue of Shares and Debentures LR 7.6 (XIII)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "20.1 Issue of Shares by the Bank LR 7.6 (XIII) the Statements: Stated 397",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "of shares and Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "of Shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "458 20.2 Issue of Debentures by the Bank the Statements: Financial 392 to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other Borrowings 393 21. Share information and Substantial Shareholdings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "21.1 Distribution Schedule of LR 7.6 (III) 4.1, 4.2 and 4.3 457 to Shareholdings, names and the LR 7.6 (IV) 459 number of shares held by the 20 LR 7.6 (X) largest holders of Voting & Non- LR 7.13.1 Voting shares and the percentage of such shares held, • float adjusted market capitalisation, public holding percentage, • number of public shareholders • option under which the Bank complies with the minimum public holding requirement. 21.2 Financial ratios and market price LR 7.6 (XI) 23 information 47 Statements 361 & Information on Earnings, Dividends, 400 Net Assets and Market Value per",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "459 share Information on listed debt securities Governance, Risk Management And Compliance • Statement of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Disclosure requirement Reference to reference and other Page/s",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the relevant tropeR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "statute/ rule",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "21.3 Information on shares traded and the LR 7.6 (IX) the Statements: Stated Capital 397 launnA",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "number of shares represented by the shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated Capital",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "458 255 21.4 Own Share Purchases CA S.64 own shares 21.5 Equitable Treatment to Shareholders RBP Responsibility for Financial 307 to CLP 308 knaB 22. Information on Directors’ Meetings slligraC and Board Committees 22.1 Directors’ Meetings RBP 180 to 230 Report Director - Board & 298 its committees 22.2 Board Committees RBP 273 to 296 23. Disclosure of Directors’ dealings in shares and debentures 23.1 Directors’ Interests in Ordinary Voting LR 7.6 (V) Report Directors 297 to and Non-voting Shares of the Bank 302 24. Employee Share Option Plans and LR 7.6 (XIV) does employee share Employee Share Purchase Schemes or schemes. 25. Directors’ Interests in Contracts RBP have voting on matters 303 or Proposed Contracts and in interested. Directors Remuneration and other benefits of direct interest in any other 405 to Directors during the year under review with the Bank, 410 “Directors’ interest in Note 51 to the Party Disclosures. LR 7.6 (XIV) enable the Non-Executive Bank to acquire Bank, other than via CA S.217 (2) (d) approval of loans to in ordinary course of with all applicable 26. Director’s and Officers’ Insurance CA S.218 financial year, paid an of an insurance Bank and the Directors, employees of the corporates as defined in the with commercial prohibits disclosure of of including the nature of the amount of the Governance, Risk Management And Compliance • Statement of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "5202",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Disclosure requirement Reference to reference and other Page/s",
+          "Page",
+          "for",
+          "compliance"
+        ],
+        [
+          "tropeR the relevant",
+          "necessary",
+          "disclosures",
+          ""
+        ],
+        [
+          "statute/ rule",
+          "",
+          "",
+          ""
+        ],
+        [
+          "launnA 16. Reserves and Appropriations RBP 326",
+          "Statement of",
+          "Changes in",
+          "Equity"
+        ],
+        [
+          "44 Statements: 397 to",
+          "Notes 43 &",
+          "to the",
+          "Financial"
+        ],
+        [
+          "reserves 398",
+          "Retained",
+          "earnings &",
+          "other"
+        ],
+        [
+          "254",
+          "",
+          "",
+          ""
+        ],
+        [
+          "17. Corporate Social Responsibility (CSR) RBP 126",
+          "Community",
+          "capital",
+          ""
+        ],
+        [
+          "CLP 18. Extents, locations, valuations and the LR 7.6 (VIII) the Statements: Property, 379 to",
+          "Note 31 to",
+          "Financial",
+          ""
+        ],
+        [
+          "knaB number of buildings of the Bank’s land of- use assets 382",
+          "Plant and",
+          "Equipment &",
+          "Right-"
+        ],
+        [
+          "holdings and investment properties",
+          "",
+          "",
+          ""
+        ],
+        [
+          "slligraC",
+          "",
+          "",
+          ""
+        ],
+        [
+          "19. Significant changes in the Bank’s fixed LR 7.6 (XII) the Statements 379 to",
+          "Note 31 to",
+          "Financial",
+          ""
+        ],
+        [
+          "assets and the market value of land, if 382",
+          "",
+          "",
+          ""
+        ],
+        [
+          "the value differs substantially from the",
+          "",
+          "",
+          ""
+        ],
+        [
+          "book value",
+          "",
+          "",
+          ""
+        ],
+        [
+          "20. Issue of Shares and Debentures LR 7.6 (XIII)",
+          "",
+          "",
+          ""
+        ],
+        [
+          "20.1 Issue of Shares by the Bank LR 7.6 (XIII) the Statements: Stated 397",
+          "Notes 42 to",
+          "Financial",
+          ""
+        ],
+        [
+          "of shares and Issue",
+          "Capital,",
+          "Movements in",
+          "number"
+        ],
+        [
+          "of Shares",
+          "New",
+          "",
+          ""
+        ],
+        [
+          "458 20.2 Issue of Debentures by the Bank the Statements: Financial 392 to",
+          "“Investor",
+          "Relations” -",
+          "Item 3"
+        ],
+        [
+          "Other Borrowings 393 21. Share information and Substantial Shareholdings",
+          "Liabilities at",
+          "Amortised",
+          "Cost -"
+        ],
+        [
+          "21.1 Distribution Schedule of LR 7.6 (III) 4.1, 4.2 and 4.3 457 to Shareholdings, names and the LR 7.6 (IV) 459 number of shares held by the 20 LR 7.6 (X) largest holders of Voting & Non- LR 7.13.1 Voting shares and the percentage of such shares held, • float adjusted market capitalisation, public holding percentage, • number of public shareholders • option under which the Bank complies with the minimum public holding requirement. 21.2 Financial ratios and market price LR 7.6 (XI) 23 information 47 Statements 361 & Information on Earnings, Dividends, 400 Net Assets and Market Value per",
+          "“Investor",
+          "Relations” -",
+          "Items 1, 2,"
+        ],
+        [
+          "459 share Information on listed debt securities Governance, Risk Management And Compliance • Statement of",
+          "“Investor",
+          "Relations” -",
+          "Item 5"
+        ],
+        [
+          "5202",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Disclosure requirement Reference to reference and other Page/s",
+          "Page",
+          "for",
+          "compliance"
+        ],
+        [
+          "the relevant tropeR",
+          "necessary",
+          "disclosures",
+          ""
+        ],
+        [
+          "statute/ rule",
+          "",
+          "",
+          ""
+        ],
+        [
+          "21.3 Information on shares traded and the LR 7.6 (IX) the Statements: Stated Capital 397 launnA",
+          "Note 42 to",
+          "Financial",
+          ""
+        ],
+        [
+          "number of shares represented by the shares",
+          "and",
+          "Movements in",
+          "number of"
+        ],
+        [
+          "Stated Capital",
+          "",
+          "",
+          ""
+        ],
+        [
+          "458 255 21.4 Own Share Purchases CA S.64 own shares 21.5 Equitable Treatment to Shareholders RBP Responsibility for Financial 307 to CLP 308 knaB 22. Information on Directors’ Meetings slligraC and Board Committees 22.1 Directors’ Meetings RBP 180 to 230 Report Director - Board & 298 its committees 22.2 Board Committees RBP 273 to 296 23. Disclosure of Directors’ dealings in shares and debentures 23.1 Directors’ Interests in Ordinary Voting LR 7.6 (V) Report Directors 297 to and Non-voting Shares of the Bank 302 24. Employee Share Option Plans and LR 7.6 (XIV) does employee share Employee Share Purchase Schemes or schemes. 25. Directors’ Interests in Contracts RBP have voting on matters 303 or Proposed Contracts and in interested. Directors Remuneration and other benefits of direct interest in any other 405 to Directors during the year under review with the Bank, 410 “Directors’ interest in Note 51 to the Party Disclosures. LR 7.6 (XIV) enable the Non-Executive Bank to acquire Bank, other than via  CA S.217 (2) (d) approval of loans to in ordinary course of with all applicable  26. Director’s and Officers’ Insurance CA S.218 financial year, paid an of an insurance Bank and the Directors, employees of the corporates as defined in the with commercial prohibits disclosure of of including the nature of the amount of the  Governance, Risk Management And Compliance • Statement of",
+          "“Investor",
+          "Relations” -",
+          "Item 3"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,4547 @@
+{
+  "company": "company16",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company16\\Annual\\48111_2024.pdf",
+  "extracted_at": "2026-05-18T10:55:40",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 68,
+      "has_note_col": true,
+      "column_headers": [
+        "2024",
+        "2023"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Year ended December 2024",
+          "note_col": "",
+          "amt_cols": [
+            "2024",
+            "2023"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Year ended 31 December 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2024",
+            "2023"
+          ],
+          "amounts": [
+            2024,
+            2023
+          ]
+        },
+        {
+          "label": "Gross Written Contribution (Premium)",
+          "is_section_header": false,
+          "note": "21",
+          "amounts_raw": [
+            "1,295,045,915",
+            "1,150,656,357"
+          ],
+          "amounts": [
+            1295045915,
+            1150656357
+          ]
+        },
+        {
+          "label": "Contribution (Premium) Ceded to Retakaful Companies (Reinsurers)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(57,649,951)",
+            "(56,457,232)"
+          ],
+          "amounts": [
+            -57649951,
+            -56457232
+          ]
+        },
+        {
+          "label": "Net Written Contribution (Premium)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,237,395,964",
+            "1,094,199,125"
+          ],
+          "amounts": [
+            1237395964,
+            1094199125
+          ]
+        },
+        {
+          "label": "Net Change in Reserve for Unearned Contribution (Premium)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(557,651)",
+            "(511,865)"
+          ],
+          "amounts": [
+            -557651,
+            -511865
+          ]
+        },
+        {
+          "label": "Net Earned Contribution (Premium) Other Revenue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,236,838,313",
+            "1,093,687,260"
+          ],
+          "amounts": [
+            1236838313,
+            1093687260
+          ]
+        },
+        {
+          "label": "Income From Investments",
+          "is_section_header": false,
+          "note": "22",
+          "amounts_raw": [
+            "582,816,251",
+            "622,215,429"
+          ],
+          "amounts": [
+            582816251,
+            622215429
+          ]
+        },
+        {
+          "label": "Other Income",
+          "is_section_header": false,
+          "note": "23",
+          "amounts_raw": [
+            "59,968,481",
+            "48,543,064"
+          ],
+          "amounts": [
+            59968481,
+            48543064
+          ]
+        },
+        {
+          "label": "Total Revenue Expenses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,879,623,045",
+            "1,764,445,753"
+          ],
+          "amounts": [
+            1879623045,
+            1764445753
+          ]
+        },
+        {
+          "label": "Takaful (Insurance) Claims and Benefits (Net)",
+          "is_section_header": false,
+          "note": "24",
+          "amounts_raw": [
+            "(519,187,946)",
+            "(566,593,346)"
+          ],
+          "amounts": [
+            -519187946,
+            -566593346
+          ]
+        },
+        {
+          "label": "Acquisition Cost (Net of Reinsurance Commission)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(153,142,951)",
+            "(152,309,797)"
+          ],
+          "amounts": [
+            -153142951,
+            -152309797
+          ]
+        },
+        {
+          "label": "Change in Family Takaful Contract Liability",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(565,242,463)",
+            "(445,854,249)"
+          ],
+          "amounts": [
+            -565242463,
+            -445854249
+          ]
+        },
+        {
+          "label": "Other Operating and Administration Expenses",
+          "is_section_header": false,
+          "note": "25",
+          "amounts_raw": [
+            "(627,321,321)",
+            "(538,827,148)"
+          ],
+          "amounts": [
+            -627321321,
+            -538827148
+          ]
+        },
+        {
+          "label": "Amortisations",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "(1,503,691)",
+            "(1,541,358)"
+          ],
+          "amounts": [
+            -1503691,
+            -1541358
+          ]
+        },
+        {
+          "label": "Total Expenses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,866,398,372)",
+            "(1,705,125,898)"
+          ],
+          "amounts": [
+            -1866398372,
+            -1705125898
+          ]
+        },
+        {
+          "label": "Profit from Operations",
+          "is_section_header": false,
+          "note": "27",
+          "amounts_raw": [
+            "13,224,672",
+            "59,319,855"
+          ],
+          "amounts": [
+            13224672,
+            59319855
+          ]
+        },
+        {
+          "label": "Finance Cost",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "(8,646,402)",
+            "(9,000,380)"
+          ],
+          "amounts": [
+            -8646402,
+            -9000380
+          ]
+        },
+        {
+          "label": "Profit Before Taxation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,578,270",
+            "50,319,475"
+          ],
+          "amounts": [
+            4578270,
+            50319475
+          ]
+        },
+        {
+          "label": "Income Tax",
+          "is_section_header": false,
+          "note": "28",
+          "amounts_raw": [
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit for the Year Other Comprehensive Income Other comprehensive income to be reclassified to profit or loss in subsequent periods.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,578,270",
+            "50,319,475"
+          ],
+          "amounts": [
+            4578270,
+            50319475
+          ]
+        },
+        {
+          "label": "Net Change in Fair Value of Available-for-Sale Financial Assets transferred (to)/ from Life policy Holders Reserve Other Comprehensive Income not to be reclassified to Profit or Loss in subsequent periods",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "14,193,167",
+            "15,553,895"
+          ],
+          "amounts": [
+            14193167,
+            15553895
+          ]
+        },
+        {
+          "label": "Actuarial Profit / (Loss) on Defined Benefit Plans",
+          "is_section_header": false,
+          "note": "14.1",
+          "amounts_raw": [
+            "(886,074)",
+            "818,616"
+          ],
+          "amounts": [
+            -886074,
+            818616
+          ]
+        },
+        {
+          "label": "Revaluation Gain of Property, Plant and Equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "9,322,175",
+            "-"
+          ],
+          "amounts": [
+            9322175,
+            null
+          ]
+        },
+        {
+          "label": "Other Comprehensive Income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,629,268",
+            "16,372,511"
+          ],
+          "amounts": [
+            22629268,
+            16372511
+          ]
+        },
+        {
+          "label": "Total Comprehensive Income for the year Basic/Diluted Earnings Per Share The Accounting Policies and Notes on pages 71 through 109 form an integral part of the 66 Life Insurance - Annual Report 2024 | Amana Takaful Life PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "27,207,539",
+            "66,691,986"
+          ],
+          "amounts": [
+            27207539,
+            66691986
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Year ended 31 December 2024",
+          "",
+          "2024",
+          "2023"
+        ],
+        [
+          "Gross Written Contribution (Premium)",
+          "21",
+          "1,295,045,915",
+          "1,150,656,357"
+        ],
+        [
+          "Contribution (Premium) Ceded to Retakaful Companies (Reinsurers)",
+          "",
+          "(57,649,951)",
+          "(56,457,232)"
+        ],
+        [
+          "Net Written Contribution (Premium)",
+          "",
+          "1,237,395,964",
+          "1,094,199,125"
+        ],
+        [
+          "Net Change in Reserve for Unearned Contribution (Premium)",
+          "",
+          "(557,651)",
+          "(511,865)"
+        ],
+        [
+          "Net Earned Contribution (Premium) Other Revenue",
+          "",
+          "1,236,838,313",
+          "1,093,687,260"
+        ],
+        [
+          "Income From Investments",
+          "22",
+          "582,816,251",
+          "622,215,429"
+        ],
+        [
+          "Other Income",
+          "23",
+          "59,968,481",
+          "48,543,064"
+        ],
+        [
+          "Total Revenue Expenses",
+          "",
+          "1,879,623,045",
+          "1,764,445,753"
+        ],
+        [
+          "Takaful (Insurance) Claims and Benefits (Net)",
+          "24",
+          "(519,187,946)",
+          "(566,593,346)"
+        ],
+        [
+          "Acquisition Cost (Net of Reinsurance Commission)",
+          "",
+          "(153,142,951)",
+          "(152,309,797)"
+        ],
+        [
+          "Change in Family Takaful Contract Liability",
+          "",
+          "(565,242,463)",
+          "(445,854,249)"
+        ],
+        [
+          "Other Operating and Administration Expenses",
+          "25",
+          "(627,321,321)",
+          "(538,827,148)"
+        ],
+        [
+          "Amortisations",
+          "4",
+          "(1,503,691)",
+          "(1,541,358)"
+        ],
+        [
+          "Total Expenses",
+          "",
+          "(1,866,398,372)",
+          "(1,705,125,898)"
+        ],
+        [
+          "Profit from Operations",
+          "27",
+          "13,224,672",
+          "59,319,855"
+        ],
+        [
+          "Finance Cost",
+          "26",
+          "(8,646,402)",
+          "(9,000,380)"
+        ],
+        [
+          "Profit Before Taxation",
+          "",
+          "4,578,270",
+          "50,319,475"
+        ],
+        [
+          "Income Tax",
+          "28",
+          "-",
+          "-"
+        ],
+        [
+          "Profit for the Year Other Comprehensive Income Other comprehensive income to be reclassified to profit or loss in subsequent periods.",
+          "",
+          "4,578,270",
+          "50,319,475"
+        ],
+        [
+          "Net Change in Fair Value of Available-for-Sale Financial Assets transferred (to)/ from Life policy Holders Reserve Other Comprehensive Income not to be reclassified to Profit or Loss in subsequent periods",
+          "",
+          "14,193,167",
+          "15,553,895"
+        ],
+        [
+          "Actuarial Profit / (Loss) on Defined Benefit Plans",
+          "14.1",
+          "(886,074)",
+          "818,616"
+        ],
+        [
+          "Revaluation Gain of Property, Plant and Equipment",
+          "",
+          "9,322,175",
+          "-"
+        ],
+        [
+          "Other Comprehensive Income",
+          "",
+          "22,629,268",
+          "16,372,511"
+        ],
+        [
+          "Total Comprehensive Income for the year Basic/Diluted Earnings Per Share The Accounting Policies and Notes on pages 71 through 109 form an integral part of the 66 Life Insurance - Annual Report 2024 | Amana Takaful Life PLC",
+          "",
+          "27,207,539",
+          "66,691,986"
+        ]
+      ]
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income",
+      "page_1based": 93,
+      "has_note_col": false,
+      "column_headers": [
+        "2024",
+        "2023"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "As at 31st December",
+          "note_col": null,
+          "amt_cols": [
+            "2024",
+            "2023"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "As at 31st December",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2024",
+            "2023"
+          ],
+          "amounts": [
+            2024,
+            2023
+          ]
+        },
+        {
+          "label": "Employee Benefits - Gratuity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "At beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "12,696,932",
+            "10,820,935"
+          ],
+          "amounts": [
+            12696932,
+            10820935
+          ]
+        },
+        {
+          "label": "Net Benefit Expense (Note 14.1)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,423,031",
+            "2,770,050"
+          ],
+          "amounts": [
+            4423031,
+            2770050
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "17,119,963",
+            "13,590,985"
+          ],
+          "amounts": [
+            17119963,
+            13590985
+          ]
+        },
+        {
+          "label": "Payments during the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,909,403)",
+            "(894,053)"
+          ],
+          "amounts": [
+            -1909403,
+            -894053
+          ]
+        },
+        {
+          "label": "At end of the year 14.1 Net Benefit Expense",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,210,560",
+            "12,696,932"
+          ],
+          "amounts": [
+            15210560,
+            12696932
+          ]
+        },
+        {
+          "label": "Included in Statement of Comprehensive Income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Interest Cost",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,752,176",
+            "2,066,798"
+          ],
+          "amounts": [
+            1752176,
+            2066798
+          ]
+        },
+        {
+          "label": "Current Service Cost",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,784,781",
+            "1,521,868"
+          ],
+          "amounts": [
+            1784781,
+            1521868
+          ]
+        },
+        {
+          "label": "Included in Other Comprehensive Income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,536,957",
+            "3,588,666"
+          ],
+          "amounts": [
+            3536957,
+            3588666
+          ]
+        },
+        {
+          "label": "Actuarial Loss on Obligations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "886,074",
+            "(818,616)"
+          ],
+          "amounts": [
+            886074,
+            -818616
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "886,074",
+            "(818,616)"
+          ],
+          "amounts": [
+            886074,
+            -818616
+          ]
+        },
+        {
+          "label": "Net Benefit Expense The gratuity liability was actuarially valued under the Projected Unit Credit Cost method by Mr. Goonetilleke (Fellow of the Society of Actuaries - USA) in 2024 as requires by LKAS 19, Employee Benefits. Principal actuarial assumptions used :",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,423,031",
+            "2,770,050"
+          ],
+          "amounts": [
+            4423031,
+            2770050
+          ]
+        },
+        {
+          "label": "a) Discount Rate % per Annum",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10.9",
+            "13.8"
+          ],
+          "amounts": [
+            10.9,
+            13.8
+          ]
+        },
+        {
+          "label": "b) Salary Increase % per Annum",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5",
+            "5"
+          ],
+          "amounts": [
+            5,
+            5
+          ]
+        },
+        {
+          "label": "c) Incidence of Withdrawals",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4",
+            "5"
+          ],
+          "amounts": [
+            4,
+            5
+          ]
+        },
+        {
+          "label": "d) Expected Average Future Working Life of the Active Participants 5.3 5.4",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "e) The weighted average duration of the defined benefit obligation is 4.7 4.1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Life Insurance - Annual Report 2024 | Amana PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "91"
+          ],
+          "amounts": [
+            null,
+            91
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "As at 31st December",
+          "2024",
+          "2023"
+        ],
+        [
+          "Employee Benefits - Gratuity",
+          "",
+          ""
+        ],
+        [
+          "At beginning of the year",
+          "12,696,932",
+          "10,820,935"
+        ],
+        [
+          "Net Benefit Expense (Note 14.1)",
+          "4,423,031",
+          "2,770,050"
+        ],
+        [
+          "",
+          "17,119,963",
+          "13,590,985"
+        ],
+        [
+          "Payments during the year",
+          "(1,909,403)",
+          "(894,053)"
+        ],
+        [
+          "At end of the year 14.1 Net Benefit Expense",
+          "15,210,560",
+          "12,696,932"
+        ],
+        [
+          "Included in Statement of Comprehensive Income",
+          "",
+          ""
+        ],
+        [
+          "Interest Cost",
+          "1,752,176",
+          "2,066,798"
+        ],
+        [
+          "Current Service Cost",
+          "1,784,781",
+          "1,521,868"
+        ],
+        [
+          "Included in Other Comprehensive Income",
+          "3,536,957",
+          "3,588,666"
+        ],
+        [
+          "Actuarial Loss on Obligations",
+          "886,074",
+          "(818,616)"
+        ],
+        [
+          "",
+          "886,074",
+          "(818,616)"
+        ],
+        [
+          "Net Benefit Expense The gratuity liability was actuarially valued under the Projected Unit Credit Cost method by Mr. Goonetilleke (Fellow of the Society of Actuaries - USA) in 2024 as requires by LKAS 19, Employee Benefits. Principal actuarial assumptions used :",
+          "4,423,031",
+          "2,770,050"
+        ],
+        [
+          "a) Discount Rate % per Annum",
+          "10.9",
+          "13.8"
+        ],
+        [
+          "b) Salary Increase % per Annum",
+          "5",
+          "5"
+        ],
+        [
+          "c) Incidence of Withdrawals",
+          "4",
+          "5"
+        ],
+        [
+          "d) Expected Average Future Working Life of the Active Participants 5.3 5.4",
+          "Years",
+          "Years"
+        ],
+        [
+          "e) The weighted average duration of the defined benefit obligation is 4.7 4.1",
+          "Years",
+          "Years"
+        ],
+        [
+          "Life Insurance - Annual Report 2024 | Amana PLC",
+          "Takaful Life",
+          "91"
+        ]
+      ]
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 14,
+      "raw_text": "CHAIRMAN’S MESSAGE\nGross Written Premium (GWP) saw a YoY impact. Recognising Sri Lanka’s water\nstandards of corporate governance,\ngrowth of 13%%, reaching Rs. 1.3 Bn. Cost stress challenges, we supported\nproactively aligning with evolving\nmanagement remained a key strategic underprivileged families in the Mannar\nregulatory requirements. Even ahead of\npriority, and excluding a one-time District by providing access to safe\nmandated deadlines, we revised and\nnetwork expansion expense incurred and clean drinking water, reaffirming\nstrengthened our governance policies\nduring the year, the overall increase in our dedication to community\nto meet the latest standards set by\nour cost base was contained at 10%. empowerment.\nthe Colombo Stock Exchange (CSE).\nKey policies were formally established\nOur balance sheet strengthened further, Charting the Path Ahead\nand made accessible to shareholders,\nwith total assets increasing by 15% YoY reinforcing our commitment to As we step into the next 25 years, we\nto Rs. 4,985 Mn. Within balance sheet transparency and accountability. are poised for growth in a landscape\nfinancing, total insurance contract shaped by economic and political\nliabilities expanded by 17% to Rs. 3,839 A seamless collaboration between the stability. With a strong, future-focused\nMn, while total equity grew by 4% to Rs. Board and Management enabled the strategy, we are well-equipped to\n638 Mn, supported by higher revenue effective execution of strategic priorities, navigate evolving market conditions\nreserves. translating high-level decisions into while keeping innovation and\nactionable initiatives aligned with our digitisation at the forefront of our\nThe regulatory Capital Adequacy Ratio long-term vision. Further details on our journey.\n(CAR) reached 193% by year-end,\ngovernance framework and key policy\nexceeding the minimum regulatory updates can be found in the Corporate To drive digital transformation, we will\nrequirement by 33 percentage points Governance Report on page 36. invest in advanced IT infrastructure,\nand reflecting a 1 percentage point ensuring seamless customer\nincrease over the previous year. Further Creating Value for Our Stakeholders experiences from policy onboarding\ndetails on our financial performance can to claims management. Our focus\nAs we progress on our growth journey,\nbe found in the Chief Executive Officer’s remains on enhancing accessibility and\nwe remain committed to delivering\nReview on pages 14 to 17. convenience through digital platforms\nvalue to our diverse stakeholders.\nwhile expanding market penetration\nUpholding Excellence in Corporate\nacross Sri Lanka.\nOur shareholders have been a\nGovernance\nkey focus, as discussed earlier, we\nThe Company continued to be guided As the nation enters a new phase of\ngenerated solid returns to them this\nby a dynamic and experienced Board economic growth, Amana Takaful Life\nyear. At the heart of our purpose are our\nof Directors. Of the 8 Board members, is committed to supporting individuals\npolicyholders. In 2024, we disbursed Rs.\n5 were independent non-executive and businesses with innovative,\n519 Mn in Takaful claims and benefits\ndirectors, bringing diverse expertise future-ready insurance solutions. By\ndecrease of 8% over the previous year—\nacross insurance, actuarial science, continuously evolving and adapting, we\nreinforcing our promise of protection\nbanking and finance, investment aim to strengthen our role as a trusted\nand financial security.\nbanking, branding and marketing, and partner in protection and financial\nmedicine. security.\nEmployees are another critical\nstakeholder group, and we strive to\nThe Board convened 4 times during the Appreciation\nprovide a rewarding and growth-\nyear, focusing on key priorities such as oriented work environment. Total The year gone by, was a true test of our\nstrategic direction, proactive responses investment in employee compensation resilience, risk management capabilities,\nto emerging economic challenges, for the year amounted to Rs. 329 and commitment to maintaining\nand the preservation and growth of Mn. Our strong human resource operational stability. Our ability to\nshareholder value. Governance matters practices facilitated extensive training navigate these challenges was made\nwere also actively deliberated, ensuring and professional development possible by the unwavering dedication\ncorporate resilience and a strong opportunities, including the Executive of our team.\nfoundation for long-term value creation.\nEdge MBA program at the Postgraduate\nThe Board’s effectiveness was further Institute of Management (PIM), I extend my heartfelt appreciation to my\nreinforced by the seamless functioning\ndesigned to groom executives for future\nof its subcommittees, namely the Board\nleadership roles.\nAudit Committee, Board Remuneration\nCommittee, and the Related Party\nBeyond our business, we remain\nTransactions Review Committee.\ncommitted to making a positive social\nAt Amana Takaful Life, we remain\ncommitted to upholding the highest\n12 Life Insurance - Annual Report 2024 | Amana Takaful Life PLC"
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 69,
+      "has_note_col": true,
+      "column_headers": [
+        "Stated Capital",
+        "Life Policyholders' Fund",
+        "Reserves Revaluation Reserve",
+        "Accumulated Profit",
+        "Total"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Year December 2024",
+          "note_col": "ended 31",
+          "amt_cols": [
+            "Stated Capital",
+            "Life Policyholders' Fund",
+            "Reserves Revaluation Reserve",
+            "Accumulated Profit",
+            "Total"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Year December 2024 Other",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Reserve",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance January 2023",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "500,000,000",
+            "19,490,650",
+            "11,998,572",
+            "12,326,091",
+            "543,815,313"
+          ],
+          "amounts": [
+            500000000,
+            19490650,
+            11998572,
+            12326091,
+            543815313
+          ]
+        },
+        {
+          "label": "Profit for Other Comprehensive Income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "50,319,475",
+            "50,319,475"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            50319475,
+            50319475
+          ]
+        },
+        {
+          "label": "Net Value of Available-for- Sale transferred to Life Policy Reserve Fund",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "15,553,895",
+            "",
+            "",
+            "15,553,895"
+          ],
+          "amounts": [
+            null,
+            15553895,
+            null,
+            null,
+            15553895
+          ]
+        },
+        {
+          "label": "Actuarial Defined Benefit Plans",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "818,616",
+            "818,616"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            818616,
+            818616
+          ]
+        },
+        {
+          "label": "Total Comprehensive Income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "15,553,895",
+            "-",
+            "51,138,091",
+            "66,691,986"
+          ],
+          "amounts": [
+            null,
+            15553895,
+            null,
+            51138091,
+            66691986
+          ]
+        },
+        {
+          "label": "Balance December 2023",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "500,000,000",
+            "35,044,545",
+            "11,998,572",
+            "63,464,180",
+            "610,507,297"
+          ],
+          "amounts": [
+            500000000,
+            35044545,
+            11998572,
+            63464180,
+            610507297
+          ]
+        },
+        {
+          "label": "Profit for Other Comprehensive Income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "4,578,270",
+            "4,578,270"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            4578270,
+            4578270
+          ]
+        },
+        {
+          "label": "Net Value of Available-for- Sale transferred to Life Policy Reserve Fund",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "14,193,167",
+            "",
+            "-",
+            "14,193,167"
+          ],
+          "amounts": [
+            null,
+            14193167,
+            null,
+            null,
+            14193167
+          ]
+        },
+        {
+          "label": "Actuarial Defined Benefit Plans",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "(886,074)",
+            "(886,074)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -886074,
+            -886074
+          ]
+        },
+        {
+          "label": "Property, Plant and",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "9,322,175",
+            "-",
+            "9,322,175"
+          ],
+          "amounts": [
+            null,
+            null,
+            9322175,
+            null,
+            9322175
+          ]
+        },
+        {
+          "label": "Total Comprehensive Income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "14,193,167",
+            "9,322,175",
+            "3,692,196",
+            "27,207,539"
+          ],
+          "amounts": [
+            null,
+            14193167,
+            9322175,
+            3692196,
+            27207539
+          ]
+        },
+        {
+          "label": "Balance December 2024 The Policies and Notes on pages 71 through an the Insurance - Report Amana PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "500,000,000",
+            "49,237,713",
+            "21,320,747",
+            "67,156,376",
+            "637,714,836"
+          ],
+          "amounts": [
+            500000000,
+            49237713,
+            21320747,
+            67156376,
+            637714836
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Year December 2024 Other",
+          "ended 31",
+          "",
+          "",
+          "Reserves",
+          "",
+          ""
+        ],
+        [
+          "Reserve",
+          "",
+          "",
+          "Fund",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Balance January 2023",
+          "as at 01",
+          "500,000,000",
+          "19,490,650",
+          "11,998,572",
+          "12,326,091",
+          "543,815,313"
+        ],
+        [
+          "Profit for Other Comprehensive Income",
+          "the year",
+          "-",
+          "-",
+          "-",
+          "50,319,475",
+          "50,319,475"
+        ],
+        [
+          "Net Value of Available-for- Sale transferred to Life Policy Reserve Fund",
+          "Change in Fair",
+          "",
+          "15,553,895",
+          "",
+          "",
+          "15,553,895"
+        ],
+        [
+          "Actuarial Defined Benefit Plans",
+          "Gain on",
+          "-",
+          "-",
+          "-",
+          "818,616",
+          "818,616"
+        ],
+        [
+          "Total Comprehensive Income",
+          "",
+          "-",
+          "15,553,895",
+          "-",
+          "51,138,091",
+          "66,691,986"
+        ],
+        [
+          "Balance December 2023",
+          "as at 31",
+          "500,000,000",
+          "35,044,545",
+          "11,998,572",
+          "63,464,180",
+          "610,507,297"
+        ],
+        [
+          "Profit for Other Comprehensive Income",
+          "the Period",
+          "-",
+          "-",
+          "-",
+          "4,578,270",
+          "4,578,270"
+        ],
+        [
+          "Net Value of Available-for- Sale transferred to Life Policy Reserve Fund",
+          "Change in Fair",
+          "",
+          "14,193,167",
+          "",
+          "-",
+          "14,193,167"
+        ],
+        [
+          "Actuarial Defined Benefit Plans",
+          "Change on",
+          "-",
+          "-",
+          "-",
+          "(886,074)",
+          "(886,074)"
+        ],
+        [
+          "Property, Plant and",
+          "Revaluation of",
+          "-",
+          "-",
+          "9,322,175",
+          "-",
+          "9,322,175"
+        ],
+        [
+          "Total Comprehensive Income",
+          "",
+          "-",
+          "14,193,167",
+          "9,322,175",
+          "3,692,196",
+          "27,207,539"
+        ],
+        [
+          "Balance December 2024 The Policies and Notes on pages 71 through an the Insurance - Report Amana PLC",
+          "as at 31",
+          "500,000,000",
+          "49,237,713",
+          "21,320,747",
+          "67,156,376",
+          "637,714,836"
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 70,
+      "has_note_col": true,
+      "column_headers": [
+        "2024",
+        "2023"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Year ended December 2024",
+          "note_col": "",
+          "amt_cols": [
+            "2024",
+            "2023"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Reconciliation of Operating Profit with Cash Flows from Operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit from Operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "13,224,672",
+            "59,319,855"
+          ],
+          "amounts": [
+            13224672,
+            59319855
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            "8,285,813",
+            "8,311,479"
+          ],
+          "amounts": [
+            8285813,
+            8311479
+          ]
+        },
+        {
+          "label": "Amortisation",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "1,503,691",
+            "1,541,358"
+          ],
+          "amounts": [
+            1503691,
+            1541358
+          ]
+        },
+        {
+          "label": "Depreciation Right of Use of Asset",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "8,985,320",
+            "7,541,547"
+          ],
+          "amounts": [
+            8985320,
+            7541547
+          ]
+        },
+        {
+          "label": "Provision for Employee Benefits",
+          "is_section_header": false,
+          "note": "14.1",
+          "amounts_raw": [
+            "3,536,957",
+            "3,588,666"
+          ],
+          "amounts": [
+            3536957,
+            3588666
+          ]
+        },
+        {
+          "label": "Unrealised (Income)/Losses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(34,925,522)",
+            "(12,104,189)"
+          ],
+          "amounts": [
+            -34925522,
+            -12104189
+          ]
+        },
+        {
+          "label": "Decrease/(Increase) in Debtors and Other Assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(227,651,537)",
+            "(265,562,925)"
+          ],
+          "amounts": [
+            -227651537,
+            -265562925
+          ]
+        },
+        {
+          "label": "Increase in Family Takaful (Long Term Insurance) Fund",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "564,638,237",
+            "445,854,249"
+          ],
+          "amounts": [
+            564638237,
+            445854249
+          ]
+        },
+        {
+          "label": "(Decrease)/Increase in Unearned Contribution (Premium)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "557,651",
+            "511,865"
+          ],
+          "amounts": [
+            557651,
+            511865
+          ]
+        },
+        {
+          "label": "(Decrease)/Increase in Other Creditors",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "37,881,529",
+            "19,344,112"
+          ],
+          "amounts": [
+            37881529,
+            19344112
+          ]
+        },
+        {
+          "label": "Exchange Gain/Loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "236,109",
+            "(2,657,190)"
+          ],
+          "amounts": [
+            236109,
+            -2657190
+          ]
+        },
+        {
+          "label": "Cash Flow from Operating Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "376,272,920",
+            "265,688,828"
+          ],
+          "amounts": [
+            376272920,
+            265688828
+          ]
+        },
+        {
+          "label": "Finance Cost paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(8,646,402)",
+            "(9,000,380)"
+          ],
+          "amounts": [
+            -8646402,
+            -9000380
+          ]
+        },
+        {
+          "label": "Gratuity Paid",
+          "is_section_header": false,
+          "note": "14",
+          "amounts_raw": [
+            "(1,909,403)",
+            "(894,053)"
+          ],
+          "amounts": [
+            -1909403,
+            -894053
+          ]
+        },
+        {
+          "label": "Net Cash Flow from Operating Activities The Accounting Policies and Notes on pages 71 through 109 form an integral part of Financial 68 Life Insurance - Annual Report 2024 | Amana Takaful Life PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "365,717,115",
+            "255,794,395"
+          ],
+          "amounts": [
+            365717115,
+            255794395
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Reconciliation of Operating Profit with Cash Flows from Operations",
+          "",
+          "Rs.",
+          "Rs."
+        ],
+        [
+          "Profit from Operations",
+          "",
+          "13,224,672",
+          "59,319,855"
+        ],
+        [
+          "Depreciation",
+          "5",
+          "8,285,813",
+          "8,311,479"
+        ],
+        [
+          "Amortisation",
+          "4",
+          "1,503,691",
+          "1,541,358"
+        ],
+        [
+          "Depreciation Right of Use of Asset",
+          "6",
+          "8,985,320",
+          "7,541,547"
+        ],
+        [
+          "Provision for Employee Benefits",
+          "14.1",
+          "3,536,957",
+          "3,588,666"
+        ],
+        [
+          "Unrealised (Income)/Losses",
+          "",
+          "(34,925,522)",
+          "(12,104,189)"
+        ],
+        [
+          "Decrease/(Increase) in Debtors and Other Assets",
+          "",
+          "(227,651,537)",
+          "(265,562,925)"
+        ],
+        [
+          "Increase in Family Takaful (Long Term Insurance) Fund",
+          "",
+          "564,638,237",
+          "445,854,249"
+        ],
+        [
+          "(Decrease)/Increase in Unearned Contribution (Premium)",
+          "",
+          "557,651",
+          "511,865"
+        ],
+        [
+          "(Decrease)/Increase in Other Creditors",
+          "",
+          "37,881,529",
+          "19,344,112"
+        ],
+        [
+          "Exchange Gain/Loss",
+          "",
+          "236,109",
+          "(2,657,190)"
+        ],
+        [
+          "Cash Flow from Operating Activities",
+          "",
+          "376,272,920",
+          "265,688,828"
+        ],
+        [
+          "Finance Cost paid",
+          "",
+          "(8,646,402)",
+          "(9,000,380)"
+        ],
+        [
+          "Gratuity Paid",
+          "14",
+          "(1,909,403)",
+          "(894,053)"
+        ],
+        [
+          "Net Cash Flow from Operating Activities The Accounting Policies and Notes on pages 71 through 109 form an integral part of Financial 68 Life Insurance - Annual Report 2024 | Amana Takaful Life PLC",
+          "",
+          "365,717,115",
+          "255,794,395"
+        ]
+      ]
+    },
+    "shareholder_info": {
+      "title": "Shareholder Information",
+      "page_1based": 115,
+      "has_note_col": false,
+      "column_headers": [
+        "of Shareholders",
+        "Shareholders as at Resident Shares",
+        "December 2024 Shareholders",
+        "Non-Resident Shares",
+        "Total Shareholders",
+        "Shares"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Analysis of the Distribution 31st",
+          "note_col": null,
+          "amt_cols": [
+            "of Shareholders",
+            "Shareholders as at Resident Shares",
+            "December 2024 Shareholders",
+            "Non-Resident Shares",
+            "Total Shareholders",
+            "Shares"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "1 Analysis of the Distribution 31st December",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "2024",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            2024,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "% %",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1 - 1,000 0.37% 0.00%",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "930",
+            "186,000",
+            "2",
+            "28",
+            "932",
+            "186,028"
+          ],
+          "amounts": [
+            930,
+            186000,
+            2,
+            28,
+            932,
+            186028
+          ]
+        },
+        {
+          "label": "1,001 - 10,000 0.81% 0.01%",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "110",
+            "407,218",
+            "1",
+            "2,500",
+            "111",
+            "409,718"
+          ],
+          "amounts": [
+            110,
+            407218,
+            1,
+            2500,
+            111,
+            409718
+          ]
+        },
+        {
+          "label": "10,001 - 100,000 0.95% 0.03%",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "18",
+            "474,189",
+            "1",
+            "16,324",
+            "19",
+            "490,513"
+          ],
+          "amounts": [
+            18,
+            474189,
+            1,
+            16324,
+            19,
+            490513
+          ]
+        },
+        {
+          "label": "100,001 - 1,000,000 0.00% 0.00%",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Over 1,000,000 97.83% 0.00%",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3",
+            "48,913,741",
+            "-",
+            "-",
+            "3",
+            "48,913,741"
+          ],
+          "amounts": [
+            3,
+            48913741,
+            null,
+            null,
+            3,
+            48913741
+          ]
+        },
+        {
+          "label": "99.96% 0.04% 2.1 Top 25 Shareholders as at No. of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,061",
+            "49,981,148",
+            "4",
+            "18,852",
+            "1,065",
+            "50,000,000"
+          ],
+          "amounts": [
+            1061,
+            49981148,
+            4,
+            18852,
+            1065,
+            50000000
+          ]
+        },
+        {
+          "label": "Amana Takaful PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "38,150,000",
+            "76.30"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            38150000,
+            76.3
+          ]
+        },
+        {
+          "label": "Sampath Bank PLC /",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "8,763,741",
+            "17.53"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            8763741,
+            17.53
+          ]
+        },
+        {
+          "label": "Aberdeen Holdings (Private)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "2,000,000",
+            "4.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            2000000,
+            4.0
+          ]
+        },
+        {
+          "label": "Dr. Thirugnanasambandar",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "100,000",
+            "0.20"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            100000,
+            0.2
+          ]
+        },
+        {
+          "label": "Mr. Abdul Azees Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "49,100",
+            "0.10"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            49100,
+            0.1
+          ]
+        },
+        {
+          "label": "Mr. Mohomed Fazlaan Fazil",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "35,000",
+            "0.07"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            35000,
+            0.07
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Sahabdeen Ikram",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "31,900",
+            "0.06"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            31900,
+            0.06
+          ]
+        },
+        {
+          "label": "Mrs. Pattinideva Asoka Swarna",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "25,059",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            25059,
+            0.05
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Ziyad Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "25,000",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            25000,
+            0.05
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Nizamdeen Nazir",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "24,600",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            24600,
+            0.05
+          ]
+        },
+        {
+          "label": "Mr. Muhammadu Muyees",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "24,600",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            24600,
+            0.05
+          ]
+        },
+        {
+          "label": "Miss Lakshi Sandamali Jayawila",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mrs. Manchanayaka Somalatha",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Rizam Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mrs. Waniganetti",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mr. Abdul Razzak Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "16,500",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            16500,
+            0.03
+          ]
+        },
+        {
+          "label": "Dr. Gayan Surendrajith Perera",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "16,324",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            16324,
+            0.03
+          ]
+        },
+        {
+          "label": "Mr. Iqram Sankylam Cuttilan",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "14,800",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            14800,
+            0.03
+          ]
+        },
+        {
+          "label": "Mr. Dilkith Hansira Lanka",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "14,195",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            14195,
+            0.03
+          ]
+        },
+        {
+          "label": "Hameedia Stores (Pvt) Ltd",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "12,045",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            12045,
+            0.02
+          ]
+        },
+        {
+          "label": "Mrs. Epa Ranasinghe Imiya Appuhamilage Ranasinghe",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "11,580",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            11580,
+            0.02
+          ]
+        },
+        {
+          "label": "People's Leasing And Finance",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "11,010",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            11010,
+            0.02
+          ]
+        },
+        {
+          "label": "Mr. Sadakath Rahim Nizar",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "10,000",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            10000,
+            0.02
+          ]
+        },
+        {
+          "label": "Mr. Fayas Ahmed Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "9,900",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            9900,
+            0.02
+          ]
+        },
+        {
+          "label": "Mr. Muhammadu Aleem",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "9,900",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            9900,
+            0.02
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "49,434,054",
+            "98.86"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            49434054,
+            98.86
+          ]
+        },
+        {
+          "label": "Others",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "565,946",
+            "1.14"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            565946,
+            1.14
+          ]
+        },
+        {
+          "label": "Total Insurance - Amana Takaful",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "50,000,000",
+            "100.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            50000000,
+            100.0
+          ]
+        },
+        {
+          "label": "2.1 Top 25 Shareholders as at",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "No. of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Amana Takaful PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "41,150,000",
+            "82.30"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            41150000,
+            82.3
+          ]
+        },
+        {
+          "label": "Seylan Bank Plc/Senthilverl (Pvt)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "5,785,966",
+            "11.57"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            5785966,
+            11.57
+          ]
+        },
+        {
+          "label": "Aberdeen Holdings (Private)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "2,000,000",
+            "4.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            2000000,
+            4.0
+          ]
+        },
+        {
+          "label": "Dr. Thirugnanasambandar",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "100,000",
+            "0.20"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            100000,
+            0.2
+          ]
+        },
+        {
+          "label": "Mr. Abdul Azees Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "49,100",
+            "0.10"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            49100,
+            0.1
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Sahabdeen",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "31,900",
+            "0.06"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            31900,
+            0.06
+          ]
+        },
+        {
+          "label": "Mrs. Pattinideva Asoka",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "25,059",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            25059,
+            0.05
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Ziyad",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "25,000",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            25000,
+            0.05
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Nizamdeen",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "24,600",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            24600,
+            0.05
+          ]
+        },
+        {
+          "label": "Mr. Muhammadu Muyees Mohammadu Cader",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "24,600",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            24600,
+            0.05
+          ]
+        },
+        {
+          "label": "Miss Lakshi Sandamali",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mrs. Manchanayaka Somalatha",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mr. Mohamed Rizam",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mrs. Waniganetti",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "19,700",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            19700,
+            0.04
+          ]
+        },
+        {
+          "label": "Mr. Hetti Arachchige Shanaka",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "18,694",
+            "0.04"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            18694,
+            0.04
+          ]
+        },
+        {
+          "label": "Mr. Abdul Razzak Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "16,500",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            16500,
+            0.03
+          ]
+        },
+        {
+          "label": "Dr. Gayan Surendrajith Perera",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "16,324",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            16324,
+            0.03
+          ]
+        },
+        {
+          "label": "Mr. Dilkith Hansira Lanka",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "16,044",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            16044,
+            0.03
+          ]
+        },
+        {
+          "label": "Mr. Iqram Sankylam Cuttilan",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "14,800",
+            "0.03"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            14800,
+            0.03
+          ]
+        },
+        {
+          "label": "Hameedia Stores (Pvt) Ltd",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "12,045",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            12045,
+            0.02
+          ]
+        },
+        {
+          "label": "Mrs. Epa Ranasinghe Imiya Appuhamilage Ranasinghe",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "11,580",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            11580,
+            0.02
+          ]
+        },
+        {
+          "label": "Miss. Mohamed Zarook Shafrina",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "11,088",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            11088,
+            0.02
+          ]
+        },
+        {
+          "label": "Mr. Sadakath Rahim Nizar",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "10,000",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            10000,
+            0.02
+          ]
+        },
+        {
+          "label": "Mr. Fayas Ahmed Mohamed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "9,900",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            9900,
+            0.02
+          ]
+        },
+        {
+          "label": "Mr. Muhammadu Aleem",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "9,900",
+            "0.02"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            9900,
+            0.02
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "49,441,900",
+            "98.88"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            49441900,
+            98.88
+          ]
+        },
+        {
+          "label": "Others",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "558,100",
+            "1.12"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            558100,
+            1.12
+          ]
+        },
+        {
+          "label": "Total 3. Investor Ratio",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "50,000,000",
+            "100.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            50000000,
+            100.0
+          ]
+        },
+        {
+          "label": "Earnings/(Loss) per Share",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "0.09",
+            "1.01"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            0.09,
+            1.01
+          ]
+        },
+        {
+          "label": "Net Assets per Share 4. Market Value of Shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "12.74",
+            "12.21"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            12.74,
+            12.21
+          ]
+        },
+        {
+          "label": "Highest Value",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "30.00",
+            "48.20"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            30.0,
+            48.2
+          ]
+        },
+        {
+          "label": "Lowest Value",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "23.50",
+            "19.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            23.5,
+            19.0
+          ]
+        },
+        {
+          "label": "Year End Value 114 Life Insurance - Annual Takaful Life PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "29.40",
+            "28.20"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            29.4,
+            28.2
+          ]
+        },
+        {
+          "label": "5102.21.13 000'.sR 492,829 460,809 302,031 )275,702( )484,232( - 460,81 40.0",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "6102.21.13 000'.sR 627,028 750,608 987,222 )181,023( )886,362( - 196,53 70.0",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "7102.21.13 000'.sR 471,297 630,567 860,962 )574,324( )303,224( )067( 238,94 01.0",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "8102.21.13 000'.sR 849,728 260,608 723,712 )644,345( )650,474( )679,26( )62.1( 9102.21.13 000'.sR 392,158 315,028 622,023 )598,195( )187,234( )811,92( )85.0( 0202.21.13 000'.sR 232,767 357,247 699,982 )022,744( )329,673( )217,43( )96.0(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1202.21.13 000'.sR 038,929 917,188 417,262 )630,724( )487,883( 955,9 91.0 ssenisuB",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "2202.21.13 000'.sR 877,060,1 142,300,1 872,054 )967,815( )924,544( 190,45 80.1 ecnarusnI",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "3202.21.13 000'.sR 656,051,1 786,390,1 857,076 )395,665( )963,945( 913,05 10.1 )lufakaT",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "4202.21.13 000'.sR 640,592,1 838,632,1 587,246 )881,915( )174,736( 975,4 90.0 ylimaF( mreT dedne erahS gnoL/CLP dna raey raey noitubirtnoC eht noitubirtnoC stnemtsevnI reP eht rof sesnepxE )ssoL(/sgninraE efiL derrucnI rof emocnI )ssoL(/tfiorP lufakaT emocnI nettirW morf fo denraE xaT )muimerP( )muimerP( smialC tnemetatS sesnepxE emocnI emocnI anamA ssorG rehtO cisaB ).sR( teN teN teN Insurance - Amana Takaful",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "5102.21.13 000'.sR 313,980,1 - 451,290,1 - 405,241 117,475 597,191,1 000,005 961,2 159,304,2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "804,81 239,41",
+            "936,64 159,304,2",
+            "414,28",
+            "734,93 753,888,1",
+            "424,31 495,515",
+            ""
+          ],
+          "amounts": [
+            8048123941,
+            936641593042,
+            41428,
+            734937538881,
+            42431495515,
+            null
+          ]
+        },
+        {
+          "label": "6102.21.13 000'.sR 893,810,1 - 233,374,1 - 166,201 419,955 541,405,1 000,005 )966,2( 995,707,2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "945,32 764,71",
+            "391,27 995,707,2",
+            "807,96",
+            "613,05 280,481,2",
+            "681,62 715,325",
+            ""
+          ],
+          "amounts": [
+            9453276471,
+            391279957072,
+            80796,
+            613052804812,
+            68162715325,
+            null
+          ]
+        },
+        {
+          "label": "7102.21.13 000'.sR 675,040,1 - 976,625,1 - 885,191 017,085 631,525,1 000,005 )545,1( 826,908,2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "052,22 561,12",
+            "073,7 826,908,2",
+            "941,87",
+            "548,15 048,532,2",
+            "333,57 887,375",
+            ""
+          ],
+          "amounts": [
+            522256112,
+            7378269082,
+            94187,
+            548150485322,
+            33357887375,
+            null
+          ]
+        },
+        {
+          "label": "8102.21.13 000'.sR 561,578 929,441 802,126,1 - 954,871 769,435 421,066,1 000,005 134,3 575,778,2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "559,02 407,82",
+            "551,8 575,778,2",
+            "150,23 024,38",
+            "682,15 948,163,2",
+            "592,21 627,515",
+            ""
+          ],
+          "amounts": [
+            5590240782,
+            55185757782,
+            1502302438,
+            682159481632,
+            59221627515,
+            null
+          ]
+        },
+        {
+          "label": "9102.21.13 000'.sR 053,618 005,741 012,617,1 - 893,051 082,174 065,747,1 000,005 017,6 884,429,2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "0202.21.13 000'.sR 762,958 005,741 026,709,1 944,11 395,611 287,544 701,319,1 000,005 545,11 222,990,3",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1202.21.13 000'.sR 403,088 005,741 546,121,2 - 087,431 183,793 896,941,2 000,005 893,62 252,053,3",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "2202.21.13 000'.sR 336,940,1 055,051 742,524,2 - 047,521 396,653 975,374,2 000,005 984,13 047,028,3 ssenisuB ecnarusnI",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "654,02 813,12 459,11",
+            "148,51 047,028,3",
+            "216,221 801,502",
+            "039,811 429,672,3",
+            "623,21 618,345",
+            ""
+          ],
+          "amounts": [
+            654028131245911,
+            148510470283,
+            216221801502,
+            398114296723,
+            62321618345,
+            null
+          ]
+        },
+        {
+          "label": "3202.21.13 000'.sR 346,129 000,151 100,530,3 127,23 458,431 153,403 443,079,2 000,005 340,74 246,933,4 )lufakaT",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "940,91 473,91 193,21",
+            "016,31 246,933,4",
+            "235,801 356,951",
+            "452,681 431,927,3",
+            "464,36 705,016",
+            ""
+          ],
+          "amounts": [
+            940914739119321,
+            16312469334,
+            235801356951,
+            4526814319273,
+            46436705016,
+            null
+          ]
+        },
+        {
+          "label": "4202.21.13 000'.sR 957,188 005,251 718,785,3 338,05 669,002 596,462 936,475,3 000,005 855,07 104,589,4 ylimaF( mreT sredloH selbavieceR ta )mreT dekniL sa gnoL/CLP ecnarusnI( noitisoP dekniL ytiuqE rehtO ecnalaB gnoL tinU-)mreT seitilibaiL )ecnarusnieR( laicnaniF tinU - ot & ytiuqE efiL ytreporP dnuF noisivorP dnuF elbatubirttA - stessA stessA gnoL- dna",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "958,71 044,54 916,53",
+            "706,21 104,589,4",
+            "440,89 569,391",
+            "343,612 686,743,4",
+            "651,76 517,736",
+            ""
+          ],
+          "amounts": [
+            958710445491653,
+            706211045894,
+            44089569391,
+            3436126867434,
+            65176517736,
+            null
+          ]
+        },
+        {
+          "label": "lufakaT sevreseR lufakaT lufakaT 'sredloherahS latipaC fo stnemtsevnI stessA tneraP ytiuqE tnemetatS tnemtevnI seitilibaiL ecnarusnI( laicnaniF laicnaniF lufakateR noisivorP anamA stessA rehtO ylimaF ylimaF ytiuqE eht detatS rehtO latoT fo 116 Life Insurance - Annual Takaful Life PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "1 Analysis of the Distribution 31st December",
+          "of",
+          "Shareholders as at",
+          "2024",
+          "",
+          "",
+          ""
+        ],
+        [
+          "% %",
+          "No. of",
+          "No. of",
+          "No. of",
+          "No. of",
+          "No. of",
+          "No. of"
+        ],
+        [
+          "1 - 1,000 0.37% 0.00%",
+          "930",
+          "186,000",
+          "2",
+          "28",
+          "932",
+          "186,028"
+        ],
+        [
+          "1,001 - 10,000 0.81% 0.01%",
+          "110",
+          "407,218",
+          "1",
+          "2,500",
+          "111",
+          "409,718"
+        ],
+        [
+          "10,001 - 100,000 0.95% 0.03%",
+          "18",
+          "474,189",
+          "1",
+          "16,324",
+          "19",
+          "490,513"
+        ],
+        [
+          "100,001 - 1,000,000 0.00% 0.00%",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Over 1,000,000 97.83% 0.00%",
+          "3",
+          "48,913,741",
+          "-",
+          "-",
+          "3",
+          "48,913,741"
+        ],
+        [
+          "99.96% 0.04% 2.1 Top 25 Shareholders as at No. of",
+          "1,061",
+          "49,981,148",
+          "4",
+          "18,852",
+          "1,065",
+          "50,000,000"
+        ],
+        [
+          "Amana Takaful PLC",
+          "",
+          "",
+          "",
+          "",
+          "38,150,000",
+          "76.30"
+        ],
+        [
+          "Sampath Bank PLC /",
+          "Senthilverl Holdings",
+          "(Pvt) Ltd",
+          "",
+          "",
+          "8,763,741",
+          "17.53"
+        ],
+        [
+          "Aberdeen Holdings (Private)",
+          "Limited",
+          "",
+          "",
+          "",
+          "2,000,000",
+          "4.00"
+        ],
+        [
+          "Dr. Thirugnanasambandar",
+          "Senthilverl",
+          "",
+          "",
+          "",
+          "100,000",
+          "0.20"
+        ],
+        [
+          "Mr. Abdul Azees Mohamed",
+          "Anas",
+          "",
+          "",
+          "",
+          "49,100",
+          "0.10"
+        ],
+        [
+          "Mr. Mohomed Fazlaan Fazil",
+          "",
+          "",
+          "",
+          "",
+          "35,000",
+          "0.07"
+        ],
+        [
+          "Mr. Mohamed Sahabdeen Ikram",
+          "Mohamed",
+          "",
+          "",
+          "",
+          "31,900",
+          "0.06"
+        ],
+        [
+          "Mrs. Pattinideva Asoka Swarna",
+          "Kanthie",
+          "Beruwalage",
+          "",
+          "",
+          "25,059",
+          "0.05"
+        ],
+        [
+          "Mr. Mohamed Ziyad Mohamed",
+          "Nihaz",
+          "",
+          "",
+          "",
+          "25,000",
+          "0.05"
+        ],
+        [
+          "Mr. Mohamed Nizamdeen Nazir",
+          "Mohamed",
+          "",
+          "",
+          "",
+          "24,600",
+          "0.05"
+        ],
+        [
+          "Mr. Muhammadu Muyees",
+          "Mohammadu",
+          "Abdul Cader",
+          "",
+          "",
+          "24,600",
+          "0.05"
+        ],
+        [
+          "Miss Lakshi Sandamali Jayawila",
+          "",
+          "",
+          "",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mrs. Manchanayaka Somalatha",
+          "Appuhamillage",
+          "Nandanie",
+          "Manchanayaka",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mr. Mohamed Rizam Mohamed",
+          "Ismail",
+          "",
+          "",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mrs. Waniganetti",
+          "Vidanaralalage Dona",
+          "Somawathi",
+          "",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mr. Abdul Razzak Mohamed",
+          "Riyaz",
+          "",
+          "",
+          "",
+          "16,500",
+          "0.03"
+        ],
+        [
+          "Dr. Gayan Surendrajith Perera",
+          "",
+          "",
+          "",
+          "",
+          "16,324",
+          "0.03"
+        ],
+        [
+          "Mr. Iqram Sankylam Cuttilan",
+          "",
+          "",
+          "",
+          "",
+          "14,800",
+          "0.03"
+        ],
+        [
+          "Mr. Dilkith Hansira Lanka",
+          "Jayawila",
+          "",
+          "",
+          "",
+          "14,195",
+          "0.03"
+        ],
+        [
+          "Hameedia Stores (Pvt) Ltd",
+          "",
+          "",
+          "",
+          "",
+          "12,045",
+          "0.02"
+        ],
+        [
+          "Mrs. Epa Ranasinghe Imiya Appuhamilage Ranasinghe",
+          "",
+          "Anoja",
+          "",
+          "",
+          "11,580",
+          "0.02"
+        ],
+        [
+          "People's Leasing And Finance",
+          "",
+          "Plc/N.Anoshan",
+          "",
+          "",
+          "11,010",
+          "0.02"
+        ],
+        [
+          "Mr. Sadakath Rahim Nizar",
+          "",
+          "",
+          "",
+          "",
+          "10,000",
+          "0.02"
+        ],
+        [
+          "Mr. Fayas Ahmed Mohamed",
+          "Anwer",
+          "",
+          "",
+          "",
+          "9,900",
+          "0.02"
+        ],
+        [
+          "Mr. Muhammadu Aleem",
+          "Sharifdeen",
+          "",
+          "",
+          "",
+          "9,900",
+          "0.02"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "49,434,054",
+          "98.86"
+        ],
+        [
+          "Others",
+          "",
+          "",
+          "",
+          "",
+          "565,946",
+          "1.14"
+        ],
+        [
+          "Total Insurance - Amana Takaful",
+          "",
+          "",
+          "",
+          "",
+          "50,000,000",
+          "100.00"
+        ],
+        [
+          "2.1 Top 25 Shareholders as at",
+          "31st",
+          "December 2023",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "No. of",
+          "",
+          "",
+          "",
+          "",
+          "Shares",
+          "%"
+        ],
+        [
+          "Amana Takaful PLC",
+          "",
+          "",
+          "",
+          "",
+          "41,150,000",
+          "82.30"
+        ],
+        [
+          "Seylan Bank Plc/Senthilverl (Pvt)",
+          "Holdings",
+          "Ltd",
+          "",
+          "",
+          "5,785,966",
+          "11.57"
+        ],
+        [
+          "Aberdeen Holdings (Private)",
+          "Limited",
+          "",
+          "",
+          "",
+          "2,000,000",
+          "4.00"
+        ],
+        [
+          "Dr. Thirugnanasambandar",
+          "Senthilverl",
+          "",
+          "",
+          "",
+          "100,000",
+          "0.20"
+        ],
+        [
+          "Mr. Abdul Azees Mohamed",
+          "Anas",
+          "",
+          "",
+          "",
+          "49,100",
+          "0.10"
+        ],
+        [
+          "Mr. Mohamed Sahabdeen",
+          "Mohamed",
+          "Ikram",
+          "",
+          "",
+          "31,900",
+          "0.06"
+        ],
+        [
+          "Mrs. Pattinideva Asoka",
+          "Swarna Kanthie",
+          "Beruwalage",
+          "",
+          "",
+          "25,059",
+          "0.05"
+        ],
+        [
+          "Mr. Mohamed Ziyad",
+          "Mohamed Nihaz",
+          "",
+          "",
+          "",
+          "25,000",
+          "0.05"
+        ],
+        [
+          "Mr. Mohamed Nizamdeen",
+          "Mohamed",
+          "Nazir",
+          "",
+          "",
+          "24,600",
+          "0.05"
+        ],
+        [
+          "Mr. Muhammadu Muyees Mohammadu Cader",
+          "",
+          "Abdul",
+          "",
+          "",
+          "24,600",
+          "0.05"
+        ],
+        [
+          "Miss Lakshi Sandamali",
+          "Jayawila",
+          "",
+          "",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mrs. Manchanayaka Somalatha",
+          "Appuhamillage",
+          "Nandanie",
+          "Manchanayaka",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mr. Mohamed Rizam",
+          "Mohamed Ismail",
+          "",
+          "",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mrs. Waniganetti",
+          "Vidanaralalage Dona",
+          "Somawathi",
+          "",
+          "",
+          "19,700",
+          "0.04"
+        ],
+        [
+          "Mr. Hetti Arachchige Shanaka",
+          "Samewa",
+          "Rodrigo",
+          "",
+          "",
+          "18,694",
+          "0.04"
+        ],
+        [
+          "Mr. Abdul Razzak Mohamed",
+          "Riyaz",
+          "",
+          "",
+          "",
+          "16,500",
+          "0.03"
+        ],
+        [
+          "Dr. Gayan Surendrajith Perera",
+          "",
+          "",
+          "",
+          "",
+          "16,324",
+          "0.03"
+        ],
+        [
+          "Mr. Dilkith Hansira Lanka",
+          "Jayawila",
+          "",
+          "",
+          "",
+          "16,044",
+          "0.03"
+        ],
+        [
+          "Mr. Iqram Sankylam Cuttilan",
+          "",
+          "",
+          "",
+          "",
+          "14,800",
+          "0.03"
+        ],
+        [
+          "Hameedia Stores (Pvt) Ltd",
+          "",
+          "",
+          "",
+          "",
+          "12,045",
+          "0.02"
+        ],
+        [
+          "Mrs. Epa Ranasinghe Imiya Appuhamilage Ranasinghe",
+          "",
+          "Anoja",
+          "",
+          "",
+          "11,580",
+          "0.02"
+        ],
+        [
+          "Miss. Mohamed Zarook Shafrina",
+          "Fathima",
+          "",
+          "",
+          "",
+          "11,088",
+          "0.02"
+        ],
+        [
+          "Mr. Sadakath Rahim Nizar",
+          "",
+          "",
+          "",
+          "",
+          "10,000",
+          "0.02"
+        ],
+        [
+          "Mr. Fayas Ahmed Mohamed",
+          "Anwer",
+          "",
+          "",
+          "",
+          "9,900",
+          "0.02"
+        ],
+        [
+          "Mr. Muhammadu Aleem",
+          "Sharifdeen",
+          "",
+          "",
+          "",
+          "9,900",
+          "0.02"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "49,441,900",
+          "98.88"
+        ],
+        [
+          "Others",
+          "",
+          "",
+          "",
+          "",
+          "558,100",
+          "1.12"
+        ],
+        [
+          "Total 3. Investor Ratio",
+          "",
+          "",
+          "",
+          "",
+          "50,000,000",
+          "100.00"
+        ],
+        [
+          "Earnings/(Loss) per Share",
+          "",
+          "",
+          "",
+          "",
+          "0.09",
+          "1.01"
+        ],
+        [
+          "Net Assets per Share 4. Market Value of Shares",
+          "",
+          "",
+          "",
+          "",
+          "12.74",
+          "12.21"
+        ],
+        [
+          "Highest Value",
+          "",
+          "",
+          "",
+          "",
+          "30.00",
+          "48.20"
+        ],
+        [
+          "Lowest Value",
+          "",
+          "",
+          "",
+          "",
+          "23.50",
+          "19.00"
+        ],
+        [
+          "Year End Value 114 Life Insurance - Annual Takaful Life PLC",
+          "",
+          "",
+          "",
+          "",
+          "29.40",
+          "28.20"
+        ],
+        [
+          "5102.21.13 000'.sR 492,829 460,809 302,031 )275,702( )484,232( - 460,81 40.0",
+          ")223,79(",
+          ")728,284( 460,81",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "6102.21.13 000'.sR 627,028 750,608 987,222 )181,023( )886,362( - 196,53 70.0",
+          ")732,801(",
+          ")840,103( 196,53",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "7102.21.13 000'.sR 471,297 630,567 860,962 )574,324( )303,224( )067( 238,94 01.0",
+          ")891,79(",
+          ")635,04( 295,05",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "8102.21.13 000'.sR 849,728 260,608 723,712 )644,345( )650,474( )679,26( )62.1( 9102.21.13 000'.sR 392,158 315,028 622,023 )598,195( )187,234( )811,92( )85.0( 0202.21.13 000'.sR 232,767 357,247 699,982 )022,744( )329,673( )217,43( )96.0(",
+          ")528,501(",
+          "169,63 )679,26(",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "1202.21.13 000'.sR 038,929 917,188 417,262 )630,724( )487,883( 955,9 91.0 ssenisuB",
+          ")220,531(",
+          ")130,481( 955,9",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "2202.21.13 000'.sR 877,060,1 142,300,1 872,054 )967,815( )924,544( 190,45 80.1 ecnarusnI",
+          ")282,941(",
+          ")849,582( 190,45",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "3202.21.13 000'.sR 656,051,1 786,390,1 857,076 )395,665( )963,945( 913,05 10.1 )lufakaT",
+          ")013,251(",
+          ")458,544( 913,05",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "4202.21.13 000'.sR 640,592,1 838,632,1 587,246 )881,915( )174,736( 975,4 90.0 ylimaF( mreT dedne erahS gnoL/CLP dna raey raey noitubirtnoC eht noitubirtnoC stnemtsevnI reP eht rof sesnepxE )ssoL(/sgninraE efiL derrucnI rof emocnI )ssoL(/tfiorP  lufakaT emocnI nettirW morf fo denraE xaT )muimerP( )muimerP( smialC tnemetatS sesnepxE emocnI emocnI anamA ssorG rehtO cisaB ).sR( teN teN teN Insurance - Amana Takaful",
+          ")341,351(",
+          ")242,565( 975,4",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "5102.21.13 000'.sR 313,980,1 - 451,290,1 - 405,241 117,475 597,191,1 000,005 961,2 159,304,2",
+          "804,81 239,41",
+          "936,64 159,304,2",
+          "414,28",
+          "734,93 753,888,1",
+          "424,31 495,515",
+          ""
+        ],
+        [
+          "6102.21.13 000'.sR 893,810,1 - 233,374,1 - 166,201 419,955 541,405,1 000,005 )966,2( 995,707,2",
+          "945,32 764,71",
+          "391,27 995,707,2",
+          "807,96",
+          "613,05 280,481,2",
+          "681,62 715,325",
+          ""
+        ],
+        [
+          "7102.21.13 000'.sR 675,040,1 - 976,625,1 - 885,191 017,085 631,525,1 000,005 )545,1( 826,908,2",
+          "052,22 561,12",
+          "073,7 826,908,2",
+          "941,87",
+          "548,15 048,532,2",
+          "333,57 887,375",
+          ""
+        ],
+        [
+          "8102.21.13 000'.sR 561,578 929,441 802,126,1 - 954,871 769,435 421,066,1 000,005 134,3 575,778,2",
+          "559,02 407,82",
+          "551,8 575,778,2",
+          "150,23 024,38",
+          "682,15 948,163,2",
+          "592,21 627,515",
+          ""
+        ],
+        [
+          "9102.21.13 000'.sR 053,618 005,741 012,617,1 - 893,051 082,174 065,747,1 000,005 017,6 884,429,2",
+          "956,91 011,02 460,61",
+          "791,83 884,429,2",
+          "714,18 193,58",
+          "789,05 536,634,2",
+          ")758,81( 358,784",
+          ""
+        ],
+        [
+          "0202.21.13 000'.sR 762,958 005,741 026,709,1 944,11 395,611 287,544 701,319,1 000,005 545,11 222,990,3",
+          "363,81 743,51 938,02",
+          "442,2 222,990,3",
+          "573,38 024,321",
+          "973,47 360,046,2",
+          ")683,25( 061,954",
+          ""
+        ],
+        [
+          "1202.21.13 000'.sR 403,088 005,741 546,121,2 - 087,431 183,793 896,941,2 000,005 893,62 252,053,3",
+          "024,71 967,52 152,31",
+          "385,9 252,053,3",
+          "500,88 402,151",
+          "702,08 594,668,2",
+          ")146,24( 757,384",
+          ""
+        ],
+        [
+          "2202.21.13 000'.sR 336,940,1 055,051 742,524,2 - 047,521 396,653 975,374,2 000,005 984,13 047,028,3 ssenisuB ecnarusnI",
+          "654,02 813,12 459,11",
+          "148,51 047,028,3",
+          "216,221 801,502",
+          "039,811 429,672,3",
+          "623,21 618,345",
+          ""
+        ],
+        [
+          "3202.21.13 000'.sR 346,129 000,151 100,530,3 127,23 458,431 153,403 443,079,2 000,005 340,74 246,933,4 )lufakaT",
+          "940,91 473,91 193,21",
+          "016,31 246,933,4",
+          "235,801 356,951",
+          "452,681 431,927,3",
+          "464,36 705,016",
+          ""
+        ],
+        [
+          "4202.21.13 000'.sR 957,188 005,251 718,785,3 338,05 669,002 596,462 936,475,3 000,005 855,07 104,589,4 ylimaF( mreT sredloH selbavieceR ta )mreT dekniL sa gnoL/CLP ecnarusnI( noitisoP dekniL ytiuqE rehtO ecnalaB gnoL tinU-)mreT seitilibaiL )ecnarusnieR( laicnaniF tinU - ot & ytiuqE efiL ytreporP dnuF noisivorP dnuF elbatubirttA  - stessA stessA gnoL- dna",
+          "958,71 044,54 916,53",
+          "706,21 104,589,4",
+          "440,89 569,391",
+          "343,612 686,743,4",
+          "651,76 517,736",
+          ""
+        ],
+        [
+          "lufakaT sevreseR lufakaT lufakaT 'sredloherahS latipaC fo stnemtsevnI stessA tneraP ytiuqE tnemetatS tnemtevnI seitilibaiL ecnarusnI( laicnaniF laicnaniF lufakateR noisivorP  anamA stessA rehtO ylimaF ylimaF ytiuqE eht detatS rehtO latoT fo 116 Life Insurance - Annual Takaful Life PLC",
+          "tnalP",
+          "-",
+          "",
+          "seitilibaiL",
+          "",
+          ""
+        ]
+      ]
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary",
+      "page_1based": 117,
+      "has_note_col": false,
+      "column_headers": [
+        "460,81 - 460,81 / 196,53 - 196,53 / 295,05 )067( 238,94"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "5102.21.13 000'.sR 492,829 460,809 302,031 )275,702( )223,79( )484,232( )728,284( 40.0",
+          "note_col": null,
+          "amt_cols": [
+            "460,81 - 460,81"
+          ]
+        },
+        {
+          "label_col": "6102.21.13 000'.sR 627,028 750,608 987,222 )181,023( )732,801( )886,362( )840,103( 70.0",
+          "note_col": null,
+          "amt_cols": [
+            "196,53 - 196,53"
+          ]
+        },
+        {
+          "label_col": "7102.21.13 000'.sR 471,297 630,567 860,962 )574,324( )891,79( )303,224( )635,04( 01.0 8102.21.13 000'.sR 849,728 260,608 723,712 )644,345( )528,501( )650,474( 169,63 )62.1( 9102.21.13 000'.sR 392,158 315,028 622,023 )598,195( )898,711( )187,234( )482,72( )85.0( 0202.21.13 000'.sR 232,767 357,247 699,982 )022,744( )231,301( )329,673( )681,041( )96.0(",
+          "note_col": null,
+          "amt_cols": [
+            "295,05 )067( 238,94"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "5102.21.13 000'.sR 492,829 460,809 302,031 )275,702( )223,79( )484,232( )728,284( 40.0",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            ""
+          ],
+          "amounts": [
+            null
+          ]
+        },
+        {
+          "label": "6102.21.13 000'.sR 627,028 750,608 987,222 )181,023( )732,801( )886,362( )840,103( 70.0",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            ""
+          ],
+          "amounts": [
+            null
+          ]
+        },
+        {
+          "label": "7102.21.13 000'.sR 471,297 630,567 860,962 )574,324( )891,79( )303,224( )635,04( 01.0 8102.21.13 000'.sR 849,728 260,608 723,712 )644,345( )528,501( )650,474( 169,63 )62.1( 9102.21.13 000'.sR 392,158 315,028 622,023 )598,195( )898,711( )187,234( )482,72( )85.0( 0202.21.13 000'.sR 232,767 357,247 699,982 )022,744( )231,301( )329,673( )681,041( )96.0(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            ""
+          ],
+          "amounts": [
+            null
+          ]
+        },
+        {
+          "label": "1202.21.13 000'.sR 038,929 917,188 417,262 )630,724( )220,531( )487,883( )130,481( 91.0 ssenisuB",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "955,9 955,9"
+          ],
+          "amounts": [
+            95599559
+          ]
+        },
+        {
+          "label": "2202.21.13 000'.sR 877,060,1 142,300,1 872,054 )967,815( )282,941( )924,544( )849,582( 80.1 ecnarusnI",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "190,45 190,45"
+          ],
+          "amounts": [
+            1904519045
+          ]
+        },
+        {
+          "label": "3202.21.13 000'.sR 656,051,1 786,390,1 857,076 )395,665( )013,251( )963,945( )458,544( 10.1 )lufakaT",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "913,05 913,05"
+          ],
+          "amounts": [
+            9130591305
+          ]
+        },
+        {
+          "label": "4202.21.13 000'.sR 640,592,1 838,632,1 587,246 )881,915( )341,351( )174,736( )242,565( 90.0 ylimaF( mreT dedne gnoL( erahS gnoL/CLP dna raey noitubirtnoC eht noitubirtnoC stnemtsevnI derrucnI lufakaT reP rof dnuF )ssoL(/sgninraE efiL derrucnI emocnI noissimmoC ylimaF )ecnarusnI lufakaT emocnI nettirW morf fo denraE )muimerP( )muimerP( smialC ni tnemetatS sesnepxE emocnI egnahC anamA ssorG rehtO mreT cisaB ).sR( teN teN teN Insurance - Annual Report 2024 | Amana Takaful Life PLC 115",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "975,4 975,4"
+          ],
+          "amounts": [
+            97549754
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "5102.21.13 000'.sR 492,829 460,809 302,031 )275,702( )223,79( )484,232( )728,284( 40.0",
+          "460,81 - 460,81"
+        ],
+        [
+          "6102.21.13 000'.sR 627,028 750,608 987,222 )181,023( )732,801( )886,362( )840,103( 70.0",
+          "196,53 - 196,53"
+        ],
+        [
+          "7102.21.13 000'.sR 471,297 630,567 860,962 )574,324( )891,79( )303,224( )635,04( 01.0 8102.21.13 000'.sR 849,728 260,608 723,712 )644,345( )528,501( )650,474( 169,63 )62.1( 9102.21.13 000'.sR 392,158 315,028 622,023 )598,195( )898,711( )187,234( )482,72( )85.0( 0202.21.13 000'.sR 232,767 357,247 699,982 )022,744( )231,301( )329,673( )681,041( )96.0(",
+          "295,05 )067( 238,94"
+        ],
+        [
+          "1202.21.13 000'.sR 038,929 917,188 417,262 )630,724( )220,531( )487,883( )130,481( 91.0 ssenisuB",
+          "955,9 955,9"
+        ],
+        [
+          "2202.21.13 000'.sR 877,060,1 142,300,1 872,054 )967,815( )282,941( )924,544( )849,582( 80.1 ecnarusnI",
+          "190,45 190,45"
+        ],
+        [
+          "3202.21.13 000'.sR 656,051,1 786,390,1 857,076 )395,665( )013,251( )963,945( )458,544( 10.1 )lufakaT",
+          "913,05 913,05"
+        ],
+        [
+          "4202.21.13 000'.sR 640,592,1 838,632,1 587,246 )881,915( )341,351( )174,736( )242,565( 90.0 ylimaF( mreT dedne gnoL( erahS gnoL/CLP dna raey noitubirtnoC eht noitubirtnoC stnemtsevnI derrucnI lufakaT reP  rof dnuF )ssoL(/sgninraE efiL derrucnI emocnI noissimmoC ylimaF )ecnarusnI lufakaT emocnI nettirW morf fo denraE )muimerP( )muimerP( smialC ni tnemetatS sesnepxE emocnI egnahC anamA ssorG rehtO mreT cisaB ).sR( teN teN teN Insurance - Annual Report 2024 | Amana Takaful Life PLC 115",
+          "975,4 975,4"
+        ]
+      ]
+    }
+  }
+}

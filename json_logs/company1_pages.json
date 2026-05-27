@@ -1,0 +1,207 @@
+{
+  "company": "company1",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company1\\Annual\\1072_1749226867867.pdf",
+  "total_pdf_pages": 248,
+  "page_offset": 2,
+  "generated_at": "2026-05-22T11:01:25",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        168
+      ],
+      "pdf_indices_0based": [
+        169
+      ],
+      "pdf_pages_1based": [
+        170
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        169
+      ],
+      "pdf_indices_0based": [
+        170
+      ],
+      "pdf_pages_1based": [
+        171
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        170
+      ],
+      "pdf_indices_0based": [
+        171
+      ],
+      "pdf_pages_1based": [
+        172
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        171
+      ],
+      "pdf_indices_0based": [
+        172
+      ],
+      "pdf_pages_1based": [
+        173
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        172
+      ],
+      "pdf_indices_0based": [
+        173
+      ],
+      "pdf_pages_1based": [
+        174
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        235
+      ],
+      "pdf_indices_0based": [
+        236,
+        237
+      ],
+      "pdf_pages_1based": [
+        237,
+        238
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        230
+      ],
+      "pdf_indices_0based": [
+        231,
+        232,
+        233,
+        234
+      ],
+      "pdf_pages_1based": [
+        232,
+        233,
+        234,
+        235
+      ],
+      "page_count": 4,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        190
+      ],
+      "pdf_indices_0based": [
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230
+      ],
+      "pdf_pages_1based": [
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231
+      ],
+      "page_count": 40,
+      "confirmed": true
+    }
+  }
+}

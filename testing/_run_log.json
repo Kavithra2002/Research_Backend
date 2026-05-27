@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-05-26T15:14:10",
+  "reports_dir": "E:\AMBEON\script\backend\reports",
+  "testing_dir": "E:\AMBEON\script\backend\testing",
+  "option": "1",
+  "model": "gpt-4o",
+  "dpi": 150,
+  "dry_run": false,
+  "force": false,
+  "elapsed_sec": 1501.2,
+  "total": 6,
+  "results": [
+    {
+      "company": "a._JANASHAKTHI_FINACE",
+      "status": "ok"
+    },
+    {
+      "company": "company2",
+      "status": "ok"
+    },
+    {
+      "company": "company3",
+      "status": "ok"
+    },
+    {
+      "company": "company4",
+      "status": "ok"
+    },
+    {
+      "company": "company5",
+      "status": "ok"
+    },
+    {
+      "company": "company6",
+      "status": "interrupted"
+    }
+  ]
+}

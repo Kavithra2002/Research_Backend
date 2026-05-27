@@ -1,0 +1,245 @@
+{
+  "company": "company46",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company46\\Annual\\48322_2025.pdf",
+  "total_pdf_pages": 284,
+  "page_offset": 0,
+  "generated_at": "2026-05-21T15:15:52",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        180
+      ],
+      "pdf_indices_0based": [
+        179
+      ],
+      "pdf_pages_1based": [
+        180
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        181
+      ],
+      "pdf_indices_0based": [
+        180
+      ],
+      "pdf_pages_1based": [
+        181
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        182
+      ],
+      "pdf_indices_0based": [
+        181,
+        182
+      ],
+      "pdf_pages_1based": [
+        182,
+        183
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        184
+      ],
+      "pdf_indices_0based": [
+        183,
+        184
+      ],
+      "pdf_pages_1based": [
+        184,
+        185
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        186
+      ],
+      "pdf_indices_0based": [
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243
+      ],
+      "pdf_pages_1based": [
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244
+      ],
+      "page_count": 59,
+      "confirmed": false
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary / Achievements",
+      "printed_pages": [
+        245
+      ],
+      "pdf_indices_0based": [
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250
+      ],
+      "pdf_pages_1based": [
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251
+      ],
+      "page_count": 7,
+      "confirmed": false
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        273
+      ],
+      "pdf_indices_0based": [
+        272,
+        273,
+        274,
+        275
+      ],
+      "pdf_pages_1based": [
+        273,
+        274,
+        275,
+        276
+      ],
+      "page_count": 4,
+      "confirmed": false
+    }
+  }
+}

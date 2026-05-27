@@ -1,0 +1,283 @@
+{
+  "company": "company3",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company3\\Annual\\1181_1755652569338 (1).pdf",
+  "total_pdf_pages": 148,
+  "page_offset": 2,
+  "generated_at": "2026-05-22T11:03:26",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        59
+      ],
+      "pdf_indices_0based": [
+        60
+      ],
+      "pdf_pages_1based": [
+        61
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        60
+      ],
+      "pdf_indices_0based": [
+        61
+      ],
+      "pdf_pages_1based": [
+        62
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        61
+      ],
+      "pdf_indices_0based": [
+        62
+      ],
+      "pdf_pages_1based": [
+        63
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        62
+      ],
+      "pdf_indices_0based": [
+        63,
+        64
+      ],
+      "pdf_pages_1based": [
+        64,
+        65
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        64
+      ],
+      "pdf_indices_0based": [
+        65
+      ],
+      "pdf_pages_1based": [
+        66
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        136
+      ],
+      "pdf_indices_0based": [
+        137,
+        138
+      ],
+      "pdf_pages_1based": [
+        138,
+        139
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary / Achievements",
+      "printed_pages": [
+        138
+      ],
+      "pdf_indices_0based": [
+        139,
+        140,
+        141,
+        142
+      ],
+      "pdf_pages_1based": [
+        140,
+        141,
+        142,
+        143
+      ],
+      "page_count": 4,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        66
+      ],
+      "pdf_indices_0based": [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136
+      ],
+      "pdf_pages_1based": [
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137
+      ],
+      "page_count": 70,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        136
+      ],
+      "pdf_indices_0based": [
+        137
+      ],
+      "pdf_pages_1based": [
+        138
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

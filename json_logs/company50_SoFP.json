@@ -1,0 +1,6095 @@
+{
+  "company": "company50",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company50\\Annual\\48232_2025.pdf",
+  "extracted_at": "2026-05-18T12:59:44",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 234,
+      "has_note_col": true,
+      "column_headers": [
+        "Group 2025",
+        "2024",
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "For the year ended 31st March",
+          "note_col": "",
+          "amt_cols": [
+            "Group 2025",
+            "2024",
+            "2025",
+            "2024"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "For the year ended 31st March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024",
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024,
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Profit for the year Other comprehensive income/(expense) to be reclassified to income statement Fair value gain on debt securities at fair value through other comprehensive income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,218,235",
+            "8,186,940",
+            "5,982,171",
+            "4,790,433"
+          ],
+          "amounts": [
+            10218235,
+            8186940,
+            5982171,
+            4790433
+          ]
+        },
+        {
+          "label": "Share of equity accounted investee, net of tax Total other comprehensive income/(expense) to be",
+          "is_section_header": false,
+          "note": "51",
+          "amounts_raw": [
+            "317,874",
+            "952,982",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            317874,
+            952982,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "reclassified to income statement Other comprehensive income/(expense) not to be reclassified to income statement",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "317,874",
+            "952,982",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            317874,
+            952982,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Actuarial losses on defined benefit plans",
+          "is_section_header": false,
+          "note": "19.2",
+          "amounts_raw": [
+            "(65,946)",
+            "(145,752)",
+            "(28,375)",
+            "(135,342)"
+          ],
+          "amounts": [
+            -65946,
+            -145752,
+            -28375,
+            -135342
+          ]
+        },
+        {
+          "label": "Deferred tax impact on acturial losses",
+          "is_section_header": false,
+          "note": "22.2",
+          "amounts_raw": [
+            "19,784",
+            "43,752",
+            "8,513",
+            "40,603"
+          ],
+          "amounts": [
+            19784,
+            43752,
+            8513,
+            40603
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(46,162)",
+            "(102,000)",
+            "(19,862)",
+            "(94,739)"
+          ],
+          "amounts": [
+            -46162,
+            -102000,
+            -19862,
+            -94739
+          ]
+        },
+        {
+          "label": "Share of equity accounted investee, net of tax Revaluation of land and buildings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(16,825)",
+            "(24,722)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -16825,
+            -24722,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Gain on revaluation of land and buildings",
+          "is_section_header": false,
+          "note": "37",
+          "amounts_raw": [
+            "-",
+            "1,184,820",
+            "-",
+            "941,777"
+          ],
+          "amounts": [
+            null,
+            1184820,
+            null,
+            941777
+          ]
+        },
+        {
+          "label": "Deferred tax impact on revaluation reserve",
+          "is_section_header": false,
+          "note": "22.2",
+          "amounts_raw": [
+            "-",
+            "(306,506)",
+            "-",
+            "(282,533)"
+          ],
+          "amounts": [
+            null,
+            -306506,
+            null,
+            -282533
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "878,314",
+            "-",
+            "659,244"
+          ],
+          "amounts": [
+            null,
+            878314,
+            null,
+            659244
+          ]
+        },
+        {
+          "label": "Share of equity accounted investee, net of tax Total other comprehensive income/(expense) not",
+          "is_section_header": false,
+          "note": "50",
+          "amounts_raw": [
+            "61,225",
+            "14,661",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            61225,
+            14661,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "be reclassified to income statement Other comprehensive income/(expense) for the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,762)",
+            "766,253",
+            "(19,862)",
+            "564,505"
+          ],
+          "amounts": [
+            -1762,
+            766253,
+            -19862,
+            564505
+          ]
+        },
+        {
+          "label": "year (net of tax)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "316,112",
+            "1,719,235",
+            "(19,862)",
+            "564,505"
+          ],
+          "amounts": [
+            316112,
+            1719235,
+            -19862,
+            564505
+          ]
+        },
+        {
+          "label": "Total comprehensive income for the year Total comprehensive income Attributable to:",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,534,347",
+            "9,906,175",
+            "5,962,309",
+            "5,354,938"
+          ],
+          "amounts": [
+            10534347,
+            9906175,
+            5962309,
+            5354938
+          ]
+        },
+        {
+          "label": "Equity holders of the parent",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,239,010",
+            "9,466,177",
+            "5,962,309",
+            "5,354,938"
+          ],
+          "amounts": [
+            10239010,
+            9466177,
+            5962309,
+            5354938
+          ]
+        },
+        {
+          "label": "Non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "295,337",
+            "439,998",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            295337,
+            439998,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total comprehensive income for the year Notes to the financial statements from pages 237 to of these",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,534,347",
+            "9,906,175",
+            "5,962,309",
+            "5,354,938"
+          ],
+          "amounts": [
+            10534347,
+            9906175,
+            5962309,
+            5354938
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Company",
+          "",
+          "Group",
+          "",
+          "",
+          ""
+        ],
+        [
+          "For the year ended 31st March",
+          "",
+          "2025",
+          "2024",
+          "2025",
+          "2024"
+        ],
+        [
+          "Profit for the year Other comprehensive income/(expense) to be reclassified to income statement Fair value gain on debt securities at fair value through other comprehensive income",
+          "",
+          "10,218,235",
+          "8,186,940",
+          "5,982,171",
+          "4,790,433"
+        ],
+        [
+          "Share of equity accounted investee, net of tax Total other comprehensive income/(expense) to be",
+          "51",
+          "317,874",
+          "952,982",
+          "-",
+          "-"
+        ],
+        [
+          "reclassified to income statement Other comprehensive income/(expense) not to be reclassified to income statement",
+          "",
+          "317,874",
+          "952,982",
+          "-",
+          "-"
+        ],
+        [
+          "Actuarial losses on defined benefit plans",
+          "19.2",
+          "(65,946)",
+          "(145,752)",
+          "(28,375)",
+          "(135,342)"
+        ],
+        [
+          "Deferred tax impact on acturial losses",
+          "22.2",
+          "19,784",
+          "43,752",
+          "8,513",
+          "40,603"
+        ],
+        [
+          "",
+          "",
+          "(46,162)",
+          "(102,000)",
+          "(19,862)",
+          "(94,739)"
+        ],
+        [
+          "Share of equity accounted investee, net of tax Revaluation of land and buildings",
+          "",
+          "(16,825)",
+          "(24,722)",
+          "-",
+          "-"
+        ],
+        [
+          "Gain on revaluation of land and buildings",
+          "37",
+          "-",
+          "1,184,820",
+          "-",
+          "941,777"
+        ],
+        [
+          "Deferred tax impact on revaluation reserve",
+          "22.2",
+          "-",
+          "(306,506)",
+          "-",
+          "(282,533)"
+        ],
+        [
+          "",
+          "",
+          "-",
+          "878,314",
+          "-",
+          "659,244"
+        ],
+        [
+          "Share of equity accounted investee, net of tax Total other comprehensive income/(expense) not",
+          "50",
+          "61,225",
+          "14,661",
+          "-",
+          "-"
+        ],
+        [
+          "be reclassified to income statement Other comprehensive income/(expense) for the",
+          "",
+          "(1,762)",
+          "766,253",
+          "(19,862)",
+          "564,505"
+        ],
+        [
+          "year (net of tax)",
+          "",
+          "316,112",
+          "1,719,235",
+          "(19,862)",
+          "564,505"
+        ],
+        [
+          "Total comprehensive income for the year Total comprehensive income Attributable to:",
+          "",
+          "10,534,347",
+          "9,906,175",
+          "5,962,309",
+          "5,354,938"
+        ],
+        [
+          "Equity holders of the parent",
+          "",
+          "10,239,010",
+          "9,466,177",
+          "5,962,309",
+          "5,354,938"
+        ],
+        [
+          "Non-controlling interest",
+          "",
+          "295,337",
+          "439,998",
+          "-",
+          "-"
+        ],
+        [
+          "Total comprehensive income for the year Notes to the financial statements from pages 237 to of these",
+          "",
+          "10,534,347",
+          "9,906,175",
+          "5,962,309",
+          "5,354,938"
+        ]
+      ]
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income",
+      "page_1based": 349,
+      "raw_text": "347\nThe defined benefit obligation recognised in the statement of financial position represents the present value of the defined benefit\nobligation as reduced by the fair value of plan assets. Actuarial gains and losses are recognised as income or expenses in the\nstatement of comprehensive income during the financial year in which they arise. The gratuity liability of the parent company is\nexternally funded in part by a gratuity fund established in 1987, with the investments of the fund being mainly in fixed and savings\ndeposits with approved banks. Gratuity liabilities of the other companies in the Group are not externally funded. Provision is made for\ndefined benefit plan liability for all employees from the first year of service in conformity with Sri Lanka Accounting Standard (LKAS 19)\n– Employee Benefits.\nThe liability of the Company is computed on the following basis for employees who have joined the Company on or before 01.04.2013\nwhile the rest of the employees are entitled for half a month’s salary for each completed year of service as per the provisions of the\nGratuity Act No. 12 of 1983.\nLength of service (completed years) No of months’ salary for each completed year\nUp to 15 1/2\n15 up to 30 1\n30 up to 35 1 ½\n35 up to 40 2\nOver 40 2 ½\nHowever, under the Payment of Gratuity Act No. 12 of 1983, the liability to an employee arises only on completion of five years of\ncontinued service. Liabilities for the other companies in the Group are computed on the basis of half a month’s salary for each year of\ncompleted service.\nRecognition of actuarial gains and losses\nThe Group recognises the total actuarial gains and losses in the other comprehensive income during the period in which it occurs.\nRecognition of current service cost\nSince end of service gratuity defined benefit is a statutory benefit, the recognition of current service cost will arise only if the Payment\nof Gratuity Act No. 12 of 1983 is amended in future to increase the promised benefit on termination of employment. In such event, the\nCompany will adopt the accounting policy currently used for defined benefit plans.\nSIGNIFICANT ACCOUNTING JUDGMENTS, ESTIMATES AND ASSUMPTIONS - Defined benefit plans\nCost of defined benefit plans are determined using actuarial valuations. Actuarial valuation involves making various assumptions,\ndetermining discount rates, future salary increases and mortality rates. Due to the complexity of the valuation, the underlying\nassumptions and their long-term nature such estimates are subject to significant uncertainty. All assumptions are reviewed at each\nreporting date.\nIn determining the appropriate discount rate, the management considers the interest rates of Sri Lanka Government Bonds for a\nsimilar duration of the remaining expected working life of employees. The mortality rate is based on publicly available mortality\ntables. Estimate on future salary increases is based on expected future inflation rates and expected future salary increase rate of the\nCompany.\nCENTRAL FINANCE COMPANY PLC | INTEGRATED ANNUAL REPORT 2024/25"
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 235,
+      "has_note_col": true,
+      "column_headers": [
+        "Group 2025",
+        "2024",
+        "Company 2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "31st March As at",
+          "note_col": "",
+          "amt_cols": [
+            "Group 2025",
+            "2024",
+            "Company 2025",
+            "2024"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "As at 31st March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024",
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024,
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "ASSETS",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "1,011,416",
+            "905,389",
+            "874,621",
+            "755,076"
+          ],
+          "amounts": [
+            1011416,
+            905389,
+            874621,
+            755076
+          ]
+        },
+        {
+          "label": "Fair value through profit or loss financial assets",
+          "is_section_header": false,
+          "note": "27",
+          "amounts_raw": [
+            "1,807,449",
+            "3,908,515",
+            "1,466,670",
+            "3,029,889"
+          ],
+          "amounts": [
+            1807449,
+            3908515,
+            1466670,
+            3029889
+          ]
+        },
+        {
+          "label": "Securities bought under repurchase agreements Financial assets at amortised cost - Debt and other financial",
+          "is_section_header": false,
+          "note": "28",
+          "amounts_raw": [
+            "3,401,767",
+            "6,200,535",
+            "3,401,767",
+            "6,090,306"
+          ],
+          "amounts": [
+            3401767,
+            6200535,
+            3401767,
+            6090306
+          ]
+        },
+        {
+          "label": "instruments Financial assets at amortised cost - Loans and receivables from",
+          "is_section_header": false,
+          "note": "29",
+          "amounts_raw": [
+            "21,070,588",
+            "28,971,594",
+            "17,597,353",
+            "26,599,900"
+          ],
+          "amounts": [
+            21070588,
+            28971594,
+            17597353,
+            26599900
+          ]
+        },
+        {
+          "label": "customers Financial assets at amortised cost - Net investment in leases and",
+          "is_section_header": false,
+          "note": "30",
+          "amounts_raw": [
+            "9,574,069",
+            "5,958,437",
+            "9,566,996",
+            "5,944,936"
+          ],
+          "amounts": [
+            9574069,
+            5958437,
+            9566996,
+            5944936
+          ]
+        },
+        {
+          "label": "hire purchase",
+          "is_section_header": false,
+          "note": "31",
+          "amounts_raw": [
+            "56,556,667",
+            "44,203,016",
+            "56,556,667",
+            "44,203,016"
+          ],
+          "amounts": [
+            56556667,
+            44203016,
+            56556667,
+            44203016
+          ]
+        },
+        {
+          "label": "Trade receivables",
+          "is_section_header": false,
+          "note": "32",
+          "amounts_raw": [
+            "1,419,590",
+            "1,000,140",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            1419590,
+            1000140,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Investments in subsidiaries",
+          "is_section_header": false,
+          "note": "33",
+          "amounts_raw": [
+            "-",
+            "-",
+            "407,979",
+            "407,979"
+          ],
+          "amounts": [
+            null,
+            null,
+            407979,
+            407979
+          ]
+        },
+        {
+          "label": "Investments in equity accounted investees",
+          "is_section_header": false,
+          "note": "34",
+          "amounts_raw": [
+            "18,297,316",
+            "14,532,496",
+            "1,834,063",
+            "1,731,672"
+          ],
+          "amounts": [
+            18297316,
+            14532496,
+            1834063,
+            1731672
+          ]
+        },
+        {
+          "label": "Inventories and other stocks",
+          "is_section_header": false,
+          "note": "35",
+          "amounts_raw": [
+            "1,054,483",
+            "1,064,686",
+            "72,132",
+            "89,814"
+          ],
+          "amounts": [
+            1054483,
+            1064686,
+            72132,
+            89814
+          ]
+        },
+        {
+          "label": "Investment properties",
+          "is_section_header": false,
+          "note": "36",
+          "amounts_raw": [
+            "66,611",
+            "66,611",
+            "66,611",
+            "66,611"
+          ],
+          "amounts": [
+            66611,
+            66611,
+            66611,
+            66611
+          ]
+        },
+        {
+          "label": "Property, plant and equipment",
+          "is_section_header": false,
+          "note": "37",
+          "amounts_raw": [
+            "14,230,125",
+            "13,228,686",
+            "11,593,908",
+            "10,566,848"
+          ],
+          "amounts": [
+            14230125,
+            13228686,
+            11593908,
+            10566848
+          ]
+        },
+        {
+          "label": "Right of use assets",
+          "is_section_header": false,
+          "note": "38",
+          "amounts_raw": [
+            "596,481",
+            "468,191",
+            "836,396",
+            "502,090"
+          ],
+          "amounts": [
+            596481,
+            468191,
+            836396,
+            502090
+          ]
+        },
+        {
+          "label": "Intangible assets",
+          "is_section_header": false,
+          "note": "39",
+          "amounts_raw": [
+            "246,745",
+            "274,693",
+            "242,956",
+            "270,266"
+          ],
+          "amounts": [
+            246745,
+            274693,
+            242956,
+            270266
+          ]
+        },
+        {
+          "label": "Current tax assets",
+          "is_section_header": false,
+          "note": "40",
+          "amounts_raw": [
+            "43",
+            "43",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            43,
+            43,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Deferred tax assets",
+          "is_section_header": false,
+          "note": "41",
+          "amounts_raw": [
+            "35,313",
+            "24,072",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            35313,
+            24072,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other assets",
+          "is_section_header": false,
+          "note": "42",
+          "amounts_raw": [
+            "780,056",
+            "722,641",
+            "488,673",
+            "483,992"
+          ],
+          "amounts": [
+            780056,
+            722641,
+            488673,
+            483992
+          ]
+        },
+        {
+          "label": "Real estates held for sale",
+          "is_section_header": false,
+          "note": "43",
+          "amounts_raw": [
+            "4,368",
+            "4,368",
+            "4,368",
+            "4,368"
+          ],
+          "amounts": [
+            4368,
+            4368,
+            4368,
+            4368
+          ]
+        },
+        {
+          "label": "Total assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "130,153,087",
+            "121,534,113",
+            "105,011,160",
+            "100,746,763"
+          ],
+          "amounts": [
+            130153087,
+            121534113,
+            105011160,
+            100746763
+          ]
+        },
+        {
+          "label": "LIABILITIES",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Bank overdrafts",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "464,813",
+            "464,254",
+            "452,705",
+            "414,157"
+          ],
+          "amounts": [
+            464813,
+            464254,
+            452705,
+            414157
+          ]
+        },
+        {
+          "label": "Financial liabilities at amortised cost - Deposits",
+          "is_section_header": false,
+          "note": "44",
+          "amounts_raw": [
+            "41,675,987",
+            "43,737,485",
+            "42,122,280",
+            "44,200,604"
+          ],
+          "amounts": [
+            41675987,
+            43737485,
+            42122280,
+            44200604
+          ]
+        },
+        {
+          "label": "Financial liabilities at amortised cost - Interest bearing borrowings",
+          "is_section_header": false,
+          "note": "45",
+          "amounts_raw": [
+            "4,444",
+            "18,024",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            4444,
+            18024,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lease liabilities",
+          "is_section_header": false,
+          "note": "38",
+          "amounts_raw": [
+            "601,993",
+            "472,351",
+            "841,908",
+            "517,267"
+          ],
+          "amounts": [
+            601993,
+            472351,
+            841908,
+            517267
+          ]
+        },
+        {
+          "label": "Employee benefit obligations",
+          "is_section_header": false,
+          "note": "46",
+          "amounts_raw": [
+            "2,089,165",
+            "2,533,524",
+            "1,866,402",
+            "2,365,673"
+          ],
+          "amounts": [
+            2089165,
+            2533524,
+            1866402,
+            2365673
+          ]
+        },
+        {
+          "label": "Current tax liabilities",
+          "is_section_header": false,
+          "note": "40",
+          "amounts_raw": [
+            "794,032",
+            "776,389",
+            "605,096",
+            "567,804"
+          ],
+          "amounts": [
+            794032,
+            776389,
+            605096,
+            567804
+          ]
+        },
+        {
+          "label": "Deferred tax liabilities",
+          "is_section_header": false,
+          "note": "41",
+          "amounts_raw": [
+            "2,303,249",
+            "1,626,370",
+            "1,791,483",
+            "1,125,451"
+          ],
+          "amounts": [
+            2303249,
+            1626370,
+            1791483,
+            1125451
+          ]
+        },
+        {
+          "label": "Other liabilities",
+          "is_section_header": false,
+          "note": "47",
+          "amounts_raw": [
+            "2,494,335",
+            "1,559,915",
+            "2,125,844",
+            "1,237,195"
+          ],
+          "amounts": [
+            2494335,
+            1559915,
+            2125844,
+            1237195
+          ]
+        },
+        {
+          "label": "Total liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "50,428,018",
+            "51,188,312",
+            "49,805,718",
+            "50,428,151"
+          ],
+          "amounts": [
+            50428018,
+            51188312,
+            49805718,
+            50428151
+          ]
+        },
+        {
+          "label": "EQUITY",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated capital",
+          "is_section_header": false,
+          "note": "48",
+          "amounts_raw": [
+            "2,230,286",
+            "2,230,286",
+            "2,230,286",
+            "2,230,286"
+          ],
+          "amounts": [
+            2230286,
+            2230286,
+            2230286,
+            2230286
+          ]
+        },
+        {
+          "label": "Statutory reserve fund",
+          "is_section_header": false,
+          "note": "49",
+          "amounts_raw": [
+            "3,504,000",
+            "3,204,000",
+            "3,504,000",
+            "3,204,000"
+          ],
+          "amounts": [
+            3504000,
+            3204000,
+            3504000,
+            3204000
+          ]
+        },
+        {
+          "label": "Revaluation reserve",
+          "is_section_header": false,
+          "note": "50",
+          "amounts_raw": [
+            "5,434,116",
+            "5,384,232",
+            "3,943,952",
+            "3,953,451"
+          ],
+          "amounts": [
+            5434116,
+            5384232,
+            3943952,
+            3953451
+          ]
+        },
+        {
+          "label": "Fair value reserve",
+          "is_section_header": false,
+          "note": "51",
+          "amounts_raw": [
+            "1,370,884",
+            "1,053,010",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            1370884,
+            1053010,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Loan loss reserve",
+          "is_section_header": false,
+          "note": "52",
+          "amounts_raw": [
+            "920,000",
+            "920,000",
+            "920,000",
+            "920,000"
+          ],
+          "amounts": [
+            920000,
+            920000,
+            920000,
+            920000
+          ]
+        },
+        {
+          "label": "General reserve",
+          "is_section_header": false,
+          "note": "53",
+          "amounts_raw": [
+            "23,402,957",
+            "23,402,957",
+            "23,391,776",
+            "23,391,776"
+          ],
+          "amounts": [
+            23402957,
+            23402957,
+            23391776,
+            23391776
+          ]
+        },
+        {
+          "label": "Retained earnings",
+          "is_section_header": false,
+          "note": "54",
+          "amounts_raw": [
+            "40,353,701",
+            "31,857,928",
+            "21,215,428",
+            "16,619,099"
+          ],
+          "amounts": [
+            40353701,
+            31857928,
+            21215428,
+            16619099
+          ]
+        },
+        {
+          "label": "Total equity, excluding non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "77,215,944",
+            "68,052,413",
+            "55,205,442",
+            "50,318,612"
+          ],
+          "amounts": [
+            77215944,
+            68052413,
+            55205442,
+            50318612
+          ]
+        },
+        {
+          "label": "Non-controlling interest",
+          "is_section_header": false,
+          "note": "33.2",
+          "amounts_raw": [
+            "2,509,125",
+            "2,293,388",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            2509125,
+            2293388,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "79,725,069",
+            "70,345,801",
+            "55,205,442",
+            "50,318,612"
+          ],
+          "amounts": [
+            79725069,
+            70345801,
+            55205442,
+            50318612
+          ]
+        },
+        {
+          "label": "Total liabilities and equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "130,153,087",
+            "121,534,113",
+            "105,011,160",
+            "100,746,763"
+          ],
+          "amounts": [
+            130153087,
+            121534113,
+            105011160,
+            100746763
+          ]
+        },
+        {
+          "label": "Net asset value per share - Rs. Notes to the financial statements from pages 237 to 365 form financial statements.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "339.63",
+            "299.32",
+            "242.82",
+            "221.32"
+          ],
+          "amounts": [
+            339.63,
+            299.32,
+            242.82,
+            221.32
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Company",
+          "",
+          "Group",
+          "",
+          "",
+          ""
+        ],
+        [
+          "As at 31st March",
+          "",
+          "2025",
+          "2024",
+          "2025",
+          "2024"
+        ],
+        [
+          "ASSETS",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash and cash equivalents",
+          "26",
+          "1,011,416",
+          "905,389",
+          "874,621",
+          "755,076"
+        ],
+        [
+          "Fair value through profit or loss financial assets",
+          "27",
+          "1,807,449",
+          "3,908,515",
+          "1,466,670",
+          "3,029,889"
+        ],
+        [
+          "Securities bought under repurchase agreements Financial assets at amortised cost - Debt and other financial",
+          "28",
+          "3,401,767",
+          "6,200,535",
+          "3,401,767",
+          "6,090,306"
+        ],
+        [
+          "instruments Financial assets at amortised cost - Loans and receivables from",
+          "29",
+          "21,070,588",
+          "28,971,594",
+          "17,597,353",
+          "26,599,900"
+        ],
+        [
+          "customers Financial assets at amortised cost - Net investment in leases and",
+          "30",
+          "9,574,069",
+          "5,958,437",
+          "9,566,996",
+          "5,944,936"
+        ],
+        [
+          "hire purchase",
+          "31",
+          "56,556,667",
+          "44,203,016",
+          "56,556,667",
+          "44,203,016"
+        ],
+        [
+          "Trade receivables",
+          "32",
+          "1,419,590",
+          "1,000,140",
+          "-",
+          "-"
+        ],
+        [
+          "Investments in subsidiaries",
+          "33",
+          "-",
+          "-",
+          "407,979",
+          "407,979"
+        ],
+        [
+          "Investments in equity accounted investees",
+          "34",
+          "18,297,316",
+          "14,532,496",
+          "1,834,063",
+          "1,731,672"
+        ],
+        [
+          "Inventories and other stocks",
+          "35",
+          "1,054,483",
+          "1,064,686",
+          "72,132",
+          "89,814"
+        ],
+        [
+          "Investment properties",
+          "36",
+          "66,611",
+          "66,611",
+          "66,611",
+          "66,611"
+        ],
+        [
+          "Property, plant and equipment",
+          "37",
+          "14,230,125",
+          "13,228,686",
+          "11,593,908",
+          "10,566,848"
+        ],
+        [
+          "Right of use assets",
+          "38",
+          "596,481",
+          "468,191",
+          "836,396",
+          "502,090"
+        ],
+        [
+          "Intangible assets",
+          "39",
+          "246,745",
+          "274,693",
+          "242,956",
+          "270,266"
+        ],
+        [
+          "Current tax assets",
+          "40",
+          "43",
+          "43",
+          "-",
+          "-"
+        ],
+        [
+          "Deferred tax assets",
+          "41",
+          "35,313",
+          "24,072",
+          "-",
+          "-"
+        ],
+        [
+          "Other assets",
+          "42",
+          "780,056",
+          "722,641",
+          "488,673",
+          "483,992"
+        ],
+        [
+          "Real estates held for sale",
+          "43",
+          "4,368",
+          "4,368",
+          "4,368",
+          "4,368"
+        ],
+        [
+          "Total assets",
+          "",
+          "130,153,087",
+          "121,534,113",
+          "105,011,160",
+          "100,746,763"
+        ],
+        [
+          "LIABILITIES",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Bank overdrafts",
+          "26",
+          "464,813",
+          "464,254",
+          "452,705",
+          "414,157"
+        ],
+        [
+          "Financial liabilities at amortised cost - Deposits",
+          "44",
+          "41,675,987",
+          "43,737,485",
+          "42,122,280",
+          "44,200,604"
+        ],
+        [
+          "Financial liabilities at amortised cost - Interest bearing borrowings",
+          "45",
+          "4,444",
+          "18,024",
+          "-",
+          "-"
+        ],
+        [
+          "Lease liabilities",
+          "38",
+          "601,993",
+          "472,351",
+          "841,908",
+          "517,267"
+        ],
+        [
+          "Employee benefit obligations",
+          "46",
+          "2,089,165",
+          "2,533,524",
+          "1,866,402",
+          "2,365,673"
+        ],
+        [
+          "Current tax liabilities",
+          "40",
+          "794,032",
+          "776,389",
+          "605,096",
+          "567,804"
+        ],
+        [
+          "Deferred tax liabilities",
+          "41",
+          "2,303,249",
+          "1,626,370",
+          "1,791,483",
+          "1,125,451"
+        ],
+        [
+          "Other liabilities",
+          "47",
+          "2,494,335",
+          "1,559,915",
+          "2,125,844",
+          "1,237,195"
+        ],
+        [
+          "Total liabilities",
+          "",
+          "50,428,018",
+          "51,188,312",
+          "49,805,718",
+          "50,428,151"
+        ],
+        [
+          "EQUITY",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Stated capital",
+          "48",
+          "2,230,286",
+          "2,230,286",
+          "2,230,286",
+          "2,230,286"
+        ],
+        [
+          "Statutory reserve fund",
+          "49",
+          "3,504,000",
+          "3,204,000",
+          "3,504,000",
+          "3,204,000"
+        ],
+        [
+          "Revaluation reserve",
+          "50",
+          "5,434,116",
+          "5,384,232",
+          "3,943,952",
+          "3,953,451"
+        ],
+        [
+          "Fair value reserve",
+          "51",
+          "1,370,884",
+          "1,053,010",
+          "-",
+          "-"
+        ],
+        [
+          "Loan loss reserve",
+          "52",
+          "920,000",
+          "920,000",
+          "920,000",
+          "920,000"
+        ],
+        [
+          "General reserve",
+          "53",
+          "23,402,957",
+          "23,402,957",
+          "23,391,776",
+          "23,391,776"
+        ],
+        [
+          "Retained earnings",
+          "54",
+          "40,353,701",
+          "31,857,928",
+          "21,215,428",
+          "16,619,099"
+        ],
+        [
+          "Total equity, excluding non-controlling interest",
+          "",
+          "77,215,944",
+          "68,052,413",
+          "55,205,442",
+          "50,318,612"
+        ],
+        [
+          "Non-controlling interest",
+          "33.2",
+          "2,509,125",
+          "2,293,388",
+          "-",
+          "-"
+        ],
+        [
+          "Total equity",
+          "",
+          "79,725,069",
+          "70,345,801",
+          "55,205,442",
+          "50,318,612"
+        ],
+        [
+          "Total liabilities and equity",
+          "",
+          "130,153,087",
+          "121,534,113",
+          "105,011,160",
+          "100,746,763"
+        ],
+        [
+          "Net asset value per share - Rs. Notes to the financial statements from pages 237 to 365 form financial statements.",
+          "",
+          "339.63",
+          "299.32",
+          "242.82",
+          "221.32"
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 236,
+      "has_note_col": false,
+      "column_headers": [
+        "Col 1",
+        "Col 2",
+        "Col 3",
+        "Col 4",
+        "Col 5",
+        "Col 6",
+        "Col 7",
+        "Col 8"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Description",
+          "note_col": null,
+          "amt_cols": [
+            "Col 1",
+            "Col 2",
+            "Col 3",
+            "Col 4",
+            "Col 5",
+            "Col 6",
+            "Col 7",
+            "Col 8"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "latoT 000’.sR 027,544,16 049,681,8 532,917,1 - )443,310,1( - )435,951,1(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "-noN gnillortnoc tseretni 000’.sR 874,009,1 566,443 333,59 - )880,74( - )006,97(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "latoT 000’.sR 242,545,95 572,248,7 209,326,1 - )652,669( - )439,970,1(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "deniateR sgninrae 000’.sR 366,033,52 572,248,7 )516,321( 116,7 )652,669( 143,11 )439,970,1(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "lareneG sevreser 000’.sR 759,204,32 - - - - - - ynapmoC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "ssol evreser 000’.sR 000,029 - - - - - - naoL eht fo sredloh .stnemetats",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "eulav evreser 000’.sR 820,001 - 289,259 - - - - ytiuqe riaF ot )116,7( )143,11( laicnanif",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "noitaulaveR evreser 000’.sR 803,795,4 - 535,497 - - elbatubirttA eseht",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "611,434,5"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6114345
+          ]
+        },
+        {
+          "label": "yrotutatS evreser dnuf 000’.sR 000,469,2 - - - - - - fo trap mrof",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "000,003 000,405,3"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            30004053
+          ]
+        },
+        {
+          "label": "detatS latipac 000’.sR 682,032,2 - - - - - - 563 ot 732 2.33 2.33 setoN segap 05 /42 05 /42 morf fo , fo , srefsnart sulprus srefsnart sulprus stnemetats sredloh sredloh",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "emocni ytiuqe dna ytiuqe dna",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "4202",
+            "",
+            "",
+            "",
+            "",
+            "5202"
+          ],
+          "amounts": [
+            null,
+            null,
+            4202,
+            null,
+            null,
+            null,
+            null,
+            5202
+          ]
+        },
+        {
+          "label": "3202 emocni noitaulaver noitaulaver ytiuqe rehto morf ytiuqe rehto morf lirpA ni hsaC ni laicnanif evisneherpmoc evisneherpmoc yltcerid snoitubirtnoc yltcerid snoitubirtnoc ts10 htiw dna /pircS htiw dna raey hsaC no no ta snoitcasnarT ynapmoC snoitcasnarT ynapmoC eht desingocer noitaicerpeD desingocer noitaicerpeD eht PUORG sa - - sdnediviD sdnediviD ecnalaB rof ot latoT tiforP rehtO latoT latoT setoN eht eht",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "latoT 000’.sR 086,229,54 334,097,4 505,465 839,453,5 - 672,7 )600,959( - )439,970,1(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "deniateR sgninrae 000’.sR 376,611,31 334,097,4 )937,49( 496,596,4 837,5 672,7 )862,391,1( 994,9 )439,970,1(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "lareneG sevreser 000’.sR 677,193,32 - - - - - - - -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "ssol evreser 000’.sR 000,029 - - - - - - - - naoL",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "noitaulaveR evreser 000’.sR 549,992,3 - 442,956 442,956 )837,5( - )837,5( )994,9( - .stnemetats",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "yrotutatS dnuf 000’.sR 000,469,2 - - - - - 000,042 - - evreser laicnanif",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "000,003 000,405,3"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            30004053
+          ]
+        },
+        {
+          "label": "detatS latipac 000’.sR 682,032,2 - - - - - - - - eseht fo trap setoN 45/05 mrof 05 05 42 563 ytiuqe ot 732 ot ni ot noitubirtsid noitubirtsid segap yltcerid morf sulprus srefsnart sulprus kcab desingocer",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "stnemetats emocni emocni dna dna",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "4202",
+            "",
+            "",
+            "",
+            "",
+            "5202"
+          ],
+          "amounts": [
+            null,
+            null,
+            4202,
+            null,
+            null,
+            null,
+            null,
+            5202
+          ]
+        },
+        {
+          "label": "3202 emocni nettirw noitaulaver noitaulaver morf rehto morf lirpA evisneherpmoc evisneherpmoc evisneherpmoc sdnedivid , snoitubirtnoc dna srefsnart snoitubirtnoc laicnanif ts10 raey hsaC no sredloh no YNAPMOC ta eht noitaicerpeD noitaicerpeD",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "sa demialcnU - eht rehto sdnediviD ecnalaB rof ytiuqe ot latoT tiforP rehtO latoT latoT latoT setoN dna INTEGRATED 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "latoT 000’.sR 027,544,16 049,681,8 532,917,1 - )443,310,1( - )435,951,1(",
+          "571,609,9",
+          "672,7 )62( -",
+          ")490,600,1( 108,543,07",
+          "108,543,07",
+          "532,812,01 211,613",
+          "743,435,01",
+          "088,4 )524( -",
+          ")970,551,1( 960,527,97"
+        ],
+        [
+          "-noN gnillortnoc tseretni 000’.sR 874,009,1 566,443 333,59 - )880,74( - )006,97(",
+          "899,934",
+          "- - -",
+          ")880,74( 883,392,2",
+          "883,392,2",
+          "062,492 770,1",
+          "733,592",
+          "- - -",
+          ")006,97( 521,905,2"
+        ],
+        [
+          "latoT 000’.sR 242,545,95 572,248,7 209,326,1 - )652,669( - )439,970,1(",
+          "771,664,9",
+          "672,7 )62( -",
+          ")600,959( 314,250,86",
+          "314,250,86",
+          "579,329,9 530,513",
+          "010,932,01",
+          "088,4 )524( -",
+          ")974,570,1( 449,512,77"
+        ],
+        [
+          "deniateR sgninrae 000’.sR 366,033,52 572,248,7 )516,321( 116,7 )652,669( 143,11 )439,970,1(",
+          "066,817,7",
+          "672,7 )62( )000,042(",
+          ")593,191,1( 829,758,13",
+          "829,758,13",
+          "579,329,9 )460,46(",
+          "119,958,9",
+          "088,4 )524( )000,003(",
+          ")831,463,1( 107,353,04"
+        ],
+        [
+          "lareneG sevreser 000’.sR 759,204,32 - - - - - - ynapmoC",
+          "-",
+          "- - -",
+          "- 759,204,32",
+          "759,204,32",
+          "- -",
+          "-",
+          "- - -",
+          "- 759,204,32"
+        ],
+        [
+          "ssol evreser 000’.sR 000,029 - - - - - - naoL eht fo sredloh .stnemetats",
+          "-",
+          "- - -",
+          "- 000,029",
+          "000,029",
+          "- -",
+          "-",
+          "- - -",
+          "- 000,029"
+        ],
+        [
+          "eulav evreser 000’.sR 820,001 - 289,259 - - - - ytiuqe riaF ot )116,7( )143,11( laicnanif",
+          "289,259",
+          "- - -",
+          "- 010,350,1",
+          "010,350,1",
+          "- 478,713",
+          "478,713",
+          "- - -",
+          "- 488,073,1"
+        ],
+        [
+          "noitaulaveR evreser 000’.sR 803,795,4 - 535,497 - - elbatubirttA eseht",
+          "535,497",
+          "- - -",
+          "232,483,5",
+          "232,483,5",
+          "- 522,16",
+          "522,16",
+          "- - -",
+          "611,434,5"
+        ],
+        [
+          "yrotutatS evreser dnuf 000’.sR 000,469,2 - - - - - - fo trap mrof",
+          "-",
+          "- - 000,042",
+          "000,042 000,402,3",
+          "000,402,3",
+          "- -",
+          "-",
+          "- - 000,003",
+          "000,003 000,405,3"
+        ],
+        [
+          "detatS latipac 000’.sR 682,032,2 - - - - - - 563 ot 732 2.33 2.33 setoN segap  05 /42 05 /42 morf fo , fo , srefsnart sulprus srefsnart sulprus stnemetats sredloh sredloh",
+          "-",
+          "- - -",
+          "- 682,032,2",
+          "682,032,2",
+          "- -",
+          "-",
+          "- - -",
+          "- 682,032,2"
+        ],
+        [
+          "emocni ytiuqe dna ytiuqe dna",
+          "",
+          "",
+          "4202",
+          "",
+          "",
+          "",
+          "",
+          "5202"
+        ],
+        [
+          "3202 emocni noitaulaver noitaulaver ytiuqe rehto morf ytiuqe rehto morf lirpA ni hsaC ni laicnanif evisneherpmoc evisneherpmoc yltcerid snoitubirtnoc yltcerid snoitubirtnoc ts10 htiw dna /pircS htiw dna raey hsaC no no ta snoitcasnarT ynapmoC snoitcasnarT ynapmoC eht desingocer noitaicerpeD desingocer noitaicerpeD eht PUORG sa - - sdnediviD sdnediviD ecnalaB rof ot latoT tiforP rehtO latoT latoT setoN eht eht",
+          "",
+          "nettirw",
+          "",
+          "4202",
+          "emocni",
+          "",
+          "nettirw",
+          ""
+        ],
+        [
+          "latoT 000’.sR 086,229,54 334,097,4 505,465 839,453,5 - 672,7 )600,959( - )439,970,1(",
+          "",
+          ")62( - )652,669(",
+          "216,813,05 216,813,05",
+          "171,289,5",
+          ")268,91( 903,269,5",
+          "",
+          "088,4 )524( -",
+          ")974,570,1( 244,502,55"
+        ],
+        [
+          "deniateR sgninrae 000’.sR 376,611,31 334,097,4 )937,49( 496,596,4 837,5 672,7 )862,391,1( 994,9 )439,970,1(",
+          "",
+          ")62( )000,042( )652,669(",
+          "990,916,61 990,916,61",
+          "171,289,5",
+          ")268,91( 903,269,5",
+          "",
+          "088,4 )524( )000,003(",
+          ")089,563,1( 824,512,12"
+        ],
+        [
+          "lareneG sevreser 000’.sR 677,193,32 - - - - - - - -",
+          "",
+          "- - -",
+          "677,193,32 677,193,32",
+          "-",
+          "- -",
+          "",
+          "- - -",
+          "- 677,193,32"
+        ],
+        [
+          "ssol evreser 000’.sR 000,029 - - - - - - - - naoL",
+          "",
+          "- - -",
+          "000,029 000,029",
+          "-",
+          "- -",
+          "",
+          "- - -",
+          "- 000,029"
+        ],
+        [
+          "noitaulaveR evreser 000’.sR 549,992,3 - 442,956 442,956 )837,5( - )837,5( )994,9( - .stnemetats",
+          "",
+          "- - -",
+          "154,359,3 154,359,3",
+          "-",
+          "- -",
+          "",
+          "- - -",
+          ")994,9( 259,349,3"
+        ],
+        [
+          "yrotutatS dnuf 000’.sR 000,469,2 - - - - - 000,042 - - evreser laicnanif",
+          "",
+          "- 000,042 -",
+          "000,402,3 000,402,3",
+          "-",
+          "- -",
+          "",
+          "- - 000,003",
+          "000,003 000,405,3"
+        ],
+        [
+          "detatS latipac 000’.sR 682,032,2 - - - - - - - - eseht fo trap setoN 45/05 mrof 05 05 42 563 ytiuqe ot 732 ot ni ot noitubirtsid noitubirtsid segap yltcerid  morf sulprus srefsnart sulprus kcab desingocer",
+          "",
+          "- - -",
+          "682,032,2 682,032,2",
+          "-",
+          "- -",
+          "",
+          "- - -",
+          "- 682,032,2"
+        ],
+        [
+          "stnemetats emocni emocni dna dna",
+          "",
+          "",
+          "4202",
+          "",
+          "",
+          "",
+          "",
+          "5202"
+        ],
+        [
+          "3202 emocni nettirw noitaulaver noitaulaver morf rehto morf  lirpA evisneherpmoc evisneherpmoc evisneherpmoc sdnedivid , snoitubirtnoc dna srefsnart snoitubirtnoc laicnanif ts10 raey hsaC no sredloh no YNAPMOC ta eht noitaicerpeD noitaicerpeD",
+          "",
+          "",
+          "4202",
+          "",
+          "",
+          "",
+          "nettirw",
+          ""
+        ],
+        [
+          "sa demialcnU - eht rehto sdnediviD ecnalaB rof ytiuqe ot latoT tiforP rehtO latoT latoT latoT setoN dna INTEGRATED 2024/25",
+          "",
+          "fo -",
+          "sa sa",
+          "",
+          "",
+          "",
+          "demialcnU fo",
+          ""
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 238,
+      "has_note_col": true,
+      "column_headers": [
+        "Group 2025",
+        "2024",
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "For the year ended 31st March",
+          "note_col": "",
+          "amt_cols": [
+            "Group 2025",
+            "2024",
+            "2025",
+            "2024"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Cash flows from operating activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Interest receipts",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,782,273",
+            "17,930,755",
+            "15,460,400",
+            "17,735,403"
+          ],
+          "amounts": [
+            15782273,
+            17930755,
+            15460400,
+            17735403
+          ]
+        },
+        {
+          "label": "Interest payments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,952,543)",
+            "(2,583,958)",
+            "(1,961,865)",
+            "(2,598,149)"
+          ],
+          "amounts": [
+            -1952543,
+            -2583958,
+            -1961865,
+            -2598149
+          ]
+        },
+        {
+          "label": "Recoveries on bad debts previously written off",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "453,796",
+            "334,971",
+            "453,796",
+            "334,971"
+          ],
+          "amounts": [
+            453796,
+            334971,
+            453796,
+            334971
+          ]
+        },
+        {
+          "label": "Receipts from other operating activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "8,291,051",
+            "6,927,489",
+            "1,666,820",
+            "1,330,830"
+          ],
+          "amounts": [
+            8291051,
+            6927489,
+            1666820,
+            1330830
+          ]
+        },
+        {
+          "label": "Cash payments to employees and suppliers",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(12,429,571)",
+            "(9,105,110)",
+            "(6,060,011)",
+            "(4,752,490)"
+          ],
+          "amounts": [
+            -12429571,
+            -9105110,
+            -6060011,
+            -4752490
+          ]
+        },
+        {
+          "label": "Operating profit before changes in operating (Increase) / decrease in operating assets:",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,145,006",
+            "13,504,147",
+            "9,559,140",
+            "12,050,565"
+          ],
+          "amounts": [
+            10145006,
+            13504147,
+            9559140,
+            12050565
+          ]
+        },
+        {
+          "label": "Debt and other financial instruments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "13,969,424",
+            "(5,047,576)",
+            "13,969,424",
+            "(5,047,576)"
+          ],
+          "amounts": [
+            13969424,
+            -5047576,
+            13969424,
+            -5047576
+          ]
+        },
+        {
+          "label": "Loans to customers",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(45,245,408)",
+            "(32,071,006)",
+            "(45,231,172)",
+            "(32,403,992)"
+          ],
+          "amounts": [
+            -45245408,
+            -32071006,
+            -45231172,
+            -32403992
+          ]
+        },
+        {
+          "label": "Customer repayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "35,012,154",
+            "29,357,409",
+            "34,996,031",
+            "29,696,873"
+          ],
+          "amounts": [
+            35012154,
+            29357409,
+            34996031,
+            29696873
+          ]
+        },
+        {
+          "label": "Others Increase / (decrease) in operating liabilities:",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,231,552)",
+            "(863,347)",
+            "(2,178,502)",
+            "(813,772)"
+          ],
+          "amounts": [
+            -2231552,
+            -863347,
+            -2178502,
+            -813772
+          ]
+        },
+        {
+          "label": "Net cash effect on deposits Net cash from operating activities before taxes on",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(3,995,185)",
+            "2,736,778",
+            "(4,045,895)",
+            "2,839,964"
+          ],
+          "amounts": [
+            -3995185,
+            2736778,
+            -4045895,
+            2839964
+          ]
+        },
+        {
+          "label": "financial services",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "7,654,439",
+            "7,616,405",
+            "7,069,026",
+            "6,322,062"
+          ],
+          "amounts": [
+            7654439,
+            7616405,
+            7069026,
+            6322062
+          ]
+        },
+        {
+          "label": "Taxes on financial services",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,996,796)",
+            "(1,819,677)",
+            "(1,996,796)",
+            "(1,819,677)"
+          ],
+          "amounts": [
+            -1996796,
+            -1819677,
+            -1996796,
+            -1819677
+          ]
+        },
+        {
+          "label": "Net cash on operating activities before income tax",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,657,643",
+            "5,796,728",
+            "5,072,230",
+            "4,502,385"
+          ],
+          "amounts": [
+            5657643,
+            5796728,
+            5072230,
+            4502385
+          ]
+        },
+        {
+          "label": "Income tax paid",
+          "is_section_header": false,
+          "note": "40",
+          "amounts_raw": [
+            "(2,655,779)",
+            "(3,715,715)",
+            "(2,265,263)",
+            "(3,307,729)"
+          ],
+          "amounts": [
+            -2655779,
+            -3715715,
+            -2265263,
+            -3307729
+          ]
+        },
+        {
+          "label": "Net cash generated from operating activities Cash flows from investing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,001,864",
+            "2,081,013",
+            "2,806,967",
+            "1,194,656"
+          ],
+          "amounts": [
+            3001864,
+            2081013,
+            2806967,
+            1194656
+          ]
+        },
+        {
+          "label": "Dividends received from subsidiaries",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "88,663",
+            "47,832"
+          ],
+          "amounts": [
+            null,
+            null,
+            88663,
+            47832
+          ]
+        },
+        {
+          "label": "Dividends received from equity accounted investees",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "228,507",
+            "122,063",
+            "103,617",
+            "77,164"
+          ],
+          "amounts": [
+            228507,
+            122063,
+            103617,
+            77164
+          ]
+        },
+        {
+          "label": "Dividends received from other companies",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "31,974",
+            "18,973",
+            "27,879",
+            "12,852"
+          ],
+          "amounts": [
+            31974,
+            18973,
+            27879,
+            12852
+          ]
+        },
+        {
+          "label": "Acquisition of financial investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(8,439,732)",
+            "(6,565,690)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -8439732,
+            -6565690,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Proceeds from sale of financial investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "8,352,216",
+            "5,529,813",
+            "-",
+            "51,721"
+          ],
+          "amounts": [
+            8352216,
+            5529813,
+            null,
+            51721
+          ]
+        },
+        {
+          "label": "Proceeds from disposal of investment property",
+          "is_section_header": false,
+          "note": "36",
+          "amounts_raw": [
+            "-",
+            "23,971",
+            "-",
+            "23,971"
+          ],
+          "amounts": [
+            null,
+            23971,
+            null,
+            23971
+          ]
+        },
+        {
+          "label": "Investment in unquoted shares",
+          "is_section_header": false,
+          "note": "27.2",
+          "amounts_raw": [
+            "(37,786)",
+            "-",
+            "(37,786)",
+            "-"
+          ],
+          "amounts": [
+            -37786,
+            null,
+            -37786,
+            null
+          ]
+        },
+        {
+          "label": "Investment in quoted shares Purchase of property, plant and equipment/",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(29,464)",
+            "-",
+            "(29,464)",
+            "-"
+          ],
+          "amounts": [
+            -29464,
+            null,
+            -29464,
+            null
+          ]
+        },
+        {
+          "label": "intangible assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,876,119)",
+            "(608,770)",
+            "(1,799,771)",
+            "(510,338)"
+          ],
+          "amounts": [
+            -1876119,
+            -608770,
+            -1799771,
+            -510338
+          ]
+        },
+        {
+          "label": "Disposal of property, plant and equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "56,402",
+            "152,005",
+            "56,165",
+            "151,983"
+          ],
+          "amounts": [
+            56402,
+            152005,
+            56165,
+            151983
+          ]
+        },
+        {
+          "label": "Net cash used in investing activities Cash flows from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,714,002)",
+            "(1,327,635)",
+            "(1,590,697)",
+            "(144,815)"
+          ],
+          "amounts": [
+            -1714002,
+            -1327635,
+            -1590697,
+            -144815
+          ]
+        },
+        {
+          "label": "Proceeds from borrowings",
+          "is_section_header": false,
+          "note": "45",
+          "amounts_raw": [
+            "5,984,000",
+            "1,250,000",
+            "5,255,000",
+            "1,250,000"
+          ],
+          "amounts": [
+            5984000,
+            1250000,
+            5255000,
+            1250000
+          ]
+        },
+        {
+          "label": "Repayment of borrowings",
+          "is_section_header": false,
+          "note": "45",
+          "amounts_raw": [
+            "(5,997,580)",
+            "(1,304,780)",
+            "(5,255,000)",
+            "(1,287,500)"
+          ],
+          "amounts": [
+            -5997580,
+            -1304780,
+            -5255000,
+            -1287500
+          ]
+        },
+        {
+          "label": "Lease installment settlement",
+          "is_section_header": false,
+          "note": "38.4",
+          "amounts_raw": [
+            "(132,637)",
+            "(118,972)",
+            "(177,553)",
+            "(159,439)"
+          ],
+          "amounts": [
+            -132637,
+            -118972,
+            -177553,
+            -159439
+          ]
+        },
+        {
+          "label": "Dividends paid to equity holders of the parent",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(957,940)",
+            "(869,876)",
+            "(957,940)",
+            "(869,876)"
+          ],
+          "amounts": [
+            -957940,
+            -869876,
+            -957940,
+            -869876
+          ]
+        },
+        {
+          "label": "Dividends paid to non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(78,458)",
+            "(35,483)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -78458,
+            -35483,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Net cash used in financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,182,615)",
+            "(1,079,111)",
+            "(1,135,493)",
+            "(1,066,815)"
+          ],
+          "amounts": [
+            -1182615,
+            -1079111,
+            -1135493,
+            -1066815
+          ]
+        },
+        {
+          "label": "Net increase/(decrease) in cash and cash Cash and cash equivalents at the beginning of the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "105,247",
+            "(325,733)",
+            "80,777",
+            "(16,974)"
+          ],
+          "amounts": [
+            105247,
+            -325733,
+            80777,
+            -16974
+          ]
+        },
+        {
+          "label": "year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "441,369",
+            "767,102",
+            "341,147",
+            "358,121"
+          ],
+          "amounts": [
+            441369,
+            767102,
+            341147,
+            358121
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "546,616",
+            "441,369",
+            "421,924",
+            "341,147"
+          ],
+          "amounts": [
+            546616,
+            441369,
+            421924,
+            341147
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "1,011,416",
+            "905,389",
+            "874,621",
+            "755,076"
+          ],
+          "amounts": [
+            1011416,
+            905389,
+            874621,
+            755076
+          ]
+        },
+        {
+          "label": "Bank overdrafts Impairment provision for cash equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(464,813)",
+            "(464,254)",
+            "(452,705)",
+            "(414,157)"
+          ],
+          "amounts": [
+            -464813,
+            -464254,
+            -452705,
+            -414157
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year Notes to the financial statements from pages 237 to of these",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "546,616",
+            "441,369",
+            "421,924",
+            "341,147"
+          ],
+          "amounts": [
+            546616,
+            441369,
+            421924,
+            341147
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Company",
+          "",
+          "Group",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash flows from operating activities",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Interest receipts",
+          "",
+          "15,782,273",
+          "17,930,755",
+          "15,460,400",
+          "17,735,403"
+        ],
+        [
+          "Interest payments",
+          "",
+          "(1,952,543)",
+          "(2,583,958)",
+          "(1,961,865)",
+          "(2,598,149)"
+        ],
+        [
+          "Recoveries on bad debts previously written off",
+          "",
+          "453,796",
+          "334,971",
+          "453,796",
+          "334,971"
+        ],
+        [
+          "Receipts from other operating activities",
+          "",
+          "8,291,051",
+          "6,927,489",
+          "1,666,820",
+          "1,330,830"
+        ],
+        [
+          "Cash payments to employees and suppliers",
+          "",
+          "(12,429,571)",
+          "(9,105,110)",
+          "(6,060,011)",
+          "(4,752,490)"
+        ],
+        [
+          "Operating profit before changes in operating (Increase) / decrease in operating assets:",
+          "assets",
+          "10,145,006",
+          "13,504,147",
+          "9,559,140",
+          "12,050,565"
+        ],
+        [
+          "Debt and other financial instruments",
+          "",
+          "13,969,424",
+          "(5,047,576)",
+          "13,969,424",
+          "(5,047,576)"
+        ],
+        [
+          "Loans to customers",
+          "",
+          "(45,245,408)",
+          "(32,071,006)",
+          "(45,231,172)",
+          "(32,403,992)"
+        ],
+        [
+          "Customer repayments",
+          "",
+          "35,012,154",
+          "29,357,409",
+          "34,996,031",
+          "29,696,873"
+        ],
+        [
+          "Others Increase / (decrease) in operating liabilities:",
+          "",
+          "(2,231,552)",
+          "(863,347)",
+          "(2,178,502)",
+          "(813,772)"
+        ],
+        [
+          "Net cash effect on deposits Net cash from operating activities before taxes on",
+          "",
+          "(3,995,185)",
+          "2,736,778",
+          "(4,045,895)",
+          "2,839,964"
+        ],
+        [
+          "financial services",
+          "",
+          "7,654,439",
+          "7,616,405",
+          "7,069,026",
+          "6,322,062"
+        ],
+        [
+          "Taxes on financial services",
+          "",
+          "(1,996,796)",
+          "(1,819,677)",
+          "(1,996,796)",
+          "(1,819,677)"
+        ],
+        [
+          "Net cash on operating activities before income tax",
+          "",
+          "5,657,643",
+          "5,796,728",
+          "5,072,230",
+          "4,502,385"
+        ],
+        [
+          "Income tax paid",
+          "40",
+          "(2,655,779)",
+          "(3,715,715)",
+          "(2,265,263)",
+          "(3,307,729)"
+        ],
+        [
+          "Net cash generated from operating activities Cash flows from investing activities",
+          "",
+          "3,001,864",
+          "2,081,013",
+          "2,806,967",
+          "1,194,656"
+        ],
+        [
+          "Dividends received from subsidiaries",
+          "",
+          "-",
+          "-",
+          "88,663",
+          "47,832"
+        ],
+        [
+          "Dividends received from equity accounted investees",
+          "",
+          "228,507",
+          "122,063",
+          "103,617",
+          "77,164"
+        ],
+        [
+          "Dividends received from other companies",
+          "",
+          "31,974",
+          "18,973",
+          "27,879",
+          "12,852"
+        ],
+        [
+          "Acquisition of financial investments",
+          "",
+          "(8,439,732)",
+          "(6,565,690)",
+          "-",
+          "-"
+        ],
+        [
+          "Proceeds from sale of financial investments",
+          "",
+          "8,352,216",
+          "5,529,813",
+          "-",
+          "51,721"
+        ],
+        [
+          "Proceeds from disposal of investment property",
+          "36",
+          "-",
+          "23,971",
+          "-",
+          "23,971"
+        ],
+        [
+          "Investment in unquoted shares",
+          "27.2",
+          "(37,786)",
+          "-",
+          "(37,786)",
+          "-"
+        ],
+        [
+          "Investment in quoted shares Purchase of property, plant and equipment/",
+          "",
+          "(29,464)",
+          "-",
+          "(29,464)",
+          "-"
+        ],
+        [
+          "intangible assets",
+          "",
+          "(1,876,119)",
+          "(608,770)",
+          "(1,799,771)",
+          "(510,338)"
+        ],
+        [
+          "Disposal of property, plant and equipment",
+          "",
+          "56,402",
+          "152,005",
+          "56,165",
+          "151,983"
+        ],
+        [
+          "Net cash used in investing activities Cash flows from financing activities",
+          "",
+          "(1,714,002)",
+          "(1,327,635)",
+          "(1,590,697)",
+          "(144,815)"
+        ],
+        [
+          "Proceeds from borrowings",
+          "45",
+          "5,984,000",
+          "1,250,000",
+          "5,255,000",
+          "1,250,000"
+        ],
+        [
+          "Repayment of borrowings",
+          "45",
+          "(5,997,580)",
+          "(1,304,780)",
+          "(5,255,000)",
+          "(1,287,500)"
+        ],
+        [
+          "Lease installment settlement",
+          "38.4",
+          "(132,637)",
+          "(118,972)",
+          "(177,553)",
+          "(159,439)"
+        ],
+        [
+          "Dividends paid to equity holders of the parent",
+          "",
+          "(957,940)",
+          "(869,876)",
+          "(957,940)",
+          "(869,876)"
+        ],
+        [
+          "Dividends paid to non-controlling interest",
+          "",
+          "(78,458)",
+          "(35,483)",
+          "-",
+          "-"
+        ],
+        [
+          "Net cash used in financing activities",
+          "",
+          "(1,182,615)",
+          "(1,079,111)",
+          "(1,135,493)",
+          "(1,066,815)"
+        ],
+        [
+          "Net increase/(decrease) in cash and cash Cash and cash equivalents at the beginning of the",
+          "equivalents",
+          "105,247",
+          "(325,733)",
+          "80,777",
+          "(16,974)"
+        ],
+        [
+          "year",
+          "",
+          "441,369",
+          "767,102",
+          "341,147",
+          "358,121"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year",
+          "",
+          "546,616",
+          "441,369",
+          "421,924",
+          "341,147"
+        ],
+        [
+          "Cash and cash equivalents",
+          "26",
+          "1,011,416",
+          "905,389",
+          "874,621",
+          "755,076"
+        ],
+        [
+          "Bank overdrafts Impairment provision for cash equivalents",
+          "",
+          "(464,813)",
+          "(464,254)",
+          "(452,705)",
+          "(414,157)"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year Notes to the financial statements from pages 237 to of these",
+          "26",
+          "546,616",
+          "441,369",
+          "421,924",
+          "341,147"
+        ]
+      ]
+    },
+    "shareholder_info": {
+      "title": "Shareholder Information",
+      "page_1based": 375,
+      "has_note_col": false,
+      "column_headers": [
+        "listed on the year ended are submitted",
+        "Colombo 31st March to the",
+        "Stock 2025",
+        "Exchange. audited and",
+        "Colombo",
+        "statement of Stock",
+        "financial position Exchange within",
+        "as at three",
+        "31st months from",
+        "March the"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "The ordinary of the The statement for the the 2025 of the of the shareholders",
+          "note_col": null,
+          "amt_cols": [
+            "listed on the year ended are submitted",
+            "Colombo 31st March to the",
+            "Stock 2025",
+            "Exchange. audited and",
+            "Colombo",
+            "statement of Stock",
+            "financial position Exchange within",
+            "as at three",
+            "31st months from",
+            "March the"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "The audited income statement for the year and the financial",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "2025 of the Company and of the Group are shareholders Exchange",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "close of the financial year.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "2. NUMBER OF ORDINARY AT (Stated capital of the Company consists shares).",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "4,262",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            4262,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "(Number of shareholders as at 31.03.2024 Following tables show the pattern of Non- Number of Shares No of No of held Shareholders No. of Shareholders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1-1,000 2,376 12",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "506,390",
+            "0.22",
+            "",
+            "",
+            "4,471",
+            "0.00",
+            "2,388",
+            "",
+            "510,861",
+            "0.22"
+          ],
+          "amounts": [
+            506390,
+            0.22,
+            null,
+            null,
+            4471,
+            0.0,
+            2388,
+            null,
+            510861,
+            0.22
+          ]
+        },
+        {
+          "label": "1,001-10,000 1,173 17",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,401,715",
+            "1.94",
+            "",
+            "",
+            "87,717",
+            "0.04",
+            "1,190",
+            "",
+            "4,489,432",
+            "1.97"
+          ],
+          "amounts": [
+            4401715,
+            1.94,
+            null,
+            null,
+            87717,
+            0.04,
+            1190,
+            null,
+            4489432,
+            1.97
+          ]
+        },
+        {
+          "label": "10,001-100,000 529 12",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,888,147",
+            "6.99",
+            "",
+            "",
+            "385,403",
+            "0.17",
+            "541",
+            "",
+            "16,273,550",
+            "7.16"
+          ],
+          "amounts": [
+            15888147,
+            6.99,
+            null,
+            null,
+            385403,
+            0.17,
+            541,
+            null,
+            16273550,
+            7.16
+          ]
+        },
+        {
+          "label": "100,001-1,000,000 113 8",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "32,815,707",
+            "14.43",
+            "",
+            "",
+            "1,795,965",
+            "0.79",
+            "121",
+            "",
+            "34,611,672",
+            "15.22"
+          ],
+          "amounts": [
+            32815707,
+            14.43,
+            null,
+            null,
+            1795965,
+            0.79,
+            121,
+            null,
+            34611672,
+            15.22
+          ]
+        },
+        {
+          "label": "1,000,001 & Over 17 5",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "138,732,317",
+            "61.02",
+            "",
+            "",
+            "32,736,630",
+            "14.40",
+            "22",
+            "",
+            "171,468,947",
+            "75.42"
+          ],
+          "amounts": [
+            138732317,
+            61.02,
+            null,
+            null,
+            32736630,
+            14.4,
+            22,
+            null,
+            171468947,
+            75.42
+          ]
+        },
+        {
+          "label": "Total 4,208 54 There were 3,903 resident and and 54 at 31st",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "192,344,276",
+            "84.60",
+            "",
+            "",
+            "35,010,186",
+            "15.40",
+            "4,262",
+            "",
+            "227,354,462",
+            "100.00"
+          ],
+          "amounts": [
+            192344276,
+            84.6,
+            null,
+            null,
+            35010186,
+            15.4,
+            4262,
+            null,
+            227354462,
+            100.0
+          ]
+        },
+        {
+          "label": "Categories of Shareholders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Individuals",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,967",
+            "",
+            "98,981,304",
+            "43.54",
+            "",
+            "3,794",
+            "",
+            "98,905,328",
+            "",
+            "43.50"
+          ],
+          "amounts": [
+            3967,
+            null,
+            98981304,
+            43.54,
+            null,
+            3794,
+            null,
+            98905328,
+            null,
+            43.5
+          ]
+        },
+        {
+          "label": "Institutions",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "295",
+            "",
+            "128,373,158",
+            "56.46",
+            "",
+            "163",
+            "",
+            "128,449,134",
+            "",
+            "56.50"
+          ],
+          "amounts": [
+            295,
+            null,
+            128373158,
+            56.46,
+            null,
+            163,
+            null,
+            128449134,
+            null,
+            56.5
+          ]
+        },
+        {
+          "label": "Total 3. PUBLIC HOLDING - 31ST The Company qualifies under option one of holding Stock Exchange as of 31.03.2025 and below. Float Public",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,262",
+            "",
+            "227,354,462",
+            "100.00",
+            "",
+            "3,957",
+            "",
+            "227,354,462",
+            "",
+            "100.00"
+          ],
+          "amounts": [
+            4262,
+            null,
+            227354462,
+            100.0,
+            null,
+            3957,
+            null,
+            227354462,
+            null,
+            100.0
+          ]
+        },
+        {
+          "label": "Option 01 INTEGRATED",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "500",
+            "",
+            "4,247"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            500,
+            null,
+            4247
+          ]
+        },
+        {
+          "label": "3.1. Public Holding - 31st",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "2024",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            2024,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "The Company qualifies under option one of holding",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stock Exchange as of 31.03.2024 and below.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Float",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Public",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Option 01 4. TWENTY LARGEST 31ST 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "500",
+            "",
+            "3,942"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            500,
+            null,
+            3942
+          ]
+        },
+        {
+          "label": "No. of No.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1 Corporate Services (Private) Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "36,625,096",
+            "",
+            "16.11",
+            "",
+            "36,625,096",
+            "",
+            "16.11"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            36625096,
+            null,
+            16.11,
+            null,
+            36625096,
+            null,
+            16.11
+          ]
+        },
+        {
+          "label": "2 E.H. Wijenaike",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "35,039,742",
+            "",
+            "15.41",
+            "",
+            "35,039,742",
+            "",
+            "15.41"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            35039742,
+            null,
+            15.41,
+            null,
+            35039742,
+            null,
+            15.41
+          ]
+        },
+        {
+          "label": "3 Employees Provident Fund",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "23,702,974",
+            "",
+            "10.43",
+            "",
+            "24,419,181",
+            "",
+            "10.74"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            23702974,
+            null,
+            10.43,
+            null,
+            24419181,
+            null,
+            10.74
+          ]
+        },
+        {
+          "label": "4 Thurston Investments Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "13,849,392",
+            "",
+            "6.09",
+            "",
+            "13,624,392",
+            "",
+            "5.99"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            13849392,
+            null,
+            6.09,
+            null,
+            13624392,
+            null,
+            5.99
+          ]
+        },
+        {
+          "label": "5 Hallsville Frontier Equities Limited.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "13,083,136",
+            "",
+            "5.75",
+            "",
+            "13,083,136",
+            "",
+            "5.75"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            13083136,
+            null,
+            5.75,
+            null,
+            13083136,
+            null,
+            5.75
+          ]
+        },
+        {
+          "label": "6 E.W. Balasuriya & Co. (Pvt) Ltd A/C",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "01",
+            "",
+            "",
+            "8,889,789",
+            "",
+            "3.91",
+            "",
+            "8,909,789",
+            "",
+            "3.92"
+          ],
+          "amounts": [
+            1,
+            null,
+            null,
+            8889789,
+            null,
+            3.91,
+            null,
+            8909789,
+            null,
+            3.92
+          ]
+        },
+        {
+          "label": "7 A.J. Wijenaike",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "7,091,476",
+            "",
+            "3.12",
+            "",
+            "7,091,476",
+            "",
+            "3.12"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            7091476,
+            null,
+            3.12,
+            null,
+            7091476,
+            null,
+            3.12
+          ]
+        },
+        {
+          "label": "8 Ceylon Investment PLC A/C 02",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "5,414,663",
+            "",
+            "2.38",
+            "",
+            "6,804,536",
+            "",
+            "2.99"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            5414663,
+            null,
+            2.38,
+            null,
+            6804536,
+            null,
+            2.99
+          ]
+        },
+        {
+          "label": "9 Ceylon Guardian Investment Trust",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "5,088,801",
+            "",
+            "2.24",
+            "",
+            "5,570,801",
+            "",
+            "2.45"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            5088801,
+            null,
+            2.24,
+            null,
+            5570801,
+            null,
+            2.45
+          ]
+        },
+        {
+          "label": "10 C.R. Dunuwille",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "2,923,384",
+            "",
+            "1.29",
+            "",
+            "2,923,384",
+            "",
+            "1.29"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            2923384,
+            null,
+            1.29,
+            null,
+            2923384,
+            null,
+            1.29
+          ]
+        },
+        {
+          "label": "11 N.M. Gunawardana",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "2,818,820",
+            "",
+            "1.24",
+            "",
+            "2,818,820",
+            "",
+            "1.24"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            2818820,
+            null,
+            1.24,
+            null,
+            2818820,
+            null,
+            1.24
+          ]
+        },
+        {
+          "label": "12 P.R. Munasinha",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "2,659,783",
+            "",
+            "1.17",
+            "",
+            "2,659,783",
+            "",
+            "1.17"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            2659783,
+            null,
+            1.17,
+            null,
+            2659783,
+            null,
+            1.17
+          ]
+        },
+        {
+          "label": "13 S.K. Wedande",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,847,633",
+            "",
+            "0.81",
+            "",
+            "1,847,633",
+            "",
+            "0.81"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1847633,
+            null,
+            0.81,
+            null,
+            1847633,
+            null,
+            0.81
+          ]
+        },
+        {
+          "label": "14 A.K. Gunaratne",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,810,661",
+            "",
+            "0.80",
+            "",
+            "1,810,661",
+            "",
+            "0.80"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1810661,
+            null,
+            0.8,
+            null,
+            1810661,
+            null,
+            0.8
+          ]
+        },
+        {
+          "label": "15 J.B.Cocoshell (Pvt) Ltd",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,806,155",
+            "",
+            "0.79",
+            "",
+            "1,793,746",
+            "",
+            "0.79"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1806155,
+            null,
+            0.79,
+            null,
+            1793746,
+            null,
+            0.79
+          ]
+        },
+        {
+          "label": "16 N.M Wahab",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,526,448",
+            "",
+            "0.67",
+            "",
+            "1,626,448",
+            "",
+            "0.72"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1526448,
+            null,
+            0.67,
+            null,
+            1626448,
+            null,
+            0.72
+          ]
+        },
+        {
+          "label": "17 Shalfar pty Ltd",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,458,834",
+            "",
+            "0.64",
+            "",
+            "1,458,834",
+            "",
+            "0.64"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1458834,
+            null,
+            0.64,
+            null,
+            1458834,
+            null,
+            0.64
+          ]
+        },
+        {
+          "label": "18 Perera and Sons Bakers (Pvt) Ltd",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,350,000",
+            "",
+            "0.59",
+            "",
+            "1,000,000",
+            "",
+            "0.44"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1350000,
+            null,
+            0.59,
+            null,
+            1000000,
+            null,
+            0.44
+          ]
+        },
+        {
+          "label": "19 H.Yusoof",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,234,256",
+            "",
+            "0.54",
+            "",
+            "-",
+            "",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1234256,
+            null,
+            0.54,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "20 Seylan Bank Plc/JN Lanka Holdings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,120,192",
+            "",
+            "0.49",
+            "",
+            "120,001",
+            "",
+            "0.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1120192,
+            null,
+            0.49,
+            null,
+            120001,
+            null,
+            0.05
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "169,341,235",
+            "",
+            "74.48",
+            "",
+            "169,227,459",
+            "",
+            "74.43"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            169341235,
+            null,
+            74.48,
+            null,
+            169227459,
+            null,
+            74.43
+          ]
+        },
+        {
+          "label": "Others",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "58,013,227",
+            "",
+            "25.52",
+            "",
+            "58,127,003",
+            "",
+            "25.57"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            58013227,
+            null,
+            25.52,
+            null,
+            58127003,
+            null,
+            25.57
+          ]
+        },
+        {
+          "label": "Total",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "227,354,462",
+            "",
+            "100.00",
+            "",
+            "227,354,462",
+            "",
+            "100.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            227354462,
+            null,
+            100.0,
+            null,
+            227354462,
+            null,
+            100.0
+          ]
+        },
+        {
+          "label": "*Comparative shareholdings as at 31st twenty",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Highest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lowest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Year end 6. DIVIDEND PAYMENTS",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "194.25",
+            "",
+            "",
+            "106.75",
+            "",
+            "",
+            "72.40"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            194.25,
+            null,
+            null,
+            106.75,
+            null,
+            null,
+            72.4
+          ]
+        },
+        {
+          "label": "Interim paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2.75",
+            "",
+            "2.50"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2.75,
+            null,
+            2.5
+          ]
+        },
+        {
+          "label": "Final - proposed",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "3.75",
+            "",
+            "2.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            3.75,
+            null,
+            2.0
+          ]
+        },
+        {
+          "label": "Total",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "6.50",
+            "",
+            "4.50"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6.5,
+            null,
+            4.5
+          ]
+        },
+        {
+          "label": "7. SHARE TRADING",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "No. of shares traded",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "48,102,412",
+            "",
+            "31,699,715",
+            "",
+            "12,077,731"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            48102412,
+            null,
+            31699715,
+            null,
+            12077731
+          ]
+        },
+        {
+          "label": "Value of shares traded (Rs. ‘000)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "7,246,639",
+            "",
+            "3,375,853",
+            "",
+            "803,295"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            7246639,
+            null,
+            3375853,
+            null,
+            803295
+          ]
+        },
+        {
+          "label": "Market capitalization (Rs. ‘000) 8. STATED CAPITAL IS NUMBER ISSUE",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "44,163,604",
+            "",
+            "24,270,088",
+            "",
+            "16,460,463"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            44163604,
+            null,
+            24270088,
+            null,
+            16460463
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "31.03.2025",
+            "",
+            "31.03.2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Ordinary voting shares 9. DEBENTURES Information on Listed Debentures 9.1. The Company made no debenture ended 31st",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "227,354,462",
+            "",
+            "227,354,462"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            227354462,
+            null,
+            227354462
+          ]
+        },
+        {
+          "label": "9.2. The debentures issued by the Bn in redeemed by May 2020.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "9.3. Objectives of the debentures issued 2013 fully 10. CREDIT RATINGS Fitch Ratings Lanka Ltd. affirmed the credit A the INTEGRATED",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "The audited income statement for the year and the financial",
+          "ended",
+          "31st March",
+          "2025",
+          "audited",
+          "",
+          "statement of",
+          "position",
+          "as at",
+          "31st",
+          "March"
+        ],
+        [
+          "2025 of the Company and of the Group are shareholders Exchange",
+          "",
+          "submitted to the",
+          "",
+          "and",
+          "Colombo",
+          "Stock",
+          "within",
+          "three",
+          "months",
+          "from the"
+        ],
+        [
+          "close of the financial year.",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "2. NUMBER OF ORDINARY AT (Stated capital of the Company consists shares).",
+          "",
+          "",
+          "SHAREHOLDERS AS",
+          "31ST",
+          "MARCH",
+          "2025 –",
+          "4,262",
+          "",
+          "",
+          ""
+        ],
+        [
+          "(Number of shareholders as at 31.03.2024 Following tables show the pattern of Non- Number of Shares No of No of held Shareholders No. of Shareholders",
+          "- 3,957)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "1-1,000 2,376 12",
+          "506,390",
+          "0.22",
+          "",
+          "",
+          "4,471",
+          "0.00",
+          "2,388",
+          "",
+          "510,861",
+          "0.22"
+        ],
+        [
+          "1,001-10,000 1,173 17",
+          "4,401,715",
+          "1.94",
+          "",
+          "",
+          "87,717",
+          "0.04",
+          "1,190",
+          "",
+          "4,489,432",
+          "1.97"
+        ],
+        [
+          "10,001-100,000 529 12",
+          "15,888,147",
+          "6.99",
+          "",
+          "",
+          "385,403",
+          "0.17",
+          "541",
+          "",
+          "16,273,550",
+          "7.16"
+        ],
+        [
+          "100,001-1,000,000 113 8",
+          "32,815,707",
+          "14.43",
+          "",
+          "",
+          "1,795,965",
+          "0.79",
+          "121",
+          "",
+          "34,611,672",
+          "15.22"
+        ],
+        [
+          "1,000,001 & Over 17 5",
+          "138,732,317",
+          "61.02",
+          "",
+          "",
+          "32,736,630",
+          "14.40",
+          "22",
+          "",
+          "171,468,947",
+          "75.42"
+        ],
+        [
+          "Total 4,208 54 There were 3,903 resident and and 54 at 31st",
+          "192,344,276",
+          "84.60",
+          "",
+          "",
+          "35,010,186",
+          "15.40",
+          "4,262",
+          "",
+          "227,354,462",
+          "100.00"
+        ],
+        [
+          "Categories of Shareholders",
+          "Shareholders",
+          "No.of",
+          "shares",
+          "%",
+          "",
+          "Shareholders",
+          "No.of",
+          "shares",
+          "",
+          "%"
+        ],
+        [
+          "Individuals",
+          "3,967",
+          "",
+          "98,981,304",
+          "43.54",
+          "",
+          "3,794",
+          "",
+          "98,905,328",
+          "",
+          "43.50"
+        ],
+        [
+          "Institutions",
+          "295",
+          "",
+          "128,373,158",
+          "56.46",
+          "",
+          "163",
+          "",
+          "128,449,134",
+          "",
+          "56.50"
+        ],
+        [
+          "Total 3. PUBLIC HOLDING - 31ST The Company qualifies under option one of holding Stock Exchange as of 31.03.2025 and below. Float Public",
+          "4,262",
+          "",
+          "227,354,462",
+          "100.00",
+          "",
+          "3,957",
+          "",
+          "227,354,462",
+          "",
+          "100.00"
+        ],
+        [
+          "Option 01  INTEGRATED",
+          "Rs.10 Bn",
+          "",
+          "Rs.28.09Bn no",
+          "minimum %",
+          "",
+          "63.59%",
+          "",
+          "500",
+          "",
+          "4,247"
+        ],
+        [
+          "3.1. Public Holding - 31st",
+          "March",
+          "2024",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "The Company qualifies under option one of holding",
+          "the",
+          "minimum",
+          "public",
+          "requirement",
+          "",
+          "No.7.13.1 of the",
+          "Listing Rules",
+          "of",
+          "the",
+          "Colombo"
+        ],
+        [
+          "Stock Exchange as of 31.03.2024 and below.",
+          "relevant",
+          "information is",
+          "given",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Float",
+          "adjusted",
+          "market",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Public",
+          "capitalization",
+          "(Rs.Bn)",
+          "",
+          "holding",
+          "",
+          "percentage (%)",
+          "Number of",
+          "public",
+          "",
+          "shareholders"
+        ],
+        [
+          "Option 01  4. TWENTY LARGEST 31ST 2025",
+          "Rs.10 Bn",
+          "Rs.15.43",
+          "Bn no",
+          "minimum %",
+          "",
+          "63.59%",
+          "",
+          "500",
+          "",
+          "3,942"
+        ],
+        [
+          "No. of No.",
+          "",
+          "",
+          "",
+          "Shares",
+          "",
+          "%",
+          "of",
+          "Shares",
+          "",
+          "%"
+        ],
+        [
+          "1 Corporate Services (Private) Limited",
+          "A/C No 01",
+          "",
+          "",
+          "36,625,096",
+          "",
+          "16.11",
+          "",
+          "36,625,096",
+          "",
+          "16.11"
+        ],
+        [
+          "2 E.H. Wijenaike",
+          "",
+          "",
+          "",
+          "35,039,742",
+          "",
+          "15.41",
+          "",
+          "35,039,742",
+          "",
+          "15.41"
+        ],
+        [
+          "3 Employees Provident Fund",
+          "",
+          "",
+          "",
+          "23,702,974",
+          "",
+          "10.43",
+          "",
+          "24,419,181",
+          "",
+          "10.74"
+        ],
+        [
+          "4 Thurston Investments Limited",
+          "",
+          "",
+          "",
+          "13,849,392",
+          "",
+          "6.09",
+          "",
+          "13,624,392",
+          "",
+          "5.99"
+        ],
+        [
+          "5 Hallsville Frontier Equities Limited.",
+          "",
+          "",
+          "",
+          "13,083,136",
+          "",
+          "5.75",
+          "",
+          "13,083,136",
+          "",
+          "5.75"
+        ],
+        [
+          "6 E.W. Balasuriya & Co. (Pvt) Ltd A/C",
+          "01",
+          "",
+          "",
+          "8,889,789",
+          "",
+          "3.91",
+          "",
+          "8,909,789",
+          "",
+          "3.92"
+        ],
+        [
+          "7 A.J. Wijenaike",
+          "",
+          "",
+          "",
+          "7,091,476",
+          "",
+          "3.12",
+          "",
+          "7,091,476",
+          "",
+          "3.12"
+        ],
+        [
+          "8 Ceylon Investment PLC A/C 02",
+          "",
+          "",
+          "",
+          "5,414,663",
+          "",
+          "2.38",
+          "",
+          "6,804,536",
+          "",
+          "2.99"
+        ],
+        [
+          "9 Ceylon Guardian Investment Trust",
+          "PLC A/C 02",
+          "",
+          "",
+          "5,088,801",
+          "",
+          "2.24",
+          "",
+          "5,570,801",
+          "",
+          "2.45"
+        ],
+        [
+          "10 C.R. Dunuwille",
+          "",
+          "",
+          "",
+          "2,923,384",
+          "",
+          "1.29",
+          "",
+          "2,923,384",
+          "",
+          "1.29"
+        ],
+        [
+          "11 N.M. Gunawardana",
+          "",
+          "",
+          "",
+          "2,818,820",
+          "",
+          "1.24",
+          "",
+          "2,818,820",
+          "",
+          "1.24"
+        ],
+        [
+          "12 P.R. Munasinha",
+          "",
+          "",
+          "",
+          "2,659,783",
+          "",
+          "1.17",
+          "",
+          "2,659,783",
+          "",
+          "1.17"
+        ],
+        [
+          "13 S.K. Wedande",
+          "",
+          "",
+          "",
+          "1,847,633",
+          "",
+          "0.81",
+          "",
+          "1,847,633",
+          "",
+          "0.81"
+        ],
+        [
+          "14 A.K. Gunaratne",
+          "",
+          "",
+          "",
+          "1,810,661",
+          "",
+          "0.80",
+          "",
+          "1,810,661",
+          "",
+          "0.80"
+        ],
+        [
+          "15 J.B.Cocoshell (Pvt) Ltd",
+          "",
+          "",
+          "",
+          "1,806,155",
+          "",
+          "0.79",
+          "",
+          "1,793,746",
+          "",
+          "0.79"
+        ],
+        [
+          "16 N.M Wahab",
+          "",
+          "",
+          "",
+          "1,526,448",
+          "",
+          "0.67",
+          "",
+          "1,626,448",
+          "",
+          "0.72"
+        ],
+        [
+          "17 Shalfar pty Ltd",
+          "",
+          "",
+          "",
+          "1,458,834",
+          "",
+          "0.64",
+          "",
+          "1,458,834",
+          "",
+          "0.64"
+        ],
+        [
+          "18 Perera and Sons Bakers (Pvt) Ltd",
+          "",
+          "",
+          "",
+          "1,350,000",
+          "",
+          "0.59",
+          "",
+          "1,000,000",
+          "",
+          "0.44"
+        ],
+        [
+          "19 H.Yusoof",
+          "",
+          "",
+          "",
+          "1,234,256",
+          "",
+          "0.54",
+          "",
+          "-",
+          "",
+          "-"
+        ],
+        [
+          "20 Seylan Bank Plc/JN Lanka Holdings",
+          "Company",
+          "(Pvt)Ltd",
+          "",
+          "1,120,192",
+          "",
+          "0.49",
+          "",
+          "120,001",
+          "",
+          "0.05"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "169,341,235",
+          "",
+          "74.48",
+          "",
+          "169,227,459",
+          "",
+          "74.43"
+        ],
+        [
+          "Others",
+          "",
+          "",
+          "",
+          "58,013,227",
+          "",
+          "25.52",
+          "",
+          "58,127,003",
+          "",
+          "25.57"
+        ],
+        [
+          "Total",
+          "",
+          "",
+          "",
+          "227,354,462",
+          "",
+          "100.00",
+          "",
+          "227,354,462",
+          "",
+          "100.00"
+        ],
+        [
+          "*Comparative shareholdings as at 31st twenty",
+          "March 2024",
+          "held by",
+          "the",
+          "largest",
+          "shareholders",
+          "as at 31st",
+          "March 2025.",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Highest",
+          "",
+          "",
+          "226.00 (on",
+          "18.02.2025)",
+          "139.75",
+          "(on",
+          "21.08.2023)",
+          "84.00",
+          "(on",
+          "08.03.2023)"
+        ],
+        [
+          "Lowest",
+          "",
+          "",
+          "100.25 (on",
+          "28.08.2024)",
+          "62.10",
+          "(on",
+          "02.05.2023)",
+          "50.10",
+          "(on",
+          "27.04.2022)"
+        ],
+        [
+          "Year end 6. DIVIDEND PAYMENTS",
+          "",
+          "",
+          "",
+          "194.25",
+          "",
+          "",
+          "106.75",
+          "",
+          "",
+          "72.40"
+        ],
+        [
+          "Interim paid",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "2.75",
+          "",
+          "2.50"
+        ],
+        [
+          "Final - proposed",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "3.75",
+          "",
+          "2.00"
+        ],
+        [
+          "Total",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "6.50",
+          "",
+          "4.50"
+        ],
+        [
+          "7. SHARE TRADING",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "No. of shares traded",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "48,102,412",
+          "",
+          "31,699,715",
+          "",
+          "12,077,731"
+        ],
+        [
+          "Value of shares traded (Rs. ‘000)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "7,246,639",
+          "",
+          "3,375,853",
+          "",
+          "803,295"
+        ],
+        [
+          "Market capitalization (Rs. ‘000) 8. STATED CAPITAL IS NUMBER ISSUE",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "44,163,604",
+          "",
+          "24,270,088",
+          "",
+          "16,460,463"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "31.03.2025",
+          "",
+          "31.03.2024"
+        ],
+        [
+          "Ordinary voting shares 9. DEBENTURES Information on Listed Debentures 9.1. The Company made no debenture ended 31st",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "227,354,462",
+          "",
+          "227,354,462"
+        ],
+        [
+          "9.2. The debentures issued by the Bn in redeemed by May 2020.",
+          "Company to the",
+          "value of",
+          "Rs.6.5",
+          "June 2013,",
+          "",
+          "December 2013",
+          "and June",
+          "2015",
+          "has been",
+          "fully"
+        ],
+        [
+          "9.3. Objectives of the debentures issued 2013 fully 10. CREDIT RATINGS Fitch Ratings Lanka Ltd. affirmed the credit A the INTEGRATED",
+          "in June",
+          "2013,",
+          "December",
+          "and June",
+          "2015",
+          "have been",
+          "achieved.",
+          "",
+          "",
+          ""
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,7170 @@
+{
+  "company": "company38",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company38\\Annual\\48332_2025.pdf",
+  "extracted_at": "2026-05-18T12:48:52",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 99,
+      "has_note_col": false,
+      "column_headers": [
+        "T CLSA Limited 2025",
+        "Holdings 2024",
+        "Cinema (Private) 2025",
+        "Entertainments Limited 2024",
+        "Cargills Bank 2025",
+        "PLC 2024",
+        "Total 2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "thousands of As at 31st March",
+          "note_col": null,
+          "amt_cols": [
+            "T CLSA Limited 2025",
+            "Holdings 2024",
+            "Cinema (Private) 2025",
+            "Entertainments Limited 2024",
+            "Cargills Bank 2025",
+            "PLC 2024",
+            "Total 2025",
+            "2024"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Annual Report 2024 - 2025 PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "97"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            97
+          ]
+        },
+        {
+          "label": "In thousands of rupees C T Cinema Bank",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Reconciliation of carrying amount of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "interests in associates",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Group’s of share of net assets of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "associates",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "206,546",
+            "209,672",
+            "12,701",
+            "12,821",
+            "6,085,569",
+            "5,973,111",
+            "6,304,816",
+            "6,195,604"
+          ],
+          "amounts": [
+            206546,
+            209672,
+            12701,
+            12821,
+            6085569,
+            5973111,
+            6304816,
+            6195604
+          ]
+        },
+        {
+          "label": "Goodwill Carrying amount of investment in",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "504,316",
+            "504,316",
+            "504,316",
+            "504,316"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            504316,
+            504316,
+            504316,
+            504316
+          ]
+        },
+        {
+          "label": "associates",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "206,546",
+            "209,672",
+            "12,701",
+            "12,821",
+            "6,589,885",
+            "6,477,427",
+            "6,809,132",
+            "6,699,920"
+          ],
+          "amounts": [
+            206546,
+            209672,
+            12701,
+            12821,
+            6589885,
+            6477427,
+            6809132,
+            6699920
+          ]
+        },
+        {
+          "label": "Share of profit / (loss)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,866",
+            "13,094",
+            "(466)",
+            "2,124",
+            "325,443",
+            "233,939",
+            "347,843",
+            "249,157"
+          ],
+          "amounts": [
+            22866,
+            13094,
+            -466,
+            2124,
+            325443,
+            233939,
+            347843,
+            249157
+          ]
+        },
+        {
+          "label": "Loss on deemed disposal",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "(110,629)",
+            "-",
+            "(110,629)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -110629,
+            null,
+            -110629
+          ]
+        },
+        {
+          "label": "Amounts recognised in profit or loss Share of other comprehensive income Items that will not be re-classified",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,866",
+            "13,094",
+            "(466)",
+            "2,124",
+            "325,443",
+            "123,310",
+            "347,843",
+            "138,528"
+          ],
+          "amounts": [
+            22866,
+            13094,
+            -466,
+            2124,
+            325443,
+            123310,
+            347843,
+            138528
+          ]
+        },
+        {
+          "label": "subsequently to profit or loss: Items that may be re-classified",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "subsequently to profit or loss: Share of other comprehensive",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,304)",
+            "(97)",
+            "-",
+            "-",
+            "(212,986)",
+            "681,844",
+            "(215,290)",
+            "681,747"
+          ],
+          "amounts": [
+            -2304,
+            -97,
+            null,
+            null,
+            -212986,
+            681844,
+            -215290,
+            681747
+          ]
+        },
+        {
+          "label": "income 19.3 The summarised financial amounts in Financial Statements prepared in Sri the are accounted for using the equity Financial Statements. 19.4 The financial year end date of Bank to industry requirement Statements for the year ended been the purposes applying equity Further, there are no significant transactions between dates the 31st March 2025 which require 19.6 Restriction on voting power Cargills Bank PLC The Group’s voting rights in Cargills Bank below imposed such Group does not have controlling power investment Cargills",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,304)",
+            "(97)",
+            "-",
+            "-",
+            "(212,986)",
+            "681,844",
+            "(215,290)",
+            "681,747"
+          ],
+          "amounts": [
+            -2304,
+            -97,
+            null,
+            null,
+            -212986,
+            681844,
+            -215290,
+            681747
+          ]
+        },
+        {
+          "label": "98 PLC 2024 Notes to the Financial ... 20. OTHER FINANCIAL ASSETS In thousands of rupees As at 31st March 2025 2024 Non Current",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Equity Investments (Note 20.1) 181,177 203,150",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "95,717",
+            "81,692"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            95717,
+            81692
+          ]
+        },
+        {
+          "label": "Debt investments at Fair Value Through Loss 20.2 ) 1,500,000 1,500,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1,681,177 1,703,150 Current",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "95,717",
+            "81,692"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            95717,
+            81692
+          ]
+        },
+        {
+          "label": "Other non-equity investments (Note 20.3) 670,854 131,107",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "407,872",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            407872,
+            null
+          ]
+        },
+        {
+          "label": "670,854 131,107 20.1 Equity Investments -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "407,872",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            407872,
+            null
+          ]
+        },
+        {
+          "label": "/ (In Shares /",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Rs.) thousands of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Investments in quoted companies",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Amana Bank PLC 10,870,000 26,676 23,914 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,870,000",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            10870000,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Ceylon Printers PLC 118,830 - 13,012 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "",
+            "",
+            "",
+            "",
+            "118,830",
+            "-",
+            "13,012"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            118830,
+            null,
+            13012
+          ]
+        },
+        {
+          "label": "Office Equipment PLC 163,700 32,863 14,896 163,700",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "163,700",
+            "",
+            "",
+            "",
+            "",
+            "163,700",
+            "32,863",
+            "14,896"
+          ],
+          "amounts": [
+            163700,
+            null,
+            null,
+            null,
+            null,
+            163700,
+            32863,
+            14896
+          ]
+        },
+        {
+          "label": "Paragon (Ceylon) PLC 213,060 18,265 13,423 213,060",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "213,060",
+            "",
+            "",
+            "",
+            "",
+            "213,060",
+            "18,265",
+            "13,423"
+          ],
+          "amounts": [
+            213060,
+            null,
+            null,
+            null,
+            null,
+            213060,
+            18265,
+            13423
+          ]
+        },
+        {
+          "label": "Overseas Realty (Ceylon) PLC 4,500 107 77 4,500",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,500",
+            "",
+            "",
+            "",
+            "",
+            "4,500",
+            "107",
+            "77"
+          ],
+          "amounts": [
+            4500,
+            null,
+            null,
+            null,
+            null,
+            4500,
+            107,
+            77
+          ]
+        },
+        {
+          "label": "Lanka IOC PLC 525,000 64,625 61,294 325,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "525,000",
+            "",
+            "",
+            "",
+            "",
+            "325,000",
+            "41,275",
+            "37,944"
+          ],
+          "amounts": [
+            525000,
+            null,
+            null,
+            null,
+            null,
+            325000,
+            41275,
+            37944
+          ]
+        },
+        {
+          "label": "The HDFC Bank of Sri Lanka 70,000 3,108 2,240 70,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "70,000",
+            "",
+            "",
+            "",
+            "",
+            "70,000",
+            "3,108",
+            "2,240"
+          ],
+          "amounts": [
+            70000,
+            null,
+            null,
+            null,
+            null,
+            70000,
+            3108,
+            2240
+          ]
+        },
+        {
+          "label": "Lanka Walltiles PLC - - - -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Sierra Cables PLC 49,600 591 591 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "49,600",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            49600,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Aitken Spence PLC 267,500 34,842 34,842 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "267,500",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            267500,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "181,077 164,289 Investments in un-quoted companies Lanka Film Distributors Company 100 100 100 100 (Private) Limited Other investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "95,617",
+            "81,592"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            95617,
+            81592
+          ]
+        },
+        {
+          "label": "Comtrust Gilt Edged Fund (Unit trust) 2,251,702 - 38,761 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "181,177 203,150",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "95,717",
+            "81,692"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            95717,
+            81692
+          ]
+        },
+        {
+          "label": "Annual Report 2024 - 2025 PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "99"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            99
+          ]
+        },
+        {
+          "label": "20.1.1 The Group’s shareholdings in the share and",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "to 22.21%. However, these equity since",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "influence in the operations of the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "20.1.2 The Company disposed its year March The from C T Land Development PLC. The Share of the Group’s Investment Comtrust Edged (Unit CT Land Development PLC - Nil 20.1.3 The Group designated the above FVOCI investments that the Group intends to term disposals made year. Dividend Income recognised on quoted In thousands of rupees",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Quoted equity investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lanka IOC PLC 1,381 1,785",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,105",
+            "1,105"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1105,
+            1105
+          ]
+        },
+        {
+          "label": "Office Equipment PLC - -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Aitken Spence PLC - 1,070 Overseas Realty (Ceylon) PLC 5 5",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1,386 2,860",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,110",
+            "1,110"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1110,
+            1110
+          ]
+        },
+        {
+          "label": "20.2 Debt investments measured at Value Through In thousands of rupees",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Debt investments measured at Fair Value 1,500,000 1,500,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1,500,000 1,500,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "The Subsidiary Cargills (Ceylon) PLC 1 Unsecured Subordinated Perpetual PLC, the the debenture holder and Non-Viability event at value Lankan One Hundred (LKR 100/-). The interest rate is the Twelve-Month Treasury 2% holder has the right to convert the Bank the The Interest is cumulative and will be paid The cancel interest payments. However the agreement deferred/cancelled therefore does not meet the SPPI criteria, it has been",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Annual Report 2024 - 2025 PLC",
+          "",
+          "C T",
+          "Holdings",
+          "",
+          "",
+          "",
+          "",
+          "97"
+        ],
+        [
+          "In thousands of rupees C T Cinema Bank",
+          "CLSA",
+          "Holdings",
+          "",
+          "",
+          "Cargills",
+          "PLC",
+          "Total",
+          ""
+        ],
+        [
+          "Limited",
+          "",
+          "",
+          "",
+          "Entertainments",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Reconciliation of carrying amount of",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "interests in associates",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Group’s of share of net assets of",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "associates",
+          "206,546",
+          "209,672",
+          "12,701",
+          "12,821",
+          "6,085,569",
+          "5,973,111",
+          "6,304,816",
+          "6,195,604"
+        ],
+        [
+          "Goodwill Carrying amount of investment in",
+          "-",
+          "-",
+          "-",
+          "-",
+          "504,316",
+          "504,316",
+          "504,316",
+          "504,316"
+        ],
+        [
+          "associates",
+          "206,546",
+          "209,672",
+          "12,701",
+          "12,821",
+          "6,589,885",
+          "6,477,427",
+          "6,809,132",
+          "6,699,920"
+        ],
+        [
+          "Share of profit / (loss)",
+          "22,866",
+          "13,094",
+          "(466)",
+          "2,124",
+          "325,443",
+          "233,939",
+          "347,843",
+          "249,157"
+        ],
+        [
+          "Loss on deemed disposal",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "(110,629)",
+          "-",
+          "(110,629)"
+        ],
+        [
+          "Amounts recognised in profit or loss Share of other comprehensive income Items that will not be re-classified",
+          "22,866",
+          "13,094",
+          "(466)",
+          "2,124",
+          "325,443",
+          "123,310",
+          "347,843",
+          "138,528"
+        ],
+        [
+          "subsequently to profit or loss: Items that may be re-classified",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "subsequently to profit or loss: Share of other comprehensive",
+          "(2,304)",
+          "(97)",
+          "-",
+          "-",
+          "(212,986)",
+          "681,844",
+          "(215,290)",
+          "681,747"
+        ],
+        [
+          "income 19.3 The summarised financial amounts in Financial Statements prepared in Sri the are accounted for using the equity Financial Statements. 19.4 The financial year end date of Bank to industry requirement Statements for the year ended been the purposes applying equity Further, there are no significant transactions between dates the 31st March 2025 which require 19.6 Restriction on voting power Cargills Bank PLC The Group’s voting rights in Cargills Bank below imposed such Group does not have controlling power investment Cargills",
+          "(2,304)",
+          "(97)",
+          "-",
+          "-",
+          "(212,986)",
+          "681,844",
+          "(215,290)",
+          "681,747"
+        ],
+        [
+          "98 PLC 2024 Notes to the Financial ... 20. OTHER FINANCIAL ASSETS In thousands of rupees As at 31st March 2025 2024 Non Current",
+          "",
+          "C T",
+          "Holdings",
+          "",
+          "",
+          "",
+          "Annual Report",
+          "- 2025"
+        ],
+        [
+          "Equity Investments (Note 20.1) 181,177 203,150",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "95,717",
+          "81,692"
+        ],
+        [
+          "Debt investments at Fair Value Through Loss 20.2 ) 1,500,000 1,500,000",
+          "Profit or",
+          "(Note",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "1,681,177 1,703,150 Current",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "95,717",
+          "81,692"
+        ],
+        [
+          "Other non-equity investments (Note 20.3) 670,854 131,107",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "407,872",
+          "-"
+        ],
+        [
+          "670,854 131,107 20.1 Equity Investments -",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "407,872",
+          "-"
+        ],
+        [
+          "/ (In Shares /",
+          "Shares",
+          "Units",
+          "",
+          "Carrying Value",
+          "",
+          "Units",
+          "Carrying",
+          "Value (In"
+        ],
+        [
+          "Rs.) thousands of",
+          "",
+          "(Numbers)",
+          "",
+          "thousands of",
+          "",
+          "(Numbers)",
+          "",
+          "Rs.)"
+        ],
+        [
+          "Investments in quoted companies",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Amana Bank PLC 10,870,000 26,676 23,914 -",
+          "10,870,000",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Ceylon Printers PLC 118,830 - 13,012 -",
+          "-",
+          "",
+          "",
+          "",
+          "",
+          "118,830",
+          "-",
+          "13,012"
+        ],
+        [
+          "Office Equipment PLC 163,700 32,863 14,896 163,700",
+          "163,700",
+          "",
+          "",
+          "",
+          "",
+          "163,700",
+          "32,863",
+          "14,896"
+        ],
+        [
+          "Paragon (Ceylon) PLC 213,060 18,265 13,423 213,060",
+          "213,060",
+          "",
+          "",
+          "",
+          "",
+          "213,060",
+          "18,265",
+          "13,423"
+        ],
+        [
+          "Overseas Realty (Ceylon) PLC 4,500 107 77 4,500",
+          "4,500",
+          "",
+          "",
+          "",
+          "",
+          "4,500",
+          "107",
+          "77"
+        ],
+        [
+          "Lanka IOC PLC 525,000 64,625 61,294 325,000",
+          "525,000",
+          "",
+          "",
+          "",
+          "",
+          "325,000",
+          "41,275",
+          "37,944"
+        ],
+        [
+          "The HDFC Bank of Sri Lanka 70,000 3,108 2,240 70,000",
+          "70,000",
+          "",
+          "",
+          "",
+          "",
+          "70,000",
+          "3,108",
+          "2,240"
+        ],
+        [
+          "Lanka Walltiles PLC - - - -",
+          "-",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Sierra Cables PLC 49,600 591 591 -",
+          "49,600",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Aitken Spence PLC 267,500 34,842 34,842 -",
+          "267,500",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "181,077 164,289 Investments in un-quoted companies Lanka Film Distributors Company 100 100 100 100 (Private) Limited Other investments",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "95,617",
+          "81,592"
+        ],
+        [
+          "Comtrust Gilt Edged Fund (Unit trust) 2,251,702 - 38,761 -",
+          "-",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "181,177 203,150",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "95,717",
+          "81,692"
+        ],
+        [
+          "Annual Report 2024 - 2025 PLC",
+          "",
+          "C T",
+          "Holdings",
+          "",
+          "",
+          "",
+          "",
+          "99"
+        ],
+        [
+          "20.1.1 The Group’s shareholdings in the share and",
+          "ordinary",
+          "capital of",
+          "Office",
+          "Equipment PLC,",
+          "Paragon",
+          "(Ceylon) PLC",
+          "range between",
+          "19.64%"
+        ],
+        [
+          "to 22.21%. However, these equity since",
+          "companies have not",
+          "been",
+          "treated as",
+          "accounted",
+          "investees",
+          "the Group",
+          "exercises no",
+          "significant"
+        ],
+        [
+          "influence in the operations of the",
+          "companies",
+          "concerned.",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "20.1.2 The Company disposed its year March The from C T Land Development PLC. The Share of the Group’s Investment Comtrust Edged (Unit CT Land Development PLC - Nil 20.1.3 The Group designated the above FVOCI investments that the Group intends to term disposals made year. Dividend Income recognised on quoted In thousands of rupees",
+          "investment in",
+          "Comtrust Gilt",
+          "Edged Fund",
+          "during the",
+          "ended 31",
+          "2025.",
+          "Group's",
+          "Investment is"
+        ],
+        [
+          "Quoted equity investments",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Lanka IOC PLC 1,381 1,785",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,105",
+          "1,105"
+        ],
+        [
+          "Office Equipment PLC - -",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Aitken Spence PLC - 1,070 Overseas Realty (Ceylon) PLC 5 5",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "1,386 2,860",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,110",
+          "1,110"
+        ],
+        [
+          "20.2 Debt investments measured at Value Through In thousands of rupees",
+          "Fair",
+          "",
+          "Profit or",
+          "Loss",
+          "(FVTPL) - \"Non",
+          "current\"",
+          "",
+          ""
+        ],
+        [
+          "Debt investments measured at Fair Value 1,500,000 1,500,000",
+          "Through",
+          "Profit or Loss",
+          "(FVTPL)",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "1,500,000 1,500,000",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "The Subsidiary Cargills (Ceylon) PLC 1 Unsecured Subordinated Perpetual PLC, the the debenture holder and Non-Viability event at value Lankan One Hundred (LKR 100/-). The interest rate is the Twelve-Month Treasury 2% holder has the right to convert the Bank the The Interest is cumulative and will be paid The cancel interest payments. However the agreement deferred/cancelled therefore does not meet the SPPI criteria, it has been",
+          "Invested in",
+          "Fifteen Million",
+          "(15,000,000)",
+          "Basel III",
+          "Additional Tier",
+          "Compliant",
+          "Rated Unlisted",
+          ""
+        ]
+      ]
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 98,
+      "has_note_col": false,
+      "column_headers": [
+        "equity Principal activity Financial",
+        "C T accounted Ownership and voting 2025",
+        "Holdings PLC investees interest power (in 2024",
+        "Group Total cost of thousands of 2025",
+        "investment rupees) 2024",
+        "Ownership interest and voting power 2025 2024",
+        "Annual Report Company Total cost of thousands of 2025",
+        "2024 - 2025 investment rupees) 2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Breakdown of investments As at 31st March thousands of Holdings",
+          "note_col": null,
+          "amt_cols": [
+            "equity Principal activity Financial",
+            "C T accounted Ownership and voting 2025",
+            "Holdings PLC investees interest power (in 2024",
+            "Group Total cost of thousands of 2025",
+            "investment rupees) 2024",
+            "Ownership interest and voting power 2025 2024",
+            "Annual Report Company Total cost of thousands of 2025",
+            "2024 - 2025 investment rupees) 2024"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "96 PLC 2024 Notes to the Financial ... 19. INVESTMENTS IN EQUITY 19.1 Breakdown of investments in Name of the investee Group As at 31st March Total of (in of In thousands of rupees C T CLSA Holdings Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "33,342",
+            "33,342"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            33342,
+            33342
+          ]
+        },
+        {
+          "label": "Cinema Entertainments (Private) Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,375",
+            "1,375"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1375,
+            1375
+          ]
+        },
+        {
+          "label": "Cargills Bank PLC The Empire Investments Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,871,452",
+            "2,871,452"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2871452,
+            2871452
+          ]
+        },
+        {
+          "label": "(Private) Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,699,781",
+            "2,699,781"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2699781,
+            2699781
+          ]
+        },
+        {
+          "label": "19.2 Summarised financial of In thousands of rupees C T Bank",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "6,809,132",
+            "6,699,920",
+            "",
+            "5,605,950",
+            "5,605,950"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            6809132,
+            6699920,
+            null,
+            5605950,
+            5605950
+          ]
+        },
+        {
+          "label": "Profit / (loss) and other",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "comprehensive income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Revenue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "655,137",
+            "416,697",
+            "14,675",
+            "22,102",
+            "4,265,180",
+            "4,026,302",
+            "4,934,992",
+            "4,465,101"
+          ],
+          "amounts": [
+            655137,
+            416697,
+            14675,
+            22102,
+            4265180,
+            4026302,
+            4934992,
+            4465101
+          ]
+        },
+        {
+          "label": "Other income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "58,640",
+            "123,034",
+            "218",
+            "271",
+            "-",
+            "-",
+            "655,355",
+            "416,968"
+          ],
+          "amounts": [
+            58640,
+            123034,
+            218,
+            271,
+            null,
+            null,
+            655355,
+            416968
+          ]
+        },
+        {
+          "label": "Total expenses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(625,196)",
+            "(489,007)",
+            "(16,422)",
+            "(15,504)",
+            "(3,614,481)",
+            "(3,586,282)",
+            "(4,256,099)",
+            "(4,090,793)"
+          ],
+          "amounts": [
+            -625196,
+            -489007,
+            -16422,
+            -15504,
+            -3614481,
+            -3586282,
+            -4256099,
+            -4090793
+          ]
+        },
+        {
+          "label": "Profit for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "88,581",
+            "50,724",
+            "(1,529)",
+            "6,869",
+            "650,699",
+            "440,020",
+            "737,751",
+            "497,613"
+          ],
+          "amounts": [
+            88581,
+            50724,
+            -1529,
+            6869,
+            650699,
+            440020,
+            737751,
+            497613
+          ]
+        },
+        {
+          "label": "Other comprehensive income / (loss) for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(8,926)",
+            "(377)",
+            "-",
+            "-",
+            "(425,849)",
+            "1,282,458",
+            "(434,775)",
+            "1,282,081"
+          ],
+          "amounts": [
+            -8926,
+            -377,
+            null,
+            null,
+            -425849,
+            1282458,
+            -434775,
+            1282081
+          ]
+        },
+        {
+          "label": "Total comprehensive income for the year Balance sheet",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "79,655",
+            "50,347",
+            "(1,529)",
+            "6,869",
+            "224,850",
+            "1,722,478",
+            "302,976",
+            "1,779,694"
+          ],
+          "amounts": [
+            79655,
+            50347,
+            -1529,
+            6869,
+            224850,
+            1722478,
+            302976,
+            1779694
+          ]
+        },
+        {
+          "label": "Total assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,461,670",
+            "1,385,465",
+            "86,355",
+            "61,080",
+            "80,252,402",
+            "69,736,295",
+            "81,800,427",
+            "71,182,840"
+          ],
+          "amounts": [
+            1461670,
+            1385465,
+            86355,
+            61080,
+            80252402,
+            69736295,
+            81800427,
+            71182840
+          ]
+        },
+        {
+          "label": "Total liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(661,515)",
+            "(573,199)",
+            "(44,672)",
+            "(19,003)",
+            "(68,084,769)",
+            "(57,793,512)",
+            "(68,790,956)",
+            "(58,385,714)"
+          ],
+          "amounts": [
+            -661515,
+            -573199,
+            -44672,
+            -19003,
+            -68084769,
+            -57793512,
+            -68790956,
+            -58385714
+          ]
+        },
+        {
+          "label": "Net assets Percentage of ownership interest as",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "800,155",
+            "812,266",
+            "41,683",
+            "42,077",
+            "12,167,633",
+            "11,942,783",
+            "13,009,471",
+            "12,797,126"
+          ],
+          "amounts": [
+            800155,
+            812266,
+            41683,
+            42077,
+            12167633,
+            11942783,
+            13009471,
+            12797126
+          ]
+        },
+        {
+          "label": "Annual Report 2024 - 2025 PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "97"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            97
+          ]
+        },
+        {
+          "label": "In thousands of rupees C T Bank",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Reconciliation of carrying amount of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "interests in associates",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Group’s of share of net assets of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "associates",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "206,546",
+            "209,672",
+            "12,701",
+            "12,821",
+            "6,085,569",
+            "5,973,111",
+            "6,304,816",
+            "6,195,604"
+          ],
+          "amounts": [
+            206546,
+            209672,
+            12701,
+            12821,
+            6085569,
+            5973111,
+            6304816,
+            6195604
+          ]
+        },
+        {
+          "label": "Goodwill Carrying amount of investment in",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "504,316",
+            "504,316",
+            "504,316",
+            "504,316"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            504316,
+            504316,
+            504316,
+            504316
+          ]
+        },
+        {
+          "label": "associates",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "206,546",
+            "209,672",
+            "12,701",
+            "12,821",
+            "6,589,885",
+            "6,477,427",
+            "6,809,132",
+            "6,699,920"
+          ],
+          "amounts": [
+            206546,
+            209672,
+            12701,
+            12821,
+            6589885,
+            6477427,
+            6809132,
+            6699920
+          ]
+        },
+        {
+          "label": "Share of profit / (loss)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,866",
+            "13,094",
+            "(466)",
+            "2,124",
+            "325,443",
+            "233,939",
+            "347,843",
+            "249,157"
+          ],
+          "amounts": [
+            22866,
+            13094,
+            -466,
+            2124,
+            325443,
+            233939,
+            347843,
+            249157
+          ]
+        },
+        {
+          "label": "Loss on deemed disposal",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "(110,629)",
+            "-",
+            "(110,629)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -110629,
+            null,
+            -110629
+          ]
+        },
+        {
+          "label": "Amounts recognised in profit or loss Share of other comprehensive income Items that will not be re-classified",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,866",
+            "13,094",
+            "(466)",
+            "2,124",
+            "325,443",
+            "123,310",
+            "347,843",
+            "138,528"
+          ],
+          "amounts": [
+            22866,
+            13094,
+            -466,
+            2124,
+            325443,
+            123310,
+            347843,
+            138528
+          ]
+        },
+        {
+          "label": "subsequently to profit or loss: Items that may be re-classified",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "subsequently to profit or loss: Share of other comprehensive",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,304)",
+            "(97)",
+            "-",
+            "-",
+            "(212,986)",
+            "681,844",
+            "(215,290)",
+            "681,747"
+          ],
+          "amounts": [
+            -2304,
+            -97,
+            null,
+            null,
+            -212986,
+            681844,
+            -215290,
+            681747
+          ]
+        },
+        {
+          "label": "income 19.3 The summarised financial amounts in associate’s Financial Statements prepared in Sri the are accounted for using the equity consolidated Financial Statements. 19.4 The financial year end date of Bank 31st industry requirement Financial Statements for the year ended been the purposes applying Further, there are no significant transactions dates the 31st March 2025 which require 19.6 Restriction on voting power Cargills Bank PLC The Group’s voting rights in Cargills Bank below imposed such Group does not have controlling power the investment Cargills",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,304)",
+            "(97)",
+            "-",
+            "-",
+            "(212,986)",
+            "681,844",
+            "(215,290)",
+            "681,747"
+          ],
+          "amounts": [
+            -2304,
+            -97,
+            null,
+            null,
+            -212986,
+            681844,
+            -215290,
+            681747
+          ]
+        },
+        {
+          "label": "98 PLC 2024 Notes to the Financial ... 20. OTHER FINANCIAL ASSETS In thousands of rupees As at 31st March 2024 Non Current",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Equity Investments (Note 20.1) 203,150",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "181,177",
+            "",
+            "",
+            "95,717",
+            "81,692"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            181177,
+            null,
+            null,
+            95717,
+            81692
+          ]
+        },
+        {
+          "label": "Debt investments at Fair Value Through ) 1,500,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,500,000",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1500000,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1,703,150 Current",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,681,177",
+            "",
+            "",
+            "95,717",
+            "81,692"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1681177,
+            null,
+            null,
+            95717,
+            81692
+          ]
+        },
+        {
+          "label": "Other non-equity investments (Note 20.3) 131,107",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "670,854",
+            "",
+            "",
+            "407,872",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            670854,
+            null,
+            null,
+            407872,
+            null
+          ]
+        },
+        {
+          "label": "131,107 20.1 Equity Investments -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "670,854",
+            "",
+            "",
+            "407,872",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            670854,
+            null,
+            null,
+            407872,
+            null
+          ]
+        },
+        {
+          "label": "/ Carrying Shares /",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Investments in quoted companies",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Amana Bank PLC 26,676 23,914 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,870,000",
+            "10,870,000",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            10870000,
+            10870000,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Ceylon Printers PLC - 13,012 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "118,830",
+            "",
+            "",
+            "",
+            "118,830",
+            "-",
+            "13,012"
+          ],
+          "amounts": [
+            null,
+            118830,
+            null,
+            null,
+            null,
+            118830,
+            null,
+            13012
+          ]
+        },
+        {
+          "label": "Office Equipment PLC 32,863 14,896 163,700",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "163,700",
+            "163,700",
+            "",
+            "",
+            "",
+            "163,700",
+            "32,863",
+            "14,896"
+          ],
+          "amounts": [
+            163700,
+            163700,
+            null,
+            null,
+            null,
+            163700,
+            32863,
+            14896
+          ]
+        },
+        {
+          "label": "Paragon (Ceylon) PLC 18,265 13,423 213,060",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "213,060",
+            "213,060",
+            "",
+            "",
+            "",
+            "213,060",
+            "18,265",
+            "13,423"
+          ],
+          "amounts": [
+            213060,
+            213060,
+            null,
+            null,
+            null,
+            213060,
+            18265,
+            13423
+          ]
+        },
+        {
+          "label": "Overseas Realty (Ceylon) PLC 107 77 4,500",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,500",
+            "4,500",
+            "",
+            "",
+            "",
+            "4,500",
+            "107",
+            "77"
+          ],
+          "amounts": [
+            4500,
+            4500,
+            null,
+            null,
+            null,
+            4500,
+            107,
+            77
+          ]
+        },
+        {
+          "label": "Lanka IOC PLC 64,625 61,294 325,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "525,000",
+            "525,000",
+            "",
+            "",
+            "",
+            "325,000",
+            "41,275",
+            "37,944"
+          ],
+          "amounts": [
+            525000,
+            525000,
+            null,
+            null,
+            null,
+            325000,
+            41275,
+            37944
+          ]
+        },
+        {
+          "label": "The HDFC Bank of Sri Lanka 3,108 2,240 70,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "70,000",
+            "70,000",
+            "",
+            "",
+            "",
+            "70,000",
+            "3,108",
+            "2,240"
+          ],
+          "amounts": [
+            70000,
+            70000,
+            null,
+            null,
+            null,
+            70000,
+            3108,
+            2240
+          ]
+        },
+        {
+          "label": "Lanka Walltiles PLC - - -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Sierra Cables PLC 591 591 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "49,600",
+            "49,600",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            49600,
+            49600,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Aitken Spence PLC 34,842 34,842 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "267,500",
+            "267,500",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            267500,
+            267500,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "181,077 164,289 Investments in un-quoted companies Lanka Film Distributors Company 100 100 100 (Private) Limited Other investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "95,617",
+            "81,592"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            95617,
+            81592
+          ]
+        },
+        {
+          "label": "Comtrust Gilt Edged Fund (Unit trust) - 38,761 -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "2,251,702",
+            "",
+            "",
+            "",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            2251702,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "181,177 203,150",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "95,717",
+            "81,692"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            95717,
+            81692
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "96 PLC 2024 Notes to the Financial ... 19. INVESTMENTS IN EQUITY 19.1 Breakdown of investments in Name of the investee Group As at 31st March Total of (in of  In thousands of rupees C T CLSA Holdings Limited",
+          "",
+          "C T",
+          "Holdings",
+          "",
+          "",
+          "",
+          "Annual Report",
+          "- 2025"
+        ],
+        [
+          "",
+          "Services",
+          "25.81%",
+          "25.81%",
+          "206,546",
+          "209,672",
+          "25.81% 25.81%",
+          "33,342",
+          "33,342"
+        ],
+        [
+          "Cinema Entertainments (Private) Limited",
+          "Entertainment",
+          "30.47%",
+          "30.47%",
+          "12,701",
+          "12,821",
+          "16.67% 16.67%",
+          "1,375",
+          "1,375"
+        ],
+        [
+          "Cargills Bank PLC The Empire Investments Company",
+          "Banking",
+          "50.01%",
+          "50.01%",
+          "6,589,885",
+          "6,477,427",
+          "23.62% 23.62%",
+          "2,871,452",
+          "2,871,452"
+        ],
+        [
+          "(Private) Limited",
+          "Real estate",
+          "-",
+          "-",
+          "-",
+          "-",
+          "46.57% 46.57%",
+          "2,699,781",
+          "2,699,781"
+        ],
+        [
+          "19.2 Summarised financial of In thousands of rupees C T Bank",
+          "",
+          "",
+          "",
+          "6,809,132",
+          "6,699,920",
+          "",
+          "5,605,950",
+          "5,605,950"
+        ],
+        [
+          "Profit / (loss) and other",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "comprehensive income",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Revenue",
+          "655,137",
+          "416,697",
+          "14,675",
+          "22,102",
+          "4,265,180",
+          "4,026,302",
+          "4,934,992",
+          "4,465,101"
+        ],
+        [
+          "Other income",
+          "58,640",
+          "123,034",
+          "218",
+          "271",
+          "-",
+          "-",
+          "655,355",
+          "416,968"
+        ],
+        [
+          "Total expenses",
+          "(625,196)",
+          "(489,007)",
+          "(16,422)",
+          "(15,504)",
+          "(3,614,481)",
+          "(3,586,282)",
+          "(4,256,099)",
+          "(4,090,793)"
+        ],
+        [
+          "Profit for the year",
+          "88,581",
+          "50,724",
+          "(1,529)",
+          "6,869",
+          "650,699",
+          "440,020",
+          "737,751",
+          "497,613"
+        ],
+        [
+          "Other comprehensive income / (loss) for the year",
+          "(8,926)",
+          "(377)",
+          "-",
+          "-",
+          "(425,849)",
+          "1,282,458",
+          "(434,775)",
+          "1,282,081"
+        ],
+        [
+          "Total comprehensive income for the year Balance sheet",
+          "79,655",
+          "50,347",
+          "(1,529)",
+          "6,869",
+          "224,850",
+          "1,722,478",
+          "302,976",
+          "1,779,694"
+        ],
+        [
+          "Total assets",
+          "1,461,670",
+          "1,385,465",
+          "86,355",
+          "61,080",
+          "80,252,402",
+          "69,736,295",
+          "81,800,427",
+          "71,182,840"
+        ],
+        [
+          "Total liabilities",
+          "(661,515)",
+          "(573,199)",
+          "(44,672)",
+          "(19,003)",
+          "(68,084,769)",
+          "(57,793,512)",
+          "(68,790,956)",
+          "(58,385,714)"
+        ],
+        [
+          "Net assets Percentage of ownership interest as",
+          "800,155",
+          "812,266",
+          "41,683",
+          "42,077",
+          "12,167,633",
+          "11,942,783",
+          "13,009,471",
+          "12,797,126"
+        ],
+        [
+          "Annual Report 2024 - 2025 PLC",
+          "",
+          "C T",
+          "Holdings",
+          "",
+          "",
+          "",
+          "",
+          "97"
+        ],
+        [
+          "In thousands of rupees C T Bank",
+          "CLSA",
+          "Holdings",
+          "Cinema",
+          "",
+          "Cargills",
+          "PLC",
+          "Total",
+          ""
+        ],
+        [
+          "Reconciliation of carrying amount of",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "interests in associates",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Group’s of share of net assets of",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "associates",
+          "206,546",
+          "209,672",
+          "12,701",
+          "12,821",
+          "6,085,569",
+          "5,973,111",
+          "6,304,816",
+          "6,195,604"
+        ],
+        [
+          "Goodwill Carrying amount of investment in",
+          "-",
+          "-",
+          "-",
+          "-",
+          "504,316",
+          "504,316",
+          "504,316",
+          "504,316"
+        ],
+        [
+          "associates",
+          "206,546",
+          "209,672",
+          "12,701",
+          "12,821",
+          "6,589,885",
+          "6,477,427",
+          "6,809,132",
+          "6,699,920"
+        ],
+        [
+          "Share of profit / (loss)",
+          "22,866",
+          "13,094",
+          "(466)",
+          "2,124",
+          "325,443",
+          "233,939",
+          "347,843",
+          "249,157"
+        ],
+        [
+          "Loss on deemed disposal",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "(110,629)",
+          "-",
+          "(110,629)"
+        ],
+        [
+          "Amounts recognised in profit or loss Share of other comprehensive income Items that will not be re-classified",
+          "22,866",
+          "13,094",
+          "(466)",
+          "2,124",
+          "325,443",
+          "123,310",
+          "347,843",
+          "138,528"
+        ],
+        [
+          "subsequently to profit or loss: Items that may be re-classified",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "subsequently to profit or loss: Share of other comprehensive",
+          "(2,304)",
+          "(97)",
+          "-",
+          "-",
+          "(212,986)",
+          "681,844",
+          "(215,290)",
+          "681,747"
+        ],
+        [
+          "income 19.3 The summarised financial amounts in associate’s Financial Statements prepared in Sri the are accounted for using the equity consolidated Financial Statements. 19.4 The financial year end date of Bank 31st industry requirement Financial Statements for the year ended been the purposes applying Further, there are no significant transactions dates the 31st March 2025 which require 19.6 Restriction on voting power Cargills Bank PLC The Group’s voting rights in Cargills Bank below imposed such Group does not have controlling power the investment Cargills",
+          "(2,304)",
+          "(97)",
+          "-",
+          "-",
+          "(212,986)",
+          "681,844",
+          "(215,290)",
+          "681,747"
+        ],
+        [
+          "98 PLC 2024 Notes to the Financial ... 20. OTHER FINANCIAL ASSETS In thousands of rupees As at 31st March 2024 Non Current",
+          "",
+          "C T",
+          "Holdings",
+          "",
+          "",
+          "",
+          "Annual Report",
+          "- 2025"
+        ],
+        [
+          "Equity Investments (Note 20.1) 203,150",
+          "",
+          "",
+          "",
+          "181,177",
+          "",
+          "",
+          "95,717",
+          "81,692"
+        ],
+        [
+          "Debt investments at Fair Value Through ) 1,500,000",
+          "Profit or Loss",
+          "(Note 20.2",
+          "",
+          "1,500,000",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "1,703,150 Current",
+          "",
+          "",
+          "",
+          "1,681,177",
+          "",
+          "",
+          "95,717",
+          "81,692"
+        ],
+        [
+          "Other non-equity investments (Note 20.3) 131,107",
+          "",
+          "",
+          "",
+          "670,854",
+          "",
+          "",
+          "407,872",
+          "-"
+        ],
+        [
+          "131,107 20.1 Equity Investments -",
+          "",
+          "",
+          "",
+          "670,854",
+          "",
+          "",
+          "407,872",
+          "-"
+        ],
+        [
+          "/ Carrying Shares /",
+          "Shares",
+          "Units",
+          "",
+          "Value (In",
+          "",
+          "Units",
+          "Carrying",
+          "Value (In"
+        ],
+        [
+          "of",
+          "",
+          "(Numbers)",
+          "",
+          "thousands of Rs.)",
+          "",
+          "(Numbers)",
+          "thousands",
+          "Rs.)"
+        ],
+        [
+          "Investments in quoted companies",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Amana Bank PLC 26,676 23,914 -",
+          "10,870,000",
+          "10,870,000",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Ceylon Printers PLC - 13,012 -",
+          "-",
+          "118,830",
+          "",
+          "",
+          "",
+          "118,830",
+          "-",
+          "13,012"
+        ],
+        [
+          "Office Equipment PLC 32,863 14,896 163,700",
+          "163,700",
+          "163,700",
+          "",
+          "",
+          "",
+          "163,700",
+          "32,863",
+          "14,896"
+        ],
+        [
+          "Paragon (Ceylon) PLC 18,265 13,423 213,060",
+          "213,060",
+          "213,060",
+          "",
+          "",
+          "",
+          "213,060",
+          "18,265",
+          "13,423"
+        ],
+        [
+          "Overseas Realty (Ceylon) PLC 107 77 4,500",
+          "4,500",
+          "4,500",
+          "",
+          "",
+          "",
+          "4,500",
+          "107",
+          "77"
+        ],
+        [
+          "Lanka IOC PLC 64,625 61,294 325,000",
+          "525,000",
+          "525,000",
+          "",
+          "",
+          "",
+          "325,000",
+          "41,275",
+          "37,944"
+        ],
+        [
+          "The HDFC Bank of Sri Lanka 3,108 2,240 70,000",
+          "70,000",
+          "70,000",
+          "",
+          "",
+          "",
+          "70,000",
+          "3,108",
+          "2,240"
+        ],
+        [
+          "Lanka Walltiles PLC - - -",
+          "-",
+          "-",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Sierra Cables PLC 591 591 -",
+          "49,600",
+          "49,600",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Aitken Spence PLC 34,842 34,842 -",
+          "267,500",
+          "267,500",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "181,077 164,289 Investments in un-quoted companies Lanka Film Distributors Company 100 100 100 (Private) Limited Other investments",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "95,617",
+          "81,592"
+        ],
+        [
+          "Comtrust Gilt Edged Fund (Unit trust) - 38,761 -",
+          "-",
+          "2,251,702",
+          "",
+          "",
+          "",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "181,177 203,150",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "95,717",
+          "81,692"
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 49,
+      "has_note_col": false,
+      "column_headers": [
+        "Equity Stated capital ‘000",
+        "Revaluation reserve ‘000",
+        "value reserve ‘000",
+        "Retained earnings ‘000",
+        "Total reserve ‘000",
+        "Non- controlling interest ‘000",
+        "Total ‘000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Statement of",
+          "note_col": null,
+          "amt_cols": [
+            "Equity Stated capital ‘000",
+            "Revaluation reserve ‘000",
+            "value reserve ‘000",
+            "Retained earnings ‘000",
+            "Total reserve ‘000",
+            "Non- controlling interest ‘000",
+            "Total ‘000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Annual Report 2024 - 2025 C T PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "47"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            47
+          ]
+        },
+        {
+          "label": "Statement of Changes in",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Fair",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Group Rs. Rs. Rs. Rs. Rs. Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as at 1 April 2023 Total comprehensive income for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,489,758",
+            "2,823,337",
+            "133,191",
+            "13,667,618",
+            "23,113,904",
+            "12,249,407",
+            "35,363,311"
+          ],
+          "amounts": [
+            6489758,
+            2823337,
+            133191,
+            13667618,
+            23113904,
+            12249407,
+            35363311
+          ]
+        },
+        {
+          "label": "Profit for the year Other comprehensive income Net change in fair value of investments at",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "4,357,303",
+            "4,357,303",
+            "1,868,834",
+            "6,226,137"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            4357303,
+            4357303,
+            1868834,
+            6226137
+          ]
+        },
+        {
+          "label": "FVOCI financial assets, net of tax Re-measurements of defined benefit plan,",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "(17,883)",
+            "-",
+            "(17,883)",
+            "(3,422)",
+            "(21,305)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -17883,
+            null,
+            -17883,
+            -3422,
+            -21305
+          ]
+        },
+        {
+          "label": "net of tax",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "100,057",
+            "100,057",
+            "38,585",
+            "138,642"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            100057,
+            100057,
+            38585,
+            138642
+          ]
+        },
+        {
+          "label": "Revaluation reserve Share of other comprehensive expense of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "3,669,340",
+            "-",
+            "-",
+            "3,669,340",
+            "528,636",
+            "4,197,976"
+          ],
+          "amounts": [
+            null,
+            3669340,
+            null,
+            null,
+            3669340,
+            528636,
+            4197976
+          ]
+        },
+        {
+          "label": "associates Total other comprehensive (expense)/",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "681,747",
+            "681,747",
+            "-",
+            "681,747"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            681747,
+            681747,
+            null,
+            681747
+          ]
+        },
+        {
+          "label": "income for the year Total comprehensive (expense)/income for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "3,669,340",
+            "(17,883)",
+            "781,804",
+            "4,433,261",
+            "563,799",
+            "4,997,060"
+          ],
+          "amounts": [
+            null,
+            3669340,
+            -17883,
+            781804,
+            4433261,
+            563799,
+            4997060
+          ]
+        },
+        {
+          "label": "the year Transactions directly recorded in equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "3,669,340",
+            "(17,883)",
+            "5,139,107",
+            "8,790,564",
+            "2,432,633",
+            "11,223,197"
+          ],
+          "amounts": [
+            null,
+            3669340,
+            -17883,
+            5139107,
+            8790564,
+            2432633,
+            11223197
+          ]
+        },
+        {
+          "label": "Classification of non-controlling interest Subsidiary dividend to non-controlling",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "(11,443)",
+            "(11,443)",
+            "11,443",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -11443,
+            -11443,
+            11443,
+            null
+          ]
+        },
+        {
+          "label": "interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "20,309",
+            "20,309",
+            "(965,553)",
+            "(945,244)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            20309,
+            20309,
+            -965553,
+            -945244
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "(1,913,366)",
+            "(1,913,366)",
+            "-",
+            "(1,913,366)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -1913366,
+            -1913366,
+            null,
+            -1913366
+          ]
+        },
+        {
+          "label": "Write back of unclaimed dividends Transfer from revaluation reserve due to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "154,620",
+            "154,620",
+            "3,792",
+            "158,412"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            154620,
+            154620,
+            3792,
+            158412
+          ]
+        },
+        {
+          "label": "disposal of revalued assets Total contributions by & distributions to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(3,872)",
+            "-",
+            "3,872",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            -3872,
+            null,
+            3872,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "owners",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(3,872)",
+            "-",
+            "(1,746,008)",
+            "(1,749,880)",
+            "(950,318)",
+            "(2,700,198)"
+          ],
+          "amounts": [
+            null,
+            -3872,
+            null,
+            -1746008,
+            -1749880,
+            -950318,
+            -2700198
+          ]
+        },
+        {
+          "label": "Balance as at 31st March 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,489,758",
+            "6,488,805",
+            "115,308",
+            "17,060,717",
+            "30,154,588",
+            "13,731,722",
+            "43,886,310"
+          ],
+          "amounts": [
+            6489758,
+            6488805,
+            115308,
+            17060717,
+            30154588,
+            13731722,
+            43886310
+          ]
+        },
+        {
+          "label": "Balance as at 1 April 2024 Total comprehensive income for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,489,758",
+            "6,488,805",
+            "115,308",
+            "17,060,717",
+            "30,154,588",
+            "13,731,722",
+            "43,886,310"
+          ],
+          "amounts": [
+            6489758,
+            6488805,
+            115308,
+            17060717,
+            30154588,
+            13731722,
+            43886310
+          ]
+        },
+        {
+          "label": "Profit for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "5,122,119",
+            "5,122,119",
+            "2,142,813",
+            "7,264,932"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            5122119,
+            5122119,
+            2142813,
+            7264932
+          ]
+        },
+        {
+          "label": "48 C T PLC 2024 Statement of Changes in ... Contd. the the Fair Group Rs. Rs. Rs. Rs. Rs. Rs. Rs. Other comprehensive income Net change in fair value of investments at",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "FVOCI financial assets, net of tax Re-measurements of defined benefit plan,",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "29,906",
+            "-",
+            "29,906",
+            "800",
+            "30,706"
+          ],
+          "amounts": [
+            null,
+            null,
+            29906,
+            null,
+            29906,
+            800,
+            30706
+          ]
+        },
+        {
+          "label": "net of tax",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "(98,134)",
+            "(98,138)",
+            "1,122",
+            "(97,012)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -98134,
+            -98138,
+            1122,
+            -97012
+          ]
+        },
+        {
+          "label": "Revaluation reserve Share of other comprehensive income of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "24,556",
+            "-",
+            "-",
+            "24,556",
+            "(24,556)",
+            "-"
+          ],
+          "amounts": [
+            null,
+            24556,
+            null,
+            null,
+            24556,
+            -24556,
+            null
+          ]
+        },
+        {
+          "label": "associates Total other comprehensive income/",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "(215,290)",
+            "(215,290)",
+            "-",
+            "(215,290)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -215290,
+            -215290,
+            null,
+            -215290
+          ]
+        },
+        {
+          "label": "(expense) for the year Total comprehensive income/(expense) for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "24,556",
+            "29,906",
+            "(313,424)",
+            "(258,966)",
+            "(22,635)",
+            "(281,597)"
+          ],
+          "amounts": [
+            null,
+            24556,
+            29906,
+            -313424,
+            -258966,
+            -22635,
+            -281597
+          ]
+        },
+        {
+          "label": "the year Transactions directly recorded in equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "24,556",
+            "29,906",
+            "4,808,695",
+            "4,863,153",
+            "2,120,178",
+            "6,983,335"
+          ],
+          "amounts": [
+            null,
+            24556,
+            29906,
+            4808695,
+            4863153,
+            2120178,
+            6983335
+          ]
+        },
+        {
+          "label": "Transactions with parent and NCI Subsidiary dividend to non-controlling",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "141,238",
+            "141,238",
+            "(141,238)",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            141238,
+            141238,
+            -141238,
+            null
+          ]
+        },
+        {
+          "label": "interest Transfer from revaluation reserve due to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "17,916",
+            "17,916",
+            "(1,136,381)",
+            "(1,118,465)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            17916,
+            17916,
+            -1136381,
+            -1118465
+          ]
+        },
+        {
+          "label": "disposal of revalued assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "(7,676)",
+            "7,676",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            -7676,
+            7676,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "(2,517,587)",
+            "(2,517,587)",
+            "-",
+            "(2,517,587)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -2517587,
+            -2517587,
+            null,
+            -2517587
+          ]
+        },
+        {
+          "label": "Unclaimed dividend writeback Total contributions by & distributions to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "14,471",
+            "14,471",
+            "5,861",
+            "20,332"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            14471,
+            14471,
+            5861,
+            20332
+          ]
+        },
+        {
+          "label": "owners",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "(7,676)",
+            "(2,336,286)",
+            "(2,343,962)",
+            "(1,271,758)",
+            "(3,615,720)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -7676,
+            -2336286,
+            -2343962,
+            -1271758,
+            -3615720
+          ]
+        },
+        {
+          "label": "Balance as at 31st March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,489,758",
+            "6,513,361",
+            "137,538",
+            "19,533,126",
+            "32,673,783",
+            "14,580,142",
+            "47,253,925"
+          ],
+          "amounts": [
+            6489758,
+            6513361,
+            137538,
+            19533126,
+            32673783,
+            14580142,
+            47253925
+          ]
+        },
+        {
+          "label": "Annual Report 2024 - 2025 C T PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "49"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            49
+          ]
+        },
+        {
+          "label": "value",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "reserve",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Company ‘000 Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as at 1 April 2023 100,462 Total comprehensive income for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,489,758",
+            "",
+            "",
+            "1,497,933",
+            "8,088,153"
+          ],
+          "amounts": [
+            null,
+            null,
+            6489758,
+            null,
+            null,
+            1497933,
+            8088153
+          ]
+        },
+        {
+          "label": "Profit for the year - Other comprehensive income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "2,541,493",
+            "2,541,493"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2541493,
+            2541493
+          ]
+        },
+        {
+          "label": "Net change in fair value of FVOCI financial assets (9,063)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "-",
+            "(9,063)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            -9063
+          ]
+        },
+        {
+          "label": "Defined benefit plan actuarial gain -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(2,551)",
+            "(2,551)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -2551,
+            -2551
+          ]
+        },
+        {
+          "label": "Total other comprehensive income for the year (9,063)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(2,551)",
+            "(11,614)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -2551,
+            -11614
+          ]
+        },
+        {
+          "label": "Total comprehensive income for the year (9,063) Transactions directly recorded in equity,",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "2,538,942",
+            "2,529,879"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2538942,
+            2529879
+          ]
+        },
+        {
+          "label": "Dividends paid - 2022/23 (second interim) & (interim) -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(1,913,366)",
+            "(1,913,366)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -1913366,
+            -1913366
+          ]
+        },
+        {
+          "label": "Unclaimed dividend writeback -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "145,255",
+            "145,255"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            145255,
+            145255
+          ]
+        },
+        {
+          "label": "Total contributions by & distributions to owners -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(1,768,111)",
+            "(1,768,111)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -1768111,
+            -1768111
+          ]
+        },
+        {
+          "label": "Balance as at 31 March 2024 91,399",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,489,758",
+            "",
+            "",
+            "2,268,764",
+            "8,849,921"
+          ],
+          "amounts": [
+            null,
+            null,
+            6489758,
+            null,
+            null,
+            2268764,
+            8849921
+          ]
+        },
+        {
+          "label": "Balance as at 1 April 2024 91,399 Total comprehensive income for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,489,758",
+            "",
+            "",
+            "2,268,764",
+            "8,849,921"
+          ],
+          "amounts": [
+            null,
+            null,
+            6489758,
+            null,
+            null,
+            2268764,
+            8849921
+          ]
+        },
+        {
+          "label": "Profit for the year - Other comprehensive income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "2,801,263",
+            "2,801,263"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2801263,
+            2801263
+          ]
+        },
+        {
+          "label": "Net change in fair value of FVOCI financial assets 26,623",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "-",
+            "26,623"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            26623
+          ]
+        },
+        {
+          "label": "Defined benefit plan actuarial loss -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(14,983)",
+            "(14,983)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -14983,
+            -14983
+          ]
+        },
+        {
+          "label": "Total other comprehensive expense for the year 26,623",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(14,012)",
+            "12,611"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -14012,
+            12611
+          ]
+        },
+        {
+          "label": "Total comprehensive (expense)/income for the 26,623 Transactions directly recorded in equity,",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "2,787,251",
+            "2,813,874"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2787251,
+            2813874
+          ]
+        },
+        {
+          "label": "Dividends paid - 2023/24 (second interim) & (interim) -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(2,517,587)",
+            "(2,517,587)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -2517587,
+            -2517587
+          ]
+        },
+        {
+          "label": "Unclaimed dividend writeback -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total contributions by & distributions to owners -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            "(2,517,587)",
+            "(2,517,587)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            -2517587,
+            -2517587
+          ]
+        },
+        {
+          "label": "Balance as at 31 March 2025 118,022",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,489,758",
+            "",
+            "",
+            "2,538,428",
+            "9,146,208"
+          ],
+          "amounts": [
+            null,
+            null,
+            6489758,
+            null,
+            null,
+            2538428,
+            9146208
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Annual Report 2024 - 2025 C T PLC",
+          "",
+          "Holdings",
+          "",
+          "",
+          "",
+          "",
+          "47"
+        ],
+        [
+          "Statement of Changes in",
+          "Equity",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "the the",
+          "",
+          "<--------------",
+          "Attributable to",
+          "owners of",
+          "parent",
+          "-------------->",
+          ""
+        ],
+        [
+          "Fair",
+          "Stated",
+          "Revaluation",
+          "value",
+          "Retained",
+          "Total",
+          "Non-",
+          "Total"
+        ],
+        [
+          "Group Rs. Rs. Rs. Rs. Rs. Rs. Rs.",
+          "‘000",
+          "‘000",
+          "‘000",
+          "‘000",
+          "‘000",
+          "‘000",
+          "‘000"
+        ],
+        [
+          "Balance as at 1 April 2023 Total comprehensive income for the year",
+          "6,489,758",
+          "2,823,337",
+          "133,191",
+          "13,667,618",
+          "23,113,904",
+          "12,249,407",
+          "35,363,311"
+        ],
+        [
+          "Profit for the year Other comprehensive income Net change in fair value of investments at",
+          "-",
+          "-",
+          "-",
+          "4,357,303",
+          "4,357,303",
+          "1,868,834",
+          "6,226,137"
+        ],
+        [
+          "FVOCI financial assets, net of tax Re-measurements of defined benefit plan,",
+          "-",
+          "-",
+          "(17,883)",
+          "-",
+          "(17,883)",
+          "(3,422)",
+          "(21,305)"
+        ],
+        [
+          "net of tax",
+          "-",
+          "-",
+          "-",
+          "100,057",
+          "100,057",
+          "38,585",
+          "138,642"
+        ],
+        [
+          "Revaluation reserve Share of other comprehensive expense of",
+          "-",
+          "3,669,340",
+          "-",
+          "-",
+          "3,669,340",
+          "528,636",
+          "4,197,976"
+        ],
+        [
+          "associates Total other comprehensive (expense)/",
+          "-",
+          "-",
+          "-",
+          "681,747",
+          "681,747",
+          "-",
+          "681,747"
+        ],
+        [
+          "income for the year Total comprehensive (expense)/income for",
+          "-",
+          "3,669,340",
+          "(17,883)",
+          "781,804",
+          "4,433,261",
+          "563,799",
+          "4,997,060"
+        ],
+        [
+          "the year Transactions directly recorded in equity",
+          "-",
+          "3,669,340",
+          "(17,883)",
+          "5,139,107",
+          "8,790,564",
+          "2,432,633",
+          "11,223,197"
+        ],
+        [
+          "Classification of non-controlling interest Subsidiary dividend to non-controlling",
+          "-",
+          "-",
+          "-",
+          "(11,443)",
+          "(11,443)",
+          "11,443",
+          "-"
+        ],
+        [
+          "interest",
+          "-",
+          "-",
+          "-",
+          "20,309",
+          "20,309",
+          "(965,553)",
+          "(945,244)"
+        ],
+        [
+          "Dividends paid",
+          "-",
+          "-",
+          "-",
+          "(1,913,366)",
+          "(1,913,366)",
+          "-",
+          "(1,913,366)"
+        ],
+        [
+          "Write back of unclaimed dividends Transfer from revaluation reserve due to",
+          "-",
+          "-",
+          "-",
+          "154,620",
+          "154,620",
+          "3,792",
+          "158,412"
+        ],
+        [
+          "disposal of revalued assets Total contributions by & distributions to",
+          "-",
+          "(3,872)",
+          "-",
+          "3,872",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "owners",
+          "-",
+          "(3,872)",
+          "-",
+          "(1,746,008)",
+          "(1,749,880)",
+          "(950,318)",
+          "(2,700,198)"
+        ],
+        [
+          "Balance as at 31st March 2024",
+          "6,489,758",
+          "6,488,805",
+          "115,308",
+          "17,060,717",
+          "30,154,588",
+          "13,731,722",
+          "43,886,310"
+        ],
+        [
+          "Balance as at 1 April 2024 Total comprehensive income for the year",
+          "6,489,758",
+          "6,488,805",
+          "115,308",
+          "17,060,717",
+          "30,154,588",
+          "13,731,722",
+          "43,886,310"
+        ],
+        [
+          "Profit for the year",
+          "-",
+          "-",
+          "-",
+          "5,122,119",
+          "5,122,119",
+          "2,142,813",
+          "7,264,932"
+        ],
+        [
+          "48 C T PLC 2024 Statement of Changes in ... Contd. the the Fair   Group Rs. Rs. Rs. Rs. Rs. Rs. Rs. Other comprehensive income Net change in fair value of investments at",
+          "",
+          "Holdings",
+          "",
+          "",
+          "",
+          "Annual Report",
+          "- 2025"
+        ],
+        [
+          "FVOCI financial assets, net of tax Re-measurements of defined benefit plan,",
+          "-",
+          "-",
+          "29,906",
+          "-",
+          "29,906",
+          "800",
+          "30,706"
+        ],
+        [
+          "net of tax",
+          "-",
+          "-",
+          "-",
+          "(98,134)",
+          "(98,138)",
+          "1,122",
+          "(97,012)"
+        ],
+        [
+          "Revaluation reserve Share of other comprehensive income of",
+          "-",
+          "24,556",
+          "-",
+          "-",
+          "24,556",
+          "(24,556)",
+          "-"
+        ],
+        [
+          "associates Total other comprehensive income/",
+          "-",
+          "-",
+          "-",
+          "(215,290)",
+          "(215,290)",
+          "-",
+          "(215,290)"
+        ],
+        [
+          "(expense) for the year Total comprehensive income/(expense) for",
+          "-",
+          "24,556",
+          "29,906",
+          "(313,424)",
+          "(258,966)",
+          "(22,635)",
+          "(281,597)"
+        ],
+        [
+          "the year Transactions directly recorded in equity",
+          "-",
+          "24,556",
+          "29,906",
+          "4,808,695",
+          "4,863,153",
+          "2,120,178",
+          "6,983,335"
+        ],
+        [
+          "Transactions with parent and NCI Subsidiary dividend to non-controlling",
+          "-",
+          "-",
+          "-",
+          "141,238",
+          "141,238",
+          "(141,238)",
+          "-"
+        ],
+        [
+          "interest Transfer from revaluation reserve due to",
+          "-",
+          "-",
+          "-",
+          "17,916",
+          "17,916",
+          "(1,136,381)",
+          "(1,118,465)"
+        ],
+        [
+          "disposal of revalued assets",
+          "-",
+          "-",
+          "(7,676)",
+          "7,676",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Dividends paid",
+          "-",
+          "-",
+          "-",
+          "(2,517,587)",
+          "(2,517,587)",
+          "-",
+          "(2,517,587)"
+        ],
+        [
+          "Unclaimed dividend writeback Total contributions by & distributions to",
+          "-",
+          "-",
+          "-",
+          "14,471",
+          "14,471",
+          "5,861",
+          "20,332"
+        ],
+        [
+          "owners",
+          "-",
+          "-",
+          "(7,676)",
+          "(2,336,286)",
+          "(2,343,962)",
+          "(1,271,758)",
+          "(3,615,720)"
+        ],
+        [
+          "Balance as at 31st March 2025",
+          "6,489,758",
+          "6,513,361",
+          "137,538",
+          "19,533,126",
+          "32,673,783",
+          "14,580,142",
+          "47,253,925"
+        ],
+        [
+          "Annual Report 2024 - 2025 C T PLC",
+          "",
+          "Holdings",
+          "",
+          "",
+          "",
+          "",
+          "49"
+        ],
+        [
+          "value",
+          "",
+          "",
+          "Stated",
+          "Fair",
+          "",
+          "Retained",
+          "Total"
+        ],
+        [
+          "reserve",
+          "",
+          "",
+          "capital",
+          "",
+          "",
+          "earnings",
+          "Equity"
+        ],
+        [
+          "Company ‘000 Rs. Rs.",
+          "",
+          "",
+          "Rs. ‘000",
+          "Rs.",
+          "",
+          "‘000",
+          "‘000"
+        ],
+        [
+          "Balance as at 1 April 2023 100,462 Total comprehensive income for the year",
+          "",
+          "",
+          "6,489,758",
+          "",
+          "",
+          "1,497,933",
+          "8,088,153"
+        ],
+        [
+          "Profit for the year - Other comprehensive income",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "2,541,493",
+          "2,541,493"
+        ],
+        [
+          "Net change in fair value of FVOCI financial assets (9,063)",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "-",
+          "(9,063)"
+        ],
+        [
+          "Defined benefit plan actuarial gain -",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "(2,551)",
+          "(2,551)"
+        ],
+        [
+          "Total other comprehensive income for the year (9,063)",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "(2,551)",
+          "(11,614)"
+        ],
+        [
+          "Total comprehensive income for the year (9,063) Transactions directly recorded in equity,",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "2,538,942",
+          "2,529,879"
+        ],
+        [
+          "Dividends paid - 2022/23 (second interim) & (interim) -",
+          "2023/24",
+          "",
+          "-",
+          "",
+          "",
+          "(1,913,366)",
+          "(1,913,366)"
+        ],
+        [
+          "Unclaimed dividend writeback -",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "145,255",
+          "145,255"
+        ],
+        [
+          "Total contributions by & distributions to owners -",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "(1,768,111)",
+          "(1,768,111)"
+        ],
+        [
+          "Balance as at 31 March 2024 91,399",
+          "",
+          "",
+          "6,489,758",
+          "",
+          "",
+          "2,268,764",
+          "8,849,921"
+        ],
+        [
+          "Balance as at 1 April 2024 91,399 Total comprehensive income for the year",
+          "",
+          "",
+          "6,489,758",
+          "",
+          "",
+          "2,268,764",
+          "8,849,921"
+        ],
+        [
+          "Profit for the year - Other comprehensive income",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "2,801,263",
+          "2,801,263"
+        ],
+        [
+          "Net change in fair value of FVOCI financial assets 26,623",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "-",
+          "26,623"
+        ],
+        [
+          "Defined benefit plan actuarial loss -",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "(14,983)",
+          "(14,983)"
+        ],
+        [
+          "Total other comprehensive expense for the year 26,623",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "(14,012)",
+          "12,611"
+        ],
+        [
+          "Total comprehensive (expense)/income for the 26,623 Transactions directly recorded in equity,",
+          "year",
+          "",
+          "-",
+          "",
+          "",
+          "2,787,251",
+          "2,813,874"
+        ],
+        [
+          "Dividends paid - 2023/24 (second interim) & (interim) -",
+          "2023/25",
+          "",
+          "-",
+          "",
+          "",
+          "(2,517,587)",
+          "(2,517,587)"
+        ],
+        [
+          "Unclaimed dividend writeback -",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Total contributions by & distributions to owners -",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          "(2,517,587)",
+          "(2,517,587)"
+        ],
+        [
+          "Balance as at 31 March 2025 118,022",
+          "",
+          "",
+          "6,489,758",
+          "",
+          "",
+          "2,538,428",
+          "9,146,208"
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 104,
+      "has_note_col": false,
+      "column_headers": [
+        "trade and other Group 2025",
+        "receivables, 2024",
+        "Annual Report excluding 2025",
+        "2024 - 2025 2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Holdings Information the exposure impairment for construction thousands of As at 31st March",
+          "note_col": null,
+          "amt_cols": [
+            "trade and other Group 2025",
+            "receivables, 2024",
+            "Annual Report excluding 2025",
+            "2024 - 2025 2024"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "102 C T Holdings PLC Report 2024 Notes to the Financial Statements ... Contd. 23.2 Credit and market risks, and impairment losses Information about the Group’s exposure to credit, and impairment losses for trade other construction contracts in progress, is included in Note 31.5. 23.3 Movement in the provision for impaired / doubtful debts In thousands of rupees Company As at 31st March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "As at 1st April",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "270,287",
+            "241,653",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            270287,
+            241653,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Impairment losses / (reversals)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "11,893",
+            "28,634",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            11893,
+            28634,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "As at 31st March 24. CASH AND CASH EQUIVALENTS In thousands of rupees Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "282,180",
+            "270,287",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            282180,
+            270287,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash and bank balances",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,999,513",
+            "6,367,541",
+            "(17,088)",
+            "104,740"
+          ],
+          "amounts": [
+            6999513,
+            6367541,
+            -17088,
+            104740
+          ]
+        },
+        {
+          "label": "Short term deposits with banks (Note 24.1)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,206,370",
+            "1,774,188",
+            "41,644",
+            "352,818"
+          ],
+          "amounts": [
+            1206370,
+            1774188,
+            41644,
+            352818
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "8,205,883",
+            "8,141,729",
+            "24,556",
+            "457,558"
+          ],
+          "amounts": [
+            8205883,
+            8141729,
+            24556,
+            457558
+          ]
+        },
+        {
+          "label": "Bank overdraft (Note 27)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,749,817)",
+            "(3,289,949)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -2749817,
+            -3289949,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents in the statement of cash flows 24.1 Short term deposits with bank",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,456,066",
+            "4,851,780",
+            "24,556",
+            "457,558"
+          ],
+          "amounts": [
+            5456066,
+            4851780,
+            24556,
+            457558
+          ]
+        },
+        {
+          "label": "Fixed & other deposits",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,206,370",
+            "1,774,188",
+            "41,644",
+            "352,818"
+          ],
+          "amounts": [
+            1206370,
+            1774188,
+            41644,
+            352818
+          ]
+        },
+        {
+          "label": "25. STATED CAPITAL In thousands of rupees Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,206,370",
+            "1,774,188",
+            "41,644",
+            "352,818"
+          ],
+          "amounts": [
+            1206370,
+            1774188,
+            41644,
+            352818
+          ]
+        },
+        {
+          "label": "Issued and fully paid shares (In thousand rupees)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Issued ordinary shares as at 1st April",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,489,758",
+            "6,489,758",
+            "6,489,758",
+            "6,489,758"
+          ],
+          "amounts": [
+            6489758,
+            6489758,
+            6489758,
+            6489758
+          ]
+        },
+        {
+          "label": "Issued for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Issued ordinary shares as at 31st March No. of shares in issue (In thousands)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,489,758",
+            "6,489,758",
+            "6,489,758",
+            "6,489,758"
+          ],
+          "amounts": [
+            6489758,
+            6489758,
+            6489758,
+            6489758
+          ]
+        },
+        {
+          "label": "Issued ordinary shares as at 1st April",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "201,407",
+            "201,407",
+            "201,407",
+            "201,407"
+          ],
+          "amounts": [
+            201407,
+            201407,
+            201407,
+            201407
+          ]
+        },
+        {
+          "label": "Issued during the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Issued ordinary shares as at 31st March Fully paid ordinary shares carry one vote per share and carry a right to dividends. ordinary equally regard to Company’s residual assets.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "201,407",
+            "201,407",
+            "201,407",
+            "201,407"
+          ],
+          "amounts": [
+            201407,
+            201407,
+            201407,
+            201407
+          ]
+        },
+        {
+          "label": "Annual Report 2024 - 2025 C T Holdings PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "103"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            103
+          ]
+        },
+        {
+          "label": "26. RESERVES",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "In thousands of rupees Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Revaluation reserve (Note 26.1)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,513,361",
+            "6,488,805",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            6513361,
+            6488805,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Fair value reserve (Note 26.2)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "137,538",
+            "115,308",
+            "111,317",
+            "91,399"
+          ],
+          "amounts": [
+            137538,
+            115308,
+            111317,
+            91399
+          ]
+        },
+        {
+          "label": "26.1 Revaluation reserve The revaluation reserve arises on the revaluation of land as described in Note Distributions revaluation can be made where they are in accordance with the requirements of the articles and 26.2 Fair value reserve The fair value reserve represents the cumulative net change in the fair value of securities designated at through Other Comprehensive Income (FVOCI); and the cumulative net change in fair FVOCI assets are derecognised or reclassified. This amount is reduced by the amount of loss 27. INTEREST BEARING LOANS AND BORROWINGS In thousands of rupees Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,650,899",
+            "6,604,113",
+            "111,317",
+            "91,399"
+          ],
+          "amounts": [
+            6650899,
+            6604113,
+            111317,
+            91399
+          ]
+        },
+        {
+          "label": "Non-current liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Loans from banks",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "639,967",
+            "2,082,879",
+            "198,307",
+            "401,502"
+          ],
+          "amounts": [
+            639967,
+            2082879,
+            198307,
+            401502
+          ]
+        },
+        {
+          "label": "Finance lease liabilities (Note 27.1)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lease Liabilities (Note 14.2)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "21,837,293",
+            "23,331,419",
+            "28",
+            "57"
+          ],
+          "amounts": [
+            21837293,
+            23331419,
+            28,
+            57
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22,477,260",
+            "25,414,298",
+            "198,335",
+            "401,559"
+          ],
+          "amounts": [
+            22477260,
+            25414298,
+            198335,
+            401559
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Loans from banks",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "25,779,086",
+            "25,327,110",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            25779086,
+            25327110,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Finance lease liabilities (Note 27.1)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "1,997",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            1997,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Bank overdraft",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,749,817",
+            "3,289,949",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            2749817,
+            3289949,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lease Liabilities (Note 14.2)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,175,083",
+            "1,313,519",
+            "25",
+            "20"
+          ],
+          "amounts": [
+            1175083,
+            1313519,
+            25,
+            20
+          ]
+        },
+        {
+          "label": "As at 31 March 2025, the Group and the Company had no breaches of any covenants loan All and principal payments were made in accordance with the terms of the agreements.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "29,703,986",
+            "29,932,575",
+            "25",
+            "20"
+          ],
+          "amounts": [
+            29703986,
+            29932575,
+            25,
+            20
+          ]
+        },
+        {
+          "label": "104 C T Holdings PLC Report 2024 Notes to the Financial Statements ... Contd. Movement (Excluding bank overdraft) Company Rs. Rs. Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "At the beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "52,056,924",
+            "51,107,099",
+            "401,579",
+            "604,140"
+          ],
+          "amounts": [
+            52056924,
+            51107099,
+            401579,
+            604140
+          ]
+        },
+        {
+          "label": "Loans obtained",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "127,838,078",
+            "140,214,287",
+            "-",
+            ""
+          ],
+          "amounts": [
+            127838078,
+            140214287,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Accrued interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "18,807",
+            "458,618",
+            "-",
+            ""
+          ],
+          "amounts": [
+            18807,
+            458618,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Repayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(130,482,380)",
+            "(139,723,080)",
+            "(203,219)",
+            "(202,561)"
+          ],
+          "amounts": [
+            -130482380,
+            -139723080,
+            -203219,
+            -202561
+          ]
+        },
+        {
+          "label": "At the end of the year 27.1 Finance lease liabilities In thousands of rupees Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "49,431,429",
+            "52,056,924",
+            "198,360",
+            "401,579"
+          ],
+          "amounts": [
+            49431429,
+            52056924,
+            198360,
+            401579
+          ]
+        },
+        {
+          "label": "As at 1st April",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,997",
+            "4,727",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            1997,
+            4727,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Repayments during the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,997)",
+            "(2,730)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -1997,
+            -2730,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "As at 31st March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "1,997",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            1997,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Current portion of finance lease liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "1,997",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            1997,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Non-current portion of finance lease liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Net liability 27.2 Information about the Group’s exposure to risks is covered in Note 31.4. 27.3 Terms and repayment schedule Terms and conditions of outstanding loans are as follows :- Institution and facility Principal Amount Repayment terms & rate offered amount Outstanding Rs. ‘000 Rs. ‘000 Cargills (Ceylon) PLC Bank Overdrafts Commercial Bank of Ceylon PLC 200,000 - On demand, based monthly AWPLR+0.75% basis Deutsche Bank 45,000 - On demand, based rates basis Nations Trust Bank PLC 200,000 - On demand, based weekly basis - Short term loans Amana Bank PLC 1,175,000 1,175,000 1-12 months, based rates basis Bank of Ceylon 1,500,000 - 1-12 months, based rates basis Commercial Bank of Ceylon PLC 4,000,000 375,000 1-12 months, based rates basis Hatton National Bank PLC 9,000,000 - 1-4 months, based prevailing rates basis Nations Trust Bank PLC 4,800,000 4,000,000 1-3 months, based prevailing rates basis Sampath Bank PLC 1,800,000 1,800,000 1-4 months, based prevailing rates basis Seylan Bank PLC 2,000,000 - 1-4 months, based prevailing rates basis 7,350,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "1,997",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            1997,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Annual Report 2024 - 2025 C T Holdings PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "105"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            105
+          ]
+        },
+        {
+          "label": "Institution and facility Principal Amount Repayment terms & rate offered",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "amount Outstanding",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Rs. ‘000 Rs. ‘000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Long term loans",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Hatton National Bank PLC 1,000,000 1,016,715 Interest to be monthly and be basis",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "repaid in 20 installments Mn. No grace period for 1,016,715 8,366,715 Cargills Retail (Private) Limited Bank overdrafts Bank of Ceylon 115,000 - On demand, based monthly basis Cargills Bank PLC - 1,557,425 On demand, based rates secured Commercial Bank of Ceylon PLC 500,000 532,553 On demand, based monthly AWPLR+0.75% basis Deutsche Bank 500,000 - On demand, based rates basis National Development Bank 200,000 - On demand, based monthly AWPLR+1.25% basis 2,089,978 Short term loans Bank of Ceylon 500,000 - 1-12 months, based rates basis Commercial Bank of Ceylon PLC 4,000,000 1,875,000 1-12 months, based rates basis Deutsche Bank 1,650,000 1,650,000 1-3 months, based prevailing rates basis Hatton National Bank PLC 1,250,000 - 1-4 months, based prevailing rates basis Sampath Bank PLC 3,200,000 3,200,000 1-4 months, based prevailing rates basis Seylan Bank PLC 1,500,000 - 1-4 months, based prevailing rates basis Standard Chartered Bank 2,250,000 2,250,000 1-4 months, based prevailing rates basis 8,975,000 Long term loans Hatton National Bank PLC 250,000 250,636 Interest to be monthly and be basis repaid in 20 installments Mn. No grace period for repayment 250,636 11,315,614 Cargills Food & Beverage Limited Bank Overdrafts Cargills Bank PLC - 7,262 On demand, based rates secured Commercial Bank of Ceylon PLC 150,000 - On demand, based monthly AWPLR+0.75% basis 7,262 Short term loans Amana Bank PLC 325,000 50,000 1-12 months, based rates basis Hatton National Bank PLC 750,000 - 1-4 months, based prevailing rates basis 50,000 57,262",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "102 C T Holdings PLC Report 2024 Notes to the Financial Statements ... Contd. 23.2 Credit and market risks, and impairment losses Information about the Group’s exposure to credit, and impairment losses for trade other construction contracts in progress, is included in Note 31.5. 23.3 Movement in the provision for impaired / doubtful debts In thousands of rupees Company As at 31st March",
+          "",
+          "",
+          "Annual",
+          "- 2025"
+        ],
+        [
+          "As at 1st April",
+          "270,287",
+          "241,653",
+          "-",
+          "-"
+        ],
+        [
+          "Impairment losses / (reversals)",
+          "11,893",
+          "28,634",
+          "-",
+          "-"
+        ],
+        [
+          "As at 31st March 24. CASH AND CASH EQUIVALENTS In thousands of rupees Company",
+          "282,180",
+          "270,287",
+          "-",
+          "-"
+        ],
+        [
+          "Cash and bank balances",
+          "6,999,513",
+          "6,367,541",
+          "(17,088)",
+          "104,740"
+        ],
+        [
+          "Short term deposits with banks (Note 24.1)",
+          "1,206,370",
+          "1,774,188",
+          "41,644",
+          "352,818"
+        ],
+        [
+          "Cash and cash equivalents",
+          "8,205,883",
+          "8,141,729",
+          "24,556",
+          "457,558"
+        ],
+        [
+          "Bank overdraft (Note 27)",
+          "(2,749,817)",
+          "(3,289,949)",
+          "-",
+          "-"
+        ],
+        [
+          "Cash and cash equivalents in the statement of cash flows 24.1 Short term deposits with bank",
+          "5,456,066",
+          "4,851,780",
+          "24,556",
+          "457,558"
+        ],
+        [
+          "Fixed & other deposits",
+          "1,206,370",
+          "1,774,188",
+          "41,644",
+          "352,818"
+        ],
+        [
+          "25. STATED CAPITAL In thousands of rupees Company",
+          "1,206,370",
+          "1,774,188",
+          "41,644",
+          "352,818"
+        ],
+        [
+          "Issued and fully paid shares (In thousand rupees)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Issued ordinary shares as at 1st April",
+          "6,489,758",
+          "6,489,758",
+          "6,489,758",
+          "6,489,758"
+        ],
+        [
+          "Issued for the year",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Issued ordinary shares as at 31st March No. of shares in issue (In thousands)",
+          "6,489,758",
+          "6,489,758",
+          "6,489,758",
+          "6,489,758"
+        ],
+        [
+          "Issued ordinary shares as at 1st April",
+          "201,407",
+          "201,407",
+          "201,407",
+          "201,407"
+        ],
+        [
+          "Issued during the year",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Issued ordinary shares as at 31st March Fully paid ordinary shares carry one vote per share and carry a right to dividends. ordinary equally regard to Company’s residual assets.",
+          "201,407",
+          "201,407",
+          "201,407",
+          "201,407"
+        ],
+        [
+          "Annual Report 2024 - 2025 C T Holdings PLC",
+          "",
+          "",
+          "",
+          "103"
+        ],
+        [
+          "26. RESERVES",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "In thousands of rupees Company",
+          "Group",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Revaluation reserve (Note 26.1)",
+          "6,513,361",
+          "6,488,805",
+          "-",
+          "-"
+        ],
+        [
+          "Fair value reserve (Note 26.2)",
+          "137,538",
+          "115,308",
+          "111,317",
+          "91,399"
+        ],
+        [
+          "26.1 Revaluation reserve The revaluation reserve arises on the revaluation of land as described in Note Distributions revaluation can be made where they are in accordance with the requirements of the articles and 26.2 Fair value reserve The fair value reserve represents the cumulative net change in the fair value of securities designated at through Other Comprehensive Income (FVOCI); and the cumulative net change in fair FVOCI assets are derecognised or reclassified. This amount is reduced by the amount of loss 27. INTEREST BEARING LOANS AND BORROWINGS In thousands of rupees Company",
+          "6,650,899",
+          "6,604,113",
+          "111,317",
+          "91,399"
+        ],
+        [
+          "Non-current liabilities",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Loans from banks",
+          "639,967",
+          "2,082,879",
+          "198,307",
+          "401,502"
+        ],
+        [
+          "Finance lease liabilities (Note 27.1)",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Lease Liabilities (Note 14.2)",
+          "21,837,293",
+          "23,331,419",
+          "28",
+          "57"
+        ],
+        [
+          "",
+          "22,477,260",
+          "25,414,298",
+          "198,335",
+          "401,559"
+        ],
+        [
+          "Current liabilities",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Loans from banks",
+          "25,779,086",
+          "25,327,110",
+          "-",
+          "-"
+        ],
+        [
+          "Finance lease liabilities (Note 27.1)",
+          "-",
+          "1,997",
+          "-",
+          "-"
+        ],
+        [
+          "Bank overdraft",
+          "2,749,817",
+          "3,289,949",
+          "-",
+          "-"
+        ],
+        [
+          "Lease Liabilities (Note 14.2)",
+          "1,175,083",
+          "1,313,519",
+          "25",
+          "20"
+        ],
+        [
+          "As at 31 March 2025, the Group and the Company had no breaches of any covenants loan All and principal payments were made in accordance with the terms of the agreements.",
+          "29,703,986",
+          "29,932,575",
+          "25",
+          "20"
+        ],
+        [
+          "104 C T Holdings PLC Report 2024 Notes to the Financial Statements ... Contd. Movement (Excluding bank overdraft) Company  Rs. Rs. Rs. Rs.",
+          "",
+          "",
+          "Annual",
+          "- 2025"
+        ],
+        [
+          "At the beginning of the year",
+          "52,056,924",
+          "51,107,099",
+          "401,579",
+          "604,140"
+        ],
+        [
+          "Loans obtained",
+          "127,838,078",
+          "140,214,287",
+          "-",
+          ""
+        ],
+        [
+          "Accrued interest",
+          "18,807",
+          "458,618",
+          "-",
+          ""
+        ],
+        [
+          "Repayments",
+          "(130,482,380)",
+          "(139,723,080)",
+          "(203,219)",
+          "(202,561)"
+        ],
+        [
+          "At the end of the year 27.1 Finance lease liabilities In thousands of rupees Company",
+          "49,431,429",
+          "52,056,924",
+          "198,360",
+          "401,579"
+        ],
+        [
+          "As at 1st April",
+          "1,997",
+          "4,727",
+          "-",
+          "-"
+        ],
+        [
+          "Repayments during the year",
+          "(1,997)",
+          "(2,730)",
+          "-",
+          "-"
+        ],
+        [
+          "As at 31st March",
+          "-",
+          "1,997",
+          "-",
+          "-"
+        ],
+        [
+          "Current portion of finance lease liabilities",
+          "-",
+          "1,997",
+          "-",
+          "-"
+        ],
+        [
+          "Non-current portion of finance lease liabilities",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Net liability 27.2 Information about the Group’s exposure to risks is covered in Note 31.4. 27.3 Terms and repayment schedule Terms and conditions of outstanding loans are as follows :- Institution and facility Principal Amount Repayment terms & rate offered amount Outstanding Rs. ‘000 Rs. ‘000 Cargills (Ceylon) PLC Bank Overdrafts Commercial Bank of Ceylon PLC 200,000 - On demand, based monthly AWPLR+0.75% basis Deutsche Bank 45,000 - On demand, based rates basis Nations Trust Bank PLC 200,000 - On demand, based weekly basis - Short term loans Amana Bank PLC 1,175,000 1,175,000 1-12 months, based rates basis Bank of Ceylon 1,500,000 - 1-12 months, based rates basis Commercial Bank of Ceylon PLC 4,000,000 375,000 1-12 months, based rates basis Hatton National Bank PLC 9,000,000 - 1-4 months, based prevailing rates basis Nations Trust Bank PLC 4,800,000 4,000,000 1-3 months, based prevailing rates basis Sampath Bank PLC 1,800,000 1,800,000 1-4 months, based prevailing rates basis Seylan Bank PLC 2,000,000 - 1-4 months, based prevailing rates basis 7,350,000",
+          "-",
+          "1,997",
+          "-",
+          "-"
+        ],
+        [
+          "Annual Report 2024 - 2025 C T Holdings PLC",
+          "",
+          "",
+          "",
+          "105"
+        ],
+        [
+          "Institution and facility Principal Amount Repayment terms & rate offered",
+          "interest",
+          "",
+          "Security",
+          ""
+        ],
+        [
+          "amount Outstanding",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Rs. ‘000 Rs. ‘000",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Long term loans",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Hatton National Bank PLC 1,000,000 1,016,715 Interest to be monthly and be basis",
+          "serviced",
+          "capital to",
+          "Clean",
+          ""
+        ],
+        [
+          "repaid in 20 installments Mn. No grace period for 1,016,715 8,366,715 Cargills Retail (Private) Limited Bank overdrafts Bank of Ceylon 115,000 - On demand, based monthly basis Cargills Bank PLC - 1,557,425 On demand, based rates secured  Commercial Bank of Ceylon PLC 500,000 532,553 On demand, based monthly AWPLR+0.75% basis Deutsche Bank 500,000 - On demand, based rates basis National Development Bank 200,000 - On demand, based monthly AWPLR+1.25% basis 2,089,978 Short term loans Bank of Ceylon 500,000 - 1-12 months, based rates basis Commercial Bank of Ceylon PLC 4,000,000 1,875,000 1-12 months, based rates basis Deutsche Bank 1,650,000 1,650,000 1-3 months, based prevailing rates basis Hatton National Bank PLC 1,250,000 - 1-4 months, based prevailing rates basis Sampath Bank PLC 3,200,000 3,200,000 1-4 months, based prevailing rates basis Seylan Bank PLC 1,500,000 - 1-4 months, based prevailing rates basis Standard Chartered Bank 2,250,000 2,250,000 1-4 months, based prevailing rates basis 8,975,000 Long term loans Hatton National Bank PLC 250,000 250,636 Interest to be monthly and be basis repaid in 20 installments Mn. No grace period for repayment 250,636 11,315,614 Cargills Food & Beverage Limited Bank Overdrafts Cargills Bank PLC - 7,262 On demand, based rates secured  Commercial Bank of Ceylon PLC 150,000 - On demand, based monthly AWPLR+0.75% basis 7,262 Short term loans Amana Bank PLC 325,000 50,000 1-12 months, based rates basis Hatton National Bank PLC 750,000 - 1-4 months, based prevailing rates basis 50,000 57,262",
+          "quarterly",
+          "of 400.0",
+          "",
+          ""
+        ]
+      ]
+    }
+  }
+}

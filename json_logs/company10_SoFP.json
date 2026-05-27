@@ -1,0 +1,6785 @@
+{
+  "company": "company10",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company10\\Annual\\48277_2025.pdf",
+  "extracted_at": "2026-05-18T10:19:32",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 182,
+      "has_note_col": true,
+      "column_headers": [
+        "Group 2025 ’000",
+        "2024 ’000",
+        "2025 ’000",
+        "2024 ’000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "For the year ended 31st March",
+          "note_col": "Notes",
+          "amt_cols": [
+            "Group 2025 ’000",
+            "2024 ’000",
+            "2025 ’000",
+            "2024 ’000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "For the year ended 31st March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024",
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024,
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Rs. Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Revenue",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "48,741,023",
+            "47,258,528",
+            "1,386,364",
+            "1,231,849"
+          ],
+          "amounts": [
+            48741023,
+            47258528,
+            1386364,
+            1231849
+          ]
+        },
+        {
+          "label": "Revenue taxes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,236,485)",
+            "(1,055,618)",
+            "(28,128)",
+            "(37,657)"
+          ],
+          "amounts": [
+            -1236485,
+            -1055618,
+            -28128,
+            -37657
+          ]
+        },
+        {
+          "label": "Net revenue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "47,504,538",
+            "46,202,910",
+            "1,358,236",
+            "1,194,192"
+          ],
+          "amounts": [
+            47504538,
+            46202910,
+            1358236,
+            1194192
+          ]
+        },
+        {
+          "label": "Other income",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "73,409",
+            "19,110",
+            "164,650",
+            "142,488"
+          ],
+          "amounts": [
+            73409,
+            19110,
+            164650,
+            142488
+          ]
+        },
+        {
+          "label": "Staff costs",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(7,676,644)",
+            "(7,467,911)",
+            "(265,141)",
+            "(256,374)"
+          ],
+          "amounts": [
+            -7676644,
+            -7467911,
+            -265141,
+            -256374
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(3,928,122)",
+            "(3,797,247)",
+            "(73,196)",
+            "(63,038)"
+          ],
+          "amounts": [
+            -3928122,
+            -3797247,
+            -73196,
+            -63038
+          ]
+        },
+        {
+          "label": "Amortisation and impairment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,335,614)",
+            "(1,328,625)",
+            "(17,510)",
+            "(67,820)"
+          ],
+          "amounts": [
+            -1335614,
+            -1328625,
+            -17510,
+            -67820
+          ]
+        },
+        {
+          "label": "Other operating expenses - direct",
+          "is_section_header": false,
+          "note": "9",
+          "amounts_raw": [
+            "(11,811,417)",
+            "(11,831,086)",
+            "(384,559)",
+            "(398,923)"
+          ],
+          "amounts": [
+            -11811417,
+            -11831086,
+            -384559,
+            -398923
+          ]
+        },
+        {
+          "label": "Other operating expenses - indirect",
+          "is_section_header": false,
+          "note": "10",
+          "amounts_raw": [
+            "(13,998,925)",
+            "(13,486,890)",
+            "(592,574)",
+            "(699,303)"
+          ],
+          "amounts": [
+            -13998925,
+            -13486890,
+            -592574,
+            -699303
+          ]
+        },
+        {
+          "label": "Profit/(loss) from operations",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "8,827,225",
+            "8,310,261",
+            "189,906",
+            "(148,778)"
+          ],
+          "amounts": [
+            8827225,
+            8310261,
+            189906,
+            -148778
+          ]
+        },
+        {
+          "label": "Finance income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "402,121",
+            "398,872",
+            "127,982",
+            "134,912"
+          ],
+          "amounts": [
+            402121,
+            398872,
+            127982,
+            134912
+          ]
+        },
+        {
+          "label": "Finance expenses",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(4,323,130)",
+            "(5,666,668)",
+            "(256,138)",
+            "(363,326)"
+          ],
+          "amounts": [
+            -4323130,
+            -5666668,
+            -256138,
+            -363326
+          ]
+        },
+        {
+          "label": "Net financing expense",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "(3,921,009)",
+            "(5,267,796)",
+            "(128,156)",
+            "(228,414)"
+          ],
+          "amounts": [
+            -3921009,
+            -5267796,
+            -128156,
+            -228414
+          ]
+        },
+        {
+          "label": "Share of profit/(loss) of equity accounted investees (net of tax)",
+          "is_section_header": false,
+          "note": "20",
+          "amounts_raw": [
+            "23,344",
+            "(36,314)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            23344,
+            -36314,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit/(loss) before taxation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,929,560",
+            "3,006,151",
+            "61,750",
+            "(377,192)"
+          ],
+          "amounts": [
+            4929560,
+            3006151,
+            61750,
+            -377192
+          ]
+        },
+        {
+          "label": "Income tax (expense)/reversal",
+          "is_section_header": false,
+          "note": "13",
+          "amounts_raw": [
+            "(1,341,098)",
+            "(1,141,464)",
+            "(34,589)",
+            "73,370"
+          ],
+          "amounts": [
+            -1341098,
+            -1141464,
+            -34589,
+            73370
+          ]
+        },
+        {
+          "label": "Profit/(loss) for the year Attributable to:",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,588,462",
+            "1,864,687",
+            "27,161",
+            "(303,822)"
+          ],
+          "amounts": [
+            3588462,
+            1864687,
+            27161,
+            -303822
+          ]
+        },
+        {
+          "label": "Equity holders of the parent company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,290,361",
+            "1,140,112",
+            "27,161",
+            "(303,822)"
+          ],
+          "amounts": [
+            2290361,
+            1140112,
+            27161,
+            -303822
+          ]
+        },
+        {
+          "label": "Non - controlling interests",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,298,101",
+            "724,575",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            1298101,
+            724575,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit/(loss) for the year Earnings/(loss) per ordinary share - Basic/Diluted (Rs.) Figures in brackets indicate deductions. The notes on pages 188 to 282 form an integral part of these statements. Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,588,462",
+            "1,864,687",
+            "27,161",
+            "(303,822)"
+          ],
+          "amounts": [
+            3588462,
+            1864687,
+            27161,
+            -303822
+          ]
+        },
+        {
+          "label": "For the year ended 31st March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024",
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024,
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Profit/(loss) for the year Other comprehensive income/(loss) Items that will never be reclassified to profit or loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,588,462",
+            "1,864,687",
+            "27,161",
+            "(303,822)"
+          ],
+          "amounts": [
+            3588462,
+            1864687,
+            27161,
+            -303822
+          ]
+        },
+        {
+          "label": "Share of other comprehensive income of equity accounted investees (net of tax)",
+          "is_section_header": false,
+          "note": "20",
+          "amounts_raw": [
+            "24,511",
+            "6,459",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            24511,
+            6459,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Actuarial losses on defined benefit obligations",
+          "is_section_header": false,
+          "note": "35.4",
+          "amounts_raw": [
+            "(25,051)",
+            "(19,927)",
+            "(11,578)",
+            "(6,752)"
+          ],
+          "amounts": [
+            -25051,
+            -19927,
+            -11578,
+            -6752
+          ]
+        },
+        {
+          "label": "Income tax on other comprehensive income",
+          "is_section_header": false,
+          "note": "13.8",
+          "amounts_raw": [
+            "(7,984)",
+            "6,405",
+            "3,473",
+            "2,026"
+          ],
+          "amounts": [
+            -7984,
+            6405,
+            3473,
+            2026
+          ]
+        },
+        {
+          "label": "Items that are or may be reclassified to profit or loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(8,524)",
+            "(7,063)",
+            "(8,105)",
+            "(4,726)"
+          ],
+          "amounts": [
+            -8524,
+            -7063,
+            -8105,
+            -4726
+          ]
+        },
+        {
+          "label": "Foreign currency translation differences of foreign operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(494,289)",
+            "(2,626,011)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -494289,
+            -2626011,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Net movement in cashflow hedge",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "679,261",
+            "1,501,550",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            679261,
+            1501550,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "184,972",
+            "(1,124,461)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            184972,
+            -1124461,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other comprehensive income/(loss) for the year net of tax",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "176,448",
+            "(1,131,524)",
+            "(8,105)",
+            "(4,726)"
+          ],
+          "amounts": [
+            176448,
+            -1131524,
+            -8105,
+            -4726
+          ]
+        },
+        {
+          "label": "Total comprehensive income/(loss) for the year net of tax Attributable to:",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,764,910",
+            "733,163",
+            "19,056",
+            "(308,548)"
+          ],
+          "amounts": [
+            3764910,
+            733163,
+            19056,
+            -308548
+          ]
+        },
+        {
+          "label": "Equity holders of the parent company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,392,392",
+            "333,676",
+            "19,056",
+            "(308,548)"
+          ],
+          "amounts": [
+            2392392,
+            333676,
+            19056,
+            -308548
+          ]
+        },
+        {
+          "label": "Non - controlling interests",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,372,518",
+            "399,487",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            1372518,
+            399487,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total comprehensive income/(loss) for the year net of tax Figures in brackets indicate deductions. The notes on pages 188 to 282 form an integral part of these statements. Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,764,910",
+            "733,163",
+            "19,056",
+            "(308,548)"
+          ],
+          "amounts": [
+            3764910,
+            733163,
+            19056,
+            -308548
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Company",
+          "",
+          "Group",
+          "",
+          "",
+          ""
+        ],
+        [
+          "For the year ended 31st March",
+          "",
+          "2025",
+          "2024",
+          "2025",
+          "2024"
+        ],
+        [
+          "Rs. Rs. Rs.",
+          "Notes",
+          "’000",
+          "Rs. ’000",
+          "’000",
+          "’000"
+        ],
+        [
+          "Revenue",
+          "7",
+          "48,741,023",
+          "47,258,528",
+          "1,386,364",
+          "1,231,849"
+        ],
+        [
+          "Revenue taxes",
+          "",
+          "(1,236,485)",
+          "(1,055,618)",
+          "(28,128)",
+          "(37,657)"
+        ],
+        [
+          "Net revenue",
+          "",
+          "47,504,538",
+          "46,202,910",
+          "1,358,236",
+          "1,194,192"
+        ],
+        [
+          "Other income",
+          "8",
+          "73,409",
+          "19,110",
+          "164,650",
+          "142,488"
+        ],
+        [
+          "Staff costs",
+          "",
+          "(7,676,644)",
+          "(7,467,911)",
+          "(265,141)",
+          "(256,374)"
+        ],
+        [
+          "Depreciation",
+          "",
+          "(3,928,122)",
+          "(3,797,247)",
+          "(73,196)",
+          "(63,038)"
+        ],
+        [
+          "Amortisation and impairment",
+          "",
+          "(1,335,614)",
+          "(1,328,625)",
+          "(17,510)",
+          "(67,820)"
+        ],
+        [
+          "Other operating expenses - direct",
+          "9",
+          "(11,811,417)",
+          "(11,831,086)",
+          "(384,559)",
+          "(398,923)"
+        ],
+        [
+          "Other operating expenses - indirect",
+          "10",
+          "(13,998,925)",
+          "(13,486,890)",
+          "(592,574)",
+          "(699,303)"
+        ],
+        [
+          "Profit/(loss) from operations",
+          "11",
+          "8,827,225",
+          "8,310,261",
+          "189,906",
+          "(148,778)"
+        ],
+        [
+          "Finance income",
+          "",
+          "402,121",
+          "398,872",
+          "127,982",
+          "134,912"
+        ],
+        [
+          "Finance expenses",
+          "",
+          "(4,323,130)",
+          "(5,666,668)",
+          "(256,138)",
+          "(363,326)"
+        ],
+        [
+          "Net financing expense",
+          "12",
+          "(3,921,009)",
+          "(5,267,796)",
+          "(128,156)",
+          "(228,414)"
+        ],
+        [
+          "Share of profit/(loss) of equity accounted investees (net of tax)",
+          "20",
+          "23,344",
+          "(36,314)",
+          "-",
+          "-"
+        ],
+        [
+          "Profit/(loss) before taxation",
+          "",
+          "4,929,560",
+          "3,006,151",
+          "61,750",
+          "(377,192)"
+        ],
+        [
+          "Income tax (expense)/reversal",
+          "13",
+          "(1,341,098)",
+          "(1,141,464)",
+          "(34,589)",
+          "73,370"
+        ],
+        [
+          "Profit/(loss) for the year Attributable to:",
+          "",
+          "3,588,462",
+          "1,864,687",
+          "27,161",
+          "(303,822)"
+        ],
+        [
+          "Equity holders of the parent company",
+          "",
+          "2,290,361",
+          "1,140,112",
+          "27,161",
+          "(303,822)"
+        ],
+        [
+          "Non - controlling interests",
+          "",
+          "1,298,101",
+          "724,575",
+          "-",
+          "-"
+        ],
+        [
+          "Profit/(loss) for the year Earnings/(loss) per ordinary share - Basic/Diluted (Rs.) Figures in brackets indicate deductions. The notes on pages 188 to 282 form an integral part of these statements.  Aitken Spence Hotel Holdings PLC Report",
+          "",
+          "3,588,462",
+          "1,864,687",
+          "27,161",
+          "(303,822)"
+        ],
+        [
+          "For the year ended 31st March",
+          "",
+          "2025",
+          "2024",
+          "2025",
+          "2024"
+        ],
+        [
+          "Profit/(loss) for the year Other comprehensive income/(loss) Items that will never be reclassified to profit or loss",
+          "",
+          "3,588,462",
+          "1,864,687",
+          "27,161",
+          "(303,822)"
+        ],
+        [
+          "Share of other comprehensive income of equity accounted investees (net of tax)",
+          "20",
+          "24,511",
+          "6,459",
+          "-",
+          "-"
+        ],
+        [
+          "Actuarial losses on defined benefit obligations",
+          "35.4",
+          "(25,051)",
+          "(19,927)",
+          "(11,578)",
+          "(6,752)"
+        ],
+        [
+          "Income tax on other comprehensive income",
+          "13.8",
+          "(7,984)",
+          "6,405",
+          "3,473",
+          "2,026"
+        ],
+        [
+          "Items that are or may be reclassified to profit or loss",
+          "",
+          "(8,524)",
+          "(7,063)",
+          "(8,105)",
+          "(4,726)"
+        ],
+        [
+          "Foreign currency translation differences of foreign operations",
+          "",
+          "(494,289)",
+          "(2,626,011)",
+          "-",
+          "-"
+        ],
+        [
+          "Net movement in cashflow hedge",
+          "42.5.1.3",
+          "679,261",
+          "1,501,550",
+          "-",
+          "-"
+        ],
+        [
+          "",
+          "",
+          "184,972",
+          "(1,124,461)",
+          "-",
+          "-"
+        ],
+        [
+          "Other comprehensive income/(loss) for the year net of tax",
+          "",
+          "176,448",
+          "(1,131,524)",
+          "(8,105)",
+          "(4,726)"
+        ],
+        [
+          "Total comprehensive income/(loss) for the year net of tax Attributable to:",
+          "",
+          "3,764,910",
+          "733,163",
+          "19,056",
+          "(308,548)"
+        ],
+        [
+          "Equity holders of the parent company",
+          "",
+          "2,392,392",
+          "333,676",
+          "19,056",
+          "(308,548)"
+        ],
+        [
+          "Non - controlling interests",
+          "",
+          "1,372,518",
+          "399,487",
+          "-",
+          "-"
+        ],
+        [
+          "Total comprehensive income/(loss) for the year net of tax Figures in brackets indicate deductions. The notes on pages 188 to 282 form an integral part of these statements.  Aitken Spence Hotel Holdings PLC Report",
+          "",
+          "3,764,910",
+          "733,163",
+          "19,056",
+          "(308,548)"
+        ]
+      ]
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income",
+      "page_1based": 204,
+      "has_note_col": false,
+      "column_headers": [
+        "The The from all",
+        "externally recognises all benefit plans in to defined"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "liability 3.7.1.2. Contribution Retirement Scheme-Maldives actuarial comprehensive expenses",
+          "note_col": null,
+          "amt_cols": [
+            "The The from all",
+            "externally recognises all benefit plans in to defined"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "3.7.1.2. Contribution to Retirement Pension Scheme-Maldives liability is not funded.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "All Maldivian employees of the Group are members of the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Group actuarial gains and losses arising",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Retirement Pension Scheme established in the Maldives.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "defined benefit other comprehensive income and",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "The Group contributes 7% of the pensionable wage of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "expenses related benefit plans in staff cost in",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "such employees to this scheme. Employers’ obligations for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "income statement.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "contributions to pension scheme is recognised as an employee",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "benefit expense in income statement in the periods during Defined Benefit Oman which services are rendered by employees. Gratuity is provided labour law of Sultanate of Oman 3.7.1.3. Employee Provident Fund - India to expatriate upon termination/completion of employment which computed based on one month’s basic Group companies in India contribute a sum of 12% of the salary for each year employment. basic salaries of local employees and 12% of gross salary for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "foreign employees as provident fund benefits to the Employee Defined Benefit Provident Organisation of India. liability is provided employees in India based on a 3.7.1.4. Defined contribution Fund - Oman valuation made by independent actuary using unit credit method for payment at the rate of 15/26 times the Group companies in Oman contribute a sum of 13.5% of monthly qualifying each year of service. the Omani employee’s gross salary and 1% from expat’s employee’s gross salary w.e.f. August 2024 in accordance Short-term benefits with Social Security Insurance Law. Contributions to a defined Short-term employee obligations are measured on an contribution retirement plan are recognised as an expense in undiscounted basis expensed as the related service is the statement of comprehensive income as incurred. provided. A liability is recognised for the amount expected to be 3.7.2. Defined Benefit Plans – retiring gratuities under bonus if the Group has a present or constructive to pay this amount as a result A defined benefit plan is a post-employment benefit plan other past service employee and the obligation than a defined contribution plan. be measured 3.7.2.1 Retiring Gratuity – Sri Lanka Revenue and The liability recognised in the statement of financial position Group revenue sales to customers outside the in respect of defined benefit plans is the present value of the Group and excludes added tax. defined benefit obligation at the reporting date. The defined benefit obligation is calculated annually using the Projected SLFRS 15- contracts with Customers Unit Credit method. The present value of the defined benefit SLFRS 15 comprehensive framework for obligation is determined by discounting the estimated future determining how when revenue is recognised. cash flows using interest rates that are denominated in the Revenue is the consideration specified in a currency in which the benefits will be paid, and that have terms contract with a Under SLFRS 15, the Group revenue of maturity approximating to the terms of the liability. recognise when a obtains control of the goods or The defined benefit plan is valued by a professionally qualified services – timing of the transfer of control – at external actuary. point in time or requires judgement. Provision has been made in the financial statements for retiring Under SLFRS 15, recognised to the extent that it gratuities from the first year of service for all employees. highly probable significant reversal in the amount of However, according to the Payment of Gratuity Act No. 12 of cumulative revenue will not occur. 1983, the liability for payment to an employee arises only after following are used for the purpose of the completion of 5 years continued service. recognition of When the benefits of a plan are changed or when a plan Apartment recognised for the rooms occupied is curtailed, the resulting change in benefit that related to on a daily basis. revenues are recognised on an past service or the gain or loss on curtailment is recognised accrual basis time of the duration of the stay of immediately in profit or loss. The Group recognises gains and the customer matched with the related expenditure losses on the settlement of defined benefit plans when the where they simultaneously receive and consume the settlement occurs. benefits of the rendered. Aitken Spence Hotel Holdings PLC Annual Report 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "3.7.1.2. Contribution to Retirement Pension Scheme-Maldives liability is not funded.",
+          "The",
+          "externally"
+        ],
+        [
+          "All Maldivian employees of the Group are members of the",
+          "",
+          ""
+        ],
+        [
+          "Group actuarial gains and losses arising",
+          "The",
+          "recognises all"
+        ],
+        [
+          "Retirement Pension Scheme established in the Maldives.",
+          "",
+          ""
+        ],
+        [
+          "defined benefit other comprehensive income and",
+          "from",
+          "plans in"
+        ],
+        [
+          "The Group contributes 7% of the pensionable wage of",
+          "",
+          ""
+        ],
+        [
+          "expenses related benefit plans in staff cost in",
+          "all",
+          "to defined"
+        ],
+        [
+          "such employees to this scheme. Employers’ obligations for",
+          "",
+          ""
+        ],
+        [
+          "income statement.",
+          "",
+          ""
+        ],
+        [
+          "contributions to pension scheme is recognised as an employee",
+          "",
+          ""
+        ],
+        [
+          "benefit expense in income statement in the periods during Defined Benefit Oman which services are rendered by employees. Gratuity is provided labour law of Sultanate of Oman 3.7.1.3. Employee Provident Fund - India to expatriate upon termination/completion of employment which computed based on one month’s basic Group companies in India contribute a sum of 12% of the salary for each year employment. basic salaries of local employees and 12% of gross salary for",
+          "3.7.2.2.",
+          "Plans –"
+        ],
+        [
+          "foreign employees as provident fund benefits to the Employee Defined Benefit Provident Organisation of India. liability is provided employees in India based on a 3.7.1.4. Defined contribution Fund - Oman valuation made by independent actuary using unit credit method for payment at the rate of 15/26 times the Group companies in Oman contribute a sum of 13.5% of monthly qualifying each year of service. the Omani employee’s gross salary and 1% from expat’s employee’s gross salary w.e.f. August 2024 in accordance Short-term benefits with Social Security Insurance Law. Contributions to a defined Short-term employee obligations are measured on an contribution retirement plan are recognised as an expense in undiscounted basis expensed as the related service is the statement of comprehensive income as incurred. provided. A liability is recognised for the amount expected to be 3.7.2. Defined Benefit Plans – retiring gratuities under bonus if the Group has a present or constructive to pay this amount as a result A defined benefit plan is a post-employment benefit plan other past service employee and the obligation than a defined contribution plan. be measured 3.7.2.1 Retiring Gratuity – Sri Lanka Revenue and The liability recognised in the statement of financial position Group revenue sales to customers outside the in respect of defined benefit plans is the present value of the Group and excludes added tax. defined benefit obligation at the reporting date. The defined benefit obligation is calculated annually using the Projected SLFRS 15- contracts with Customers Unit Credit method. The present value of the defined benefit SLFRS 15 comprehensive framework for obligation is determined by discounting the estimated future determining how when revenue is recognised. cash flows using interest rates that are denominated in the Revenue is the consideration specified in a currency in which the benefits will be paid, and that have terms contract with a Under SLFRS 15, the Group revenue of maturity approximating to the terms of the liability. recognise when a obtains control of the goods or The defined benefit plan is valued by a professionally qualified services – timing of the transfer of control – at external actuary. point in time or requires judgement. Provision has been made in the financial statements for retiring Under SLFRS 15, recognised to the extent that it gratuities from the first year of service for all employees. highly probable significant reversal in the amount of However, according to the Payment of Gratuity Act No. 12 of cumulative revenue will not occur. 1983, the liability for payment to an employee arises only after following are used for the purpose of the completion of 5 years continued service. recognition of When the benefits of a plan are changed or when a plan Apartment recognised for the rooms occupied is curtailed, the resulting change in benefit that related to on a daily basis. revenues are recognised on an past service or the gain or loss on curtailment is recognised accrual basis time of the duration of the stay of immediately in profit or loss. The Group recognises gains and the customer matched with the related expenditure losses on the settlement of defined benefit plans when the where they simultaneously receive and consume the settlement occurs. benefits of the rendered.  Aitken Spence Hotel Holdings PLC Annual Report 2024/25",
+          "3.7.2.3.",
+          "Plans – India"
+        ]
+      ]
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 184,
+      "has_note_col": true,
+      "column_headers": [
+        "Group",
+        "Col 2",
+        "Col 3",
+        "Col 4"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "",
+          "note_col": "",
+          "amt_cols": [
+            "Group",
+            "Col 2",
+            "Col 3",
+            "Col 4"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Group Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "ASSETS",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Non - current assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Property, plant and equipment",
+          "is_section_header": false,
+          "note": "16",
+          "amounts_raw": [
+            "62,949,004",
+            "66,183,428",
+            "2,059,100",
+            "1,911,214"
+          ],
+          "amounts": [
+            62949004,
+            66183428,
+            2059100,
+            1911214
+          ]
+        },
+        {
+          "label": "Right-of-use assets",
+          "is_section_header": false,
+          "note": "17",
+          "amounts_raw": [
+            "12,877,703",
+            "14,282,682",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            12877703,
+            14282682,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Intangible assets",
+          "is_section_header": false,
+          "note": "18",
+          "amounts_raw": [
+            "709,092",
+            "804,588",
+            "2,359",
+            "-"
+          ],
+          "amounts": [
+            709092,
+            804588,
+            2359,
+            null
+          ]
+        },
+        {
+          "label": "Investment in subsidiaries",
+          "is_section_header": false,
+          "note": "19",
+          "amounts_raw": [
+            "-",
+            "-",
+            "7,403,043",
+            "7,418,461"
+          ],
+          "amounts": [
+            null,
+            null,
+            7403043,
+            7418461
+          ]
+        },
+        {
+          "label": "Investment in equity accounted investees",
+          "is_section_header": false,
+          "note": "20",
+          "amounts_raw": [
+            "111,040",
+            "63,185",
+            "992,673",
+            "992,673"
+          ],
+          "amounts": [
+            111040,
+            63185,
+            992673,
+            992673
+          ]
+        },
+        {
+          "label": "Other financial assets",
+          "is_section_header": false,
+          "note": "21",
+          "amounts_raw": [
+            "972,346",
+            "975,778",
+            "725,524",
+            "725,524"
+          ],
+          "amounts": [
+            972346,
+            975778,
+            725524,
+            725524
+          ]
+        },
+        {
+          "label": "Deferred tax assets",
+          "is_section_header": false,
+          "note": "22",
+          "amounts_raw": [
+            "379,087",
+            "359,966",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            379087,
+            359966,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "77,998,272",
+            "82,669,627",
+            "11,182,699",
+            "11,047,872"
+          ],
+          "amounts": [
+            77998272,
+            82669627,
+            11182699,
+            11047872
+          ]
+        },
+        {
+          "label": "Current assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Inventories",
+          "is_section_header": false,
+          "note": "23",
+          "amounts_raw": [
+            "1,494,129",
+            "1,426,110",
+            "33,821",
+            "40,408"
+          ],
+          "amounts": [
+            1494129,
+            1426110,
+            33821,
+            40408
+          ]
+        },
+        {
+          "label": "Trade and other receivables",
+          "is_section_header": false,
+          "note": "24",
+          "amounts_raw": [
+            "3,533,366",
+            "3,315,811",
+            "134,209",
+            "140,154"
+          ],
+          "amounts": [
+            3533366,
+            3315811,
+            134209,
+            140154
+          ]
+        },
+        {
+          "label": "Amounts due from holding company",
+          "is_section_header": false,
+          "note": "25",
+          "amounts_raw": [
+            "1,547,373",
+            "1,068,116",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            1547373,
+            1068116,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Amounts due from parent's group entities",
+          "is_section_header": false,
+          "note": "26",
+          "amounts_raw": [
+            "1,179,532",
+            "1,386,708",
+            "1,229,699",
+            "1,366,866"
+          ],
+          "amounts": [
+            1179532,
+            1386708,
+            1229699,
+            1366866
+          ]
+        },
+        {
+          "label": "Deposits and prepayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "772,877",
+            "881,417",
+            "8,578",
+            "21,992"
+          ],
+          "amounts": [
+            772877,
+            881417,
+            8578,
+            21992
+          ]
+        },
+        {
+          "label": "Current tax receivable",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "14,864",
+            "14,895",
+            "4,090",
+            "3,890"
+          ],
+          "amounts": [
+            14864,
+            14895,
+            4090,
+            3890
+          ]
+        },
+        {
+          "label": "Other financial assets",
+          "is_section_header": false,
+          "note": "27",
+          "amounts_raw": [
+            "5,462,605",
+            "4,029,660",
+            "256,191",
+            "260,371"
+          ],
+          "amounts": [
+            5462605,
+            4029660,
+            256191,
+            260371
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents",
+          "is_section_header": false,
+          "note": "28",
+          "amounts_raw": [
+            "4,096,583",
+            "2,297,233",
+            "75,302",
+            "147,562"
+          ],
+          "amounts": [
+            4096583,
+            2297233,
+            75302,
+            147562
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "18,101,329",
+            "14,419,950",
+            "1,741,890",
+            "1,981,243"
+          ],
+          "amounts": [
+            18101329,
+            14419950,
+            1741890,
+            1981243
+          ]
+        },
+        {
+          "label": "Assets classified as held for sale",
+          "is_section_header": false,
+          "note": "29",
+          "amounts_raw": [
+            "36,112",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            36112,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "96,135,713",
+            "97,089,577",
+            "12,924,589",
+            "13,029,115"
+          ],
+          "amounts": [
+            96135713,
+            97089577,
+            12924589,
+            13029115
+          ]
+        },
+        {
+          "label": "EQUITY AND LIABILITIES",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total equity attributable to equity holders of the company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated capital",
+          "is_section_header": false,
+          "note": "30",
+          "amounts_raw": [
+            "3,554,587",
+            "3,554,587",
+            "3,554,587",
+            "3,554,587"
+          ],
+          "amounts": [
+            3554587,
+            3554587,
+            3554587,
+            3554587
+          ]
+        },
+        {
+          "label": "Reserves",
+          "is_section_header": false,
+          "note": "31",
+          "amounts_raw": [
+            "9,633,125",
+            "9,515,479",
+            "689,177",
+            "689,177"
+          ],
+          "amounts": [
+            9633125,
+            9515479,
+            689177,
+            689177
+          ]
+        },
+        {
+          "label": "Retained earnings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,549,912",
+            "8,290,016",
+            "5,882,962",
+            "5,878,756"
+          ],
+          "amounts": [
+            10549912,
+            8290016,
+            5882962,
+            5878756
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "23,737,624",
+            "21,360,082",
+            "10,126,726",
+            "10,122,520"
+          ],
+          "amounts": [
+            23737624,
+            21360082,
+            10126726,
+            10122520
+          ]
+        },
+        {
+          "label": "Non - controlling interests",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,725,685",
+            "9,504,610",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            10725685,
+            9504610,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total equity Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "34,463,309",
+            "30,864,692",
+            "10,126,726",
+            "10,122,520"
+          ],
+          "amounts": [
+            34463309,
+            30864692,
+            10126726,
+            10122520
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Group Company",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "ASSETS",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Non - current assets",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Property, plant and equipment",
+          "16",
+          "62,949,004",
+          "66,183,428",
+          "2,059,100",
+          "1,911,214"
+        ],
+        [
+          "Right-of-use assets",
+          "17",
+          "12,877,703",
+          "14,282,682",
+          "-",
+          "-"
+        ],
+        [
+          "Intangible assets",
+          "18",
+          "709,092",
+          "804,588",
+          "2,359",
+          "-"
+        ],
+        [
+          "Investment in subsidiaries",
+          "19",
+          "-",
+          "-",
+          "7,403,043",
+          "7,418,461"
+        ],
+        [
+          "Investment in equity accounted investees",
+          "20",
+          "111,040",
+          "63,185",
+          "992,673",
+          "992,673"
+        ],
+        [
+          "Other financial assets",
+          "21",
+          "972,346",
+          "975,778",
+          "725,524",
+          "725,524"
+        ],
+        [
+          "Deferred tax assets",
+          "22",
+          "379,087",
+          "359,966",
+          "-",
+          "-"
+        ],
+        [
+          "",
+          "",
+          "77,998,272",
+          "82,669,627",
+          "11,182,699",
+          "11,047,872"
+        ],
+        [
+          "Current assets",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Inventories",
+          "23",
+          "1,494,129",
+          "1,426,110",
+          "33,821",
+          "40,408"
+        ],
+        [
+          "Trade and other receivables",
+          "24",
+          "3,533,366",
+          "3,315,811",
+          "134,209",
+          "140,154"
+        ],
+        [
+          "Amounts due from holding company",
+          "25",
+          "1,547,373",
+          "1,068,116",
+          "-",
+          "-"
+        ],
+        [
+          "Amounts due from parent's group entities",
+          "26",
+          "1,179,532",
+          "1,386,708",
+          "1,229,699",
+          "1,366,866"
+        ],
+        [
+          "Deposits and prepayments",
+          "",
+          "772,877",
+          "881,417",
+          "8,578",
+          "21,992"
+        ],
+        [
+          "Current tax receivable",
+          "",
+          "14,864",
+          "14,895",
+          "4,090",
+          "3,890"
+        ],
+        [
+          "Other financial assets",
+          "27",
+          "5,462,605",
+          "4,029,660",
+          "256,191",
+          "260,371"
+        ],
+        [
+          "Cash and cash equivalents",
+          "28",
+          "4,096,583",
+          "2,297,233",
+          "75,302",
+          "147,562"
+        ],
+        [
+          "",
+          "",
+          "18,101,329",
+          "14,419,950",
+          "1,741,890",
+          "1,981,243"
+        ],
+        [
+          "Assets classified as held for sale",
+          "29",
+          "36,112",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Total assets",
+          "",
+          "96,135,713",
+          "97,089,577",
+          "12,924,589",
+          "13,029,115"
+        ],
+        [
+          "EQUITY AND LIABILITIES",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Total equity attributable to equity holders of the company",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Stated capital",
+          "30",
+          "3,554,587",
+          "3,554,587",
+          "3,554,587",
+          "3,554,587"
+        ],
+        [
+          "Reserves",
+          "31",
+          "9,633,125",
+          "9,515,479",
+          "689,177",
+          "689,177"
+        ],
+        [
+          "Retained earnings",
+          "",
+          "10,549,912",
+          "8,290,016",
+          "5,882,962",
+          "5,878,756"
+        ],
+        [
+          "",
+          "",
+          "23,737,624",
+          "21,360,082",
+          "10,126,726",
+          "10,122,520"
+        ],
+        [
+          "Non - controlling interests",
+          "",
+          "10,725,685",
+          "9,504,610",
+          "-",
+          "-"
+        ],
+        [
+          "Total equity  Aitken Spence Hotel Holdings PLC Report",
+          "",
+          "34,463,309",
+          "30,864,692",
+          "10,126,726",
+          "10,122,520"
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 186,
+      "has_note_col": false,
+      "column_headers": [
+        "Col 1",
+        "Col 2",
+        "Col 3",
+        "Col 4",
+        "Col 5",
+        "Col 6"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Description",
+          "note_col": null,
+          "amt_cols": [
+            "Col 1",
+            "Col 2",
+            "Col 3",
+            "Col 4",
+            "Col 5",
+            "Col 6"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "latoT ytiuqE 000’ 172,081,03 786,468,1 )425,131,1( .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "903,364,43"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            90336443
+          ]
+        },
+        {
+          "label": "- gnillortnoC stseretnI 000’ 510,931,9 575,427 )880,523( noN .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "586,527,01"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            58652701
+          ]
+        },
+        {
+          "label": "latoT 000’ 652,140,12 211,041,1 )634,608( .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "426,737,32"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            42673732
+          ]
+        },
+        {
+          "label": "deniateR sgninraE 000’ 560,181,7 211,041,1 )113,61( .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "219,945,01"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            21994501
+          ]
+        },
+        {
+          "label": "noitaulaveR evreseR 000’ 971,841,3 - - tnerap .sR eht",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "854,241,3"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8542413
+          ]
+        },
+        {
+          "label": "woflhsaC egdeH evreseR 000’ )161,901,3( - 039,009 fo sredloh .sR ytiuqe",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "ngieroF ycnerruC noitalsnarT evreseR 000’ 130,181,01 - )459,107,1( ot .sR elbatubirttA .stnemetats",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "048,071,8"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            480718
+          ]
+        },
+        {
+          "label": "eulaV evreseR 000’ 626,26 - 998,01 riaF .sR laicnanfi",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "275,79"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            27579
+          ]
+        },
+        {
+          "label": "lareneG evreseR 000’ 929,22 - - .sR eseht )liN-42/3202(",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "929,22"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            92922
+          ]
+        },
+        {
+          "label": "detatS latipaC 000’ 785,455,3 - - fo trap .sR largetni .liN setoN )51.oN .snoitcuded na rof mrof etoN( )ssol(/emocni hcraM 282",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "785,455,3"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            7854553
+          ]
+        },
+        {
+          "label": "- 3202 erahs etacidni ot ts13 881 lirpA yranidro evisneherpmoc stekcarb segap dedne ts10 raey ta rep no raey eht sa ni seton rof dnediviD eht ecnalaB serugiF puorG tfiorP rehtO roF ehT Aitken Spence Hotel Holdings PLC Annual Report 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "5202"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            5202
+          ]
+        },
+        {
+          "label": "latoT ytiuqE 000’ 819,544,01 )228,303( )627,4( )845,803( )058,41( .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "deniateR sgninraE 000’ 451,202,6 )228,303( )627,4( )845,803( )058,41( .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "noitaulaveR evreseR 000’ 842,666 - - - .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "lareneG evreseR 000’ 929,22 - - - .sR",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "detatS latipaC 000’ 785,455,3 - - - .sR setoN 51 raey raey 3202/2202 eht eht",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "hcraM 3202 rof rof",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4202",
+            "5202",
+            "",
+            "282",
+            "",
+            ""
+          ],
+          "amounts": [
+            4202,
+            5202,
+            null,
+            282,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "ssol ssol ts13 lirpA rof evisneherpmoc evisneherpmoc sdnedivid ts10 dedne raey ta raey eht sa ecnereferP ynapmoC ecnalaB rof eht ssoL rehtO latoT roF Aitken Spence Hotel Holdings PLC Annual Report 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "latoT ytiuqE 000’ 172,081,03 786,468,1 )425,131,1( .sR",
+          "361,337",
+          ")058,41( )298,33(",
+          "296,468,03 264,885,3 844,671",
+          "019,467,3",
+          ")058,41( )344,151(",
+          "903,364,43"
+        ],
+        [
+          "- gnillortnoC stseretnI 000’ 510,931,9 575,427 )880,523( noN .sR",
+          "784,993",
+          "- )298,33(",
+          "016,405,9 101,892,1 714,47",
+          "815,273,1",
+          "- )344,151(",
+          "586,527,01"
+        ],
+        [
+          "latoT 000’ 652,140,12 211,041,1 )634,608( .sR",
+          "676,333",
+          ")058,41( -",
+          "280,063,12 163,092,2 130,201",
+          "293,293,2",
+          ")058,41( -",
+          "426,737,32"
+        ],
+        [
+          "deniateR sgninraE 000’ 560,181,7 211,041,1 )113,61( .sR",
+          "108,321,1",
+          ")058,41( -",
+          "610,092,8 163,092,2 )516,51(",
+          "647,472,2",
+          ")058,41( -",
+          "219,945,01"
+        ],
+        [
+          "noitaulaveR evreseR 000’ 971,841,3 - - tnerap .sR eht",
+          "-",
+          "- -",
+          "971,841,3 - )127,5(",
+          ")127,5(",
+          "- -",
+          "854,241,3"
+        ],
+        [
+          "woflhsaC egdeH evreseR 000’ )161,901,3( - 039,009 fo sredloh .sR ytiuqe",
+          "039,009",
+          "- -",
+          ")132,802,2( - 755,704",
+          "755,704",
+          "- -",
+          ")476,008,1("
+        ],
+        [
+          "ngieroF ycnerruC noitalsnarT evreseR 000’ 130,181,01 - )459,107,1( ot .sR elbatubirttA .stnemetats",
+          ")459,107,1(",
+          "- -",
+          "770,974,8 - )732,803(",
+          ")732,803(",
+          "- -",
+          "048,071,8"
+        ],
+        [
+          "eulaV evreseR 000’ 626,26 - 998,01 riaF .sR laicnanfi",
+          "998,01",
+          "- -",
+          "525,37 - 740,42",
+          "740,42",
+          "- -",
+          "275,79"
+        ],
+        [
+          "lareneG evreseR 000’ 929,22 - - .sR eseht )liN-42/3202(",
+          "-",
+          "- -",
+          "929,22 - -",
+          "-",
+          "- -",
+          "929,22"
+        ],
+        [
+          "detatS latipaC 000’ 785,455,3 - - fo trap .sR largetni .liN setoN )51.oN .snoitcuded na rof mrof etoN( )ssol(/emocni hcraM 282",
+          "-",
+          "- -",
+          "785,455,3 - -",
+          "-",
+          "- -",
+          "785,455,3"
+        ],
+        [
+          "- 3202 erahs etacidni ot ts13 881 lirpA yranidro evisneherpmoc stekcarb segap dedne ts10 raey ta rep no raey eht sa ni seton rof dnediviD eht ecnalaB serugiF puorG tfiorP rehtO roF ehT  Aitken Spence Hotel Holdings PLC Annual Report 2024/25",
+          "",
+          "gnillortnoc-non",
+          "4202",
+          "",
+          "gnillortnoc-non",
+          "5202"
+        ],
+        [
+          "latoT ytiuqE 000’ 819,544,01 )228,303( )627,4( )845,803( )058,41( .sR",
+          "025,221,01 161,72 )501,8(",
+          "650,91 )058,41( 627,621,01",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "deniateR sgninraE 000’ 451,202,6 )228,303( )627,4( )845,803( )058,41( .sR",
+          "657,878,5 161,72 )501,8(",
+          "650,91 )058,41( 269,288,5",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "noitaulaveR evreseR 000’ 842,666 - - - .sR",
+          "842,666 - -",
+          "- - 842,666",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "lareneG evreseR 000’ 929,22 - - - .sR",
+          "929,22 - -",
+          "- - 929,22",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "detatS latipaC 000’ 785,455,3 - - - .sR setoN 51          raey raey 3202/2202 eht eht",
+          "785,455,3 - -",
+          "- - 785,455,3",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "hcraM 3202 rof rof",
+          "4202",
+          "5202",
+          "",
+          "282",
+          "",
+          ""
+        ],
+        [
+          "ssol ssol ts13 lirpA rof evisneherpmoc evisneherpmoc sdnedivid ts10 dedne raey ta raey eht sa ecnereferP ynapmoC ecnalaB rof eht ssoL rehtO latoT roF  Aitken Spence Hotel Holdings PLC Annual Report 2024/25",
+          "",
+          "",
+          "-",
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 188,
+      "has_note_col": true,
+      "column_headers": [
+        "Group 2025 ’000",
+        "2024 ’000",
+        "2025 ’000",
+        "2024 ’000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "For the year ended 31st March",
+          "note_col": "Notes",
+          "amt_cols": [
+            "Group 2025 ’000",
+            "2024 ’000",
+            "2025 ’000",
+            "2024 ’000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Cash flow from operating activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit/(loss) before taxation Adjustments for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,929,560",
+            "3,006,151",
+            "61,750",
+            "(377,192)"
+          ],
+          "amounts": [
+            4929560,
+            3006151,
+            61750,
+            -377192
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "3,928,122",
+            "3,797,247",
+            "73,196",
+            "63,038"
+          ],
+          "amounts": [
+            3928122,
+            3797247,
+            73196,
+            63038
+          ]
+        },
+        {
+          "label": "Amortisation of right-of-use assets and intangible assets",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "1,239,352",
+            "1,328,625",
+            "139",
+            "-"
+          ],
+          "amounts": [
+            1239352,
+            1328625,
+            139,
+            null
+          ]
+        },
+        {
+          "label": "Provision of impairment of trade debtors",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "218,704",
+            "6,709",
+            "1,915",
+            "508"
+          ],
+          "amounts": [
+            218704,
+            6709,
+            1915,
+            508
+          ]
+        },
+        {
+          "label": "Provision of impairment of non financial assets",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "81,816",
+            "-",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            81816,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Provision of impairment of inventories Impairment/(reversal of impairment) of financial assets",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "14,504",
+            "-",
+            "1,954",
+            "-"
+          ],
+          "amounts": [
+            14504,
+            null,
+            1954,
+            null
+          ]
+        },
+        {
+          "label": "Impairment of investment in subsidiaries and equity accounted investees",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "-",
+            "-",
+            "15,418",
+            "67,820"
+          ],
+          "amounts": [
+            null,
+            null,
+            15418,
+            67820
+          ]
+        },
+        {
+          "label": "Interest expense",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "4,323,130",
+            "5,666,668",
+            "256,138",
+            "363,326"
+          ],
+          "amounts": [
+            4323130,
+            5666668,
+            256138,
+            363326
+          ]
+        },
+        {
+          "label": "Interest income",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "(402,121)",
+            "(398,872)",
+            "(127,982)",
+            "(134,912)"
+          ],
+          "amounts": [
+            -402121,
+            -398872,
+            -127982,
+            -134912
+          ]
+        },
+        {
+          "label": "Loss on disposal of property, plant and equipment",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "29,383",
+            "15,722",
+            "279",
+            "2,298"
+          ],
+          "amounts": [
+            29383,
+            15722,
+            279,
+            2298
+          ]
+        },
+        {
+          "label": "Provision for retirement benefit obligations",
+          "is_section_header": false,
+          "note": "35.3",
+          "amounts_raw": [
+            "65,184",
+            "83,970",
+            "11,014",
+            "12,275"
+          ],
+          "amounts": [
+            65184,
+            83970,
+            11014,
+            12275
+          ]
+        },
+        {
+          "label": "Share of loss of equity accounted investees (net of tax)",
+          "is_section_header": false,
+          "note": "20",
+          "amounts_raw": [
+            "(23,344)",
+            "36,314",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -23344,
+            36314,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Effect of movement in exchange rates",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "30,475",
+            "224,352",
+            "2,995",
+            "111,940"
+          ],
+          "amounts": [
+            30475,
+            224352,
+            2995,
+            111940
+          ]
+        },
+        {
+          "label": "Operating profit before working capital changes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "14,434,707",
+            "13,766,929",
+            "296,815",
+            "109,092"
+          ],
+          "amounts": [
+            14434707,
+            13766929,
+            296815,
+            109092
+          ]
+        },
+        {
+          "label": "(Increase)/decrease in inventories",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(82,523)",
+            "264,882",
+            "4,633",
+            "3,616"
+          ],
+          "amounts": [
+            -82523,
+            264882,
+            4633,
+            3616
+          ]
+        },
+        {
+          "label": "(Increase)/decrease in trade and other receivables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(444,313)",
+            "(777,278)",
+            "3,831",
+            "(51,805)"
+          ],
+          "amounts": [
+            -444313,
+            -777278,
+            3831,
+            -51805
+          ]
+        },
+        {
+          "label": "(Increase)/decrease in amounts due from holding company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(468,594)",
+            "(916,404)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -468594,
+            -916404,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "(Increase)/decrease in amount due from parent's group entities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "207,260",
+            "(392,949)",
+            "248,108",
+            "(662,765)"
+          ],
+          "amounts": [
+            207260,
+            -392949,
+            248108,
+            -662765
+          ]
+        },
+        {
+          "label": "(Increase)/decrease in deposits and prepayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "108,540",
+            "(86,130)",
+            "13,413",
+            "17,697"
+          ],
+          "amounts": [
+            108540,
+            -86130,
+            13413,
+            17697
+          ]
+        },
+        {
+          "label": "Increase/(decrease) in trade payables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "77,128",
+            "(55,576)",
+            "(12,542)",
+            "15,800"
+          ],
+          "amounts": [
+            77128,
+            -55576,
+            -12542,
+            15800
+          ]
+        },
+        {
+          "label": "Increase/(decrease) in other provisions and payables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "982,680",
+            "292,576",
+            "18,211",
+            "12,744"
+          ],
+          "amounts": [
+            982680,
+            292576,
+            18211,
+            12744
+          ]
+        },
+        {
+          "label": "Increase/(decrease) in amounts due to holding company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "72,273",
+            "1,069,653",
+            "97",
+            "1,081,926"
+          ],
+          "amounts": [
+            72273,
+            1069653,
+            97,
+            1081926
+          ]
+        },
+        {
+          "label": "Increase/(decrease) in amount due to parent's group entities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "47,358",
+            "(128,892)",
+            "7,666",
+            "(19,830)"
+          ],
+          "amounts": [
+            47358,
+            -128892,
+            7666,
+            -19830
+          ]
+        },
+        {
+          "label": "Cash generated from operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "14,934,516",
+            "13,036,811",
+            "580,232",
+            "506,475"
+          ],
+          "amounts": [
+            14934516,
+            13036811,
+            580232,
+            506475
+          ]
+        },
+        {
+          "label": "Interest expenses paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(3,567,969)",
+            "(4,762,324)",
+            "(241,032)",
+            "(337,742)"
+          ],
+          "amounts": [
+            -3567969,
+            -4762324,
+            -241032,
+            -337742
+          ]
+        },
+        {
+          "label": "Retirement benefit obligations paid",
+          "is_section_header": false,
+          "note": "35",
+          "amounts_raw": [
+            "(39,190)",
+            "(39,140)",
+            "(18,257)",
+            "(5,529)"
+          ],
+          "amounts": [
+            -39190,
+            -39140,
+            -18257,
+            -5529
+          ]
+        },
+        {
+          "label": "Income taxes paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(583,954)",
+            "(462,895)",
+            "-",
+            "(3,624)"
+          ],
+          "amounts": [
+            -583954,
+            -462895,
+            null,
+            -3624
+          ]
+        },
+        {
+          "label": "Net cash flow generated from operating activities (carried forward to next page) Figures in brackets indicate deductions. Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,743,403",
+            "7,772,452",
+            "320,943",
+            "159,580"
+          ],
+          "amounts": [
+            10743403,
+            7772452,
+            320943,
+            159580
+          ]
+        },
+        {
+          "label": "For the year ended 31st March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024",
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024,
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "(brought forward from previous page)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Net cash flow generated from operating activities Cash flow from investing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "10,743,403",
+            "7,772,452",
+            "320,943",
+            "159,580"
+          ],
+          "amounts": [
+            10743403,
+            7772452,
+            320943,
+            159580
+          ]
+        },
+        {
+          "label": "Acquisition of property, plant and equipment",
+          "is_section_header": false,
+          "note": "16",
+          "amounts_raw": [
+            "(1,603,119)",
+            "(1,838,236)",
+            "(221,361)",
+            "(268,421)"
+          ],
+          "amounts": [
+            -1603119,
+            -1838236,
+            -221361,
+            -268421
+          ]
+        },
+        {
+          "label": "Purchase of intangible assets",
+          "is_section_header": false,
+          "note": "18",
+          "amounts_raw": [
+            "(17,367)",
+            "(11,565)",
+            "(2,498)",
+            "-"
+          ],
+          "amounts": [
+            -17367,
+            -11565,
+            -2498,
+            null
+          ]
+        },
+        {
+          "label": "Proceeds from disposal of property, plant and equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,332",
+            "3,961",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            4332,
+            3961,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Proceeds from/(purchase of) term deposits",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,472,474)",
+            "579,062",
+            "4,191",
+            "174,501"
+          ],
+          "amounts": [
+            -1472474,
+            579062,
+            4191,
+            174501
+          ]
+        },
+        {
+          "label": "Interest received",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "394,850",
+            "305,915",
+            "17,032",
+            "31,023"
+          ],
+          "amounts": [
+            394850,
+            305915,
+            17032,
+            31023
+          ]
+        },
+        {
+          "label": "Net cash used in investing activities Cash flow from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,693,778)",
+            "(960,863)",
+            "(202,636)",
+            "(62,897)"
+          ],
+          "amounts": [
+            -2693778,
+            -960863,
+            -202636,
+            -62897
+          ]
+        },
+        {
+          "label": "Repayment of interest bearing liabilities - banks",
+          "is_section_header": false,
+          "note": "32",
+          "amounts_raw": [
+            "(18,921,240)",
+            "(5,811,807)",
+            "(217,205)",
+            "(177,155)"
+          ],
+          "amounts": [
+            -18921240,
+            -5811807,
+            -217205,
+            -177155
+          ]
+        },
+        {
+          "label": "Proceeds from interest bearing liabilities - banks",
+          "is_section_header": false,
+          "note": "32",
+          "amounts_raw": [
+            "14,201,283",
+            "504,424",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            14201283,
+            504424,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Repayment of interest bearing liabilities - leases",
+          "is_section_header": false,
+          "note": "33",
+          "amounts_raw": [
+            "(2,036,216)",
+            "(2,162,060)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -2036216,
+            -2162060,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Dividends paid to equity holders of the parent",
+          "is_section_header": false,
+          "note": "15",
+          "amounts_raw": [
+            "(14,850)",
+            "(14,850)",
+            "(14,850)",
+            "(14,850)"
+          ],
+          "amounts": [
+            -14850,
+            -14850,
+            -14850,
+            -14850
+          ]
+        },
+        {
+          "label": "Dividends paid to shareholders of non - controlling interests",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(151,443)",
+            "(33,892)",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            -151443,
+            -33892,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Net cash used in financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(6,922,466)",
+            "(7,518,185)",
+            "(232,055)",
+            "(192,005)"
+          ],
+          "amounts": [
+            -6922466,
+            -7518185,
+            -232055,
+            -192005
+          ]
+        },
+        {
+          "label": "Net increase/(decrease) in cash and cash equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,127,159",
+            "(706,596)",
+            "(113,748)",
+            "(95,322)"
+          ],
+          "amounts": [
+            1127159,
+            -706596,
+            -113748,
+            -95322
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(3,321,462)",
+            "(2,684,021)",
+            "(189,491)",
+            "17,771"
+          ],
+          "amounts": [
+            -3321462,
+            -2684021,
+            -189491,
+            17771
+          ]
+        },
+        {
+          "label": "Effect of movement in exchange rates",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "334,328",
+            "69,155",
+            "(2,995)",
+            "(111,940)"
+          ],
+          "amounts": [
+            334328,
+            69155,
+            -2995,
+            -111940
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year Analysis of cash and cash equivalents at the end of the year",
+          "is_section_header": false,
+          "note": "28",
+          "amounts_raw": [
+            "(1,859,975)",
+            "(3,321,462)",
+            "(306,234)",
+            "(189,491)"
+          ],
+          "amounts": [
+            -1859975,
+            -3321462,
+            -306234,
+            -189491
+          ]
+        },
+        {
+          "label": "Cash at bank and in hand",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,281,700",
+            "1,848,009",
+            "75,302",
+            "147,562"
+          ],
+          "amounts": [
+            3281700,
+            1848009,
+            75302,
+            147562
+          ]
+        },
+        {
+          "label": "Short term deposits",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "814,883",
+            "449,224",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            814883,
+            449224,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Bank overdrafts and other short term bank borrowings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(5,956,558)",
+            "(5,618,695)",
+            "(381,536)",
+            "(337,053)"
+          ],
+          "amounts": [
+            -5956558,
+            -5618695,
+            -381536,
+            -337053
+          ]
+        },
+        {
+          "label": "Cash and cash equivalents at the end of the year Figures in brackets indicate deductions. The notes on pages 188 to 282 form an integral part of these financial Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": "28",
+          "amounts_raw": [
+            "(1,859,975)",
+            "(3,321,462)",
+            "(306,234)",
+            "(189,491)"
+          ],
+          "amounts": [
+            -1859975,
+            -3321462,
+            -306234,
+            -189491
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Company",
+          "",
+          "Group",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash flow from operating activities",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Profit/(loss) before taxation Adjustments for",
+          "",
+          "4,929,560",
+          "3,006,151",
+          "61,750",
+          "(377,192)"
+        ],
+        [
+          "Depreciation",
+          "11",
+          "3,928,122",
+          "3,797,247",
+          "73,196",
+          "63,038"
+        ],
+        [
+          "Amortisation of right-of-use assets and intangible assets",
+          "11",
+          "1,239,352",
+          "1,328,625",
+          "139",
+          "-"
+        ],
+        [
+          "Provision of impairment of trade debtors",
+          "11",
+          "218,704",
+          "6,709",
+          "1,915",
+          "508"
+        ],
+        [
+          "Provision of impairment of non financial assets",
+          "11",
+          "81,816",
+          "-",
+          "-",
+          "-"
+        ],
+        [
+          "Provision of impairment of inventories Impairment/(reversal of impairment) of financial assets",
+          "11",
+          "14,504",
+          "-",
+          "1,954",
+          "-"
+        ],
+        [
+          "Impairment of investment in subsidiaries and equity accounted investees",
+          "11",
+          "-",
+          "-",
+          "15,418",
+          "67,820"
+        ],
+        [
+          "Interest expense",
+          "12",
+          "4,323,130",
+          "5,666,668",
+          "256,138",
+          "363,326"
+        ],
+        [
+          "Interest income",
+          "12",
+          "(402,121)",
+          "(398,872)",
+          "(127,982)",
+          "(134,912)"
+        ],
+        [
+          "Loss on disposal of property, plant and equipment",
+          "8",
+          "29,383",
+          "15,722",
+          "279",
+          "2,298"
+        ],
+        [
+          "Provision for retirement benefit obligations",
+          "35.3",
+          "65,184",
+          "83,970",
+          "11,014",
+          "12,275"
+        ],
+        [
+          "Share of loss of equity accounted investees (net of tax)",
+          "20",
+          "(23,344)",
+          "36,314",
+          "-",
+          "-"
+        ],
+        [
+          "Effect of movement in exchange rates",
+          "8",
+          "30,475",
+          "224,352",
+          "2,995",
+          "111,940"
+        ],
+        [
+          "Operating profit before working capital changes",
+          "",
+          "14,434,707",
+          "13,766,929",
+          "296,815",
+          "109,092"
+        ],
+        [
+          "(Increase)/decrease in inventories",
+          "",
+          "(82,523)",
+          "264,882",
+          "4,633",
+          "3,616"
+        ],
+        [
+          "(Increase)/decrease in trade and other receivables",
+          "",
+          "(444,313)",
+          "(777,278)",
+          "3,831",
+          "(51,805)"
+        ],
+        [
+          "(Increase)/decrease in amounts due from holding company",
+          "",
+          "(468,594)",
+          "(916,404)",
+          "-",
+          "-"
+        ],
+        [
+          "(Increase)/decrease in amount due from parent's group entities",
+          "",
+          "207,260",
+          "(392,949)",
+          "248,108",
+          "(662,765)"
+        ],
+        [
+          "(Increase)/decrease in deposits and prepayments",
+          "",
+          "108,540",
+          "(86,130)",
+          "13,413",
+          "17,697"
+        ],
+        [
+          "Increase/(decrease) in trade payables",
+          "",
+          "77,128",
+          "(55,576)",
+          "(12,542)",
+          "15,800"
+        ],
+        [
+          "Increase/(decrease) in other provisions and payables",
+          "",
+          "982,680",
+          "292,576",
+          "18,211",
+          "12,744"
+        ],
+        [
+          "Increase/(decrease) in amounts due to holding company",
+          "",
+          "72,273",
+          "1,069,653",
+          "97",
+          "1,081,926"
+        ],
+        [
+          "Increase/(decrease) in amount due to parent's group entities",
+          "",
+          "47,358",
+          "(128,892)",
+          "7,666",
+          "(19,830)"
+        ],
+        [
+          "Cash generated from operations",
+          "",
+          "14,934,516",
+          "13,036,811",
+          "580,232",
+          "506,475"
+        ],
+        [
+          "Interest expenses paid",
+          "",
+          "(3,567,969)",
+          "(4,762,324)",
+          "(241,032)",
+          "(337,742)"
+        ],
+        [
+          "Retirement benefit obligations paid",
+          "35",
+          "(39,190)",
+          "(39,140)",
+          "(18,257)",
+          "(5,529)"
+        ],
+        [
+          "Income taxes paid",
+          "",
+          "(583,954)",
+          "(462,895)",
+          "-",
+          "(3,624)"
+        ],
+        [
+          "Net cash flow generated from operating activities (carried forward to next page) Figures in brackets indicate deductions.  Aitken Spence Hotel Holdings PLC Report",
+          "",
+          "10,743,403",
+          "7,772,452",
+          "320,943",
+          "159,580"
+        ],
+        [
+          "For the year ended 31st March",
+          "",
+          "2025",
+          "2024",
+          "2025",
+          "2024"
+        ],
+        [
+          "Rs.",
+          "Notes",
+          "’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000"
+        ],
+        [
+          "(brought forward from previous page)",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Net cash flow generated from operating activities Cash flow from investing activities",
+          "",
+          "10,743,403",
+          "7,772,452",
+          "320,943",
+          "159,580"
+        ],
+        [
+          "Acquisition of property, plant and equipment",
+          "16",
+          "(1,603,119)",
+          "(1,838,236)",
+          "(221,361)",
+          "(268,421)"
+        ],
+        [
+          "Purchase of intangible assets",
+          "18",
+          "(17,367)",
+          "(11,565)",
+          "(2,498)",
+          "-"
+        ],
+        [
+          "Proceeds from disposal of property, plant and equipment",
+          "",
+          "4,332",
+          "3,961",
+          "-",
+          "-"
+        ],
+        [
+          "Proceeds from/(purchase of) term deposits",
+          "",
+          "(1,472,474)",
+          "579,062",
+          "4,191",
+          "174,501"
+        ],
+        [
+          "Interest received",
+          "",
+          "394,850",
+          "305,915",
+          "17,032",
+          "31,023"
+        ],
+        [
+          "Net cash used in investing activities Cash flow from financing activities",
+          "",
+          "(2,693,778)",
+          "(960,863)",
+          "(202,636)",
+          "(62,897)"
+        ],
+        [
+          "Repayment of interest bearing liabilities - banks",
+          "32",
+          "(18,921,240)",
+          "(5,811,807)",
+          "(217,205)",
+          "(177,155)"
+        ],
+        [
+          "Proceeds from interest bearing liabilities - banks",
+          "32",
+          "14,201,283",
+          "504,424",
+          "-",
+          "-"
+        ],
+        [
+          "Repayment of interest bearing liabilities - leases",
+          "33",
+          "(2,036,216)",
+          "(2,162,060)",
+          "-",
+          "-"
+        ],
+        [
+          "Dividends paid to equity holders of the parent",
+          "15",
+          "(14,850)",
+          "(14,850)",
+          "(14,850)",
+          "(14,850)"
+        ],
+        [
+          "Dividends paid to shareholders of non - controlling interests",
+          "",
+          "(151,443)",
+          "(33,892)",
+          "-",
+          "-"
+        ],
+        [
+          "Net cash used in financing activities",
+          "",
+          "(6,922,466)",
+          "(7,518,185)",
+          "(232,055)",
+          "(192,005)"
+        ],
+        [
+          "Net increase/(decrease) in cash and cash equivalents",
+          "",
+          "1,127,159",
+          "(706,596)",
+          "(113,748)",
+          "(95,322)"
+        ],
+        [
+          "Cash and cash equivalents at the beginning of the year",
+          "",
+          "(3,321,462)",
+          "(2,684,021)",
+          "(189,491)",
+          "17,771"
+        ],
+        [
+          "Effect of movement in exchange rates",
+          "",
+          "334,328",
+          "69,155",
+          "(2,995)",
+          "(111,940)"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year Analysis of cash and cash equivalents at the end of the year",
+          "28",
+          "(1,859,975)",
+          "(3,321,462)",
+          "(306,234)",
+          "(189,491)"
+        ],
+        [
+          "Cash at bank and in hand",
+          "",
+          "3,281,700",
+          "1,848,009",
+          "75,302",
+          "147,562"
+        ],
+        [
+          "Short term deposits",
+          "",
+          "814,883",
+          "449,224",
+          "-",
+          "-"
+        ],
+        [
+          "Bank overdrafts and other short term bank borrowings",
+          "",
+          "(5,956,558)",
+          "(5,618,695)",
+          "(381,536)",
+          "(337,053)"
+        ],
+        [
+          "Cash and cash equivalents at the end of the year Figures in brackets indicate deductions. The notes on pages 188 to 282 form an integral part of these financial  Aitken Spence Hotel Holdings PLC Report",
+          "28",
+          "(1,859,975)",
+          "(3,321,462)",
+          "(306,234)",
+          "(189,491)"
+        ]
+      ]
+    },
+    "shareholder_info": {
+      "title": "Shareholder Information",
+      "page_1based": 286,
+      "has_note_col": false,
+      "column_headers": [
+        "30th June 2024",
+        "September 2024",
+        "December 2024",
+        "March 2025"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "30th 31st 31st As at",
+          "note_col": null,
+          "amt_cols": [
+            "30th June 2024",
+            "September 2024",
+            "December 2024",
+            "March 2025"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "As at 30th 30th 31st 31st",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Earnings / (loss) per ordinary share (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2.20)",
+            "(2.09)",
+            "3.15",
+            "7.90"
+          ],
+          "amounts": [
+            -2.2,
+            -2.09,
+            3.15,
+            7.9
+          ]
+        },
+        {
+          "label": "Net asset value per share (Rs.) Market price per share",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "61.92",
+            "58.63",
+            "61.84",
+            "70.10"
+          ],
+          "amounts": [
+            61.92,
+            58.63,
+            61.84,
+            70.1
+          ]
+        },
+        {
+          "label": "- Highest (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "69.40",
+            "66.50",
+            "87.50",
+            "92.00"
+          ],
+          "amounts": [
+            69.4,
+            66.5,
+            87.5,
+            92.0
+          ]
+        },
+        {
+          "label": "- Lowest (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "64.10",
+            "53.00",
+            "58.50",
+            "76.00"
+          ],
+          "amounts": [
+            64.1,
+            53.0,
+            58.5,
+            76.0
+          ]
+        },
+        {
+          "label": "- Last traded price (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "66.00",
+            "64.00",
+            "84.10",
+            "80.50"
+          ],
+          "amounts": [
+            66.0,
+            64.0,
+            84.1,
+            80.5
+          ]
+        },
+        {
+          "label": "- Closing price (Rs.) Percentage of shares held by public",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "66.00",
+            "64.00",
+            "84.70",
+            "80.10"
+          ],
+          "amounts": [
+            66.0,
+            64.0,
+            84.7,
+            80.1
+          ]
+        },
+        {
+          "label": "Number of public shareholders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,852",
+            "3,926",
+            "4,173",
+            "4,449"
+          ],
+          "amounts": [
+            3852,
+            3926,
+            4173,
+            4449
+          ]
+        },
+        {
+          "label": "Float adjusted market capitalisation (Rs.) 284 Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,646,196,380",
+            "5,476,486,720",
+            "7,245,952,021",
+            "6,854,165,411"
+          ],
+          "amounts": [
+            5646196380,
+            5476486720,
+            7245952021,
+            6854165411
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "As at 30th 30th 31st 31st",
+          "June",
+          "September",
+          "December",
+          "March"
+        ],
+        [
+          "Earnings / (loss) per ordinary share (Rs.)",
+          "(2.20)",
+          "(2.09)",
+          "3.15",
+          "7.90"
+        ],
+        [
+          "Net asset value per share (Rs.) Market price per share",
+          "61.92",
+          "58.63",
+          "61.84",
+          "70.10"
+        ],
+        [
+          "- Highest (Rs.)",
+          "69.40",
+          "66.50",
+          "87.50",
+          "92.00"
+        ],
+        [
+          "- Lowest (Rs.)",
+          "64.10",
+          "53.00",
+          "58.50",
+          "76.00"
+        ],
+        [
+          "- Last traded price (Rs.)",
+          "66.00",
+          "64.00",
+          "84.10",
+          "80.50"
+        ],
+        [
+          "- Closing price (Rs.) Percentage of shares held by public",
+          "66.00",
+          "64.00",
+          "84.70",
+          "80.10"
+        ],
+        [
+          "Number of public shareholders",
+          "3,852",
+          "3,926",
+          "4,173",
+          "4,449"
+        ],
+        [
+          "Float adjusted market capitalisation (Rs.) 284 Aitken Spence Hotel Holdings PLC Report",
+          "5,646,196,380",
+          "5,476,486,720",
+          "7,245,952,021",
+          "6,854,165,411"
+        ]
+      ]
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "page_1based": 294,
+      "has_note_col": true,
+      "column_headers": [
+        "Col 1",
+        "Col 2",
+        "Col 3",
+        "Col 4",
+        "Col 5",
+        "Col 6",
+        "Col 7",
+        "Col 8"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Description",
+          "note_col": "Note",
+          "amt_cols": [
+            "Col 1",
+            "Col 2",
+            "Col 3",
+            "Col 4",
+            "Col 5",
+            "Col 6",
+            "Col 7",
+            "Col 8"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Earnings / (Loss) Per Share (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "6.77",
+            "",
+            "3.35",
+            "",
+            "(0.94)",
+            "1.85",
+            "(13.93)"
+          ],
+          "amounts": [
+            null,
+            6.77,
+            null,
+            3.35,
+            null,
+            -0.94,
+            1.85,
+            -13.93
+          ]
+        },
+        {
+          "label": "Price Earnings Ratio (Times)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "11.83",
+            "",
+            "19.76",
+            "",
+            "(63.72)",
+            "19.19",
+            "(2.17)"
+          ],
+          "amounts": [
+            null,
+            11.83,
+            null,
+            19.76,
+            null,
+            -63.72,
+            19.19,
+            -2.17
+          ]
+        },
+        {
+          "label": "Net Asset Value per Share as at 31st Net Share",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "70.10",
+            "",
+            "63.03",
+            "",
+            "62.08",
+            "58.60",
+            "46.96"
+          ],
+          "amounts": [
+            null,
+            70.1,
+            null,
+            63.03,
+            null,
+            62.08,
+            58.6,
+            46.96
+          ]
+        },
+        {
+          "label": "Asset Share",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Closing",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "7. MARKET CAPITALISATION",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Market Capitalisation ( Rs. Bn )",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "26.94",
+            "",
+            "22.26",
+            "",
+            "20.04",
+            "",
+            "11.94",
+            "10.16"
+          ],
+          "amounts": [
+            26.94,
+            null,
+            22.26,
+            null,
+            20.04,
+            null,
+            11.94,
+            10.16
+          ]
+        },
+        {
+          "label": "Stated Capital & Reserves ( Rs. Bn )",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "23.74",
+            "",
+            "21.36",
+            "",
+            "21.04",
+            "",
+            "19.87",
+            "15.96"
+          ],
+          "amounts": [
+            23.74,
+            null,
+            21.36,
+            null,
+            21.04,
+            null,
+            19.87,
+            15.96
+          ]
+        },
+        {
+          "label": "Total Market Capitalisation of CSE ( Rs. Bn Percentage of total market capitalisation ( For the 31st 21/22 23/24 Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,606",
+            "",
+            "4,535",
+            "",
+            "3,904",
+            "",
+            "3,827",
+            "3,111"
+          ],
+          "amounts": [
+            5606,
+            null,
+            4535,
+            null,
+            3904,
+            null,
+            3827,
+            3111
+          ]
+        },
+        {
+          "label": "Company 31.03.2025 Crest Star (B.V.I) Limited (British Virgin 100.00% Turyaa (Private) Limited 100.00% Neptune Ayurvedic Village (Private) Limited 100.00% Nilaveli Holidays (Private) Limited 100.00% Nilaveli Resorts (Private) Limited 100.00% The Galle Heritage (Private) Limited 100.00% Meeraladuwa (Private) Limited 100.00% Aitken Spence Hotels Limited 98.01% Heritance (Private) Limited 98.01% Jetan Travel Services Company Private (Maldives) 95.00% Hethersett Hotels Limited 94.44% Kandalama Hotels (Private) Limited 61.74% Cowrie Investment Private Limited 60.00% Ahungalla Resorts Limited 60.00% Aitken Spence Hotel Management (South (Private) (India) 59.13% Aitken Spence Hotel Managements Asia Limited 51.00% Aitken Spence Hotels International 51.00% Ace Resorts Private Limited (Maldives) 51.00% A.D.S Resorts Private Limited (Maldives) 51.00% Unique Resorts Private Limited (Maldives) 51.00% Aitken Spence Hotel Services Private 51.00% Aitken Spence Resorts (Middle East) LLC 51.00% Aitken Spence Hotel Managements 49.00% Aitken Spence Resources (Private) Limited 49.00% PR Holiday Homes Private Limited (India) 43.13% Perumbalam Resorts Private Limited 43.12% Browns Beach Hotels PLC 37.42% Negombo Beach Resorts (Private) Limited 37.42% Amethyst Leisure Limited 27.89% Paradise Resorts Passikudah (Private) 27.89% Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "31.03.2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "31.03.2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Deshamanya D.H.S. Jayawardena *",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Ms. D.S.T. Jayawardena",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "16,000",
+            "16,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            16000,
+            16000
+          ]
+        },
+        {
+          "label": "Dr. M.P. Dissanayake",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mr. C.M.S. Jayawickrama",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mr. J.M.S. Brito",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "172,387",
+            "194,062"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            172387,
+            194062
+          ]
+        },
+        {
+          "label": "Mr. R.N. Asirwatham",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,000",
+            "1,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1000,
+            1000
+          ]
+        },
+        {
+          "label": "Mr. N.J. de Silva Deva Aditya",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Dr. R.A. Fernando",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mr. M.R. Mihular",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mr. P. Englisch",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mr. C. H. Gomez**",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total * Demised on 03.02.2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "189,387",
+            "211,062"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            189387,
+            211062
+          ]
+        },
+        {
+          "label": "** Resigned w.e.f 30.12.2024 and 10. TWENTY LARGEST SHAREHOLDERS Shareholder at 31.03.2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "01.04.2025",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1 Aitken Spence PLC- A/C No. 1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "239,472,667",
+            "71.21"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            239472667,
+            71.21
+          ]
+        },
+        {
+          "label": "2 Employee's Provident Fund",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "31,501,601",
+            "9.37"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            31501601,
+            9.37
+          ]
+        },
+        {
+          "label": "3 Ace Cargo (Private) Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "4,423,601",
+            "1.32"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            4423601,
+            1.32
+          ]
+        },
+        {
+          "label": "4 Hatton National Bank PLC - Capital",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "4,325,715",
+            "1.29"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            4325715,
+            1.29
+          ]
+        },
+        {
+          "label": "5 Aitken Spence Hotel Managements Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "3,530,639",
+            "1.05"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            3530639,
+            1.05
+          ]
+        },
+        {
+          "label": "6 Aitken Spence Aviation (Private)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,604,140",
+            "0.77"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2604140,
+            0.77
+          ]
+        },
+        {
+          "label": "7 Employees Trust Fund Board",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,370,705",
+            "0.71"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2370705,
+            0.71
+          ]
+        },
+        {
+          "label": "8 Bank of Ceylon - No. 1 Account",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,177,424",
+            "0.65"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2177424,
+            0.65
+          ]
+        },
+        {
+          "label": "9 Mr. K. Balendra & Mrs. S. Balendra",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,062,732",
+            "0.61"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2062732,
+            0.61
+          ]
+        },
+        {
+          "label": "10 Mrs. K. Fernando",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,685,230",
+            "0.50"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1685230,
+            0.5
+          ]
+        },
+        {
+          "label": "11 Citibank Hong Kong S/A Hostplus",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,529,408",
+            "0.46"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1529408,
+            0.46
+          ]
+        },
+        {
+          "label": "12 SSBT- Sunsuper PTY Ltd as Trustee Sunsuper Superannuation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,294,120",
+            "0.39"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1294120,
+            0.39
+          ]
+        },
+        {
+          "label": "13 Invenco Capital Private Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,239,484",
+            "0.37"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1239484,
+            0.37
+          ]
+        },
+        {
+          "label": "14 Ceylon Guardian Investment Trust 02",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,023,666",
+            "0.30"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1023666,
+            0.3
+          ]
+        },
+        {
+          "label": "15 Mr. S.R. Perera",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,000,000",
+            "0.30"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1000000,
+            0.3
+          ]
+        },
+        {
+          "label": "16 Est.of Late M.J. Fernando",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,000,000",
+            "0.30"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1000000,
+            0.3
+          ]
+        },
+        {
+          "label": "17 Ceylon Investment PLC - A/C No. 02",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "946,989",
+            "0.28"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            946989,
+            0.28
+          ]
+        },
+        {
+          "label": "18 Miss N.T.M.S. Cooray",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "775,080",
+            "0.23"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            775080,
+            0.23
+          ]
+        },
+        {
+          "label": "19 Cargo Boat Development Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "733,193",
+            "0.22"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            733193,
+            0.22
+          ]
+        },
+        {
+          "label": "20 Bansei Securities Capital (Private)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "723,517",
+            "0.22"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            723517,
+            0.22
+          ]
+        },
+        {
+          "label": "Total Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "304,419,911",
+            "90.52"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            304419911,
+            90.52
+          ]
+        },
+        {
+          "label": "Shares in issue at the",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,281,612"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1281612
+          ]
+        },
+        {
+          "label": "1979/80 Initial Public Offer",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "500,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            500000
+          ]
+        },
+        {
+          "label": "1980/81 Private Placement",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "300,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            300000
+          ]
+        },
+        {
+          "label": "1980/81 Rights Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "368,743"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            368743
+          ]
+        },
+        {
+          "label": "1981/82 Rights Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,839,063"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1839063
+          ]
+        },
+        {
+          "label": "1982/83 Rights Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,429,806"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1429806
+          ]
+        },
+        {
+          "label": "1983/84 Rights Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "791,792"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            791792
+          ]
+        },
+        {
+          "label": "1984/85 Rights Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "822,790"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            822790
+          ]
+        },
+        {
+          "label": "1994/95 Bonus Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,444,602"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2444602
+          ]
+        },
+        {
+          "label": "1994/95 Share swap to acquire Spence",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "9,699,199"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            9699199
+          ]
+        },
+        {
+          "label": "1994/95 Share swap to acquire Beach",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "638,020"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            638020
+          ]
+        },
+        {
+          "label": "1994/95 Share swap to acquire Hotels",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "473,557"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            473557
+          ]
+        },
+        {
+          "label": "1999/00 Bonus Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "3,431,531"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            3431531
+          ]
+        },
+        {
+          "label": "1999/00 Rights Issue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "14,412,429"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            14412429
+          ]
+        },
+        {
+          "label": "2010/11 Rights Issue (1 for 4)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "9,608,286"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            9608286
+          ]
+        },
+        {
+          "label": "Share Split (7 for 1)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "288,248,580"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            288248580
+          ]
+        },
+        {
+          "label": "Total as at 31st 12. HISTORY OF MOVEMENT IN Year Issue Number of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "336,290,010"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            336290010
+          ]
+        },
+        {
+          "label": "1981/82 12% Cum.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "200,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            200000
+          ]
+        },
+        {
+          "label": "1982/83 Redemption",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "(40,000)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            -40000
+          ]
+        },
+        {
+          "label": "1983/84 Redemption",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "(40,000)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            -40000
+          ]
+        },
+        {
+          "label": "1984/85 Redemption",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "(40,000)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            -40000
+          ]
+        },
+        {
+          "label": "1985/86 Redemption",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "(40,000)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            -40000
+          ]
+        },
+        {
+          "label": "1990/91 Redemption",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "(40,000)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            -40000
+          ]
+        },
+        {
+          "label": "1996/97 9% Cum Redeemable",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "16,500,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            16500000
+          ]
+        },
+        {
+          "label": "Total as at 31st March Aitken Spence Hotel Holdings PLC Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "16,500,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            16500000
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Earnings / (Loss) Per Share (Rs.)",
+          "",
+          "",
+          "6.77",
+          "",
+          "3.35",
+          "",
+          "(0.94)",
+          "1.85",
+          "(13.93)"
+        ],
+        [
+          "Price Earnings Ratio (Times)",
+          "",
+          "",
+          "11.83",
+          "",
+          "19.76",
+          "",
+          "(63.72)",
+          "19.19",
+          "(2.17)"
+        ],
+        [
+          "Net Asset Value per Share as at 31st Net Share",
+          "March (Rs.)",
+          "",
+          "70.10",
+          "",
+          "63.03",
+          "",
+          "62.08",
+          "58.60",
+          "46.96"
+        ],
+        [
+          "Asset Share",
+          "Net",
+          "Value Per",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Closing",
+          "",
+          "Price",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "7. MARKET CAPITALISATION",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Market Capitalisation ( Rs. Bn )",
+          "",
+          "26.94",
+          "",
+          "22.26",
+          "",
+          "20.04",
+          "",
+          "11.94",
+          "10.16"
+        ],
+        [
+          "Stated Capital & Reserves ( Rs. Bn )",
+          "",
+          "23.74",
+          "",
+          "21.36",
+          "",
+          "21.04",
+          "",
+          "19.87",
+          "15.96"
+        ],
+        [
+          "Total Market Capitalisation of CSE ( Rs. Bn Percentage of total market capitalisation (  For the 31st           21/22 23/24    Aitken Spence Hotel Holdings PLC Report",
+          ")",
+          "5,606",
+          "",
+          "4,535",
+          "",
+          "3,904",
+          "",
+          "3,827",
+          "3,111"
+        ],
+        [
+          "Company 31.03.2025 Crest Star (B.V.I) Limited (British Virgin 100.00% Turyaa (Private) Limited 100.00% Neptune Ayurvedic Village (Private) Limited 100.00% Nilaveli Holidays (Private) Limited 100.00% Nilaveli Resorts (Private) Limited 100.00% The Galle Heritage (Private) Limited 100.00% Meeraladuwa (Private) Limited 100.00% Aitken Spence Hotels Limited 98.01% Heritance (Private) Limited 98.01% Jetan Travel Services Company Private (Maldives) 95.00% Hethersett Hotels Limited 94.44% Kandalama Hotels (Private) Limited 61.74% Cowrie Investment Private Limited 60.00% Ahungalla Resorts Limited 60.00% Aitken Spence Hotel Management (South (Private) (India) 59.13% Aitken Spence Hotel Managements Asia Limited 51.00% Aitken Spence Hotels International 51.00% Ace Resorts Private Limited (Maldives) 51.00% A.D.S Resorts Private Limited (Maldives) 51.00% Unique Resorts Private Limited (Maldives) 51.00% Aitken Spence Hotel Services Private 51.00% Aitken Spence Resorts (Middle East) LLC 51.00% Aitken Spence Hotel Managements 49.00% Aitken Spence Resources (Private) Limited 49.00% PR Holiday Homes Private Limited (India) 43.13% Perumbalam Resorts Private Limited 43.12% Browns Beach Hotels PLC 37.42% Negombo Beach Resorts (Private) Limited 37.42% Amethyst Leisure Limited 27.89% Paradise Resorts Passikudah (Private) 27.89%  Aitken Spence Hotel Holdings PLC Report",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "As at",
+          "",
+          "As at",
+          "31.03.2024"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "As at",
+          "",
+          "31.03.2025 As at",
+          "31.03.2024"
+        ],
+        [
+          "Deshamanya D.H.S. Jayawardena *",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Ms. D.S.T. Jayawardena",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "16,000",
+          "16,000"
+        ],
+        [
+          "Dr. M.P. Dissanayake",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Mr. C.M.S. Jayawickrama",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Mr. J.M.S. Brito",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "172,387",
+          "194,062"
+        ],
+        [
+          "Mr. R.N. Asirwatham",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,000",
+          "1,000"
+        ],
+        [
+          "Mr. N.J. de Silva Deva Aditya",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Dr. R.A. Fernando",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Mr. M.R. Mihular",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Mr. P. Englisch",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Mr. C. H. Gomez**",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-",
+          "-"
+        ],
+        [
+          "Total * Demised on 03.02.2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "189,387",
+          "211,062"
+        ],
+        [
+          "** Resigned w.e.f 30.12.2024 and 10. TWENTY LARGEST SHAREHOLDERS Shareholder at 31.03.2025",
+          "appointed w.e.f",
+          "01.04.2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "1 Aitken Spence PLC- A/C No. 1",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "239,472,667",
+          "71.21"
+        ],
+        [
+          "2 Employee's Provident Fund",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "31,501,601",
+          "9.37"
+        ],
+        [
+          "3 Ace Cargo (Private) Limited",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "4,423,601",
+          "1.32"
+        ],
+        [
+          "4 Hatton National Bank PLC - Capital",
+          "Alliance",
+          "Quantitative Equity",
+          "Fund",
+          "",
+          "",
+          "",
+          "",
+          "4,325,715",
+          "1.29"
+        ],
+        [
+          "5 Aitken Spence Hotel Managements Limited",
+          "(Private)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "3,530,639",
+          "1.05"
+        ],
+        [
+          "6 Aitken Spence Aviation (Private)",
+          "Limited",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "2,604,140",
+          "0.77"
+        ],
+        [
+          "7 Employees Trust Fund Board",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "2,370,705",
+          "0.71"
+        ],
+        [
+          "8 Bank of Ceylon - No. 1 Account",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "2,177,424",
+          "0.65"
+        ],
+        [
+          "9 Mr. K. Balendra & Mrs. S. Balendra",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "2,062,732",
+          "0.61"
+        ],
+        [
+          "10 Mrs. K. Fernando",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,685,230",
+          "0.50"
+        ],
+        [
+          "11 Citibank Hong Kong S/A Hostplus",
+          "Pooled",
+          "Superannuation Trust",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,529,408",
+          "0.46"
+        ],
+        [
+          "12 SSBT- Sunsuper PTY Ltd as Trustee Sunsuper Superannuation",
+          "for",
+          "",
+          "Fund",
+          "",
+          "",
+          "",
+          "",
+          "1,294,120",
+          "0.39"
+        ],
+        [
+          "13 Invenco Capital Private Limited",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,239,484",
+          "0.37"
+        ],
+        [
+          "14 Ceylon Guardian Investment Trust 02",
+          "PLC A/C No.",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,023,666",
+          "0.30"
+        ],
+        [
+          "15 Mr. S.R. Perera",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,000,000",
+          "0.30"
+        ],
+        [
+          "16 Est.of Late M.J. Fernando",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,000,000",
+          "0.30"
+        ],
+        [
+          "17 Ceylon Investment PLC - A/C No. 02",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "946,989",
+          "0.28"
+        ],
+        [
+          "18 Miss N.T.M.S. Cooray",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "775,080",
+          "0.23"
+        ],
+        [
+          "19 Cargo Boat Development Company",
+          "PLC",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "733,193",
+          "0.22"
+        ],
+        [
+          "20 Bansei Securities Capital (Private)",
+          "Limited /I.S.P.",
+          "Perera",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "723,517",
+          "0.22"
+        ],
+        [
+          "Total  Aitken Spence Hotel Holdings PLC Report",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "304,419,911",
+          "90.52"
+        ],
+        [
+          "Shares in issue at the",
+          "time of listing",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,281,612"
+        ],
+        [
+          "1979/80 Initial Public Offer",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "500,000"
+        ],
+        [
+          "1980/81 Private Placement",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "300,000"
+        ],
+        [
+          "1980/81 Rights Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "368,743"
+        ],
+        [
+          "1981/82 Rights Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,839,063"
+        ],
+        [
+          "1982/83 Rights Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,429,806"
+        ],
+        [
+          "1983/84 Rights Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "791,792"
+        ],
+        [
+          "1984/85 Rights Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "822,790"
+        ],
+        [
+          "1994/95 Bonus Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "2,444,602"
+        ],
+        [
+          "1994/95 Share swap to acquire Spence",
+          "Aitken",
+          "Hotels Ltd",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "9,699,199"
+        ],
+        [
+          "1994/95 Share swap to acquire Beach",
+          "Brown's",
+          "Hotels Ltd",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "638,020"
+        ],
+        [
+          "1994/95 Share swap to acquire Hotels",
+          "M. P. S.",
+          "Ltd",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "473,557"
+        ],
+        [
+          "1999/00 Bonus Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "3,431,531"
+        ],
+        [
+          "1999/00 Rights Issue",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "14,412,429"
+        ],
+        [
+          "2010/11 Rights Issue (1 for 4)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "9,608,286"
+        ],
+        [
+          "Share Split (7 for 1)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "288,248,580"
+        ],
+        [
+          "Total as at 31st 12. HISTORY OF MOVEMENT IN Year Issue Number of",
+          "March 2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "336,290,010"
+        ],
+        [
+          "1981/82 12% Cum.",
+          "Redeemable Preference",
+          "Shares",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "200,000"
+        ],
+        [
+          "1982/83 Redemption",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(40,000)"
+        ],
+        [
+          "1983/84 Redemption",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(40,000)"
+        ],
+        [
+          "1984/85 Redemption",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(40,000)"
+        ],
+        [
+          "1985/86 Redemption",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(40,000)"
+        ],
+        [
+          "1990/91 Redemption",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(40,000)"
+        ],
+        [
+          "1996/97 9% Cum Redeemable",
+          "Preference",
+          "Shares",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "16,500,000"
+        ],
+        [
+          "Total as at 31st March  Aitken Spence Hotel Holdings PLC Report",
+          "2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "16,500,000"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "company": "company31",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company31\\Annual\\50743_2025.pdf",
+  "total_pdf_pages": 113,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T14:58:27",
+  "statements": {
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        64
+      ],
+      "pdf_indices_0based": [
+        65
+      ],
+      "pdf_pages_1based": [
+        66
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        65
+      ],
+      "pdf_indices_0based": [
+        66
+      ],
+      "pdf_pages_1based": [
+        67
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        66
+      ],
+      "pdf_indices_0based": [
+        67
+      ],
+      "pdf_pages_1based": [
+        68
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        103
+      ],
+      "pdf_indices_0based": [
+        104
+      ],
+      "pdf_pages_1based": [
+        105
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        22
+      ],
+      "pdf_indices_0based": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "pdf_pages_1based": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "page_count": 13,
+      "confirmed": false
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        23
+      ],
+      "pdf_indices_0based": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "pdf_pages_1based": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "page_count": 9,
+      "confirmed": false
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        49
+      ],
+      "pdf_indices_0based": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "pdf_pages_1based": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ],
+      "page_count": 9,
+      "confirmed": false
+    },
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        63
+      ],
+      "pdf_indices_0based": [
+        64
+      ],
+      "pdf_pages_1based": [
+        65
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "company": "company25",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company25\\Annual\\47811_2025.pdf",
+  "total_pdf_pages": 63,
+  "page_offset": 0,
+  "generated_at": "2026-05-21T14:17:31",
+  "statements": {
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        6
+      ],
+      "pdf_indices_0based": [
+        5
+      ],
+      "pdf_pages_1based": [
+        6
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        7
+      ],
+      "pdf_indices_0based": [
+        6
+      ],
+      "pdf_pages_1based": [
+        7
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        8
+      ],
+      "pdf_indices_0based": [
+        7
+      ],
+      "pdf_pages_1based": [
+        8
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        9
+      ],
+      "pdf_indices_0based": [
+        8
+      ],
+      "pdf_pages_1based": [
+        9
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

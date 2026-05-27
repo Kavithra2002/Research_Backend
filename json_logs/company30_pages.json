@@ -1,0 +1,185 @@
+{
+  "company": "company30",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company30\\Annual\\48306_2025.pdf",
+  "total_pdf_pages": 96,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T14:58:10",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        40
+      ],
+      "pdf_indices_0based": [
+        41
+      ],
+      "pdf_pages_1based": [
+        42
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        41
+      ],
+      "pdf_indices_0based": [
+        42,
+        43,
+        44
+      ],
+      "pdf_pages_1based": [
+        43,
+        44,
+        45
+      ],
+      "page_count": 3,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        86
+      ],
+      "pdf_indices_0based": [
+        87,
+        88
+      ],
+      "pdf_pages_1based": [
+        88,
+        89
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary / Achievements",
+      "printed_pages": [
+        88
+      ],
+      "pdf_indices_0based": [
+        89,
+        90,
+        91
+      ],
+      "pdf_pages_1based": [
+        90,
+        91,
+        92
+      ],
+      "page_count": 3,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        44
+      ],
+      "pdf_indices_0based": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86
+      ],
+      "pdf_pages_1based": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
+      ],
+      "page_count": 42,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        51
+      ],
+      "pdf_indices_0based": [
+        52
+      ],
+      "pdf_pages_1based": [
+        53
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

@@ -1,0 +1,4850 @@
+{
+  "company": "company29",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company29\\Annual\\48379_2025.pdf",
+  "extracted_at": "2026-05-18T12:21:00",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 39,
+      "has_note_col": true,
+      "column_headers": [
+        "Stated Capital",
+        "Retained Earnings",
+        "Total"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Contract Customers 139,550,469 115,915,482",
+          "note_col": "",
+          "amt_cols": [
+            "Stated Capital",
+            "Retained Earnings",
+            "Total"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Year ended 31 March 2025 Year March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Note Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Revenue from Contract with Customers 14 139,550,469 115,915,482",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cost of Sales (28,695,969) (24,488,448)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as April 2023 Gross Profit 110,854,500 91,427,034",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "272,280,000",
+            "11,465,629",
+            "283,745,629"
+          ],
+          "amounts": [
+            272280000,
+            11465629,
+            283745629
+          ]
+        },
+        {
+          "label": "year Other Income 15 (44,515) 78,874",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "22,082,541",
+            "22,082,541"
+          ],
+          "amounts": [
+            null,
+            22082541,
+            22082541
+          ]
+        },
+        {
+          "label": "Other income Administrative Expenses (87,156,129) (72,595,367)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(599,764)",
+            "(599,764)"
+          ],
+          "amounts": [
+            null,
+            -599764,
+            -599764
+          ]
+        },
+        {
+          "label": "Total income Sales and Marketing Expenses (3,614,528) (3,552,161)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "21,482,777",
+            "21,482,777"
+          ],
+          "amounts": [
+            null,
+            21482777,
+            21482777
+          ]
+        },
+        {
+          "label": "Dividend Operating Profit/ (Loss) 20,039,328 15,358,380",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(10,745,600)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            null,
+            -10745600,
+            -10745600
+          ]
+        },
+        {
+          "label": "Finance Income 16 10,433,763 16,952,314 Balance as March 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "272,280,000",
+            "22,202,806",
+            "294,482,806"
+          ],
+          "amounts": [
+            272280000,
+            22202806,
+            294482806
+          ]
+        },
+        {
+          "label": "Profit/(Loss) before Tax 17 30,473,090 32,310,694 year Tax (Charge)/Reversal 18 (9,027,700) (10,228,153)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "21,445,390",
+            "21,445,390"
+          ],
+          "amounts": [
+            null,
+            21445390,
+            21445390
+          ]
+        },
+        {
+          "label": "Other income Profit/(Loss) for the year 21,445,390 22,082,541",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(494,510)",
+            "(494,510)"
+          ],
+          "amounts": [
+            null,
+            -494510,
+            -494510
+          ]
+        },
+        {
+          "label": "Total income Other Comprehensive Income not to be reclassified to profit or loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "20,950,880",
+            "20,950,880"
+          ],
+          "amounts": [
+            null,
+            20950880,
+            20950880
+          ]
+        },
+        {
+          "label": "in subsequent periods Dividend Actuarial Gain/(Loss) on Defined Benefit Plan 12 (706,443) (856,805)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(16,118,400)",
+            "(16,118,400)"
+          ],
+          "amounts": [
+            null,
+            -16118400,
+            -16118400
+          ]
+        },
+        {
+          "label": "Balance as March 2025 Deferred tax effect 18.2 211,933 257,041 Net other comprehensive income not to be reclassified to profit or (494,510) (599,764) loss in subsequent periods The and notes on pages 40 through 68 form an integral part Financial Statements. Total Comprehensive Income for the year, net of tax 20,950,879 21,482,777 Basic Earnings/(Loss) per share 0.40 0.41 The accounting policies and notes on pages 40 through 68 form an integral part of these Financial Statements. BANSEI ROYAL RESORTS HIKKADUWA PLC 37 38 ROYAL RESORTS HIKKADUWA PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "272,280,000",
+            "27,035,286",
+            "299,315,286"
+          ],
+          "amounts": [
+            272280000,
+            27035286,
+            299315286
+          ]
+        },
+        {
+          "label": "Year March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash Flows from/(used in) Operating Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "30,473,090",
+            "32,310,694"
+          ],
+          "amounts": [
+            null,
+            30473090,
+            32310694
+          ]
+        },
+        {
+          "label": "6.2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "8,982,108",
+            "8,644,081"
+          ],
+          "amounts": [
+            null,
+            8982108,
+            8644081
+          ]
+        },
+        {
+          "label": "Defined Benefit Obligation 12",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "1,070,287",
+            "764,804"
+          ],
+          "amounts": [
+            null,
+            1070287,
+            764804
+          ]
+        },
+        {
+          "label": "disposals of assets 15",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "83,906",
+            "(104,500)"
+          ],
+          "amounts": [
+            null,
+            83906,
+            -104500
+          ]
+        },
+        {
+          "label": "Interest 16",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(12,192,086)",
+            "(16,880,564)"
+          ],
+          "amounts": [
+            null,
+            -12192086,
+            -16880564
+          ]
+        },
+        {
+          "label": "Insurance Proceeds",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "1,758,323",
+            "-"
+          ],
+          "amounts": [
+            null,
+            1758323,
+            null
+          ]
+        },
+        {
+          "label": "Operating before Working Capital Changes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "30,136,237",
+            "24,760,141"
+          ],
+          "amounts": [
+            null,
+            30136237,
+            24760141
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Inventories",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "399,263",
+            "(365,264)"
+          ],
+          "amounts": [
+            null,
+            399263,
+            -365264
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Trade and Other Receivables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(2,035,764)",
+            "(2,299,920)"
+          ],
+          "amounts": [
+            null,
+            -2035764,
+            -2299920
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Advance, deposits & prepayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "430,757",
+            "987,061"
+          ],
+          "amounts": [
+            null,
+            430757,
+            987061
+          ]
+        },
+        {
+          "label": "Increase/(Decrease) in Trade and Other Payables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "3,369,372",
+            "1,415,281"
+          ],
+          "amounts": [
+            null,
+            3369372,
+            1415281
+          ]
+        },
+        {
+          "label": "Cash from Operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "32,299,866",
+            "24,497,301"
+          ],
+          "amounts": [
+            null,
+            32299866,
+            24497301
+          ]
+        },
+        {
+          "label": "Tax paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "(2,407,257)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -2407257
+          ]
+        },
+        {
+          "label": "Gratuity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(1,013,500)",
+            "(67,500)"
+          ],
+          "amounts": [
+            null,
+            -1013500,
+            -67500
+          ]
+        },
+        {
+          "label": "Net Cash Operating Activities Cash Flows from/(used in) Investing Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "31,286,366",
+            "22,022,544"
+          ],
+          "amounts": [
+            null,
+            31286366,
+            22022544
+          ]
+        },
+        {
+          "label": "Property, Plant and Equipment 6.1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(22,476,424)",
+            "(7,331,359)"
+          ],
+          "amounts": [
+            null,
+            -22476424,
+            -7331359
+          ]
+        },
+        {
+          "label": "Interest Received 16",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "10,433,763",
+            "16,880,564"
+          ],
+          "amounts": [
+            null,
+            10433763,
+            16880564
+          ]
+        },
+        {
+          "label": "Sale disposal of property plant &equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "191,040",
+            "104,500"
+          ],
+          "amounts": [
+            null,
+            191040,
+            104500
+          ]
+        },
+        {
+          "label": "in Short Term Investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(7,488,170)",
+            "(20,690,279)"
+          ],
+          "amounts": [
+            null,
+            -7488170,
+            -20690279
+          ]
+        },
+        {
+          "label": "Net Cash Investing Activities Cash Flows Financing Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(19,339,791)",
+            "(11,036,573)"
+          ],
+          "amounts": [
+            null,
+            -19339791,
+            -11036573
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(16,118,400)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            null,
+            -16118400,
+            -10745600
+          ]
+        },
+        {
+          "label": "Net Cash Financing Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(16,118,400)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            null,
+            -16118400,
+            -10745600
+          ]
+        },
+        {
+          "label": "Effect of Rate Changes on Cash and Cash Equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "39,391",
+            "(25,626)"
+          ],
+          "amounts": [
+            null,
+            39391,
+            -25626
+          ]
+        },
+        {
+          "label": "Net Increase/(Decrease) in Cash and Cash Equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "(4,132,433)",
+            "214,746"
+          ],
+          "amounts": [
+            null,
+            -4132433,
+            214746
+          ]
+        },
+        {
+          "label": "Cash and Equivalents at the beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "6,710,489",
+            "6,495,744"
+          ],
+          "amounts": [
+            null,
+            6710489,
+            6495744
+          ]
+        },
+        {
+          "label": "Cash and Equivalents at the end of the year 10 The and notes on pages 40 through 68 form an integral part Financial Statements. BANSEI ROYAL HIKKADUWA PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "2,578,055",
+            "6,710,489"
+          ],
+          "amounts": [
+            null,
+            2578055,
+            6710489
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Year ended 31 March 2025 Year March 2025",
+          "ended 31",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Note Rs. Rs.",
+          "",
+          "Stated",
+          "Retained",
+          "Total"
+        ],
+        [
+          "Revenue from Contract with Customers 14 139,550,469 115,915,482",
+          "",
+          "Rs.",
+          "Rs.",
+          "Rs."
+        ],
+        [
+          "Cost of Sales (28,695,969) (24,488,448)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Balance as April 2023 Gross Profit 110,854,500 91,427,034",
+          "at 01",
+          "272,280,000",
+          "11,465,629",
+          "283,745,629"
+        ],
+        [
+          "year Other Income 15 (44,515) 78,874",
+          "Profit/(Loss) for the",
+          "-",
+          "22,082,541",
+          "22,082,541"
+        ],
+        [
+          "Other income Administrative Expenses (87,156,129) (72,595,367)",
+          "comprehensive",
+          "-",
+          "(599,764)",
+          "(599,764)"
+        ],
+        [
+          "Total income Sales and Marketing Expenses (3,614,528) (3,552,161)",
+          "comprehensive",
+          "-",
+          "21,482,777",
+          "21,482,777"
+        ],
+        [
+          "Dividend Operating Profit/ (Loss) 20,039,328 15,358,380",
+          "Paid",
+          "-",
+          "(10,745,600)",
+          "(10,745,600)"
+        ],
+        [
+          "Finance Income 16 10,433,763 16,952,314 Balance as March 2024",
+          "at 31",
+          "272,280,000",
+          "22,202,806",
+          "294,482,806"
+        ],
+        [
+          "Profit/(Loss) before Tax 17 30,473,090 32,310,694 year Tax (Charge)/Reversal 18 (9,027,700) (10,228,153)",
+          "Profit/(Loss) for the",
+          "-",
+          "21,445,390",
+          "21,445,390"
+        ],
+        [
+          "Other income Profit/(Loss) for the year 21,445,390 22,082,541",
+          "comprehensive",
+          "-",
+          "(494,510)",
+          "(494,510)"
+        ],
+        [
+          "Total income Other Comprehensive Income not to be reclassified to profit or loss",
+          "comprehensive",
+          "-",
+          "20,950,880",
+          "20,950,880"
+        ],
+        [
+          "in subsequent periods Dividend Actuarial Gain/(Loss) on Defined Benefit Plan 12 (706,443) (856,805)",
+          "Paid",
+          "-",
+          "(16,118,400)",
+          "(16,118,400)"
+        ],
+        [
+          "Balance as March 2025 Deferred tax effect 18.2 211,933 257,041 Net other comprehensive income not to be reclassified to profit or (494,510) (599,764) loss in subsequent periods The and notes on pages 40 through 68 form an integral part Financial Statements. Total Comprehensive Income for the year, net of tax 20,950,879 21,482,777 Basic Earnings/(Loss) per share 0.40 0.41 The accounting policies and notes on pages 40 through 68 form an integral part of these Financial Statements. BANSEI ROYAL RESORTS HIKKADUWA PLC 37 38 ROYAL RESORTS HIKKADUWA PLC",
+          "at 31",
+          "272,280,000",
+          "27,035,286",
+          "299,315,286"
+        ],
+        [
+          "Year March 2025",
+          "ended 31",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash Flows from/(used in) Operating Activities",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Profit",
+          "Before Tax",
+          "",
+          "30,473,090",
+          "32,310,694"
+        ],
+        [
+          "6.2",
+          "Depreciation",
+          "",
+          "8,982,108",
+          "8,644,081"
+        ],
+        [
+          "Defined Benefit Obligation 12",
+          "Provision for",
+          "",
+          "1,070,287",
+          "764,804"
+        ],
+        [
+          "disposals of assets 15",
+          "(Profit)/Loss on",
+          "",
+          "83,906",
+          "(104,500)"
+        ],
+        [
+          "Interest 16",
+          "income",
+          "",
+          "(12,192,086)",
+          "(16,880,564)"
+        ],
+        [
+          "Insurance Proceeds",
+          "(Gain)/loss on",
+          "",
+          "1,758,323",
+          "-"
+        ],
+        [
+          "15",
+          "Exchange Gain",
+          "",
+          "(39,391)",
+          "25,626"
+        ],
+        [
+          "Operating before Working Capital Changes",
+          "Profit",
+          "",
+          "30,136,237",
+          "24,760,141"
+        ],
+        [
+          "(Increase)/Decrease in Inventories",
+          "",
+          "",
+          "399,263",
+          "(365,264)"
+        ],
+        [
+          "(Increase)/Decrease in Trade and Other Receivables",
+          "",
+          "",
+          "(2,035,764)",
+          "(2,299,920)"
+        ],
+        [
+          "(Increase)/Decrease in Advance, deposits & prepayments",
+          "",
+          "",
+          "430,757",
+          "987,061"
+        ],
+        [
+          "Increase/(Decrease) in Trade and Other Payables",
+          "",
+          "",
+          "3,369,372",
+          "1,415,281"
+        ],
+        [
+          "Cash from Operations",
+          "Generated",
+          "",
+          "32,299,866",
+          "24,497,301"
+        ],
+        [
+          "Tax paid",
+          "",
+          "",
+          "-",
+          "(2,407,257)"
+        ],
+        [
+          "Gratuity",
+          "Paid",
+          "",
+          "(1,013,500)",
+          "(67,500)"
+        ],
+        [
+          "Net Cash Operating Activities Cash Flows from/(used in) Investing Activities",
+          "from",
+          "",
+          "31,286,366",
+          "22,022,544"
+        ],
+        [
+          "Property, Plant and Equipment 6.1",
+          "Acquisition of",
+          "",
+          "(22,476,424)",
+          "(7,331,359)"
+        ],
+        [
+          "Interest Received 16",
+          "Income",
+          "",
+          "10,433,763",
+          "16,880,564"
+        ],
+        [
+          "Sale disposal of property plant &equipment",
+          "proceed on",
+          "",
+          "191,040",
+          "104,500"
+        ],
+        [
+          "in Short Term Investments",
+          "Investment made",
+          "",
+          "(7,488,170)",
+          "(20,690,279)"
+        ],
+        [
+          "Net Cash Investing Activities Cash Flows Financing Activities",
+          "from",
+          "",
+          "(19,339,791)",
+          "(11,036,573)"
+        ],
+        [
+          "",
+          "Dividend Paid",
+          "",
+          "(16,118,400)",
+          "(10,745,600)"
+        ],
+        [
+          "Net Cash Financing Activities",
+          "used in",
+          "",
+          "(16,118,400)",
+          "(10,745,600)"
+        ],
+        [
+          "Effect of Rate Changes on Cash and Cash Equivalents",
+          "Exchange",
+          "",
+          "39,391",
+          "(25,626)"
+        ],
+        [
+          "Net Increase/(Decrease) in Cash and Cash Equivalents",
+          "",
+          "",
+          "(4,132,433)",
+          "214,746"
+        ],
+        [
+          "Cash and Equivalents at the beginning of the year",
+          "Cash",
+          "",
+          "6,710,489",
+          "6,495,744"
+        ],
+        [
+          "Cash and Equivalents at the end of the year 10 The and notes on pages 40 through 68 form an integral part Financial Statements. BANSEI ROYAL HIKKADUWA PLC",
+          "Cash",
+          "",
+          "2,578,055",
+          "6,710,489"
+        ]
+      ]
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income",
+      "page_1based": 53,
+      "raw_text": "ANNUAL REPORT ANNUAL REPORT\n2024/2025 2024/2025\nBANSEI ROYAL RESORTS HIKKADUWA PLC BANSEI ROYAL RESORTS HIKKADUWA PLC\nNOTES TO THE FINANCIAL STATEMENTS NOTES TO THE FINANCIAL STATEMENTS\nYear ended 31 March 2025 Year ended 31 March 2025\n3.12 Revenue from Contracts with Customers 3.14 Expenses\nAccounting Policy Expenses are recognized in the Statement of profit or loss on the basis of a direct association between the cost\nincurred and the earnings of specific items of income. All expenditure incurred in the running of the business has\nRevenue from contracts with customers is recognised when control of the goods or services are transferred to the\nbeen charged to income in arriving at the profit for the year.\ncustomer at an amount that reflects the consideration to which the Company expects to be entitled in exchange for\nthose goods or services. Repairs and renewals are charged to the Statement of profit or loss in the year in which the expenditure is incurred.\nServices transferred over time 3.14.1 Borrowing Costs\nUnder SLFRS 15, the Company determines at contract inception whether it satisfies the performance obligation Borrowing costs directly attributable to the acquisition, construction or production of an asset that necessarily\nover time or at a point in time. For each performance obligation satisfied over time, the Company recognises the takes a substantial period of time to get ready for its intended use or sale are capitalised as part of the cost of the\nrevenue over time by measuring the progress towards complete satisfaction of that performance obligation. respective asset. All other borrowing costs are expensed in the period in which they occur. Borrowing costs consist\nof interest and other costs that an entity incurs in connection with the borrowing of funds.\nThe following specific criteria are used for the purpose of recognition of revenue:\n3.15 Taxation\nRoom Revenue\nTax expense comprises current and deferred tax. Current tax and deferred tax are recognised in the Statement of\nRevenue is recognized on the rooms occupied on daily basis.\nProfit or Loss except items recognised directly in Other Comprehensive Income.\nSale of Food & Beverages\n3.15.1 Current Income Tax\nRevenue from sale of food and beverages is recognised at the point in time when control is transferred to the\nCurrent income tax assets and liabilities are measured at the amount expected to be recovered from or paid to\ncustomer, generally on delivery of the goods.\nthe taxation authorities. The tax rates and tax laws used to compute the amount are those that are enacted or\nOther Hospitality Related Revenue substantively enacted at the reporting date.\nOther hospitality related services are recognized as the services are performed. Current tax relating to items recognised directly in Other Comprehensive Income is recognised in Other\nComprehensive Income and not in the Statement of Profit or Loss. Management periodically evaluates positions\n3.13 Other Income\ntaken in the tax returns with respect to situations in which applicable tax regulations are subject to interpretation\nand establishes provisions where appropriate.\nInterest Income\n3.15.2 Deferred Tax\nInterest Income is recognised on a time proportion basis that takes in to account the effective yield on the\nasset unless collectibles is in doubt.\nDeferred tax is provided using the liability method on temporary differences between the tax bases of assets and\nliabilities and their carrying amounts for financial reporting purposes at the reporting date.\nOther Income\nDeferred tax liabilities are recognised for all taxable temporary differences, except:\nOther income is recognised on an accrual basis.\n• When the deferred tax liability arises from the initial recognition of goodwill or an asset or liability in a transaction\nNet gains and losses of a revenue nature on the disposal of Property, Plant & Equipment has been accounted for in\nthat is not a business combination and, at the time of the transaction, affects neither the accounting profit nor taxable\nthe Statement of Comprehensive Income, having deducted from proceeds on disposal, the carrying amount of the\nprofit or loss\nassets and related selling expenses.\nDeferred tax assets are recognised for all deductible temporary differences, the carry forward of unused tax credits\nGains and losses arising from incidental activities to main revenue generating activities and those arising from\nand any unused tax losses. Deferred tax assets are recognised to the extent that it is probable that taxable profit will\na Company of similar transactions which are not material, are aggregated, reported and presented on a net basis.\nbe available against which the deductible temporary differences, and the carry forward of unused tax credits and\nunused tax losses can be utilised, except:\nBANSEI ROYAL RESORTS HIKKADUWA PLC 51 52 BANSEI ROYAL RESORTS HIKKADUWA PLC"
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 37,
+      "has_note_col": true,
+      "column_headers": [
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "",
+          "note_col": "Note",
+          "amt_cols": [
+            "2025",
+            "2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "ANNUAL REPORT ANNUAL",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "2024/2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "BANSEI ROYAL RESORTS HIKKADUWA PLC BANSEI ROYAL RESORTS PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "NOTES TO THE FINANCIAL STATEMENTS STATEMENT OF FINANCIAL POSITION",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "As at 31 March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Year ended 31 March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "ASSETS",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Non-Current Assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Property, Plant and Equipment",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "198,718,309",
+            "185,510,899"
+          ],
+          "amounts": [
+            198718309,
+            185510899
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "198,718,309",
+            "185,510,899"
+          ],
+          "amounts": [
+            198718309,
+            185510899
+          ]
+        },
+        {
+          "label": "Current Assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Inventory",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "3,196,318",
+            "3,595,582"
+          ],
+          "amounts": [
+            3196318,
+            3595582
+          ]
+        },
+        {
+          "label": "We also provide those charged with governance with a statement that we have complied with relevant ethical requirements Trade and Other Receivables",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "6,720,466",
+            "4,672,742"
+          ],
+          "amounts": [
+            6720466,
+            4672742
+          ]
+        },
+        {
+          "label": "regarding independence, and to communicate with them all relationships and other matters that may reasonably be thought Advance, deposits and prepayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,366,049",
+            "2,796,806"
+          ],
+          "amounts": [
+            2366049,
+            2796806
+          ]
+        },
+        {
+          "label": "to bear on our independence, and where applicable, actions taken to eliminate threats or safeguards applied. Income Tax Receivable",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,040,090",
+            "3,040,090"
+          ],
+          "amounts": [
+            3040090,
+            3040090
+          ]
+        },
+        {
+          "label": "Short Term Deposits",
+          "is_section_header": false,
+          "note": "9",
+          "amounts_raw": [
+            "135,635,429",
+            "128,147,259"
+          ],
+          "amounts": [
+            135635429,
+            128147259
+          ]
+        },
+        {
+          "label": "From the matters communicated with those charged with governance, we determine those matters that were of most Cash and Cash Equivalents",
+          "is_section_header": false,
+          "note": "10",
+          "amounts_raw": [
+            "2,578,055",
+            "6,710,489"
+          ],
+          "amounts": [
+            2578055,
+            6710489
+          ]
+        },
+        {
+          "label": "signifi cance in the audit of the fi nancial statements of the current period and are therefore the key audit matters. We",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "153,536,408",
+            "148,962,968"
+          ],
+          "amounts": [
+            153536408,
+            148962968
+          ]
+        },
+        {
+          "label": "describe these matters in our auditor’s report unless law or regulation precludes public disclosure about the matter or Total Assets when, in extremely rare circumstances, we determine that a matter should not be communicated in our report because the adverse consequences of doing so would reasonably be expected to outweigh the public interest benefi ts of such",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "352,254,716",
+            "334,473,867"
+          ],
+          "amounts": [
+            352254716,
+            334473867
+          ]
+        },
+        {
+          "label": "EQUITY AND LIABILITIES",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "communication.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Capital and Reserves",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated Capital",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "272,280,000",
+            "272,280,000"
+          ],
+          "amounts": [
+            272280000,
+            272280000
+          ]
+        },
+        {
+          "label": "Report on other legal and regulatory requirements Retained Earnings",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "27,035,286",
+            "22,202,806"
+          ],
+          "amounts": [
+            27035286,
+            22202806
+          ]
+        },
+        {
+          "label": "Total Equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "299,315,286",
+            "294,482,806"
+          ],
+          "amounts": [
+            299315286,
+            294482806
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "ANNUAL REPORT ANNUAL",
+          "REPORT",
+          "",
+          ""
+        ],
+        [
+          "2024/2025",
+          "2024/2025",
+          "",
+          ""
+        ],
+        [
+          "BANSEI ROYAL RESORTS HIKKADUWA PLC BANSEI ROYAL RESORTS PLC",
+          "HIKKADUWA",
+          "",
+          ""
+        ],
+        [
+          "NOTES TO THE FINANCIAL STATEMENTS STATEMENT OF FINANCIAL POSITION",
+          "",
+          "",
+          ""
+        ],
+        [
+          "As at 31 March 2025",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Year ended 31 March 2025",
+          "",
+          "",
+          ""
+        ],
+        [
+          "ASSETS",
+          "Note",
+          "Rs.",
+          "Rs."
+        ],
+        [
+          "Non-Current Assets",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Property, Plant and Equipment",
+          "6",
+          "198,718,309",
+          "185,510,899"
+        ],
+        [
+          "",
+          "",
+          "198,718,309",
+          "185,510,899"
+        ],
+        [
+          "Current Assets",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Inventory",
+          "7",
+          "3,196,318",
+          "3,595,582"
+        ],
+        [
+          "We also provide those charged with governance with a statement that we have complied with relevant ethical requirements Trade and Other Receivables",
+          "8",
+          "6,720,466",
+          "4,672,742"
+        ],
+        [
+          "regarding independence, and to communicate with them all relationships and other matters that may reasonably be thought Advance, deposits and prepayments",
+          "",
+          "2,366,049",
+          "2,796,806"
+        ],
+        [
+          "to bear on our independence, and where applicable, actions taken to eliminate threats or safeguards applied. Income Tax Receivable",
+          "",
+          "3,040,090",
+          "3,040,090"
+        ],
+        [
+          "Short Term Deposits",
+          "9",
+          "135,635,429",
+          "128,147,259"
+        ],
+        [
+          "From the matters communicated with those charged with governance, we determine those matters that were of most Cash and Cash Equivalents",
+          "10",
+          "2,578,055",
+          "6,710,489"
+        ],
+        [
+          "signifi cance in the audit of the fi nancial statements of the current period and are therefore the key audit matters. We",
+          "",
+          "153,536,408",
+          "148,962,968"
+        ],
+        [
+          "describe these matters in our auditor’s report unless law or regulation precludes public disclosure about the matter or Total Assets when, in extremely rare circumstances, we determine that a matter should not be communicated in our report because the adverse consequences of doing so would reasonably be expected to outweigh the public interest benefi ts of such",
+          "",
+          "352,254,716",
+          "334,473,867"
+        ],
+        [
+          "EQUITY AND LIABILITIES",
+          "",
+          "",
+          ""
+        ],
+        [
+          "communication.",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Capital and Reserves",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Stated Capital",
+          "11",
+          "272,280,000",
+          "272,280,000"
+        ],
+        [
+          "Report on other legal and regulatory requirements Retained Earnings",
+          "",
+          "27,035,286",
+          "22,202,806"
+        ],
+        [
+          "Total Equity",
+          "",
+          "299,315,286",
+          "294,482,806"
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 39,
+      "has_note_col": true,
+      "column_headers": [
+        "March 2025",
+        "Stated Capital",
+        "Retained Earnings",
+        "Total"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Year ended March 2025 Year Contract Customers 139,550,469 115,915,482",
+          "note_col": "ended 31",
+          "amt_cols": [
+            "March 2025",
+            "Stated Capital",
+            "Retained Earnings",
+            "Total"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Year ended 31 March 2025 Year 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Note Rs. Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Revenue from Contract with Customers 14 139,550,469 115,915,482",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cost of Sales (28,695,969) (24,488,448)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Balance as April Gross Profit 110,854,500 91,427,034",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2023",
+            "272,280,000",
+            "11,465,629",
+            "283,745,629"
+          ],
+          "amounts": [
+            2023,
+            272280000,
+            11465629,
+            283745629
+          ]
+        },
+        {
+          "label": "year Other Income 15 (44,515) 78,874",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "22,082,541",
+            "22,082,541"
+          ],
+          "amounts": [
+            null,
+            null,
+            22082541,
+            22082541
+          ]
+        },
+        {
+          "label": "Other Administrative Expenses (87,156,129) (72,595,367)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "(599,764)",
+            "(599,764)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -599764,
+            -599764
+          ]
+        },
+        {
+          "label": "Total Sales and Marketing Expenses (3,614,528) (3,552,161)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "21,482,777",
+            "21,482,777"
+          ],
+          "amounts": [
+            null,
+            null,
+            21482777,
+            21482777
+          ]
+        },
+        {
+          "label": "Dividend Operating Profit/ (Loss) 20,039,328 15,358,380",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "(10,745,600)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -10745600,
+            -10745600
+          ]
+        },
+        {
+          "label": "Finance Income 16 10,433,763 16,952,314 Balance as March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2024",
+            "272,280,000",
+            "22,202,806",
+            "294,482,806"
+          ],
+          "amounts": [
+            2024,
+            272280000,
+            22202806,
+            294482806
+          ]
+        },
+        {
+          "label": "Profit/(Loss) before Tax 17 30,473,090 32,310,694 year Tax (Charge)/Reversal 18 (9,027,700) (10,228,153)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "21,445,390",
+            "21,445,390"
+          ],
+          "amounts": [
+            null,
+            null,
+            21445390,
+            21445390
+          ]
+        },
+        {
+          "label": "Other Profit/(Loss) for the year 21,445,390 22,082,541",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "(494,510)",
+            "(494,510)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -494510,
+            -494510
+          ]
+        },
+        {
+          "label": "Total Other Comprehensive Income not to be reclassified to profit or loss",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "20,950,880",
+            "20,950,880"
+          ],
+          "amounts": [
+            null,
+            null,
+            20950880,
+            20950880
+          ]
+        },
+        {
+          "label": "in subsequent periods Dividend Actuarial Gain/(Loss) on Defined Benefit Plan 12 (706,443) (856,805)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "-",
+            "(16,118,400)",
+            "(16,118,400)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -16118400,
+            -16118400
+          ]
+        },
+        {
+          "label": "Balance as March Deferred tax effect 18.2 211,933 257,041 Net other comprehensive income not to be reclassified to profit or (494,510) (599,764) loss in subsequent periods The on pages 40 through 68 form an integral part Financial Statements. Total Comprehensive Income for the year, net of tax 20,950,879 21,482,777 Basic Earnings/(Loss) per share 0.40 0.41 The accounting policies and notes on pages 40 through 68 form an integral part of these Financial Statements. BANSEI ROYAL RESORTS HIKKADUWA PLC 37 38 ROYAL RESORTS HIKKADUWA PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "272,280,000",
+            "27,035,286",
+            "299,315,286"
+          ],
+          "amounts": [
+            2025,
+            272280000,
+            27035286,
+            299315286
+          ]
+        },
+        {
+          "label": "Year 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash Flows from/(used Operating Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "30,473,090",
+            "32,310,694"
+          ],
+          "amounts": [
+            null,
+            null,
+            30473090,
+            32310694
+          ]
+        },
+        {
+          "label": "6.2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "8,982,108",
+            "8,644,081"
+          ],
+          "amounts": [
+            null,
+            null,
+            8982108,
+            8644081
+          ]
+        },
+        {
+          "label": "Defined Obligation 12",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "1,070,287",
+            "764,804"
+          ],
+          "amounts": [
+            null,
+            null,
+            1070287,
+            764804
+          ]
+        },
+        {
+          "label": "assets 15",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "83,906",
+            "(104,500)"
+          ],
+          "amounts": [
+            null,
+            null,
+            83906,
+            -104500
+          ]
+        },
+        {
+          "label": "Interest 16",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(12,192,086)",
+            "(16,880,564)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -12192086,
+            -16880564
+          ]
+        },
+        {
+          "label": "Proceeds",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "1,758,323",
+            "-"
+          ],
+          "amounts": [
+            null,
+            null,
+            1758323,
+            null
+          ]
+        },
+        {
+          "label": "Operating before Capital Changes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "30,136,237",
+            "24,760,141"
+          ],
+          "amounts": [
+            null,
+            null,
+            30136237,
+            24760141
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Inventories",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "399,263",
+            "(365,264)"
+          ],
+          "amounts": [
+            null,
+            null,
+            399263,
+            -365264
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in and Other Receivables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(2,035,764)",
+            "(2,299,920)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -2035764,
+            -2299920
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Advance, deposits & prepayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "430,757",
+            "987,061"
+          ],
+          "amounts": [
+            null,
+            null,
+            430757,
+            987061
+          ]
+        },
+        {
+          "label": "Increase/(Decrease) in and Other Payables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "3,369,372",
+            "1,415,281"
+          ],
+          "amounts": [
+            null,
+            null,
+            3369372,
+            1415281
+          ]
+        },
+        {
+          "label": "Cash from Operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "32,299,866",
+            "24,497,301"
+          ],
+          "amounts": [
+            null,
+            null,
+            32299866,
+            24497301
+          ]
+        },
+        {
+          "label": "Tax paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "-",
+            "(2,407,257)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -2407257
+          ]
+        },
+        {
+          "label": "Gratuity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(1,013,500)",
+            "(67,500)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -1013500,
+            -67500
+          ]
+        },
+        {
+          "label": "Net Cash Operating Activities Cash Flows from/(used Investing Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "31,286,366",
+            "22,022,544"
+          ],
+          "amounts": [
+            null,
+            null,
+            31286366,
+            22022544
+          ]
+        },
+        {
+          "label": "and Equipment 6.1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(22,476,424)",
+            "(7,331,359)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -22476424,
+            -7331359
+          ]
+        },
+        {
+          "label": "Interest 16",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "10,433,763",
+            "16,880,564"
+          ],
+          "amounts": [
+            null,
+            null,
+            10433763,
+            16880564
+          ]
+        },
+        {
+          "label": "Sale property plant &equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "191,040",
+            "104,500"
+          ],
+          "amounts": [
+            null,
+            null,
+            191040,
+            104500
+          ]
+        },
+        {
+          "label": "in Term Investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(7,488,170)",
+            "(20,690,279)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -7488170,
+            -20690279
+          ]
+        },
+        {
+          "label": "Net Cash Investing Activities Cash Flows Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(19,339,791)",
+            "(11,036,573)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -19339791,
+            -11036573
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(16,118,400)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -16118400,
+            -10745600
+          ]
+        },
+        {
+          "label": "Net Cash Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(16,118,400)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            null,
+            null,
+            -16118400,
+            -10745600
+          ]
+        },
+        {
+          "label": "Effect of Rate on Cash and Cash Equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "39,391",
+            "(25,626)"
+          ],
+          "amounts": [
+            null,
+            null,
+            39391,
+            -25626
+          ]
+        },
+        {
+          "label": "Net Increase/(Decrease) and Cash Equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "(4,132,433)",
+            "214,746"
+          ],
+          "amounts": [
+            null,
+            null,
+            -4132433,
+            214746
+          ]
+        },
+        {
+          "label": "Cash and beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,710,489",
+            "6,495,744"
+          ],
+          "amounts": [
+            null,
+            null,
+            6710489,
+            6495744
+          ]
+        },
+        {
+          "label": "Cash and end of the year 10 The on pages 40 through 68 form an integral part Financial Statements. BANSEI ROYAL HIKKADUWA PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "2,578,055",
+            "6,710,489"
+          ],
+          "amounts": [
+            null,
+            null,
+            2578055,
+            6710489
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Year ended 31 March 2025 Year 2025",
+          "ended 31",
+          "March",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Note Rs. Rs.",
+          "",
+          "",
+          "Stated",
+          "Retained",
+          "Total"
+        ],
+        [
+          "Revenue from Contract with Customers 14 139,550,469 115,915,482",
+          "",
+          "",
+          "Rs.",
+          "Rs.",
+          "Rs."
+        ],
+        [
+          "Cost of Sales (28,695,969) (24,488,448)",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Balance as April Gross Profit 110,854,500 91,427,034",
+          "at 01",
+          "2023",
+          "272,280,000",
+          "11,465,629",
+          "283,745,629"
+        ],
+        [
+          "year Other Income 15 (44,515) 78,874",
+          "Profit/(Loss) for the",
+          "",
+          "-",
+          "22,082,541",
+          "22,082,541"
+        ],
+        [
+          "Other Administrative Expenses (87,156,129) (72,595,367)",
+          "comprehensive",
+          "income",
+          "-",
+          "(599,764)",
+          "(599,764)"
+        ],
+        [
+          "Total Sales and Marketing Expenses (3,614,528) (3,552,161)",
+          "comprehensive",
+          "income",
+          "-",
+          "21,482,777",
+          "21,482,777"
+        ],
+        [
+          "Dividend Operating Profit/ (Loss) 20,039,328 15,358,380",
+          "Paid",
+          "",
+          "-",
+          "(10,745,600)",
+          "(10,745,600)"
+        ],
+        [
+          "Finance Income 16 10,433,763 16,952,314 Balance as March",
+          "at 31",
+          "2024",
+          "272,280,000",
+          "22,202,806",
+          "294,482,806"
+        ],
+        [
+          "Profit/(Loss) before Tax 17 30,473,090 32,310,694 year Tax (Charge)/Reversal 18 (9,027,700) (10,228,153)",
+          "Profit/(Loss) for the",
+          "",
+          "-",
+          "21,445,390",
+          "21,445,390"
+        ],
+        [
+          "Other Profit/(Loss) for the year 21,445,390 22,082,541",
+          "comprehensive",
+          "income",
+          "-",
+          "(494,510)",
+          "(494,510)"
+        ],
+        [
+          "Total Other Comprehensive Income not to be reclassified to profit or loss",
+          "comprehensive",
+          "income",
+          "-",
+          "20,950,880",
+          "20,950,880"
+        ],
+        [
+          "in subsequent periods Dividend Actuarial Gain/(Loss) on Defined Benefit Plan 12 (706,443) (856,805)",
+          "Paid",
+          "",
+          "-",
+          "(16,118,400)",
+          "(16,118,400)"
+        ],
+        [
+          "Balance as March Deferred tax effect 18.2 211,933 257,041 Net other comprehensive income not to be reclassified to profit or (494,510) (599,764) loss in subsequent periods The on pages 40 through 68 form an integral part Financial Statements. Total Comprehensive Income for the year, net of tax 20,950,879 21,482,777 Basic Earnings/(Loss) per share 0.40 0.41 The accounting policies and notes on pages 40 through 68 form an integral part of these Financial Statements. BANSEI ROYAL RESORTS HIKKADUWA PLC 37 38 ROYAL RESORTS HIKKADUWA PLC",
+          "at 31",
+          "2025",
+          "272,280,000",
+          "27,035,286",
+          "299,315,286"
+        ],
+        [
+          "Year 2025",
+          "ended 31",
+          "March",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash Flows from/(used Operating Activities",
+          "",
+          "in)",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Profit",
+          "Before Tax",
+          "",
+          "",
+          "30,473,090",
+          "32,310,694"
+        ],
+        [
+          "6.2",
+          "Depreciation",
+          "",
+          "",
+          "8,982,108",
+          "8,644,081"
+        ],
+        [
+          "Defined Obligation 12",
+          "Provision for",
+          "Benefit",
+          "",
+          "1,070,287",
+          "764,804"
+        ],
+        [
+          "assets 15",
+          "(Profit)/Loss on",
+          "disposals of",
+          "",
+          "83,906",
+          "(104,500)"
+        ],
+        [
+          "Interest 16",
+          "income",
+          "",
+          "",
+          "(12,192,086)",
+          "(16,880,564)"
+        ],
+        [
+          "Proceeds",
+          "(Gain)/loss on",
+          "Insurance",
+          "",
+          "1,758,323",
+          "-"
+        ],
+        [
+          "15",
+          "Exchange Gain",
+          "",
+          "",
+          "(39,391)",
+          "25,626"
+        ],
+        [
+          "Operating before Capital Changes",
+          "Profit",
+          "Working",
+          "",
+          "30,136,237",
+          "24,760,141"
+        ],
+        [
+          "(Increase)/Decrease in Inventories",
+          "",
+          "",
+          "",
+          "399,263",
+          "(365,264)"
+        ],
+        [
+          "(Increase)/Decrease in and Other Receivables",
+          "",
+          "Trade",
+          "",
+          "(2,035,764)",
+          "(2,299,920)"
+        ],
+        [
+          "(Increase)/Decrease in Advance, deposits & prepayments",
+          "",
+          "",
+          "",
+          "430,757",
+          "987,061"
+        ],
+        [
+          "Increase/(Decrease) in and Other Payables",
+          "",
+          "Trade",
+          "",
+          "3,369,372",
+          "1,415,281"
+        ],
+        [
+          "Cash from Operations",
+          "Generated",
+          "",
+          "",
+          "32,299,866",
+          "24,497,301"
+        ],
+        [
+          "Tax paid",
+          "",
+          "",
+          "",
+          "-",
+          "(2,407,257)"
+        ],
+        [
+          "Gratuity",
+          "Paid",
+          "",
+          "",
+          "(1,013,500)",
+          "(67,500)"
+        ],
+        [
+          "Net Cash Operating Activities Cash Flows from/(used Investing Activities",
+          "from",
+          "",
+          "",
+          "31,286,366",
+          "22,022,544"
+        ],
+        [
+          "and Equipment 6.1",
+          "Acquisition of",
+          "Property, Plant",
+          "",
+          "(22,476,424)",
+          "(7,331,359)"
+        ],
+        [
+          "Interest 16",
+          "Income",
+          "Received",
+          "",
+          "10,433,763",
+          "16,880,564"
+        ],
+        [
+          "Sale property plant &equipment",
+          "proceed on",
+          "disposal of",
+          "",
+          "191,040",
+          "104,500"
+        ],
+        [
+          "in Term Investments",
+          "Investment made",
+          "Short",
+          "",
+          "(7,488,170)",
+          "(20,690,279)"
+        ],
+        [
+          "Net Cash Investing Activities Cash Flows Activities",
+          "from",
+          "",
+          "",
+          "(19,339,791)",
+          "(11,036,573)"
+        ],
+        [
+          "",
+          "Dividend Paid",
+          "",
+          "",
+          "(16,118,400)",
+          "(10,745,600)"
+        ],
+        [
+          "Net Cash Activities",
+          "used in",
+          "Financing",
+          "",
+          "(16,118,400)",
+          "(10,745,600)"
+        ],
+        [
+          "Effect of Rate on Cash and Cash Equivalents",
+          "Exchange",
+          "Changes",
+          "",
+          "39,391",
+          "(25,626)"
+        ],
+        [
+          "Net Increase/(Decrease) and Cash Equivalents",
+          "",
+          "in Cash",
+          "",
+          "(4,132,433)",
+          "214,746"
+        ],
+        [
+          "Cash and beginning of the year",
+          "Cash",
+          "Equivalents at the",
+          "",
+          "6,710,489",
+          "6,495,744"
+        ],
+        [
+          "Cash and end of the year 10 The on pages 40 through 68 form an integral part Financial Statements. BANSEI ROYAL HIKKADUWA PLC",
+          "Cash",
+          "Equivalents at the",
+          "",
+          "2,578,055",
+          "6,710,489"
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 40,
+      "has_note_col": true,
+      "column_headers": [
+        "2025",
+        "2024"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "",
+          "note_col": "Note",
+          "amt_cols": [
+            "2025",
+            "2024"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Cash Flows from/(used in) Operating Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit Before Tax Adjustments for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "30,473,090",
+            "32,310,694"
+          ],
+          "amounts": [
+            30473090,
+            32310694
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "is_section_header": false,
+          "note": "6.2",
+          "amounts_raw": [
+            "8,982,108",
+            "8,644,081"
+          ],
+          "amounts": [
+            8982108,
+            8644081
+          ]
+        },
+        {
+          "label": "Provision for Defined Benefit Obligation",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "1,070,287",
+            "764,804"
+          ],
+          "amounts": [
+            1070287,
+            764804
+          ]
+        },
+        {
+          "label": "(Profit)/Loss on disposals of assets",
+          "is_section_header": false,
+          "note": "15",
+          "amounts_raw": [
+            "83,906",
+            "(104,500)"
+          ],
+          "amounts": [
+            83906,
+            -104500
+          ]
+        },
+        {
+          "label": "Interest income",
+          "is_section_header": false,
+          "note": "16",
+          "amounts_raw": [
+            "(12,192,086)",
+            "(16,880,564)"
+          ],
+          "amounts": [
+            -12192086,
+            -16880564
+          ]
+        },
+        {
+          "label": "(Gain)/loss on Insurance Proceeds",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,758,323",
+            "-"
+          ],
+          "amounts": [
+            1758323,
+            null
+          ]
+        },
+        {
+          "label": "Exchange Gain",
+          "is_section_header": false,
+          "note": "15",
+          "amounts_raw": [
+            "(39,391)",
+            "25,626"
+          ],
+          "amounts": [
+            -39391,
+            25626
+          ]
+        },
+        {
+          "label": "Operating Profit before Working Capital Changes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "30,136,237",
+            "24,760,141"
+          ],
+          "amounts": [
+            30136237,
+            24760141
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Inventories",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "399,263",
+            "(365,264)"
+          ],
+          "amounts": [
+            399263,
+            -365264
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Trade and Other Receivables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(2,035,764)",
+            "(2,299,920)"
+          ],
+          "amounts": [
+            -2035764,
+            -2299920
+          ]
+        },
+        {
+          "label": "(Increase)/Decrease in Advance, deposits & prepayments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "430,757",
+            "987,061"
+          ],
+          "amounts": [
+            430757,
+            987061
+          ]
+        },
+        {
+          "label": "Increase/(Decrease) in Trade and Other Payables",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,369,372",
+            "1,415,281"
+          ],
+          "amounts": [
+            3369372,
+            1415281
+          ]
+        },
+        {
+          "label": "Cash Generated from Operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "32,299,866",
+            "24,497,301"
+          ],
+          "amounts": [
+            32299866,
+            24497301
+          ]
+        },
+        {
+          "label": "Tax paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "(2,407,257)"
+          ],
+          "amounts": [
+            null,
+            -2407257
+          ]
+        },
+        {
+          "label": "Gratuity Paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(1,013,500)",
+            "(67,500)"
+          ],
+          "amounts": [
+            -1013500,
+            -67500
+          ]
+        },
+        {
+          "label": "Net Cash from Operating Activities Cash Flows from/(used in) Investing Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "31,286,366",
+            "22,022,544"
+          ],
+          "amounts": [
+            31286366,
+            22022544
+          ]
+        },
+        {
+          "label": "Acquisition of Property, Plant and Equipment",
+          "is_section_header": false,
+          "note": "6.1",
+          "amounts_raw": [
+            "(22,476,424)",
+            "(7,331,359)"
+          ],
+          "amounts": [
+            -22476424,
+            -7331359
+          ]
+        },
+        {
+          "label": "Interest Income Received",
+          "is_section_header": false,
+          "note": "16",
+          "amounts_raw": [
+            "10,433,763",
+            "16,880,564"
+          ],
+          "amounts": [
+            10433763,
+            16880564
+          ]
+        },
+        {
+          "label": "Sale proceed on disposal of property plant &equipment",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "191,040",
+            "104,500"
+          ],
+          "amounts": [
+            191040,
+            104500
+          ]
+        },
+        {
+          "label": "Investment made in Short Term Investments",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(7,488,170)",
+            "(20,690,279)"
+          ],
+          "amounts": [
+            -7488170,
+            -20690279
+          ]
+        },
+        {
+          "label": "Net Cash from Investing Activities Cash Flows used in Financing Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(19,339,791)",
+            "(11,036,573)"
+          ],
+          "amounts": [
+            -19339791,
+            -11036573
+          ]
+        },
+        {
+          "label": "Dividend Paid",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(16,118,400)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            -16118400,
+            -10745600
+          ]
+        },
+        {
+          "label": "Net Cash used in Financing Activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(16,118,400)",
+            "(10,745,600)"
+          ],
+          "amounts": [
+            -16118400,
+            -10745600
+          ]
+        },
+        {
+          "label": "Effect of Exchange Rate Changes on Cash and Cash Equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "39,391",
+            "(25,626)"
+          ],
+          "amounts": [
+            39391,
+            -25626
+          ]
+        },
+        {
+          "label": "Net Increase/(Decrease) in Cash and Cash Equivalents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(4,132,433)",
+            "214,746"
+          ],
+          "amounts": [
+            -4132433,
+            214746
+          ]
+        },
+        {
+          "label": "Cash and Cash Equivalents at the beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,710,489",
+            "6,495,744"
+          ],
+          "amounts": [
+            6710489,
+            6495744
+          ]
+        },
+        {
+          "label": "Cash and Cash Equivalents at the end of the year The accounting policies and notes on pages 40 through 68 form an these Financial Statements. BANSEI RESORTS HIKKADUWA PLC",
+          "is_section_header": false,
+          "note": "10",
+          "amounts_raw": [
+            "2,578,055",
+            "6,710,489"
+          ],
+          "amounts": [
+            2578055,
+            6710489
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "",
+          "",
+          "2025",
+          "2024"
+        ],
+        [
+          "",
+          "Note",
+          "Rs.",
+          "Rs."
+        ],
+        [
+          "Cash Flows from/(used in) Operating Activities",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Profit Before Tax Adjustments for",
+          "",
+          "30,473,090",
+          "32,310,694"
+        ],
+        [
+          "Depreciation",
+          "6.2",
+          "8,982,108",
+          "8,644,081"
+        ],
+        [
+          "Provision for Defined Benefit Obligation",
+          "12",
+          "1,070,287",
+          "764,804"
+        ],
+        [
+          "(Profit)/Loss on disposals of assets",
+          "15",
+          "83,906",
+          "(104,500)"
+        ],
+        [
+          "Interest income",
+          "16",
+          "(12,192,086)",
+          "(16,880,564)"
+        ],
+        [
+          "(Gain)/loss on Insurance Proceeds",
+          "",
+          "1,758,323",
+          "-"
+        ],
+        [
+          "Exchange Gain",
+          "15",
+          "(39,391)",
+          "25,626"
+        ],
+        [
+          "Operating Profit before Working Capital Changes",
+          "",
+          "30,136,237",
+          "24,760,141"
+        ],
+        [
+          "(Increase)/Decrease in Inventories",
+          "",
+          "399,263",
+          "(365,264)"
+        ],
+        [
+          "(Increase)/Decrease in Trade and Other Receivables",
+          "",
+          "(2,035,764)",
+          "(2,299,920)"
+        ],
+        [
+          "(Increase)/Decrease in Advance, deposits & prepayments",
+          "",
+          "430,757",
+          "987,061"
+        ],
+        [
+          "Increase/(Decrease) in Trade and Other Payables",
+          "",
+          "3,369,372",
+          "1,415,281"
+        ],
+        [
+          "Cash Generated from Operations",
+          "",
+          "32,299,866",
+          "24,497,301"
+        ],
+        [
+          "Tax paid",
+          "",
+          "-",
+          "(2,407,257)"
+        ],
+        [
+          "Gratuity Paid",
+          "",
+          "(1,013,500)",
+          "(67,500)"
+        ],
+        [
+          "Net Cash from Operating Activities Cash Flows from/(used in) Investing Activities",
+          "",
+          "31,286,366",
+          "22,022,544"
+        ],
+        [
+          "Acquisition of Property, Plant and Equipment",
+          "6.1",
+          "(22,476,424)",
+          "(7,331,359)"
+        ],
+        [
+          "Interest Income Received",
+          "16",
+          "10,433,763",
+          "16,880,564"
+        ],
+        [
+          "Sale proceed on disposal of property plant &equipment",
+          "",
+          "191,040",
+          "104,500"
+        ],
+        [
+          "Investment made in Short Term Investments",
+          "",
+          "(7,488,170)",
+          "(20,690,279)"
+        ],
+        [
+          "Net Cash from Investing Activities Cash Flows used in Financing Activities",
+          "",
+          "(19,339,791)",
+          "(11,036,573)"
+        ],
+        [
+          "Dividend Paid",
+          "",
+          "(16,118,400)",
+          "(10,745,600)"
+        ],
+        [
+          "Net Cash used in Financing Activities",
+          "",
+          "(16,118,400)",
+          "(10,745,600)"
+        ],
+        [
+          "Effect of Exchange Rate Changes on Cash and Cash Equivalents",
+          "",
+          "39,391",
+          "(25,626)"
+        ],
+        [
+          "Net Increase/(Decrease) in Cash and Cash Equivalents",
+          "",
+          "(4,132,433)",
+          "214,746"
+        ],
+        [
+          "Cash and Cash Equivalents at the beginning of the year",
+          "",
+          "6,710,489",
+          "6,495,744"
+        ],
+        [
+          "Cash and Cash Equivalents at the end of the year The accounting policies and notes on pages 40 through 68 form an these Financial Statements. BANSEI RESORTS HIKKADUWA PLC",
+          "10",
+          "2,578,055",
+          "6,710,489"
+        ]
+      ]
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "page_1based": 70,
+      "has_note_col": true,
+      "column_headers": [
+        "Col 1",
+        "Col 2",
+        "Col 3",
+        "Col 4"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "OF SHAREHOLDER",
+          "note_col": "NO",
+          "amt_cols": [
+            "Col 1",
+            "%",
+            "Col 3",
+            "%"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "",
+            "%",
+            "",
+            "%"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "ended 31 March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "TWENTY LARGEST SHAREHOLDERS",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "NAME OF SHAREHOLDER",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Bansei Securities Co. Ltd",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "20,953,677",
+            "39.00",
+            "20,953,677",
+            "39.00"
+          ],
+          "amounts": [
+            20953677,
+            39.0,
+            20953677,
+            39.0
+          ]
+        },
+        {
+          "label": "Hikkaduwa Hotel Holdings (Private) Limited",
+          "is_section_header": false,
+          "note": "2",
+          "amounts_raw": [
+            "16,655,923",
+            "31.00",
+            "16,655,923",
+            "31.00"
+          ],
+          "amounts": [
+            16655923,
+            31.0,
+            16655923,
+            31.0
+          ]
+        },
+        {
+          "label": "Veritas Holdings (Pvt) Ltd",
+          "is_section_header": false,
+          "note": "3",
+          "amounts_raw": [
+            "5,372,800",
+            "10.00",
+            "5,372,800",
+            "10.00"
+          ],
+          "amounts": [
+            5372800,
+            10.0,
+            5372800,
+            10.0
+          ]
+        },
+        {
+          "label": "Bansei Holdings Co. Ltd",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "5,372,800",
+            "10.00",
+            "5,372,800",
+            "10.00"
+          ],
+          "amounts": [
+            5372800,
+            10.0,
+            5372800,
+            10.0
+          ]
+        },
+        {
+          "label": "Mrs. C.V. Perera",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            "1,009,542",
+            "1.88",
+            "1,009,542",
+            "1.88"
+          ],
+          "amounts": [
+            1009542,
+            1.88,
+            1009542,
+            1.88
+          ]
+        },
+        {
+          "label": "Mr. D.S.K. Karunaratne",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "895,400",
+            "1.67",
+            "895,400",
+            "1.67"
+          ],
+          "amounts": [
+            895400,
+            1.67,
+            895400,
+            1.67
+          ]
+        },
+        {
+          "label": "Dr. S.M.D.C.W. Senarathne",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "750,001",
+            "1.40",
+            "810,696",
+            "1.51"
+          ],
+          "amounts": [
+            750001,
+            1.4,
+            810696,
+            1.51
+          ]
+        },
+        {
+          "label": "Mr. J.V.W. Malawana",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "662,031",
+            "1.23",
+            "662,176",
+            "1.23"
+          ],
+          "amounts": [
+            662031,
+            1.23,
+            662176,
+            1.23
+          ]
+        },
+        {
+          "label": "Mr. T.G.S. Wickrama",
+          "is_section_header": false,
+          "note": "9",
+          "amounts_raw": [
+            "624,845",
+            "1.16",
+            "591,345",
+            "1.10"
+          ],
+          "amounts": [
+            624845,
+            1.16,
+            591345,
+            1.1
+          ]
+        },
+        {
+          "label": "Mr. G V Sanjaya",
+          "is_section_header": false,
+          "note": "10",
+          "amounts_raw": [
+            "100,507",
+            "0.19",
+            "52,307",
+            "0.10"
+          ],
+          "amounts": [
+            100507,
+            0.19,
+            52307,
+            0.1
+          ]
+        },
+        {
+          "label": "Dr. S.M.Thenabadu",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "97,175",
+            "0.18",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            97175,
+            0.18,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mr. M T M Peiris",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "83,878",
+            "0.16",
+            "55,000",
+            "0.10"
+          ],
+          "amounts": [
+            83878,
+            0.16,
+            55000,
+            0.1
+          ]
+        },
+        {
+          "label": "Merchant Bank of Sri Lanka & Finance PLC/Y R P De Silva",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "77,080",
+            "0.14",
+            "83,124",
+            "0.15"
+          ],
+          "amounts": [
+            77080,
+            0.14,
+            83124,
+            0.15
+          ]
+        },
+        {
+          "label": "Mr. Y R P De Silva",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,276",
+            "0.03",
+            "15,211",
+            "0.03"
+          ],
+          "amounts": [
+            15276,
+            0.03,
+            15211,
+            0.03
+          ]
+        },
+        {
+          "label": "Senkadagala Finance PLC/N.M.Amarawickrama",
+          "is_section_header": false,
+          "note": "14",
+          "amounts_raw": [
+            "66,107",
+            "0.12",
+            "-",
+            "-"
+          ],
+          "amounts": [
+            66107,
+            0.12,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Dr. G S Perera",
+          "is_section_header": false,
+          "note": "15",
+          "amounts_raw": [
+            "60,000",
+            "0.11",
+            "60,000",
+            "0.11"
+          ],
+          "amounts": [
+            60000,
+            0.11,
+            60000,
+            0.11
+          ]
+        },
+        {
+          "label": "Mr.A P Gamage",
+          "is_section_header": false,
+          "note": "16",
+          "amounts_raw": [
+            "50,181",
+            "0.09",
+            "29,823",
+            "0.06"
+          ],
+          "amounts": [
+            50181,
+            0.09,
+            29823,
+            0.06
+          ]
+        },
+        {
+          "label": "Mr. K P M A L Karunarathne",
+          "is_section_header": false,
+          "note": "17",
+          "amounts_raw": [
+            "49,166",
+            "0.09",
+            "56,527",
+            "0.11"
+          ],
+          "amounts": [
+            49166,
+            0.09,
+            56527,
+            0.11
+          ]
+        },
+        {
+          "label": "Mr. S.S. Miranda",
+          "is_section_header": false,
+          "note": "18",
+          "amounts_raw": [
+            "48,319",
+            "0.09",
+            "48,319",
+            "0.09"
+          ],
+          "amounts": [
+            48319,
+            0.09,
+            48319,
+            0.09
+          ]
+        },
+        {
+          "label": "Mr. R E Rambukwelle Hatton National Bank PLC/ Mr. R E Rambukwelle",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "44,200",
+            "0.08",
+            "46,500",
+            "0.09"
+          ],
+          "amounts": [
+            44200,
+            0.08,
+            46500,
+            0.09
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "35,500",
+            "0.07",
+            "37,957",
+            "0.07"
+          ],
+          "amounts": [
+            35500,
+            0.07,
+            37957,
+            0.07
+          ]
+        },
+        {
+          "label": "Mr.J.A.N.S. Jayakody",
+          "is_section_header": false,
+          "note": "20",
+          "amounts_raw": [
+            "38,928",
+            "0.07",
+            "31,859",
+            "0.06"
+          ],
+          "amounts": [
+            38928,
+            0.07,
+            31859,
+            0.06
+          ]
+        },
+        {
+          "label": "TOTAL BANSEI ROYAL RESORTS PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "53,063,336",
+            "98.76",
+            "52,840,986",
+            "98.36"
+          ],
+          "amounts": [
+            53063336,
+            98.76,
+            52840986,
+            98.36
+          ]
+        },
+        {
+          "label": "Year ended 31 March 2025 ended 31 March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "TWENTY LARGEST SHAREHOLDERS DISTRIBUTION OF SHAREHOLDINGS – 31ST MARCH",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2025",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            2025,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Resident Non –",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "NO OF NO OF",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "SHARES SHARES No of No of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "No of No",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "NO NAME OF SHAREHOLDER % % Value Band Share % Share % Shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "AS AT AS AT Shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Holders Holders Holders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "31/03/2025 31/03/2024 - 1,000 629 150,740 0.28 3 409",
+          "is_section_header": false,
+          "note": "1",
+          "amounts_raw": [
+            "-",
+            "632",
+            "151,149",
+            "0.28"
+          ],
+          "amounts": [
+            null,
+            632,
+            151149,
+            0.28
+          ]
+        },
+        {
+          "label": "- 10,000 73 244,173 0.45 - - 1 Bansei Securities Co. Ltd 20,953,677 39.00 20,953,677 39.00",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "73",
+            "244,173",
+            "0.45"
+          ],
+          "amounts": [
+            null,
+            73,
+            244173,
+            0.45
+          ]
+        },
+        {
+          "label": "- 100,000 26 875,152 1.63 1 60,000 0.11",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "27",
+            "935,152",
+            "1.74"
+          ],
+          "amounts": [
+            null,
+            27,
+            935152,
+            1.74
+          ]
+        },
+        {
+          "label": "- 1,000,000 5 3,032,784 5.65 - - 2 Hikkaduwa Hotel Holdings (Private) Limited 16,655,923 31.00 16,655,923 31.00",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "-",
+            "5",
+            "3,032,784",
+            "5.65"
+          ],
+          "amounts": [
+            null,
+            5,
+            3032784,
+            5.65
+          ]
+        },
+        {
+          "label": "& above 2 22,028,723 41.00 3 50.88 3 Veritas Holdings (Pvt) Ltd 5,372,800 10.00 5,372,800 10.00",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "27,336,019",
+            "5",
+            "49,364,742",
+            "91.88"
+          ],
+          "amounts": [
+            27336019,
+            5,
+            49364742,
+            91.88
+          ]
+        },
+        {
+          "label": "735 26,331,572 49.01 7 50.99 53,728,000 4 Bansei Holdings Co. Ltd 5,372,800 10.00 5,372,800 10.00 5 Mrs. C.V. Perera 1,009,542 1.88 1,009,542 1.88 6 Mr. D.S.K. Karunaratne 895,400 1.67 895,400 1.67 CATEGORIES OF SHAREHOLDERS 7 Dr. S.M.D.C.W. Senarathne 750,001 1.40 810,696 1.51 8 Mr. J.V.W. Malawana 662,031 1.23 662,176 1.23 2024/2025 2023/2024 9 Mr. T.G.S. Wickrama 624,845 1.16 591,345 1.10 Categories of No of No No of Shares % of Shareholders Shareholders 10 Mr. G V Sanjaya 100,507 0.19 52,307 0.10",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "27,396,428",
+            "742",
+            "",
+            "100.00"
+          ],
+          "amounts": [
+            27396428,
+            742,
+            null,
+            100.0
+          ]
+        },
+        {
+          "label": "716 5,121,434 9.53 11 Dr. S.M.Thenabadu 97,175 0.18 - -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "700",
+            "",
+            "5,120,787",
+            "9.53"
+          ],
+          "amounts": [
+            700,
+            null,
+            5120787,
+            9.53
+          ]
+        },
+        {
+          "label": "26 48,606,566 90.47 12 Mr. M T M Peiris 83,878 0.16 55,000 0.10",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "24",
+            "",
+            "48,608,457",
+            "90.47"
+          ],
+          "amounts": [
+            24,
+            null,
+            48608457,
+            90.47
+          ]
+        },
+        {
+          "label": "742 53,728,000 100.00 Merchant Bank of Sri Lanka & Finance PLC/Y R P De 77,080 0.14 83,124 0.15 13 Silva Mr. Y R P De Silva 15,276 0.03 15,211 0.03 2023/2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "724",
+            "",
+            "53,728,000",
+            "100.00"
+          ],
+          "amounts": [
+            724,
+            null,
+            53728000,
+            100.0
+          ]
+        },
+        {
+          "label": "Share Price 11.30 14 Senkadagala Finance PLC/N.M.Amarawickrama 66,107 0.12 - -",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "share price 12.90 15 Dr. G S Perera 60,000 0.11 60,000 0.11",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "adjusted market capitalization as at 31st March Rs.92,949,440",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "69,309,120"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            69309120
+          ]
+        },
+        {
+          "label": "16 Mr.A P Gamage 50,181 0.09 29,823 0.06 Market capitalization as at 31st March Rs. 17 Mr. K P M A L Karunarathne 49,166 0.09 56,527 0.11 18 Mr. S.S. Miranda 48,319 0.09 48,319 0.09 44,200 0.08 46,500 0.09 Mr. R E Rambukwelle 19 Hatton National Bank PLC/ Mr. R E Rambukwelle 35,500 0.07 37,957 0.07 20 Mr.J.A.N.S. Jayakody 38,928 0.07 31,859 0.06 TOTAL 53,063,336 98.76 52,840,986 98.36 BANSEI ROYAL RESORTS HIKKADUWA PLC 69 BANSEI ROYAL RESORTS HIKKADUWA PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "693,091,200"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            693091200
+          ]
+        },
+        {
+          "label": "ended 31 March 2025",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Land extent",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Last",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Land/",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Company Location Revaluation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Building No",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Date Leasehold",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "sq.ft",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Bansei Royal",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "No.340 Resorts",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "145,290,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            145290000
+          ]
+        },
+        {
+          "label": "Galle Road, Land 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "48.43",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            48.43,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "No.340 Resorts",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "222,035,000"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            222035000
+          ]
+        },
+        {
+          "label": "Galle Road, Building 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal No. 281, Resorts",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "1",
+            "25,592",
+            ""
+          ],
+          "amounts": [
+            null,
+            1,
+            25592,
+            null
+          ]
+        },
+        {
+          "label": "Galle Road Land 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal No. 291/10, Resorts",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "62.49",
+            "",
+            "",
+            "115,600,000"
+          ],
+          "amounts": [
+            62.49,
+            null,
+            null,
+            115600000
+          ]
+        },
+        {
+          "label": "Galle Road Land 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal No. 291/10, Resorts",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "8.002",
+            "",
+            "",
+            "9,202,300"
+          ],
+          "amounts": [
+            8.002,
+            null,
+            null,
+            9202300
+          ]
+        },
+        {
+          "label": "Galle Road Building 31.03.2023 1 Hikkaduwa Hikkaduwa PLC has been done by Mr.P.P.T. Mohideen, valuation surveyor, Registered valuer , Schofiels Place, 03. BANSEI ROYAL RESORTS PLC",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "3,735",
+            "13,072,700"
+          ],
+          "amounts": [
+            null,
+            null,
+            3735,
+            13072700
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "ended 31 March 2025",
+          "Year",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "TWENTY LARGEST SHAREHOLDERS",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "NAME OF SHAREHOLDER",
+          "NO",
+          "",
+          "%",
+          "",
+          "%"
+        ],
+        [
+          "Bansei Securities Co. Ltd",
+          "1",
+          "20,953,677",
+          "39.00",
+          "20,953,677",
+          "39.00"
+        ],
+        [
+          "Hikkaduwa Hotel Holdings (Private) Limited",
+          "2",
+          "16,655,923",
+          "31.00",
+          "16,655,923",
+          "31.00"
+        ],
+        [
+          "Veritas Holdings (Pvt) Ltd",
+          "3",
+          "5,372,800",
+          "10.00",
+          "5,372,800",
+          "10.00"
+        ],
+        [
+          "Bansei Holdings Co. Ltd",
+          "4",
+          "5,372,800",
+          "10.00",
+          "5,372,800",
+          "10.00"
+        ],
+        [
+          "Mrs. C.V. Perera",
+          "5",
+          "1,009,542",
+          "1.88",
+          "1,009,542",
+          "1.88"
+        ],
+        [
+          "Mr. D.S.K. Karunaratne",
+          "6",
+          "895,400",
+          "1.67",
+          "895,400",
+          "1.67"
+        ],
+        [
+          "Dr. S.M.D.C.W. Senarathne",
+          "7",
+          "750,001",
+          "1.40",
+          "810,696",
+          "1.51"
+        ],
+        [
+          "Mr. J.V.W. Malawana",
+          "8",
+          "662,031",
+          "1.23",
+          "662,176",
+          "1.23"
+        ],
+        [
+          "Mr. T.G.S. Wickrama",
+          "9",
+          "624,845",
+          "1.16",
+          "591,345",
+          "1.10"
+        ],
+        [
+          "Mr. G V Sanjaya",
+          "10",
+          "100,507",
+          "0.19",
+          "52,307",
+          "0.10"
+        ],
+        [
+          "Dr. S.M.Thenabadu",
+          "11",
+          "97,175",
+          "0.18",
+          "-",
+          "-"
+        ],
+        [
+          "Mr. M T M Peiris",
+          "12",
+          "83,878",
+          "0.16",
+          "55,000",
+          "0.10"
+        ],
+        [
+          "Merchant Bank of Sri Lanka & Finance PLC/Y R P De Silva",
+          "",
+          "77,080",
+          "0.14",
+          "83,124",
+          "0.15"
+        ],
+        [
+          "Mr. Y R P De Silva",
+          "",
+          "15,276",
+          "0.03",
+          "15,211",
+          "0.03"
+        ],
+        [
+          "Senkadagala Finance PLC/N.M.Amarawickrama",
+          "14",
+          "66,107",
+          "0.12",
+          "-",
+          "-"
+        ],
+        [
+          "Dr. G S Perera",
+          "15",
+          "60,000",
+          "0.11",
+          "60,000",
+          "0.11"
+        ],
+        [
+          "Mr.A P Gamage",
+          "16",
+          "50,181",
+          "0.09",
+          "29,823",
+          "0.06"
+        ],
+        [
+          "Mr. K P M A L Karunarathne",
+          "17",
+          "49,166",
+          "0.09",
+          "56,527",
+          "0.11"
+        ],
+        [
+          "Mr. S.S. Miranda",
+          "18",
+          "48,319",
+          "0.09",
+          "48,319",
+          "0.09"
+        ],
+        [
+          "Mr. R E Rambukwelle  Hatton National Bank PLC/ Mr. R E Rambukwelle",
+          "",
+          "44,200",
+          "0.08",
+          "46,500",
+          "0.09"
+        ],
+        [
+          "",
+          "",
+          "35,500",
+          "0.07",
+          "37,957",
+          "0.07"
+        ],
+        [
+          "Mr.J.A.N.S. Jayakody",
+          "20",
+          "38,928",
+          "0.07",
+          "31,859",
+          "0.06"
+        ],
+        [
+          "TOTAL BANSEI ROYAL RESORTS PLC",
+          "",
+          "53,063,336",
+          "98.76",
+          "52,840,986",
+          "98.36"
+        ],
+        [
+          "Year ended 31 March 2025 ended 31 March 2025",
+          "Year",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "TWENTY LARGEST SHAREHOLDERS DISTRIBUTION OF SHAREHOLDINGS – 31ST MARCH",
+          "",
+          "2025",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Resident Non –",
+          "",
+          "Resident",
+          "",
+          "Total",
+          ""
+        ],
+        [
+          "NO OF NO OF",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "SHARES SHARES No of No of",
+          "",
+          "",
+          "No of",
+          "",
+          ""
+        ],
+        [
+          "No of No",
+          "",
+          "of",
+          "",
+          "",
+          ""
+        ],
+        [
+          "NO NAME OF SHAREHOLDER % % Value Band Share % Share % Shares",
+          "",
+          "",
+          "Share",
+          "No of",
+          "%"
+        ],
+        [
+          "AS AT AS AT Shares",
+          "",
+          "Shares",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Holders Holders Holders",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "31/03/2025 31/03/2024 - 1,000 629 150,740 0.28 3 409",
+          "1",
+          "-",
+          "632",
+          "151,149",
+          "0.28"
+        ],
+        [
+          "- 10,000 73 244,173 0.45 - - 1 Bansei Securities Co. Ltd 20,953,677 39.00 20,953,677 39.00",
+          "1,001",
+          "-",
+          "73",
+          "244,173",
+          "0.45"
+        ],
+        [
+          "- 100,000 26 875,152 1.63 1 60,000 0.11",
+          "10,001",
+          "",
+          "27",
+          "935,152",
+          "1.74"
+        ],
+        [
+          "- 1,000,000 5 3,032,784 5.65 - - 2 Hikkaduwa Hotel Holdings (Private) Limited 16,655,923 31.00 16,655,923 31.00",
+          "100,001",
+          "-",
+          "5",
+          "3,032,784",
+          "5.65"
+        ],
+        [
+          "& above 2 22,028,723 41.00 3 50.88 3 Veritas Holdings (Pvt) Ltd 5,372,800 10.00 5,372,800 10.00",
+          "1,000,001",
+          "27,336,019",
+          "5",
+          "49,364,742",
+          "91.88"
+        ],
+        [
+          "735 26,331,572 49.01 7 50.99 53,728,000 4 Bansei Holdings Co. Ltd 5,372,800 10.00 5,372,800 10.00 5 Mrs. C.V. Perera 1,009,542 1.88 1,009,542 1.88 6 Mr. D.S.K. Karunaratne 895,400 1.67 895,400 1.67 CATEGORIES OF SHAREHOLDERS 7 Dr. S.M.D.C.W. Senarathne 750,001 1.40 810,696 1.51 8 Mr. J.V.W. Malawana 662,031 1.23 662,176 1.23 2024/2025 2023/2024 9 Mr. T.G.S. Wickrama 624,845 1.16 591,345 1.10 Categories of No of No No of Shares % of Shareholders Shareholders 10 Mr. G V Sanjaya 100,507 0.19 52,307 0.10",
+          "TOTAL",
+          "27,396,428",
+          "742",
+          "",
+          "100.00"
+        ],
+        [
+          "716 5,121,434 9.53 11 Dr. S.M.Thenabadu 97,175 0.18 - -",
+          "Individuals",
+          "700",
+          "",
+          "5,120,787",
+          "9.53"
+        ],
+        [
+          "26 48,606,566 90.47 12 Mr. M T M Peiris 83,878 0.16 55,000 0.10",
+          "Institutions",
+          "24",
+          "",
+          "48,608,457",
+          "90.47"
+        ],
+        [
+          "742 53,728,000 100.00 Merchant Bank of Sri Lanka & Finance PLC/Y R P De 77,080 0.14 83,124 0.15 13 Silva Mr. Y R P De Silva 15,276 0.03 15,211 0.03 2023/2024",
+          "Total",
+          "724",
+          "",
+          "53,728,000",
+          "100.00"
+        ],
+        [
+          "Share Price 11.30 14 Senkadagala Finance PLC/N.M.Amarawickrama 66,107 0.12 - -",
+          "Opening",
+          "Rs. 12.90",
+          "",
+          "Rs.",
+          ""
+        ],
+        [
+          "share price 12.90 15 Dr. G S Perera 60,000 0.11 60,000 0.11",
+          "Last traded",
+          "Rs. 17.30",
+          "",
+          "Rs.",
+          ""
+        ],
+        [
+          "adjusted market capitalization as at 31st March Rs.92,949,440",
+          "The float",
+          "",
+          "",
+          "Rs.",
+          "69,309,120"
+        ],
+        [
+          "16 Mr.A P Gamage 50,181 0.09 29,823 0.06 Market capitalization as at 31st March Rs. 17 Mr. K P M A L Karunarathne 49,166 0.09 56,527 0.11 18 Mr. S.S. Miranda 48,319 0.09 48,319 0.09 44,200 0.08 46,500 0.09 Mr. R E Rambukwelle 19 Hatton National Bank PLC/ Mr. R E Rambukwelle 35,500 0.07 37,957 0.07 20 Mr.J.A.N.S. Jayakody 38,928 0.07 31,859 0.06 TOTAL 53,063,336 98.76 52,840,986 98.36 BANSEI ROYAL RESORTS HIKKADUWA PLC 69 BANSEI ROYAL RESORTS HIKKADUWA PLC",
+          "The",
+          "",
+          "929,494,400",
+          "Rs.",
+          "693,091,200"
+        ],
+        [
+          "ended 31 March 2025",
+          "Year",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Land extent",
+          "",
+          "(Perches)",
+          "Building",
+          "",
+          ""
+        ],
+        [
+          "Last",
+          "",
+          "",
+          "",
+          "Fair",
+          "value as"
+        ],
+        [
+          "Land/",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Company Location Revaluation",
+          "Classification",
+          "",
+          "",
+          "at",
+          "31/03/2025"
+        ],
+        [
+          "Building No",
+          "",
+          "",
+          "of",
+          "Building",
+          ""
+        ],
+        [
+          "Date Leasehold",
+          "",
+          "Freehold",
+          "",
+          "Rs.",
+          ""
+        ],
+        [
+          "sq.ft",
+          "",
+          "",
+          "Buildings in",
+          "",
+          ""
+        ],
+        [
+          "Bansei Royal",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "No.340 Resorts",
+          "",
+          "",
+          "",
+          "",
+          "145,290,000"
+        ],
+        [
+          "Galle Road, Land 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal",
+          "PPE",
+          "48.43",
+          "",
+          "",
+          ""
+        ],
+        [
+          "No.340 Resorts",
+          "",
+          "",
+          "",
+          "",
+          "222,035,000"
+        ],
+        [
+          "Galle Road, Building 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal No. 281, Resorts",
+          "PPE",
+          "",
+          "1",
+          "25,592",
+          ""
+        ],
+        [
+          "Galle Road Land 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal No. 291/10, Resorts",
+          "PPE",
+          "62.49",
+          "",
+          "",
+          "115,600,000"
+        ],
+        [
+          "Galle Road Land 31.03.2023 Hikkaduwa Hikkaduwa PLC Bansei Royal No. 291/10, Resorts",
+          "PPE",
+          "8.002",
+          "",
+          "",
+          "9,202,300"
+        ],
+        [
+          "Galle Road Building 31.03.2023 1 Hikkaduwa Hikkaduwa PLC has been done by Mr.P.P.T. Mohideen, valuation surveyor, Registered valuer , Schofiels Place, 03. BANSEI ROYAL RESORTS PLC",
+          "PPE",
+          "",
+          "",
+          "3,735",
+          "13,072,700"
+        ]
+      ]
+    }
+  }
+}

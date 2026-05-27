@@ -1,0 +1,181 @@
+{
+  "company": "company39",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company39\\Annual\\48334_2025.pdf",
+  "total_pdf_pages": 76,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T15:06:37",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        28
+      ],
+      "pdf_indices_0based": [
+        29
+      ],
+      "pdf_pages_1based": [
+        30
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        29
+      ],
+      "pdf_indices_0based": [
+        30
+      ],
+      "pdf_pages_1based": [
+        31
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        30
+      ],
+      "pdf_indices_0based": [
+        31
+      ],
+      "pdf_pages_1based": [
+        32
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        31
+      ],
+      "pdf_indices_0based": [
+        32
+      ],
+      "pdf_pages_1based": [
+        33
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        66
+      ],
+      "pdf_indices_0based": [
+        67,
+        68,
+        69,
+        70,
+        71
+      ],
+      "pdf_pages_1based": [
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "page_count": 5,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        32
+      ],
+      "pdf_indices_0based": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ],
+      "pdf_pages_1based": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "page_count": 34,
+      "confirmed": true
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        43
+      ],
+      "pdf_indices_0based": [
+        44
+      ],
+      "pdf_pages_1based": [
+        45
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

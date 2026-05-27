@@ -1,0 +1,137 @@
+{
+  "company": "company15",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company15\\Annual\\50900_2025.pdf",
+  "total_pdf_pages": 360,
+  "page_offset": 0,
+  "generated_at": "2026-05-21T14:06:19",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        93
+      ],
+      "pdf_indices_0based": [
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98
+      ],
+      "pdf_pages_1based": [
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "page_count": 7,
+      "confirmed": false
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        94
+      ],
+      "pdf_indices_0based": [
+        93,
+        94,
+        95,
+        96,
+        97
+      ],
+      "pdf_pages_1based": [
+        94,
+        95,
+        96,
+        97,
+        98
+      ],
+      "page_count": 5,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        197
+      ],
+      "pdf_indices_0based": [
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204
+      ],
+      "pdf_pages_1based": [
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205
+      ],
+      "page_count": 9,
+      "confirmed": false
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        277
+      ],
+      "pdf_indices_0based": [
+        276,
+        277,
+        278,
+        279,
+        280,
+        281
+      ],
+      "pdf_pages_1based": [
+        277,
+        278,
+        279,
+        280,
+        281,
+        282
+      ],
+      "page_count": 6,
+      "confirmed": false
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        339
+      ],
+      "pdf_indices_0based": [
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344
+      ],
+      "pdf_pages_1based": [
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345
+      ],
+      "page_count": 7,
+      "confirmed": false
+    }
+  }
+}

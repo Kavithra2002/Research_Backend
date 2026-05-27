@@ -1,0 +1,177 @@
+{
+  "company": "company29",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company29\\Annual\\48379_2025.pdf",
+  "total_pdf_pages": 81,
+  "page_offset": 0,
+  "generated_at": "2026-05-21T14:57:51",
+  "statements": {
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        33
+      ],
+      "pdf_indices_0based": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "pdf_pages_1based": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "page_count": 37,
+      "confirmed": false
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        37
+      ],
+      "pdf_indices_0based": [
+        36,
+        37
+      ],
+      "pdf_pages_1based": [
+        37,
+        38
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        38
+      ],
+      "pdf_indices_0based": [
+        37,
+        38
+      ],
+      "pdf_pages_1based": [
+        38,
+        39
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        39
+      ],
+      "pdf_indices_0based": [
+        38
+      ],
+      "pdf_pages_1based": [
+        39
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        40
+      ],
+      "pdf_indices_0based": [
+        39,
+        40
+      ],
+      "pdf_pages_1based": [
+        40,
+        41
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        70
+      ],
+      "pdf_indices_0based": [
+        69,
+        70,
+        71,
+        72
+      ],
+      "pdf_pages_1based": [
+        70,
+        71,
+        72,
+        73
+      ],
+      "page_count": 4,
+      "confirmed": false
+    }
+  }
+}

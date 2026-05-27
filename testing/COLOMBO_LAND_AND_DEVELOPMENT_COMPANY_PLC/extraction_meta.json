@@ -1,0 +1,18 @@
+{
+  "company": "COLOMBO_LAND_AND_DEVELOPMENT_COMPANY_PLC",
+  "manifest_path": "E:\\AMBEON\\script\\backend\\testing\\COLOMBO_LAND_AND_DEVELOPMENT_COMPANY_PLC\\COLOMBO_LAND_AND_DEVELOPMENT_COMPANY_PLC_pages.json",
+  "captures_dir": "E:\\AMBEON\\script\\backend\\testing\\COLOMBO_LAND_AND_DEVELOPMENT_COMPANY_PLC\\captures",
+  "model": "gpt-4o",
+  "option": "1",
+  "dry_run": false,
+  "generated_at": "2026-05-27T10:03:20",
+  "statements": [
+    "cash_flows",
+    "equity",
+    "income_statement",
+    "investor_info",
+    "oci",
+    "sofp",
+    "ten_year_summary"
+  ]
+}

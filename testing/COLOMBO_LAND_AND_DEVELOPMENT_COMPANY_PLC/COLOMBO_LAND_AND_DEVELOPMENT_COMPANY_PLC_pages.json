@@ -1,0 +1,187 @@
+{
+  "company": "COLOMBO_LAND_AND_DEVELOPMENT_COMPANY_PLC",
+  "source_pdf": "E:\\AMBEON\\script\\backend\\testing\\COLOMBO_LAND_AND_DEVELOPMENT_COMPANY_PLC\\51341_2025.pdf",
+  "total_pdf_pages": 138,
+  "page_offset": 0,
+  "generated_at": "2026-05-27T10:00:52",
+  "statements": {
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        83
+      ],
+      "pdf_indices_0based": [
+        82,
+        83
+      ],
+      "pdf_pages_1based": [
+        83,
+        84
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        84
+      ],
+      "pdf_indices_0based": [
+        83
+      ],
+      "pdf_pages_1based": [
+        84
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        85
+      ],
+      "pdf_indices_0based": [
+        84,
+        85
+      ],
+      "pdf_pages_1based": [
+        85,
+        86
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        86
+      ],
+      "pdf_indices_0based": [
+        85
+      ],
+      "pdf_pages_1based": [
+        86
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        87
+      ],
+      "pdf_indices_0based": [
+        86
+      ],
+      "pdf_pages_1based": [
+        87
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        98
+      ],
+      "pdf_indices_0based": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126
+      ],
+      "pdf_pages_1based": [
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127
+      ],
+      "page_count": 30,
+      "confirmed": false
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        128
+      ],
+      "pdf_indices_0based": [
+        127
+      ],
+      "pdf_pages_1based": [
+        128
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        129
+      ],
+      "pdf_indices_0based": [
+        128,
+        129,
+        130
+      ],
+      "pdf_pages_1based": [
+        129,
+        130,
+        131
+      ],
+      "page_count": 3,
+      "confirmed": false
+    }
+  }
+}

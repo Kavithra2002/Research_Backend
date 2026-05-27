@@ -1,0 +1,201 @@
+{
+  "company": "company27",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company27\\Annual\\48220_2025.pdf",
+  "total_pdf_pages": 192,
+  "page_offset": 0,
+  "generated_at": "2026-05-21T14:19:22",
+  "statements": {
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        55
+      ],
+      "pdf_indices_0based": [
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "pdf_pages_1based": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "page_count": 9,
+      "confirmed": false
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        78
+      ],
+      "pdf_indices_0based": [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112
+      ],
+      "pdf_pages_1based": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ],
+      "page_count": 36,
+      "confirmed": false
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        109
+      ],
+      "pdf_indices_0based": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "pdf_pages_1based": [
+        109,
+        110,
+        111,
+        112
+      ],
+      "page_count": 4,
+      "confirmed": false
+    },
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        110
+      ],
+      "pdf_indices_0based": [
+        109,
+        110,
+        111
+      ],
+      "pdf_pages_1based": [
+        110,
+        111,
+        112
+      ],
+      "page_count": 3,
+      "confirmed": false
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        113
+      ],
+      "pdf_indices_0based": [
+        112,
+        113
+      ],
+      "pdf_pages_1based": [
+        113,
+        114
+      ],
+      "page_count": 2,
+      "confirmed": false
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        179
+      ],
+      "pdf_indices_0based": [
+        178,
+        179,
+        180,
+        181,
+        182,
+        183
+      ],
+      "pdf_pages_1based": [
+        179,
+        180,
+        181,
+        182,
+        183,
+        184
+      ],
+      "page_count": 6,
+      "confirmed": false
+    }
+  }
+}

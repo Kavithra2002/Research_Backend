@@ -1,0 +1,253 @@
+{
+  "company": "company40",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company40\\Annual\\48240_2025.pdf",
+  "total_pdf_pages": 202,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T15:07:53",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        111
+      ],
+      "pdf_indices_0based": [
+        112
+      ],
+      "pdf_pages_1based": [
+        113
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        112
+      ],
+      "pdf_indices_0based": [
+        113,
+        114
+      ],
+      "pdf_pages_1based": [
+        114,
+        115
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        114
+      ],
+      "pdf_indices_0based": [
+        115,
+        116
+      ],
+      "pdf_pages_1based": [
+        116,
+        117
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        116
+      ],
+      "pdf_indices_0based": [
+        117,
+        118
+      ],
+      "pdf_pages_1based": [
+        118,
+        119
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        193
+      ],
+      "pdf_indices_0based": [
+        194
+      ],
+      "pdf_pages_1based": [
+        195
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        188
+      ],
+      "pdf_indices_0based": [
+        189,
+        190,
+        191,
+        192
+      ],
+      "pdf_pages_1based": [
+        190,
+        191,
+        192,
+        193
+      ],
+      "page_count": 4,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        119
+      ],
+      "pdf_indices_0based": [
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187
+      ],
+      "pdf_pages_1based": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188
+      ],
+      "page_count": 68,
+      "confirmed": true
+    }
+  }
+}

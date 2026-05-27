@@ -1,0 +1,261 @@
+{
+  "company": "company24",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company24\\Annual\\49744_2025.pdf",
+  "total_pdf_pages": 148,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T14:12:57",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        70
+      ],
+      "pdf_indices_0based": [
+        71
+      ],
+      "pdf_pages_1based": [
+        72
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        71
+      ],
+      "pdf_indices_0based": [
+        72
+      ],
+      "pdf_pages_1based": [
+        73
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        72
+      ],
+      "pdf_indices_0based": [
+        73
+      ],
+      "pdf_pages_1based": [
+        74
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        73
+      ],
+      "pdf_indices_0based": [
+        74,
+        75
+      ],
+      "pdf_pages_1based": [
+        75,
+        76
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        75
+      ],
+      "pdf_indices_0based": [
+        76
+      ],
+      "pdf_pages_1based": [
+        77
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        138
+      ],
+      "pdf_indices_0based": [
+        139
+      ],
+      "pdf_pages_1based": [
+        140
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary / Achievements",
+      "printed_pages": [
+        140
+      ],
+      "pdf_indices_0based": [
+        141,
+        142
+      ],
+      "pdf_pages_1based": [
+        142,
+        143
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        76
+      ],
+      "pdf_indices_0based": [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138
+      ],
+      "pdf_pages_1based": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139
+      ],
+      "page_count": 62,
+      "confirmed": true
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        139
+      ],
+      "pdf_indices_0based": [
+        140
+      ],
+      "pdf_pages_1based": [
+        141
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

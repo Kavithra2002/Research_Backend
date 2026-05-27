@@ -1,0 +1,169 @@
+{
+  "company": "company21",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company21\\Annual\\48870_2025.pdf",
+  "total_pdf_pages": 150,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T14:10:21",
+  "statements": {
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        94
+      ],
+      "pdf_indices_0based": [
+        95,
+        96
+      ],
+      "pdf_pages_1based": [
+        96,
+        97
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        96
+      ],
+      "pdf_indices_0based": [
+        97
+      ],
+      "pdf_pages_1based": [
+        98
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        97
+      ],
+      "pdf_indices_0based": [
+        98
+      ],
+      "pdf_pages_1based": [
+        99
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        137
+      ],
+      "pdf_indices_0based": [
+        138,
+        139,
+        140,
+        141
+      ],
+      "pdf_pages_1based": [
+        139,
+        140,
+        141,
+        142
+      ],
+      "page_count": 4,
+      "confirmed": true
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        102
+      ],
+      "pdf_indices_0based": [
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137
+      ],
+      "pdf_pages_1based": [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138
+      ],
+      "page_count": 35,
+      "confirmed": true
+    },
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        95
+      ],
+      "pdf_indices_0based": [
+        96
+      ],
+      "pdf_pages_1based": [
+        97
+      ],
+      "page_count": 1,
+      "confirmed": false
+    }
+  }
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Financial Statements – company7</title>
+  <style>
+    /* ── Reset & root ── */
+    :root {
+      --border:   #d1d5db;
+      --head-bg:  #e5e7eb;
+      --sec-bg:   #f3f4f6;
+      --stripe:   #f9fafb;
+      --total-bg: #eff6ff;
+      --text:     #111827;
+      --note-col: #6b7280;
+      --sidebar-w: 220px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      background: #f3f4f6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      overflow-y: auto;
+      background: #1f2937;
+      padding: 1rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 100;
+    }
+    .sidebar::before {
+      content: "Statements";
+      display: block;
+      color: #9ca3af;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0 1rem 0.75rem;
+    }
+    .nav-link {
+      display: block;
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.78rem;
+      line-height: 1.35;
+      transition: background 0.15s;
+    }
+    .nav-link:hover { background: #374151; color: #fff; }
+
+    /* ── Main content ── */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 1.5rem 2rem 4rem;
+      max-width: calc(100vw - var(--sidebar-w));
+    }
+
+    /* ── Page header ── */
+    .page-header {
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .page-header h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.6rem;
+    }
+    table.meta {
+      border-collapse: collapse;
+    }
+    table.meta th, table.meta td {
+      padding: 0.2rem 0.75rem 0.2rem 0;
+      font-size: 0.78rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.meta th {
+      color: #6b7280;
+      font-weight: 600;
+      white-space: nowrap;
+      width: 100px;
+    }
+
+    /* ── Statement block ── */
+    .stmt-block {
+      margin-bottom: 2.5rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    /* Coloured statement header */
+    .stmt-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.1rem;
+      color: #fff;
+    }
+    .stmt-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .stmt-page {
+      font-size: 0.72rem;
+      opacity: 0.85;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    /* ── Report table ── */
+    .tbl-scroll { overflow-x: auto; }
+    table.report {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 420px;
+      font-variant-numeric: tabular-nums;
+    }
+    table.report thead tr th {
+      background: var(--head-bg);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* Entity-span header rows (all rows except last): e.g. "Group / Company" */
+    table.report thead tr:not(:last-child) th {
+      background: #dde3ed;
+      border-bottom: 2px solid #9ca3af;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #374151;
+    }
+    /* Last header row (year / unit labels) */
+    table.report thead tr:last-child th {
+      border-top: 2px solid #9ca3af;
+    }
+    .th-desc { text-align: left; min-width: 220px; }
+    .th-note { text-align: center; width: 48px; color: var(--note-col); }
+    .th-amt  { text-align: right; min-width: 100px; }
+
+    table.report tbody td {
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.65rem;
+      vertical-align: middle;
+      line-height: 1.4;
+    }
+    .td-desc { text-align: left; }
+    .td-note {
+      text-align: center;
+      color: var(--note-col);
+      font-size: 0.75rem;
+      white-space: nowrap;
+      width: 48px;
+    }
+    .td-amt  {
+      text-align: right;
+      white-space: nowrap;
+      font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+      font-size: 0.78rem;
+    }
+
+    /* Section-header rows */
+    tr.row-section td.td-section {
+      background: var(--sec-bg);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #374151;
+      padding: 0.4rem 0.65rem;
+      border-top: 2px solid #9ca3af;
+    }
+
+    /* Total rows */
+    tr.row-total td {
+      background: var(--total-bg);
+      font-weight: 700;
+      border-top: 1.5px solid #93c5fd;
+    }
+
+    /* Striping + hover */
+    tr.row-data:nth-child(even) td { background: var(--stripe); }
+    tr.row-data:hover td { background: #dbeafe; }
+
+    /* Raw text fallback */
+    .raw-text {
+      margin: 0;
+      padding: 1rem 1.25rem;
+      font-size: 0.75rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      max-height: 600px;
+      background: #f9fafb;
+      color: #374151;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .empty-msg {
+      padding: 1rem 1.25rem;
+      color: #9ca3af;
+      font-style: italic;
+      font-size: 0.82rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      :root { --sidebar-w: 0px; }
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 1rem; max-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar"><a href="#income_statement" class="nav-link" style="border-left:4px solid #1a6b3c">Income Statement / Statement of Profit or Loss</a><a href="#oci" class="nav-link" style="border-left:4px solid #2e7d8a">Statement of Other Comprehensive Income</a><a href="#sofp" class="nav-link" style="border-left:4px solid #1e3a8a">Statement of Financial Position</a><a href="#equity" class="nav-link" style="border-left:4px solid #6b21a8">Statement of Changes in Equity</a><a href="#cash_flows" class="nav-link" style="border-left:4px solid #92400e">Statement of Cash Flows</a><a href="#shareholder_info" class="nav-link" style="border-left:4px solid #065f46">Shareholder Information</a></nav>
+  <div class="main">
+    <div class="page-header">
+      <h1>Financial Statements &mdash; company7</h1>
+      <table class="meta">
+        <tr><th>Company</th><td>company7</td></tr><tr><th>Source PDF</th><td>643_1756350200465.pdf</td></tr><tr><th>Extracted at</th><td>2026-05-15T10:51:12</td></tr>
+      </table>
+    </div>
+    <section class="stmt-block"><div class="stmt-header" style="background:#1a6b3c" id="income_statement"><span class="stmt-title">Income Statement / Statement of Profit or Loss</span><span class="stmt-page">PDF page 86</span></div><div class="tbl-scroll"><table class="report"><thead><tr><th class="th-desc">Description</th><th class="th-note">Notes</th><th class="th-amt">Group the year ended 2025</th><th class="th-amt">March 2024</th><th class="th-amt">the year ended 2025</th><th class="th-amt">March 2024</th></tr></thead><tbody><tr class="row-data"><td class="td-desc">Revenue from contracts with customers</td><td class="td-note">6</td><td class="td-amt">2,441,285,566</td><td class="td-amt">2,373,421,587</td><td class="td-amt">2,441,285,566</td><td class="td-amt">2,373,421,587</td></tr><tr class="row-data"><td class="td-desc">Cost of sales</td><td class="td-note">8</td><td class="td-amt">(1,866,597,931)</td><td class="td-amt">(1,840,591,268)</td><td class="td-amt">(1,866,597,931)</td><td class="td-amt">(1,840,591,268)</td></tr><tr class="row-data"><td class="td-desc">Gross profit</td><td class="td-note"></td><td class="td-amt">574,687,635</td><td class="td-amt">532,830,319</td><td class="td-amt">574,687,635</td><td class="td-amt">532,830,319</td></tr><tr class="row-data"><td class="td-desc">Net gains/(losses) from financial assets at fair value through profit or loss</td><td class="td-note">7</td><td class="td-amt">48,010,324</td><td class="td-amt">44,737</td><td class="td-amt">48,010,324</td><td class="td-amt">44,737</td></tr><tr class="row-data"><td class="td-desc">Other operating income</td><td class="td-note">7</td><td class="td-amt">2,150,887</td><td class="td-amt">2,081,525</td><td class="td-amt">2,150,887</td><td class="td-amt">2,081,525</td></tr><tr class="row-total"><td class="td-desc">Total other operating income</td><td class="td-note"></td><td class="td-amt">50,161,211</td><td class="td-amt">2,126,262</td><td class="td-amt">50,161,211</td><td class="td-amt">2,126,262</td></tr><tr class="row-data"><td class="td-desc">Administrative costs</td><td class="td-note">8</td><td class="td-amt">(10,868,163)</td><td class="td-amt">(10,973,550)</td><td class="td-amt">(9,819,769)</td><td class="td-amt">(10,450,932)</td></tr><tr class="row-data"><td class="td-desc">Operating profit</td><td class="td-note"></td><td class="td-amt">613,980,683</td><td class="td-amt">523,983,031</td><td class="td-amt">615,029,077</td><td class="td-amt">524,505,649</td></tr><tr class="row-data"><td class="td-desc">Finance income</td><td class="td-note">10</td><td class="td-amt">58,532,060</td><td class="td-amt">51,788,936</td><td class="td-amt">48,506,292</td><td class="td-amt">42,962,089</td></tr><tr class="row-data"><td class="td-desc">Finance costs</td><td class="td-note">10</td><td class="td-amt">(376,990)</td><td class="td-amt">(1,090,630)</td><td class="td-amt">(376,990)</td><td class="td-amt">(6,593,145)</td></tr><tr class="row-data"><td class="td-desc">Finance income - net</td><td class="td-note">10</td><td class="td-amt">58,155,070</td><td class="td-amt">50,698,306</td><td class="td-amt">48,129,302</td><td class="td-amt">36,368,944</td></tr><tr class="row-data"><td class="td-desc">Profit before tax</td><td class="td-note"></td><td class="td-amt">672,135,753</td><td class="td-amt">574,681,337</td><td class="td-amt">663,158,379</td><td class="td-amt">560,874,593</td></tr><tr class="row-data"><td class="td-desc">Income tax expense</td><td class="td-note">11</td><td class="td-amt">(207,394,518)</td><td class="td-amt">(119,001,234)</td><td class="td-amt">(204,701,306)</td><td class="td-amt">(114,702,425)</td></tr><tr class="row-data"><td class="td-desc">Profit for the year</td><td class="td-note"></td><td class="td-amt">464,741,235</td><td class="td-amt">455,680,103</td><td class="td-amt">458,457,073</td><td class="td-amt">446,172,168</td></tr><tr class="row-data"><td class="td-desc">Net profit attributable to shareholders of the</td><td class="td-note"></td><td class="td-amt">464,741,235</td><td class="td-amt">455,680,103</td><td class="td-amt">458,457,073</td><td class="td-amt">446,172,168</td></tr><tr class="row-data"><td class="td-desc">Basic/diluted earnings per share (Rs)</td><td class="td-note">12</td><td class="td-amt">110.32</td><td class="td-amt">108.17</td><td class="td-amt">108.83</td><td class="td-amt">105.92</td></tr><tr class="row-data"><td class="td-desc">Dividend per share (Rs) The notes on pages 90 to 126 form an integral part financial</td><td class="td-note">13</td><td class="td-amt">20</td><td class="td-amt">15</td><td class="td-amt">20</td><td class="td-amt">15</td></tr></tbody></table></div></section>
+<section class="stmt-block"><div class="stmt-header" style="background:#2e7d8a" id="oci"><span class="stmt-title">Statement of Other Comprehensive Income</span><span class="stmt-page">PDF page 87</span></div><div class="tbl-scroll"><table class="report"><thead><tr><th class="th-desc">Description</th><th class="th-note">Notes</th><th class="th-amt">Group the year ended 2025</th><th class="th-amt">March 2024</th><th class="th-amt">the year ended 2025</th><th class="th-amt">March 2024</th></tr></thead><tbody><tr class="row-data"><td class="td-desc">Profit for the year Other comprehensive income Items that will not be reclassified to profit or loss</td><td class="td-note"></td><td class="td-amt">464,741,235</td><td class="td-amt">455,680,103</td><td class="td-amt">458,457,073</td><td class="td-amt">446,172,168</td></tr><tr class="row-data"><td class="td-desc">Actuarial (loss) / gain on defined benefit obligation</td><td class="td-note">26</td><td class="td-amt">(3,403,327)</td><td class="td-amt">554,600</td><td class="td-amt">(3,403,327)</td><td class="td-amt">554,600</td></tr><tr class="row-data"><td class="td-desc">Deferred tax on actuarial loss / (gain)</td><td class="td-note">27</td><td class="td-amt">1,020,998</td><td class="td-amt">(166,380)</td><td class="td-amt">1,020,998</td><td class="td-amt">(166,380)</td></tr><tr class="row-data"><td class="td-desc">Revaluation surplus on land and buildings</td><td class="td-note"></td><td class="td-amt">-</td><td class="td-amt">59,780,000</td><td class="td-amt">-</td><td class="td-amt">59,780,000</td></tr><tr class="row-data"><td class="td-desc">Deferred tax adjustment on revaluation</td><td class="td-note">29</td><td class="td-amt">9,101,075</td><td class="td-amt">(17,934,000)</td><td class="td-amt">9,101,075</td><td class="td-amt">(17,934,000)</td></tr><tr class="row-data"><td class="td-desc">Changes in fair value of financial assets at fair value through other comprehensive income</td><td class="td-note">17</td><td class="td-amt">28,023,360</td><td class="td-amt">6,040,550</td><td class="td-amt">28,023,360</td><td class="td-amt">6,040,550</td></tr><tr class="row-data"><td class="td-desc">Deferred tax on changes in fair value of financial assets at fair value through other comprehensive income</td><td class="td-note">27</td><td class="td-amt">1,812,165</td><td class="td-amt">(1,812,165)</td><td class="td-amt">1,812,165</td><td class="td-amt">(1,812,165)</td></tr><tr class="row-data"><td class="td-desc">Other comprehensive income for the year, net of tax</td><td class="td-note"></td><td class="td-amt">36,554,271</td><td class="td-amt">46,462,605</td><td class="td-amt">36,554,271</td><td class="td-amt">46,462,605</td></tr><tr class="row-total"><td class="td-desc">Total comprehensive income for the year The notes on pages 90 to 126 form an integral part financial</td><td class="td-note"></td><td class="td-amt">501,295,506</td><td class="td-amt">502,142,708</td><td class="td-amt">495,011,344</td><td class="td-amt">492,634,773</td></tr></tbody></table></div></section>
+<section class="stmt-block"><div class="stmt-header" style="background:#1e3a8a" id="sofp"><span class="stmt-title">Statement of Financial Position</span><span class="stmt-page">PDF page 88</span></div><div class="tbl-scroll"><table class="report"><thead><tr><th class="th-desc">Description</th><th class="th-note">Notes</th><th class="th-amt">Group 2025</th><th class="th-amt">2024</th><th class="th-amt">2025</th><th class="th-amt">2024</th></tr></thead><tbody><tr class="row-data"><td class="td-desc"></td><td class="td-note"></td><td class="td-amt">2,025</td><td class="td-amt">2,024</td><td class="td-amt">2,025</td><td class="td-amt">2,024</td></tr><tr class="row-section"><td colspan="6" class="td-section">ASSETS</td></tr><tr class="row-section"><td colspan="6" class="td-section">Non-Current Assets</td></tr><tr class="row-data"><td class="td-desc">Property, plant and equipment</td><td class="td-note">14</td><td class="td-amt">353,326,097</td><td class="td-amt">371,999,645</td><td class="td-amt">353,326,097</td><td class="td-amt">371,999,645</td></tr><tr class="row-data"><td class="td-desc">Capital work in progress</td><td class="td-note"></td><td class="td-amt">1,136,845</td><td class="td-amt">-</td><td class="td-amt">1,136,845</td><td class="td-amt">-</td></tr><tr class="row-data"><td class="td-desc">Right-of-use assets</td><td class="td-note">15</td><td class="td-amt">1,509,819</td><td class="td-amt">1,532,019</td><td class="td-amt">1,509,819</td><td class="td-amt">1,532,019</td></tr><tr class="row-data"><td class="td-desc">Investment in subsidiary</td><td class="td-note">16</td><td class="td-amt">-</td><td class="td-amt">-</td><td class="td-amt">10,000,010</td><td class="td-amt">10,000,010</td></tr><tr class="row-data"><td class="td-desc">Financial assets at fair value through other comprehensive income</td><td class="td-note">17</td><td class="td-amt">77,290,820</td><td class="td-amt">49,267,460</td><td class="td-amt">77,290,820</td><td class="td-amt">49,267,460</td></tr><tr class="row-total"><td class="td-desc">Total Non-Current Assets</td><td class="td-note"></td><td class="td-amt">433,263,581</td><td class="td-amt">422,799,124</td><td class="td-amt">443,263,591</td><td class="td-amt">432,799,134</td></tr><tr class="row-section"><td colspan="6" class="td-section">Current Assets</td></tr><tr class="row-data"><td class="td-desc">Inventories</td><td class="td-note">19</td><td class="td-amt">578,153,901</td><td class="td-amt">563,741,719</td><td class="td-amt">578,153,901</td><td class="td-amt">563,741,719</td></tr><tr class="row-data"><td class="td-desc">Trade and other receivables</td><td class="td-note">20</td><td class="td-amt">894,780,099</td><td class="td-amt">1,606,529,665</td><td class="td-amt">752,352,755</td><td class="td-amt">1,469,654,076</td></tr><tr class="row-data"><td class="td-desc">Financial assets at fair value through profit or loss</td><td class="td-note">21</td><td class="td-amt">1,133,055,062</td><td class="td-amt">35,044,738</td><td class="td-amt">1,133,055,062</td><td class="td-amt">35,044,738</td></tr><tr class="row-data"><td class="td-desc">Short term investments</td><td class="td-note">22</td><td class="td-amt">815,810,902</td><td class="td-amt">780,002,877</td><td class="td-amt">815,810,902</td><td class="td-amt">780,002,877</td></tr><tr class="row-data"><td class="td-desc">Cash and cash equivalents</td><td class="td-note">23</td><td class="td-amt">101,457,737</td><td class="td-amt">61,621,402</td><td class="td-amt">101,014,004</td><td class="td-amt">61,177,072</td></tr><tr class="row-total"><td class="td-desc">Total Current Assets</td><td class="td-note"></td><td class="td-amt">3,523,257,701</td><td class="td-amt">3,046,940,401</td><td class="td-amt">3,380,386,624</td><td class="td-amt">2,909,620,482</td></tr><tr class="row-total"><td class="td-desc">Total Assets</td><td class="td-note"></td><td class="td-amt">3,956,521,282</td><td class="td-amt">3,469,739,525</td><td class="td-amt">3,823,650,215</td><td class="td-amt">3,342,419,616</td></tr><tr class="row-section"><td colspan="6" class="td-section">EQUITY AND LIABILITIES</td></tr><tr class="row-section"><td colspan="6" class="td-section">Capital and Reserves</td></tr><tr class="row-data"><td class="td-desc">Stated capital</td><td class="td-note">28</td><td class="td-amt">79,974,555</td><td class="td-amt">79,974,555</td><td class="td-amt">79,974,555</td><td class="td-amt">79,974,555</td></tr><tr class="row-data"><td class="td-desc">Revaluation reserve</td><td class="td-note">29</td><td class="td-amt">204,727,723</td><td class="td-amt">201,070,223</td><td class="td-amt">204,727,723</td><td class="td-amt">201,070,223</td></tr><tr class="row-data"><td class="td-desc">Revenue reserve</td><td class="td-note">30.1</td><td class="td-amt">170,000,000</td><td class="td-amt">170,000,000</td><td class="td-amt">170,000,000</td><td class="td-amt">170,000,000</td></tr><tr class="row-data"><td class="td-desc">Financial assets at FVOCI reserve</td><td class="td-note">30.2</td><td class="td-amt">63,992,864</td><td class="td-amt">34,157,339</td><td class="td-amt">63,992,864</td><td class="td-amt">34,157,339</td></tr><tr class="row-data"><td class="td-desc">Retained earnings</td><td class="td-note"></td><td class="td-amt">3,154,038,332</td><td class="td-amt">2,770,485,851</td><td class="td-amt">3,052,258,393</td><td class="td-amt">2,674,990,074</td></tr><tr class="row-total"><td class="td-desc">Total Equity</td><td class="td-note"></td><td class="td-amt">3,672,733,474</td><td class="td-amt">3,255,687,968</td><td class="td-amt">3,570,953,535</td><td class="td-amt">3,160,192,191</td></tr><tr class="row-section"><td colspan="6" class="td-section">Non-Current Liabilities</td></tr><tr class="row-data"><td class="td-desc">Defined benefit obligations</td><td class="td-note">26</td><td class="td-amt">17,821,020</td><td class="td-amt">12,508,030</td><td class="td-amt">17,821,020</td><td class="td-amt">12,508,030</td></tr><tr class="row-data"><td class="td-desc">Deferred income tax liabilities</td><td class="td-note">27</td><td class="td-amt">81,490,643</td><td class="td-amt">83,404,686</td><td class="td-amt">81,490,643</td><td class="td-amt">83,404,686</td></tr><tr class="row-total"><td class="td-desc">Total Non-Current Liabilities</td><td class="td-note"></td><td class="td-amt">99,311,663</td><td class="td-amt">95,912,716</td><td class="td-amt">99,311,663</td><td class="td-amt">95,912,716</td></tr><tr class="row-section"><td colspan="6" class="td-section">Current Liabilities</td></tr><tr class="row-data"><td class="td-desc">Trade and other payables</td><td class="td-note">24</td><td class="td-amt">83,347,347</td><td class="td-amt">20,723,147</td><td class="td-amt">82,495,808</td><td class="td-amt">20,587,415</td></tr><tr class="row-data"><td class="td-desc">Current income tax payable</td><td class="td-note">25</td><td class="td-amt">101,128,798</td><td class="td-amt">97,415,694</td><td class="td-amt">70,889,209</td><td class="td-amt">65,727,294</td></tr><tr class="row-total"><td class="td-desc">Total Current Liabilities</td><td class="td-note"></td><td class="td-amt">184,476,145</td><td class="td-amt">118,138,841</td><td class="td-amt">153,385,017</td><td class="td-amt">86,314,709</td></tr><tr class="row-total"><td class="td-desc">Total Liabilities</td><td class="td-note"></td><td class="td-amt">283,787,808</td><td class="td-amt">214,051,557</td><td class="td-amt">252,696,680</td><td class="td-amt">182,227,425</td></tr><tr class="row-total"><td class="td-desc">Total Equity and Liabilities</td><td class="td-note"></td><td class="td-amt">3,956,521,282</td><td class="td-amt">3,469,739,525</td><td class="td-amt">3,823,650,215</td><td class="td-amt">3,342,419,616</td></tr></tbody></table></div></section>
+<section class="stmt-block"><div class="stmt-header" style="background:#6b21a8" id="equity"><span class="stmt-title">Statement of Changes in Equity</span><span class="stmt-page">PDF page 89</span></div><div class="tbl-scroll"><table class="report"><thead><tr><th class="th-desc">Description</th><th class="th-note">Note</th><th class="th-amt">Col 1</th><th class="th-amt">Col 2</th><th class="th-amt">Col 3</th><th class="th-amt">Col 4</th><th class="th-amt">Col 5</th><th class="th-amt">Col 6</th></tr></thead><tbody><tr class="row-data"><td class="td-desc">latoT 067,237,618,2 301,086,554 - 869,786,552,3 869,786,552,3 532,147,464 570,101,9 172,455,63 605,592,105 )000,052,48( 474,337,276,3</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">deniateR sgninrae 354,161,273,2 301,086,554 635,677,7 158,584,077,2 158,584,077,2 532,147,464 - )923,283,2( 609,853,264 )000,052,48( 233,830,451,3</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">stessa ICOVF evreser 459,829,92 - - 933,751,43 933,751,43 - - 525,538,92 525,538,92 - 468,299,36 laicnaniF ta</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">notiaulaveR sevreser 897,766,461 - )635,677,7( 322,070,102 322,070,102 - 570,101,9 570,101,9 570,101,9 - 327,727,402</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">euneveR evreser 000,000,071 - - 000,000,071 000,000,071 - - - - - 000,000,071</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">detatS latipac 555,479,97 - - 555,479,97 555,479,97 - - - - - 555,479,97 stnemetats setoN 92 92 31 laicnanfi eseht fo trap largetni 38 raey ot noitaulaver 18 eht na segap mrof rof )seepuR ssorg emocni emocni - no 621 troper 4202 5202 4202 tnemtsujda 3202 ot</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">aknaL - evisneherpmoc refsnart hcraM evisneherpmoc hcraM 09 s’rotidua lirpA lirpA raey raey segap irS ICOVF 13 10 diap 13 ni 1 eht noitaicerpeD eht xat stnuoma no tnednepednI ta ta ta ta rof ta rof derrefeD dnediviD seton ecnalaB ecnalaB ecnalaB ecnalaB tfiorP stessa tfiorP rehtO latoT lla( ehT</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt">-</td></tr><tr class="row-data"><td class="td-desc">PLASTICS ANNUAL REPORT</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr></tbody></table></div></section>
+<section class="stmt-block"><div class="stmt-header" style="background:#92400e" id="cash_flows"><span class="stmt-title">Statement of Cash Flows</span><span class="stmt-page">PDF page 91</span></div><div class="tbl-scroll"><table class="report"><thead><tr><th class="th-desc">Description</th><th class="th-note">Notes</th><th class="th-amt">Group Year ended 31 2025</th><th class="th-amt">2024</th><th class="th-amt">Year ended 31 2025</th><th class="th-amt">2024</th></tr></thead><tbody><tr class="row-data"><td class="td-desc"></td><td class="td-note"></td><td class="td-amt">2,025</td><td class="td-amt">2,024</td><td class="td-amt">2,025</td><td class="td-amt">2,024</td></tr><tr class="row-data"><td class="td-desc">Cash flows from operating activities</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">Cash generated from operations</td><td class="td-note">31</td><td class="td-amt">1,342,465,259</td><td class="td-amt">162,294,142</td><td class="td-amt">1,342,465,857</td><td class="td-amt">170,086,089</td></tr><tr class="row-data"><td class="td-desc">Interest paid</td><td class="td-note">10</td><td class="td-amt">(376,990)</td><td class="td-amt">(1,090,630)</td><td class="td-amt">(376,990)</td><td class="td-amt">(6,593,145)</td></tr><tr class="row-data"><td class="td-desc">Gratuity paid</td><td class="td-note">26</td><td class="td-amt">(417,944)</td><td class="td-amt">(887,905)</td><td class="td-amt">(417,944)</td><td class="td-amt">(887,905)</td></tr><tr class="row-data"><td class="td-desc">Income tax paid</td><td class="td-note">25</td><td class="td-amt">(189,519,196)</td><td class="td-amt">(188,975,747)</td><td class="td-amt">(189,519,196)</td><td class="td-amt">(182,438,331)</td></tr><tr class="row-total"><td class="td-desc">Net cash generated from / (used in) operating activities Cash flows from investing activities</td><td class="td-note"></td><td class="td-amt">1,152,151,129</td><td class="td-amt">28,660,140</td><td class="td-amt">1,152,151,727</td><td class="td-amt">(19,833,292)</td></tr><tr class="row-data"><td class="td-desc">Interest received</td><td class="td-note">10</td><td class="td-amt">58,036,821</td><td class="td-amt">144,251,298</td><td class="td-amt">58,036,821</td><td class="td-amt">135,424,451</td></tr><tr class="row-data"><td class="td-desc">Investment in unit trust</td><td class="td-note">21</td><td class="td-amt">(1,050,000,000)</td><td class="td-amt">(35,000,000)</td><td class="td-amt">(1,050,000,000)</td><td class="td-amt">(35,000,000)</td></tr><tr class="row-data"><td class="td-desc">Investment in Fixed Deposits</td><td class="td-note"></td><td class="td-amt">(35,808,023)</td><td class="td-amt">(16,434,767)</td><td class="td-amt">(35,808,023)</td><td class="td-amt">(16,434,767)</td></tr><tr class="row-data"><td class="td-desc">Acquisition of property, plant and equipment</td><td class="td-note">14</td><td class="td-amt">(1,302,633)</td><td class="td-amt">(14,448)</td><td class="td-amt">(1,302,633)</td><td class="td-amt">(14,448)</td></tr><tr class="row-data"><td class="td-desc">Capital work in progress</td><td class="td-note"></td><td class="td-amt">(1,136,845)</td><td class="td-amt">-</td><td class="td-amt">(1,136,845)</td><td class="td-amt">-</td></tr><tr class="row-data"><td class="td-desc">Dividend received</td><td class="td-note">7</td><td class="td-amt">2,145,887</td><td class="td-amt">2,081,525</td><td class="td-amt">2,145,887</td><td class="td-amt">2,081,525</td></tr><tr class="row-total"><td class="td-desc">Net cash generated from investing activities Cash flows from financing activities</td><td class="td-note"></td><td class="td-amt">(1,028,064,793)</td><td class="td-amt">94,883,607</td><td class="td-amt">(1,028,064,793)</td><td class="td-amt">86,056,760</td></tr><tr class="row-data"><td class="td-desc">Dividend paid</td><td class="td-note">13</td><td class="td-amt">(84,250,000)</td><td class="td-amt">(63,187,500)</td><td class="td-amt">(84,250,000)</td><td class="td-amt">(63,187,500)</td></tr><tr class="row-total"><td class="td-desc">Net cash used in financing activities</td><td class="td-note"></td><td class="td-amt">(84,250,000)</td><td class="td-amt">(63,187,500)</td><td class="td-amt">(84,250,000)</td><td class="td-amt">(63,187,500)</td></tr><tr class="row-data"><td class="td-desc">Net (decrease) / increase in cash and cash equivalents</td><td class="td-note"></td><td class="td-amt">39,836,336</td><td class="td-amt">3,035,968</td><td class="td-amt">39,836,934</td><td class="td-amt">3,035,968</td></tr><tr class="row-data"><td class="td-desc">Cash and cash equivalents at the beginning of the year</td><td class="td-note"></td><td class="td-amt">61,621,401</td><td class="td-amt">58,585,434</td><td class="td-amt">61,177,069</td><td class="td-amt">58,141,104</td></tr><tr class="row-data"><td class="td-desc">Cash and cash equivalents at the end of the year The notes on pages 90 to 126 form an integral part financial</td><td class="td-note">23</td><td class="td-amt">101,457,737</td><td class="td-amt">61,621,402</td><td class="td-amt">101,014,004</td><td class="td-amt">61,177,072</td></tr></tbody></table></div></section>
+<section class="stmt-block"><div class="stmt-header" style="background:#065f46" id="shareholder_info"><span class="stmt-title">Shareholder Information</span><span class="stmt-page">PDF page 74</span></div><div class="tbl-scroll"><table class="report"><thead><tr><th class="th-desc">Description</th><th class="th-note">Directors of the</th><th class="th-amt">respective</th><th class="th-amt">shareholdings are given Number of</th><th class="th-amt">Col 3</th><th class="th-amt">Col 4</th></tr></thead><tbody><tr class="row-data"><td class="td-desc">%</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">Madanayake</td><td class="td-note"></td><td class="td-amt">1</td><td class="td-amt">-</td><td class="td-amt">1</td><td class="td-amt">-</td></tr><tr class="row-data"><td class="td-desc">Madanayake</td><td class="td-note"></td><td class="td-amt">20,801</td><td class="td-amt">0.49</td><td class="td-amt">20,801</td><td class="td-amt">0.49</td></tr><tr class="row-data"><td class="td-desc">Madanayake</td><td class="td-note"></td><td class="td-amt">17,751</td><td class="td-amt">0.42</td><td class="td-amt">17,751</td><td class="td-amt">0.42</td></tr><tr class="row-data"><td class="td-desc">Rathnayake</td><td class="td-note"></td><td class="td-amt">-</td><td class="td-amt">-</td><td class="td-amt">-</td><td class="td-amt">-</td></tr><tr class="row-data"><td class="td-desc">Somawansa Register Property, Plant and transactions the The Register is maintained by Details of property, plant equipments given in the per the Companies Act are given in Note 14 in Financial Statements of the</td><td class="td-note"></td><td class="td-amt">-</td><td class="td-amt">-</td><td class="td-amt">-</td><td class="td-amt">-</td></tr><tr class="row-data"><td class="td-desc">No. All Directors have made Statements. of the accordance with the The Interest Register is Donations directors section 9 inspection as required by the Listing Code of Donations amounting to 56,982/- Practices on (Group Amount) were the by the and year under review. Interest in Contracts Commission of pertaining Party Transactions have interests in contracts of the Share Information complied with Company and disclosed in Note 31 to the Information relating to dividend,</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">with 1st January Statements and no Director net assets, market price and of is directly or indirectly holding is given in the to Party Transactions any other contracts with the Shareholders on page annual is given 74. report. Remuneration Recurrent Environmental aggregate value exceeds received by the Directors The Company has used endeavors revenue are is Note 31 to the Financial to comply with the environmental laws and regulations. The has not engaged in any harmful detailed related Meetings or hazardous to the transactions is Note 31 to The Directors’ meetings are financial set 42 under the Corporate Related Party section of the Annual Report. The Directors have also the were related transactions if any, that classified transactions 10% of as related party terms or 5% of assets as the compliance of the of Sri Lanka Accounting Standard-LKAS 9 of the rules, during required by the Companies 24 “Related Party which is given in 31. Act 2007, an interim dividend adopted in the Financial</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt">2,016</td></tr><tr class="row-data"><td class="td-desc">of share was paid on 23rd Statements. These comply the shareholders of the with the disclosure of Shares for the financial year the section 9 of the Those Expenditure The expenditure on acquisition of plant and equipment of the the Group amounted to Rs. details of which are given in Financial Statements. ACL PLASTICS PLC - REPORT 2024/25</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">PLC Parent company Sale of goods 1,208,685,655 50% ordinary</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">business</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">PLC Group company Sale of goods 1,149,121,148 47% ordinary</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">business</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">and Industrial Relations Appointment of</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">has an equal opportunity The Company’s the year</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">these principles are enshrined under review were partners,</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">in selection, training, development Chartered Accountants were</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">policies, ensuring that all the auditors of the Company</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">based on merit. The Group and offer themselves re-appointment.</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">equality of opportunity for all</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">irrespective of ethnic origin, Audit fees payable to Associates,</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">political opinion, gender, marital by the Company and amounted</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">physical disability. There were no to Rs. 899,538 and Rs. issues pertaining to employees respectively. relations in the year under Notice of Meeting The Notice of the 34th General Governance Meeting is on page 138 Annual In management of the Company, the Report. have placed emphasis in the best corporate By Order of the Board practices and procedures. systems and structures have introduced / improved from time to enhance risk management to improve accountability (Sgd.) transparency. A separate report on Corporate Affairs (Pvt) governance is given on pages 25 Secretaries to Annual Report. 26 August 2025 with Laws and Regulations has at all times ensured that it with the applicable laws and including the listing rules of Stock Exchange as a listed ACL PLASTICS PLC - REPORT 2024/25</td><td class="td-note"></td><td class="td-amt">1,422,156</td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr><tr class="row-data"><td class="td-desc">knowledge or assess all the approval. aspects of proposed party Ratnayake – Chairman of transactions, and necessary, Make market Committee they shall obtain party Somawansa – Member of professional and from required by the Committee an appropriately person. Listing Madanayake – Member of Role of the Committee Make disclosures Committee • Recommend and terms of related transactions in reference of the adoption Annual required by October 2024, the Related by the Board of the Listing Transaction Review Committee of A C PLC has been functioning Company. Any transactions, as A C L Plastics PLC with • Review of related transactions highlighted Board. members. as required in terms provisions Jayaratne – Chairman of the set out in Appendix Rules, either prior to the being entered into or, if transaction is Casie Chitty – Member expressed to be such Madanayake- Member of review, prior to the completion of the Committee (appointed wef 26th transaction. • Where necessary, Committee Committee shall request the Directors • Committee reviews in to approve the party proposed related transactions. In instances, the transactions, other than the approval of the Directors transactions falling under should be obtained entering preview of section 9.14.10 of into the relevant Rules, to ensure they are transaction. on an arm’s length basis. ACL PLASTICS PLC - REPORT 2024/25</td><td class="td-note"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td><td class="td-amt"></td></tr></tbody></table></div></section>
+  </div>
+</body>
+</html>

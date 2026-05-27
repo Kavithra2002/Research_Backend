@@ -1,0 +1,8505 @@
+{
+  "company": "company46",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company46\\Annual\\48322_2025.pdf",
+  "extracted_at": "2026-05-18T12:53:19",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "page_1based": 180,
+      "has_note_col": true,
+      "column_headers": [
+        "Profit 2024 ’000",
+        "Comprehensive COMPANY 2025 ’000",
+        "Loss Income 2024 ’000",
+        "GROUP 2025 ’000",
+        "2024 ’000",
+        "Financial COMPANY 2025 ’000",
+        "Statements 2024 ’000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "of For the year ended March 2025 For the year ended March",
+          "note_col": "Statement Notes",
+          "amt_cols": [
+            "Profit 2024 ’000",
+            "Comprehensive COMPANY 2025 ’000",
+            "Loss Income 2024 ’000",
+            "GROUP 2025 ’000",
+            "2024 ’000",
+            "Financial COMPANY 2025 ’000",
+            "Statements 2024 ’000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "GROUP COMPANY COMPANY",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "For the year ended 31 March 2025 For the year ended 31 March",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2024",
+            "2025",
+            "2024",
+            "2025",
+            "2024",
+            "2025",
+            "2024"
+          ],
+          "amounts": [
+            2024,
+            2025,
+            2024,
+            2025,
+            2024,
+            2025,
+            2024
+          ]
+        },
+        {
+          "label": "Rs. ’000 Notes",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Revenue 241,839,620 Tax on actuarial loss",
+          "is_section_header": false,
+          "note": "4",
+          "amounts_raw": [
+            "223,440,484",
+            "21,468",
+            "28,528",
+            "36,547",
+            "(989,140)",
+            "43,620",
+            "(38,309)"
+          ],
+          "amounts": [
+            223440484,
+            21468,
+            28528,
+            36547,
+            -989140,
+            43620,
+            -38309
+          ]
+        },
+        {
+          "label": "Cost of sales (214,083,141) Other comprehensive",
+          "is_section_header": false,
+          "note": "5",
+          "amounts_raw": [
+            "(198,688,399)",
+            "(22,019)",
+            "(28,034)",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -198688399,
+            -22019,
+            -28034,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Gross profit 27,756,479 income/(expense) for",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "24,752,085",
+            "(551)",
+            "494",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            24752085,
+            -551,
+            494,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "the year, net of tax",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "(240,721)",
+            "2,805,189",
+            "(99,163)",
+            "77,148"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            -240721,
+            2805189,
+            -99163,
+            77148
+          ]
+        },
+        {
+          "label": "Other income 3,086,781 Total comprehensive",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "2,266,690",
+            "7,586,263",
+            "6,119,147",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            2266690,
+            7586263,
+            6119147,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Distribution expenses (8,027,232) income for the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(6,879,203)",
+            "–",
+            "–",
+            "7,029,574",
+            "8,741,308",
+            "3,772,589",
+            "3,200,569"
+          ],
+          "amounts": [
+            -6879203,
+            null,
+            null,
+            7029574,
+            8741308,
+            3772589,
+            3200569
+          ]
+        },
+        {
+          "label": "Administrative expenses (7,603,567) Profit attributable to: Results from",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(6,626,827)",
+            "(3,316,074)",
+            "(2,390,918)",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -6626827,
+            -3316074,
+            -2390918,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "operating activities 15,212,461 Equity holders of the parent",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "13,512,745",
+            "4,269,638",
+            "3,728,723",
+            "7,222,083",
+            "5,886,785",
+            "3,871,752",
+            "3,123,421"
+          ],
+          "amounts": [
+            13512745,
+            4269638,
+            3728723,
+            7222083,
+            5886785,
+            3871752,
+            3123421
+          ]
+        },
+        {
+          "label": "Finance income 736,272 Non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,964,222",
+            "306,494",
+            "1,365,202",
+            "48,212",
+            "49,334",
+            "–",
+            "–"
+          ],
+          "amounts": [
+            1964222,
+            306494,
+            1365202,
+            48212,
+            49334,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Finance costs (4,904,697)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(7,214,575)",
+            "(902,038)",
+            "(1,932,136)",
+            "7,270,295",
+            "5,936,119",
+            "3,871,752",
+            "3,123,421"
+          ],
+          "amounts": [
+            -7214575,
+            -902038,
+            -1932136,
+            7270295,
+            5936119,
+            3871752,
+            3123421
+          ]
+        },
+        {
+          "label": "Net finance cost (4,168,425) Total comprehensive Changes in fair value of income attributable to:",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "(5,250,353)",
+            "(595,544)",
+            "(566,934)",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -5250353,
+            -595544,
+            -566934,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "investment property 552,569 Equity holders of the parent",
+          "is_section_header": false,
+          "note": "14",
+          "amounts_raw": [
+            "931,003",
+            "360,580",
+            "128,995",
+            "6,981,544",
+            "8,691,232",
+            "3,772,589",
+            "3,200,569"
+          ],
+          "amounts": [
+            931003,
+            360580,
+            128995,
+            6981544,
+            8691232,
+            3772589,
+            3200569
+          ]
+        },
+        {
+          "label": "Share of profit/(loss) of equity Non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "48,030",
+            "50,076",
+            "–",
+            "–"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            48030,
+            50076,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "accounted investees, net of tax 232,639",
+          "is_section_header": false,
+          "note": "16.4",
+          "amounts_raw": [
+            "52,528",
+            "–",
+            "–",
+            "7,029,574",
+            "8,741,308",
+            "3,772,589",
+            "3,200,569"
+          ],
+          "amounts": [
+            52528,
+            null,
+            null,
+            7029574,
+            8741308,
+            3772589,
+            3200569
+          ]
+        },
+        {
+          "label": "Profit before tax 11,829,244 Earnings per share",
+          "is_section_header": false,
+          "note": "8",
+          "amounts_raw": [
+            "9,245,923",
+            "4,034,674",
+            "3,290,784",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            9245923,
+            4034674,
+            3290784,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Income tax expense (4,558,949)",
+          "is_section_header": false,
+          "note": "9",
+          "amounts_raw": [
+            "(3,309,804)",
+            "(162,922)",
+            "(167,363)",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -3309804,
+            -162922,
+            -167363,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Basic (Rs.) 10.1",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "28.03",
+            "22.85",
+            "15.03",
+            "12.12"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            28.03,
+            22.85,
+            15.03,
+            12.12
+          ]
+        },
+        {
+          "label": "Profit for the year 7,270,295",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,936,119",
+            "3,871,752",
+            "3,123,421",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            5936119,
+            3871752,
+            3123421,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Diluted (Rs.) 10.2 Other Comprehensive Income (OCI) Figures in brackets indicate deductions. Items that will not be reclassified to profit or loss The Notes on pages 184 to 242 are an integral Statements. Revaluation of lands",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "28.03",
+            "22.85",
+            "15.03",
+            "12.12"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            28.03,
+            22.85,
+            15.03,
+            12.12
+          ]
+        },
+        {
+          "label": "and buildings – Actuarial gain/(loss) on",
+          "is_section_header": false,
+          "note": "12.3",
+          "amounts_raw": [
+            "3,078,314",
+            "–",
+            "39,297",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            3078314,
+            null,
+            39297,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "employee benefit liability (122,105) Share of other comprehensive income/(expense) in equity",
+          "is_section_header": false,
+          "note": "28.3",
+          "amounts_raw": [
+            "218,788",
+            "(145,399)",
+            "88,399",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            218788,
+            -145399,
+            88399,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "accounted investee, net of tax (157,928) Net change in fair value of",
+          "is_section_header": false,
+          "note": "16.4",
+          "amounts_raw": [
+            "509,469",
+            "–",
+            "–",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            509469,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "FVOCI financial assets 2,765 178 Cargills (Ceylon) PLC Integrated Annual Report",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(12,242)",
+            "2,616",
+            "(12,239)",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -12242,
+            2616,
+            -12239,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "GROUP COMPANY COMPANY",
+          "",
+          "",
+          "",
+          "",
+          "GROUP",
+          "",
+          "",
+          ""
+        ],
+        [
+          "For the year ended 31 March 2025 For the year ended 31 March",
+          "",
+          "2024",
+          "2025",
+          "2024",
+          "2025",
+          "2024",
+          "2025",
+          "2024"
+        ],
+        [
+          "Rs. ’000 Notes",
+          "Notes",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000"
+        ],
+        [
+          "Revenue 241,839,620 Tax on actuarial loss",
+          "4",
+          "223,440,484",
+          "21,468",
+          "28,528",
+          "36,547",
+          "(989,140)",
+          "43,620",
+          "(38,309)"
+        ],
+        [
+          "Cost of sales (214,083,141) Other comprehensive",
+          "5",
+          "(198,688,399)",
+          "(22,019)",
+          "(28,034)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Gross profit 27,756,479 income/(expense) for",
+          "",
+          "24,752,085",
+          "(551)",
+          "494",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "the year, net of tax",
+          "",
+          "",
+          "",
+          "",
+          "(240,721)",
+          "2,805,189",
+          "(99,163)",
+          "77,148"
+        ],
+        [
+          "Other income 3,086,781 Total comprehensive",
+          "6",
+          "2,266,690",
+          "7,586,263",
+          "6,119,147",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Distribution expenses (8,027,232) income for the year",
+          "",
+          "(6,879,203)",
+          "–",
+          "–",
+          "7,029,574",
+          "8,741,308",
+          "3,772,589",
+          "3,200,569"
+        ],
+        [
+          "Administrative expenses (7,603,567) Profit attributable to: Results from",
+          "",
+          "(6,626,827)",
+          "(3,316,074)",
+          "(2,390,918)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "operating activities 15,212,461 Equity holders of the parent",
+          "",
+          "13,512,745",
+          "4,269,638",
+          "3,728,723",
+          "7,222,083",
+          "5,886,785",
+          "3,871,752",
+          "3,123,421"
+        ],
+        [
+          "Finance income 736,272 Non-controlling interest",
+          "",
+          "1,964,222",
+          "306,494",
+          "1,365,202",
+          "48,212",
+          "49,334",
+          "–",
+          "–"
+        ],
+        [
+          "Finance costs (4,904,697)",
+          "",
+          "(7,214,575)",
+          "(902,038)",
+          "(1,932,136)",
+          "7,270,295",
+          "5,936,119",
+          "3,871,752",
+          "3,123,421"
+        ],
+        [
+          "Net finance cost (4,168,425) Total comprehensive Changes in fair value of income attributable to:",
+          "7",
+          "(5,250,353)",
+          "(595,544)",
+          "(566,934)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "investment property 552,569 Equity holders of the parent",
+          "14",
+          "931,003",
+          "360,580",
+          "128,995",
+          "6,981,544",
+          "8,691,232",
+          "3,772,589",
+          "3,200,569"
+        ],
+        [
+          "Share of profit/(loss) of equity Non-controlling interest",
+          "",
+          "",
+          "",
+          "",
+          "48,030",
+          "50,076",
+          "–",
+          "–"
+        ],
+        [
+          "accounted investees, net of tax 232,639",
+          "16.4",
+          "52,528",
+          "–",
+          "–",
+          "7,029,574",
+          "8,741,308",
+          "3,772,589",
+          "3,200,569"
+        ],
+        [
+          "Profit before tax 11,829,244 Earnings per share",
+          "8",
+          "9,245,923",
+          "4,034,674",
+          "3,290,784",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Income tax expense (4,558,949)",
+          "9",
+          "(3,309,804)",
+          "(162,922)",
+          "(167,363)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Basic (Rs.) 10.1",
+          "",
+          "",
+          "",
+          "",
+          "28.03",
+          "22.85",
+          "15.03",
+          "12.12"
+        ],
+        [
+          "Profit for the year 7,270,295",
+          "",
+          "5,936,119",
+          "3,871,752",
+          "3,123,421",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Diluted (Rs.) 10.2 Other Comprehensive Income (OCI) Figures in brackets indicate deductions. Items that will not be reclassified to profit or loss The Notes on pages 184 to 242 are an integral Statements. Revaluation of lands",
+          "",
+          "",
+          "",
+          "",
+          "28.03",
+          "22.85",
+          "15.03",
+          "12.12"
+        ],
+        [
+          "and buildings – Actuarial gain/(loss) on",
+          "12.3",
+          "3,078,314",
+          "–",
+          "39,297",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "employee benefit liability (122,105) Share of other comprehensive income/(expense) in equity",
+          "28.3",
+          "218,788",
+          "(145,399)",
+          "88,399",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "accounted investee, net of tax (157,928) Net change in fair value of",
+          "16.4",
+          "509,469",
+          "–",
+          "–",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "FVOCI financial assets 2,765 178 Cargills (Ceylon) PLC Integrated Annual Report",
+          "16.3.1",
+          "(12,242)",
+          "2,616",
+          "(12,239)",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    "sofp": {
+      "title": "Statement of Financial Position",
+      "page_1based": 181,
+      "has_note_col": true,
+      "column_headers": [
+        "GROUP 2025 ’000",
+        "Financial 2024 ’000",
+        "COMPANY 2025 ’000",
+        "2024 ’000",
+        "GROUP 2025 ’000",
+        "2024 ’000",
+        "Financial COMPANY 2025 ’000",
+        "Statements 2024 ’000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Statement Position As at As at",
+          "note_col": "of Notes",
+          "amt_cols": [
+            "GROUP 2025 ’000",
+            "Financial 2024 ’000",
+            "COMPANY 2025 ’000",
+            "2024 ’000",
+            "GROUP 2025 ’000",
+            "2024 ’000",
+            "Financial COMPANY 2025 ’000",
+            "Statements 2024 ’000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Statement Financial Position",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Assets Liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Non-current assets Non-current liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Property, plant, and equipment Interest bearing loans and borrowings 26",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "49,266,771",
+            "49,493,157",
+            "3,562,916",
+            "3,448,967",
+            "100,174",
+            "1,618,351",
+            "–",
+            "1,012,406"
+          ],
+          "amounts": [
+            49266771,
+            49493157,
+            3562916,
+            3448967,
+            100174,
+            1618351,
+            null,
+            1012406
+          ]
+        },
+        {
+          "label": "Right-of-use assets Lease liability 13.2",
+          "is_section_header": false,
+          "note": "13.1",
+          "amounts_raw": [
+            "17,998,719",
+            "20,371,043",
+            "865,456",
+            "945,174",
+            "21,749,308",
+            "23,173,281",
+            "883,154",
+            "921,155"
+          ],
+          "amounts": [
+            17998719,
+            20371043,
+            865456,
+            945174,
+            21749308,
+            23173281,
+            883154,
+            921155
+          ]
+        },
+        {
+          "label": "Investment property Deferred tax liabilities 19",
+          "is_section_header": false,
+          "note": "14",
+          "amounts_raw": [
+            "11,407,006",
+            "10,829,980",
+            "3,793,237",
+            "3,424,330",
+            "2,116,785",
+            "2,265,440",
+            "559,140",
+            "552,755"
+          ],
+          "amounts": [
+            11407006,
+            10829980,
+            3793237,
+            3424330,
+            2116785,
+            2265440,
+            559140,
+            552755
+          ]
+        },
+        {
+          "label": "Intangible assets Capital grants 27",
+          "is_section_header": false,
+          "note": "15",
+          "amounts_raw": [
+            "1,622,037",
+            "1,630,190",
+            "91,287",
+            "105,262",
+            "–",
+            "–",
+            "–",
+            "–"
+          ],
+          "amounts": [
+            1622037,
+            1630190,
+            91287,
+            105262,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Employee benefit liability 28",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "2,344,799",
+            "1,956,969",
+            "1,020,056",
+            "766,970"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            2344799,
+            1956969,
+            1020056,
+            766970
+          ]
+        },
+        {
+          "label": "Investments in subsidiaries",
+          "is_section_header": false,
+          "note": "16.1",
+          "amounts_raw": [
+            "–",
+            "–",
+            "5,936,043",
+            "5,975,269",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            5936043,
+            5975269,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Total non-current liabilities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "26,311,066",
+            "29,014,041",
+            "2,462,350",
+            "3,253,286"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            26311066,
+            29014041,
+            2462350,
+            3253286
+          ]
+        },
+        {
+          "label": "Investment in equity accounted investees",
+          "is_section_header": false,
+          "note": "16.2",
+          "amounts_raw": [
+            "5,055,526",
+            "4,980,816",
+            "4,754,216",
+            "4,772,403",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            5055526,
+            4980816,
+            4754216,
+            4772403,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other financial assets",
+          "is_section_header": false,
+          "note": "16.3",
+          "amounts_raw": [
+            "1,585,435",
+            "1,582,702",
+            "1,584,807",
+            "1,582,224",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            1585435,
+            1582702,
+            1584807,
+            1582224,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Trade and other payables 29 Prepayment on leasehold land and",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "34,787,104",
+            "32,408,999",
+            "769,502",
+            "562,172"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            34787104,
+            32408999,
+            769502,
+            562172
+          ]
+        },
+        {
+          "label": "building Current tax liabilities",
+          "is_section_header": false,
+          "note": "17",
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "5,806,748",
+            "5,485,955",
+            "548,257",
+            "435,341"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            5806748,
+            5485955,
+            548257,
+            435341
+          ]
+        },
+        {
+          "label": "Biological assets Amounts due to related companies 22",
+          "is_section_header": false,
+          "note": "18",
+          "amounts_raw": [
+            "12,699",
+            "65,737",
+            "–",
+            "–",
+            "10,358",
+            "9,996",
+            "–",
+            "1,139"
+          ],
+          "amounts": [
+            12699,
+            65737,
+            null,
+            null,
+            10358,
+            9996,
+            null,
+            1139
+          ]
+        },
+        {
+          "label": "Total non-current assets Dividend payable 30",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "86,948,193",
+            "88,953,625",
+            "20,587,962",
+            "20,253,629",
+            "116,902",
+            "98,982",
+            "116,902",
+            "98,982"
+          ],
+          "amounts": [
+            86948193,
+            88953625,
+            20587962,
+            20253629,
+            116902,
+            98982,
+            116902,
+            98982
+          ]
+        },
+        {
+          "label": "Interest bearing loans and borrowings 26",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "28,325,130",
+            "28,461,477",
+            "8,366,714",
+            "7,464,462"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            28325130,
+            28461477,
+            8366714,
+            7464462
+          ]
+        },
+        {
+          "label": "Current assets Lease liability 13.2",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "1,155,071",
+            "1,352,718",
+            "43,245",
+            "49,075"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            1155071,
+            1352718,
+            43245,
+            49075
+          ]
+        },
+        {
+          "label": "Inventories Total current liabilities",
+          "is_section_header": false,
+          "note": "20",
+          "amounts_raw": [
+            "25,441,359",
+            "23,253,390",
+            "707",
+            "–",
+            "70,201,313",
+            "67,818,127",
+            "9,844,620",
+            "8,611,171"
+          ],
+          "amounts": [
+            25441359,
+            23253390,
+            707,
+            null,
+            70201313,
+            67818127,
+            9844620,
+            8611171
+          ]
+        },
+        {
+          "label": "Biological assets Total liabilities",
+          "is_section_header": false,
+          "note": "18",
+          "amounts_raw": [
+            "63,787",
+            "150,018",
+            "–",
+            "–",
+            "96,512,379",
+            "96,832,168",
+            "12,306,970",
+            "11,864,457"
+          ],
+          "amounts": [
+            63787,
+            150018,
+            null,
+            null,
+            96512379,
+            96832168,
+            12306970,
+            11864457
+          ]
+        },
+        {
+          "label": "Trade and other receivables Total equity and liabilities",
+          "is_section_header": false,
+          "note": "21",
+          "amounts_raw": [
+            "14,715,425",
+            "12,618,927",
+            "984,699",
+            "597,673",
+            "135,942,277",
+            "133,154,629",
+            "23,902,193",
+            "23,609,228"
+          ],
+          "amounts": [
+            14715425,
+            12618927,
+            984699,
+            597673,
+            135942277,
+            133154629,
+            23902193,
+            23609228
+          ]
+        },
+        {
+          "label": "Amounts due from related companies Figures in brackets indicate deductions.",
+          "is_section_header": false,
+          "note": "22",
+          "amounts_raw": [
+            "405,059",
+            "490,916",
+            "2,001,856",
+            "2,697,829",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            405059,
+            490916,
+            2001856,
+            2697829,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Other financial assets The Notes from pages 184 to 242 form an integral part Statements.",
+          "is_section_header": false,
+          "note": "16.3",
+          "amounts_raw": [
+            "220,435",
+            "131,107",
+            "–",
+            "–",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            220435,
+            131107,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Statement Financial Position",
+          "of",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Notes",
+          "Notes",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000",
+          "Rs. ’000"
+        ],
+        [
+          "Assets Liabilities",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Non-current assets Non-current liabilities",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Property, plant, and equipment Interest bearing loans and borrowings 26",
+          "12",
+          "49,266,771",
+          "49,493,157",
+          "3,562,916",
+          "3,448,967",
+          "100,174",
+          "1,618,351",
+          "–",
+          "1,012,406"
+        ],
+        [
+          "Right-of-use assets Lease liability 13.2",
+          "13.1",
+          "17,998,719",
+          "20,371,043",
+          "865,456",
+          "945,174",
+          "21,749,308",
+          "23,173,281",
+          "883,154",
+          "921,155"
+        ],
+        [
+          "Investment property Deferred tax liabilities 19",
+          "14",
+          "11,407,006",
+          "10,829,980",
+          "3,793,237",
+          "3,424,330",
+          "2,116,785",
+          "2,265,440",
+          "559,140",
+          "552,755"
+        ],
+        [
+          "Intangible assets Capital grants 27",
+          "15",
+          "1,622,037",
+          "1,630,190",
+          "91,287",
+          "105,262",
+          "–",
+          "–",
+          "–",
+          "–"
+        ],
+        [
+          "Employee benefit liability 28",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "2,344,799",
+          "1,956,969",
+          "1,020,056",
+          "766,970"
+        ],
+        [
+          "Investments in subsidiaries",
+          "16.1",
+          "–",
+          "–",
+          "5,936,043",
+          "5,975,269",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Total non-current liabilities",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "26,311,066",
+          "29,014,041",
+          "2,462,350",
+          "3,253,286"
+        ],
+        [
+          "Investment in equity accounted investees",
+          "16.2",
+          "5,055,526",
+          "4,980,816",
+          "4,754,216",
+          "4,772,403",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Current liabilities",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Other financial assets",
+          "16.3",
+          "1,585,435",
+          "1,582,702",
+          "1,584,807",
+          "1,582,224",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Trade and other payables 29 Prepayment on leasehold land and",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "34,787,104",
+          "32,408,999",
+          "769,502",
+          "562,172"
+        ],
+        [
+          "building Current tax liabilities",
+          "17",
+          "–",
+          "–",
+          "–",
+          "–",
+          "5,806,748",
+          "5,485,955",
+          "548,257",
+          "435,341"
+        ],
+        [
+          "Biological assets Amounts due to related companies 22",
+          "18",
+          "12,699",
+          "65,737",
+          "–",
+          "–",
+          "10,358",
+          "9,996",
+          "–",
+          "1,139"
+        ],
+        [
+          "Total non-current assets Dividend payable 30",
+          "",
+          "86,948,193",
+          "88,953,625",
+          "20,587,962",
+          "20,253,629",
+          "116,902",
+          "98,982",
+          "116,902",
+          "98,982"
+        ],
+        [
+          "Interest bearing loans and borrowings 26",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "28,325,130",
+          "28,461,477",
+          "8,366,714",
+          "7,464,462"
+        ],
+        [
+          "Current assets Lease liability 13.2",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "1,155,071",
+          "1,352,718",
+          "43,245",
+          "49,075"
+        ],
+        [
+          "Inventories Total current liabilities",
+          "20",
+          "25,441,359",
+          "23,253,390",
+          "707",
+          "–",
+          "70,201,313",
+          "67,818,127",
+          "9,844,620",
+          "8,611,171"
+        ],
+        [
+          "Biological assets Total liabilities",
+          "18",
+          "63,787",
+          "150,018",
+          "–",
+          "–",
+          "96,512,379",
+          "96,832,168",
+          "12,306,970",
+          "11,864,457"
+        ],
+        [
+          "Trade and other receivables Total equity and liabilities",
+          "21",
+          "14,715,425",
+          "12,618,927",
+          "984,699",
+          "597,673",
+          "135,942,277",
+          "133,154,629",
+          "23,902,193",
+          "23,609,228"
+        ],
+        [
+          "Amounts due from related companies Figures in brackets indicate deductions.",
+          "22",
+          "405,059",
+          "490,916",
+          "2,001,856",
+          "2,697,829",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Other financial assets The Notes from pages 184 to 242 form an integral part Statements.",
+          "16.3",
+          "220,435",
+          "131,107",
+          "–",
+          "–",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "page_1based": 182,
+      "has_note_col": true,
+      "column_headers": [
+        "Stated capital ‘000",
+        "Capital reserve ‘000",
+        "Revaluation reserve ‘000",
+        "FVOCI reserve ‘000",
+        "Retained earnings ‘000",
+        "Financial Non- controlling interest ‘000",
+        "Statements Total equity ‘000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "",
+          "note_col": "Notes",
+          "amt_cols": [
+            "Stated capital ‘000",
+            "Capital reserve ‘000",
+            "Revaluation reserve ‘000",
+            "FVOCI reserve ‘000",
+            "Retained earnings ‘000",
+            "Financial Non- controlling interest ‘000",
+            "Statements Total equity ‘000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Balance as at 1 April 2023",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,841,068",
+            "7,928",
+            "6,649,336",
+            "51,691",
+            "13,527,172",
+            "3,840,612",
+            "30,917,807"
+          ],
+          "amounts": [
+            6841068,
+            7928,
+            6649336,
+            51691,
+            13527172,
+            3840612,
+            30917807
+          ]
+        },
+        {
+          "label": "Profit for the period",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "5,886,785",
+            "49,334",
+            "5,936,119"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            5886785,
+            49334,
+            5936119
+          ]
+        },
+        {
+          "label": "Other comprehensive income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "2,153,750",
+            "(12,242)",
+            "662,939",
+            "742",
+            "2,805,189"
+          ],
+          "amounts": [
+            null,
+            null,
+            2153750,
+            -12242,
+            662939,
+            742,
+            2805189
+          ]
+        },
+        {
+          "label": "Total comprehensive income Transactions with owners of the Company, recognised directly in equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "2,153,750",
+            "(12,242)",
+            "6,549,724",
+            "50,076",
+            "8,741,308"
+          ],
+          "amounts": [
+            null,
+            null,
+            2153750,
+            -12242,
+            6549724,
+            50076,
+            8741308
+          ]
+        },
+        {
+          "label": "Transfer from revaluation reserve due to disposal of revalued assets",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "(3,872)",
+            "–",
+            "3,872",
+            "–",
+            "–"
+          ],
+          "amounts": [
+            null,
+            null,
+            -3872,
+            null,
+            3872,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Write back of unclaimed dividends",
+          "is_section_header": false,
+          "note": "30",
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "13,157",
+            "–",
+            "13,157"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            13157,
+            null,
+            13157
+          ]
+        },
+        {
+          "label": "Dividends",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "(3,349,811)",
+            "–",
+            "(3,349,811)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            -3349811,
+            null,
+            -3349811
+          ]
+        },
+        {
+          "label": "Balance As at 31 March 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,841,068",
+            "7,928",
+            "8,799,214",
+            "39,449",
+            "16,744,114",
+            "3,890,688",
+            "36,322,461"
+          ],
+          "amounts": [
+            6841068,
+            7928,
+            8799214,
+            39449,
+            16744114,
+            3890688,
+            36322461
+          ]
+        },
+        {
+          "label": "Balance as at 1 April 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,841,068",
+            "7,928",
+            "8,799,214",
+            "39,449",
+            "16,744,114",
+            "3,890,688",
+            "36,322,461"
+          ],
+          "amounts": [
+            6841068,
+            7928,
+            8799214,
+            39449,
+            16744114,
+            3890688,
+            36322461
+          ]
+        },
+        {
+          "label": "Profit for the period",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "7,222,083",
+            "48,212",
+            "7,270,295"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            7222083,
+            48212,
+            7270295
+          ]
+        },
+        {
+          "label": "Other comprehensive income",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "2,765",
+            "(243,304)",
+            "(182)",
+            "(240,721)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            2765,
+            -243304,
+            -182,
+            -240721
+          ]
+        },
+        {
+          "label": "Total comprehensive income Transactions with owners of the Company, recognised directly in equity",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "2,765",
+            "6,978,779",
+            "48,030",
+            "7,029,574"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            2765,
+            6978779,
+            48030,
+            7029574
+          ]
+        },
+        {
+          "label": "Write back of unclaimed dividends",
+          "is_section_header": false,
+          "note": "30",
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "20,332",
+            "–",
+            "20,332"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            20332,
+            null,
+            20332
+          ]
+        },
+        {
+          "label": "Dividends",
+          "is_section_header": false,
+          "note": "11",
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "(3,942,469)",
+            "–",
+            "(3,942,469)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            -3942469,
+            null,
+            -3942469
+          ]
+        },
+        {
+          "label": "Balance As at 31 March 2025 The figures in brackets indicate deductions. The Notes from pages 184 to 242 form an integral part of these Financial 180 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,841,068",
+            "7,928",
+            "8,799,214",
+            "42,214",
+            "19,800,756",
+            "3,938,718",
+            "39,429,898"
+          ],
+          "amounts": [
+            6841068,
+            7928,
+            8799214,
+            42214,
+            19800756,
+            3938718,
+            39429898
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Balance as at 1 April 2023",
+          "",
+          "6,841,068",
+          "7,928",
+          "6,649,336",
+          "51,691",
+          "13,527,172",
+          "3,840,612",
+          "30,917,807"
+        ],
+        [
+          "Profit for the period",
+          "",
+          "–",
+          "–",
+          "–",
+          "–",
+          "5,886,785",
+          "49,334",
+          "5,936,119"
+        ],
+        [
+          "Other comprehensive income",
+          "",
+          "–",
+          "–",
+          "2,153,750",
+          "(12,242)",
+          "662,939",
+          "742",
+          "2,805,189"
+        ],
+        [
+          "Total comprehensive income Transactions with owners of the Company, recognised directly in equity",
+          "",
+          "–",
+          "–",
+          "2,153,750",
+          "(12,242)",
+          "6,549,724",
+          "50,076",
+          "8,741,308"
+        ],
+        [
+          "Transfer from revaluation reserve due to disposal of revalued assets",
+          "",
+          "–",
+          "–",
+          "(3,872)",
+          "–",
+          "3,872",
+          "–",
+          "–"
+        ],
+        [
+          "Write back of unclaimed dividends",
+          "30",
+          "–",
+          "–",
+          "–",
+          "–",
+          "13,157",
+          "–",
+          "13,157"
+        ],
+        [
+          "Dividends",
+          "11",
+          "–",
+          "–",
+          "–",
+          "–",
+          "(3,349,811)",
+          "–",
+          "(3,349,811)"
+        ],
+        [
+          "Balance As at 31 March 2024",
+          "",
+          "6,841,068",
+          "7,928",
+          "8,799,214",
+          "39,449",
+          "16,744,114",
+          "3,890,688",
+          "36,322,461"
+        ],
+        [
+          "Balance as at 1 April 2024",
+          "",
+          "6,841,068",
+          "7,928",
+          "8,799,214",
+          "39,449",
+          "16,744,114",
+          "3,890,688",
+          "36,322,461"
+        ],
+        [
+          "Profit for the period",
+          "",
+          "–",
+          "–",
+          "–",
+          "–",
+          "7,222,083",
+          "48,212",
+          "7,270,295"
+        ],
+        [
+          "Other comprehensive income",
+          "",
+          "–",
+          "–",
+          "–",
+          "2,765",
+          "(243,304)",
+          "(182)",
+          "(240,721)"
+        ],
+        [
+          "Total comprehensive income Transactions with owners of the Company, recognised directly in equity",
+          "",
+          "–",
+          "–",
+          "–",
+          "2,765",
+          "6,978,779",
+          "48,030",
+          "7,029,574"
+        ],
+        [
+          "Write back of unclaimed dividends",
+          "30",
+          "–",
+          "–",
+          "–",
+          "–",
+          "20,332",
+          "–",
+          "20,332"
+        ],
+        [
+          "Dividends",
+          "11",
+          "–",
+          "–",
+          "–",
+          "–",
+          "(3,942,469)",
+          "–",
+          "(3,942,469)"
+        ],
+        [
+          "Balance As at 31 March 2025 The figures in brackets indicate deductions. The Notes from pages 184 to 242 form an integral part of these Financial 180 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "",
+          "6,841,068",
+          "7,928",
+          "8,799,214",
+          "42,214",
+          "19,800,756",
+          "3,938,718",
+          "39,429,898"
+        ]
+      ]
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "page_1based": 185,
+      "has_note_col": true,
+      "column_headers": [
+        "2024 ’000",
+        "COMPANY 2025 ’000",
+        "2024 ’000",
+        "GROUP 2025 ’000",
+        "2024 ’000",
+        "Financial COMPANY 2025 ’000",
+        "Statements 2024 ’000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Statement of For the year ended March 2025 For the year ended March",
+          "note_col": "Notes",
+          "amt_cols": [
+            "2024 ’000",
+            "COMPANY 2025 ’000",
+            "2024 ’000",
+            "GROUP 2025 ’000",
+            "2024 ’000",
+            "Financial COMPANY 2025 ’000",
+            "Statements 2024 ’000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "GROUP COMPANY COMPANY",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Cash flows from Cash flows from",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "investing activities financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Acquisition and construction of Proceeds from",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "property, plant, and equipment (4,526,619) short-term borrowings Acquisition and construction Repayment of",
+          "is_section_header": false,
+          "note": "12",
+          "amounts_raw": [
+            "(5,809,652)",
+            "(172,739)",
+            "(11,955)",
+            "1,166,505",
+            "4,448,697",
+            "1,535,000",
+            "650,000"
+          ],
+          "amounts": [
+            -5809652,
+            -172739,
+            -11955,
+            1166505,
+            4448697,
+            1535000,
+            650000
+          ]
+        },
+        {
+          "label": "of investment property (24,457) long-term borrowings",
+          "is_section_header": false,
+          "note": "14",
+          "amounts_raw": [
+            "(871,399)",
+            "(8,327)",
+            "(1,432)",
+            "(2,316,040)",
+            "(3,495,434)",
+            "(1,601,166)",
+            "(1,779,918)"
+          ],
+          "amounts": [
+            -871399,
+            -8327,
+            -1432,
+            -2316040,
+            -3495434,
+            -1601166,
+            -1779918
+          ]
+        },
+        {
+          "label": "Acquisition of intangible assets (253,353) Lease payments,",
+          "is_section_header": false,
+          "note": "15",
+          "amounts_raw": [
+            "(184,719)",
+            "(28,648)",
+            "(2,419)",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -184719,
+            -28648,
+            -2419,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Interest income received 733,913 net of concessions 13",
+          "is_section_header": false,
+          "note": "7",
+          "amounts_raw": [
+            "1,962,165",
+            "306,494",
+            "1,365,202",
+            "(3,652,933)",
+            "(3,376,713)",
+            "(100,092)",
+            "(93,670)"
+          ],
+          "amounts": [
+            1962165,
+            306494,
+            1365202,
+            -3652933,
+            -3376713,
+            -100092,
+            -93670
+          ]
+        },
+        {
+          "label": "Dividend received 3,094 Dividend paid to shareholders 30 Investment/(disposal) in Net cash (used in)/generated",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "1,750",
+            "3,960,006",
+            "3,351,620",
+            "(3,904,217)",
+            "(3,316,345)",
+            "(3,904,217)",
+            "(3,316,345)"
+          ],
+          "amounts": [
+            1750,
+            3960006,
+            3351620,
+            -3904217,
+            -3316345,
+            -3904217,
+            -3316345
+          ]
+        },
+        {
+          "label": "FVTOCI financial assets – from financing activities",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(25,001)",
+            "–",
+            "(25,001)",
+            "(8,706,685)",
+            "(5,739,795)",
+            "(4,070,475)",
+            "(4,539,933)"
+          ],
+          "amounts": [
+            -25001,
+            null,
+            -25001,
+            -8706685,
+            -5739795,
+            -4070475,
+            -4539933
+          ]
+        },
+        {
+          "label": "Investment in subsidiaries – Net increase/(decrease) in",
+          "is_section_header": false,
+          "note": "16",
+          "amounts_raw": [
+            "–",
+            "–",
+            "(15,000)",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            -15000,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "cash and cash equivalents Proceeds from disposal of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,096,362",
+            "2,046,385",
+            "310,859",
+            "167,891"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1096362,
+            2046385,
+            310859,
+            167891
+          ]
+        },
+        {
+          "label": "property, plant, and equipment 38,734 Cash and cash equivalents",
+          "is_section_header": false,
+          "note": "6",
+          "amounts_raw": [
+            "10,427",
+            "–",
+            "–",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            10427,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Proceeds from sale of At the beginning of the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "4,377,855",
+            "2,331,470",
+            "16,110",
+            "(151,781)"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            4377855,
+            2331470,
+            16110,
+            -151781
+          ]
+        },
+        {
+          "label": "biological assets 6,205",
+          "is_section_header": false,
+          "note": "18",
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Movement during the year",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "1,096,362",
+            "2,046,385",
+            "310,859",
+            "167,891"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            1096362,
+            2046385,
+            310859,
+            167891
+          ]
+        },
+        {
+          "label": "Purchase of biological assets (5,612)",
+          "is_section_header": false,
+          "note": "18",
+          "amounts_raw": [
+            "(71,284)",
+            "–",
+            "–",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -71284,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "At the end of the year 25 (Addition)/disposal to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "5,474,217",
+            "4,377,855",
+            "326,969",
+            "16,110"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            5474217,
+            4377855,
+            326969,
+            16110
+          ]
+        },
+        {
+          "label": "other financial assets (89,327) The figures in brackets indicate deductions. Net cash (used in)/generated",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(11,439)",
+            "34",
+            "–",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            -11439,
+            34,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "from investing activities (4,117,422) The accounting policies and notes from pages 184 form an of Cargills",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "GROUP COMPANY COMPANY",
+          "",
+          "",
+          "",
+          "",
+          "GROUP",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash flows from Cash flows from",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "investing activities financing activities",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Acquisition and construction of Proceeds from",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "property, plant, and equipment (4,526,619) short-term borrowings Acquisition and construction Repayment of",
+          "12",
+          "(5,809,652)",
+          "(172,739)",
+          "(11,955)",
+          "1,166,505",
+          "4,448,697",
+          "1,535,000",
+          "650,000"
+        ],
+        [
+          "of investment property (24,457) long-term borrowings",
+          "14",
+          "(871,399)",
+          "(8,327)",
+          "(1,432)",
+          "(2,316,040)",
+          "(3,495,434)",
+          "(1,601,166)",
+          "(1,779,918)"
+        ],
+        [
+          "Acquisition of intangible assets (253,353) Lease payments,",
+          "15",
+          "(184,719)",
+          "(28,648)",
+          "(2,419)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Interest income received 733,913 net of concessions 13",
+          "7",
+          "1,962,165",
+          "306,494",
+          "1,365,202",
+          "(3,652,933)",
+          "(3,376,713)",
+          "(100,092)",
+          "(93,670)"
+        ],
+        [
+          "Dividend received 3,094 Dividend paid to shareholders 30 Investment/(disposal) in Net cash (used in)/generated",
+          "6",
+          "1,750",
+          "3,960,006",
+          "3,351,620",
+          "(3,904,217)",
+          "(3,316,345)",
+          "(3,904,217)",
+          "(3,316,345)"
+        ],
+        [
+          "FVTOCI financial assets – from financing activities",
+          "",
+          "(25,001)",
+          "–",
+          "(25,001)",
+          "(8,706,685)",
+          "(5,739,795)",
+          "(4,070,475)",
+          "(4,539,933)"
+        ],
+        [
+          "Investment in subsidiaries – Net increase/(decrease) in",
+          "16",
+          "–",
+          "–",
+          "(15,000)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "cash and cash equivalents Proceeds from disposal of",
+          "",
+          "",
+          "",
+          "",
+          "1,096,362",
+          "2,046,385",
+          "310,859",
+          "167,891"
+        ],
+        [
+          "property, plant, and equipment 38,734 Cash and cash equivalents",
+          "6",
+          "10,427",
+          "–",
+          "–",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Proceeds from sale of At the beginning of the year",
+          "",
+          "",
+          "",
+          "",
+          "4,377,855",
+          "2,331,470",
+          "16,110",
+          "(151,781)"
+        ],
+        [
+          "biological assets 6,205",
+          "18",
+          "–",
+          "–",
+          "–",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Movement during the year",
+          "",
+          "",
+          "",
+          "",
+          "1,096,362",
+          "2,046,385",
+          "310,859",
+          "167,891"
+        ],
+        [
+          "Purchase of biological assets (5,612)",
+          "18",
+          "(71,284)",
+          "–",
+          "–",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "At the end of the year 25 (Addition)/disposal to",
+          "",
+          "",
+          "",
+          "",
+          "5,474,217",
+          "4,377,855",
+          "326,969",
+          "16,110"
+        ],
+        [
+          "other financial assets (89,327) The figures in brackets indicate deductions. Net cash (used in)/generated",
+          "",
+          "(11,439)",
+          "34",
+          "–",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "from investing activities (4,117,422) The accounting policies and notes from pages 184 form an of  Cargills",
+          "",
+          "(4,999,152)",
+          "4,056,820",
+          "4,661,015",
+          "to 242",
+          "integral part",
+          "these Financial",
+          "Statements."
+        ]
+      ]
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "page_1based": 273,
+      "has_note_col": false,
+      "column_headers": [
+        "Col 1",
+        "Col 2",
+        "Supplement",
+        "2. The issued",
+        "ordinary shares of",
+        "Listing (Ceylon) PLC",
+        "listed in the",
+        "Colombo",
+        "Stock",
+        "Annexes"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "Investor Relations Exchange Cargills Exchange.",
+          "note_col": null,
+          "amt_cols": [
+            "Col 1",
+            "Col 2",
+            "Supplement",
+            "2. The issued",
+            "ordinary shares of",
+            "Listing (Ceylon) PLC",
+            "listed in the",
+            "Colombo",
+            "Stock",
+            "Annexes"
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Stated capital Rs.",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,841,068,486",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            6841068486,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Issued shares Class of shares Voting rights One vote 3. Distribution of Shareholders Size of Shareholders Shareholders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "257,677,731",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            257677731,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1 – 1,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,390",
+            "68.20",
+            "",
+            "182,216",
+            "0.07",
+            "1,334",
+            "66.30",
+            "",
+            "179,078",
+            "0.07"
+          ],
+          "amounts": [
+            1390,
+            68.2,
+            null,
+            182216,
+            0.07,
+            1334,
+            66.3,
+            null,
+            179078,
+            0.07
+          ]
+        },
+        {
+          "label": "1,001 – 10,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "428",
+            "21.00",
+            "",
+            "1,508,366",
+            "0.59",
+            "451",
+            "22.42",
+            "",
+            "1,551,552",
+            "0.60"
+          ],
+          "amounts": [
+            428,
+            21.0,
+            null,
+            1508366,
+            0.59,
+            451,
+            22.42,
+            null,
+            1551552,
+            0.6
+          ]
+        },
+        {
+          "label": "10,001 – 100,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "169",
+            "8.29",
+            "",
+            "5,034,935",
+            "1.95",
+            "175",
+            "8.70",
+            "",
+            "5,122,984",
+            "1.99"
+          ],
+          "amounts": [
+            169,
+            8.29,
+            null,
+            5034935,
+            1.95,
+            175,
+            8.7,
+            null,
+            5122984,
+            1.99
+          ]
+        },
+        {
+          "label": "100,001 – 1,000,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "37",
+            "1.82",
+            "",
+            "11,143,576",
+            "4.32",
+            "38",
+            "1.89",
+            "",
+            "11,425,421",
+            "4.43"
+          ],
+          "amounts": [
+            37,
+            1.82,
+            null,
+            11143576,
+            4.32,
+            38,
+            1.89,
+            null,
+            11425421,
+            4.43
+          ]
+        },
+        {
+          "label": "1,000,001 and over",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "14",
+            "0.69",
+            "",
+            "239,808,638",
+            "93.07",
+            "14",
+            "0.70",
+            "",
+            "239,398,696",
+            "92.91"
+          ],
+          "amounts": [
+            14,
+            0.69,
+            null,
+            239808638,
+            93.07,
+            14,
+            0.7,
+            null,
+            239398696,
+            92.91
+          ]
+        },
+        {
+          "label": "4. Analysis of Shareholders Group of Shareholders Shareholders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,038",
+            "100.00",
+            "",
+            "257,677,731",
+            "100.00",
+            "2,012",
+            "100.00",
+            "",
+            "257,677,731",
+            "100.00"
+          ],
+          "amounts": [
+            2038,
+            100.0,
+            null,
+            257677731,
+            100.0,
+            2012,
+            100.0,
+            null,
+            257677731,
+            100.0
+          ]
+        },
+        {
+          "label": "Institutions",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "98",
+            "4.81",
+            "",
+            "211,424,245",
+            "82.05",
+            "105",
+            "5.22",
+            "",
+            "211,708,928",
+            "82.16"
+          ],
+          "amounts": [
+            98,
+            4.81,
+            null,
+            211424245,
+            82.05,
+            105,
+            5.22,
+            null,
+            211708928,
+            82.16
+          ]
+        },
+        {
+          "label": "Individuals",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,940",
+            "95.19",
+            "",
+            "46,253,486",
+            "17.95",
+            "1,907",
+            "94.78",
+            "",
+            "45,968,803",
+            "17.84"
+          ],
+          "amounts": [
+            1940,
+            95.19,
+            null,
+            46253486,
+            17.95,
+            1907,
+            94.78,
+            null,
+            45968803,
+            17.84
+          ]
+        },
+        {
+          "label": "Total",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,038",
+            "100.00",
+            "",
+            "257,677,731",
+            "100.00",
+            "2,012",
+            "100.00",
+            "",
+            "257,677,731",
+            "100.00"
+          ],
+          "amounts": [
+            2038,
+            100.0,
+            null,
+            257677731,
+            100.0,
+            2012,
+            100.0,
+            null,
+            257677731,
+            100.0
+          ]
+        },
+        {
+          "label": "Residents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,961",
+            "96.22",
+            "",
+            "241,153,406",
+            "93.59",
+            "1,934",
+            "96.12",
+            "",
+            "241,255,605",
+            "93.63"
+          ],
+          "amounts": [
+            1961,
+            96.22,
+            null,
+            241153406,
+            93.59,
+            1934,
+            96.12,
+            null,
+            241255605,
+            93.63
+          ]
+        },
+        {
+          "label": "Non-residents",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "77",
+            "3.78",
+            "",
+            "16,524,325",
+            "6.41",
+            "78",
+            "3.88",
+            "",
+            "16,422,126",
+            "6.37"
+          ],
+          "amounts": [
+            77,
+            3.78,
+            null,
+            16524325,
+            6.41,
+            78,
+            3.88,
+            null,
+            16422126,
+            6.37
+          ]
+        },
+        {
+          "label": "Total (Ceylon) PLC 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2,038",
+            "100.00",
+            "",
+            "257,677,731",
+            "100.00",
+            "2,012",
+            "100.00",
+            "",
+            "257,677,731",
+            "100.00"
+          ],
+          "amounts": [
+            2038,
+            100.0,
+            null,
+            257677731,
+            100.0,
+            2012,
+            100.0,
+            null,
+            257677731,
+            100.0
+          ]
+        },
+        {
+          "label": "2025 31 March 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2025",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2025,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Number of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Highest 448.25 Shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lowest 405.00",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "230.25",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            230.25,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Holdings 183,404,417",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "183,404,417",
+            "71.18",
+            "",
+            "71.18"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            183404417,
+            71.18,
+            null,
+            71.18
+          ]
+        },
+        {
+          "label": "Last traded price 436.00",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "360.00",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            360.0,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Page 20,315,796",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "20,386,168",
+            "7.91",
+            "",
+            "7.88"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            20386168,
+            7.91,
+            null,
+            7.88
+          ]
+        },
+        {
+          "label": "Employees’ 8,407,333 6. Public Holding",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "8,407,333",
+            "3.26",
+            "",
+            "3.26"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8407333,
+            3.26,
+            null,
+            3.26
+          ]
+        },
+        {
+          "label": "M Page 6,548,358",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "6,609,363",
+            "2.56",
+            "",
+            "2.54"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6609363,
+            2.56,
+            null,
+            2.54
+          ]
+        },
+        {
+          "label": "The percentage of shares held by the public and number of public at 31 Dominic 6,431,834 17.33%. (2024 – 17.44%) and 2,021 (2024 – 1,996) respectively. The of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "6,431,834",
+            "2.50",
+            "",
+            "2.50"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6431834,
+            2.5,
+            null,
+            2.5
+          ]
+        },
+        {
+          "label": "Holdings (Private) 6,011,909 257,677,731, of which Public Holding represents 44,663,145 shares. adjusted",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "6,011,909",
+            "2.33",
+            "",
+            "2.33"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6011909,
+            2.33,
+            null,
+            2.33
+          ]
+        },
+        {
+          "label": "amounts to Rs 19.47 Bn. Accordingly, the Company complies with the Public Tundra Frontier 3,797,770",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "3,797,770",
+            "1.47",
+            "",
+            "1.47"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            3797770,
+            1.47,
+            null,
+            1.47
+          ]
+        },
+        {
+          "label": "of the Main Board as per Option 1 of Section 7.13.1 (a) of the CSE Capital 2,261,319",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2,297,751",
+            "0.89",
+            "",
+            "0.88"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2297751,
+            0.89,
+            null,
+            0.88
+          ]
+        },
+        {
+          "label": "R Page 1,576,033",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,768,166",
+            "0.69",
+            "",
+            "0.61"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1768166,
+            0.69,
+            null,
+            0.61
+          ]
+        },
+        {
+          "label": "Aravinda 1,446,853",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1,496,853",
+            "0.58",
+            "",
+            "0.56"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1496853,
+            0.58,
+            null,
+            0.56
+          ]
+        },
+        {
+          "label": "Serendip Limited 959,788",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "959,788",
+            "0.37",
+            "",
+            "0.37"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            959788,
+            0.37,
+            null,
+            0.37
+          ]
+        },
+        {
+          "label": "Guardian Trust 2 907,002",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "907,002",
+            "0.35",
+            "",
+            "0.35"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            907002,
+            0.35,
+            null,
+            0.35
+          ]
+        },
+        {
+          "label": "Trust 643,474",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "643,474",
+            "0.25",
+            "",
+            "0.25"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            643474,
+            0.25,
+            null,
+            0.25
+          ]
+        },
+        {
+          "label": "India 564,103",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "564,103",
+            "0.22",
+            "",
+            "0.22"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            564103,
+            0.22,
+            null,
+            0.22
+          ]
+        },
+        {
+          "label": "535,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "548,749",
+            "0.21",
+            "",
+            "0.21"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            548749,
+            0.21,
+            null,
+            0.21
+          ]
+        },
+        {
+          "label": "Page 520,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "520,000",
+            "0.20",
+            "",
+            "0.20"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            520000,
+            0.2,
+            null,
+            0.2
+          ]
+        },
+        {
+          "label": "Face PLC 501,277",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "501,277",
+            "0.19",
+            "",
+            "0.19"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            501277,
+            0.19,
+            null,
+            0.19
+          ]
+        },
+        {
+          "label": "M L Page 421,780",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "420,266",
+            "0.16",
+            "",
+            "0.16"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            420266,
+            0.16,
+            null,
+            0.16
+          ]
+        },
+        {
+          "label": "Growth 400,210",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "400,210",
+            "0.16",
+            "",
+            "0.16"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            400210,
+            0.16,
+            null,
+            0.16
+          ]
+        },
+        {
+          "label": "Cocoshell 412,405",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "387,284",
+            "0.15",
+            "",
+            "0.16"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            387284,
+            0.15,
+            null,
+            0.16
+          ]
+        },
+        {
+          "label": "246,066,661",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "246,463,717",
+            "95.65",
+            "",
+            "95.49"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            246463717,
+            95.65,
+            null,
+            95.49
+          ]
+        },
+        {
+          "label": "11,611,070",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "11,214,014",
+            "4.35",
+            "",
+            "4.51"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11214014,
+            4.35,
+            null,
+            4.51
+          ]
+        },
+        {
+          "label": "257,677,731 272 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "257,677,731",
+            "100.00",
+            "",
+            "100.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            257677731,
+            100.0,
+            null,
+            100.0
+          ]
+        },
+        {
+          "label": "Colombo 01 140.75 Perches Katoolaya Thawalantenne 4 Acres",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "19,961",
+            "70,200",
+            "2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            19961,
+            70200,
+            2024
+          ]
+        },
+        {
+          "label": "Staple Street – Colombo 02 81.5 Perches Cargills Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "20,970",
+            "1,057,413",
+            "2025",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            20970,
+            1057413,
+            2025,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Braybrooke Place 78.17 Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "5,146",
+            "950,000",
+            "2025",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            5146,
+            950000,
+            2025,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mirigama, Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "100.2",
+            "",
+            "–",
+            "30,060",
+            "2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            100.2,
+            null,
+            null,
+            30060,
+            2024
+          ]
+        },
+        {
+          "label": "Canal Raw – Colombo 01 15.25 Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "12,300",
+            "442,294",
+            "2025",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            12300,
+            442294,
+            2025,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mirigama, Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "38.51",
+            "",
+            "2,041",
+            "18,037",
+            "2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            38.51,
+            null,
+            2041,
+            18037,
+            2024
+          ]
+        },
+        {
+          "label": "Cargills Square – Jaffna Leasehold Kotmale Dairy (Private) Cargills Retail (Private) Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "99,164",
+            "1,146,246",
+            "2025",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            99164,
+            1146246,
+            2025,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mulleriyawa 1.7 Acres",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "35,528",
+            "508,782",
+            "2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            35528,
+            508782,
+            2024
+          ]
+        },
+        {
+          "label": "Kandy 87.96 Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "25,174",
+            "1,978,400",
+            "2024",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            25174,
+            1978400,
+            2024,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Bogahawatta 1 Acres",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "51,321",
+            "826,349",
+            "2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            51321,
+            826349,
+            2024
+          ]
+        },
+        {
+          "label": "Maharagama 145.3 Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,827",
+            "788,525",
+            "2024",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            15827,
+            788525,
+            2024,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "17.5 Acres",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "8,882",
+            "84,000",
+            "2024"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8882,
+            84000,
+            2024
+          ]
+        },
+        {
+          "label": "Nuwara Eliya 56.5 Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "9,617",
+            "385,800",
+            "2024",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            9617,
+            385800,
+            2024,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mattakkuliya (111) 330 Perches Fredrick North Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Park Road – Boralesgamuwa 2.9 Acres",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,610",
+            "86,400",
+            "2024",
+            "",
+            "",
+            "",
+            "",
+            "23,198",
+            "501,500",
+            "2025"
+          ],
+          "amounts": [
+            4610,
+            86400,
+            2024,
+            null,
+            null,
+            null,
+            null,
+            23198,
+            501500,
+            2025
+          ]
+        },
+        {
+          "label": "Kohuwala 28.65 Perches Empire Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Mattakkuliya (141) 287.96 Perches Bandarawela Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "44,469",
+            "617,025",
+            "2024",
+            "",
+            "",
+            "85.2",
+            "",
+            "58,392",
+            "2,062,625",
+            "2025"
+          ],
+          "amounts": [
+            44469,
+            617025,
+            2024,
+            null,
+            null,
+            85.2,
+            null,
+            58392,
+            2062625,
+            2025
+          ]
+        },
+        {
+          "label": "Moratuwa 78.6 Perches Katubedda 1.14 Acres",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "7,475",
+            "462,000",
+            "2024",
+            "",
+            "",
+            "",
+            "",
+            "74,387",
+            "2,709,628",
+            "2025"
+          ],
+          "amounts": [
+            7475,
+            462000,
+            2024,
+            null,
+            null,
+            null,
+            null,
+            74387,
+            2709628,
+            2025
+          ]
+        },
+        {
+          "label": "Ingiriya (Lot A, C, D, B1) 26 Acres Dematagoda Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1,300",
+            "256,702",
+            "2024",
+            "",
+            "",
+            "84.32",
+            "",
+            "71,956",
+            "1,378,124",
+            "2025"
+          ],
+          "amounts": [
+            1300,
+            256702,
+            2024,
+            null,
+            null,
+            84.32,
+            null,
+            71956,
+            1378124,
+            2025
+          ]
+        },
+        {
+          "label": "Katana 28.8 Acres Gampaha Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "319,576",
+            "4,869,515",
+            "2024",
+            "",
+            "",
+            "82.6",
+            "",
+            "36,565",
+            "622,548",
+            "2025"
+          ],
+          "amounts": [
+            319576,
+            4869515,
+            2024,
+            null,
+            null,
+            82.6,
+            null,
+            36565,
+            622548,
+            2025
+          ]
+        },
+        {
+          "label": "Cargills Convenient Foods Limited Negombo Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "87.5",
+            "",
+            "17,534",
+            "393,750",
+            "2025"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            87.5,
+            null,
+            17534,
+            393750,
+            2025
+          ]
+        },
+        {
+          "label": "Ja-Ela – Ganemulla 5.03 Acres Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "170",
+            "",
+            "937",
+            "884,000",
+            "2025"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            170,
+            null,
+            937,
+            884000,
+            2025
+          ]
+        },
+        {
+          "label": "Ja-Ela – Ganemulla 201 Perches land – Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "11.3",
+            "",
+            "–",
+            "90,400",
+            "2025"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            11.3,
+            null,
+            null,
+            90400,
+            2025
+          ]
+        },
+        {
+          "label": "Mattakkuliya 1.3 Acres Real Limited",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Ja-Ela – Ma Eliya 4 Acres land – Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "114",
+            "",
+            "–",
+            "150,225",
+            "2025"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            114,
+            null,
+            null,
+            150225,
+            2025
+          ]
+        },
+        {
+          "label": "Marawila 27.8 Acres Commercial Piliyandala Perches Cargills Food and Beverage Limited Properties (Private)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "154.9",
+            "",
+            "21,278",
+            "204,354",
+            "2025"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            154.9,
+            null,
+            21278,
+            204354,
+            2025
+          ]
+        },
+        {
+          "label": "Katana 11.3 Acres Boralesgamuwa 43 Acres Millers Limited Properties (Private)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "99,492",
+            "744,549",
+            "2024",
+            "",
+            "",
+            "",
+            "",
+            "11,400",
+            "1,200,000",
+            "2025"
+          ],
+          "amounts": [
+            99492,
+            744549,
+            2024,
+            null,
+            null,
+            null,
+            null,
+            11400,
+            1200000,
+            2025
+          ]
+        },
+        {
+          "label": "Kelaniya 1.5 Acres Kotahena Perches",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "55,770",
+            "594,000",
+            "2024",
+            "",
+            "",
+            "199.8",
+            "",
+            "–",
+            "1,698,300",
+            "2025"
+          ],
+          "amounts": [
+            55770,
+            594000,
+            2024,
+            null,
+            null,
+            199.8,
+            null,
+            null,
+            1698300,
+            2025
+          ]
+        },
+        {
+          "label": "Nittambuwa 112 Perches (Ceylon) PLC 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "210,000",
+            "2025",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            210000,
+            2025,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Stated capital Rs.",
+          "",
+          "",
+          "6,841,068,486",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Issued shares Class of shares Voting rights One vote 3. Distribution of Shareholders Size of Shareholders Shareholders",
+          "",
+          "",
+          "257,677,731",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "1 – 1,000",
+          "1,390",
+          "68.20",
+          "",
+          "182,216",
+          "0.07",
+          "1,334",
+          "66.30",
+          "",
+          "179,078",
+          "0.07"
+        ],
+        [
+          "1,001 – 10,000",
+          "428",
+          "21.00",
+          "",
+          "1,508,366",
+          "0.59",
+          "451",
+          "22.42",
+          "",
+          "1,551,552",
+          "0.60"
+        ],
+        [
+          "10,001 – 100,000",
+          "169",
+          "8.29",
+          "",
+          "5,034,935",
+          "1.95",
+          "175",
+          "8.70",
+          "",
+          "5,122,984",
+          "1.99"
+        ],
+        [
+          "100,001 – 1,000,000",
+          "37",
+          "1.82",
+          "",
+          "11,143,576",
+          "4.32",
+          "38",
+          "1.89",
+          "",
+          "11,425,421",
+          "4.43"
+        ],
+        [
+          "1,000,001 and over",
+          "14",
+          "0.69",
+          "",
+          "239,808,638",
+          "93.07",
+          "14",
+          "0.70",
+          "",
+          "239,398,696",
+          "92.91"
+        ],
+        [
+          "4. Analysis of Shareholders Group of Shareholders Shareholders",
+          "2,038",
+          "100.00",
+          "",
+          "257,677,731",
+          "100.00",
+          "2,012",
+          "100.00",
+          "",
+          "257,677,731",
+          "100.00"
+        ],
+        [
+          "Institutions",
+          "98",
+          "4.81",
+          "",
+          "211,424,245",
+          "82.05",
+          "105",
+          "5.22",
+          "",
+          "211,708,928",
+          "82.16"
+        ],
+        [
+          "Individuals",
+          "1,940",
+          "95.19",
+          "",
+          "46,253,486",
+          "17.95",
+          "1,907",
+          "94.78",
+          "",
+          "45,968,803",
+          "17.84"
+        ],
+        [
+          "Total",
+          "2,038",
+          "100.00",
+          "",
+          "257,677,731",
+          "100.00",
+          "2,012",
+          "100.00",
+          "",
+          "257,677,731",
+          "100.00"
+        ],
+        [
+          "Residents",
+          "1,961",
+          "96.22",
+          "",
+          "241,153,406",
+          "93.59",
+          "1,934",
+          "96.12",
+          "",
+          "241,255,605",
+          "93.63"
+        ],
+        [
+          "Non-residents",
+          "77",
+          "3.78",
+          "",
+          "16,524,325",
+          "6.41",
+          "78",
+          "3.88",
+          "",
+          "16,422,126",
+          "6.37"
+        ],
+        [
+          "Total  (Ceylon) PLC 2024/25",
+          "2,038",
+          "100.00",
+          "",
+          "257,677,731",
+          "100.00",
+          "2,012",
+          "100.00",
+          "",
+          "257,677,731",
+          "100.00"
+        ],
+        [
+          "2025 31 March 2024",
+          "",
+          "",
+          "2024",
+          "As at",
+          "",
+          "",
+          "2025",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Number of",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "Number of",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Highest 448.25 Shares",
+          "",
+          "",
+          "400.00",
+          "",
+          "",
+          "",
+          "Shares",
+          "%",
+          "",
+          "%"
+        ],
+        [
+          "Lowest 405.00",
+          "",
+          "",
+          "230.25",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Holdings 183,404,417",
+          "",
+          "",
+          "",
+          "C T",
+          "PLC",
+          "",
+          "183,404,417",
+          "71.18",
+          "",
+          "71.18"
+        ],
+        [
+          "Last traded price 436.00",
+          "",
+          "",
+          "360.00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Page 20,315,796",
+          "",
+          "",
+          "",
+          "Mr V R",
+          "",
+          "",
+          "20,386,168",
+          "7.91",
+          "",
+          "7.88"
+        ],
+        [
+          "Employees’ 8,407,333 6. Public Holding",
+          "",
+          "",
+          "",
+          "",
+          "Provident Fund",
+          "",
+          "8,407,333",
+          "3.26",
+          "",
+          "3.26"
+        ],
+        [
+          "M Page 6,548,358",
+          "",
+          "",
+          "",
+          "Ms M",
+          "",
+          "",
+          "6,609,363",
+          "2.56",
+          "",
+          "2.54"
+        ],
+        [
+          "The percentage of shares held by the public and number of public at 31 Dominic 6,431,834 17.33%. (2024 – 17.44%) and 2,021 (2024 – 1,996) respectively. The of",
+          "shareholders as",
+          "March 2025 is",
+          "",
+          "Mr A I",
+          "",
+          "",
+          "6,431,834",
+          "2.50",
+          "",
+          "2.50"
+        ],
+        [
+          "Holdings (Private) 6,011,909 257,677,731, of which Public Holding represents 44,663,145 shares. adjusted",
+          "",
+          "",
+          "",
+          "Odeon",
+          "(Ceylon)",
+          "Limited",
+          "6,011,909",
+          "2.33",
+          "",
+          "2.33"
+        ],
+        [
+          "amounts to Rs 19.47 Bn. Accordingly, the Company complies with the Public Tundra Frontier 3,797,770",
+          "Minimum",
+          "Holding",
+          "requirement",
+          "BBH –",
+          "Sustainable",
+          "Fund",
+          "3,797,770",
+          "1.47",
+          "",
+          "1.47"
+        ],
+        [
+          "of the Main Board as per Option 1 of Section 7.13.1 (a) of the CSE Capital 2,261,319",
+          "Listing Rules.",
+          "",
+          "",
+          "GF",
+          "Global Limited",
+          "",
+          "2,297,751",
+          "0.89",
+          "",
+          "0.88"
+        ],
+        [
+          "R Page 1,576,033",
+          "",
+          "",
+          "",
+          "Mrs P",
+          "",
+          "",
+          "1,768,166",
+          "0.69",
+          "",
+          "0.61"
+        ],
+        [
+          "Aravinda 1,446,853",
+          "",
+          "",
+          "",
+          "Dr A",
+          "Page",
+          "",
+          "1,496,853",
+          "0.58",
+          "",
+          "0.56"
+        ],
+        [
+          "Serendip Limited 959,788",
+          "",
+          "",
+          "",
+          "",
+          "Investments",
+          "",
+          "959,788",
+          "0.37",
+          "",
+          "0.37"
+        ],
+        [
+          "Guardian Trust 2 907,002",
+          "",
+          "",
+          "",
+          "Ceylon",
+          "Investment",
+          "PLC – A/C No.",
+          "907,002",
+          "0.35",
+          "",
+          "0.35"
+        ],
+        [
+          "Trust 643,474",
+          "",
+          "",
+          "",
+          "Sir",
+          "Chittampalam A Gardiner",
+          "",
+          "643,474",
+          "0.25",
+          "",
+          "0.25"
+        ],
+        [
+          "India 564,103",
+          "",
+          "",
+          "",
+          "East",
+          "Holding (Pvt) Ltd",
+          "",
+          "564,103",
+          "0.22",
+          "",
+          "0.22"
+        ],
+        [
+          "535,000",
+          "",
+          "",
+          "",
+          "Mr P E",
+          "Muttukumaru",
+          "",
+          "548,749",
+          "0.21",
+          "",
+          "0.21"
+        ],
+        [
+          "Page 520,000",
+          "",
+          "",
+          "",
+          "Mr J C",
+          "",
+          "",
+          "520,000",
+          "0.20",
+          "",
+          "0.20"
+        ],
+        [
+          "Face PLC 501,277",
+          "",
+          "",
+          "",
+          "Galle",
+          "Capital Partners",
+          "",
+          "501,277",
+          "0.19",
+          "",
+          "0.19"
+        ],
+        [
+          "M L Page 421,780",
+          "",
+          "",
+          "",
+          "Mrs A",
+          "",
+          "",
+          "420,266",
+          "0.16",
+          "",
+          "0.16"
+        ],
+        [
+          "Growth 400,210",
+          "",
+          "",
+          "",
+          "Senfin",
+          "Fund",
+          "",
+          "400,210",
+          "0.16",
+          "",
+          "0.16"
+        ],
+        [
+          "Cocoshell 412,405",
+          "",
+          "",
+          "",
+          "J B",
+          "(Pvt) Ltd",
+          "",
+          "387,284",
+          "0.15",
+          "",
+          "0.16"
+        ],
+        [
+          "246,066,661",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "246,463,717",
+          "95.65",
+          "",
+          "95.49"
+        ],
+        [
+          "11,611,070",
+          "",
+          "",
+          "",
+          "Others",
+          "",
+          "",
+          "11,214,014",
+          "4.35",
+          "",
+          "4.51"
+        ],
+        [
+          "257,677,731 272 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "",
+          "",
+          "",
+          "Total",
+          "",
+          "",
+          "257,677,731",
+          "100.00",
+          "",
+          "100.00"
+        ],
+        [
+          "Colombo 01 140.75 Perches Katoolaya Thawalantenne 4 Acres",
+          "125,215",
+          "3,109,101",
+          "2024",
+          "",
+          "estate,",
+          "",
+          "",
+          "19,961",
+          "70,200",
+          "2024"
+        ],
+        [
+          "Staple Street – Colombo 02 81.5 Perches Cargills Limited",
+          "20,970",
+          "1,057,413",
+          "2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Braybrooke Place 78.17 Perches",
+          "5,146",
+          "950,000",
+          "2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Mirigama, Perches",
+          "",
+          "",
+          "",
+          "",
+          "Baduragoda",
+          "100.2",
+          "",
+          "–",
+          "30,060",
+          "2024"
+        ],
+        [
+          "Canal Raw – Colombo 01 15.25 Perches",
+          "12,300",
+          "442,294",
+          "2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Mirigama, Perches",
+          "",
+          "",
+          "",
+          "",
+          "Baduragoda",
+          "38.51",
+          "",
+          "2,041",
+          "18,037",
+          "2024"
+        ],
+        [
+          "Cargills Square – Jaffna Leasehold Kotmale Dairy (Private) Cargills Retail (Private) Limited",
+          "99,164",
+          "1,146,246",
+          "2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Mulleriyawa 1.7 Acres",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "35,528",
+          "508,782",
+          "2024"
+        ],
+        [
+          "Kandy 87.96 Perches",
+          "25,174",
+          "1,978,400",
+          "2024",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Bogahawatta 1 Acres",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "51,321",
+          "826,349",
+          "2024"
+        ],
+        [
+          "Maharagama 145.3 Perches",
+          "15,827",
+          "788,525",
+          "2024",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "17.5 Acres",
+          "",
+          "",
+          "",
+          "Hatton",
+          "",
+          "",
+          "",
+          "8,882",
+          "84,000",
+          "2024"
+        ],
+        [
+          "Nuwara Eliya 56.5 Perches",
+          "9,617",
+          "385,800",
+          "2024",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Mattakkuliya (111) 330 Perches Fredrick North Company",
+          "80,967",
+          "885,360",
+          "2024",
+          "",
+          "Hotel",
+          "Limited",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Park Road – Boralesgamuwa 2.9 Acres",
+          "4,610",
+          "86,400",
+          "2024",
+          "",
+          "",
+          "",
+          "",
+          "23,198",
+          "501,500",
+          "2025"
+        ],
+        [
+          "Kohuwala 28.65 Perches Empire Limited",
+          "6,225",
+          "181,631",
+          "2024",
+          "The",
+          "Investments",
+          "Company (Private)",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Mattakkuliya (141) 287.96 Perches Bandarawela Perches",
+          "44,469",
+          "617,025",
+          "2024",
+          "",
+          "",
+          "85.2",
+          "",
+          "58,392",
+          "2,062,625",
+          "2025"
+        ],
+        [
+          "Moratuwa 78.6 Perches Katubedda 1.14 Acres",
+          "7,475",
+          "462,000",
+          "2024",
+          "",
+          "",
+          "",
+          "",
+          "74,387",
+          "2,709,628",
+          "2025"
+        ],
+        [
+          "Ingiriya (Lot A, C, D, B1) 26 Acres Dematagoda Perches",
+          "1,300",
+          "256,702",
+          "2024",
+          "",
+          "",
+          "84.32",
+          "",
+          "71,956",
+          "1,378,124",
+          "2025"
+        ],
+        [
+          "Katana 28.8 Acres Gampaha Perches",
+          "319,576",
+          "4,869,515",
+          "2024",
+          "",
+          "",
+          "82.6",
+          "",
+          "36,565",
+          "622,548",
+          "2025"
+        ],
+        [
+          "Cargills Convenient Foods Limited Negombo Perches",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "87.5",
+          "",
+          "17,534",
+          "393,750",
+          "2025"
+        ],
+        [
+          "Ja-Ela – Ganemulla 5.03 Acres Perches",
+          "41,833",
+          "756,906",
+          "2024",
+          "Kandy",
+          "",
+          "170",
+          "",
+          "937",
+          "884,000",
+          "2025"
+        ],
+        [
+          "Ja-Ela – Ganemulla 201 Perches land – Perches",
+          "–",
+          "6,432",
+          "2025",
+          "Bare",
+          "Kandy",
+          "11.3",
+          "",
+          "–",
+          "90,400",
+          "2025"
+        ],
+        [
+          "Mattakkuliya 1.3 Acres Real Limited",
+          "19,608",
+          "530,544",
+          "2025",
+          "C T",
+          "Estate (Private)",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Ja-Ela – Ma Eliya 4 Acres land – Perches",
+          "17,390",
+          "669,700",
+          "2024",
+          "Bare",
+          "Piliyandala",
+          "114",
+          "",
+          "–",
+          "150,225",
+          "2025"
+        ],
+        [
+          "Marawila 27.8 Acres Commercial Piliyandala Perches Cargills Food and Beverage Limited Properties (Private)",
+          "6,329",
+          "148,266",
+          "2024",
+          "",
+          "property –",
+          "154.9",
+          "",
+          "21,278",
+          "204,354",
+          "2025"
+        ],
+        [
+          "Katana 11.3 Acres Boralesgamuwa 43 Acres Millers Limited Properties (Private)",
+          "99,492",
+          "744,549",
+          "2024",
+          "",
+          "",
+          "",
+          "",
+          "11,400",
+          "1,200,000",
+          "2025"
+        ],
+        [
+          "Kelaniya 1.5 Acres Kotahena Perches",
+          "55,770",
+          "594,000",
+          "2024",
+          "",
+          "",
+          "199.8",
+          "",
+          "–",
+          "1,698,300",
+          "2025"
+        ],
+        [
+          "Nittambuwa 112 Perches  (Ceylon) PLC 2024/25",
+          "–",
+          "210,000",
+          "2025",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    "five_year_summary": {
+      "title": "Five Year Summary",
+      "page_1based": 271,
+      "has_note_col": false,
+      "column_headers": [
+        "2025 ’000",
+        "2024 ’000",
+        "2023 ’000",
+        "2022 ’000",
+        "Annexes 2021 ’000"
+      ],
+      "column_headers_full": [
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "2025 ’000",
+            "2024 ’000",
+            "2023 ’000",
+            "2022 ’000",
+            "Annexes 2021 ’000"
+          ]
+        },
+        {
+          "label_col": "",
+          "note_col": null,
+          "amt_cols": [
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs.",
+            "Rs."
+          ]
+        }
+      ],
+      "line_items": [
+        {
+          "label": "Continuing Operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Revenue",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "241,839,620",
+            "223,440,484",
+            "195,617,899",
+            "136,691,993",
+            "112,607,061"
+          ],
+          "amounts": [
+            241839620,
+            223440484,
+            195617899,
+            136691993,
+            112607061
+          ]
+        },
+        {
+          "label": "Profit from operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15,212,462",
+            "13,512,745",
+            "13,759,535",
+            "9,058,383",
+            "7,287,074"
+          ],
+          "amounts": [
+            15212462,
+            13512745,
+            13759535,
+            9058383,
+            7287074
+          ]
+        },
+        {
+          "label": "Profit before taxation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "11,829,244",
+            "9,245,923",
+            "8,516,642",
+            "5,818,434",
+            "4,527,659"
+          ],
+          "amounts": [
+            11829244,
+            9245923,
+            8516642,
+            5818434,
+            4527659
+          ]
+        },
+        {
+          "label": "Profit after taxation Discontinued Operations",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "7,270,295",
+            "5,936,119",
+            "5,380,845",
+            "4,538,720",
+            "3,483,639"
+          ],
+          "amounts": [
+            7270295,
+            5936119,
+            5380845,
+            4538720,
+            3483639
+          ]
+        },
+        {
+          "label": "Profit/loss from discontinued operation, net of tax",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "–",
+            "–",
+            "–",
+            "–",
+            "–"
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Profit for the year Attributable to",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "7,270,295",
+            "5,936,119",
+            "5,380,845",
+            "4,538,720",
+            "3,483,639"
+          ],
+          "amounts": [
+            7270295,
+            5936119,
+            5380845,
+            4538720,
+            3483639
+          ]
+        },
+        {
+          "label": "Owners of the Company",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "7,222,083",
+            "5,886,785",
+            "5,366,006",
+            "4,543,044",
+            "3,480,991"
+          ],
+          "amounts": [
+            7222083,
+            5886785,
+            5366006,
+            4543044,
+            3480991
+          ]
+        },
+        {
+          "label": "Non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "48,212",
+            "49,334",
+            "14,839",
+            "(4,324)",
+            "2,648"
+          ],
+          "amounts": [
+            48212,
+            49334,
+            14839,
+            -4324,
+            2648
+          ]
+        },
+        {
+          "label": "",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "7,270,295",
+            "5,936,119",
+            "5,380,845",
+            "4,538,720",
+            "3,483,639"
+          ],
+          "amounts": [
+            7270295,
+            5936119,
+            5380845,
+            4538720,
+            3483639
+          ]
+        },
+        {
+          "label": "Financial Position",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Stated capital",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6,841,068",
+            "6,841,068",
+            "6,841,068",
+            "6,841,068",
+            "6,773,878"
+          ],
+          "amounts": [
+            6841068,
+            6841068,
+            6841068,
+            6841068,
+            6773878
+          ]
+        },
+        {
+          "label": "Reserves",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "28,650,112",
+            "25,590,705",
+            "20,236,127",
+            "18,654,175",
+            "16,179,971"
+          ],
+          "amounts": [
+            28650112,
+            25590705,
+            20236127,
+            18654175,
+            16179971
+          ]
+        },
+        {
+          "label": "Non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,938,718",
+            "3,890,688",
+            "3,840,612",
+            "3,626,272",
+            "6,874"
+          ],
+          "amounts": [
+            3938718,
+            3890688,
+            3840612,
+            3626272,
+            6874
+          ]
+        },
+        {
+          "label": "Capital and reserves",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "39,429,898",
+            "36,322,461",
+            "30,917,807",
+            "29,121,515",
+            "22,960,723"
+          ],
+          "amounts": [
+            39429898,
+            36322461,
+            30917807,
+            29121515,
+            22960723
+          ]
+        },
+        {
+          "label": "Current assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "48,994,085",
+            "44,201,004",
+            "38,110,346",
+            "27,178,089",
+            "23,123,652"
+          ],
+          "amounts": [
+            48994085,
+            44201004,
+            38110346,
+            27178089,
+            23123652
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "(70,201,313)",
+            "(67,818,127)",
+            "(59,656,935)",
+            "(41,001,806)",
+            "(38,945,230)"
+          ],
+          "amounts": [
+            -70201313,
+            -67818127,
+            -59656935,
+            -41001806,
+            -38945230
+          ]
+        },
+        {
+          "label": "Working capital",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(21,207,228)",
+            "(23,617,123)",
+            "(21,546,589)",
+            "(13,823,717)",
+            "(15,821,578)"
+          ],
+          "amounts": [
+            -21207228,
+            -23617123,
+            -21546589,
+            -13823717,
+            -15821578
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "86,948,193",
+            "88,953,625",
+            "82,676,336",
+            "71,265,687",
+            "59,468,926"
+          ],
+          "amounts": [
+            86948193,
+            88953625,
+            82676336,
+            71265687,
+            59468926
+          ]
+        },
+        {
+          "label": "Non-current liabilities",
+          "is_section_header": true,
+          "note": null,
+          "amounts_raw": [
+            "26,311,066",
+            "(29,014,041)",
+            "(30,211,940)",
+            "(28,320,455)",
+            "(20,686,625)"
+          ],
+          "amounts": [
+            26311066,
+            -29014041,
+            -30211940,
+            -28320455,
+            -20686625
+          ]
+        },
+        {
+          "label": "Non-controlling interest",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "(3,938,718)",
+            "(3,890,688)",
+            "(3,840,612)",
+            "(3,626,272)",
+            "(6,874)"
+          ],
+          "amounts": [
+            -3938718,
+            -3890688,
+            -3840612,
+            -3626272,
+            -6874
+          ]
+        },
+        {
+          "label": "Net assets attributable to equity holders of the parent (Ceylon) PLC Integrated Annual 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "35,491,181",
+            "32,431,773",
+            "27,077,195",
+            "25,495,243",
+            "22,953,849"
+          ],
+          "amounts": [
+            35491181,
+            32431773,
+            27077195,
+            25495243,
+            22953849
+          ]
+        },
+        {
+          "label": "Key Indicators",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Growth in net revenue (%)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "8.23",
+            "14.22",
+            "43.11",
+            "21.39",
+            "5.19"
+          ],
+          "amounts": [
+            8.23,
+            14.22,
+            43.11,
+            21.39,
+            5.19
+          ]
+        },
+        {
+          "label": "Growth in earnings (%) Operating profit to revenue (%) Earnings to revenue (%) Return on total assets (%)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "22.48",
+            "10.32",
+            "18.55",
+            "30.29",
+            "26.15"
+          ],
+          "amounts": [
+            22.48,
+            10.32,
+            18.55,
+            30.29,
+            26.15
+          ]
+        },
+        {
+          "label": "Growth in total assets (%)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "2.09",
+            "10.24",
+            "22.70",
+            "19.19",
+            "15.99"
+          ],
+          "amounts": [
+            2.09,
+            10.24,
+            22.7,
+            19.19,
+            15.99
+          ]
+        },
+        {
+          "label": "Growth in capital and reserves (%)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "8.56",
+            "17.48",
+            "6.17",
+            "26.83",
+            "25.03"
+          ],
+          "amounts": [
+            8.56,
+            17.48,
+            6.17,
+            26.83,
+            25.03
+          ]
+        },
+        {
+          "label": "Return on capital and reserves (%)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "18.44",
+            "16.34",
+            "17.40",
+            "15.59",
+            "15.17"
+          ],
+          "amounts": [
+            18.44,
+            16.34,
+            17.4,
+            15.59,
+            15.17
+          ]
+        },
+        {
+          "label": "Return on investment (%)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "19.19",
+            "17.66",
+            "17.92",
+            "17.43",
+            "16.86"
+          ],
+          "amounts": [
+            19.19,
+            17.66,
+            17.92,
+            17.43,
+            16.86
+          ]
+        },
+        {
+          "label": "Earnings per share (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "28.03",
+            "22.85",
+            "20.82",
+            "17.63",
+            "13.51"
+          ],
+          "amounts": [
+            28.03,
+            22.85,
+            20.82,
+            17.63,
+            13.51
+          ]
+        },
+        {
+          "label": "Dividends per share (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "15.30",
+            "13.00",
+            "8.50",
+            "6.10",
+            "5.10"
+          ],
+          "amounts": [
+            15.3,
+            13.0,
+            8.5,
+            6.1,
+            5.1
+          ]
+        },
+        {
+          "label": "Net assets per share (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "137.73",
+            "125.86",
+            "105.08",
+            "98.94",
+            "89.08"
+          ],
+          "amounts": [
+            137.73,
+            125.86,
+            105.08,
+            98.94,
+            89.08
+          ]
+        },
+        {
+          "label": "Dividend pay out (%)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "54.59",
+            "56.90",
+            "40.82",
+            "34.60",
+            "37.75"
+          ],
+          "amounts": [
+            54.59,
+            56.9,
+            40.82,
+            34.6,
+            37.75
+          ]
+        },
+        {
+          "label": "Dividends paid Debt to equity ratio (times) Interest cover (times) Current ratio (times) Quick assets ratio (times)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "3,942,469",
+            "3,349,811",
+            "2,190,261",
+            "1,571,834",
+            "1,311,996"
+          ],
+          "amounts": [
+            3942469,
+            3349811,
+            2190261,
+            1571834,
+            1311996
+          ]
+        },
+        {
+          "label": "Capital additions",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4,804,429",
+            "6,865,770",
+            "11,102,805",
+            "8,846,548",
+            "6,403,947"
+          ],
+          "amounts": [
+            4804429,
+            6865770,
+            11102805,
+            8846548,
+            6403947
+          ]
+        },
+        {
+          "label": "Market value per share as at reporting date (Rs.)",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "436.00",
+            "360.00",
+            "233.00",
+            "182.50",
+            "235.00"
+          ],
+          "amounts": [
+            436.0,
+            360.0,
+            233.0,
+            182.5,
+            235.0
+          ]
+        },
+        {
+          "label": "Market capitalisation (a) Return on investment is computed by dividing the profit for the year by total average assets employed. (b) Debt to equity ratio is computed by dividing the total net borrowings by the shareholders’ funds. (c) Above per share details have been computed based on 257,677,731 shares in issue as at 31 March 2025. 270 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "112,347,491",
+            "92,763,983",
+            "60,038,911",
+            "47,026,186",
+            "60,468,908"
+          ],
+          "amounts": [
+            112347491,
+            92763983,
+            60038911,
+            47026186,
+            60468908
+          ]
+        },
+        {
+          "label": "Stated capital Rs. 6,841,068,486",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Issued shares 257,677,731",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Class of shares Ordinary shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Voting rights One vote per ordinary share",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "3. Distribution of Shareholders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Size of 31 March 2025 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Shareholders Holding Shareholders",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Number % Number",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "1 – 1,000 1,390 68.20 182,216",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "0.07",
+            "1,334",
+            "66.30",
+            "179,078",
+            "0.07"
+          ],
+          "amounts": [
+            0.07,
+            1334,
+            66.3,
+            179078,
+            0.07
+          ]
+        },
+        {
+          "label": "1,001 – 10,000 428 21.00 1,508,366",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "0.59",
+            "451",
+            "22.42",
+            "1,551,552",
+            "0.60"
+          ],
+          "amounts": [
+            0.59,
+            451,
+            22.42,
+            1551552,
+            0.6
+          ]
+        },
+        {
+          "label": "10,001 – 100,000 169 8.29 5,034,935",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "1.95",
+            "175",
+            "8.70",
+            "5,122,984",
+            "1.99"
+          ],
+          "amounts": [
+            1.95,
+            175,
+            8.7,
+            5122984,
+            1.99
+          ]
+        },
+        {
+          "label": "100,001 – 1,000,000 37 1.82 11,143,576",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "4.32",
+            "38",
+            "1.89",
+            "11,425,421",
+            "4.43"
+          ],
+          "amounts": [
+            4.32,
+            38,
+            1.89,
+            11425421,
+            4.43
+          ]
+        },
+        {
+          "label": "1,000,001 and over 14 0.69 239,808,638",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "93.07",
+            "14",
+            "0.70",
+            "239,398,696",
+            "92.91"
+          ],
+          "amounts": [
+            93.07,
+            14,
+            0.7,
+            239398696,
+            92.91
+          ]
+        },
+        {
+          "label": "2,038 100.00 257,677,731 4. Analysis of Shareholders Group of 31 March 2025 2024 Shareholders Holding Shareholders Number % Number",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "100.00",
+            "2,012",
+            "100.00",
+            "257,677,731",
+            "100.00"
+          ],
+          "amounts": [
+            100.0,
+            2012,
+            100.0,
+            257677731,
+            100.0
+          ]
+        },
+        {
+          "label": "Institutions 98 4.81 211,424,245",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "82.05",
+            "105",
+            "5.22",
+            "211,708,928",
+            "82.16"
+          ],
+          "amounts": [
+            82.05,
+            105,
+            5.22,
+            211708928,
+            82.16
+          ]
+        },
+        {
+          "label": "Individuals 1,940 95.19 46,253,486",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "17.95",
+            "1,907",
+            "94.78",
+            "45,968,803",
+            "17.84"
+          ],
+          "amounts": [
+            17.95,
+            1907,
+            94.78,
+            45968803,
+            17.84
+          ]
+        },
+        {
+          "label": "Total 2,038 100.00 257,677,731",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "100.00",
+            "2,012",
+            "100.00",
+            "257,677,731",
+            "100.00"
+          ],
+          "amounts": [
+            100.0,
+            2012,
+            100.0,
+            257677731,
+            100.0
+          ]
+        },
+        {
+          "label": "Residents 1,961 96.22 241,153,406",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "93.59",
+            "1,934",
+            "96.12",
+            "241,255,605",
+            "93.63"
+          ],
+          "amounts": [
+            93.59,
+            1934,
+            96.12,
+            241255605,
+            93.63
+          ]
+        },
+        {
+          "label": "Non-residents 77 3.78 16,524,325",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "6.41",
+            "78",
+            "3.88",
+            "16,422,126",
+            "6.37"
+          ],
+          "amounts": [
+            6.41,
+            78,
+            3.88,
+            16422126,
+            6.37
+          ]
+        },
+        {
+          "label": "Total 2,038 100.00 257,677,731 (Ceylon) PLC Integrated Annual 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "100.00",
+            "2,012",
+            "100.00",
+            "257,677,731",
+            "100.00"
+          ],
+          "amounts": [
+            100.0,
+            2012,
+            100.0,
+            257677731,
+            100.0
+          ]
+        },
+        {
+          "label": "2025 2024 As at 31 March 2024",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "2025",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            2025,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Number of",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Highest 448.25 400.00 % Shares",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Lowest 405.00 230.25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "amounts": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "C T Holdings 71.18 183,404,417 Last traded price 436.00 360.00",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "183,404,417",
+            "",
+            "71.18"
+          ],
+          "amounts": [
+            null,
+            null,
+            183404417,
+            null,
+            71.18
+          ]
+        },
+        {
+          "label": "Mr V R Page 7.91 20,315,796",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "20,386,168",
+            "",
+            "7.88"
+          ],
+          "amounts": [
+            null,
+            null,
+            20386168,
+            null,
+            7.88
+          ]
+        },
+        {
+          "label": "Employees’ 3.26 8,407,333 6. Public Holding",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "8,407,333",
+            "",
+            "3.26"
+          ],
+          "amounts": [
+            null,
+            null,
+            8407333,
+            null,
+            3.26
+          ]
+        },
+        {
+          "label": "Ms M M Page 2.56 6,548,358",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,609,363",
+            "",
+            "2.54"
+          ],
+          "amounts": [
+            null,
+            null,
+            6609363,
+            null,
+            2.54
+          ]
+        },
+        {
+          "label": "The percentage of shares held by the public and number of public shareholders as at 31 March 2025 is Mr A I Dominic 2.50 6,431,834 17.33%. (2024 – 17.44%) and 2,021 (2024 – 1,996) respectively. The total number of shares in issue is",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,431,834",
+            "",
+            "2.50"
+          ],
+          "amounts": [
+            null,
+            null,
+            6431834,
+            null,
+            2.5
+          ]
+        },
+        {
+          "label": "Odeon Holdings (Private) 2.33 6,011,909 257,677,731, of which Public Holding represents 44,663,145 shares. The float adjusted market capitalisation",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "6,011,909",
+            "",
+            "2.33"
+          ],
+          "amounts": [
+            null,
+            null,
+            6011909,
+            null,
+            2.33
+          ]
+        },
+        {
+          "label": "amounts to Rs 19.47 Bn. Accordingly, the Company complies with the Minimum Public Holding requirement BBH – Tundra Frontier 1.47 3,797,770",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "3,797,770",
+            "",
+            "1.47"
+          ],
+          "amounts": [
+            null,
+            null,
+            3797770,
+            null,
+            1.47
+          ]
+        },
+        {
+          "label": "of the Main Board as per Option 1 of Section 7.13.1 (a) of the CSE Listing Rules. GF Capital 0.89 2,261,319",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "2,297,751",
+            "",
+            "0.88"
+          ],
+          "amounts": [
+            null,
+            null,
+            2297751,
+            null,
+            0.88
+          ]
+        },
+        {
+          "label": "Mrs P R Page 0.69 1,576,033",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "1,768,166",
+            "",
+            "0.61"
+          ],
+          "amounts": [
+            null,
+            null,
+            1768166,
+            null,
+            0.61
+          ]
+        },
+        {
+          "label": "Dr A Aravinda 0.58 1,446,853",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "1,496,853",
+            "",
+            "0.56"
+          ],
+          "amounts": [
+            null,
+            null,
+            1496853,
+            null,
+            0.56
+          ]
+        },
+        {
+          "label": "Serendip Limited 0.37 959,788",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "959,788",
+            "",
+            "0.37"
+          ],
+          "amounts": [
+            null,
+            null,
+            959788,
+            null,
+            0.37
+          ]
+        },
+        {
+          "label": "Ceylon Guardian Trust 2 0.35 907,002",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "907,002",
+            "",
+            "0.35"
+          ],
+          "amounts": [
+            null,
+            null,
+            907002,
+            null,
+            0.35
+          ]
+        },
+        {
+          "label": "Sir Trust 0.25 643,474",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "643,474",
+            "",
+            "0.25"
+          ],
+          "amounts": [
+            null,
+            null,
+            643474,
+            null,
+            0.25
+          ]
+        },
+        {
+          "label": "East India 0.22 564,103",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "564,103",
+            "",
+            "0.22"
+          ],
+          "amounts": [
+            null,
+            null,
+            564103,
+            null,
+            0.22
+          ]
+        },
+        {
+          "label": "Mr P E 0.21 535,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "548,749",
+            "",
+            "0.21"
+          ],
+          "amounts": [
+            null,
+            null,
+            548749,
+            null,
+            0.21
+          ]
+        },
+        {
+          "label": "Mr J C Page 0.20 520,000",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "520,000",
+            "",
+            "0.20"
+          ],
+          "amounts": [
+            null,
+            null,
+            520000,
+            null,
+            0.2
+          ]
+        },
+        {
+          "label": "Galle Face PLC 0.19 501,277",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "501,277",
+            "",
+            "0.19"
+          ],
+          "amounts": [
+            null,
+            null,
+            501277,
+            null,
+            0.19
+          ]
+        },
+        {
+          "label": "Mrs A M L Page 0.16 421,780",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "420,266",
+            "",
+            "0.16"
+          ],
+          "amounts": [
+            null,
+            null,
+            420266,
+            null,
+            0.16
+          ]
+        },
+        {
+          "label": "Senfin Growth 0.16 400,210",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "400,210",
+            "",
+            "0.16"
+          ],
+          "amounts": [
+            null,
+            null,
+            400210,
+            null,
+            0.16
+          ]
+        },
+        {
+          "label": "J B Cocoshell 0.15 412,405",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "387,284",
+            "",
+            "0.16"
+          ],
+          "amounts": [
+            null,
+            null,
+            387284,
+            null,
+            0.16
+          ]
+        },
+        {
+          "label": "95.65 246,066,661",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "246,463,717",
+            "",
+            "95.49"
+          ],
+          "amounts": [
+            null,
+            null,
+            246463717,
+            null,
+            95.49
+          ]
+        },
+        {
+          "label": "Others 4.35 11,611,070",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "11,214,014",
+            "",
+            "4.51"
+          ],
+          "amounts": [
+            null,
+            null,
+            11214014,
+            null,
+            4.51
+          ]
+        },
+        {
+          "label": "Total 100.00 257,677,731 272 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "is_section_header": false,
+          "note": null,
+          "amounts_raw": [
+            "",
+            "",
+            "257,677,731",
+            "",
+            "100.00"
+          ],
+          "amounts": [
+            null,
+            null,
+            257677731,
+            null,
+            100.0
+          ]
+        }
+      ],
+      "raw_grid": [
+        [
+          "Group",
+          "2025",
+          "2024",
+          "2023",
+          "2022",
+          "2021"
+        ],
+        [
+          "Continuing Operations",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Revenue",
+          "241,839,620",
+          "223,440,484",
+          "195,617,899",
+          "136,691,993",
+          "112,607,061"
+        ],
+        [
+          "Profit from operations",
+          "15,212,462",
+          "13,512,745",
+          "13,759,535",
+          "9,058,383",
+          "7,287,074"
+        ],
+        [
+          "Profit before taxation",
+          "11,829,244",
+          "9,245,923",
+          "8,516,642",
+          "5,818,434",
+          "4,527,659"
+        ],
+        [
+          "Profit after taxation Discontinued Operations",
+          "7,270,295",
+          "5,936,119",
+          "5,380,845",
+          "4,538,720",
+          "3,483,639"
+        ],
+        [
+          "Profit/loss from discontinued operation, net of tax",
+          "–",
+          "–",
+          "–",
+          "–",
+          "–"
+        ],
+        [
+          "Profit for the year Attributable to",
+          "7,270,295",
+          "5,936,119",
+          "5,380,845",
+          "4,538,720",
+          "3,483,639"
+        ],
+        [
+          "Owners of the Company",
+          "7,222,083",
+          "5,886,785",
+          "5,366,006",
+          "4,543,044",
+          "3,480,991"
+        ],
+        [
+          "Non-controlling interest",
+          "48,212",
+          "49,334",
+          "14,839",
+          "(4,324)",
+          "2,648"
+        ],
+        [
+          "",
+          "7,270,295",
+          "5,936,119",
+          "5,380,845",
+          "4,538,720",
+          "3,483,639"
+        ],
+        [
+          "Financial Position",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Stated capital",
+          "6,841,068",
+          "6,841,068",
+          "6,841,068",
+          "6,841,068",
+          "6,773,878"
+        ],
+        [
+          "Reserves",
+          "28,650,112",
+          "25,590,705",
+          "20,236,127",
+          "18,654,175",
+          "16,179,971"
+        ],
+        [
+          "Non-controlling interest",
+          "3,938,718",
+          "3,890,688",
+          "3,840,612",
+          "3,626,272",
+          "6,874"
+        ],
+        [
+          "Capital and reserves",
+          "39,429,898",
+          "36,322,461",
+          "30,917,807",
+          "29,121,515",
+          "22,960,723"
+        ],
+        [
+          "Current assets",
+          "48,994,085",
+          "44,201,004",
+          "38,110,346",
+          "27,178,089",
+          "23,123,652"
+        ],
+        [
+          "Current liabilities",
+          "(70,201,313)",
+          "(67,818,127)",
+          "(59,656,935)",
+          "(41,001,806)",
+          "(38,945,230)"
+        ],
+        [
+          "Working capital",
+          "(21,207,228)",
+          "(23,617,123)",
+          "(21,546,589)",
+          "(13,823,717)",
+          "(15,821,578)"
+        ],
+        [
+          "Non-current assets",
+          "86,948,193",
+          "88,953,625",
+          "82,676,336",
+          "71,265,687",
+          "59,468,926"
+        ],
+        [
+          "Non-current liabilities",
+          "26,311,066",
+          "(29,014,041)",
+          "(30,211,940)",
+          "(28,320,455)",
+          "(20,686,625)"
+        ],
+        [
+          "Non-controlling interest",
+          "(3,938,718)",
+          "(3,890,688)",
+          "(3,840,612)",
+          "(3,626,272)",
+          "(6,874)"
+        ],
+        [
+          "Net assets attributable to equity holders of the parent  (Ceylon) PLC Integrated Annual 2024/25",
+          "35,491,181",
+          "32,431,773",
+          "27,077,195",
+          "25,495,243",
+          "22,953,849"
+        ],
+        [
+          "Key Indicators",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Growth in net revenue (%)",
+          "8.23",
+          "14.22",
+          "43.11",
+          "21.39",
+          "5.19"
+        ],
+        [
+          "Growth in earnings (%) Operating profit to revenue (%) Earnings to revenue (%) Return on total assets (%)",
+          "22.48",
+          "10.32",
+          "18.55",
+          "30.29",
+          "26.15"
+        ],
+        [
+          "Growth in total assets (%)",
+          "2.09",
+          "10.24",
+          "22.70",
+          "19.19",
+          "15.99"
+        ],
+        [
+          "Growth in capital and reserves (%)",
+          "8.56",
+          "17.48",
+          "6.17",
+          "26.83",
+          "25.03"
+        ],
+        [
+          "Return on capital and reserves (%)",
+          "18.44",
+          "16.34",
+          "17.40",
+          "15.59",
+          "15.17"
+        ],
+        [
+          "Return on investment (%)",
+          "19.19",
+          "17.66",
+          "17.92",
+          "17.43",
+          "16.86"
+        ],
+        [
+          "Earnings per share (Rs.)",
+          "28.03",
+          "22.85",
+          "20.82",
+          "17.63",
+          "13.51"
+        ],
+        [
+          "Dividends per share (Rs.)",
+          "15.30",
+          "13.00",
+          "8.50",
+          "6.10",
+          "5.10"
+        ],
+        [
+          "Net assets per share (Rs.)",
+          "137.73",
+          "125.86",
+          "105.08",
+          "98.94",
+          "89.08"
+        ],
+        [
+          "Dividend pay out (%)",
+          "54.59",
+          "56.90",
+          "40.82",
+          "34.60",
+          "37.75"
+        ],
+        [
+          "Dividends paid Debt to equity ratio (times) Interest cover (times) Current ratio (times) Quick assets ratio (times)",
+          "3,942,469",
+          "3,349,811",
+          "2,190,261",
+          "1,571,834",
+          "1,311,996"
+        ],
+        [
+          "Capital additions",
+          "4,804,429",
+          "6,865,770",
+          "11,102,805",
+          "8,846,548",
+          "6,403,947"
+        ],
+        [
+          "Market value per share as at reporting date (Rs.)",
+          "436.00",
+          "360.00",
+          "233.00",
+          "182.50",
+          "235.00"
+        ],
+        [
+          "Market capitalisation (a) Return on investment is computed by dividing the profit for the year by total average assets employed. (b) Debt to equity ratio is computed by dividing the total net borrowings by the shareholders’ funds. (c) Above per share details have been computed based on 257,677,731 shares in issue as at 31 March 2025. 270 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "112,347,491",
+          "92,763,983",
+          "60,038,911",
+          "47,026,186",
+          "60,468,908"
+        ],
+        [
+          "Stated capital Rs. 6,841,068,486",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Issued shares 257,677,731",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Class of shares Ordinary shares",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Voting rights One vote per ordinary share",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "3. Distribution of Shareholders",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Size of 31 March 2025 2024",
+          "",
+          "",
+          "31 March",
+          "",
+          ""
+        ],
+        [
+          "Shareholders Holding Shareholders",
+          "",
+          "",
+          "",
+          "Holding",
+          ""
+        ],
+        [
+          "Number % Number",
+          "%",
+          "Number",
+          "%",
+          "Number",
+          "%"
+        ],
+        [
+          "1 – 1,000 1,390 68.20 182,216",
+          "0.07",
+          "1,334",
+          "66.30",
+          "179,078",
+          "0.07"
+        ],
+        [
+          "1,001 – 10,000 428 21.00 1,508,366",
+          "0.59",
+          "451",
+          "22.42",
+          "1,551,552",
+          "0.60"
+        ],
+        [
+          "10,001 – 100,000 169 8.29 5,034,935",
+          "1.95",
+          "175",
+          "8.70",
+          "5,122,984",
+          "1.99"
+        ],
+        [
+          "100,001 – 1,000,000 37 1.82 11,143,576",
+          "4.32",
+          "38",
+          "1.89",
+          "11,425,421",
+          "4.43"
+        ],
+        [
+          "1,000,001 and over 14 0.69 239,808,638",
+          "93.07",
+          "14",
+          "0.70",
+          "239,398,696",
+          "92.91"
+        ],
+        [
+          "2,038 100.00 257,677,731 4. Analysis of Shareholders Group of 31 March 2025 2024 Shareholders Holding Shareholders Number % Number",
+          "100.00",
+          "2,012",
+          "100.00",
+          "257,677,731",
+          "100.00"
+        ],
+        [
+          "Institutions 98 4.81 211,424,245",
+          "82.05",
+          "105",
+          "5.22",
+          "211,708,928",
+          "82.16"
+        ],
+        [
+          "Individuals 1,940 95.19 46,253,486",
+          "17.95",
+          "1,907",
+          "94.78",
+          "45,968,803",
+          "17.84"
+        ],
+        [
+          "Total 2,038 100.00 257,677,731",
+          "100.00",
+          "2,012",
+          "100.00",
+          "257,677,731",
+          "100.00"
+        ],
+        [
+          "Residents 1,961 96.22 241,153,406",
+          "93.59",
+          "1,934",
+          "96.12",
+          "241,255,605",
+          "93.63"
+        ],
+        [
+          "Non-residents 77 3.78 16,524,325",
+          "6.41",
+          "78",
+          "3.88",
+          "16,422,126",
+          "6.37"
+        ],
+        [
+          "Total 2,038 100.00 257,677,731  (Ceylon) PLC Integrated Annual 2024/25",
+          "100.00",
+          "2,012",
+          "100.00",
+          "257,677,731",
+          "100.00"
+        ],
+        [
+          "2025 2024 As at 31 March 2024",
+          "",
+          "",
+          "2025",
+          "",
+          ""
+        ],
+        [
+          "Number of",
+          "",
+          "",
+          "Number of",
+          "",
+          ""
+        ],
+        [
+          "Highest 448.25 400.00 % Shares",
+          "",
+          "",
+          "Shares",
+          "",
+          "%"
+        ],
+        [
+          "Lowest 405.00 230.25",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "C T Holdings 71.18 183,404,417 Last traded price 436.00 360.00",
+          "PLC",
+          "",
+          "183,404,417",
+          "",
+          "71.18"
+        ],
+        [
+          "Mr V R Page 7.91 20,315,796",
+          "",
+          "",
+          "20,386,168",
+          "",
+          "7.88"
+        ],
+        [
+          "Employees’ 3.26 8,407,333 6. Public Holding",
+          "Provident Fund",
+          "",
+          "8,407,333",
+          "",
+          "3.26"
+        ],
+        [
+          "Ms M M Page 2.56 6,548,358",
+          "",
+          "",
+          "6,609,363",
+          "",
+          "2.54"
+        ],
+        [
+          "The percentage of shares held by the public and number of public shareholders as at 31 March 2025 is Mr A I Dominic 2.50 6,431,834 17.33%. (2024 – 17.44%) and 2,021 (2024 – 1,996) respectively. The total number of shares in issue is",
+          "",
+          "",
+          "6,431,834",
+          "",
+          "2.50"
+        ],
+        [
+          "Odeon Holdings (Private) 2.33 6,011,909 257,677,731, of which Public Holding represents 44,663,145 shares. The float adjusted market capitalisation",
+          "(Ceylon)",
+          "Limited",
+          "6,011,909",
+          "",
+          "2.33"
+        ],
+        [
+          "amounts to Rs 19.47 Bn. Accordingly, the Company complies with the Minimum Public Holding requirement BBH – Tundra Frontier 1.47 3,797,770",
+          "Sustainable",
+          "Fund",
+          "3,797,770",
+          "",
+          "1.47"
+        ],
+        [
+          "of the Main Board as per Option 1 of Section 7.13.1 (a) of the CSE Listing Rules. GF Capital 0.89 2,261,319",
+          "Global Limited",
+          "",
+          "2,297,751",
+          "",
+          "0.88"
+        ],
+        [
+          "Mrs P R Page 0.69 1,576,033",
+          "",
+          "",
+          "1,768,166",
+          "",
+          "0.61"
+        ],
+        [
+          "Dr A Aravinda 0.58 1,446,853",
+          "Page",
+          "",
+          "1,496,853",
+          "",
+          "0.56"
+        ],
+        [
+          "Serendip Limited 0.37 959,788",
+          "Investments",
+          "",
+          "959,788",
+          "",
+          "0.37"
+        ],
+        [
+          "Ceylon Guardian Trust 2 0.35 907,002",
+          "Investment",
+          "PLC – A/C No.",
+          "907,002",
+          "",
+          "0.35"
+        ],
+        [
+          "Sir Trust 0.25 643,474",
+          "Chittampalam A Gardiner",
+          "",
+          "643,474",
+          "",
+          "0.25"
+        ],
+        [
+          "East India 0.22 564,103",
+          "Holding (Pvt) Ltd",
+          "",
+          "564,103",
+          "",
+          "0.22"
+        ],
+        [
+          "Mr P E 0.21 535,000",
+          "Muttukumaru",
+          "",
+          "548,749",
+          "",
+          "0.21"
+        ],
+        [
+          "Mr J C Page 0.20 520,000",
+          "",
+          "",
+          "520,000",
+          "",
+          "0.20"
+        ],
+        [
+          "Galle Face PLC 0.19 501,277",
+          "Capital Partners",
+          "",
+          "501,277",
+          "",
+          "0.19"
+        ],
+        [
+          "Mrs A M L Page 0.16 421,780",
+          "",
+          "",
+          "420,266",
+          "",
+          "0.16"
+        ],
+        [
+          "Senfin Growth 0.16 400,210",
+          "Fund",
+          "",
+          "400,210",
+          "",
+          "0.16"
+        ],
+        [
+          "J B Cocoshell 0.15 412,405",
+          "(Pvt) Ltd",
+          "",
+          "387,284",
+          "",
+          "0.16"
+        ],
+        [
+          "95.65 246,066,661",
+          "",
+          "",
+          "246,463,717",
+          "",
+          "95.49"
+        ],
+        [
+          "Others 4.35 11,611,070",
+          "",
+          "",
+          "11,214,014",
+          "",
+          "4.51"
+        ],
+        [
+          "Total 100.00 257,677,731 272 Cargills (Ceylon) PLC Integrated Annual Report 2024/25",
+          "",
+          "",
+          "257,677,731",
+          "",
+          "100.00"
+        ]
+      ]
+    }
+  }
+}

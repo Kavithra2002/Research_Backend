@@ -1,0 +1,163 @@
+{
+  "company": "company19",
+  "source_pdf": "E:\AMBEON\script\backend\reports\\company19\\Annual\\48068_2024.pdf",
+  "total_pdf_pages": 284,
+  "page_offset": 2,
+  "generated_at": "2026-05-21T14:09:50",
+  "statements": {
+    "income_statement": {
+      "title": "Income Statement / Statement of Profit or Loss",
+      "printed_pages": [
+        175
+      ],
+      "pdf_indices_0based": [
+        176
+      ],
+      "pdf_pages_1based": [
+        177
+      ],
+      "page_count": 1,
+      "confirmed": true
+    },
+    "cash_flows": {
+      "title": "Statement of Cash Flows",
+      "printed_pages": [
+        179
+      ],
+      "pdf_indices_0based": [
+        180,
+        181
+      ],
+      "pdf_pages_1based": [
+        181,
+        182
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "shareholder_info": {
+      "title": "Shareholder / Share Information",
+      "printed_pages": [
+        259
+      ],
+      "pdf_indices_0based": [
+        260,
+        261
+      ],
+      "pdf_pages_1based": [
+        261,
+        262
+      ],
+      "page_count": 2,
+      "confirmed": true
+    },
+    "investor_info": {
+      "title": "Investor Information",
+      "printed_pages": [
+        256
+      ],
+      "pdf_indices_0based": [
+        257,
+        258,
+        259
+      ],
+      "pdf_pages_1based": [
+        258,
+        259,
+        260
+      ],
+      "page_count": 3,
+      "confirmed": true
+    },
+    "sofp": {
+      "title": "Statement of Financial Position (Balance Sheet)",
+      "printed_pages": [
+        70
+      ],
+      "pdf_indices_0based": [
+        71,
+        72,
+        73,
+        74,
+        75,
+        76
+      ],
+      "pdf_pages_1based": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ],
+      "page_count": 6,
+      "confirmed": false
+    },
+    "oci": {
+      "title": "Statement of Other Comprehensive Income (OCI)",
+      "printed_pages": [
+        176
+      ],
+      "pdf_indices_0based": [
+        177
+      ],
+      "pdf_pages_1based": [
+        178
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "equity": {
+      "title": "Statement of Changes in Equity",
+      "printed_pages": [
+        178
+      ],
+      "pdf_indices_0based": [
+        179
+      ],
+      "pdf_pages_1based": [
+        180
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "notes": {
+      "title": "Notes to the Financial Statements",
+      "printed_pages": [
+        181
+      ],
+      "pdf_indices_0based": [
+        182
+      ],
+      "pdf_pages_1based": [
+        183
+      ],
+      "page_count": 1,
+      "confirmed": false
+    },
+    "ten_year_summary": {
+      "title": "Ten Year Summary / Decade at a Glance",
+      "printed_pages": [
+        250
+      ],
+      "pdf_indices_0based": [
+        251,
+        252,
+        253,
+        254,
+        255,
+        256
+      ],
+      "pdf_pages_1based": [
+        252,
+        253,
+        254,
+        255,
+        256,
+        257
+      ],
+      "page_count": 6,
+      "confirmed": false
+    }
+  }
+}
