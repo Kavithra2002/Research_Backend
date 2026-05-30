@@ -55,13 +55,17 @@ script/
   backend/      # Express API + Python extraction/report tooling
 ```
 
-Python scripts, report PDFs, extracted JSON, and related data directories live
-in `backend/` (same folder as this API). Run them from `backend/`, for example:
+Python scripts now live in `backend/scripts/`. Report PDFs, extracted JSON,
+and the other data directories (`COMPANY/`, `reports/`, `Extracted_json/`,
+`newly_uploaded_report/`, `json_logs/`, `testing/`, `.env`, …) still live at
+the top level of `backend/`. Each Python script anchors its default paths to
+`backend/` via `Path(__file__).resolve().parent.parent`, so you can invoke
+them from anywhere:
 
 ```bash
 cd backend
-python Data_retrive.py --apikey sk-...
-python Extract_newly_updated.py
+python scripts/Data_retrive.py --apikey sk-...
+python scripts/Extract_newly_updated.py
 ```
 
 ## Project layout
@@ -89,6 +93,23 @@ backend/
       httpError.ts
     app.ts            # express app factory
     server.ts         # entry point
+  scripts/            # Python extraction / report tooling (run from backend/)
+    Data_retrive.py
+    Extract_newly_updated.py
+    Extract_selected_reports.py
+    download_company_reports.py
+    extract_income.py
+    extract_sofp_universal.py
+    get_report.py
+    jsonTotable.py
+    non_financial_script.py
+    rename_company_folders.py
+    step1_find_pages.py
+    step2_capture_pages.py
+    step3_send_to_openai.py
+    step4_view_extracted_table.py
+    temp_report_down.py
+    testing.py
   package.json
   tsconfig.json
   .env.example

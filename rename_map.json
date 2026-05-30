@@ -1,0 +1,573 @@
+{
+  "generated_at": "2026-05-29T16:00:34",
+  "reports_dir": "E:\\AMBEON\\script\\backend\\reports",
+  "applied": true,
+  "entries": [
+    {
+      "current_name": "a. JANASHAKTHI FINACE",
+      "pdf": null,
+      "proposed_name": null,
+      "proposed_folder": null,
+      "candidates": [],
+      "action": "skip",
+      "reason": "protected — already has a real name",
+      "done": false
+    },
+    {
+      "current_name": "company2",
+      "pdf": "506_1747909708310.pdf",
+      "proposed_name": "Hemas Holdings PLC",
+      "proposed_folder": "Hemas_Holdings_PLC",
+      "candidates": [
+        {
+          "name": "Hemas Holdings PLC",
+          "freq": 11
+        },
+        {
+          "name": "Integrated Annual Report of Hemas Holdings PLC",
+          "freq": 1
+        },
+        {
+          "name": "Hemas Corporate Services (Pvt) Ltd",
+          "freq": 1
+        },
+        {
+          "name": "Hemas Manufacturing (Pvt) Ltd",
+          "freq": 1
+        },
+        {
+          "name": "HEMAS MANUFACTURING (PVT) LTD",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company3",
+      "pdf": "1181_1755652569338 (1).pdf",
+      "proposed_name": "Ambeon Capital PLC",
+      "proposed_folder": "Ambeon_Capital_PLC",
+      "candidates": [
+        {
+          "name": "Ambeon Capital PLC",
+          "freq": 26
+        },
+        {
+          "name": "Ambeon Holdings PLC",
+          "freq": 6
+        },
+        {
+          "name": "Colombo City Holdings PLC",
+          "freq": 3
+        },
+        {
+          "name": "Dankotuwa Porcelain PLC",
+          "freq": 2
+        },
+        {
+          "name": "His illustrious career includes serving Dankotuwa Porcelain PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company4",
+      "pdf": "1686_1749120442813.pdf",
+      "proposed_name": "Jetwing Symphony PLC",
+      "proposed_folder": "Jetwing_Symphony_PLC",
+      "candidates": [
+        {
+          "name": "Jetwing Symphony PLC",
+          "freq": 12
+        },
+        {
+          "name": "Essentials. All properties under Jetwing Symphony PLC",
+          "freq": 1
+        },
+        {
+          "name": "shareholders and well-wishers of Jetwing Symphony PLC",
+          "freq": 1
+        },
+        {
+          "name": "Jetwing Hotels Ltd",
+          "freq": 3
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company5",
+      "pdf": "373_1773025115363.pdf",
+      "proposed_name": "Hatton National Bank PLC",
+      "proposed_folder": "Hatton_National_Bank_PLC",
+      "candidates": [
+        {
+          "name": "Hatton National Bank PLC",
+          "freq": 13
+        },
+        {
+          "name": "HNB Assurance PLC",
+          "freq": 3
+        },
+        {
+          "name": "HNB Finance PLC",
+          "freq": 3
+        },
+        {
+          "name": "HATTON NATIONAL BANK PLC",
+          "freq": 1
+        },
+        {
+          "name": "Lanka Ventures PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company6",
+      "pdf": "504_1756473055354.pdf",
+      "proposed_name": "Colombo Fort Land & Building PLC",
+      "proposed_folder": "Colombo_Fort_Land_&_Building_PLC",
+      "candidates": [
+        {
+          "name": "Colombo Fort Land & Building PLC",
+          "freq": 21
+        },
+        {
+          "name": "C M Holdings PLC",
+          "freq": 3
+        },
+        {
+          "name": "Colombo Fort Investments PLC",
+          "freq": 2
+        },
+        {
+          "name": "Sigiriya Village Hotels PLC",
+          "freq": 2
+        },
+        {
+          "name": "Fort Land and Building PLC",
+          "freq": 2
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company7",
+      "pdf": "643_1756350200465.pdf",
+      "proposed_name": "ACL PLASTICS PLC",
+      "proposed_folder": "ACL_PLASTICS_PLC",
+      "candidates": [
+        {
+          "name": "ACL PLASTICS PLC",
+          "freq": 18
+        },
+        {
+          "name": "ACL Plastics PLC",
+          "freq": 6
+        },
+        {
+          "name": "ACL PLASTIC PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company8",
+      "pdf": "48575_2025.pdf",
+      "proposed_name": "AGARAPATANA PLANTATIONS PLC",
+      "proposed_folder": "AGARAPATANA_PLANTATIONS_PLC",
+      "candidates": [
+        {
+          "name": "AGARAPATANA PLANTATIONS PLC",
+          "freq": 12
+        },
+        {
+          "name": "Agarapatana Plantations PLC",
+          "freq": 4
+        },
+        {
+          "name": "Board of Agarapatana Plantations PLC",
+          "freq": 1
+        },
+        {
+          "name": "is Agarapatana Plantations PLC",
+          "freq": 1
+        },
+        {
+          "name": "Lankem Developments PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company9",
+      "pdf": "48810_2025.pdf",
+      "proposed_name": "AGSTAR PLC",
+      "proposed_folder": "AGSTAR_PLC",
+      "candidates": [
+        {
+          "name": "AGSTAR PLC",
+          "freq": 8
+        },
+        {
+          "name": "AgStar PLC",
+          "freq": 5
+        },
+        {
+          "name": "Brown & Company PLC",
+          "freq": 2
+        },
+        {
+          "name": "Commercial Leasing & Finance PLC",
+          "freq": 1
+        },
+        {
+          "name": "CEO of Browns Investments PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company10",
+      "pdf": "48277_2025.pdf",
+      "proposed_name": "Aitken Spence Hotel Holdings PLC",
+      "proposed_folder": "Aitken_Spence_Hotel_Holdings_PLC",
+      "candidates": [
+        {
+          "name": "Aitken Spence Hotel Holdings PLC",
+          "freq": 18
+        },
+        {
+          "name": "As a subsidiary of Aitken Spence PLC",
+          "freq": 1
+        },
+        {
+          "name": "AITKEN SPENCE HOTEL HOLDINGS PLC",
+          "freq": 1
+        },
+        {
+          "name": "Aitken Spence PLC",
+          "freq": 1
+        },
+        {
+          "name": "Spence PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company11",
+      "pdf": "48276_2025.pdf",
+      "proposed_name": "AITKEN SPENCE PLC",
+      "proposed_folder": "AITKEN_SPENCE_PLC",
+      "candidates": [
+        {
+          "name": "AITKEN SPENCE PLC",
+          "freq": 19
+        },
+        {
+          "name": "Aitken Spence PLC",
+          "freq": 8
+        },
+        {
+          "name": "report covers the financial and non-financial performance of Aitken Spence PLC",
+          "freq": 1
+        },
+        {
+          "name": "is the 43rd Annual Report of Aitken Spence PLC",
+          "freq": 1
+        },
+        {
+          "name": "Mr. Jayawardena joined Aitken Spence PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company12",
+      "pdf": "48254_2025.pdf",
+      "proposed_name": "Alliance Finance Company PLC",
+      "proposed_folder": "Alliance_Finance_Company_PLC",
+      "candidates": [
+        {
+          "name": "Alliance Finance Company PLC",
+          "freq": 19
+        },
+        {
+          "name": "Alliance Finance Co. PLC",
+          "freq": 6
+        },
+        {
+          "name": "Finance Company PLC",
+          "freq": 2
+        },
+        {
+          "name": "Board of Directors of Alliance Finance Company PLC",
+          "freq": 1
+        },
+        {
+          "name": "Boards of Sanasa Development Bank PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company13",
+      "pdf": "48914_2025.pdf",
+      "proposed_name": "Alpha Fire Services PLC",
+      "proposed_folder": "Alpha_Fire_Services_PLC",
+      "candidates": [
+        {
+          "name": "Alpha Fire Services PLC",
+          "freq": 34
+        },
+        {
+          "name": "Services PLC",
+          "freq": 3
+        },
+        {
+          "name": "Lion Brewery (Ceylon) PLC",
+          "freq": 2
+        },
+        {
+          "name": "We are pleased to present the Annual Report of Alpha Fire Services PLC",
+          "freq": 1
+        },
+        {
+          "name": "All equipment and systems designed by Alpha Fire Services PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company14",
+      "pdf": "48106_2025.pdf",
+      "proposed_name": "ALUMEX PLC",
+      "proposed_folder": "ALUMEX_PLC",
+      "candidates": [
+        {
+          "name": "ALUMEX PLC",
+          "freq": 10
+        },
+        {
+          "name": "Alumex PLC",
+          "freq": 10
+        },
+        {
+          "name": "Hayleys PLC",
+          "freq": 3
+        },
+        {
+          "name": "Integrated Report of Alumex PLC",
+          "freq": 1
+        },
+        {
+          "name": "Accordingly Alumex PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company15",
+      "pdf": "50900_2025.pdf",
+      "proposed_name": "Amãna Bank PLC",
+      "proposed_folder": "Amana_Bank_PLC",
+      "candidates": [
+        {
+          "name": "Amãna Bank PLC",
+          "freq": 26
+        },
+        {
+          "name": "Board of Directors of Amãna Bank PLC",
+          "freq": 1
+        },
+        {
+          "name": "Sarvodaya Development Finance PLC",
+          "freq": 1
+        },
+        {
+          "name": "Deputy Chairman of WindForce PLC",
+          "freq": 1
+        },
+        {
+          "name": "Director position at Alumex PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company16",
+      "pdf": "48111_2024.pdf",
+      "proposed_name": "Amana Takaful Life PLC",
+      "proposed_folder": "Amana_Takaful_Life_PLC",
+      "candidates": [
+        {
+          "name": "Amana Takaful Life PLC",
+          "freq": 20
+        },
+        {
+          "name": "Amana Bank PLC",
+          "freq": 2
+        },
+        {
+          "name": "Commercial Bank of Sri Lanka PLC",
+          "freq": 1
+        },
+        {
+          "name": "Vidullanka PLC",
+          "freq": 1
+        },
+        {
+          "name": "Life PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company17",
+      "pdf": "48116_2024.pdf",
+      "proposed_name": "AMANA TAKAFUL PLC",
+      "proposed_folder": "AMANA_TAKAFUL_PLC",
+      "candidates": [
+        {
+          "name": "AMANA TAKAFUL PLC",
+          "freq": 14
+        },
+        {
+          "name": "Amana Takaful PLC",
+          "freq": 5
+        },
+        {
+          "name": "Corporation PLC",
+          "freq": 1
+        },
+        {
+          "name": "Maldives PLC",
+          "freq": 1
+        },
+        {
+          "name": "Life PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company18",
+      "pdf": "48826_2025.pdf",
+      "proposed_name": "Ambeon Capital PLC",
+      "proposed_folder": "Ambeon_Capital_PLC_2",
+      "candidates": [
+        {
+          "name": "Ambeon Capital PLC",
+          "freq": 26
+        },
+        {
+          "name": "Ambeon Holdings PLC",
+          "freq": 6
+        },
+        {
+          "name": "Colombo City Holdings PLC",
+          "freq": 3
+        },
+        {
+          "name": "Dankotuwa Porcelain PLC",
+          "freq": 2
+        },
+        {
+          "name": "His illustrious career includes serving Dankotuwa Porcelain PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company19",
+      "pdf": "48068_2024.pdf",
+      "proposed_name": "ARPICO INSURANCE PLC",
+      "proposed_folder": "ARPICO_INSURANCE_PLC",
+      "candidates": [
+        {
+          "name": "ARPICO INSURANCE PLC",
+          "freq": 17
+        },
+        {
+          "name": "Arpico Insurance PLC",
+          "freq": 14
+        },
+        {
+          "name": "Insurance PLC",
+          "freq": 2
+        },
+        {
+          "name": "Board of Directors of Arpico Insurance PLC",
+          "freq": 1
+        },
+        {
+          "name": "future for Arpico Insurance PLC",
+          "freq": 1
+        }
+      ],
+      "action": "rename",
+      "reason": "",
+      "done": true
+    },
+    {
+      "current_name": "company20",
+      "pdf": "48304_2025.pdf",
+      "proposed_name": null,
+      "proposed_folder": null,
+      "candidates": [],
+      "action": "skip",
+      "reason": "no text layer (likely scanned PDF) — rename manually",
+      "done": false
+    }
+  ]
+}

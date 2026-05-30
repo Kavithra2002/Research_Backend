@@ -1,0 +1,122 @@
+{
+  "company": "a. JANASHAKTHI FINACE",
+  "pdf": "E:\\AMBEON\\script\\backend\\reports\\a. JANASHAKTHI FINACE\\Annual\\1072_1749226867867.pdf",
+  "generated_at": "2026-05-29T07:23:02.602348+00:00",
+  "model": "gpt-4o-mini",
+  "sections_found": [
+    {
+      "key": "about_us",
+      "title": "About Us / Who We Are / About the Group",
+      "pages": [
+        5,
+        6,
+        8
+      ]
+    },
+    {
+      "key": "financial_highlights",
+      "title": "Financial Highlights",
+      "pages": [
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "key": "risk_management",
+      "title": "Risk Management Report",
+      "pages": [
+        101
+      ]
+    },
+    {
+      "key": "statistical_summary",
+      "title": "Ten Year / Five Year Statistical Summary",
+      "pages": [
+        232,
+        233,
+        234
+      ]
+    }
+  ],
+  "company_overview": "Janashakthi Finance PLC is a financial institution in Sri Lanka that provides a diverse range of financial services, including leasing, gold loans, and fixed deposits. The company generates revenue primarily through interest income from loans and deposits, while also offering fee-based services to enhance its financial performance.",
+  "section_summaries": [
+    {
+      "key": "about_us",
+      "title": "About Us",
+      "summary": "Janashakthi Finance PLC has established itself as a reliable financial institution since 1981, focusing on delivering tailored financial solutions to individuals and businesses in Sri Lanka. The company emphasizes operational efficiency and innovation to meet evolving market demands.",
+      "highlights": [
+        "The company has experienced significant growth in leases, gold loans, and fixed deposits.",
+        "It operates under the regulatory oversight of the Central Bank of Sri Lanka.",
+        "Janashakthi Finance is committed to creating shareholder value and maintaining strong customer relationships."
+      ]
+    },
+    {
+      "key": "financial_highlights",
+      "title": "Financial Highlights",
+      "summary": "In the financial year 2024/25, Janashakthi Finance reported a slight decline in total income but achieved a notable increase in net interest income and profit before tax. The company's asset base and customer deposits also saw substantial growth.",
+      "highlights": [
+        "Total income decreased by 2.89% to Rs. 4,727.59 million.",
+        "Net interest income increased by 19.62% to Rs. 2,146.39 million.",
+        "Customer deposits grew by 17.32% to Rs. 15,903.81 million."
+      ]
+    },
+    {
+      "key": "risk_management",
+      "title": "Risk Management",
+      "summary": "Janashakthi Finance has established a robust risk management framework to identify, assess, and mitigate various risks associated with its operations. This framework supports the company's strategic objectives and ensures compliance with regulatory requirements.",
+      "highlights": [
+        "The company has implemented a comprehensive risk management function to oversee risk-taking activities.",
+        "Regular updates and reviews of the risk management framework are conducted to adapt to changing conditions.",
+        "The risk management function plays a critical role in capital and liquidity planning."
+      ]
+    },
+    {
+      "key": "statistical_summary",
+      "title": "Statistical Summary",
+      "summary": "The statistical summary highlights Janashakthi Finance's financial performance over the past decade, showcasing consistent growth in income and assets. The company has demonstrated resilience through various economic cycles.",
+      "highlights": [
+        "Loans and advances to customers increased by 40.85% to Rs. 22,054.76 million in 2024/25.",
+        "Total assets grew by 33.60% to Rs. 27,357.67 million.",
+        "The company has maintained a strong capital base with shareholders' funds rising by 10.53%."
+      ]
+    }
+  ],
+  "real_world_analysis": {
+    "summary": "Several external factors are likely to impact Janashakthi Finance's financial performance in the near term, considering its business model and market conditions in Sri Lanka.",
+    "points": [
+      {
+        "title": "Interest Rate Environment",
+        "explanation": "Fluctuations in interest rates can significantly affect the company's net interest income and overall profitability, as the majority of revenue is derived from interest income.",
+        "impact": "mixed"
+      },
+      {
+        "title": "Economic Growth Prospects",
+        "explanation": "The overall economic growth in Sri Lanka influences consumer demand for loans and financial services, which can drive revenue growth for Janashakthi Finance.",
+        "impact": "positive"
+      },
+      {
+        "title": "Regulatory Changes",
+        "explanation": "Changes in financial regulations or compliance requirements may impact operational costs and the company's ability to manage risks effectively.",
+        "impact": "negative"
+      },
+      {
+        "title": "Market Competition",
+        "explanation": "Increased competition in the financial services sector may pressure margins and require Janashakthi Finance to innovate and enhance service offerings.",
+        "impact": "negative"
+      },
+      {
+        "title": "Consumer Confidence",
+        "explanation": "Consumer sentiment and confidence in the financial sector can affect the willingness to save and borrow, impacting deposit levels and loan demand.",
+        "impact": "mixed"
+      }
+    ]
+  },
+  "overall_conclusion": "Janashakthi Finance PLC's strong positioning in the Sri Lankan financial services market, characterized by diverse offerings and a focus on innovation, positions it well to navigate external challenges. However, the company must remain vigilant to regulatory changes and competitive pressures that could impact its growth trajectory.",
+  "usage": {
+    "prompt_tokens": 7313,
+    "completion_tokens": 997,
+    "total_tokens": 8310
+  }
+}
