@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: ambeon-api
+    runtime: docker
+    region: singapore
+    plan: free
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "4000"
+      - key: MONGO_DB_NAME
+        value: Research_Project
+      - key: STORAGE_DRIVER
+        value: r2
+      - key: R2_BUCKET
+        value: ambeon-demo
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: FRONTEND_URL
+        value: "*"
+      - key: SCRIPT_ROOT
+        value: /app
+      - key: SCRIPT_DIR
+        value: /app/scripts
+      - key: PYTHON_BIN
+        value: python3
+      - key: OPENAI_CHAT_MODEL
+        value: gpt-4o-mini
+      - key: MONGO_URI
+        sync: false
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false
