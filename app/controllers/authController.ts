@@ -68,7 +68,7 @@ function cookieOptions(maxAgeSeconds: number) {
   const isProd = env.nodeEnv === "production";
   return {
     httpOnly: true,
-    sameSite: "lax" as const,
+    sameSite: (isProd ? "none" : "lax") as "none" | "lax",
     secure: isProd,
     path: "/",
     maxAge: maxAgeSeconds * 1000,
@@ -79,7 +79,7 @@ function clearCookieOptions() {
   const isProd = env.nodeEnv === "production";
   return {
     httpOnly: true,
-    sameSite: "lax" as const,
+    sameSite: (isProd ? "none" : "lax") as "none" | "lax",
     secure: isProd,
     path: "/",
   };
