@@ -1,0 +1,9 @@
+# Python deps for backend/scripts (Docker + local venv).
+# Install: pip install -r scripts/requirements.txt
+
+openai>=2.38.0,<3
+pdfplumber>=0.11.9,<0.12
+PyMuPDF>=1.27.2,<2
+pillow>=12.1.0,<13
+pdfminer.six>=20251230
+pypdf>=6.9.0,<7

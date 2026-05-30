@@ -6,6 +6,7 @@ import reportSelectionRoutes from "./reportSelectionRoutes";
 import companyGroupRoutes from "./companyGroupRoutes";
 import loginHistoryRoutes from "./loginHistoryRoutes";
 import sageAgentRoutes from "./sageAgentRoutes";
+import systemPythonRoutes from "./systemPythonRoutes";
 
 const router = Router();
 
@@ -35,5 +36,6 @@ router.use("/report-selections", reportSelectionRoutes);
 router.use("/company-groups", companyGroupRoutes);
 router.use("/login-history", loginHistoryRoutes);
 router.use("/ai/sage", sageAgentRoutes);
+router.use(systemPythonRoutes);
 
 export default router;
