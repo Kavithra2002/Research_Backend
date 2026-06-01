@@ -45,7 +45,8 @@ export async function resolveLocalPdfPath(pdfPath: string): Promise<string> {
 
   const looksLikeKey =
     trimmed.startsWith("reports/") ||
-    trimmed.startsWith("newly_uploaded_report/");
+    trimmed.startsWith("newly_uploaded_report/") ||
+    trimmed.startsWith("updated_reports/");
 
   if (!looksLikeKey || !isR2Enabled()) {
     return trimmed;

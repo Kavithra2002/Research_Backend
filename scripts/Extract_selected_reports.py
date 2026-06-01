@@ -5,7 +5,8 @@ Extract_selected_reports.py
 Driver that takes a list of "selected" report PDFs (the ones the user ticked
 on the *Newly uploaded reports* panel) and, for each one:
 
-1.  Copies the source PDF from
+1.  Ensures the source PDF exists locally (downloads from R2
+    ``updated_reports/`` when ``STORAGE_DRIVER=r2``), then copies from
 
         newly_uploaded_report/<company>/<reportType>/<file>.pdf
 
@@ -15,7 +16,8 @@ on the *Newly uploaded reports* panel) and, for each one:
 
 2.  Runs the per-company Data_retrive pipeline (STEP 1 -> STEP 2 -> STEP 3)
     so the extracted page captures and OpenAI JSON results land **inside the
-    same** ``testing/<company>/`` folder.
+    same** ``testing/<company>/`` folder, then uploads that folder to R2
+    ``testing/<company>/`` when using R2 storage.
 
 The script emits NDJSON progress lines to stdout so the Next.js API route
 (``/api/system/update``) can stream live progress back to the browser.
@@ -56,6 +58,7 @@ except Exception:
     pass
 
 import Data_retrive as data_retrive
+import r2_storage
 
 
 SCRIPT_DIR     = Path(__file__).resolve().parent
@@ -233,7 +236,13 @@ def main(argv: list[str] | None = None) -> int:
             src = source_root / entry["company"] / entry["report_type"] / entry["file_name"]
             dest = dest_company / entry["file_name"]
 
-            if not src.exists():
+            resolved = r2_storage.ensure_updated_report_local(
+                entry["company"],
+                entry["report_type"],
+                entry["file_name"],
+                source_root,
+            )
+            if resolved is None:
                 emit({
                     "type": "copy",
                     "index": file_idx,
@@ -241,9 +250,10 @@ def main(argv: list[str] | None = None) -> int:
                     "company": company,
                     "fileName": entry["file_name"],
                     "status": "missing",
-                    "error": f"Source file not found: {src}",
+                    "error": f"Source file not found locally or in R2: {src}",
                 })
                 continue
+            src = resolved
 
             try:
                 if dest.exists() and dest.stat().st_size == src.stat().st_size:
@@ -345,6 +355,31 @@ def main(argv: list[str] | None = None) -> int:
 
         status = res.get("status", "unknown") if isinstance(res, dict) else "unknown"
         err    = res.get("error") if isinstance(res, dict) else None
+
+        # Push extraction artefacts to R2 so the hosted frontend can read them.
+        if status in ("ok", "skipped_existing") and r2_storage.is_r2_enabled():
+            company_out = testing_dir / company_key
+            if company_out.is_dir():
+                try:
+                    uploaded = r2_storage.upload_directory(
+                        company_out,
+                        r2_storage.object_key(r2_storage.TESTING_PREFIX, company_key),
+                    )
+                    emit({
+                        "type": "log",
+                        "level": "info",
+                        "message": (
+                            f"Uploaded {uploaded} file(s) to R2 "
+                            f"testing/{company_key}/"
+                        ),
+                    })
+                except Exception as ex:
+                    emit({
+                        "type": "log",
+                        "level": "warning",
+                        "message": f"R2 upload for {company_key} failed: {ex!r}",
+                    })
+
         if status in ("ok", "skipped_existing"):
             ok += 1
         else:

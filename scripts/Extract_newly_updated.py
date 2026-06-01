@@ -5,8 +5,11 @@ Scan all CSE (Colombo Stock Exchange) listed companies and download every
 report that was uploaded TODAY (annual, quarterly/interim, and any other
 report categories returned by the public CSE `financials` API).
 
-Output layout:
+Output layout (local dev):
     ./newly_uploaded_report/<company name>/<report type>/<id>_<year>.pdf
+
+When STORAGE_DRIVER=r2, each PDF is also uploaded to R2:
+    updated_reports/<company name>/<report type>/<id>_<year>.pdf
 
 Progress is emitted as NDJSON to stdout so a parent process (such as the
 Next.js API route) can stream live progress to the UI. Each line is a JSON
@@ -36,6 +39,7 @@ from get_report import (
     report_year,
     safe_dir_name,
 )
+import r2_storage
 
 DEFAULT_OUT = Path(__file__).resolve().parent.parent / "newly_uploaded_report"
 
@@ -143,7 +147,26 @@ def _download_entry(
     dest = dest_dir / fname
 
     if dest.exists() and dest.stat().st_size > 1024:
+        if r2_storage.is_r2_enabled():
+            company = dest_dir.parent.name
+            report_type = dest_dir.name
+            r2_key = r2_storage.updated_report_key(company, report_type, fname)
+            if not r2_storage.object_exists(r2_key):
+                try:
+                    r2_storage.upload_file(dest, r2_key)
+                except Exception:
+                    pass
         return dest, None
+
+    # On hosted (R2), the file may already exist in the bucket from a prior scan.
+    if r2_storage.is_r2_enabled():
+        company = dest_dir.parent.name
+        report_type = dest_dir.name
+        key = r2_storage.updated_report_key(company, report_type, fname)
+        if r2_storage.object_exists(key):
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            if r2_storage.download_file(key, dest):
+                return dest, None
 
     dest_dir.mkdir(parents=True, exist_ok=True)
     last_err: str | None = None
@@ -152,6 +175,16 @@ def _download_entry(
             continue
         try:
             download_pdf(url, dest)
+            if r2_storage.is_r2_enabled():
+                company = dest_dir.parent.name
+                report_type = dest_dir.name
+                r2_key = r2_storage.updated_report_key(
+                    company, report_type, dest.name
+                )
+                try:
+                    r2_storage.upload_file(dest, r2_key)
+                except Exception as ex:
+                    return None, f"R2 upload failed: {ex!r}"
             if pause_s > 0:
                 time.sleep(pause_s)
             return dest, None
