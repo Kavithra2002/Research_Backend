@@ -49,6 +49,11 @@ export const env = {
     pass: readOptional("SMTP_PASS"),
     from: readOptional("SMTP_FROM"),
   },
+  /** Prefer Resend on Render — Gmail SMTP is often blocked from cloud hosts. */
+  resend: {
+    apiKey: readOptional("RESEND_API_KEY"),
+    from: readOptional("RESEND_FROM"),
+  },
   openai: {
     apiKey: readOptional("OPENAI_API_KEY"),
     model: readString("OPENAI_CHAT_MODEL", "gpt-4o-mini"),

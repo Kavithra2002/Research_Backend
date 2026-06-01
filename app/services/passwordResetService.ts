@@ -87,10 +87,12 @@ export async function requestPasswordReset(
 
   // Do not block the HTTP response on SMTP (Gmail from Render can be slow or time out).
   void sendPasswordResetEmail(user.email, resetUrl).catch((err) => {
+    const detail = err instanceof Error ? err.message : String(err);
     logger.error(
-      `[password-reset] Failed to send email to ${user.email} (token was created)`,
-      err,
+      `[password-reset] Email NOT delivered to ${user.email}. Token was saved. Error: ${detail}. ` +
+        `Fix: add RESEND_API_KEY on Render (recommended) or refresh Gmail SMTP_PASS.`,
     );
+    logger.error("[password-reset] Email delivery failure details", err);
   });
 
   await recordPasswordResetEvent({

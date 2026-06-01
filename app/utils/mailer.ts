@@ -5,10 +5,6 @@ import { logger } from "./logger";
 let cachedTransporter: Transporter | null = null;
 let verifiedOnce = false;
 
-function isSmtpConfigured(): boolean {
-  return Boolean(env.smtp.host && env.smtp.user && env.smtp.pass);
-}
-
 function stripEnvQuotes(value: string): string {
   const trimmed = value.trim();
   if (
@@ -20,30 +16,61 @@ function stripEnvQuotes(value: string): string {
   return trimmed;
 }
 
-function getTransporter(): Transporter | null {
-  if (!isSmtpConfigured()) return null;
-  if (cachedTransporter) return cachedTransporter;
+function normalizeAppPassword(pass: string): string {
+  return pass.replace(/\s+/g, "");
+}
 
+function isSmtpConfigured(): boolean {
+  return Boolean(env.smtp.host && env.smtp.user && env.smtp.pass);
+}
+
+function isResendConfigured(): boolean {
+  return Boolean(env.resend.apiKey);
+}
+
+function buildTransporter(options: {
+  host?: string;
+  port: number;
+  secure: boolean;
+  service?: string;
+}): Transporter {
   const user = env.smtp.user ?? "";
-  const pass = env.smtp.pass ?? "";
-  const host = (env.smtp.host ?? "").toLowerCase();
+  const pass = normalizeAppPassword(env.smtp.pass ?? "");
 
-  // Gmail preset works more reliably from cloud hosts (e.g. Render) than raw SMTP.
-  if (host === "smtp.gmail.com" || host === "gmail") {
-    cachedTransporter = nodemailer.createTransport({
+  if (options.service === "gmail") {
+    return nodemailer.createTransport({
       service: "gmail",
       auth: { user, pass },
     });
+  }
+
+  return nodemailer.createTransport({
+    host: options.host ?? env.smtp.host ?? undefined,
+    port: options.port,
+    secure: options.secure,
+    requireTLS: options.port === 587 && !options.secure,
+    auth: { user, pass },
+    connectionTimeout: 20_000,
+    greetingTimeout: 15_000,
+    socketTimeout: 30_000,
+  });
+}
+
+function getPrimarySmtpTransporter(): Transporter | null {
+  if (!isSmtpConfigured()) return null;
+  if (cachedTransporter) return cachedTransporter;
+
+  const host = (env.smtp.host ?? "").toLowerCase();
+  if (host === "smtp.gmail.com" || host === "gmail") {
+    cachedTransporter = buildTransporter({
+      service: "gmail",
+      port: 465,
+      secure: true,
+    });
   } else {
-    cachedTransporter = nodemailer.createTransport({
-      host: env.smtp.host ?? undefined,
+    cachedTransporter = buildTransporter({
       port: env.smtp.port,
       secure: env.smtp.secure,
-      requireTLS: env.smtp.port === 587 && !env.smtp.secure,
-      auth: { user, pass },
-      connectionTimeout: 20_000,
-      greetingTimeout: 15_000,
-      socketTimeout: 30_000,
     });
   }
 
@@ -67,6 +94,13 @@ function getTransporter(): Transporter | null {
 function getFromAddress(): string {
   const raw = env.smtp.from || env.smtp.user || "no-reply@ambeon.local";
   return stripEnvQuotes(raw);
+}
+
+function getResendFromAddress(): string {
+  return (
+    stripEnvQuotes(env.resend.from ?? "") ||
+    "Ambeon Console <onboarding@resend.dev>"
+  );
 }
 
 function buildResetEmail(resetUrl: string) {
@@ -112,18 +146,122 @@ function buildResetEmail(resetUrl: string) {
   </body>
 </html>`;
 
-  return { text, html };
+  return { text, html, subject: "Reset your Ambeon Console password" };
+}
+
+async function sendViaResend(
+  to: string,
+  subject: string,
+  text: string,
+  html: string,
+): Promise<void> {
+  const apiKey = env.resend.apiKey;
+  if (!apiKey) throw new Error("RESEND_API_KEY is not set");
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: getResendFromAddress(),
+      to: [to],
+      subject,
+      html,
+      text,
+    }),
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Resend API ${res.status}: ${body}`);
+  }
+
+  const payload = (await res.json()) as { id?: string };
+  logger.info(`[mailer] Password reset email sent via Resend to ${to} (id=${payload.id ?? "?"})`);
+}
+
+async function sendViaSmtp(
+  to: string,
+  subject: string,
+  text: string,
+  html: string,
+): Promise<void> {
+  const host = (env.smtp.host ?? "").toLowerCase();
+  const isGmail = host === "smtp.gmail.com" || host === "gmail";
+
+  const attempts: Array<{ label: string; transporter: Transporter }> = [];
+
+  if (isGmail) {
+    attempts.push({
+      label: "gmail-service",
+      transporter: buildTransporter({ service: "gmail", port: 465, secure: true }),
+    });
+    attempts.push({
+      label: "gmail-465",
+      transporter: buildTransporter({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+      }),
+    });
+    attempts.push({
+      label: "gmail-587",
+      transporter: buildTransporter({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+      }),
+    });
+  } else {
+    const primary = getPrimarySmtpTransporter();
+    if (primary) {
+      attempts.push({ label: "primary", transporter: primary });
+    }
+  }
+
+  if (attempts.length === 0) {
+    throw new Error("SMTP is not configured");
+  }
+
+  let lastError: unknown;
+  for (const attempt of attempts) {
+    try {
+      const info = await attempt.transporter.sendMail({
+        from: getFromAddress(),
+        to,
+        subject,
+        text,
+        html,
+      });
+      logger.info(
+        `[mailer] Password reset email sent via SMTP (${attempt.label}) to ${to} (messageId=${info.messageId})`,
+      );
+      return;
+    } catch (err) {
+      lastError = err;
+      logger.warn(`[mailer] SMTP attempt "${attempt.label}" failed for ${to}`, err);
+    }
+  }
+
+  throw lastError instanceof Error ? lastError : new Error(String(lastError));
 }
 
 export async function sendPasswordResetEmail(
   email: string,
   resetUrl: string,
 ): Promise<void> {
-  const transporter = getTransporter();
+  const { text, html, subject } = buildResetEmail(resetUrl);
 
-  if (!transporter) {
+  if (isResendConfigured()) {
+    await sendViaResend(email, subject, text, html);
+    return;
+  }
+
+  if (!isSmtpConfigured()) {
     logger.warn(
-      "[mailer] SMTP not configured (SMTP_HOST/SMTP_USER/SMTP_PASS missing). Falling back to console log.",
+      "[mailer] No email provider configured (set RESEND_API_KEY or SMTP_*). Logging reset link only.",
     );
     logger.info(
       `[password-reset] Reset link for ${email} (expires in 15 min):\n${resetUrl}`,
@@ -131,21 +269,5 @@ export async function sendPasswordResetEmail(
     return;
   }
 
-  const { text, html } = buildResetEmail(resetUrl);
-
-  try {
-    const info = await transporter.sendMail({
-      from: getFromAddress(),
-      to: email,
-      subject: "Reset your Ambeon Console password",
-      text,
-      html,
-    });
-    logger.info(
-      `[mailer] Password reset email sent to ${email} (messageId=${info.messageId})`,
-    );
-  } catch (err) {
-    logger.error(`[mailer] Failed to send password reset email to ${email}`, err);
-    throw err;
-  }
+  await sendViaSmtp(email, subject, text, html);
 }
