@@ -9,23 +9,43 @@ function isSmtpConfigured(): boolean {
   return Boolean(env.smtp.host && env.smtp.user && env.smtp.pass);
 }
 
+function stripEnvQuotes(value: string): string {
+  const trimmed = value.trim();
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1);
+  }
+  return trimmed;
+}
+
 function getTransporter(): Transporter | null {
   if (!isSmtpConfigured()) return null;
   if (cachedTransporter) return cachedTransporter;
 
-  cachedTransporter = nodemailer.createTransport({
-    host: env.smtp.host ?? undefined,
-    port: env.smtp.port,
-    secure: env.smtp.secure,
-    requireTLS: env.smtp.port === 587 && !env.smtp.secure,
-    auth: {
-      user: env.smtp.user ?? "",
-      pass: env.smtp.pass ?? "",
-    },
-    connectionTimeout: 20_000,
-    greetingTimeout: 15_000,
-    socketTimeout: 30_000,
-  });
+  const user = env.smtp.user ?? "";
+  const pass = env.smtp.pass ?? "";
+  const host = (env.smtp.host ?? "").toLowerCase();
+
+  // Gmail preset works more reliably from cloud hosts (e.g. Render) than raw SMTP.
+  if (host === "smtp.gmail.com" || host === "gmail") {
+    cachedTransporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user, pass },
+    });
+  } else {
+    cachedTransporter = nodemailer.createTransport({
+      host: env.smtp.host ?? undefined,
+      port: env.smtp.port,
+      secure: env.smtp.secure,
+      requireTLS: env.smtp.port === 587 && !env.smtp.secure,
+      auth: { user, pass },
+      connectionTimeout: 20_000,
+      greetingTimeout: 15_000,
+      socketTimeout: 30_000,
+    });
+  }
 
   void cachedTransporter
     .verify()
@@ -45,7 +65,8 @@ function getTransporter(): Transporter | null {
 }
 
 function getFromAddress(): string {
-  return env.smtp.from || env.smtp.user || "no-reply@ambeon.local";
+  const raw = env.smtp.from || env.smtp.user || "no-reply@ambeon.local";
+  return stripEnvQuotes(raw);
 }
 
 function buildResetEmail(resetUrl: string) {

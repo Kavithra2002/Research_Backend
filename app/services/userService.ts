@@ -1,5 +1,6 @@
 import { User, type UserAttrs, type UserRole, type UserStatus } from "../models/User";
 import { HttpError } from "../utils/httpError";
+import { hashPassword } from "../utils/password";
 
 export interface CreateUserInput {
   user_id?: string;
@@ -90,19 +91,21 @@ export async function getUserByUserId(userId: string): Promise<UserPublic> {
 }
 
 export async function createUser(input: CreateUserInput): Promise<UserPublic> {
-  const existing = await User.findOne({ email: input.email.toLowerCase() }).lean();
+  const normalizedEmail = input.email.trim().toLowerCase();
+  const existing = await User.findOne({ email: normalizedEmail }).lean();
   if (existing) {
-    throw HttpError.conflict(`Email ${input.email} is already in use`);
+    throw HttpError.conflict(`Email ${normalizedEmail} is already in use`);
   }
 
   const user_id = input.user_id?.trim() || (await generateNextUserId());
+  const hashedPassword = await hashPassword(input.password);
 
   const created = await User.create({
     user_id,
-    first_name: input.first_name,
-    last_name: input.last_name,
-    email: input.email,
-    password: input.password,
+    first_name: input.first_name.trim(),
+    last_name: input.last_name.trim(),
+    email: normalizedEmail,
+    password: hashedPassword,
     user_status: input.user_status ?? "active",
     role: input.role ?? "User",
     last_login: null,
@@ -115,17 +118,22 @@ export async function updateUser(
   id: string,
   input: UpdateUserInput,
 ): Promise<UserPublic> {
+  const patch: UpdateUserInput = { ...input };
   if (input.email) {
+    patch.email = input.email.trim().toLowerCase();
     const conflict = await User.findOne({
-      email: input.email.toLowerCase(),
+      email: patch.email,
       _id: { $ne: id },
     }).lean();
     if (conflict) {
-      throw HttpError.conflict(`Email ${input.email} is already in use`);
+      throw HttpError.conflict(`Email ${patch.email} is already in use`);
     }
   }
+  if (input.password) {
+    patch.password = await hashPassword(input.password);
+  }
 
-  const updated = await User.findByIdAndUpdate(id, input, {
+  const updated = await User.findByIdAndUpdate(id, patch, {
     new: true,
     runValidators: true,
   }).lean();
