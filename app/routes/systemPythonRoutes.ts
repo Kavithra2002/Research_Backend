@@ -34,7 +34,10 @@ function toStringArray(v: unknown): string[] | undefined {
 
 // --- /api/system/extract ---
 function startExtractScan(body: Record<string, unknown>) {
-  if (extractState.active) return;
+  if (extractState.active) {
+    killPythonChild(extractState);
+    finalize(extractState, 1);
+  }
 
   const args: string[] = [];
   const date = typeof body.date === "string" ? body.date : undefined;
@@ -136,7 +139,10 @@ async function startUpdateRun(
   items: SelectionItem[],
   opts: { dryRun?: boolean; option?: "1" | "2"; model?: string },
 ) {
-  if (updateState.active) return;
+  if (updateState.active) {
+    killPythonChild(updateState);
+    finalize(updateState, 1);
+  }
 
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), "ambeon-update-"));
   const itemsFile = path.join(dir, "items.json");
@@ -245,5 +251,15 @@ router.delete(
     res.json({ ok: true });
   }),
 );
+
+/** Stop all in-flight Python jobs (e.g. on process shutdown). */
+export function killAllPythonJobs() {
+  for (const state of [extractState, updateState, nonFinancialState]) {
+    if (state.active) {
+      killPythonChild(state);
+      finalize(state, 1);
+    }
+  }
+}
 
 export default router;

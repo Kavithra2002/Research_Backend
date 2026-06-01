@@ -236,6 +236,15 @@ def main(argv: list[str] | None = None) -> int:
             src = source_root / entry["company"] / entry["report_type"] / entry["file_name"]
             dest = dest_company / entry["file_name"]
 
+            if r2_storage.is_r2_enabled():
+                emit({
+                    "type": "log",
+                    "level": "info",
+                    "message": (
+                        f"Downloading {entry['file_name']} from R2 "
+                        f"({entry['company']} / {entry['report_type']})..."
+                    ),
+                })
             resolved = r2_storage.ensure_updated_report_local(
                 entry["company"],
                 entry["report_type"],

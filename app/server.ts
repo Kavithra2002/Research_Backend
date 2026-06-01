@@ -1,6 +1,7 @@
 import { createApp } from "./app";
 import { env } from "./config/env";
 import { connectToDatabase, disconnectFromDatabase } from "./config/db";
+import { killAllPythonJobs } from "./routes/systemPythonRoutes";
 import { logger } from "./utils/logger";
 
 async function bootstrap() {
@@ -24,6 +25,7 @@ async function bootstrap() {
 
   const shutdown = async (signal: string) => {
     logger.info(`Received ${signal}, shutting down...`);
+    killAllPythonJobs();
     server.close(() => logger.info("HTTP server closed"));
     try {
       await disconnectFromDatabase();
