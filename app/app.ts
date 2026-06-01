@@ -13,7 +13,12 @@ export function createApp() {
   app.disable("x-powered-by");
   app.set("trust proxy", 1);
 
-  app.use(helmet());
+  app.use(
+    helmet({
+      // Allow the Vercel frontend to read streamed NDJSON from this API.
+      crossOriginResourcePolicy: { policy: "cross-origin" },
+    }),
+  );
   app.use(
     cors({
       origin: env.corsOrigin === "*" ? true : env.corsOrigin.split(",").map((s) => s.trim()),
