@@ -17,10 +17,14 @@ function getTransporter(): Transporter | null {
     host: env.smtp.host ?? undefined,
     port: env.smtp.port,
     secure: env.smtp.secure,
+    requireTLS: env.smtp.port === 587 && !env.smtp.secure,
     auth: {
       user: env.smtp.user ?? "",
       pass: env.smtp.pass ?? "",
     },
+    connectionTimeout: 20_000,
+    greetingTimeout: 15_000,
+    socketTimeout: 30_000,
   });
 
   void cachedTransporter

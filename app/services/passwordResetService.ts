@@ -85,7 +85,13 @@ export async function requestPasswordReset(
   const baseUrl = env.frontendUrl.replace(/\/+$/, "");
   const resetUrl = `${baseUrl}/reset-password?token=${encodeURIComponent(rawToken)}`;
 
-  await sendPasswordResetEmail(user.email, resetUrl);
+  // Do not block the HTTP response on SMTP (Gmail from Render can be slow or time out).
+  void sendPasswordResetEmail(user.email, resetUrl).catch((err) => {
+    logger.error(
+      `[password-reset] Failed to send email to ${user.email} (token was created)`,
+      err,
+    );
+  });
 
   await recordPasswordResetEvent({
     userId: user._id,
