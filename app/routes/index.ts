@@ -6,7 +6,15 @@ import reportSelectionRoutes from "./reportSelectionRoutes";
 import companyGroupRoutes from "./companyGroupRoutes";
 import loginHistoryRoutes from "./loginHistoryRoutes";
 import sageAgentRoutes from "./sageAgentRoutes";
+import robinAgentRoutes from "./robinAgentRoutes";
+import tuckAgentRoutes from "./tuckAgentRoutes";
+import marianAgentRoutes from "./marianAgentRoutes";
+import reportScheduleRoutes from "./reportScheduleRoutes";
+import ragRoutes from "./ragRoutes";
+import chatLogRoutes from "./chatLogRoutes";
 import systemPythonRoutes from "./systemPythonRoutes";
+import extractedRoutes from "./extractedRoutes";
+import openaiUsageRoutes from "./openaiUsageRoutes";
 
 const router = Router();
 
@@ -36,6 +44,14 @@ router.use("/report-selections", reportSelectionRoutes);
 router.use("/company-groups", companyGroupRoutes);
 router.use("/login-history", loginHistoryRoutes);
 router.use("/ai/sage", sageAgentRoutes);
+router.use("/ai/robin", robinAgentRoutes);
+router.use("/ai/tuck", tuckAgentRoutes);
+router.use("/ai/marian", marianAgentRoutes);
+router.use("/ai/report-schedule", reportScheduleRoutes);
+router.use("/ai/rag", ragRoutes);
+router.use("/ai/chat-log", chatLogRoutes);
+router.use("/openai", openaiUsageRoutes);
+router.use("/extracted", extractedRoutes);
 router.use(systemPythonRoutes);
 
 export default router;

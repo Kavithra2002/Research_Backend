@@ -1,5 +1,11 @@
 import { env } from "../config/env";
 import { HttpError } from "../utils/httpError";
+import { SEARCH_REPORT_TEXT_TOOL, searchReportText } from "./rag/ragTool";
+import {
+  COMMON_TOOLS,
+  currentDateContext,
+  dispatchCommonTool,
+} from "./agentTools";
 import {
   createGroup,
   deleteGroup,
@@ -9,6 +15,7 @@ import {
   type CompanyGroupPublic,
   type OwnerMeta,
 } from "./companyGroupService";
+import { RESPONSE_STYLE_GUIDE } from "./responseStyle";
 
 /* ────────────────────────────────────────────────────────────────────────── *
  * Types
@@ -146,6 +153,8 @@ const TOOLS = [
       },
     },
   },
+  SEARCH_REPORT_TEXT_TOOL,
+  ...COMMON_TOOLS,
 ] as const;
 
 /* ────────────────────────────────────────────────────────────────────────── *
@@ -289,8 +298,14 @@ async function dispatchTool(
       return { removed: res.removed, group: slimGroup(existing) };
     }
 
-    default:
+    case "search_report_text":
+      return searchReportText(a);
+
+    default: {
+      const common = dispatchCommonTool(name, a);
+      if (common !== undefined) return common;
       throw new Error(`Unknown tool: ${name}`);
+    }
   }
 }
 
@@ -341,22 +356,35 @@ function buildSystemPrompt(user: SageChatInput["user"]): string {
     [user.first_name, user.last_name].filter(Boolean).join(" ") || user.email;
   return [
     `You are "Sage", a friendly configuration agent inside the Ambeon Console.`,
-    `Your job is to help the user manage Company Groups (collections of CSE-listed companies that scope extraction runs).`,
+    `Your main job is to help the user manage Company Groups (collections of CSE-listed companies that scope extraction runs).`,
     `The signed-in user is ${displayName} (role: ${user.role}, user_id: ${user.user_id}).`,
+    currentDateContext(),
+    "",
+    "Understand the user first:",
+    "  • Figure out what the user means even if their wording is short, informal, or has typos. If genuinely unclear, ask ONE short clarifying question.",
+    "  • Be warm, concise, and match the user's tone and language.",
     "",
     "Capabilities (via tools):",
     "  • list_groups → see what exists",
     "  • list_cse_companies → discover or resolve companies",
     "  • create_group / update_group / delete_group → write actions",
+    "  • search_report_text → semantic/vector search over company report text (About Us, strategy, risks, governance, sustainability, …). Use this if the user asks what a company's report says about something; ground the answer in the returned passages and cite the section.",
+    "",
+    "Handling any kind of question:",
+    "  • You can also help with general questions — small talk (\"how are you\"), greetings, definitions, explaining hard words or technical concepts — answer those naturally and briefly.",
+    "  • Date/time questions → use the get_current_time tool (never guess the date).",
+    "  • Any calculation → use the calculate tool for the exact result instead of doing maths yourself.",
+    "  • After helping with a general question, gently steer back to what you do best (managing company groups) if it fits.",
     "",
     "Conversational rules:",
     "  • Always greet the user by their first name on the very first turn.",
-    "  • Offer exactly three options at start: (1) create a group, (2) edit a group, (3) delete a group.",
+    "  • At the start, mention your three main actions: (1) create a group, (2) edit a group, (3) delete a group — but still help with whatever the user actually asks.",
     "  • Before any write action (create/update/delete), restate the plan and ask the user to confirm with a short yes/no.",
     "  • When editing, fetch the existing group first so you know its current symbols.",
     "  • Keep replies short and action-oriented. Use bullet lists for choices, not walls of text.",
-    "  • If the user asks for something unrelated to company groups, politely redirect.",
     "  • Never invent group ids or company symbols — always look them up via tools.",
+    "",
+    RESPONSE_STYLE_GUIDE,
   ].join("\n");
 }
 

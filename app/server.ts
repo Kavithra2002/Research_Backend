@@ -2,6 +2,11 @@ import { createApp } from "./app";
 import { env } from "./config/env";
 import { connectToDatabase, disconnectFromDatabase } from "./config/db";
 import { killAllPythonJobs } from "./routes/systemPythonRoutes";
+import { startTuckScheduler, stopTuckScheduler } from "./services/tuckScheduler";
+import {
+  startReportScheduleScheduler,
+  stopReportScheduleScheduler,
+} from "./services/reportScheduleScheduler";
 import { logger } from "./utils/logger";
 
 async function bootstrap() {
@@ -23,9 +28,16 @@ async function bootstrap() {
     logger.info(`Health check available at http://localhost:${env.port}/api/health`);
   });
 
+  // Arm the daily market-report scheduler (Tuck agent).
+  startTuckScheduler();
+  // Arm the user report-schedule poller (Robin/Tuck scheduled email reports).
+  startReportScheduleScheduler();
+
   const shutdown = async (signal: string) => {
     logger.info(`Received ${signal}, shutting down...`);
     killAllPythonJobs();
+    stopTuckScheduler();
+    stopReportScheduleScheduler();
     server.close(() => logger.info("HTTP server closed"));
     try {
       await disconnectFromDatabase();

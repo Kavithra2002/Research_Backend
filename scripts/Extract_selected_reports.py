@@ -60,6 +60,16 @@ except Exception:
 import Data_retrive as data_retrive
 import r2_storage
 
+# Quarterly pipeline (per-PDF OpenAI extraction with Sri-Lankan
+# CSE-quarterly-specific verbatim prompts).
+try:
+    import Q_data_extraction as q_extraction
+    _Q_EXTRACTION_AVAILABLE = True
+except Exception as _q_err:
+    q_extraction = None  # type: ignore
+    _Q_EXTRACTION_AVAILABLE = False
+    _Q_EXTRACTION_IMPORT_ERROR = str(_q_err)
+
 
 SCRIPT_DIR     = Path(__file__).resolve().parent
 BACKEND_DIR    = SCRIPT_DIR.parent
@@ -148,6 +158,23 @@ def _pick_driver_pdf(pdfs: list[Path]) -> Path | None:
     return sorted(pdfs, key=priority)[0]
 
 
+def _is_quarterly_type(report_type: str) -> bool:
+    """Treat any 'Quarterly' / 'Interim' / 'Q1..Q4' / 'half year' folder name
+    as a quarterly report.  All other report types route to the existing
+    annual pipeline."""
+    if not report_type:
+        return False
+    t = report_type.strip().lower()
+    if t in ("quarterly", "quarter", "interim", "interim_data"):
+        return True
+    if any(tok in t for tok in (
+        "quarter", "interim", "q1", "q2", "q3", "q4",
+        "half year", "halfyear", "half-year",
+    )):
+        return True
+    return False
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
@@ -225,7 +252,12 @@ def main(argv: list[str] | None = None) -> int:
     emit({"type": "copy-start", "total": total_files})
 
     file_idx = 0
-    copied: dict[str, list[Path]] = {}
+    # Per company, separate the copied PDFs into "annual" and "quarterly"
+    # buckets so the extraction phase can route each report type to the
+    # right pipeline.
+    copied_annual:    dict[str, list[Path]] = {}
+    copied_quarterly: dict[str, list[Path]] = {}
+
     for company in order:
         company_key = data_retrive._sanitize_company_key(company)
         dest_company = testing_dir / company_key
@@ -257,6 +289,7 @@ def main(argv: list[str] | None = None) -> int:
                     "index": file_idx,
                     "total": total_files,
                     "company": company,
+                    "reportType": entry["report_type"],
                     "fileName": entry["file_name"],
                     "status": "missing",
                     "error": f"Source file not found locally or in R2: {src}",
@@ -276,18 +309,25 @@ def main(argv: list[str] | None = None) -> int:
                     "index": file_idx,
                     "total": total_files,
                     "company": company,
+                    "reportType": entry["report_type"],
                     "fileName": entry["file_name"],
                     "status": "error",
                     "error": str(ex),
                 })
                 continue
 
-            copied.setdefault(company, []).append(dest)
+            bucket = (
+                copied_quarterly if _is_quarterly_type(entry["report_type"])
+                else copied_annual
+            )
+            bucket.setdefault(company, []).append(dest)
+
             emit({
                 "type": "copy",
                 "index": file_idx,
                 "total": total_files,
                 "company": company,
+                "reportType": entry["report_type"],
                 "fileName": entry["file_name"],
                 "status": status,
                 "destination": str(dest),
@@ -298,11 +338,24 @@ def main(argv: list[str] | None = None) -> int:
     failed = 0
     company_idx = 0
 
+    if not _Q_EXTRACTION_AVAILABLE:
+        emit({
+            "type": "log",
+            "level": "warning",
+            "message": (
+                f"Q_data_extraction not importable ({_Q_EXTRACTION_IMPORT_ERROR}); "
+                "Quarterly selections will be skipped."
+            ),
+        })
+
     for company in order:
         company_idx += 1
         company_key = data_retrive._sanitize_company_key(company)
-        pdfs = copied.get(company, [])
-        if not pdfs:
+
+        annual_pdfs    = copied_annual.get(company, [])
+        quarterly_pdfs = copied_quarterly.get(company, [])
+
+        if not annual_pdfs and not quarterly_pdfs:
             emit({
                 "type": "company-done",
                 "index": company_idx,
@@ -315,58 +368,124 @@ def main(argv: list[str] | None = None) -> int:
             failed += 1
             continue
 
-        pdf_path = _pick_driver_pdf(pdfs)
         emit({
             "type": "company-start",
             "index": company_idx,
             "total": total_companies,
             "company": company,
             "companyKey": company_key,
-            "pdfFile": pdf_path.name if pdf_path else "",
+            "pdfFile": ", ".join(
+                p.name for p in (annual_pdfs + quarterly_pdfs)
+            ),
+            "annualCount":    len(annual_pdfs),
+            "quarterlyCount": len(quarterly_pdfs),
         })
 
-        try:
-            res = data_retrive.process_company(
-                company     = company_key,
-                pdf_path    = pdf_path,
-                testing_dir = testing_dir,
-                api_key     = api_key,
-                option      = args.option,
-                model       = args.model,
-                dry_run     = bool(args.dry_run),
-                dpi         = args.dpi,
-                force       = bool(args.force),
-            )
-        except KeyboardInterrupt:
-            emit({
-                "type": "company-done",
-                "index": company_idx,
-                "total": total_companies,
-                "company": company,
-                "companyKey": company_key,
-                "status": "interrupted",
-            })
-            failed += 1
-            break
-        except Exception as ex:
-            traceback.print_exc(file=sys.stderr)
-            emit({
-                "type": "company-done",
-                "index": company_idx,
-                "total": total_companies,
-                "company": company,
-                "companyKey": company_key,
-                "status": "crashed",
-                "error": str(ex),
-            })
-            failed += 1
-            continue
+        statuses: list[tuple[str, str, str | None]] = []  # (kind, status, err)
 
-        status = res.get("status", "unknown") if isinstance(res, dict) else "unknown"
-        err    = res.get("error") if isinstance(res, dict) else None
+        # ── Annual sub-run (existing Data_retrive pipeline) ───────────────
+        if annual_pdfs:
+            pdf_path = _pick_driver_pdf(annual_pdfs)
+            try:
+                res = data_retrive.process_company(
+                    company     = company_key,
+                    pdf_path    = pdf_path,
+                    testing_dir = testing_dir,
+                    api_key     = api_key,
+                    option      = args.option,
+                    model       = args.model,
+                    dry_run     = bool(args.dry_run),
+                    dpi         = args.dpi,
+                    force       = bool(args.force),
+                )
+                a_status = res.get("status", "unknown") if isinstance(res, dict) else "unknown"
+                a_err    = res.get("error") if isinstance(res, dict) else None
+            except KeyboardInterrupt:
+                emit({
+                    "type": "company-done",
+                    "index": company_idx,
+                    "total": total_companies,
+                    "company": company,
+                    "companyKey": company_key,
+                    "status": "interrupted",
+                })
+                failed += 1
+                break
+            except Exception as ex:
+                traceback.print_exc(file=sys.stderr)
+                a_status, a_err = "crashed", str(ex)
+            statuses.append(("Annual", a_status, a_err))
+            emit({
+                "type":       "stage-done",
+                "company":    company,
+                "companyKey": company_key,
+                "kind":       "Annual",
+                "status":     a_status,
+                "error":      a_err,
+                "pdfFile":    pdf_path.name if pdf_path else "",
+            })
+
+        # ── Quarterly sub-run (new Q_data_extraction pipeline) ────────────
+        if quarterly_pdfs and _Q_EXTRACTION_AVAILABLE:
+            for q_pdf in quarterly_pdfs:
+                try:
+                    q_res = q_extraction.process_quarterly_for_company(
+                        company_key = company_key,
+                        pdf_path    = q_pdf,
+                        testing_dir = testing_dir,
+                        api_key     = api_key,
+                        model       = args.model,
+                        dry_run     = bool(args.dry_run),
+                        force       = bool(args.force),
+                    )
+                    q_status = q_res.get("status", "ok") if isinstance(q_res, dict) else "unknown"
+                    q_err    = q_res.get("error") if isinstance(q_res, dict) else None
+                except KeyboardInterrupt:
+                    emit({
+                        "type":       "company-done",
+                        "index":      company_idx,
+                        "total":      total_companies,
+                        "company":    company,
+                        "companyKey": company_key,
+                        "status":     "interrupted",
+                    })
+                    failed += 1
+                    break
+                except Exception as ex:
+                    traceback.print_exc(file=sys.stderr)
+                    q_status, q_err = "crashed", str(ex)
+                statuses.append(("Quarterly", q_status, q_err))
+                emit({
+                    "type":       "stage-done",
+                    "company":    company,
+                    "companyKey": company_key,
+                    "kind":       "Quarterly",
+                    "status":     q_status,
+                    "error":      q_err,
+                    "pdfFile":    q_pdf.name,
+                })
+        elif quarterly_pdfs and not _Q_EXTRACTION_AVAILABLE:
+            statuses.append(("Quarterly", "skipped",
+                             "Q_data_extraction module not available"))
+
+        # ── Aggregate per-company status ──────────────────────────────────
+        if not statuses:
+            company_status, company_err = "no_files_copied", None
+        elif all(s in ("ok", "skipped_existing") for _, s, _ in statuses):
+            company_status, company_err = "ok", None
+        else:
+            company_status = next(
+                (s for _, s, _ in statuses if s not in ("ok", "skipped_existing")),
+                "ok",
+            )
+            company_err = next(
+                (e for _, s, e in statuses
+                 if s not in ("ok", "skipped_existing") and e),
+                None,
+            )
 
         # Push extraction artefacts to R2 so the hosted frontend can read them.
-        if status in ("ok", "skipped_existing") and r2_storage.is_r2_enabled():
+        if company_status in ("ok", "skipped_existing") and r2_storage.is_r2_enabled():
             company_out = testing_dir / company_key
             if company_out.is_dir():
                 try:
@@ -389,19 +508,23 @@ def main(argv: list[str] | None = None) -> int:
                         "message": f"R2 upload for {company_key} failed: {ex!r}",
                     })
 
-        if status in ("ok", "skipped_existing"):
+        if company_status in ("ok", "skipped_existing"):
             ok += 1
         else:
             failed += 1
 
         emit({
-            "type": "company-done",
-            "index": company_idx,
-            "total": total_companies,
-            "company": company,
+            "type":       "company-done",
+            "index":      company_idx,
+            "total":      total_companies,
+            "company":    company,
             "companyKey": company_key,
-            "status": status,
-            "error": err,
+            "status":     company_status,
+            "error":      company_err,
+            "stages":     [
+                {"kind": k, "status": s, "error": e}
+                for k, s, e in statuses
+            ],
         })
 
     emit({

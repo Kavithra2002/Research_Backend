@@ -67,6 +67,10 @@ except ImportError:
     print("ERROR: pdfplumber is required.  Run:  pip install pdfplumber")
     sys.exit(1)
 
+# Re-use step-1 heading detection (incl. multi-line titles split across
+# short lines — common in Ambeon / CTC 2020 annual reports).
+import step1_find_pages as step1
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Constants
@@ -192,49 +196,9 @@ _ANY_STMT_HEADING_RE = re.compile(
 )
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Heading-prominence helper
-# ─────────────────────────────────────────────────────────────────────────────
-
-_LEADING_PG_NUM_RE = re.compile(r"^\s*\d{1,4}\s+")
-
-
 def _has_prominent_heading(text: str, title_re: re.Pattern,
                            top_n: int = 14, max_len: int = 75) -> bool:
-    """
-    True only if `title_re` matches a STANDALONE heading line near the top
-    of `text`.  The title must start at the beginning of a short line
-    (a leading "170 " page-number prefix is tolerated) and must dominate
-    that line (>= 50% of its remaining length or fill it).
-    """
-    if not text:
-        return False
-
-    seen = 0
-    for raw in text.split("\n"):
-        line = raw.strip()
-        if not line:
-            continue
-        seen += 1
-        if seen > top_n:
-            break
-
-        if len(line) > max_len:
-            continue
-
-        body = _LEADING_PG_NUM_RE.sub("", line, count=1)
-
-        m = title_re.match(body)
-        if not m:
-            continue
-
-        match_len = m.end() - m.start()
-        if match_len >= len(body) - 4:
-            return True
-        if match_len / max(len(body), 1) >= 0.50:
-            return True
-
-    return False
+    return step1.has_prominent_heading(text, title_re, top_n, max_len)
 
 
 def _top_block(text: str, n: int = 6) -> str:
@@ -524,12 +488,21 @@ def run(manifest_path: str | Path,
     page_texts: dict[int, str]                 = {}
     try:
         with pdfplumber.open(pdf_path) as _pdf:
+            # Strip repeating page chrome (nav breadcrumbs / footers) so it
+            # cannot trip the blocking-heading filters or hide real titles.
+            header_set = step1.compute_running_headers(_pdf)
             for i, pg in enumerate(_pdf.pages):
                 page_dims[i] = (float(pg.width), float(pg.height))
                 try:
                     txt = pg.extract_text() or ""
                 except Exception:
                     txt = ""
+                txt = step1.strip_running_headers(txt, header_set)
+                # Also strip multi-section navigation breadcrumbs (e.g. CTC
+                # 2023-2025) that cram "Risk Management"/"Governance" into a
+                # ribbon at the top of statement pages and would otherwise
+                # trip the blocking-heading filters below.
+                txt = step1.strip_nav_breadcrumbs(txt)
                 # We need more than 8 lines now — heading might sit a bit
                 # lower on some report templates.
                 page_texts[i] = "\n".join(txt.split("\n")[:18])

@@ -13,6 +13,10 @@ export class HttpError extends Error {
     return new HttpError(400, message, details);
   }
 
+  static forbidden(message = "Forbidden", details?: unknown) {
+    return new HttpError(403, message, details);
+  }
+
   static notFound(message = "Not Found", details?: unknown) {
     return new HttpError(404, message, details);
   }

@@ -1,6 +1,37 @@
+# Dependencies
 node_modules
+
+# Build output
 dist
+
+# Environment / secrets
 .env
 .env.local
+.env.*.local
+
+# Logs
 *.log
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyc
+.venv/
+venv/
+
+# Generated data / outputs (not source code)
+Demo_Data/
+Demo_Data_captures/
+Gen_reports/
+Extracted_json/
+extracted/
+extracted_test/
+newly_uploaded_report/
+reports/
+testing/
+app/assets/
+scripts/_nf_items*.json

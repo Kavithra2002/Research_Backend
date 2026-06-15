@@ -234,14 +234,150 @@ _PGREF_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.I)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Running-header / footer stripping
+#
+# Many annual reports (e.g. Dialog Axiata 2024) repeat a navigation
+# breadcrumb on EVERY page, such as:
+#     "Overview Leadership ... Governance and Financial Statements ..."
+#     "Discussion and Analysis Risk Management Information"
+# Those lines contain section words ("Risk Management", "Governance") that
+# falsely trip the blocking-heading filters and hide the real statement
+# title.  We detect lines that repeat across a large fraction of pages and
+# strip them before any heading analysis.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Populated per-PDF at the start of find_all_statement_pages(); reset each
+# run so it never leaks between reports processed in the same process.
+_RUNNING_HEADERS: set[str] = set()
+
+
+def _norm_header_line(line: str) -> str:
+    s = re.sub(r"\d+", "", line or "")
+    s = re.sub(r"[\u2022\u25c6\u25cf\uf096|·•]+", " ", s)
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def compute_running_headers(pdf, threshold: float = 0.5,
+                            min_pages: int = 5, edge_lines: int = 4) -> set[str]:
+    """Return the set of normalised lines that recur on >= `threshold`
+    fraction of pages (and on at least `min_pages` pages).
+
+    Only the first `edge_lines` and last 3 lines of each page are
+    considered — that's where page chrome lives.  Lines that are clean
+    statement titles are never treated as chrome, so a repeated real
+    heading is preserved.
+    """
+    from collections import Counter
+
+    n = len(pdf.pages)
+    if n < max(4, min_pages):
+        return set()
+
+    counter: Counter = Counter()
+    for page in pdf.pages:
+        try:
+            txt = page.extract_text() or ""
+        except Exception:
+            txt = ""
+        lines = [ln.strip() for ln in txt.split("\n") if ln.strip()]
+        if not lines:
+            continue
+        edge = lines[:edge_lines] + lines[-3:]
+        seen_on_page: set[str] = set()
+        for ln in edge:
+            if len(ln) < 4:
+                continue
+            norm = _norm_header_line(ln)
+            if norm and norm not in seen_on_page:
+                seen_on_page.add(norm)
+                counter[norm] += 1
+
+    cutoff = max(min_pages, int(n * threshold))
+    headers: set[str] = set()
+    for norm, count in counter.items():
+        if count < cutoff:
+            continue
+        # Never strip a line that is itself a clean statement title.
+        if _is_clean_statement_title(norm):
+            continue
+        headers.add(norm)
+    return headers
+
+
+def _is_clean_statement_title(norm_line: str) -> bool:
+    for _key, _title, title_re in STMT_DEFS:
+        m = title_re.match(norm_line)
+        if m and _heading_title_fills_line(norm_line, m):
+            return True
+    return False
+
+
+def strip_running_headers(text: str, header_set: set[str]) -> str:
+    if not text or not header_set:
+        return text or ""
+    kept = [ln for ln in text.split("\n")
+            if _norm_header_line(ln) not in header_set]
+    return "\n".join(kept)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Section navigation breadcrumb stripping
+#
+# Some reports (e.g. Ceylon Tobacco 2023-2025) print a multi-section
+# navigation breadcrumb at the very top of alternating pages, such as:
+#     "Overview Executive Crafting Our Our Business Sustainability Risk
+#      Management Financial Supplementary"
+#     "Review Strategy Imperatives in Focus & Governance Statements Information"
+# These lines contain section words ("Risk Management", "Governance") that
+# falsely trip the blocking-heading filters and hide the real statement
+# title underneath.  Because the breadcrumb only appears on the financial
+# section pages (well under the 50% running-header threshold), it is NOT
+# caught by compute_running_headers — so we detect and strip it structurally:
+# a single line that crams together several distinct section keywords is
+# navigation chrome, never a real statement heading.
+# ─────────────────────────────────────────────────────────────────────────────
+
+_NAV_BREADCRUMB_KEYWORDS = (
+    "overview", "executive", "strategy", "sustainability",
+    "risk management", "governance", "financial statement",
+    "supplementary", "business review", "value creation",
+    "stewardship", "management discussion", "imperatives",
+    "in focus", "our business", "leadership", "performance review",
+)
+
+
+def _is_nav_breadcrumb(line: str) -> bool:
+    s = (line or "").strip().lower()
+    # Real statement headings are short; breadcrumbs are long ribbons that
+    # span the page width.
+    if len(s) < 45:
+        return False
+    if _is_clean_statement_title(_norm_header_line(s)):
+        return False
+    hits = sum(1 for kw in _NAV_BREADCRUMB_KEYWORDS if kw in s)
+    return hits >= 3
+
+
+def strip_nav_breadcrumbs(text: str) -> str:
+    if not text:
+        return text or ""
+    kept = [ln for ln in text.split("\n") if not _is_nav_breadcrumb(ln)]
+    return "\n".join(kept)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Low-level helpers
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _safe_text(page) -> str:
     try:
-        return page.extract_text() or ""
+        txt = page.extract_text() or ""
     except Exception:
         return ""
+    if _RUNNING_HEADERS:
+        txt = strip_running_headers(txt, _RUNNING_HEADERS)
+    txt = strip_nav_breadcrumbs(txt)
+    return txt
 
 
 def _top_lines(txt: str, n: int) -> list[str]:
@@ -258,6 +394,88 @@ def _top_lines(txt: str, n: int) -> list[str]:
 # ─────────────────────────────────────────────────────────────────────────────
 
 _LEADING_PG_NUM_RE = re.compile(r"^\s*\d{1,4}\s+")
+# TOC / footer noise such as "105 | Statement of ..." or " | 144"
+_LEADING_TOC_NOISE_RE = re.compile(r"^\s*(?:\d{1,4}\s*\|\s*|\|\s*\d{1,4}\s*)+")
+# Leading qualifiers that precede a real statement title, e.g.
+# "Consolidated Statement of Changes in Equity" or "Company Statement of ...".
+_LEADING_QUALIFIER_RE = re.compile(
+    r"^(?:consolidated|company|group|parent|bank|separate|interim)\s+",
+    re.I,
+)
+_TOC_LINE_RE = re.compile(
+    r"\b(?:table\s+of\s+)?contents?\b|"
+    r"\boverview\b.*\bfinancial\s+statements\b",
+    re.I,
+)
+
+
+def _top_nonempty_lines(text: str, top_n: int) -> list[str]:
+    lines: list[str] = []
+    seen = 0
+    for raw in (text or "").split("\n"):
+        line = raw.strip()
+        if not line:
+            continue
+        seen += 1
+        if seen > top_n:
+            break
+        lines.append(line)
+    return lines
+
+
+def _iter_heading_candidates(text: str, top_n: int = 14,
+                             max_len: int = 75) -> list[str]:
+    """
+    Build heading candidates from the top of a page.
+
+    Many annual reports (e.g. Ambeon / CTC 2020) break a single statement
+    title across two or three short lines:
+        STATEMENT OF
+        PROFIT OR LOSS
+    """
+    lines = _top_nonempty_lines(text, top_n)
+    out: list[str] = []
+    seen: set[str] = set()
+
+    def _add(candidate: str) -> None:
+        cand = candidate.strip()
+        if cand and cand not in seen:
+            seen.add(cand)
+            out.append(cand)
+
+    for i, line in enumerate(lines):
+        if len(line) <= max_len:
+            _add(line)
+        for span in (2, 3):
+            chunk = lines[i:i + span]
+            if len(chunk) < span:
+                break
+            if any(len(ln) > 48 for ln in chunk):
+                break
+            joined = " ".join(chunk)
+            if len(joined) <= max_len + 45:
+                _add(joined)
+    return out
+
+
+def _normalize_heading_body(line: str) -> str:
+    body = _LEADING_PG_NUM_RE.sub("", line, count=1)
+    body = _LEADING_TOC_NOISE_RE.sub("", body, count=1)
+    body = body.strip()
+    # Strip up to two leading qualifiers ("Consolidated", "Company", ...).
+    for _ in range(2):
+        new = _LEADING_QUALIFIER_RE.sub("", body, count=1)
+        if new == body:
+            break
+        body = new.strip()
+    return body
+
+
+def _heading_title_fills_line(body: str, match: re.Match) -> bool:
+    match_len = match.end() - match.start()
+    if match_len >= len(body) - 4:
+        return True
+    return match_len / max(len(body), 1) >= 0.50
 
 
 def has_prominent_heading(text: str, title_re: re.Pattern,
@@ -267,10 +485,12 @@ def has_prominent_heading(text: str, title_re: re.Pattern,
     the top of `text`.
 
     A heading line satisfies ALL of:
-      - is one of the first `top_n` non-empty lines,
-      - is no longer than `max_len` characters,
+      - is one of the first `top_n` non-empty lines (or a short join of
+        2-3 consecutive lines when PDF layout splits the title),
+      - is no longer than `max_len` characters (joined headings may be a
+        little longer),
       - the title pattern matches RIGHT AT THE START of the line (after at
-        most a leading page-number prefix like "170 " is stripped),
+        most a leading page-number / TOC prefix is stripped),
       - the matched title is at least 50% of the remaining line length, OR
         the line is fully consumed by the title.
 
@@ -282,29 +502,19 @@ def has_prominent_heading(text: str, title_re: re.Pattern,
     if not text:
         return False
 
-    seen = 0
-    for raw in text.split("\n"):
-        line = raw.strip()
-        if not line:
-            continue
-        seen += 1
-        if seen > top_n:
-            break
-
-        if len(line) > max_len:
+    for line in _iter_heading_candidates(text, top_n, max_len):
+        if len(line) > max_len + 45:
             continue
 
-        # Allow a leading page-number prefix ("170 STATEMENT OF ...").
-        body = _LEADING_PG_NUM_RE.sub("", line, count=1)
+        body = _normalize_heading_body(line)
+        if not body:
+            continue
 
         m = title_re.match(body)
         if not m:
             continue
 
-        match_len = m.end() - m.start()
-        if match_len >= len(body) - 4:           # title fills the line
-            return True
-        if match_len / max(len(body), 1) >= 0.50:
+        if _heading_title_fills_line(body, m):
             return True
 
     return False
@@ -338,6 +548,26 @@ def _looks_like_toc(txt: str) -> bool:
     return short_entries >= 5
 
 
+def _toc_page_for_match(line: str, m: re.Match) -> int | None:
+    """Read a printed page number before or after a TOC title match."""
+    tail = line[m.end():]
+    pm = re.search(r"[\s.|]+(\d{1,4})\b", tail)
+    if pm:
+        between = tail[:pm.start()]
+        if not re.search(r"[A-Z][A-Z]{3,}", between):
+            pg = int(pm.group(1))
+            if 1 <= pg <= 5000:
+                return pg
+
+    prefix = line[:m.start()]
+    pm = re.search(r"(?:^|[\s|])(\d{1,4})\s*$", prefix)
+    if pm:
+        pg = int(pm.group(1))
+        if 1 <= pg <= 5000:
+            return pg
+    return None
+
+
 def _extract_toc_pairs(txt: str) -> list[tuple[str, int, str]]:
     """
     From a TOC line, return all (key, printed_page, matched_title) entries
@@ -347,36 +577,25 @@ def _extract_toc_pairs(txt: str) -> list[tuple[str, int, str]]:
     if not txt:
         return out
 
-    for raw in txt.split("\n"):
-        line = raw.strip()
-        if not line or len(line) < 6:
-            continue
-        # Skip body paragraphs that happen to contain a statement word -
-        # real TOC lines never run very long.
-        if len(line) > 220:
+    raw_lines = [ln.strip() for ln in txt.split("\n") if ln.strip()]
+    lines: list[str] = []
+    for i, line in enumerate(raw_lines):
+        lines.append(line)
+        if len(line) < 80 and i + 1 < len(raw_lines):
+            nxt = raw_lines[i + 1]
+            if len(nxt) < 60 and not re.match(r"^\d{1,4}\b", nxt):
+                lines.append(f"{line} {nxt}")
+
+    for line in lines:
+        if len(line) < 6 or len(line) > 220:
             continue
 
         for key, _, title_re in STMT_DEFS:
             for m in title_re.finditer(line):
-                tail = line[m.end():]
-                # Need a page number FOLLOWING the title text.
-                # The number must come before any other letter run that
-                # could be a different TOC entry.
-                pm = re.search(r"\s*\.{0,}\s*(\d{1,4})\b", tail)
-                if not pm:
+                pg = _toc_page_for_match(line, m)
+                if pg is None:
                     continue
-                # Make sure we don't cross over to the next TOC entry by
-                # checking that between the title and the number there is
-                # no extra capitalised word that would itself be a title.
-                between = tail[:pm.start()]
-                if re.search(r"[A-Z][A-Z]{3,}", between):
-                    continue
-                try:
-                    pg = int(pm.group(1))
-                except ValueError:
-                    continue
-                if 1 <= pg <= 5000:
-                    out.append((key, pg, line[m.start():m.end()]))
+                out.append((key, pg, line[m.start():m.end()]))
     return out
 
 
@@ -460,6 +679,12 @@ def is_statement_first_page(text: str, key: str) -> bool:
     if _REJECT_BODY_RE.search(text[:600]):
         return False
 
+    # Reject table-of-contents pages that mention statement titles but are
+    # not the actual statement.
+    head = (text or "")[:500].lower()
+    if _TOC_LINE_RE.search(head):
+        return False
+
     # If the top of the page screams a different known section, reject.
     top_block = "\n".join(_top_lines(text, 6))
     if _BLOCKING_HEADINGS_RE.search(top_block):
@@ -518,6 +743,13 @@ _MAX_CONT: dict[str, int] = {
 
 
 def find_all_statement_pages(pdf) -> tuple[dict[str, dict], int]:
+    global _RUNNING_HEADERS
+
+    # Detect repeating page chrome (nav breadcrumbs, footers) so it cannot
+    # hide real headings or trip the blocking-heading filters.  Recomputed
+    # per-PDF so it never leaks between reports.
+    _RUNNING_HEADERS = compute_running_headers(pdf)
+
     n   = len(pdf.pages)
     toc = scan_toc(pdf)
     off = discover_offset(pdf, toc)

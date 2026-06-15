@@ -1,10 +1,18 @@
-# Python deps for backend/scripts (Docker + local venv).
-# Install: pip install -r scripts/requirements.txt
+# Python dependencies for the extraction + DB-upload pipeline.
+#
+#   pip install -r requirements.txt
+#
+# Extraction (PDF -> page images -> OpenAI verbatim tables)
+openai>=1.0.0
+PyMuPDF>=1.23.0
+pdfplumber>=0.10.0
+pandas>=2.0.0
 
-openai>=2.38.0,<3
-pdfplumber>=0.11.9,<0.12
-PyMuPDF>=1.27.2,<2
-pillow>=12.1.0,<13
-pdfminer.six>=20251230
-pypdf>=6.9.0,<7
-boto3>=1.35.0,<2
+# Optional table / OCR fallbacks (safe to skip if you only use the
+# OpenAI pipeline). camelot needs Ghostscript; the OCR engines are heavy.
+# camelot-py[cv]>=0.11.0
+# pytesseract>=0.3.10
+# Pillow>=10.0.0
+
+# DB upload (new): push extracted tables into MongoDB
+pymongo>=4.6.0
