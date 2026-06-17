@@ -27,6 +27,7 @@ const REQUEST_TIMEOUT_MS = 15000;
 interface TradeSummaryRow {
   name?: string;
   symbol?: string;
+  logoUrl?: string;
   price?: number;
   previousClose?: number;
   change?: number;
@@ -34,8 +35,31 @@ interface TradeSummaryRow {
   high?: number;
   low?: number;
   open?: number;
+  closingPrice?: number;
   marketCap?: number;
+  turnover?: number;
+  sharevolume?: number;
+  tradevolume?: number;
   lastTradedTime?: number;
+}
+
+/** A live, listed-equity snapshot for the Sector Lens "Live" universe. */
+export interface CseLiveRow {
+  name: string;
+  symbol: string;
+  logoUrl: string | null;
+  price: number | null;
+  previousClose: number | null;
+  change: number | null;
+  changePercent: number | null;
+  dayHigh: number | null;
+  dayLow: number | null;
+  open: number | null;
+  marketCap: number | null;
+  turnover: number | null;
+  shareVolume: number | null;
+  tradeVolume: number | null;
+  asOf: string | null;
 }
 
 /** Authoritative live market snapshot for one company. */
@@ -200,6 +224,53 @@ function rowToSnapshot(
     asOf,
     matchScore,
   };
+}
+
+function tradeTimeToIso(lastTradedTime: unknown): string | null {
+  if (typeof lastTradedTime !== "number" || lastTradedTime <= 0) return null;
+  const ms =
+    lastTradedTime > 10_000_000_000 ? lastTradedTime : lastTradedTime * 1000;
+  const d = new Date(ms);
+  return Number.isNaN(d.getTime()) ? null : d.toISOString();
+}
+
+/**
+ * Return EVERY equity listed on the CSE with its live trade figures. Used by the
+ * Sector Lens "Live" tab. Never throws — returns an empty list on any failure.
+ */
+export async function getCseUniverse(): Promise<CseLiveRow[]> {
+  let rows: TradeSummaryRow[];
+  try {
+    rows = await getTradeSummary();
+  } catch (err) {
+    logger.warn(
+      `[CSE] Could not fetch trade summary: ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+    );
+    return [];
+  }
+
+  return rows
+    .map((row) => ({
+      name: String(row.name ?? "").trim(),
+      symbol: String(row.symbol ?? "").trim(),
+      logoUrl: row.logoUrl ? String(row.logoUrl) : null,
+      price: num(row.price),
+      previousClose: num(row.previousClose),
+      change: num(row.change),
+      changePercent: num(row.percentageChange),
+      dayHigh: num(row.high),
+      dayLow: num(row.low),
+      open: num(row.open),
+      marketCap: num(row.marketCap),
+      turnover: num(row.turnover),
+      shareVolume: num(row.sharevolume),
+      tradeVolume: num(row.tradevolume),
+      asOf: tradeTimeToIso(row.lastTradedTime),
+    }))
+    .filter((r) => r.name && r.symbol)
+    .sort((a, b) => (b.marketCap ?? 0) - (a.marketCap ?? 0));
 }
 
 /** Minimum confidence before we treat a fuzzy name match as the right company. */

@@ -4,6 +4,7 @@ import {
   getExtractedResults,
   getReportTables,
   getSectorLens,
+  getSectorLensLive,
   listExtractedCompanies,
   listStoredReports,
   type PeriodLabel,
@@ -44,10 +45,20 @@ router.get("/", async (_req, res, next) => {
   }
 });
 
-router.get("/sector-lens", async (_req, res, next) => {
+router.get("/sector-lens", async (req, res, next) => {
   try {
-    const payload = await getSectorLens();
+    const asOf = typeof req.query.asOf === "string" ? req.query.asOf : undefined;
+    const payload = await getSectorLens(asOf);
     res.json({ source: "mongodb", ...payload });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/sector-lens-live", async (_req, res, next) => {
+  try {
+    const payload = await getSectorLensLive();
+    res.json({ source: "cse", ...payload });
   } catch (err) {
     next(err);
   }

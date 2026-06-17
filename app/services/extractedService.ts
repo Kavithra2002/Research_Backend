@@ -1,5 +1,11 @@
 import { FinancialTable, type ReportType } from "../models/FinancialTable";
 import { Company } from "../models/Company";
+import {
+  getCseSnapshots,
+  getCseUniverse,
+  type CseSnapshot,
+  type CseLiveRow,
+} from "./cseMarketService";
 
 export type PeriodLabel = "Annual" | "Quarterly";
 
@@ -214,23 +220,352 @@ export type SectorLensPayload = {
 };
 
 /**
- * Build the Sector Lens screener rows: every company in the registry with its
- * classified sector and the years of data we hold. Market metrics (P/E, market
- * cap, price, returns) are sourced from a live market feed which the demo does
- * NOT have, so they are returned as null and rendered as "-" in the UI.
+ * Resolve the "As of" date for the screener. Accepts a date string (e.g.
+ * "YYYY-MM-DD" or an ISO timestamp) and returns a normalised ISO string. Falls
+ * back to the current time when the input is missing or unparseable.
  */
-export async function getSectorLens(): Promise<SectorLensPayload> {
-  const [registry, grouped] = await Promise.all([
-    Company.find({})
-      .select({ slug: 1, name: 1, sector: 1, sector_detail: 1 })
-      .lean(),
+function resolveAsOf(asOf?: string): string {
+  if (asOf) {
+    const parsed = new Date(asOf);
+    if (!Number.isNaN(parsed.getTime())) return parsed.toISOString();
+  }
+  return new Date().toISOString();
+}
+
+type SectorLensTableDoc = {
+  company_slug: string;
+  year: number | null;
+  report_type: string;
+  quarter: string | null;
+  statement_key: string;
+  statement_title: string;
+  rows: Array<{ cells?: unknown }>;
+};
+
+const INCOME_STMT = /income|profit.?loss|statement.of.comprehensive|revenue/i;
+const BALANCE_STMT = /sofp|balance|financial.position/i;
+
+const SECONDARY_STMT = /ten_year|investor|shareholder|note|summary/i;
+
+const REVENUE_TERMS = [
+  "total revenue",
+  "group revenue",
+  "revenue from contracts",
+  "total income",
+  "net interest income",
+  "interest income",
+  "turnover",
+  "revenue",
+  "sales",
+];
+
+const CCE_TERMS = [
+  "cash and cash equivalents",
+  "cash & cash equivalents",
+  "cash equivalents",
+];
+
+const EPS_TERMS = [
+  "earnings per share",
+  "earning per share",
+  "eps",
+];
+
+const LABEL_NOISE =
+  /per share|margin|ratio|growth|expense|cost of|segment|note |%|\(\*\)/i;
+
+function parseNumeric(value: unknown): number | null {
+  const m = String(value ?? "")
+    .replace(/,/g, "")
+    .match(/-?\d+(?:\.\d+)?/);
+  if (!m) return null;
+  const n = Number(m[0]);
+  return Number.isFinite(n) ? n : null;
+}
+
+/** Pick a figure from amount columns, skipping note refs and trailing % columns. */
+function extractMonetaryValue(cells: unknown[]): number | null {
+  const nums = cells
+    .slice(1)
+    .map(parseNumeric)
+    .filter((n): n is number => n !== null);
+  if (!nums.length) return null;
+
+  const filtered = nums.filter((n) => {
+    const looksLikeNote = Number.isInteger(n) && n >= 1 && n <= 99;
+    const hasSubstantial = nums.some((v) => Math.abs(v) >= 1000);
+    if (looksLikeNote && hasSubstantial) return false;
+    return true;
+  });
+
+  const substantial = filtered.filter((n) => Math.abs(n) >= 1000);
+  if (substantial.length) return substantial[0];
+
+  const withoutPctNoise = filtered.filter((n) => {
+    if (Math.abs(n) > 200) return true;
+    return !filtered.some((v) => Math.abs(v) >= 1000);
+  });
+  if (!withoutPctNoise.length) return null;
+  return withoutPctNoise.reduce((best, n) =>
+    Math.abs(n) > Math.abs(best) ? n : best,
+  );
+}
+
+/** EPS and similar per-share figures are small numbers in the last amount column. */
+function extractPerShareValue(cells: unknown[]): number | null {
+  const nums = cells
+    .slice(1)
+    .map(parseNumeric)
+    .filter((n): n is number => n !== null);
+  if (!nums.length) return null;
+
+  const candidates = nums.filter((n) => n > 0 && n < 10_000);
+  if (candidates.length) return candidates[candidates.length - 1];
+  return nums[nums.length - 1] ?? null;
+}
+
+function labelMatches(label: string, terms: string[]): boolean {
+  const l = label.toLowerCase().trim();
+  if (!l || LABEL_NOISE.test(l)) return false;
+  return terms.some((term) => l.includes(term.toLowerCase()));
+}
+
+function statementScore(
+  doc: SectorLensTableDoc,
+  preferred: RegExp,
+): number {
+  const text = `${doc.statement_key} ${doc.statement_title}`;
+  let score = preferred.test(text) ? 20 : 0;
+  if (SECONDARY_STMT.test(text)) score -= 25;
+  return score;
+}
+
+function sortTablesNewestFirst(a: SectorLensTableDoc, b: SectorLensTableDoc): number {
+  const yearDiff = (b.year ?? 0) - (a.year ?? 0);
+  if (yearDiff !== 0) return yearDiff;
+  const typeDiff =
+    (b.report_type === "quarterly" ? 1 : 0) - (a.report_type === "quarterly" ? 1 : 0);
+  if (typeDiff !== 0) return typeDiff;
+  return quarterRank(b.quarter) - quarterRank(a.quarter);
+}
+
+function extractLineItemFromDoc(
+  doc: SectorLensTableDoc,
+  terms: string[],
+  preferredStatement: RegExp,
+  mode: "amount" | "perShare" = "amount",
+): number | null {
+  let best: { score: number; value: number } | null = null;
+  const stmtBonus = statementScore(doc, preferredStatement);
+  const pickValue =
+    mode === "perShare" ? extractPerShareValue : extractMonetaryValue;
+
+  for (const row of doc.rows ?? []) {
+    const cells = row?.cells;
+    if (!Array.isArray(cells) || cells.length === 0) continue;
+    const label = String(cells[0] ?? "");
+    if (!labelMatches(label, terms)) continue;
+
+    const value = pickValue(cells);
+    if (value === null) continue;
+
+    const ll = label.toLowerCase();
+    let termScore = 0;
+    for (let i = 0; i < terms.length; i += 1) {
+      if (ll.includes(terms[i].toLowerCase())) {
+        termScore = Math.max(termScore, 100 - i);
+      }
+    }
+
+    const score =
+      stmtBonus +
+      termScore +
+      (doc.year ?? 0) * 0.001 +
+      quarterRank(doc.quarter) * 0.01;
+    if (!best || score > best.score) {
+      best = { score, value };
+    }
+  }
+
+  return best?.value ?? null;
+}
+
+function findBestLineItem(
+  tables: SectorLensTableDoc[],
+  terms: string[],
+  preferredStatement: RegExp,
+  reportType?: ReportType,
+  mode: "amount" | "perShare" = "amount",
+  maxYear?: number | null,
+): number | null {
+  const sorted = tables
+    .filter((doc) => doc.year != null)
+    .filter((doc) => maxYear == null || (doc.year ?? 0) <= maxYear)
+    .filter((doc) => !reportType || doc.report_type === reportType)
+    .sort(sortTablesNewestFirst);
+
+  let best: { score: number; value: number } | null = null;
+  for (const doc of sorted) {
+    const value = extractLineItemFromDoc(
+      doc,
+      terms,
+      preferredStatement,
+      mode,
+    );
+    if (value === null) continue;
+    const score =
+      statementScore(doc, preferredStatement) +
+      (doc.year ?? 0) * 0.001 +
+      quarterRank(doc.quarter) * 0.01;
+    if (!best || score > best.score) {
+      best = { score, value };
+    }
+  }
+  return best?.value ?? null;
+}
+
+function computeRevenueT12M(
+  tables: SectorLensTableDoc[],
+  maxYear?: number | null,
+): number | null {
+  const quarterly = tables
+    .filter((doc) => doc.report_type === "quarterly" && doc.year != null)
+    .filter((doc) => maxYear == null || (doc.year ?? 0) <= maxYear)
+    .sort(sortTablesNewestFirst);
+
+  const values: number[] = [];
+  const seen = new Set<string>();
+
+  for (const doc of quarterly) {
+    const key = `${doc.year}:${doc.quarter ?? ""}`;
+    if (seen.has(key)) continue;
+    const value = extractLineItemFromDoc(doc, REVENUE_TERMS, INCOME_STMT);
+    if (value === null) continue;
+    values.push(value);
+    seen.add(key);
+    if (values.length >= 4) break;
+  }
+
+  if (values.length >= 4) {
+    return values.slice(0, 4).reduce((sum, value) => sum + value, 0);
+  }
+
+  return findBestLineItem(
+    tables,
+    REVENUE_TERMS,
+    INCOME_STMT,
+    "annual",
+    "amount",
+    maxYear,
+  );
+}
+
+function computeCceLF(
+  tables: SectorLensTableDoc[],
+  maxYear?: number | null,
+): number | null {
+  return findBestLineItem(
+    tables,
+    CCE_TERMS,
+    BALANCE_STMT,
+    undefined,
+    "amount",
+    maxYear,
+  );
+}
+
+function computeEps(
+  tables: SectorLensTableDoc[],
+  maxYear?: number | null,
+): number | null {
+  return findBestLineItem(
+    tables,
+    EPS_TERMS,
+    INCOME_STMT,
+    undefined,
+    "perShare",
+    maxYear,
+  );
+}
+
+type CompanyMetrics = {
+  revenueT12M: number | null;
+  cceLF: number | null;
+  eps: number | null;
+  /** The most recent reporting year at or before the requested cut-off. */
+  effectiveYear: number | null;
+};
+
+function buildFinancialMetricsBySlug(
+  tables: SectorLensTableDoc[],
+  maxYear?: number | null,
+): Map<string, CompanyMetrics> {
+  const bySlug = new Map<string, SectorLensTableDoc[]>();
+  for (const doc of tables) {
+    const list = bySlug.get(doc.company_slug) ?? [];
+    list.push(doc);
+    bySlug.set(doc.company_slug, list);
+  }
+
+  const out = new Map<string, CompanyMetrics>();
+  for (const [slug, docs] of bySlug) {
+    const eligibleYears = docs
+      .map((d) => d.year)
+      .filter((y): y is number => typeof y === "number")
+      .filter((y) => maxYear == null || y <= maxYear);
+    const effectiveYear = eligibleYears.length ? Math.max(...eligibleYears) : null;
+
+    out.set(slug, {
+      revenueT12M: computeRevenueT12M(docs, maxYear),
+      cceLF: computeCceLF(docs, maxYear),
+      eps: computeEps(docs, maxYear),
+      effectiveYear,
+    });
+  }
+  return out;
+}
+
+function buildCseByName(snapshots: CseSnapshot[]): Map<string, CseSnapshot> {
+  const out = new Map<string, CseSnapshot>();
+  for (const snap of snapshots) {
+    out.set(snap.query, snap);
+  }
+  return out;
+}
+
+/**
+ * Build the Sector Lens screener rows: every company in the registry with its
+ * classified sector, reporting years, live CSE market figures, and fundamentals
+ * pulled from extracted financial statements.
+ */
+export async function getSectorLens(asOf?: string): Promise<SectorLensPayload> {
+  const registry = await Company.find({})
+    .select({ slug: 1, name: 1, sector: 1, sector_detail: 1 })
+    .lean();
+
+  const slugs = registry.map((c) => c.slug);
+  const [grouped, financialTables, cseSnapshots] = await Promise.all([
     FinancialTable.aggregate<{
       _id: string;
       years: number[];
     }>([
-      { $match: { year: { $ne: null } } },
+      { $match: { company_slug: { $in: slugs }, year: { $ne: null } } },
       { $group: { _id: "$company_slug", years: { $addToSet: "$year" } } },
     ]),
+    slugs.length > 0
+      ? FinancialTable.find({ company_slug: { $in: slugs } })
+          .select({
+            company_slug: 1,
+            year: 1,
+            report_type: 1,
+            quarter: 1,
+            statement_key: 1,
+            statement_title: 1,
+            rows: 1,
+          })
+          .lean()
+      : Promise.resolve([]),
+    getCseSnapshots(registry.map((c) => c.name)),
   ]);
 
   const yearsBySlug = new Map<string, number[]>();
@@ -241,20 +576,39 @@ export async function getSectorLens(): Promise<SectorLensPayload> {
     yearsBySlug.set(g._id, years);
   }
 
+  // The calendar's "as of" date selects which reporting year to show: we use the
+  // most recent report at or before that calendar year, so picking a past date
+  // surfaces the figures that were the latest known as of then.
+  const asOfIso = resolveAsOf(asOf);
+  const cutoffYear = new Date(asOfIso).getUTCFullYear();
+
+  const metricsBySlug = buildFinancialMetricsBySlug(
+    financialTables as SectorLensTableDoc[],
+    cutoffYear,
+  );
+  const cseByName = buildCseByName(cseSnapshots);
+
   const rows: SectorLensRow[] = registry.map((c) => {
     const years = yearsBySlug.get(c.slug) ?? [];
+    const metrics = metricsBySlug.get(c.slug);
+    const cse = cseByName.get(c.name) ?? null;
+    const eps = metrics?.eps ?? null;
+    const price = cse?.price ?? null;
+    const peRatio =
+      price !== null && eps !== null && eps > 0 ? price / eps : null;
+
     return {
       slug: c.slug,
       name: c.name,
       sector: (c as { sector?: string | null }).sector ?? null,
       sectorDetail: (c as { sector_detail?: string | null }).sector_detail ?? null,
-      latestYear: years[0] ?? null,
+      latestYear: metrics?.effectiveYear ?? years[0] ?? null,
       reportYears: years,
-      peRatio: null,
-      revenueT12M: null,
-      cceLF: null,
-      marketCap: null,
-      priceD1: null,
+      peRatio,
+      revenueT12M: metrics?.revenueT12M ?? null,
+      cceLF: metrics?.cceLF ?? null,
+      marketCap: cse?.marketCap ?? null,
+      priceD1: cse?.previousClose ?? null,
       totalReturnYTD: null,
     };
   });
@@ -266,6 +620,30 @@ export async function getSectorLens(): Promise<SectorLensPayload> {
     return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
   });
 
+  return {
+    asOf: resolveAsOf(asOf),
+    universeCount: rows.length,
+    rows,
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Sector Lens — Live tab (entire CSE universe, live figures only)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type SectorLensLivePayload = {
+  asOf: string;
+  universeCount: number;
+  rows: CseLiveRow[];
+};
+
+/**
+ * Build the Sector Lens "Live" tab: every equity currently listed on the CSE
+ * with its live trade figures. No DB / historical data is involved, so there is
+ * no date scoping here — the calendar does not apply to this view.
+ */
+export async function getSectorLensLive(): Promise<SectorLensLivePayload> {
+  const rows = await getCseUniverse();
   return {
     asOf: new Date().toISOString(),
     universeCount: rows.length,
