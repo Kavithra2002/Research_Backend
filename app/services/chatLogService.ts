@@ -16,7 +16,7 @@ import { HttpError } from "../utils/httpError";
  * and lets us add more agents (e.g. "sage") later without code changes.
  * ────────────────────────────────────────────────────────────────────────── */
 
-export const SUPPORTED_AGENTS = ["robin", "sage", "tuck"] as const;
+export const SUPPORTED_AGENTS = ["robin", "sage", "tuck", "marian"] as const;
 export type AgentId = (typeof SUPPORTED_AGENTS)[number];
 
 export type StoredRole = "user" | "assistant";

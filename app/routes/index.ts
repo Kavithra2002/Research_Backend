@@ -15,6 +15,7 @@ import chatLogRoutes from "./chatLogRoutes";
 import systemPythonRoutes from "./systemPythonRoutes";
 import extractedRoutes from "./extractedRoutes";
 import openaiUsageRoutes from "./openaiUsageRoutes";
+import newspaperRoutes from "./newspaperRoutes";
 
 const router = Router();
 
@@ -52,6 +53,7 @@ router.use("/ai/rag", ragRoutes);
 router.use("/ai/chat-log", chatLogRoutes);
 router.use("/openai", openaiUsageRoutes);
 router.use("/extracted", extractedRoutes);
+router.use("/newspaper", newspaperRoutes);
 router.use(systemPythonRoutes);
 
 export default router;

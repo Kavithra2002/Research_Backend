@@ -7,6 +7,10 @@ import {
   startReportScheduleScheduler,
   stopReportScheduleScheduler,
 } from "./services/reportScheduleScheduler";
+import {
+  startNewspaperScheduler,
+  stopNewspaperScheduler,
+} from "./services/newspaperScheduler";
 import { logger } from "./utils/logger";
 
 async function bootstrap() {
@@ -32,12 +36,14 @@ async function bootstrap() {
   startTuckScheduler();
   // Arm the user report-schedule poller (Robin/Tuck scheduled email reports).
   startReportScheduleScheduler();
+  startNewspaperScheduler();
 
   const shutdown = async (signal: string) => {
     logger.info(`Received ${signal}, shutting down...`);
     killAllPythonJobs();
     stopTuckScheduler();
     stopReportScheduleScheduler();
+    stopNewspaperScheduler();
     server.close(() => logger.info("HTTP server closed"));
     try {
       await disconnectFromDatabase();

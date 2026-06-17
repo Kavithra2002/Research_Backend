@@ -23,7 +23,7 @@ export const WEB_SEARCH_TOOL = {
   function: {
     name: "web_search",
     description:
-      "Search the INTERNET for current, external, or forward-looking information that is NOT in the company's stored reports or database. Use this when the user asks how external events (wars, geopolitical crises, pandemics, policy/regulatory changes, global economic trends, commodity prices, competitor news) might affect a company, OR when you need up-to-date facts that stored data cannot provide. ALWAYS fetch the company's own profile from the database first (non_financial_overview / get_non_financial_metric / financial tools) so you know its sector, geography and business model, THEN call this tool with that context so the analysis is specific to the company. Clearly label which parts of your answer come from web search vs stored data.",
+      "Search the INTERNET for current, external, or forward-looking information that is NOT in the company's stored reports or database. Use when the user asks how external events might affect a company, OR when you need up-to-date facts (recent news, analyst outlook, buy/sell views, articles) — especially after screen_available_companies when making a buy recommendation. ALWAYS fetch company data from the database first, THEN call this tool. Include any source URLs as markdown links [title](url) in your final answer. Clearly label web-sourced vs database facts.",
     parameters: {
       type: "object",
       properties: {
@@ -145,6 +145,7 @@ export async function runWebSearch(args: {
     "Be concise but thorough. Focus on facts, recent developments, and credible sources.",
     "If the question is about how an external event affects a specific company, tailor your analysis to that company's sector, geography and business model using the company context provided.",
     "Structure your answer with short paragraphs and bullet points.",
+    "When you find credible sources, include them as markdown links: [Source title](https://full-url) so the user can click and read.",
     "At the end, note the general timeframe of the information (e.g. 'as of early 2026').",
     "If you cannot find reliable information, say so honestly.",
   ].join(" ");

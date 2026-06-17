@@ -17,6 +17,17 @@ import {
   dispatchWebSearchTool,
 } from "./webSearchAgentTool";
 import { RESPONSE_STYLE_GUIDE } from "./responseStyle";
+import {
+  SECTOR_DB_TOOLS,
+  SECTOR_QUERY_GUIDANCE,
+  dispatchSectorTool,
+  filterDatabaseCompanies,
+} from "./sectorAgentTools";
+import {
+  BUY_RECOMMENDATION_GUIDANCE,
+  INVESTMENT_SCREENING_TOOLS,
+  dispatchInvestmentTool,
+} from "./investmentAgentTools";
 
 /* ────────────────────────────────────────────────────────────────────────── *
  * Robin — financial data-analysis agent (chat, like Sage)
@@ -90,7 +101,7 @@ export const FINANCIAL_DB_TOOLS = [
     function: {
       name: "list_companies",
       description:
-        "List companies that have financial data in the database. Use this to discover available companies or to resolve a company the user named to its exact slug/name.",
+        "List companies that have financial data in the database (includes each company's sector). Use to discover available companies or resolve a name to slug. For sector-wise questions ('companies in telecom', buy ideas by sector), prefer list_companies_by_sector or list_sectors.",
       parameters: {
         type: "object",
         properties: {
@@ -99,11 +110,18 @@ export const FINANCIAL_DB_TOOLS = [
             description:
               "Optional case-insensitive substring to filter company name or slug.",
           },
+          sector: {
+            type: "string",
+            description:
+              "Optional sector filter, e.g. 'Telecommunications' or 'banking'.",
+          },
         },
         additionalProperties: false,
       },
     },
   },
+  ...SECTOR_DB_TOOLS,
+  ...INVESTMENT_SCREENING_TOOLS,
   {
     type: "function",
     function: {
@@ -247,7 +265,12 @@ const TOOLS = [
  * DB helpers (the only place that touches MongoDB)
  * ────────────────────────────────────────────────────────────────────────── */
 
-type CompanyRef = { slug: string; name: string | null };
+type CompanyRef = {
+  slug: string;
+  name: string | null;
+  sector?: string | null;
+  sector_detail?: string | null;
+};
 type ResolveResult =
   | { slug: string; name: string | null }
   | { candidates: CompanyRef[] }
@@ -422,8 +445,26 @@ async function containsCompanies(query?: string): Promise<CompanyRef[]> {
   return docs.map((d) => ({ slug: d.slug, name: d.name ?? null }));
 }
 
-async function listCompanies(query?: string): Promise<CompanyRef[]> {
+async function listCompanies(query?: string, sector?: string): Promise<CompanyRef[]> {
   const q = query?.trim();
+  const sectorFilter = sector?.trim();
+
+  if (sectorFilter) {
+    const { companies } = await filterDatabaseCompanies({
+      sector: sectorFilter,
+      query: q,
+    });
+    if (companies.length > 0) {
+      return companies.map((c) => ({
+        slug: c.slug,
+        name: c.name,
+        sector: c.sector,
+        sector_detail: c.sector_detail,
+      }));
+    }
+    if (!q) return [];
+  }
+
   const docs = await containsCompanies(q);
 
   // If a substring query found nothing, it may be a typo — surface the closest
@@ -431,7 +472,20 @@ async function listCompanies(query?: string): Promise<CompanyRef[]> {
   if (q && docs.length === 0) {
     return fuzzyCandidates(q, 5);
   }
-  return docs;
+
+  if (docs.length === 0) return docs;
+
+  const sectorBySlug = new Map(
+    (await filterDatabaseCompanies({})).companies.map((c) => [c.slug, c]),
+  );
+  return docs.map((d) => {
+    const meta = sectorBySlug.get(d.slug);
+    return {
+      ...d,
+      sector: meta?.sector ?? null,
+      sector_detail: meta?.sector_detail ?? null,
+    };
+  });
 }
 
 async function resolveCompany(term: string): Promise<ResolveResult> {
@@ -793,11 +847,18 @@ export async function dispatchFinancialTool(
 ): Promise<unknown | undefined> {
   const a = (args ?? {}) as Record<string, unknown>;
 
+  const sectorHandled = await dispatchSectorTool(name, a);
+  if (sectorHandled !== undefined) return sectorHandled;
+
+  const investmentHandled = await dispatchInvestmentTool(name, a);
+  if (investmentHandled !== undefined) return investmentHandled;
+
   switch (name) {
     case "list_companies":
       return {
         companies: await listCompanies(
           typeof a.query === "string" ? a.query : undefined,
+          typeof a.sector === "string" ? a.sector : undefined,
         ),
       };
 
@@ -908,6 +969,8 @@ function buildSystemPrompt(user: RobinChatInput["user"]): string {
     "How to work:",
     "  • For any question about a company's financial figures, USE THE TOOLS to look up real data before answering. Never guess or fabricate numbers.",
     "  • Typical financial flow: resolve the company (list_companies) → see what exists (company_overview) → pull the figure (search_line_items or get_statement).",
+    SECTOR_QUERY_GUIDANCE,
+    BUY_RECOMMENDATION_GUIDANCE,
     "  • For NON-FINANCIAL questions (sector, what the company does, employees, branches, group structure, subsidiaries, vision/mission, awards, sustainability, governance), use the non-financial tools: list_non_financial_companies → non_financial_overview → get_non_financial_metric with the right keyword.",
     "  • Numbers are stored exactly as printed in the report (with commas, and brackets for negatives). Report them faithfully; only do arithmetic the user asks for, and show your working briefly.",
     "  • Always state which company, year and source a figure came from.",

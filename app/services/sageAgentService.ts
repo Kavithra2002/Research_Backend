@@ -16,6 +16,16 @@ import {
   type OwnerMeta,
 } from "./companyGroupService";
 import { RESPONSE_STYLE_GUIDE } from "./responseStyle";
+import {
+  SECTOR_DB_TOOLS,
+  SECTOR_QUERY_GUIDANCE,
+  dispatchSectorTool,
+} from "./sectorAgentTools";
+import {
+  BUY_RECOMMENDATION_GUIDANCE,
+  INVESTMENT_SCREENING_TOOLS,
+  dispatchInvestmentTool,
+} from "./investmentAgentTools";
 
 /* ────────────────────────────────────────────────────────────────────────── *
  * Types
@@ -154,6 +164,8 @@ const TOOLS = [
     },
   },
   SEARCH_REPORT_TEXT_TOOL,
+  ...SECTOR_DB_TOOLS,
+  ...INVESTMENT_SCREENING_TOOLS,
   ...COMMON_TOOLS,
 ] as const;
 
@@ -302,6 +314,12 @@ async function dispatchTool(
       return searchReportText(a);
 
     default: {
+      const sector = await dispatchSectorTool(name, a);
+      if (sector !== undefined) return sector;
+
+      const investment = await dispatchInvestmentTool(name, a);
+      if (investment !== undefined) return investment;
+
       const common = dispatchCommonTool(name, a);
       if (common !== undefined) return common;
       throw new Error(`Unknown tool: ${name}`);
@@ -369,6 +387,10 @@ function buildSystemPrompt(user: SageChatInput["user"]): string {
     "  • list_cse_companies → discover or resolve companies",
     "  • create_group / update_group / delete_group → write actions",
     "  • search_report_text → semantic/vector search over company report text (About Us, strategy, risks, governance, sustainability, …). Use this if the user asks what a company's report says about something; ground the answer in the returned passages and cite the section.",
+    "  • list_sectors / list_companies_by_sector → discover which companies exist in the database by sector (for sector-wise questions).",
+    "  • screen_available_companies → screen all database companies for buy recommendations.",
+    SECTOR_QUERY_GUIDANCE,
+    BUY_RECOMMENDATION_GUIDANCE,
     "",
     "Handling any kind of question:",
     "  • You can also help with general questions — small talk (\"how are you\"), greetings, definitions, explaining hard words or technical concepts — answer those naturally and briefly.",

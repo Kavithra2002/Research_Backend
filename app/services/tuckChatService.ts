@@ -22,6 +22,8 @@ import {
 } from "./webSearchAgentTool";
 import { TUCK_SECTIONS, fetchCseData } from "./tuckService";
 import { RESPONSE_STYLE_GUIDE } from "./responseStyle";
+import { SECTOR_QUERY_GUIDANCE } from "./sectorAgentTools";
+import { BUY_RECOMMENDATION_GUIDANCE } from "./investmentAgentTools";
 
 /* ────────────────────────────────────────────────────────────────────────── *
  * Tuck — market + financial data-analysis agent (chat, like Robin)
@@ -161,6 +163,8 @@ function buildSystemPrompt(user: TuckChatInput["user"]): string {
     "  • For a company's reported FINANCIAL figures (revenue, profit, assets, equity, EPS, etc.) → use the database tools: list_companies → company_overview → search_line_items / get_statement.",
     "  • For NON-FINANCIAL questions (sector, briefing, employees, branches, group structure, subsidiaries, awards, sustainability, governance) → use list_non_financial_companies → non_financial_overview → get_non_financial_metric with the right keyword.",
     "  • For comparing the SAME line item across SEVERAL companies/years, use compare_companies in ONE call.",
+    SECTOR_QUERY_GUIDANCE,
+    BUY_RECOMMENDATION_GUIDANCE,
     "  • For EXTERNAL / current-events impact analysis (wars, geopolitical crises, policy changes, global trends) → FIRST gather the company's profile from the database, THEN call web_search with that context.",
     "  • For any calculation (percentages, growth, ratios, averages) use the calculate tool. For date/time use get_current_time. Never guess numbers or the date.",
     "",
