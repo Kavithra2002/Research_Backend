@@ -124,6 +124,8 @@ import fitz          # PyMuPDF
 import pandas as pd
 import pdfplumber
 
+import extraction_validation as val
+
 # ── OpenAI verbatim extraction (reused from step3_send_to_openai.py) ──────
 try:
     import step3_send_to_openai as _step3
@@ -213,6 +215,16 @@ Q5. EXAMPLE for an Income Statement row that has 7 cells total
                      "327,557", "267,912", "22.9%",
                      "1,275,279", "1,150,233", "10.9%"],
            "style": "data"}
+
+Q6. ENTITY + PERIOD COLUMNS (critical for Sri-Lankan banks and groups):
+    - Tables often show GROUP (or consolidated) beside BANK or COMPANY.
+      Capture BOTH side-by-side exactly as printed; do not merge them.
+    - When multiple period blocks appear on one line (e.g. "For the six months
+      ended" beside "For the quarter ended", or "nine months" beside "quarter"),
+      capture EVERY block with correct header_rows — do not drop the quarter block.
+    - Typical order: YTD / six-month / nine-month / full-year block first,
+      then the "quarter ended" (or "three months ended") block to its right.
+    - GROUP columns always appear to the LEFT of BANK / COMPANY columns.
 """.strip()
 
 
@@ -1176,6 +1188,189 @@ def _extract_with_openai(
     return {"status": "ok", "title": title, "data": parsed}
 
 
+MAX_QUARTERLY_VALIDATION_ROUNDS = 3
+
+
+def _stmt_rule_for_base(base_key: str) -> tuple[str, str, str] | None:
+    for pattern, key, title in STMT_RULES:
+        if key == base_key:
+            return pattern, key, title
+    return None
+
+
+def _stmt_rules_for_bases(base_keys: list[str]) -> list[tuple[re.Pattern[str], str, str]]:
+    out: list[tuple[re.Pattern[str], str, str]] = []
+    for bk in base_keys:
+        rule = _stmt_rule_for_base(bk)
+        if rule:
+            pat, key, title = rule
+            out.append((re.compile(pat, re.I | re.M), key, title))
+    return out
+
+
+def _rescan_quarterly_for_families(
+    pdf_path: Path,
+    captures_dir: Path,
+    missing_families: list[str],
+    existing_keys: set[str],
+    use_ocr: bool,
+) -> dict[str, dict]:
+    """
+    Second-pass PDF walk: find pages for quarterly families still missing.
+    Returns new statement records keyed by unique stmt_key.
+    """
+    base_keys = val.quarterly_keys_for_missing_families(missing_families)
+    if not base_keys:
+        return {}
+
+    want_patterns = _stmt_rules_for_bases(base_keys)
+
+    if not want_patterns:
+        return {}
+
+    found: dict[str, dict] = {}
+    used_keys: dict[str, int] = dict.fromkeys(existing_keys, 1)
+    extra_count = 0
+
+    fitz_doc = fitz.open(str(pdf_path))
+    try:
+        with pdfplumber.open(str(pdf_path)) as plumber_pdf:
+            notes_reached = False
+            for page_index, plumber_page in enumerate(plumber_pdf.pages):
+                page_num = page_index + 1
+                text = best_page_text(plumber_page, fitz_doc, page_index, use_ocr)
+
+                if not notes_reached and is_notes_page(text):
+                    notes_reached = True
+                    break
+                if is_skip_page(text):
+                    continue
+
+                matched: tuple[str, str] | None = None
+                for pat, base_key, title in want_patterns:
+                    if pat.search(text):
+                        matched = (base_key, title)
+                        break
+                if not matched:
+                    continue
+
+                base_key, title = matched
+                stmt_key = _unique_key(base_key, used_keys)
+
+                stmt_cap_dir = captures_dir / stmt_key
+                stmt_cap_dir.mkdir(parents=True, exist_ok=True)
+                try:
+                    fitz_page = fitz_doc[page_index]
+                    pix = fitz_page.get_pixmap(
+                        matrix=fitz.Matrix(2.0, 2.0),
+                        colorspace=fitz.csRGB,
+                        alpha=False,
+                    )
+                    png_path = stmt_cap_dir / f"page_{page_num:03d}.png"
+                    pix.save(str(png_path))
+                except Exception:
+                    pass
+
+                dfs = extract_page_tables(
+                    pdf_path=str(pdf_path),
+                    page_num=page_num,
+                    plumber_page=plumber_page,
+                    fitz_doc=fitz_doc,
+                    use_ocr=use_ocr,
+                )
+                if stmt_key in found:
+                    rec = found[stmt_key]
+                    for df in dfs:
+                        rec["raw_rows"].extend(_df_raw(df))
+                    rec["pages"].append(page_num)
+                elif dfs:
+                    record = build_statement_record(title, [page_num], dfs)
+                    if record["rows"] or record["raw_rows"]:
+                        found[stmt_key] = record
+                        log.info("   [rescan] p%d [%s] recovered", page_num, stmt_key)
+    finally:
+        fitz_doc.close()
+
+    return found
+
+
+def _validate_and_fill_quarterly_gaps(
+    *,
+    pdf_path: Path,
+    company_dir: Path,
+    captures_dir: Path,
+    api_results: dict[str, dict],
+    statements: dict[str, dict],
+    api_client,
+    model: str,
+    dry_run: bool,
+    use_ocr: bool,
+    company_slug: str | None = None,
+    max_rounds: int = MAX_QUARTERLY_VALIDATION_ROUNDS,
+) -> tuple[dict[str, dict], val.ValidationResult]:
+    """Validate quarterly extraction and retry failed / missing families."""
+    result_doc = {"statements": api_results}
+    log.info("   [validate] required quarterly families: %s",
+             ", ".join(val.QUARTERLY_REQUIRED_FAMILIES))
+
+    last_report = val.validate_quarterly_results(result_doc)
+
+    for round_num in range(1, max_rounds + 1):
+        if last_report.ok or dry_run or api_client is None:
+            break
+
+        gaps = last_report.all_gaps()
+        if not gaps:
+            break
+
+        log.info(
+            "   [validate] round %d/%d — gaps: %s",
+            round_num, max_rounds, ", ".join(gaps),
+        )
+
+        # Retry failed API extractions first.
+        for key in list(last_report.failed_extraction):
+            stmt_dir = captures_dir / key
+            if not stmt_dir.is_dir():
+                continue
+            img_paths = sorted(stmt_dir.glob("page_*.png"))
+            title = (api_results.get(key) or {}).get("title") or key
+            log.info("   [validate] re-extract %s (%d images)", key, len(img_paths))
+            api_results[key] = _extract_with_openai(
+                stmt_key=key, title=title,
+                img_paths=img_paths, client=api_client, model=model,
+            )
+
+        # Re-scan PDF for missing statement families.
+        if last_report.missing_manifest:
+            new_stmts = _rescan_quarterly_for_families(
+                pdf_path, captures_dir, last_report.missing_manifest,
+                set(api_results.keys()) | set(statements.keys()),
+                use_ocr,
+            )
+            for stmt_key, record in new_stmts.items():
+                statements[stmt_key] = record
+                title = record.get("title") or stmt_key
+                img_paths = sorted((captures_dir / stmt_key).glob("page_*.png"))
+                log.info(
+                    "   [validate] API extract rescanned %s (%d images)",
+                    stmt_key, len(img_paths),
+                )
+                api_results[stmt_key] = _extract_with_openai(
+                    stmt_key=stmt_key, title=title,
+                    img_paths=img_paths, client=api_client, model=model,
+                )
+
+        last_report = val.validate_quarterly_results({"statements": api_results})
+
+    meta_path = company_dir / "validation_report_quarterly.json"
+    meta_path.write_text(
+        json.dumps(last_report.to_dict(), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    return api_results, last_report
+
+
 def _slug(name: str) -> str:
     """Make a filesystem-safe slug from a company name."""
     s = re.sub(r"[^\w\s-]", "", name.lower())
@@ -1409,6 +1604,22 @@ def process_pdf(pdf_path: Path, output_dir: Path,
             img_paths=img_paths, client=api_client, model=model,
         )
 
+    # ── Validation + targeted re-extraction ─────────────────────────────
+    validation_report: val.ValidationResult | None = None
+    if use_api:
+        api_results, validation_report = _validate_and_fill_quarterly_gaps(
+            pdf_path=pdf_path,
+            company_dir=company_dir,
+            captures_dir=captures_dir,
+            api_results=api_results,
+            statements=statements,
+            api_client=api_client,
+            model=model,
+            dry_run=dry_run,
+            use_ocr=use_ocr,
+            company_slug=slug_override or slug,
+        )
+
     # ── Write per-company results JSON in the step3 verbatim shape ──────
     result = {
         "company"        : company,
@@ -1460,6 +1671,11 @@ def process_pdf(pdf_path: Path, output_dir: Path,
         "api_status"     : api_status,
         "statement_keys" : list(statements.keys()),
     }
+    if validation_report is not None:
+        summary["validation"] = validation_report.to_dict()
+        summary["validation_ok"] = validation_report.ok
+        if not validation_report.ok:
+            summary["gaps"] = validation_report.all_gaps()
     log.info("   ✓ %d statement(s) detected, %d via OpenAI → %s",
              len(statements), n_ok_api, results_path)
     return summary
@@ -1534,8 +1750,14 @@ def process_quarterly_for_company(
     )
 
     summary["company"]      = company_key
-    summary["status"]       = "ok"
     summary["results_json"] = str(results_path)
+
+    validation = summary.get("validation") or {}
+    if validation and not validation.get("ok", True):
+        summary["status"] = "missing_statements"
+        summary["gaps"] = summary.get("gaps") or validation.get("missing_manifest", [])
+    else:
+        summary["status"] = "ok"
     return summary
 
 

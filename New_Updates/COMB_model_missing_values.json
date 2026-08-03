@@ -1,0 +1,1390 @@
+{
+  "company": "Commercial_Bank_of_Ceylon_PLC",
+  "years_requested": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "output_file": "E:\\AMBEON\\script\\backend\\New_Updates\\COMB_model_2017_2025_generated.xlsx",
+  "cells_filled_from_database": 729,
+  "cells_still_missing": 288,
+  "annual_report_years_in_db": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "gaps": {
+    "2023_annual_income_statement": true
+  },
+  "missing_by_label": {
+    "Adjustments for:": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "BS check": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Balances with Central Banks": [
+      2017
+    ],
+    "CASH FLOW STATEMENT": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Cash / total assets": [
+      2017
+    ],
+    "Cash and cash equivalents as at January 01,": [
+      2017
+    ],
+    "Cash and cash equivalents as per Statement of Financial Position": [
+      2017
+    ],
+    "Cash flows from financing activities": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Cash flows from investing activities": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Contingent liabilities and commitments": [
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Current tax liabilities": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Deferred tax assets": [
+      2017
+    ],
+    "Deferred tax liabilities": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Depreciation and amortisation": [
+      2018
+    ],
+    "Derivative financial assets": [
+      2017
+    ],
+    "Derivative financial liabilities": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Diluted earnings per ordinary share (Rs.)": [
+      2018
+    ],
+    "Dividend paid to non-controlling interest": [
+      2018
+    ],
+    "Dividends received from investments in associate and subsidiaries": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2022,
+      2024,
+      2025
+    ],
+    "Diviend per share": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Due to banks": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Due to subsidiaries": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Earnings per share\nBasic earnings per ordinary share (Rs.)": [
+      2018
+    ],
+    "Fee and commission income": [
+      2018
+    ],
+    "Financial assets at amortised cost \u2013 debt and other financial instruments": [
+      2017
+    ],
+    "Financial assets at amortised cost \u2013 loans and advances to banks": [
+      2017,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Financial assets at amortised cost \u2013 loans and advances to other customers": [
+      2017
+    ],
+    "Financial assets measured at fair value through other comprehensive income": [
+      2017
+    ],
+    "Financial assets recognised through profit or loss \u2013 measured at fair value": [
+      2017
+    ],
+    "Financial liabilities at amortised cost \u2013 due to depositors": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2022,
+      2024
+    ],
+    "Financial liabilities at amortised cost \u2013 other borrowings": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Gross income": [
+      2018
+    ],
+    "Interest income": [
+      2018
+    ],
+    "Investment in associate": [
+      2017,
+      2025
+    ],
+    "Investment properties": [
+      2017,
+      2018,
+      2022
+    ],
+    "Less: Fee and commission expense": [
+      2018
+    ],
+    "Less: Impairment charges and other losses": [
+      2024,
+      2025
+    ],
+    "Less: Impairment charges on cash and cash equivalents": [
+      2017
+    ],
+    "Less: Income tax expense/(reversal)": [
+      2018
+    ],
+    "Less: Interest expense": [
+      2018
+    ],
+    "Less: Taxes on financial services": [
+      2018
+    ],
+    "Memorandum information": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Net assets value per ordinary share (Rs.)": [
+      2018,
+      2019,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Net fee and commission income": [
+      2018
+    ],
+    "Net gains/(losses) from derecognition of financial assets": [
+      2018
+    ],
+    "Net gains/(losses) from trading": [
+      2018
+    ],
+    "Net interest income": [
+      2018
+    ],
+    "Net operating income": [
+      2018
+    ],
+    "Net other operating income": [
+      2018
+    ],
+    "Non-controlling interest": [
+      2018
+    ],
+    "Number of customer service centres": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Number of employees": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Operating profit after taxes on financial services": [
+      2018
+    ],
+    "Operating profit before taxes on financial services": [
+      2018
+    ],
+    "Other assets": [
+      2017
+    ],
+    "Other items": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "Other liabilities": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Other operating expenses": [
+      2018
+    ],
+    "Other reserves": [
+      2018,
+      2019,
+      2021,
+      2022,
+      2024
+    ],
+    "Payment of lease liabilities/advance payment of right-of-use assets": [
+      2017,
+      2018,
+      2019
+    ],
+    "Personnel expenses": [
+      2018
+    ],
+    "Placements with banks": [
+      2017
+    ],
+    "Proceeds from issue of ordinary voting shares under employee share option plans": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2022,
+      2023
+    ],
+    "Proceeds from issue of subordinated liabilities": [
+      2019
+    ],
+    "Profit attributable to:\nEquity holders of the Bank": [
+      2018
+    ],
+    "Profit for the year": [
+      2018
+    ],
+    "Property, plant and equipment and right-of-use assets": [
+      2017
+    ],
+    "Redemption of subordinated liabilities": [
+      2018,
+      2019
+    ],
+    "Retained earnings": [
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Securities purchased under resale agreements": [
+      2017
+    ],
+    "Securities sold under repurchase agreements": [
+      2017,
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Share of (profit)/loss of associate, net of tax": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "Share of profit/(loss) of associate, net of tax": [
+      2018,
+      2020,
+      2021
+    ],
+    "Stated capital": [
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Statutory reserves": [
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Surcharge tax paid": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2023,
+      2024,
+      2025
+    ],
+    "Total assets": [
+      2017
+    ],
+    "Total equity": [
+      2018,
+      2019,
+      2021,
+      2022,
+      2024,
+      2025
+    ],
+    "Total equity attributable to equity holders of the Bank": [
+      2018
+    ],
+    "Total liabilities": [
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Total liabilities and equity": [
+      2018,
+      2019,
+      2021,
+      2024
+    ],
+    "Total operating expenses": [
+      2018,
+      2023
+    ],
+    "Total operating income": [
+      2018
+    ],
+    "Transfer of FV losses reclassification of debt from FVTOCI to AC": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "labels_never_found_in_any_year": [
+    "Adjustments for:",
+    "BS check",
+    "Balances with Central Banks",
+    "CASH FLOW STATEMENT",
+    "Cash / total assets",
+    "Cash and cash equivalents as at January 01,",
+    "Cash and cash equivalents as per Statement of Financial Position",
+    "Cash flows from financing activities",
+    "Cash flows from investing activities",
+    "Contingent liabilities and commitments",
+    "Current tax liabilities",
+    "Deferred tax assets",
+    "Deferred tax liabilities",
+    "Depreciation and amortisation",
+    "Derivative financial assets",
+    "Derivative financial liabilities",
+    "Diluted earnings per ordinary share (Rs.)",
+    "Dividend paid to non-controlling interest",
+    "Dividends received from investments in associate and subsidiaries",
+    "Diviend per share",
+    "Due to banks",
+    "Due to subsidiaries",
+    "Earnings per share\nBasic earnings per ordinary share (Rs.)",
+    "Fee and commission income",
+    "Financial assets at amortised cost \u2013 debt and other financial instruments",
+    "Financial assets at amortised cost \u2013 loans and advances to banks",
+    "Financial assets at amortised cost \u2013 loans and advances to other customers",
+    "Financial assets measured at fair value through other comprehensive income",
+    "Financial assets recognised through profit or loss \u2013 measured at fair value",
+    "Financial liabilities at amortised cost \u2013 due to depositors",
+    "Financial liabilities at amortised cost \u2013 other borrowings",
+    "Gross income",
+    "Interest income",
+    "Investment in associate",
+    "Investment properties",
+    "Less: Fee and commission expense",
+    "Less: Impairment charges and other losses",
+    "Less: Impairment charges on cash and cash equivalents",
+    "Less: Income tax expense/(reversal)",
+    "Less: Interest expense",
+    "Less: Taxes on financial services",
+    "Memorandum information",
+    "Net assets value per ordinary share (Rs.)",
+    "Net fee and commission income",
+    "Net gains/(losses) from derecognition of financial assets",
+    "Net gains/(losses) from trading",
+    "Net interest income",
+    "Net operating income",
+    "Net other operating income",
+    "Non-controlling interest",
+    "Number of customer service centres",
+    "Number of employees",
+    "Operating profit after taxes on financial services",
+    "Operating profit before taxes on financial services",
+    "Other assets",
+    "Other items",
+    "Other liabilities",
+    "Other operating expenses",
+    "Other reserves",
+    "Payment of lease liabilities/advance payment of right-of-use assets",
+    "Personnel expenses",
+    "Placements with banks",
+    "Proceeds from issue of ordinary voting shares under employee share option plans",
+    "Proceeds from issue of subordinated liabilities",
+    "Profit attributable to:\nEquity holders of the Bank",
+    "Profit for the year",
+    "Property, plant and equipment and right-of-use assets",
+    "Redemption of subordinated liabilities",
+    "Retained earnings",
+    "Securities purchased under resale agreements",
+    "Securities sold under repurchase agreements",
+    "Share of (profit)/loss of associate, net of tax",
+    "Share of profit/(loss) of associate, net of tax",
+    "Stated capital",
+    "Statutory reserves",
+    "Surcharge tax paid",
+    "Total assets",
+    "Total equity",
+    "Total equity attributable to equity holders of the Bank",
+    "Total liabilities",
+    "Total liabilities and equity",
+    "Total operating expenses",
+    "Total operating income",
+    "Transfer of FV losses reclassification of debt from FVTOCI to AC"
+  ],
+  "annual_coverage": [
+    {
+      "year": null,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 6,
+      "statements": [
+        "equity",
+        "investor_info"
+      ]
+    },
+    {
+      "year": 2016,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 13,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "investor_info",
+        "sofp"
+      ]
+    },
+    {
+      "year": 2017,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 12,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2017,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 5,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "sofp"
+      ]
+    },
+    {
+      "year": 2017,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 12,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2017,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 11,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2017,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 15,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "changes_in_equity_3",
+        "changes_in_equity_4",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2018,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 6,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "sofp"
+      ]
+    },
+    {
+      "year": 2018,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 11,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2018,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 13,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2018,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 14,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2018,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 9,
+      "statements": [
+        "cash_flow_statement",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "income_statement",
+        "income_statement_2",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2019,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 10,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2019,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2019,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 6,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "sofp"
+      ]
+    },
+    {
+      "year": 2019,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 14,
+      "statements": [
+        "cash_flow_statement",
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2019,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2020,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 15,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2",
+        "profit_loss_comprehensive_3"
+      ]
+    },
+    {
+      "year": 2020,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2",
+        "profit_loss_comprehensive_3"
+      ]
+    },
+    {
+      "year": 2020,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2020,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 3,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "sofp"
+      ]
+    },
+    {
+      "year": 2020,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 12,
+      "statements": [
+        "changes_in_equity",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2021,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "financial_position_4",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2021,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 11,
+      "statements": [
+        "changes_in_equity",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2021,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2021,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 10,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "sofp",
+        "ten_year_summary"
+      ]
+    },
+    {
+      "year": 2021,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2022,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2022,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 15,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "extra_table_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2022,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2022,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 12,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2022,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 8,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "sofp",
+        "ten_year_summary"
+      ]
+    },
+    {
+      "year": 2023,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "financial_position_4",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2023,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2023,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 5,
+      "statements": [
+        "cash_flows",
+        "sofp",
+        "ten_year_summary"
+      ]
+    },
+    {
+      "year": 2023,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 10,
+      "statements": [
+        "changes_in_equity",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2023,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2024,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 7,
+      "statements": [
+        "cash_flows",
+        "equity",
+        "income_statement",
+        "sofp"
+      ]
+    },
+    {
+      "year": 2024,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 12,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "financial_position_4",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2024,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2024,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2024,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position_2",
+        "financial_position_3",
+        "financial_position_4",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_4",
+        "income_statement_5",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2025,
+      "report_type": "annual",
+      "quarter": null,
+      "table_count": 9,
+      "statements": [
+        "cash_flows",
+        "income_statement",
+        "sofp",
+        "ten_year_summary"
+      ]
+    },
+    {
+      "year": 2025,
+      "report_type": "quarterly",
+      "quarter": "Q4",
+      "table_count": 15,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "income_statement_5",
+        "income_statement_6",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2025,
+      "report_type": "quarterly",
+      "quarter": "Q2",
+      "table_count": 15,
+      "statements": [
+        "changes_in_equity",
+        "changes_in_equity_2",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2025,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 12,
+      "statements": [
+        "changes_in_equity",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "financial_position_4",
+        "financial_position_5",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive"
+      ]
+    },
+    {
+      "year": 2025,
+      "report_type": "quarterly",
+      "quarter": "Q3",
+      "table_count": 14,
+      "statements": [
+        "changes_in_equity",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "income_statement_4",
+        "profit_loss_comprehensive",
+        "profit_loss_comprehensive_2"
+      ]
+    },
+    {
+      "year": 2026,
+      "report_type": "quarterly",
+      "quarter": "Q1",
+      "table_count": 13,
+      "statements": [
+        "changes_in_equity",
+        "extra_table_1",
+        "financial_position",
+        "financial_position_2",
+        "financial_position_3",
+        "income_statement",
+        "income_statement_2",
+        "income_statement_3",
+        "profit_loss_comprehensive"
+      ]
+    }
+  ]
+}

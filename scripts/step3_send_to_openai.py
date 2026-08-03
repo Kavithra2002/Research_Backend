@@ -350,7 +350,14 @@ PROMPTS = {
         "pages, output one entry in 'tables' for EACH note's sub-table you "
         "see, and put the note number + title in 'caption' (e.g. "
         "'Note 4 - Income'). Long prose can go into 'preamble' or "
-        "'footnotes' as needed."
+        "'footnotes' as needed.\n\n"
+        "NOTES HEADER EXCEPTION (overrides rule 7 for year/unit lines): "
+        "In COMB/bank note tables the amount-column header is usually ONE "
+        "printed cell containing the year and the unit on two lines "
+        "(e.g. '2020' above \"Rs. '000\" inside the same cell). "
+        "Keep that as ONE header cell using a literal \\n between the lines, "
+        "e.g. \"2020\\nRs. '000\". Do NOT put the year in one header_rows "
+        "entry and \"Rs. '000\" in a separate header_rows entry below it."
     ),
 }
 
@@ -394,15 +401,21 @@ def call_gpt4o(
 ) -> str:
     content = [_img_content(b) for b in images_b64]
     content.append({"type": "text", "text": prompt.strip()})
+    # GPT-5 family uses max_completion_tokens and often rejects temperature.
+    is_gpt5 = model.lower().startswith("gpt-5")
 
     for attempt in range(1, retries + 1):
         try:
-            resp = client.chat.completions.create(
-                model       = model,
-                messages    = [{"role": "user", "content": content}],
-                max_tokens  = max_tokens,
-                temperature = 0,
-            )
+            kwargs: dict = {
+                "model": model,
+                "messages": [{"role": "user", "content": content}],
+            }
+            if is_gpt5:
+                kwargs["max_completion_tokens"] = max_tokens
+            else:
+                kwargs["max_tokens"] = max_tokens
+                kwargs["temperature"] = 0
+            resp = client.chat.completions.create(**kwargs)
             return resp.choices[0].message.content or ""
         except Exception as e:
             print(f"      [warn] API error (attempt {attempt}/{retries}): {e}")
@@ -596,6 +609,73 @@ def build_results_html(company: str, results: dict) -> str:
 # Main runner
 # ─────────────────────────────────────────────────────────────────────────────
 
+def run_statements(
+    manifest_path: str | Path,
+    captures_dir: str | Path,
+    api_key: str | None,
+    keys: list[str],
+    model: str = "gpt-4o",
+    dry_run: bool = False,
+    out_dir: str | Path | None = None,
+    existing_results: dict[str, dict] | None = None,
+    write_outputs: bool = True,
+) -> dict[str, dict]:
+    """
+    Extract ONLY the given statement keys.  Merges into *existing_results*
+    when provided.  Returns the combined results dict.
+    """
+    manifest_path = Path(manifest_path).resolve()
+    captures_dir = Path(captures_dir).resolve()
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+    company = manifest.get("company", "company")
+    stmts = manifest.get("statements", {})
+
+    if out_dir is None:
+        out_dir = DEFAULT_OUTPUT_ROOT / company
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    client = None
+    if not dry_run:
+        if not api_key:
+            raise ValueError("API key required unless dry_run=True")
+        client = OpenAI(api_key=api_key)
+
+    results: dict[str, dict] = dict(existing_results or {})
+
+    for key in keys:
+        if key not in stmts:
+            print(f"  [{key}]  NOT IN MANIFEST — skipping")
+            continue
+
+        stmt_dir = captures_dir / key
+        if not stmt_dir.exists():
+            print(f"  [{key}]  No capture folder at {stmt_dir} — skipping")
+            continue
+
+        img_paths = sorted(stmt_dir.glob("page_*.png"))
+        if not img_paths:
+            print(f"  [{key}]  No PNG files in {stmt_dir} — skipping")
+            continue
+
+        print(f"  [{key}]  re-extracting {len(img_paths)} page image(s) …")
+        res = process_statement(key, img_paths, client, model, dry_run)
+        res["title"] = stmts[key].get("title", key)
+        results[key] = res
+
+    if write_outputs:
+        json_out = out_dir / f"{company}_results.json"
+        json_out.write_text(
+            json.dumps(results, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        html_out = out_dir / f"{company}_results.html"
+        html_out.write_text(build_results_html(company, results), encoding="utf-8")
+
+    return results
+
+
 def run(
     manifest_path:  str | Path,
     captures_dir:   str | Path,
@@ -604,7 +684,7 @@ def run(
     model:          str  = "gpt-4o",
     dry_run:        bool = False,
     out_dir:        str | Path | None = None,
-) -> None:
+) -> dict[str, dict]:
     manifest_path = Path(manifest_path).resolve()
     captures_dir  = Path(captures_dir).resolve()
     manifest      = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -686,6 +766,7 @@ def run(
     )
     print(f"  [save] Meta         -> {meta_out}")
     print(f"\n  Done. Open {html_out} to review extracted data.")
+    return results
 
 
 # ─────────────────────────────────────────────────────────────────────────────

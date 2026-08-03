@@ -151,6 +151,55 @@ def _quarter_from(*sources: Any) -> str | None:
     return None
 
 
+def _year_from_report_name(*sources: Any) -> int | None:
+    """Reporting year encoded in a report folder / period string.
+
+    Unlike ``_derive_year``, this ignores table header columns so comparative
+    years (e.g. 2022 beside 2023) cannot mislabel the report period.
+    """
+    for s in sources:
+        if not s:
+            continue
+        years = _years_in(s)
+        years = [y for y in years if 1990 <= y <= 2100]
+        if years:
+            return years[0]
+    return None
+
+
+def _reporting_year(
+    *,
+    report_type: str,
+    report_group: str | None,
+    period: str | None,
+    header_rows: list[list[str]] | None,
+    columns: list[str] | None,
+    preamble: str | None,
+    fallback: int | None,
+) -> int | None:
+    """Canonical reporting year for a stored table row."""
+    if report_type == "quarterly":
+        from_name = _year_from_report_name(report_group, period)
+        if from_name is not None:
+            return from_name
+        return fallback
+    # Annual: prefer the report folder's year (e.g. "Annual report 2025") so a
+    # statement whose printed header only shows a comparative column (e.g. an
+    # "Investor Information" table headed 2024 inside the 2025 report) cannot
+    # create a phantom year node. Fall back to header-derived year only when the
+    # folder name carries no year.
+    from_name = _year_from_report_name(report_group)
+    if from_name is not None:
+        return from_name
+    return _derive_year(
+        period=period,
+        header_rows=header_rows,
+        columns=columns,
+        preamble=preamble,
+        fallback=fallback,
+    )
+
+
 def _derive_year(
     *,
     period: str | None,
@@ -323,7 +372,9 @@ def iter_table_documents(
         for table_index, (header_rows, rows, caption) in enumerate(tables):
             if not rows and not header_rows:
                 continue
-            year = _derive_year(
+            year = _reporting_year(
+                report_type=report_type,
+                report_group=report_group,
                 period=period,
                 header_rows=header_rows,
                 columns=stmt.get("columns"),

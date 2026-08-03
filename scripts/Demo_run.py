@@ -36,6 +36,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
+import shutil
 import sys
 import tempfile
 import time
@@ -64,6 +66,67 @@ except Exception as _q_err:  # pragma: no cover
 SCRIPT_DIR      = Path(__file__).resolve().parent
 BACKEND_DIR     = SCRIPT_DIR.parent
 DEMO_DEFAULT     = BACKEND_DIR / "Demo_Data"
+DEMO_CAPTURES_OUT = BACKEND_DIR / "Demo_Data_captures"
+
+_YEAR_RE = re.compile(r"(19|20)\d{2}")
+
+
+def _year_from_text(*sources: Any) -> int | None:
+    """Most-recent 4-digit reporting year found in any of the given strings."""
+    years: list[int] = []
+    for s in sources:
+        if not s:
+            continue
+        years += [int(m.group(0)) for m in _YEAR_RE.finditer(str(s))]
+    years = [y for y in years if 1990 <= y <= 2100]
+    return max(years) if years else None
+
+
+def _persist_captures(
+    *,
+    company: str,
+    company_key: str,
+    report_type: str,
+    group: str,
+    src: Path,
+    work_dir: Path,
+) -> int:
+    """Copy rendered statement page images out of the throwaway work dir into
+    the persistent ``Demo_Data_captures`` tree so the Comparison page can show
+    this report's capture pages.
+
+    Layout written (matches the capture API):
+        Demo_Data_captures/<company>/<Annual|Quarterly>/<year>/<stmt>/page_*.png
+    """
+    period = "Quarterly" if report_type == "quarterly" else "Annual"
+    captures_name = (
+        "captures_quarterly" if report_type == "quarterly" else "captures"
+    )
+    src_caps = work_dir / company_key / captures_name
+    if not src_caps.is_dir():
+        return 0
+
+    year = _year_from_text(group, src.parent.name if src else None)
+    if year is None:
+        return 0
+
+    dest_root = DEMO_CAPTURES_OUT / company / period / str(year)
+    copied = 0
+    for stmt_dir in src_caps.iterdir():
+        if not stmt_dir.is_dir():
+            continue
+        pngs = sorted(stmt_dir.glob("*.png"))
+        if not pngs:
+            continue
+        dest_dir = dest_root / stmt_dir.name
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        for png in pngs:
+            try:
+                shutil.copy2(png, dest_dir / png.name)
+                copied += 1
+            except Exception:
+                pass
+    return copied
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -168,6 +231,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-attempts", type=int, default=3,
                     help="Max attempts per report before giving up "
                          "(default 3: 1 initial + 2 retries).")
+    ap.add_argument("--comb-extract", action="store_true",
+                    help="After financial_tables upload, populate comb_workbook_data "
+                         "for the DB page (Commercial Bank pilot).")
     ap.add_argument("--retry-delay", type=float, default=3.0,
                     help="Base seconds to wait between retries (default 3).")
     args = ap.parse_args(argv)
@@ -312,6 +378,37 @@ def main(argv: list[str] | None = None) -> int:
                   "error": company_err,
                   "stages": [{"kind": k, "status": s, "error": e}
                              for k, s, e in stages]})
+
+            if (
+                do_upload
+                and getattr(args, "comb_extract", False)
+                and company_key == "Commercial_Bank_of_Ceylon_PLC"
+                and any(s == "ok" for _, s, _ in stages)
+            ):
+                try:
+                    from extract_comb_data import extract_comb_pilot_2022
+
+                    emit({"type": "comb-extract-start", "companyKey": company_key})
+                    db_ref = uploader.db if uploader is not None else None
+                    if db_ref is not None:
+                        comb_result = extract_comb_pilot_2022(db_ref, company_key)
+                        emit({"type": "comb-extract-done", **comb_result})
+                        emit_log(
+                            f"COMB DB-page data: {comb_result.get('cells_filled', 0)} "
+                            f"cells filled, {comb_result.get('cells_missing', 0)} missing.",
+                            level="info",
+                        )
+                except Exception as ex:
+                    emit({"type": "comb-extract-done", "ok": False, "error": str(ex)})
+                    emit_log(f"COMB extract failed: {ex}", level="warning")
+
+            if company_status != "ok" and not getattr(args, "comb_extract", False):
+                emit_log(
+                    f"Stopping batch — {company} did not pass validation. "
+                    "Fix gaps and re-run before processing the next company.",
+                    level="error",
+                )
+                break
     finally:
         if uploader is not None:
             uploader.close()
@@ -336,7 +433,7 @@ def _resolve_src(source_root: Path, entry: dict[str, str]) -> Path:
 # Extraction statuses that are worth retrying (transient / detection hiccups).
 _RETRYABLE_STATUSES = {
     "crashed", "step1_failed", "step2_failed", "step3_failed",
-    "no_statements_found",
+    "no_statements_found", "missing_statements",
 }
 
 
@@ -372,10 +469,29 @@ def _attempt_one(
                     company=company_key, pdf_path=src, testing_dir=work_dir,
                     api_key=api_key, option=args.option, model=args.model,
                     dry_run=bool(args.dry_run), dpi=args.dpi, force=True,
+                    comb_mode=bool(getattr(args, "comb_extract", False)),
                 )
                 results = work_dir / company_key / f"{company_key}_results.json"
             status = res.get("status", "ok") if isinstance(res, dict) else "ok"
             err = res.get("error") if isinstance(res, dict) else None
+            validation = (
+                res.get("validation") if isinstance(res, dict) else None
+            )
+            gaps = res.get("gaps") if isinstance(res, dict) else None
+            if status == "missing_statements":
+                gap_list = gaps or (
+                    (validation or {}).get("missing_manifest", [])
+                    + (validation or {}).get("failed_extraction", [])
+                )
+                err = (
+                    f"missing statements: {', '.join(gap_list)}"
+                    if gap_list else "incomplete statement extraction"
+                )
+                emit_log(f"Validation gaps for {label}: {err}", level="warning")
+                if validation:
+                    emit({"type": "validation", "company": company,
+                          "companyKey": company_key, "kind": label,
+                          "group": group, "report": validation})
         except Exception as ex:
             traceback.print_exc(file=sys.stderr)
             status, err = "crashed", str(ex)
@@ -383,6 +499,30 @@ def _attempt_one(
         if status not in ("ok", "skipped_existing"):
             return {"status": status, "error": err,
                     "retryable": status in _RETRYABLE_STATUSES}
+        if status == "missing_statements":
+            return {
+                "status": "missing_statements",
+                "error": err,
+                "retryable": True,
+            }
+
+        # Persist the rendered statement page images before the temp work dir is
+        # deleted so the Comparison page can show this report's captures.
+        if not args.dry_run:
+            try:
+                n_caps = _persist_captures(
+                    company=company, company_key=company_key,
+                    report_type=report_type, group=group, src=src,
+                    work_dir=work_dir,
+                )
+                if n_caps:
+                    emit_log(f"Saved {n_caps} capture image(s) for {label}.")
+            except Exception as ex:
+                emit_log(
+                    f"Capture persist failed for {label}: {ex}",
+                    level="warning",
+                )
+
         if args.dry_run or not do_upload:
             return {"status": "ok", "error": None, "retryable": False}
 

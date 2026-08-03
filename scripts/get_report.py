@@ -60,14 +60,41 @@ def _json_post(url: str, body: str, referer: str, timeout: int = 120) -> Any:
         return json.loads(resp.read().decode("utf-8"))
 
 
-def fetch_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
-    """All listed equities with `name` and `symbol` (e.g. SAMP.N0000)."""
+def _fetch_live_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
+    """Live CSE tradeSummary rows (empty outside market hours)."""
     url = f"{CSE_API}/tradeSummary"
     j = _json_post(url, "", referer=f"{CSE_ORIGIN}/", timeout=timeout)
     rows = j.get("reqTradeSummery") or j.get("reqTradeSummary") or []
     if not isinstance(rows, list):
         return []
     return [r for r in rows if isinstance(r, dict) and r.get("symbol") and r.get("name")]
+
+
+def fetch_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
+    """All listed equities with `name` and `symbol` (e.g. SAMP.N0000).
+
+  Uses live CSE tradeSummary when available; otherwise falls back to the
+  MongoDB cache in ``cse_listed_companies`` (synced on last live fetch).
+    """
+    rows = _fetch_live_trade_summary(timeout=timeout)
+    if rows:
+        try:
+            from cse_company_cache import save_trade_summary_to_db
+
+            save_trade_summary_to_db(rows)
+        except Exception:
+            pass
+        return rows
+
+    try:
+        from cse_company_cache import load_trade_summary_from_db
+
+        cached = load_trade_summary_from_db()
+        if cached:
+            return cached
+    except Exception:
+        pass
+    return []
 
 
 def fetch_financials(symbol: str, timeout: int = 120) -> dict[str, Any]:

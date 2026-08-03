@@ -71,6 +71,7 @@ except Exception:
 import step1_find_pages as step1
 import step2_capture_pages as step2
 import step3_send_to_openai as step3
+import extraction_validation as val
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -82,6 +83,8 @@ BACKEND_DIR  = SCRIPT_DIR.parent
 REPORTS_DIR  = BACKEND_DIR / "reports"
 TESTING_DIR  = BACKEND_DIR / "testing"
 BACKEND_ENV  = BACKEND_DIR / ".env"
+
+MAX_VALIDATION_ROUNDS = 3
 
 PDF_EXT = (".pdf", ".PDF")
 
@@ -203,6 +206,138 @@ def _results_already_done(out_dir: Path, company: str) -> bool:
     return True
 
 
+def _load_results_json(company_out: Path, company: str) -> dict:
+    path = company_out / f"{company}_results.json"
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_validation_meta(company_out: Path, report: val.ValidationResult) -> None:
+    meta_path = company_out / "validation_report.json"
+    meta_path.write_text(
+        json.dumps(report.to_dict(), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+
+def _run_validation_and_fill_gaps(
+    *,
+    company: str,
+    pdf_path: Path,
+    company_out: Path,
+    manifest_path: Path,
+    captures_dir: Path,
+    api_key: str | None,
+    option: str,
+    model: str,
+    dry_run: bool,
+    dpi: int,
+    company_slug: str | None = None,
+    max_rounds: int = MAX_VALIDATION_ROUNDS,
+    comb_mode: bool = False,
+) -> val.ValidationResult:
+    """
+    After the initial step1→3 pass, validate completeness and re-scan /
+    re-capture / re-extract any missing or failed statements.
+    """
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    results = _load_results_json(company_out, company)
+
+    print("  [validate] required annual statements:")
+    for item in val.annual_required_checklist():
+        print(f"    · {val.ANNUAL_DISPLAY_NAMES.get(item, item)}")
+
+    last_report = val.validate_annual_results(
+        results, manifest, option=option, comb_mode=comb_mode
+    )
+
+    for round_num in range(1, max_rounds + 1):
+        gaps = last_report.all_gaps()
+        if not gaps or dry_run:
+            break
+
+        print(
+            f"\n  → VALIDATION round {round_num}/{max_rounds} — "
+            f"{len(gaps)} gap(s): {', '.join(gaps)}"
+        )
+
+        missing_scan = list(last_report.missing_manifest)
+        failed_keys = list(last_report.failed_extraction)
+        keys_to_fix = val.annual_keys_to_fix(last_report)
+        if not keys_to_fix:
+            break
+
+        # Re-scan PDF for statements step-1 missed.
+        if missing_scan:
+            try:
+                import pdfplumber
+                with pdfplumber.open(str(pdf_path)) as pdf:
+                    updated = step1.rescan_missing_keys(
+                        pdf, missing_scan, manifest.get("statements") or {},
+                    )
+                manifest = step1.merge_manifest_statements(manifest, updated)
+                manifest_path.write_text(
+                    json.dumps(manifest, indent=2, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+                newly_found = [k for k in missing_scan if k in updated]
+                if newly_found:
+                    print(f"  [validate] re-scan found: {', '.join(newly_found)}")
+            except Exception as e:
+                print(f"  [validate] re-scan failed: {e}")
+
+        # Capture images for any keys we now have in the manifest.
+        capture_keys = [
+            k for k in keys_to_fix if k in (manifest.get("statements") or {})
+        ]
+        if capture_keys:
+            try:
+                step2.run(
+                    manifest_path=manifest_path,
+                    out_dir=captures_dir,
+                    dpi=dpi,
+                    only_keys=capture_keys,
+                )
+            except Exception as e:
+                print(f"  [validate] re-capture failed: {e}")
+
+        # Re-extract failed / newly captured statements via OpenAI.
+        if not dry_run and api_key and capture_keys:
+            try:
+                results = step3.run_statements(
+                    manifest_path=manifest_path,
+                    captures_dir=captures_dir,
+                    api_key=api_key,
+                    keys=capture_keys,
+                    model=model,
+                    dry_run=False,
+                    out_dir=company_out,
+                    existing_results=results,
+                )
+            except Exception as e:
+                print(f"  [validate] re-extract failed: {e}")
+
+        last_report = val.validate_annual_results(
+        results, manifest, option=option, comb_mode=comb_mode
+    )
+
+    _save_validation_meta(company_out, last_report)
+    if last_report.ok:
+        print("  [validate] all expected statements captured")
+    else:
+        remaining = last_report.all_gaps()
+        print(
+            f"  [validate] still missing after {max_rounds} round(s): "
+            f"{', '.join(remaining)}"
+        )
+    return last_report
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Per-company pipeline
 # ─────────────────────────────────────────────────────────────────────────────
@@ -217,6 +352,7 @@ def process_company(
     dry_run:     bool,
     dpi:         int,
     force:       bool,
+    comb_mode:   bool = False,
 ) -> dict:
     """Run STEP-1 → STEP-2 → STEP-3 for a single company.
 
@@ -297,7 +433,39 @@ def process_company(
         traceback.print_exc()
         return {"company": company, "status": "step3_failed", "error": str(e)}
 
-    return {"company": company, "status": "ok"}
+    if dry_run:
+        return {"company": company, "status": "ok"}
+
+    validation = _run_validation_and_fill_gaps(
+        company=company,
+        pdf_path=pdf_path,
+        company_out=company_out,
+        manifest_path=manifest_path,
+        captures_dir=captures_dir,
+        api_key=api_key,
+        option=option,
+        model=model,
+        dry_run=dry_run,
+        dpi=dpi,
+        company_slug=company,
+        comb_mode=comb_mode,
+    )
+
+    if not validation.ok and not comb_mode:
+        return {
+            "company": company,
+            "status": "missing_statements",
+            "validation": validation.to_dict(),
+            "gaps": validation.all_gaps(),
+        }
+
+    status = "ok" if validation.ok or comb_mode else "missing_statements"
+    return {
+        "company": company,
+        "status": status,
+        "validation": validation.to_dict(),
+        "gaps": validation.all_gaps() if not validation.ok else [],
+    }
 
 
 # ─────────────────────────────────────────────────────────────────────────────

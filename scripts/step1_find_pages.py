@@ -829,6 +829,81 @@ def find_all_statement_pages(pdf) -> tuple[dict[str, dict], int]:
     return result, off
 
 
+def rescan_missing_keys(
+    pdf,
+    keys_to_find: list[str],
+    existing: dict[str, dict] | None = None,
+) -> dict[str, dict]:
+    """
+    Heading-scan fallback for specific statement keys not yet in *existing*.
+    Extends newly found keys with continuation pages (Pass 3).
+    """
+    global _RUNNING_HEADERS
+
+    if not keys_to_find:
+        return dict(existing or {})
+
+    _RUNNING_HEADERS = compute_running_headers(pdf)
+    n = len(pdf.pages)
+    off = discover_offset(pdf, scan_toc(pdf))
+    result = dict(existing or {})
+    want = {k for k in keys_to_find if k not in result and k in _KEY_TITLE}
+
+    if not want:
+        return result
+
+    for i in range(n):
+        if not want:
+            break
+        txt = _safe_text(pdf.pages[i])
+        if not txt:
+            continue
+        for key in list(want):
+            if not is_statement_first_page(txt, key):
+                continue
+            title = _KEY_TITLE[key]
+            result[key] = {
+                "title":              title,
+                "printed_pages":      [i + 1 - off],
+                "pdf_indices_0based": [i],
+                "pdf_pages_1based":   [i + 1],
+                "page_count":         1,
+                "confirmed":          False,
+            }
+            want.discard(key)
+            break
+
+    for key in keys_to_find:
+        if key not in result or key not in _MAX_CONT:
+            continue
+        info = result[key]
+        start_idx = info["pdf_indices_0based"][0]
+        max_cont = _MAX_CONT.get(key, 4)
+        indices = [start_idx]
+        for nxt in range(start_idx + 1, min(n, start_idx + 1 + max_cont)):
+            nxt_txt = _safe_text(pdf.pages[nxt])
+            if not _continuation_ok(nxt_txt, key):
+                break
+            indices.append(nxt)
+        info["pdf_indices_0based"] = indices
+        info["pdf_pages_1based"] = [i + 1 for i in indices]
+        info["page_count"] = len(indices)
+
+    return result
+
+
+def merge_manifest_statements(
+    manifest: dict,
+    new_statements: dict[str, dict],
+) -> dict:
+    """Merge newly discovered statement page maps into a manifest dict."""
+    stmts = dict(manifest.get("statements") or {})
+    stmts.update(new_statements)
+    manifest = dict(manifest)
+    manifest["statements"] = stmts
+    return manifest
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # CLI runner
 # ─────────────────────────────────────────────────────────────────────────────

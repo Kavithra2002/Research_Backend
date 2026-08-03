@@ -1,0 +1,90 @@
+{
+  "template": "E:\\AMBEON\\script\\backend\\New_Updates\\COMB model - updated.xlsx",
+  "skip_labels": [
+    "Assets",
+    "BALANCE SHEET",
+    "Earnings per share",
+    "Equity",
+    "INCOME STATEMENT",
+    "IS check",
+    "Less: Expenses",
+    "Liabilities",
+    "OCI",
+    "Profit attributable to:"
+  ],
+  "sheets": {
+    "fs": {
+      "xlsx_count": 109,
+      "catalog_count": 116,
+      "missing_in_catalog": [],
+      "extra_in_catalog": [
+        "Basic earnings per ordinary share (Rs.)",
+        "Debt securities issued",
+        "Due to other customers",
+        "Equity holders of the Bank",
+        "Non-controlling interests",
+        "Reserves",
+        "Total equity attributable to equity holders of the bank"
+      ],
+      "ok": true
+    },
+    "drivers": {
+      "xlsx_count": 255,
+      "catalog_count": 255,
+      "missing_in_catalog": [],
+      "extra_in_catalog": [],
+      "ok": true
+    },
+    "quarterly": {
+      "xlsx_count": 28,
+      "catalog_count": 28,
+      "missing_in_catalog": [],
+      "extra_in_catalog": [],
+      "ok": true
+    },
+    "ratios": {
+      "xlsx_count": 17,
+      "note": "No extraction_keywords scope for Ratios sheet",
+      "labels": [
+        "Avg. yield on interest earning assets",
+        "Avg. cost on interest bearing funds",
+        "Net interest margin",
+        "Interest rate spread",
+        "Cost to income (operating)",
+        "Cost to income (with impairments)",
+        "Impairments/ Gross loans",
+        "Net margin",
+        "ROE",
+        "ROA",
+        "Equity/ total assets",
+        "Deposits / total assets",
+        "Cash / total assets",
+        "Gross income per employee",
+        "Dividend payout",
+        "Gross income per service centre",
+        "Net interest spread"
+      ]
+    },
+    "cover": {
+      "note": "Cover sheet has entity names only; no keyword scope"
+    }
+  },
+  "mongo_less_expenses": 1,
+  "mongo": {
+    "fs": {
+      "mongo_builtin_count": 116,
+      "missing_in_mongo": [],
+      "ok": true
+    },
+    "drivers": {
+      "mongo_builtin_count": 255,
+      "missing_in_mongo": [],
+      "ok": true
+    },
+    "quarterly": {
+      "mongo_builtin_count": 28,
+      "missing_in_mongo": [],
+      "ok": true
+    }
+  }
+}

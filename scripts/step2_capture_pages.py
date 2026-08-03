@@ -463,7 +463,8 @@ def build_preview(manifest, img_map, out_path: Path) -> None:
 
 def run(manifest_path: str | Path,
         out_dir:       str | Path | None = None,
-        dpi:           int  = 150) -> dict:
+        dpi:           int  = 150,
+        only_keys:     list[str] | None = None) -> dict:
 
     manifest_path = Path(manifest_path).resolve()
     manifest      = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -516,6 +517,9 @@ def run(manifest_path: str | Path,
     skipped_notes      = 0
 
     ordered_keys  = [k for k in STMT_ORDER if k in stmts]
+    if only_keys:
+        only_set = set(only_keys)
+        ordered_keys = [k for k in ordered_keys if k in only_set]
     skipped_notes = sum(stmts[k].get("page_count", 0)
                         for k in stmts if k not in ALLOWED_KEYS)
 

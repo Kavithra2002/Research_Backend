@@ -1,0 +1,151 @@
+{
+  "synced_at": "2026-07-20T07:44:20.942Z",
+  "entries": [
+    {
+      "canonical_label": "Diviend per share",
+      "aliases": [
+        "Dividend per share (DPS)(Rs.)"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Net interest income",
+      "aliases": [
+        "test keyword"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Payment of lease liabilities/advance payment of right-of-use assets",
+      "aliases": [
+        "Repayment of principal portion of lease liabilities"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Earnings per share",
+      "aliases": [
+        "Basic earnings per ordinary share"
+      ],
+      "scope": "quarterly",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Less: Fee and commission expense",
+      "aliases": [
+        "Less: Fees and commission expense"
+      ],
+      "scope": "quarterly",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Less: Taxes on financial services",
+      "aliases": [
+        "Less: Value Added Tax on financial services"
+      ],
+      "scope": "quarterly",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Operating profit before Taxes on financial services",
+      "aliases": [
+        "Operating profit before Value Added Tax on financial services"
+      ],
+      "scope": "quarterly",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Dividends received from investments in associate and subsidiaries",
+      "aliases": [
+        "Dividends received from investments in subsidiaries and associates"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Other items",
+      "aliases": [
+        "Proceeds due to change in ownership"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Proceeds from issue of ordinary voting shares under employee share option plans",
+      "aliases": [
+        "Net proceeds from issue of ordinary voting shares"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Share of (profit)/loss of associate, net of tax",
+      "aliases": [
+        "Add: Share of profits/(losses) of associate companies"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Transfer of FV losses reclassification of debt from FVTOCI to AC",
+      "aliases": [
+        "Transfer of fair value losses o/a reclassification of debt instruments from fair value through other comprehensive income to amortised cost, net of tax"
+      ],
+      "scope": "fs",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Add/(less): Share of profit/(loss) of associate, net of tax",
+      "aliases": [
+        "Share of profit/(loss) of associate, net of tax",
+        "Add: Share of profits/(losses) of associates, net of tax",
+        "Share of profits/(losses) of associate, net of tax"
+      ],
+      "scope": "quarterly",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "Operating profit after Taxes on financial services",
+      "aliases": [
+        "Operating profit after Value Added Tax on financial services"
+      ],
+      "scope": "quarterly",
+      "is_new_keyword": false,
+      "line_order": null
+    },
+    {
+      "canonical_label": "newly added",
+      "aliases": [
+        "eeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      ],
+      "scope": "fs",
+      "is_new_keyword": true,
+      "line_order": 95
+    },
+    {
+      "canonical_label": "test word 123",
+      "aliases": [
+        "test word 123"
+      ],
+      "scope": "fs",
+      "is_new_keyword": true,
+      "line_order": 91
+    }
+  ]
+}

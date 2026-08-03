@@ -1,0 +1,4215 @@
+{
+  "template": "E:\\AMBEON\\script\\backend\\New_Updates\\COMB model - updated.xlsx",
+  "fs": {
+    "rows": [
+      {
+        "label": "INCOME STATEMENT",
+        "row": 5,
+        "kind": "section"
+      },
+      {
+        "label": "Gross income",
+        "row": 6,
+        "kind": "data"
+      },
+      {
+        "label": "Interest income",
+        "row": 7,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Interest expense",
+        "row": 8,
+        "kind": "data"
+      },
+      {
+        "label": "Net interest income",
+        "row": 9,
+        "kind": "data"
+      },
+      {
+        "label": "Fee and commission income",
+        "row": 10,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Fee and commission expense",
+        "row": 11,
+        "kind": "data"
+      },
+      {
+        "label": "Net fee and commission income",
+        "row": 12,
+        "kind": "data"
+      },
+      {
+        "label": "Net gains/(losses) from trading",
+        "row": 13,
+        "kind": "data"
+      },
+      {
+        "label": "Net gains/(losses) from derecognition of financial assets",
+        "row": 14,
+        "kind": "data"
+      },
+      {
+        "label": "Net other operating income",
+        "row": 15,
+        "kind": "data"
+      },
+      {
+        "label": "Total operating income",
+        "row": 16,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Impairment charges and other losses",
+        "row": 17,
+        "kind": "data"
+      },
+      {
+        "label": "Net operating income",
+        "row": 18,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Expenses",
+        "row": 19,
+        "kind": "subsection"
+      },
+      {
+        "label": "Personnel expenses",
+        "row": 20,
+        "kind": "data"
+      },
+      {
+        "label": "Depreciation and amortisation",
+        "row": 21,
+        "kind": "data"
+      },
+      {
+        "label": "Other operating expenses",
+        "row": 22,
+        "kind": "data"
+      },
+      {
+        "label": "Total operating expenses",
+        "row": 23,
+        "kind": "data"
+      },
+      {
+        "label": "Operating profit before taxes on financial services",
+        "row": 24,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Taxes on financial services",
+        "row": 25,
+        "kind": "data"
+      },
+      {
+        "label": "Operating profit after taxes on financial services",
+        "row": 26,
+        "kind": "data"
+      },
+      {
+        "label": "Share of profit/(loss) of associate, net of tax",
+        "row": 27,
+        "kind": "data"
+      },
+      {
+        "label": "Profit before tax",
+        "row": 28,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Income tax expense/(reversal)",
+        "row": 29,
+        "kind": "data"
+      },
+      {
+        "label": "Profit for the year",
+        "row": 30,
+        "kind": "data"
+      },
+      {
+        "label": "Profit attributable to:\nEquity holders of the Bank",
+        "row": 31,
+        "kind": "data"
+      },
+      {
+        "label": "Non-controlling interest",
+        "row": 32,
+        "kind": "data"
+      },
+      {
+        "label": "Profit for the year",
+        "row": 33,
+        "kind": "data"
+      },
+      {
+        "label": "Earnings per share\nBasic earnings per ordinary share (Rs.)",
+        "row": 34,
+        "kind": "data"
+      },
+      {
+        "label": "Diluted earnings per ordinary share (Rs.)",
+        "row": 35,
+        "kind": "data"
+      },
+      {
+        "label": "Diviend per share",
+        "row": 36,
+        "kind": "data"
+      },
+      {
+        "label": "OCI",
+        "row": 38,
+        "kind": "section"
+      },
+      {
+        "label": "Transfer of FV losses reclassification of debt from FVTOCI to AC",
+        "row": 39,
+        "kind": "data"
+      },
+      {
+        "label": "BALANCE SHEET",
+        "row": 43,
+        "kind": "section"
+      },
+      {
+        "label": "Assets",
+        "row": 44,
+        "kind": "subsection"
+      },
+      {
+        "label": "Cash and cash equivalents",
+        "row": 45,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Central Banks",
+        "row": 46,
+        "kind": "data"
+      },
+      {
+        "label": "Placements with banks",
+        "row": 47,
+        "kind": "data"
+      },
+      {
+        "label": "Securities purchased under resale agreements",
+        "row": 48,
+        "kind": "data"
+      },
+      {
+        "label": "Derivative financial assets",
+        "row": 49,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+        "row": 50,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 loans and advances to banks",
+        "row": 51,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 loans and advances to other customers",
+        "row": 52,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+        "row": 53,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets measured at fair value through other comprehensive income",
+        "row": 54,
+        "kind": "data"
+      },
+      {
+        "label": "Investments in subsidiaries",
+        "row": 55,
+        "kind": "data"
+      },
+      {
+        "label": "Investment in associate",
+        "row": 56,
+        "kind": "data"
+      },
+      {
+        "label": "Property, plant and equipment and right-of-use assets",
+        "row": 57,
+        "kind": "data"
+      },
+      {
+        "label": "Investment properties",
+        "row": 58,
+        "kind": "data"
+      },
+      {
+        "label": "Intangible assets",
+        "row": 59,
+        "kind": "data"
+      },
+      {
+        "label": "Deferred tax assets",
+        "row": 60,
+        "kind": "data"
+      },
+      {
+        "label": "Other assets",
+        "row": 61,
+        "kind": "data"
+      },
+      {
+        "label": "Total assets",
+        "row": 62,
+        "kind": "data"
+      },
+      {
+        "label": "Liabilities",
+        "row": 63,
+        "kind": "subsection"
+      },
+      {
+        "label": "Due to banks",
+        "row": 64,
+        "kind": "data"
+      },
+      {
+        "label": "Derivative financial liabilities",
+        "row": 65,
+        "kind": "data"
+      },
+      {
+        "label": "Securities sold under repurchase agreements",
+        "row": 66,
+        "kind": "data"
+      },
+      {
+        "label": "Financial liabilities at amortised cost \u2013 due to depositors",
+        "row": 67,
+        "kind": "data"
+      },
+      {
+        "label": "Financial liabilities at amortised cost \u2013 other borrowings",
+        "row": 68,
+        "kind": "data"
+      },
+      {
+        "label": "Current tax liabilities",
+        "row": 69,
+        "kind": "data"
+      },
+      {
+        "label": "Deferred tax liabilities",
+        "row": 70,
+        "kind": "data"
+      },
+      {
+        "label": "Other liabilities",
+        "row": 71,
+        "kind": "data"
+      },
+      {
+        "label": "Due to subsidiaries",
+        "row": 72,
+        "kind": "data"
+      },
+      {
+        "label": "Subordinated liabilities",
+        "row": 73,
+        "kind": "data"
+      },
+      {
+        "label": "Total liabilities",
+        "row": 74,
+        "kind": "data"
+      },
+      {
+        "label": "Equity",
+        "row": 75,
+        "kind": "subsection"
+      },
+      {
+        "label": "Stated capital",
+        "row": 76,
+        "kind": "data"
+      },
+      {
+        "label": "Statutory reserves",
+        "row": 77,
+        "kind": "data"
+      },
+      {
+        "label": "Retained earnings",
+        "row": 78,
+        "kind": "data"
+      },
+      {
+        "label": "Other reserves",
+        "row": 79,
+        "kind": "data"
+      },
+      {
+        "label": "Total equity attributable to equity holders of the Bank",
+        "row": 80,
+        "kind": "data"
+      },
+      {
+        "label": "Non-controlling interest",
+        "row": 81,
+        "kind": "data"
+      },
+      {
+        "label": "Total equity",
+        "row": 82,
+        "kind": "data"
+      },
+      {
+        "label": "Total liabilities and equity",
+        "row": 83,
+        "kind": "data"
+      },
+      {
+        "label": "Contingent liabilities and commitments",
+        "row": 84,
+        "kind": "data"
+      },
+      {
+        "label": "Net assets value per ordinary share (Rs.)",
+        "row": 85,
+        "kind": "data"
+      },
+      {
+        "label": "Memorandum information",
+        "row": 86,
+        "kind": "subsection"
+      },
+      {
+        "label": "Number of employees",
+        "row": 87,
+        "kind": "data"
+      },
+      {
+        "label": "Number of customer service centres",
+        "row": 88,
+        "kind": "data"
+      },
+      {
+        "label": "BS check",
+        "row": 90,
+        "kind": "check"
+      },
+      {
+        "label": "Cash / total assets",
+        "row": 92,
+        "kind": "data"
+      },
+      {
+        "label": "CASH FLOW STATEMENT",
+        "row": 94,
+        "kind": "section"
+      },
+      {
+        "label": "Cash flows from operating activities Profit before income tax",
+        "row": 96,
+        "kind": "data"
+      },
+      {
+        "label": "Adjustments for:",
+        "row": 97,
+        "kind": "subsection"
+      },
+      {
+        "label": "Non-cash items included in profit before tax",
+        "row": 98,
+        "kind": "data"
+      },
+      {
+        "label": "Change in operating assets",
+        "row": 99,
+        "kind": "data"
+      },
+      {
+        "label": "Change in operating liabilities",
+        "row": 100,
+        "kind": "data"
+      },
+      {
+        "label": "(Gains)/losses on sale of property, plant and equipment",
+        "row": 101,
+        "kind": "data"
+      },
+      {
+        "label": "Share of (profit)/loss of associate, net of tax",
+        "row": 102,
+        "kind": "data"
+      },
+      {
+        "label": "Dividends received from investments in associate and subsidiaries",
+        "row": 103,
+        "kind": "data"
+      },
+      {
+        "label": "Interest expense on subordinated liabilities",
+        "row": 104,
+        "kind": "data"
+      },
+      {
+        "label": "Net unrealised gains/(losses) arising from translating the Financial Statements of foreign operations",
+        "row": 105,
+        "kind": "data"
+      },
+      {
+        "label": "Benefits paid on defined benefit plans",
+        "row": 106,
+        "kind": "data"
+      },
+      {
+        "label": "Income tax paid",
+        "row": 107,
+        "kind": "data"
+      },
+      {
+        "label": "Surcharge tax paid",
+        "row": 108,
+        "kind": "data"
+      },
+      {
+        "label": "Net cash from/(used in) operating activities",
+        "row": 109,
+        "kind": "data"
+      },
+      {
+        "label": "Cash flows from investing activities",
+        "row": 110,
+        "kind": "subsection"
+      },
+      {
+        "label": "Purchase of property, plant and equipment",
+        "row": 111,
+        "kind": "data"
+      },
+      {
+        "label": "Proceeds from sale of property, plant and equipment",
+        "row": 112,
+        "kind": "data"
+      },
+      {
+        "label": "Purchase of financial investments",
+        "row": 113,
+        "kind": "data"
+      },
+      {
+        "label": "Proceeds from sale and maturity of financial investments",
+        "row": 114,
+        "kind": "data"
+      },
+      {
+        "label": "Purchase of intangible assets",
+        "row": 115,
+        "kind": "data"
+      },
+      {
+        "label": "Dividends received from investments in associate and subsidiaries",
+        "row": 116,
+        "kind": "data"
+      },
+      {
+        "label": "Other items",
+        "row": 117,
+        "kind": "data"
+      },
+      {
+        "label": "Net cash from/(used in) investing activities",
+        "row": 118,
+        "kind": "data"
+      },
+      {
+        "label": "Cash flows from financing activities",
+        "row": 119,
+        "kind": "subsection"
+      },
+      {
+        "label": "Proceeds from issue of ordinary voting shares under employee share option plans",
+        "row": 120,
+        "kind": "data"
+      },
+      {
+        "label": "Proceeds from issue of subordinated liabilities",
+        "row": 121,
+        "kind": "data"
+      },
+      {
+        "label": "Redemption of subordinated liabilities",
+        "row": 122,
+        "kind": "data"
+      },
+      {
+        "label": "Interest paid on subordinated liabilities",
+        "row": 123,
+        "kind": "data"
+      },
+      {
+        "label": "Payment of lease liabilities/advance payment of right-of-use assets",
+        "row": 124,
+        "kind": "data"
+      },
+      {
+        "label": "Dividend paid to non-controlling interest",
+        "row": 125,
+        "kind": "data"
+      },
+      {
+        "label": "Dividend paid to shareholders",
+        "row": 126,
+        "kind": "data"
+      },
+      {
+        "label": "Net cash from/(used in) financing activities",
+        "row": 127,
+        "kind": "data"
+      },
+      {
+        "label": "Net increase/(decrease) in cash and cash equivalents",
+        "row": 128,
+        "kind": "data"
+      },
+      {
+        "label": "Cash and cash equivalents as at January 01,",
+        "row": 129,
+        "kind": "data"
+      },
+      {
+        "label": "Gross cash and cash equivalents as at December 31,",
+        "row": 130,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Impairment charges on cash and cash equivalents",
+        "row": 131,
+        "kind": "data"
+      },
+      {
+        "label": "Cash and cash equivalents as per Statement of Financial Position",
+        "row": 132,
+        "kind": "data"
+      }
+    ],
+    "driver_links": {
+      "Interest income": 7,
+      "Less: Interest expense": 58,
+      "Fee and commission income": 78,
+      "Less: Fee and commission expense": 93,
+      "Net gains/(losses) from trading": 106,
+      "Net other operating income": 123,
+      "Less: Impairment charges and other losses": 138,
+      "Personnel expenses": 155,
+      "Depreciation and amortisation": 172,
+      "Other operating expenses": 184,
+      "Less: Taxes on financial services": 196,
+      "Less: Income tax expense/(reversal)": 206,
+      "Earnings per share\nBasic earnings per ordinary share (Rs.)": 586,
+      "Diviend per share": 619,
+      "Balances with Central Banks": 234,
+      "Placements with banks": 252,
+      "Securities purchased under resale agreements": 264,
+      "Derivative financial assets": 266,
+      "Financial assets recognised through profit or loss \u2013 measured at fair value": 271,
+      "Financial assets at amortised cost \u2013 loans and advances to other customers": 289,
+      "Financial assets at amortised cost \u2013 debt and other financial instruments": 341,
+      "Financial assets measured at fair value through other comprehensive income": 384,
+      "Investment in associate": 396,
+      "Property, plant and equipment and right-of-use assets": 401,
+      "Investment properties": 430,
+      "Intangible assets": 435,
+      "Deferred tax assets": 462,
+      "Other assets": 468,
+      "Due to banks": 475,
+      "Derivative financial liabilities": 488,
+      "Securities sold under repurchase agreements": 494,
+      "Financial liabilities at amortised cost \u2013 due to depositors": 501,
+      "Financial liabilities at amortised cost \u2013 other borrowings": 534,
+      "Current tax liabilities": 546,
+      "Deferred tax liabilities": 547,
+      "Other liabilities": 553,
+      "Subordinated liabilities": 559,
+      "Stated capital": 599,
+      "Statutory reserves": 609,
+      "Retained earnings": 615,
+      "Other reserves": 631,
+      "Net assets value per ordinary share (Rs.)": 595
+    }
+  },
+  "drivers": {
+    "rows": [
+      {
+        "label": "INCOME STATEMENT",
+        "row": 5,
+        "kind": "section"
+      },
+      {
+        "label": "Interest income",
+        "row": 7,
+        "kind": "data"
+      },
+      {
+        "label": "Cash and cash equivalents",
+        "row": 9,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Central Banks",
+        "row": 10,
+        "kind": "data"
+      },
+      {
+        "label": "Placements with Banks",
+        "row": 11,
+        "kind": "data"
+      },
+      {
+        "label": "Securities purchased under resale agreements",
+        "row": 12,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets recognized through profit or loss",
+        "row": 13,
+        "kind": "data"
+      },
+      {
+        "label": "Derivatives",
+        "row": 14,
+        "kind": "data"
+      },
+      {
+        "label": "Other financial instruments",
+        "row": 15,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortized cost - loans and advances to other customers",
+        "row": 16,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortized cost - debt and other financial instruments",
+        "row": 17,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets measured at fair value through other comprehensive income",
+        "row": 18,
+        "kind": "data"
+      },
+      {
+        "label": "Interest accrued on impaired loans and advances to other customers",
+        "row": 19,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 22,
+        "kind": "check"
+      },
+      {
+        "label": "Interest rate",
+        "row": 24,
+        "kind": "data"
+      },
+      {
+        "label": "Cash and cash equivalents",
+        "row": 26,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Central Banks",
+        "row": 27,
+        "kind": "data"
+      },
+      {
+        "label": "Placements with Banks",
+        "row": 28,
+        "kind": "data"
+      },
+      {
+        "label": "Securities purchased under resale agreements",
+        "row": 29,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets recognized through profit or loss",
+        "row": 30,
+        "kind": "data"
+      },
+      {
+        "label": "Derivatives",
+        "row": 31,
+        "kind": "data"
+      },
+      {
+        "label": "Other financial instruments",
+        "row": 32,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortized cost - loans and advances to other customers",
+        "row": 33,
+        "kind": "data"
+      },
+      {
+        "label": "Overdrafts",
+        "row": 34,
+        "kind": "data"
+      },
+      {
+        "label": "Trade finance",
+        "row": 35,
+        "kind": "data"
+      },
+      {
+        "label": "Lease/hire purchase receivable",
+        "row": 36,
+        "kind": "data"
+      },
+      {
+        "label": "Credit cards",
+        "row": 37,
+        "kind": "data"
+      },
+      {
+        "label": "Pawning",
+        "row": 38,
+        "kind": "data"
+      },
+      {
+        "label": "Staff loans",
+        "row": 39,
+        "kind": "data"
+      },
+      {
+        "label": "Housing loans",
+        "row": 40,
+        "kind": "data"
+      },
+      {
+        "label": "Personal loans",
+        "row": 41,
+        "kind": "data"
+      },
+      {
+        "label": "Term loans",
+        "row": 42,
+        "kind": "data"
+      },
+      {
+        "label": "Short term",
+        "row": 43,
+        "kind": "data"
+      },
+      {
+        "label": "Long term",
+        "row": 44,
+        "kind": "data"
+      },
+      {
+        "label": "Bills of exchange",
+        "row": 45,
+        "kind": "data"
+      },
+      {
+        "label": "Average AWPLR throughout the year",
+        "row": 47,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortized cost - debt and other financial instruments",
+        "row": 50,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets measured at fair value through other comprehensive income",
+        "row": 52,
+        "kind": "data"
+      },
+      {
+        "label": "Interest accrued on impaired loans and advances to other customers",
+        "row": 53,
+        "kind": "data"
+      },
+      {
+        "label": "Interest on opening cash",
+        "row": 55,
+        "kind": "data"
+      },
+      {
+        "label": "Interest expense",
+        "row": 58,
+        "kind": "data"
+      },
+      {
+        "label": "Due to banks",
+        "row": 60,
+        "kind": "data"
+      },
+      {
+        "label": "Derivative financial liabilities",
+        "row": 61,
+        "kind": "data"
+      },
+      {
+        "label": "Securities sold under repurchase agreements",
+        "row": 62,
+        "kind": "data"
+      },
+      {
+        "label": "Financial liabilities at amortised cost \u2013 due to depositors",
+        "row": 63,
+        "kind": "data"
+      },
+      {
+        "label": "Refinance borrowings",
+        "row": 64,
+        "kind": "data"
+      },
+      {
+        "label": "Foreign currency borrowings",
+        "row": 65,
+        "kind": "data"
+      },
+      {
+        "label": "Subordinated liabilities",
+        "row": 66,
+        "kind": "data"
+      },
+      {
+        "label": "Interest expense on lease liabilities",
+        "row": 67,
+        "kind": "data"
+      },
+      {
+        "label": "Interest expense except depositors",
+        "row": 69,
+        "kind": "data"
+      },
+      {
+        "label": "Deposit interest rate",
+        "row": 71,
+        "kind": "data"
+      },
+      {
+        "label": "Other financial liabilities",
+        "row": 72,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 74,
+        "kind": "check"
+      },
+      {
+        "label": "Fee and commission income",
+        "row": 78,
+        "kind": "data"
+      },
+      {
+        "label": "Loans and advances related services",
+        "row": 80,
+        "kind": "data"
+      },
+      {
+        "label": "Credit and debit cards related services",
+        "row": 81,
+        "kind": "data"
+      },
+      {
+        "label": "Trade and remittances related services",
+        "row": 82,
+        "kind": "data"
+      },
+      {
+        "label": "Deposits related services",
+        "row": 83,
+        "kind": "data"
+      },
+      {
+        "label": "Guarantees related services",
+        "row": 84,
+        "kind": "data"
+      },
+      {
+        "label": "Other financial services",
+        "row": 85,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 87,
+        "kind": "check"
+      },
+      {
+        "label": "As a % of loan book",
+        "row": 89,
+        "kind": "data"
+      },
+      {
+        "label": "Fee and commission expense",
+        "row": 93,
+        "kind": "data"
+      },
+      {
+        "label": "Loans and advances related services",
+        "row": 95,
+        "kind": "data"
+      },
+      {
+        "label": "Credit and debit cards related services",
+        "row": 96,
+        "kind": "data"
+      },
+      {
+        "label": "Trade and remittances related services",
+        "row": 97,
+        "kind": "data"
+      },
+      {
+        "label": "Other financial services",
+        "row": 98,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 100,
+        "kind": "check"
+      },
+      {
+        "label": "As a % of fee income",
+        "row": 102,
+        "kind": "data"
+      },
+      {
+        "label": "Net gains/(losses) from trading",
+        "row": 106,
+        "kind": "data"
+      },
+      {
+        "label": "Derivative financial instruments",
+        "row": 108,
+        "kind": "data"
+      },
+      {
+        "label": "Foreign exchange gains/(losses) from banks and other customers",
+        "row": 109,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+        "row": 110,
+        "kind": "data"
+      },
+      {
+        "label": "Government Securities",
+        "row": 111,
+        "kind": "data"
+      },
+      {
+        "label": "Net mark-to-market gains/(losses)",
+        "row": 112,
+        "kind": "data"
+      },
+      {
+        "label": "Net capital gains",
+        "row": 113,
+        "kind": "data"
+      },
+      {
+        "label": "Equities",
+        "row": 114,
+        "kind": "data"
+      },
+      {
+        "label": "Net mark-to-market gains/(losses)",
+        "row": 115,
+        "kind": "data"
+      },
+      {
+        "label": "Net capital gains",
+        "row": 116,
+        "kind": "data"
+      },
+      {
+        "label": "Dividend income",
+        "row": 117,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 119,
+        "kind": "check"
+      },
+      {
+        "label": "Net other operating income",
+        "row": 123,
+        "kind": "data"
+      },
+      {
+        "label": "Gains/(losses) on sale of property, plant and equipment",
+        "row": 125,
+        "kind": "data"
+      },
+      {
+        "label": "Gains on revaluation of foreign exchange",
+        "row": 126,
+        "kind": "data"
+      },
+      {
+        "label": "Recoveries o/a loans written off",
+        "row": 127,
+        "kind": "data"
+      },
+      {
+        "label": "Dividend income from subsidiaries",
+        "row": 128,
+        "kind": "data"
+      },
+      {
+        "label": "Dividend income from other equity securities",
+        "row": 129,
+        "kind": "data"
+      },
+      {
+        "label": "Profit due to change in ownership",
+        "row": 130,
+        "kind": "data"
+      },
+      {
+        "label": "Rental and other income",
+        "row": 131,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Profit due to change in ownership",
+        "row": 132,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 134,
+        "kind": "check"
+      },
+      {
+        "label": "Impairment charges and other losses",
+        "row": 138,
+        "kind": "data"
+      },
+      {
+        "label": "Loans and advances to other customers",
+        "row": 140,
+        "kind": "data"
+      },
+      {
+        "label": "Individual impairment",
+        "row": 141,
+        "kind": "data"
+      },
+      {
+        "label": "Collective impairment",
+        "row": 142,
+        "kind": "data"
+      },
+      {
+        "label": "Other financial assets and off-balance sheet credit exposures",
+        "row": 144,
+        "kind": "data"
+      },
+      {
+        "label": "Total impairment charges",
+        "row": 145,
+        "kind": "data"
+      },
+      {
+        "label": "Investments in subsidiaries",
+        "row": 146,
+        "kind": "data"
+      },
+      {
+        "label": "Direct write-offs",
+        "row": 147,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 149,
+        "kind": "check"
+      },
+      {
+        "label": "Impairment as a % of gross loans",
+        "row": 151,
+        "kind": "data"
+      },
+      {
+        "label": "Personnel expenses",
+        "row": 155,
+        "kind": "data"
+      },
+      {
+        "label": "Salary and bonus",
+        "row": 157,
+        "kind": "data"
+      },
+      {
+        "label": "Pension costs",
+        "row": 158,
+        "kind": "data"
+      },
+      {
+        "label": "Contributions to defined contribution/benefit plans \u2013",
+        "row": 159,
+        "kind": "data"
+      },
+      {
+        "label": "Funded schemes",
+        "row": 160,
+        "kind": "data"
+      },
+      {
+        "label": "Contributions to defined benefit plans \u2013 Unfunded schemes",
+        "row": 162,
+        "kind": "data"
+      },
+      {
+        "label": "Equity-settled share-based payment expense",
+        "row": 163,
+        "kind": "data"
+      },
+      {
+        "label": "Other expenses",
+        "row": 164,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 166,
+        "kind": "check"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 168,
+        "kind": "data"
+      },
+      {
+        "label": "Depreciation and amortisation",
+        "row": 172,
+        "kind": "data"
+      },
+      {
+        "label": "PPE",
+        "row": 174,
+        "kind": "data"
+      },
+      {
+        "label": "Right of use of assets",
+        "row": 175,
+        "kind": "data"
+      },
+      {
+        "label": "Computer software",
+        "row": 176,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 178,
+        "kind": "check"
+      },
+      {
+        "label": "As a % of opening PPE",
+        "row": 180,
+        "kind": "data"
+      },
+      {
+        "label": "Other operating expenses",
+        "row": 184,
+        "kind": "data"
+      },
+      {
+        "label": "Establishment expenses",
+        "row": 186,
+        "kind": "data"
+      },
+      {
+        "label": "Maintenance of property, plant, and equipment",
+        "row": 187,
+        "kind": "data"
+      },
+      {
+        "label": "Office administration expenses",
+        "row": 188,
+        "kind": "data"
+      },
+      {
+        "label": "Deposit insurance premium",
+        "row": 189,
+        "kind": "data"
+      },
+      {
+        "label": "Other expenses",
+        "row": 190,
+        "kind": "data"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 192,
+        "kind": "data"
+      },
+      {
+        "label": "Taxes on financial services",
+        "row": 196,
+        "kind": "data"
+      },
+      {
+        "label": "VAT",
+        "row": 198,
+        "kind": "data"
+      },
+      {
+        "label": "NBT",
+        "row": 199,
+        "kind": "data"
+      },
+      {
+        "label": "Debt repayment",
+        "row": 200,
+        "kind": "data"
+      },
+      {
+        "label": "Taxes on interest income",
+        "row": 202,
+        "kind": "data"
+      },
+      {
+        "label": "Income tax",
+        "row": 206,
+        "kind": "data"
+      },
+      {
+        "label": "As a % pf PBT",
+        "row": 207,
+        "kind": "data"
+      },
+      {
+        "label": "BALANCE SHEET",
+        "row": 213,
+        "kind": "section"
+      },
+      {
+        "label": "Cash and cash equivalents",
+        "row": 216,
+        "kind": "data"
+      },
+      {
+        "label": "Cash in hand",
+        "row": 218,
+        "kind": "data"
+      },
+      {
+        "label": "Coins and notes held in local currency",
+        "row": 219,
+        "kind": "data"
+      },
+      {
+        "label": "Coins and notes held in foreign currency",
+        "row": 220,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with banks",
+        "row": 221,
+        "kind": "data"
+      },
+      {
+        "label": "Local banks",
+        "row": 222,
+        "kind": "data"
+      },
+      {
+        "label": "Foreign banks",
+        "row": 223,
+        "kind": "data"
+      },
+      {
+        "label": "Money at call and at short notice",
+        "row": 224,
+        "kind": "data"
+      },
+      {
+        "label": "Gross cash and cash equivalents (*)",
+        "row": 225,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Provision for impairment",
+        "row": 226,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 228,
+        "kind": "check"
+      },
+      {
+        "label": "Cash as a % of deposits",
+        "row": 230,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Central Banks",
+        "row": 234,
+        "kind": "data"
+      },
+      {
+        "label": "Statutory balances with Central Banks",
+        "row": 236,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Central Bank of Sri Lanka",
+        "row": 237,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Bangladesh Bank",
+        "row": 238,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Maldives Monetary Authority",
+        "row": 239,
+        "kind": "data"
+      },
+      {
+        "label": "Non-statutory balances with Central Banks",
+        "row": 240,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Central Bank of Sri Lanka",
+        "row": 241,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Bangladesh Bank",
+        "row": 242,
+        "kind": "data"
+      },
+      {
+        "label": "Balances with Maldives Monetary Authority",
+        "row": 243,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 245,
+        "kind": "check"
+      },
+      {
+        "label": "As a % of deposits",
+        "row": 247,
+        "kind": "data"
+      },
+      {
+        "label": "As a % of gross loans",
+        "row": 248,
+        "kind": "data"
+      },
+      {
+        "label": "Placements with banks",
+        "row": 252,
+        "kind": "data"
+      },
+      {
+        "label": "Placements within Sri Lanka",
+        "row": 254,
+        "kind": "data"
+      },
+      {
+        "label": "Placements outside Sri Lanka",
+        "row": 255,
+        "kind": "data"
+      },
+      {
+        "label": "Less: provision for impairments",
+        "row": 256,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 258,
+        "kind": "check"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 260,
+        "kind": "data"
+      },
+      {
+        "label": "Securities purchased under resale agreements",
+        "row": 264,
+        "kind": "data"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 265,
+        "kind": "data"
+      },
+      {
+        "label": "Derivative financial assets",
+        "row": 266,
+        "kind": "data"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 267,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+        "row": 271,
+        "kind": "data"
+      },
+      {
+        "label": "Government securities",
+        "row": 273,
+        "kind": "data"
+      },
+      {
+        "label": "Treasury bills",
+        "row": 274,
+        "kind": "data"
+      },
+      {
+        "label": "Treasury bonds",
+        "row": 275,
+        "kind": "data"
+      },
+      {
+        "label": "Equity securities",
+        "row": 276,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 278,
+        "kind": "check"
+      },
+      {
+        "label": "T Bills - Growth YoY",
+        "row": 280,
+        "kind": "data"
+      },
+      {
+        "label": "T Bonds - Growth YoY",
+        "row": 281,
+        "kind": "data"
+      },
+      {
+        "label": "Equity - Growth YoY",
+        "row": 282,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 loans and advances to other customers",
+        "row": 289,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 290,
+        "kind": "check"
+      },
+      {
+        "label": "Gross Loans and advances",
+        "row": 292,
+        "kind": "data"
+      },
+      {
+        "label": "Overdrafts",
+        "row": 293,
+        "kind": "data"
+      },
+      {
+        "label": "Trade finance",
+        "row": 294,
+        "kind": "data"
+      },
+      {
+        "label": "Lease/hire purchase receivable",
+        "row": 295,
+        "kind": "data"
+      },
+      {
+        "label": "Credit cards",
+        "row": 296,
+        "kind": "data"
+      },
+      {
+        "label": "Pawning",
+        "row": 297,
+        "kind": "data"
+      },
+      {
+        "label": "Staff loans",
+        "row": 298,
+        "kind": "data"
+      },
+      {
+        "label": "Housing loans",
+        "row": 299,
+        "kind": "data"
+      },
+      {
+        "label": "Personal loans",
+        "row": 300,
+        "kind": "data"
+      },
+      {
+        "label": "Term loans",
+        "row": 301,
+        "kind": "data"
+      },
+      {
+        "label": "Short term",
+        "row": 302,
+        "kind": "data"
+      },
+      {
+        "label": "Long term",
+        "row": 303,
+        "kind": "data"
+      },
+      {
+        "label": "Bills of exchange",
+        "row": 304,
+        "kind": "data"
+      },
+      {
+        "label": "Loan portfolio growth",
+        "row": 307,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 309,
+        "kind": "check"
+      },
+      {
+        "label": "Gross loans and advances",
+        "row": 311,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 1",
+        "row": 312,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 2",
+        "row": 313,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 3 (*)",
+        "row": 314,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Provision for impairment",
+        "row": 315,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 1",
+        "row": 316,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 2",
+        "row": 317,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 3",
+        "row": 318,
+        "kind": "data"
+      },
+      {
+        "label": "Net loans and advances",
+        "row": 320,
+        "kind": "data"
+      },
+      {
+        "label": "% of gross loans categorized under each stage",
+        "row": 322,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 1",
+        "row": 323,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 2",
+        "row": 324,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 3",
+        "row": 325,
+        "kind": "data"
+      },
+      {
+        "label": "% of impairment provisions provided",
+        "row": 327,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 1",
+        "row": 328,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 2",
+        "row": 329,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 3",
+        "row": 330,
+        "kind": "data"
+      },
+      {
+        "label": "Increase in Stage 3 gross loans",
+        "row": 333,
+        "kind": "data"
+      },
+      {
+        "label": "Increase as a % of previous year's stage 2 gross loans",
+        "row": 334,
+        "kind": "data"
+      },
+      {
+        "label": "% of stage 3 loans to total Gross loans",
+        "row": 335,
+        "kind": "data"
+      },
+      {
+        "label": "Impairments provision / Gross loans",
+        "row": 337,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+        "row": 341,
+        "kind": "data"
+      },
+      {
+        "label": "Government Securities \u2013 Sri Lanka",
+        "row": 343,
+        "kind": "data"
+      },
+      {
+        "label": "Treasury Bonds (*)",
+        "row": 344,
+        "kind": "data"
+      },
+      {
+        "label": "Sri Lanka Sovereign Bonds (SLSB) (*)",
+        "row": 345,
+        "kind": "data"
+      },
+      {
+        "label": "Sri Lanka Development Bonds (SLDB) (*)",
+        "row": 346,
+        "kind": "data"
+      },
+      {
+        "label": "Government Securities \u2013 Bangladesh",
+        "row": 347,
+        "kind": "data"
+      },
+      {
+        "label": "Treasury Bills",
+        "row": 348,
+        "kind": "data"
+      },
+      {
+        "label": "Treasury Bonds",
+        "row": 349,
+        "kind": "data"
+      },
+      {
+        "label": "Government Securities \u2013 Maldives",
+        "row": 350,
+        "kind": "data"
+      },
+      {
+        "label": "Treasury Bills",
+        "row": 351,
+        "kind": "data"
+      },
+      {
+        "label": "Other instruments",
+        "row": 352,
+        "kind": "data"
+      },
+      {
+        "label": "Debentures",
+        "row": 353,
+        "kind": "data"
+      },
+      {
+        "label": "Trust certificates",
+        "row": 354,
+        "kind": "data"
+      },
+      {
+        "label": "Corporate investments in Bangladesh",
+        "row": 355,
+        "kind": "data"
+      },
+      {
+        "label": "Total gross",
+        "row": 356,
+        "kind": "data"
+      },
+      {
+        "label": "Less: Provision for impairment",
+        "row": 357,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+        "row": 358,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 360,
+        "kind": "check"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 362,
+        "kind": "data"
+      },
+      {
+        "label": "Gvt Sec - SL",
+        "row": 363,
+        "kind": "data"
+      },
+      {
+        "label": "Gvt Sec - Bangladesh",
+        "row": 364,
+        "kind": "data"
+      },
+      {
+        "label": "Gvt Sec - Maldives",
+        "row": 365,
+        "kind": "data"
+      },
+      {
+        "label": "Other instruments",
+        "row": 366,
+        "kind": "data"
+      },
+      {
+        "label": "Impairments",
+        "row": 369,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 1",
+        "row": 370,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 2",
+        "row": 371,
+        "kind": "data"
+      },
+      {
+        "label": "Stage 3",
+        "row": 372,
+        "kind": "data"
+      },
+      {
+        "label": "Impairments to total gross financial assets",
+        "row": 375,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 377,
+        "kind": "check"
+      },
+      {
+        "label": "Financail assets / total assets",
+        "row": 379,
+        "kind": "data"
+      },
+      {
+        "label": "Financail assets / net loans and advances",
+        "row": 380,
+        "kind": "data"
+      },
+      {
+        "label": "Financial assets measured at fair value through other comprehensive income",
+        "row": 384,
+        "kind": "data"
+      },
+      {
+        "label": "Government securities (after impairment)",
+        "row": 386,
+        "kind": "data"
+      },
+      {
+        "label": "Equity securities",
+        "row": 387,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 389,
+        "kind": "check"
+      },
+      {
+        "label": "Gsec - Growth YoY",
+        "row": 391,
+        "kind": "data"
+      },
+      {
+        "label": "Equity - Growth YoY",
+        "row": 392,
+        "kind": "data"
+      },
+      {
+        "label": "Investment in associate",
+        "row": 396,
+        "kind": "data"
+      },
+      {
+        "label": "Property, plant and equipment and right-of-use assets",
+        "row": 401,
+        "kind": "data"
+      },
+      {
+        "label": "Cost",
+        "row": 403,
+        "kind": "data"
+      },
+      {
+        "label": "Opening balance",
+        "row": 404,
+        "kind": "data"
+      },
+      {
+        "label": "Capex / additions",
+        "row": 405,
+        "kind": "data"
+      },
+      {
+        "label": "Disposals",
+        "row": 406,
+        "kind": "data"
+      },
+      {
+        "label": "Exchange rate varaince",
+        "row": 407,
+        "kind": "data"
+      },
+      {
+        "label": "Transfers / other adjustments",
+        "row": 408,
+        "kind": "data"
+      },
+      {
+        "label": "Closing Balance",
+        "row": 409,
+        "kind": "data"
+      },
+      {
+        "label": "Accumulated depreciation",
+        "row": 411,
+        "kind": "data"
+      },
+      {
+        "label": "Opening balance",
+        "row": 412,
+        "kind": "data"
+      },
+      {
+        "label": "Charge for the year",
+        "row": 413,
+        "kind": "data"
+      },
+      {
+        "label": "Disposals",
+        "row": 414,
+        "kind": "data"
+      },
+      {
+        "label": "Exchange rate varaince",
+        "row": 415,
+        "kind": "data"
+      },
+      {
+        "label": "Transfers / other adjustments",
+        "row": 416,
+        "kind": "data"
+      },
+      {
+        "label": "Closing Balance",
+        "row": 417,
+        "kind": "data"
+      },
+      {
+        "label": "Net book value",
+        "row": 419,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 421,
+        "kind": "check"
+      },
+      {
+        "label": "Additions / opening balance",
+        "row": 423,
+        "kind": "data"
+      },
+      {
+        "label": "Depreciaiton / opening balance",
+        "row": 424,
+        "kind": "data"
+      },
+      {
+        "label": "Investment properties",
+        "row": 430,
+        "kind": "data"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 431,
+        "kind": "data"
+      },
+      {
+        "label": "Intangible assets",
+        "row": 435,
+        "kind": "data"
+      },
+      {
+        "label": "Computer Software",
+        "row": 437,
+        "kind": "data"
+      },
+      {
+        "label": "Software under development",
+        "row": 438,
+        "kind": "data"
+      },
+      {
+        "label": "Goodwill",
+        "row": 439,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 441,
+        "kind": "check"
+      },
+      {
+        "label": "Software",
+        "row": 443,
+        "kind": "data"
+      },
+      {
+        "label": "Opening balance",
+        "row": 444,
+        "kind": "data"
+      },
+      {
+        "label": "Additions",
+        "row": 445,
+        "kind": "data"
+      },
+      {
+        "label": "Disposals",
+        "row": 446,
+        "kind": "data"
+      },
+      {
+        "label": "Closing balance",
+        "row": 447,
+        "kind": "data"
+      },
+      {
+        "label": "Amortization",
+        "row": 449,
+        "kind": "data"
+      },
+      {
+        "label": "Opening balance",
+        "row": 450,
+        "kind": "data"
+      },
+      {
+        "label": "Charge for the year",
+        "row": 451,
+        "kind": "data"
+      },
+      {
+        "label": "Disposals",
+        "row": 452,
+        "kind": "data"
+      },
+      {
+        "label": "Closing balance",
+        "row": 453,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 455,
+        "kind": "check"
+      },
+      {
+        "label": "Additions / opening balance",
+        "row": 457,
+        "kind": "data"
+      },
+      {
+        "label": "Amortisation / opening balance",
+        "row": 458,
+        "kind": "data"
+      },
+      {
+        "label": "Deferred tax assets",
+        "row": 462,
+        "kind": "data"
+      },
+      {
+        "label": "As a % of PBT",
+        "row": 463,
+        "kind": "data"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 464,
+        "kind": "data"
+      },
+      {
+        "label": "Other assets",
+        "row": 468,
+        "kind": "data"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 469,
+        "kind": "data"
+      },
+      {
+        "label": "LIABILITIES",
+        "row": 473,
+        "kind": "data"
+      },
+      {
+        "label": "Due to banks",
+        "row": 475,
+        "kind": "data"
+      },
+      {
+        "label": "Local currency",
+        "row": 477,
+        "kind": "data"
+      },
+      {
+        "label": "Foreign currency",
+        "row": 478,
+        "kind": "data"
+      },
+      {
+        "label": "Repo securities",
+        "row": 479,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 481,
+        "kind": "check"
+      },
+      {
+        "label": "As a % of gross loans",
+        "row": 483,
+        "kind": "data"
+      },
+      {
+        "label": "Derivative financial liabilities",
+        "row": 488,
+        "kind": "data"
+      },
+      {
+        "label": "Growth YoY",
+        "row": 489,
+        "kind": "data"
+      },
+      {
+        "label": "Securities sold under repurchase agreements",
+        "row": 494,
+        "kind": "data"
+      },
+      {
+        "label": "As a % of deposits",
+        "row": 496,
+        "kind": "data"
+      },
+      {
+        "label": "Financial liabilities at amortized cost \u2013 due to depositors",
+        "row": 501,
+        "kind": "data"
+      },
+      {
+        "label": "Local currency deposits",
+        "row": 503,
+        "kind": "data"
+      },
+      {
+        "label": "Current account balances",
+        "row": 504,
+        "kind": "data"
+      },
+      {
+        "label": "Savings deposits",
+        "row": 505,
+        "kind": "data"
+      },
+      {
+        "label": "Time deposits",
+        "row": 506,
+        "kind": "data"
+      },
+      {
+        "label": "Other deposits",
+        "row": 507,
+        "kind": "data"
+      },
+      {
+        "label": "Foreign currency deposits",
+        "row": 509,
+        "kind": "data"
+      },
+      {
+        "label": "Current account balances",
+        "row": 510,
+        "kind": "data"
+      },
+      {
+        "label": "Savings deposits",
+        "row": 511,
+        "kind": "data"
+      },
+      {
+        "label": "Time deposits",
+        "row": 512,
+        "kind": "data"
+      },
+      {
+        "label": "By Product",
+        "row": 514,
+        "kind": "data"
+      },
+      {
+        "label": "Current account balances",
+        "row": 515,
+        "kind": "data"
+      },
+      {
+        "label": "Savings deposits",
+        "row": 516,
+        "kind": "data"
+      },
+      {
+        "label": "Time deposits",
+        "row": 517,
+        "kind": "data"
+      },
+      {
+        "label": "Other deposits",
+        "row": 518,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 520,
+        "kind": "check"
+      },
+      {
+        "label": "Total deposits / gross loans and advances",
+        "row": 522,
+        "kind": "data"
+      },
+      {
+        "label": "Total deposits / total assets",
+        "row": 523,
+        "kind": "data"
+      },
+      {
+        "label": "Deposit mix",
+        "row": 525,
+        "kind": "data"
+      },
+      {
+        "label": "Current account balances",
+        "row": 526,
+        "kind": "data"
+      },
+      {
+        "label": "Savings deposits",
+        "row": 527,
+        "kind": "data"
+      },
+      {
+        "label": "Time deposits",
+        "row": 528,
+        "kind": "data"
+      },
+      {
+        "label": "Other deposits",
+        "row": 529,
+        "kind": "data"
+      },
+      {
+        "label": "Financial liabilities at amortised cost \u2013 other borrowings",
+        "row": 534,
+        "kind": "data"
+      },
+      {
+        "label": "Refinance borrowings",
+        "row": 536,
+        "kind": "data"
+      },
+      {
+        "label": "Borrowings from International Finance Corporation (IFC)",
+        "row": 537,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 539,
+        "kind": "check"
+      },
+      {
+        "label": "Growh YoY",
+        "row": 541,
+        "kind": "data"
+      },
+      {
+        "label": "New debenture issue",
+        "row": 543,
+        "kind": "data"
+      },
+      {
+        "label": "Current tax liabilities",
+        "row": 546,
+        "kind": "data"
+      },
+      {
+        "label": "Deferred tax liabilities",
+        "row": 547,
+        "kind": "data"
+      },
+      {
+        "label": "As a % of taxes",
+        "row": 549,
+        "kind": "data"
+      },
+      {
+        "label": "Other liabilities",
+        "row": 553,
+        "kind": "data"
+      },
+      {
+        "label": "As a % of deposits",
+        "row": 555,
+        "kind": "data"
+      },
+      {
+        "label": "Subordinated liabilities",
+        "row": 559,
+        "kind": "data"
+      },
+      {
+        "label": "Payable within 1 year",
+        "row": 561,
+        "kind": "data"
+      },
+      {
+        "label": "Payable more than 1 year",
+        "row": 562,
+        "kind": "data"
+      },
+      {
+        "label": "As a % of deposits",
+        "row": 564,
+        "kind": "data"
+      },
+      {
+        "label": "VOTING Number of shares at year end",
+        "row": 570,
+        "kind": "data"
+      },
+      {
+        "label": "Issues to ESOP",
+        "row": 571,
+        "kind": "data"
+      },
+      {
+        "label": "Issue for dividends",
+        "row": 572,
+        "kind": "data"
+      },
+      {
+        "label": "Rights Issues",
+        "row": 573,
+        "kind": "data"
+      },
+      {
+        "label": "Private placements",
+        "row": 574,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 576,
+        "kind": "check"
+      },
+      {
+        "label": "NON VOTING Number of shares at year end",
+        "row": 578,
+        "kind": "data"
+      },
+      {
+        "label": "Issues to ESOP",
+        "row": 579,
+        "kind": "data"
+      },
+      {
+        "label": "Issue for dividends",
+        "row": 580,
+        "kind": "data"
+      },
+      {
+        "label": "Rights Issues",
+        "row": 581,
+        "kind": "data"
+      },
+      {
+        "label": "Private placements",
+        "row": 582,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 584,
+        "kind": "check"
+      },
+      {
+        "label": "TOTAL shares (VOTING + NV)",
+        "row": 586,
+        "kind": "data"
+      },
+      {
+        "label": "Nominal value per share",
+        "row": 588,
+        "kind": "data"
+      },
+      {
+        "label": "Unadjusted",
+        "row": 590,
+        "kind": "data"
+      },
+      {
+        "label": "NAVPS",
+        "row": 591,
+        "kind": "data"
+      },
+      {
+        "label": "EPS",
+        "row": 592,
+        "kind": "data"
+      },
+      {
+        "label": "Adjusted",
+        "row": 594,
+        "kind": "data"
+      },
+      {
+        "label": "NAVPS",
+        "row": 595,
+        "kind": "data"
+      },
+      {
+        "label": "EPS",
+        "row": 596,
+        "kind": "data"
+      },
+      {
+        "label": "Stated capital",
+        "row": 599,
+        "kind": "data"
+      },
+      {
+        "label": "Dividends - VOTING",
+        "row": 601,
+        "kind": "data"
+      },
+      {
+        "label": "Dividends - NON VOTING",
+        "row": 602,
+        "kind": "data"
+      },
+      {
+        "label": "Dividend per share issued",
+        "row": 604,
+        "kind": "data"
+      },
+      {
+        "label": "VOTING",
+        "row": 605,
+        "kind": "data"
+      },
+      {
+        "label": "NON VOTING",
+        "row": 606,
+        "kind": "data"
+      },
+      {
+        "label": "Statutory reserves",
+        "row": 609,
+        "kind": "data"
+      },
+      {
+        "label": "As a % of deposits",
+        "row": 610,
+        "kind": "data"
+      },
+      {
+        "label": "Retained earnings",
+        "row": 615,
+        "kind": "data"
+      },
+      {
+        "label": "Profit for the year",
+        "row": 617,
+        "kind": "data"
+      },
+      {
+        "label": "Other comprehensive",
+        "row": 618,
+        "kind": "data"
+      },
+      {
+        "label": "Dividends paid",
+        "row": 619,
+        "kind": "data"
+      },
+      {
+        "label": "Transfer to other reserves (general reserve)",
+        "row": 620,
+        "kind": "data"
+      },
+      {
+        "label": "Surcharge tax",
+        "row": 621,
+        "kind": "data"
+      },
+      {
+        "label": "Check - other adjustments",
+        "row": 623,
+        "kind": "check"
+      },
+      {
+        "label": "Dividend payout",
+        "row": 625,
+        "kind": "data"
+      },
+      {
+        "label": "Transfer to general reserve out of profit",
+        "row": 626,
+        "kind": "data"
+      },
+      {
+        "label": "Other reserves",
+        "row": 631,
+        "kind": "data"
+      },
+      {
+        "label": "Revaluation reserve",
+        "row": 633,
+        "kind": "data"
+      },
+      {
+        "label": "General reserve",
+        "row": 634,
+        "kind": "data"
+      },
+      {
+        "label": "Fair value reserve",
+        "row": 635,
+        "kind": "data"
+      },
+      {
+        "label": "Foreign currency translation reserve",
+        "row": 636,
+        "kind": "data"
+      },
+      {
+        "label": "Employee share option reserve",
+        "row": 637,
+        "kind": "data"
+      },
+      {
+        "label": "Hedging reserve",
+        "row": 638,
+        "kind": "data"
+      },
+      {
+        "label": "Check",
+        "row": 640,
+        "kind": "check"
+      }
+    ],
+    "groups": [
+      {
+        "parent_label": "Interest income",
+        "parent_row": 7,
+        "children": [
+          {
+            "label": "Cash and cash equivalents",
+            "row": 9
+          },
+          {
+            "label": "Balances with Central Banks",
+            "row": 10
+          },
+          {
+            "label": "Placements with Banks",
+            "row": 11
+          },
+          {
+            "label": "Securities purchased under resale agreements",
+            "row": 12
+          },
+          {
+            "label": "Financial assets recognized through profit or loss",
+            "row": 13
+          },
+          {
+            "label": "Derivatives",
+            "row": 14
+          },
+          {
+            "label": "Other financial instruments",
+            "row": 15
+          },
+          {
+            "label": "Financial assets at amortized cost - loans and advances to other customers",
+            "row": 16
+          },
+          {
+            "label": "Financial assets at amortized cost - debt and other financial instruments",
+            "row": 17
+          },
+          {
+            "label": "Financial assets measured at fair value through other comprehensive income",
+            "row": 18
+          },
+          {
+            "label": "Interest accrued on impaired loans and advances to other customers",
+            "row": 19
+          }
+        ]
+      },
+      {
+        "parent_label": "Interest rate",
+        "parent_row": 24,
+        "children": [
+          {
+            "label": "Cash and cash equivalents",
+            "row": 26
+          },
+          {
+            "label": "Balances with Central Banks",
+            "row": 27
+          },
+          {
+            "label": "Placements with Banks",
+            "row": 28
+          },
+          {
+            "label": "Securities purchased under resale agreements",
+            "row": 29
+          },
+          {
+            "label": "Financial assets recognized through profit or loss",
+            "row": 30
+          },
+          {
+            "label": "Derivatives",
+            "row": 31
+          },
+          {
+            "label": "Other financial instruments",
+            "row": 32
+          },
+          {
+            "label": "Financial assets at amortized cost - loans and advances to other customers",
+            "row": 33
+          },
+          {
+            "label": "Overdrafts",
+            "row": 34
+          },
+          {
+            "label": "Trade finance",
+            "row": 35
+          },
+          {
+            "label": "Lease/hire purchase receivable",
+            "row": 36
+          },
+          {
+            "label": "Credit cards",
+            "row": 37
+          },
+          {
+            "label": "Pawning",
+            "row": 38
+          },
+          {
+            "label": "Staff loans",
+            "row": 39
+          },
+          {
+            "label": "Housing loans",
+            "row": 40
+          },
+          {
+            "label": "Personal loans",
+            "row": 41
+          },
+          {
+            "label": "Term loans",
+            "row": 42
+          },
+          {
+            "label": "Short term",
+            "row": 43
+          },
+          {
+            "label": "Long term",
+            "row": 44
+          },
+          {
+            "label": "Bills of exchange",
+            "row": 45
+          },
+          {
+            "label": "Average AWPLR throughout the year",
+            "row": 47
+          },
+          {
+            "label": "Financial assets at amortized cost - debt and other financial instruments",
+            "row": 50
+          },
+          {
+            "label": "Financial assets measured at fair value through other comprehensive income",
+            "row": 52
+          },
+          {
+            "label": "Interest accrued on impaired loans and advances to other customers",
+            "row": 53
+          },
+          {
+            "label": "Interest on opening cash",
+            "row": 55
+          },
+          {
+            "label": "Interest expense",
+            "row": 58
+          },
+          {
+            "label": "Due to banks",
+            "row": 60
+          },
+          {
+            "label": "Derivative financial liabilities",
+            "row": 61
+          },
+          {
+            "label": "Securities sold under repurchase agreements",
+            "row": 62
+          },
+          {
+            "label": "Financial liabilities at amortised cost \u2013 due to depositors",
+            "row": 63
+          },
+          {
+            "label": "Refinance borrowings",
+            "row": 64
+          },
+          {
+            "label": "Foreign currency borrowings",
+            "row": 65
+          },
+          {
+            "label": "Subordinated liabilities",
+            "row": 66
+          },
+          {
+            "label": "Interest expense on lease liabilities",
+            "row": 67
+          },
+          {
+            "label": "Interest expense except depositors",
+            "row": 69
+          },
+          {
+            "label": "Deposit interest rate",
+            "row": 71
+          },
+          {
+            "label": "Other financial liabilities",
+            "row": 72
+          }
+        ]
+      },
+      {
+        "parent_label": "Fee and commission income",
+        "parent_row": 78,
+        "children": [
+          {
+            "label": "Loans and advances related services",
+            "row": 80
+          },
+          {
+            "label": "Credit and debit cards related services",
+            "row": 81
+          },
+          {
+            "label": "Trade and remittances related services",
+            "row": 82
+          },
+          {
+            "label": "Deposits related services",
+            "row": 83
+          },
+          {
+            "label": "Guarantees related services",
+            "row": 84
+          },
+          {
+            "label": "Other financial services",
+            "row": 85
+          }
+        ]
+      },
+      {
+        "parent_label": "Fee and commission expense",
+        "parent_row": 93,
+        "children": [
+          {
+            "label": "Loans and advances related services",
+            "row": 95
+          },
+          {
+            "label": "Credit and debit cards related services",
+            "row": 96
+          },
+          {
+            "label": "Trade and remittances related services",
+            "row": 97
+          },
+          {
+            "label": "Other financial services",
+            "row": 98
+          }
+        ]
+      },
+      {
+        "parent_label": "Net gains/(losses) from trading",
+        "parent_row": 106,
+        "children": [
+          {
+            "label": "Derivative financial instruments",
+            "row": 108
+          },
+          {
+            "label": "Foreign exchange gains/(losses) from banks and other customers",
+            "row": 109
+          },
+          {
+            "label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+            "row": 110
+          },
+          {
+            "label": "Government Securities",
+            "row": 111
+          },
+          {
+            "label": "Net mark-to-market gains/(losses)",
+            "row": 112
+          },
+          {
+            "label": "Net capital gains",
+            "row": 113
+          },
+          {
+            "label": "Equities",
+            "row": 114
+          },
+          {
+            "label": "Net mark-to-market gains/(losses)",
+            "row": 115
+          },
+          {
+            "label": "Net capital gains",
+            "row": 116
+          },
+          {
+            "label": "Dividend income",
+            "row": 117
+          }
+        ]
+      },
+      {
+        "parent_label": "Net other operating income",
+        "parent_row": 123,
+        "children": [
+          {
+            "label": "Gains/(losses) on sale of property, plant and equipment",
+            "row": 125
+          },
+          {
+            "label": "Gains on revaluation of foreign exchange",
+            "row": 126
+          },
+          {
+            "label": "Recoveries o/a loans written off",
+            "row": 127
+          },
+          {
+            "label": "Dividend income from subsidiaries",
+            "row": 128
+          },
+          {
+            "label": "Dividend income from other equity securities",
+            "row": 129
+          },
+          {
+            "label": "Profit due to change in ownership",
+            "row": 130
+          },
+          {
+            "label": "Rental and other income",
+            "row": 131
+          },
+          {
+            "label": "Less: Profit due to change in ownership",
+            "row": 132
+          }
+        ]
+      },
+      {
+        "parent_label": "Impairment charges and other losses",
+        "parent_row": 138,
+        "children": [
+          {
+            "label": "Loans and advances to other customers",
+            "row": 140
+          },
+          {
+            "label": "Individual impairment",
+            "row": 141
+          },
+          {
+            "label": "Collective impairment",
+            "row": 142
+          },
+          {
+            "label": "Other financial assets and off-balance sheet credit exposures",
+            "row": 144
+          },
+          {
+            "label": "Total impairment charges",
+            "row": 145
+          },
+          {
+            "label": "Investments in subsidiaries",
+            "row": 146
+          },
+          {
+            "label": "Direct write-offs",
+            "row": 147
+          }
+        ]
+      },
+      {
+        "parent_label": "Impairment as a % of gross loans",
+        "parent_row": 151,
+        "children": [
+          {
+            "label": "Personnel expenses",
+            "row": 155
+          },
+          {
+            "label": "Salary and bonus",
+            "row": 157
+          },
+          {
+            "label": "Pension costs",
+            "row": 158
+          },
+          {
+            "label": "Contributions to defined contribution/benefit plans \u2013",
+            "row": 159
+          },
+          {
+            "label": "Funded schemes",
+            "row": 160
+          },
+          {
+            "label": "Contributions to defined benefit plans \u2013 Unfunded schemes",
+            "row": 162
+          },
+          {
+            "label": "Equity-settled share-based payment expense",
+            "row": 163
+          },
+          {
+            "label": "Other expenses",
+            "row": 164
+          }
+        ]
+      },
+      {
+        "parent_label": "Growth YoY",
+        "parent_row": 168,
+        "children": [
+          {
+            "label": "Depreciation and amortisation",
+            "row": 172
+          },
+          {
+            "label": "PPE",
+            "row": 174
+          },
+          {
+            "label": "Right of use of assets",
+            "row": 175
+          },
+          {
+            "label": "Computer software",
+            "row": 176
+          }
+        ]
+      },
+      {
+        "parent_label": "Other operating expenses",
+        "parent_row": 184,
+        "children": [
+          {
+            "label": "Establishment expenses",
+            "row": 186
+          },
+          {
+            "label": "Maintenance of property, plant, and equipment",
+            "row": 187
+          },
+          {
+            "label": "Office administration expenses",
+            "row": 188
+          },
+          {
+            "label": "Deposit insurance premium",
+            "row": 189
+          },
+          {
+            "label": "Other expenses",
+            "row": 190
+          },
+          {
+            "label": "Growth YoY",
+            "row": 192
+          },
+          {
+            "label": "Taxes on financial services",
+            "row": 196
+          },
+          {
+            "label": "VAT",
+            "row": 198
+          },
+          {
+            "label": "NBT",
+            "row": 199
+          },
+          {
+            "label": "Debt repayment",
+            "row": 200
+          },
+          {
+            "label": "Taxes on interest income",
+            "row": 202
+          },
+          {
+            "label": "Income tax",
+            "row": 206
+          },
+          {
+            "label": "Cash and cash equivalents",
+            "row": 216
+          },
+          {
+            "label": "Cash in hand",
+            "row": 218
+          },
+          {
+            "label": "Coins and notes held in local currency",
+            "row": 219
+          },
+          {
+            "label": "Coins and notes held in foreign currency",
+            "row": 220
+          },
+          {
+            "label": "Balances with banks",
+            "row": 221
+          },
+          {
+            "label": "Local banks",
+            "row": 222
+          },
+          {
+            "label": "Foreign banks",
+            "row": 223
+          },
+          {
+            "label": "Money at call and at short notice",
+            "row": 224
+          },
+          {
+            "label": "Gross cash and cash equivalents (*)",
+            "row": 225
+          },
+          {
+            "label": "Less: Provision for impairment",
+            "row": 226
+          }
+        ]
+      },
+      {
+        "parent_label": "Cash as a % of deposits",
+        "parent_row": 230,
+        "children": [
+          {
+            "label": "Balances with Central Banks",
+            "row": 234
+          },
+          {
+            "label": "Statutory balances with Central Banks",
+            "row": 236
+          },
+          {
+            "label": "Balances with Central Bank of Sri Lanka",
+            "row": 237
+          },
+          {
+            "label": "Balances with Bangladesh Bank",
+            "row": 238
+          },
+          {
+            "label": "Balances with Maldives Monetary Authority",
+            "row": 239
+          },
+          {
+            "label": "Non-statutory balances with Central Banks",
+            "row": 240
+          },
+          {
+            "label": "Balances with Central Bank of Sri Lanka",
+            "row": 241
+          },
+          {
+            "label": "Balances with Bangladesh Bank",
+            "row": 242
+          },
+          {
+            "label": "Balances with Maldives Monetary Authority",
+            "row": 243
+          }
+        ]
+      },
+      {
+        "parent_label": "Placements with banks",
+        "parent_row": 252,
+        "children": [
+          {
+            "label": "Placements within Sri Lanka",
+            "row": 254
+          },
+          {
+            "label": "Placements outside Sri Lanka",
+            "row": 255
+          },
+          {
+            "label": "Less: provision for impairments",
+            "row": 256
+          }
+        ]
+      },
+      {
+        "parent_label": "Growth YoY",
+        "parent_row": 260,
+        "children": [
+          {
+            "label": "Securities purchased under resale agreements",
+            "row": 264
+          },
+          {
+            "label": "Growth YoY",
+            "row": 265
+          },
+          {
+            "label": "Derivative financial assets",
+            "row": 266
+          },
+          {
+            "label": "Growth YoY",
+            "row": 267
+          },
+          {
+            "label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+            "row": 271
+          },
+          {
+            "label": "Government securities",
+            "row": 273
+          },
+          {
+            "label": "Treasury bills",
+            "row": 274
+          },
+          {
+            "label": "Treasury bonds",
+            "row": 275
+          },
+          {
+            "label": "Equity securities",
+            "row": 276
+          }
+        ]
+      },
+      {
+        "parent_label": "T Bills - Growth YoY",
+        "parent_row": 280,
+        "children": [
+          {
+            "label": "T Bonds - Growth YoY",
+            "row": 281
+          },
+          {
+            "label": "Equity - Growth YoY",
+            "row": 282
+          },
+          {
+            "label": "Financial assets at amortised cost \u2013 loans and advances to other customers",
+            "row": 289
+          }
+        ]
+      },
+      {
+        "parent_label": "Gross Loans and advances",
+        "parent_row": 292,
+        "children": [
+          {
+            "label": "Overdrafts",
+            "row": 293
+          },
+          {
+            "label": "Trade finance",
+            "row": 294
+          },
+          {
+            "label": "Lease/hire purchase receivable",
+            "row": 295
+          },
+          {
+            "label": "Credit cards",
+            "row": 296
+          },
+          {
+            "label": "Pawning",
+            "row": 297
+          },
+          {
+            "label": "Staff loans",
+            "row": 298
+          },
+          {
+            "label": "Housing loans",
+            "row": 299
+          },
+          {
+            "label": "Personal loans",
+            "row": 300
+          },
+          {
+            "label": "Term loans",
+            "row": 301
+          },
+          {
+            "label": "Short term",
+            "row": 302
+          },
+          {
+            "label": "Long term",
+            "row": 303
+          },
+          {
+            "label": "Bills of exchange",
+            "row": 304
+          },
+          {
+            "label": "Loan portfolio growth",
+            "row": 307
+          }
+        ]
+      },
+      {
+        "parent_label": "Gross loans and advances",
+        "parent_row": 311,
+        "children": [
+          {
+            "label": "Stage 1",
+            "row": 312
+          },
+          {
+            "label": "Stage 2",
+            "row": 313
+          },
+          {
+            "label": "Stage 3 (*)",
+            "row": 314
+          },
+          {
+            "label": "Less: Provision for impairment",
+            "row": 315
+          },
+          {
+            "label": "Stage 1",
+            "row": 316
+          },
+          {
+            "label": "Stage 2",
+            "row": 317
+          },
+          {
+            "label": "Stage 3",
+            "row": 318
+          },
+          {
+            "label": "Net loans and advances",
+            "row": 320
+          },
+          {
+            "label": "% of gross loans categorized under each stage",
+            "row": 322
+          },
+          {
+            "label": "Stage 1",
+            "row": 323
+          },
+          {
+            "label": "Stage 2",
+            "row": 324
+          },
+          {
+            "label": "Stage 3",
+            "row": 325
+          },
+          {
+            "label": "% of impairment provisions provided",
+            "row": 327
+          },
+          {
+            "label": "Stage 1",
+            "row": 328
+          },
+          {
+            "label": "Stage 2",
+            "row": 329
+          },
+          {
+            "label": "Stage 3",
+            "row": 330
+          },
+          {
+            "label": "Increase in Stage 3 gross loans",
+            "row": 333
+          },
+          {
+            "label": "Increase as a % of previous year's stage 2 gross loans",
+            "row": 334
+          },
+          {
+            "label": "% of stage 3 loans to total Gross loans",
+            "row": 335
+          },
+          {
+            "label": "Impairments provision / Gross loans",
+            "row": 337
+          },
+          {
+            "label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+            "row": 341
+          },
+          {
+            "label": "Government Securities \u2013 Sri Lanka",
+            "row": 343
+          },
+          {
+            "label": "Treasury Bonds (*)",
+            "row": 344
+          },
+          {
+            "label": "Sri Lanka Sovereign Bonds (SLSB) (*)",
+            "row": 345
+          },
+          {
+            "label": "Sri Lanka Development Bonds (SLDB) (*)",
+            "row": 346
+          },
+          {
+            "label": "Government Securities \u2013 Bangladesh",
+            "row": 347
+          },
+          {
+            "label": "Treasury Bills",
+            "row": 348
+          },
+          {
+            "label": "Treasury Bonds",
+            "row": 349
+          },
+          {
+            "label": "Government Securities \u2013 Maldives",
+            "row": 350
+          },
+          {
+            "label": "Treasury Bills",
+            "row": 351
+          },
+          {
+            "label": "Other instruments",
+            "row": 352
+          },
+          {
+            "label": "Debentures",
+            "row": 353
+          },
+          {
+            "label": "Trust certificates",
+            "row": 354
+          },
+          {
+            "label": "Corporate investments in Bangladesh",
+            "row": 355
+          },
+          {
+            "label": "Total gross",
+            "row": 356
+          },
+          {
+            "label": "Less: Provision for impairment",
+            "row": 357
+          },
+          {
+            "label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+            "row": 358
+          }
+        ]
+      },
+      {
+        "parent_label": "Growth YoY",
+        "parent_row": 362,
+        "children": [
+          {
+            "label": "Gvt Sec - SL",
+            "row": 363
+          },
+          {
+            "label": "Gvt Sec - Bangladesh",
+            "row": 364
+          },
+          {
+            "label": "Gvt Sec - Maldives",
+            "row": 365
+          },
+          {
+            "label": "Other instruments",
+            "row": 366
+          },
+          {
+            "label": "Impairments",
+            "row": 369
+          },
+          {
+            "label": "Stage 1",
+            "row": 370
+          },
+          {
+            "label": "Stage 2",
+            "row": 371
+          },
+          {
+            "label": "Stage 3",
+            "row": 372
+          },
+          {
+            "label": "Impairments to total gross financial assets",
+            "row": 375
+          }
+        ]
+      },
+      {
+        "parent_label": "Financail assets / total assets",
+        "parent_row": 379,
+        "children": [
+          {
+            "label": "Financail assets / net loans and advances",
+            "row": 380
+          },
+          {
+            "label": "Financial assets measured at fair value through other comprehensive income",
+            "row": 384
+          },
+          {
+            "label": "Government securities (after impairment)",
+            "row": 386
+          },
+          {
+            "label": "Equity securities",
+            "row": 387
+          }
+        ]
+      },
+      {
+        "parent_label": "Gsec - Growth YoY",
+        "parent_row": 391,
+        "children": [
+          {
+            "label": "Equity - Growth YoY",
+            "row": 392
+          },
+          {
+            "label": "Investment in associate",
+            "row": 396
+          },
+          {
+            "label": "Property, plant and equipment and right-of-use assets",
+            "row": 401
+          },
+          {
+            "label": "Cost",
+            "row": 403
+          },
+          {
+            "label": "Opening balance",
+            "row": 404
+          },
+          {
+            "label": "Capex / additions",
+            "row": 405
+          },
+          {
+            "label": "Disposals",
+            "row": 406
+          },
+          {
+            "label": "Exchange rate varaince",
+            "row": 407
+          },
+          {
+            "label": "Transfers / other adjustments",
+            "row": 408
+          },
+          {
+            "label": "Closing Balance",
+            "row": 409
+          },
+          {
+            "label": "Accumulated depreciation",
+            "row": 411
+          },
+          {
+            "label": "Opening balance",
+            "row": 412
+          },
+          {
+            "label": "Charge for the year",
+            "row": 413
+          },
+          {
+            "label": "Disposals",
+            "row": 414
+          },
+          {
+            "label": "Exchange rate varaince",
+            "row": 415
+          },
+          {
+            "label": "Transfers / other adjustments",
+            "row": 416
+          },
+          {
+            "label": "Closing Balance",
+            "row": 417
+          },
+          {
+            "label": "Net book value",
+            "row": 419
+          }
+        ]
+      },
+      {
+        "parent_label": "Additions / opening balance",
+        "parent_row": 423,
+        "children": [
+          {
+            "label": "Depreciaiton / opening balance",
+            "row": 424
+          },
+          {
+            "label": "Investment properties",
+            "row": 430
+          },
+          {
+            "label": "Growth YoY",
+            "row": 431
+          },
+          {
+            "label": "Intangible assets",
+            "row": 435
+          },
+          {
+            "label": "Computer Software",
+            "row": 437
+          },
+          {
+            "label": "Software under development",
+            "row": 438
+          },
+          {
+            "label": "Goodwill",
+            "row": 439
+          }
+        ]
+      },
+      {
+        "parent_label": "Software",
+        "parent_row": 443,
+        "children": [
+          {
+            "label": "Opening balance",
+            "row": 444
+          },
+          {
+            "label": "Additions",
+            "row": 445
+          },
+          {
+            "label": "Disposals",
+            "row": 446
+          },
+          {
+            "label": "Closing balance",
+            "row": 447
+          },
+          {
+            "label": "Amortization",
+            "row": 449
+          },
+          {
+            "label": "Opening balance",
+            "row": 450
+          },
+          {
+            "label": "Charge for the year",
+            "row": 451
+          },
+          {
+            "label": "Disposals",
+            "row": 452
+          },
+          {
+            "label": "Closing balance",
+            "row": 453
+          }
+        ]
+      },
+      {
+        "parent_label": "Additions / opening balance",
+        "parent_row": 457,
+        "children": [
+          {
+            "label": "Amortisation / opening balance",
+            "row": 458
+          },
+          {
+            "label": "Deferred tax assets",
+            "row": 462
+          },
+          {
+            "label": "Growth YoY",
+            "row": 464
+          },
+          {
+            "label": "Other assets",
+            "row": 468
+          },
+          {
+            "label": "Growth YoY",
+            "row": 469
+          },
+          {
+            "label": "LIABILITIES",
+            "row": 473
+          },
+          {
+            "label": "Due to banks",
+            "row": 475
+          },
+          {
+            "label": "Local currency",
+            "row": 477
+          },
+          {
+            "label": "Foreign currency",
+            "row": 478
+          },
+          {
+            "label": "Repo securities",
+            "row": 479
+          }
+        ]
+      },
+      {
+        "parent_label": "Derivative financial liabilities",
+        "parent_row": 488,
+        "children": [
+          {
+            "label": "Growth YoY",
+            "row": 489
+          },
+          {
+            "label": "Securities sold under repurchase agreements",
+            "row": 494
+          },
+          {
+            "label": "Financial liabilities at amortized cost \u2013 due to depositors",
+            "row": 501
+          },
+          {
+            "label": "Local currency deposits",
+            "row": 503
+          },
+          {
+            "label": "Current account balances",
+            "row": 504
+          },
+          {
+            "label": "Savings deposits",
+            "row": 505
+          },
+          {
+            "label": "Time deposits",
+            "row": 506
+          },
+          {
+            "label": "Other deposits",
+            "row": 507
+          },
+          {
+            "label": "Foreign currency deposits",
+            "row": 509
+          },
+          {
+            "label": "Current account balances",
+            "row": 510
+          },
+          {
+            "label": "Savings deposits",
+            "row": 511
+          },
+          {
+            "label": "Time deposits",
+            "row": 512
+          },
+          {
+            "label": "By Product",
+            "row": 514
+          },
+          {
+            "label": "Current account balances",
+            "row": 515
+          },
+          {
+            "label": "Savings deposits",
+            "row": 516
+          },
+          {
+            "label": "Time deposits",
+            "row": 517
+          },
+          {
+            "label": "Other deposits",
+            "row": 518
+          }
+        ]
+      },
+      {
+        "parent_label": "Total deposits / gross loans and advances",
+        "parent_row": 522,
+        "children": [
+          {
+            "label": "Total deposits / total assets",
+            "row": 523
+          },
+          {
+            "label": "Deposit mix",
+            "row": 525
+          },
+          {
+            "label": "Current account balances",
+            "row": 526
+          },
+          {
+            "label": "Savings deposits",
+            "row": 527
+          },
+          {
+            "label": "Time deposits",
+            "row": 528
+          },
+          {
+            "label": "Other deposits",
+            "row": 529
+          },
+          {
+            "label": "Financial liabilities at amortised cost \u2013 other borrowings",
+            "row": 534
+          },
+          {
+            "label": "Refinance borrowings",
+            "row": 536
+          },
+          {
+            "label": "Borrowings from International Finance Corporation (IFC)",
+            "row": 537
+          }
+        ]
+      },
+      {
+        "parent_label": "Growh YoY",
+        "parent_row": 541,
+        "children": [
+          {
+            "label": "New debenture issue",
+            "row": 543
+          },
+          {
+            "label": "Current tax liabilities",
+            "row": 546
+          },
+          {
+            "label": "Deferred tax liabilities",
+            "row": 547
+          },
+          {
+            "label": "Other liabilities",
+            "row": 553
+          },
+          {
+            "label": "Subordinated liabilities",
+            "row": 559
+          },
+          {
+            "label": "Payable within 1 year",
+            "row": 561
+          },
+          {
+            "label": "Payable more than 1 year",
+            "row": 562
+          },
+          {
+            "label": "VOTING Number of shares at year end",
+            "row": 570
+          },
+          {
+            "label": "Issues to ESOP",
+            "row": 571
+          },
+          {
+            "label": "Issue for dividends",
+            "row": 572
+          },
+          {
+            "label": "Rights Issues",
+            "row": 573
+          },
+          {
+            "label": "Private placements",
+            "row": 574
+          }
+        ]
+      },
+      {
+        "parent_label": "NON VOTING Number of shares at year end",
+        "parent_row": 578,
+        "children": [
+          {
+            "label": "Issues to ESOP",
+            "row": 579
+          },
+          {
+            "label": "Issue for dividends",
+            "row": 580
+          },
+          {
+            "label": "Rights Issues",
+            "row": 581
+          },
+          {
+            "label": "Private placements",
+            "row": 582
+          }
+        ]
+      },
+      {
+        "parent_label": "TOTAL shares (VOTING + NV)",
+        "parent_row": 586,
+        "children": [
+          {
+            "label": "Nominal value per share",
+            "row": 588
+          },
+          {
+            "label": "Unadjusted",
+            "row": 590
+          },
+          {
+            "label": "NAVPS",
+            "row": 591
+          },
+          {
+            "label": "EPS",
+            "row": 592
+          },
+          {
+            "label": "Adjusted",
+            "row": 594
+          },
+          {
+            "label": "NAVPS",
+            "row": 595
+          },
+          {
+            "label": "EPS",
+            "row": 596
+          },
+          {
+            "label": "Stated capital",
+            "row": 599
+          },
+          {
+            "label": "Dividends - VOTING",
+            "row": 601
+          },
+          {
+            "label": "Dividends - NON VOTING",
+            "row": 602
+          },
+          {
+            "label": "Dividend per share issued",
+            "row": 604
+          },
+          {
+            "label": "VOTING",
+            "row": 605
+          },
+          {
+            "label": "NON VOTING",
+            "row": 606
+          },
+          {
+            "label": "Statutory reserves",
+            "row": 609
+          },
+          {
+            "label": "Retained earnings",
+            "row": 615
+          },
+          {
+            "label": "Profit for the year",
+            "row": 617
+          },
+          {
+            "label": "Other comprehensive",
+            "row": 618
+          },
+          {
+            "label": "Dividends paid",
+            "row": 619
+          },
+          {
+            "label": "Transfer to other reserves (general reserve)",
+            "row": 620
+          },
+          {
+            "label": "Surcharge tax",
+            "row": 621
+          }
+        ]
+      },
+      {
+        "parent_label": "Dividend payout",
+        "parent_row": 625,
+        "children": [
+          {
+            "label": "Transfer to general reserve out of profit",
+            "row": 626
+          },
+          {
+            "label": "Other reserves",
+            "row": 631
+          },
+          {
+            "label": "Revaluation reserve",
+            "row": 633
+          },
+          {
+            "label": "General reserve",
+            "row": 634
+          },
+          {
+            "label": "Fair value reserve",
+            "row": 635
+          },
+          {
+            "label": "Foreign currency translation reserve",
+            "row": 636
+          },
+          {
+            "label": "Employee share option reserve",
+            "row": 637
+          },
+          {
+            "label": "Hedging reserve",
+            "row": 638
+          }
+        ]
+      }
+    ]
+  },
+  "quarterly": {
+    "labels": [
+      "Gross income",
+      "Interest income",
+      "Less : Interest expense",
+      "Net interest income",
+      "Fee and commission income",
+      "Less: Fee and commission expense",
+      "Net fee and commission income",
+      "Net gains/(losses) from trading",
+      "Net gains/(losses) from derecognition of financial assets",
+      "Net other operating income",
+      "Total operating income",
+      "Less : Impairment charges and other losses",
+      "Net operating income",
+      "Less: Expenses",
+      "Personnel expenses",
+      "Depreciation and amortisation",
+      "Other operating expenses",
+      "Operating profit before Taxes on financial services",
+      "Less: Taxes on financial services",
+      "Operating profit after Taxes on financial services",
+      "Add/(less): Share of profit/(loss) of associate, net of tax",
+      "Profit before income tax",
+      "Less : Income tax expense / (reversal)",
+      "Profit for the period",
+      "Profit attributable to:",
+      "Equity holders of the Bank",
+      "Non-controlling interest",
+      "Profit for the period",
+      "Earnings per share"
+    ],
+    "rows": [
+      {
+        "label": "Gross income",
+        "row": 3
+      },
+      {
+        "label": "Interest income",
+        "row": 4
+      },
+      {
+        "label": "Less : Interest expense",
+        "row": 5
+      },
+      {
+        "label": "Net interest income",
+        "row": 6
+      },
+      {
+        "label": "Fee and commission income",
+        "row": 7
+      },
+      {
+        "label": "Less: Fee and commission expense",
+        "row": 8
+      },
+      {
+        "label": "Net fee and commission income",
+        "row": 9
+      },
+      {
+        "label": "Net gains/(losses) from trading",
+        "row": 10
+      },
+      {
+        "label": "Net gains/(losses) from derecognition of financial assets",
+        "row": 11
+      },
+      {
+        "label": "Net other operating income",
+        "row": 12
+      },
+      {
+        "label": "Total operating income",
+        "row": 13
+      },
+      {
+        "label": "Less : Impairment charges and other losses",
+        "row": 14
+      },
+      {
+        "label": "Net operating income",
+        "row": 15
+      },
+      {
+        "label": "Less: Expenses",
+        "row": 16
+      },
+      {
+        "label": "Personnel expenses",
+        "row": 17
+      },
+      {
+        "label": "Depreciation and amortisation",
+        "row": 18
+      },
+      {
+        "label": "Other operating expenses",
+        "row": 19
+      },
+      {
+        "label": "Operating profit before Taxes on financial services",
+        "row": 20
+      },
+      {
+        "label": "Less: Taxes on financial services",
+        "row": 21
+      },
+      {
+        "label": "Operating profit after Taxes on financial services",
+        "row": 22
+      },
+      {
+        "label": "Add/(less): Share of profit/(loss) of associate, net of tax",
+        "row": 23
+      },
+      {
+        "label": "Profit before income tax",
+        "row": 24
+      },
+      {
+        "label": "Less : Income tax expense / (reversal)",
+        "row": 25
+      },
+      {
+        "label": "Profit for the period",
+        "row": 26
+      },
+      {
+        "label": "Profit attributable to:",
+        "row": 27
+      },
+      {
+        "label": "Equity holders of the Bank",
+        "row": 28
+      },
+      {
+        "label": "Non-controlling interest",
+        "row": 29
+      },
+      {
+        "label": "Profit for the period",
+        "row": 30
+      },
+      {
+        "label": "Earnings per share",
+        "row": 32
+      }
+    ]
+  },
+  "ratios": {
+    "labels": [
+      "Avg. yield on interest earning assets",
+      "Avg. cost on interest bearing funds",
+      "Net interest margin",
+      "Interest rate spread",
+      "Cost to income (operating)",
+      "Cost to income (with impairments)",
+      "Impairments/ Gross loans",
+      "Net margin",
+      "ROE",
+      "ROA",
+      "Equity/ total assets",
+      "Deposits / total assets",
+      "Cash / total assets",
+      "Gross income per employee",
+      "Dividend payout",
+      "Gross income per service centre",
+      "Net interest spread"
+    ]
+  },
+  "entity_column": "group"
+}
