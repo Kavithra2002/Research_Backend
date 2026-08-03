@@ -15,6 +15,7 @@ import {
   type CompanyGroupPublic,
   type OwnerMeta,
 } from "./companyGroupService";
+import { listCseCompanies as listCseCatalogCompanies } from "./cseCompanyCatalogService";
 import { RESPONSE_STYLE_GUIDE } from "./responseStyle";
 import {
   SECTOR_DB_TOOLS,
@@ -26,6 +27,17 @@ import {
   INVESTMENT_SCREENING_TOOLS,
   dispatchInvestmentTool,
 } from "./investmentAgentTools";
+import {
+  WEB_SEARCH_TOOL,
+  WEB_SEARCH_GUIDANCE,
+  dispatchWebSearchTool,
+} from "./webSearchAgentTool";
+import {
+  CSE_AGENT_TOOLS,
+  CSE_MARKET_QUERY_GUIDANCE,
+  dispatchCseTool,
+} from "./cseAgentTools";
+import { runCseChatPreflight } from "./cseSharePriceGuard";
 
 /* ────────────────────────────────────────────────────────────────────────── *
  * Types
@@ -166,6 +178,8 @@ const TOOLS = [
   SEARCH_REPORT_TEXT_TOOL,
   ...SECTOR_DB_TOOLS,
   ...INVESTMENT_SCREENING_TOOLS,
+  ...CSE_AGENT_TOOLS,
+  WEB_SEARCH_TOOL,
   ...COMMON_TOOLS,
 ] as const;
 
@@ -174,58 +188,10 @@ const TOOLS = [
  * ────────────────────────────────────────────────────────────────────────── */
 
 type CseCompany = { name: string; symbol: string };
-type CseCache = { companies: CseCompany[]; fetchedAt: number } | null;
-
-const CSE_TTL_MS = 30 * 60 * 1000;
-let cseCache: CseCache = null;
 
 async function fetchCseCompanies(): Promise<CseCompany[]> {
-  const now = Date.now();
-  if (cseCache && now - cseCache.fetchedAt < CSE_TTL_MS) {
-    return cseCache.companies;
-  }
-  const res = await fetch("https://www.cse.lk/api/tradeSummary", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      Origin: "https://www.cse.lk",
-      Referer: "https://www.cse.lk/",
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-      Accept: "application/json, text/plain, */*",
-    },
-    body: "",
-  });
-  if (!res.ok) {
-    if (cseCache) return cseCache.companies;
-    throw new Error(`CSE tradeSummary returned ${res.status}`);
-  }
-  const data = (await res.json()) as Record<string, unknown>;
-  const rows =
-    (data.reqTradeSummery as unknown[]) ??
-    (data.reqTradeSummary as unknown[]) ??
-    [];
-  const seen = new Set<string>();
-  const out: CseCompany[] = [];
-  if (Array.isArray(rows)) {
-    for (const row of rows) {
-      if (!row || typeof row !== "object") continue;
-      const r = row as Record<string, unknown>;
-      const symbol = typeof r.symbol === "string" ? r.symbol.trim() : "";
-      const name = typeof r.name === "string" ? r.name.trim() : "";
-      if (!symbol || !name || seen.has(symbol)) continue;
-      seen.add(symbol);
-      out.push({ name, symbol });
-    }
-  }
-  out.sort((a, b) =>
-    a.name.localeCompare(b.name, undefined, {
-      numeric: true,
-      sensitivity: "base",
-    }),
-  );
-  cseCache = { companies: out, fetchedAt: now };
-  return out;
+  const result = await listCseCatalogCompanies();
+  return result.companies.map((c) => ({ name: c.name, symbol: c.symbol }));
 }
 
 async function dispatchTool(
@@ -320,6 +286,12 @@ async function dispatchTool(
       const investment = await dispatchInvestmentTool(name, a);
       if (investment !== undefined) return investment;
 
+      const cse = await dispatchCseTool(name, a);
+      if (cse !== undefined) return cse;
+
+      const web = await dispatchWebSearchTool(name, a);
+      if (web !== undefined) return web;
+
       const common = dispatchCommonTool(name, a);
       if (common !== undefined) return common;
       throw new Error(`Unknown tool: ${name}`);
@@ -391,9 +363,12 @@ function buildSystemPrompt(user: SageChatInput["user"]): string {
     "  • screen_available_companies → screen all database companies for buy recommendations.",
     SECTOR_QUERY_GUIDANCE,
     BUY_RECOMMENDATION_GUIDANCE,
+    CSE_MARKET_QUERY_GUIDANCE,
+    WEB_SEARCH_GUIDANCE,
     "",
     "Handling any kind of question:",
-    "  • You can also help with general questions — small talk (\"how are you\"), greetings, definitions, explaining hard words or technical concepts — answer those naturally and briefly.",
+    "  • You can also help with general questions — small talk (\"how are you\"), greetings, definitions, explaining hard words or technical concepts.",
+    "  • For factual questions needing current data (commodity prices, forex, world news, macro trends) — call web_search; never say you lack access without searching first.",
     "  • Date/time questions → use the get_current_time tool (never guess the date).",
     "  • Any calculation → use the calculate tool for the exact result instead of doing maths yourself.",
     "  • After helping with a general question, gently steer back to what you do best (managing company groups) if it fits.",
@@ -459,7 +434,9 @@ async function callOpenAI(messages: ChatMessage[]): Promise<OpenAIChoiceMessage>
 }
 
 export async function runSageChat(input: SageChatInput): Promise<SageChatOutput> {
-  const systemPrompt = buildSystemPrompt(input.user);
+  const preflight = await runCseChatPreflight(input.messages);
+  const systemPrompt =
+    buildSystemPrompt(input.user) + (preflight?.systemAppendix ?? "");
 
   // Strip any prior tool_calls without matching tool replies the client might
   // have sent — we always rebuild the loop from system + history.
@@ -473,7 +450,14 @@ export async function runSageChat(input: SageChatInput): Promise<SageChatOutput>
       })),
   ];
 
-  const events: ToolEvent[] = [];
+  const events: ToolEvent[] = [
+    ...(preflight?.toolEvents.map((e) => ({
+      tool: e.tool,
+      arguments: e.arguments,
+      result: e.result,
+      ok: e.ok,
+    })) ?? []),
+  ];
 
   for (let round = 0; round < MAX_TOOL_ROUNDS; round += 1) {
     const assistant = await callOpenAI(history);

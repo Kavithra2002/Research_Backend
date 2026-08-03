@@ -9,7 +9,7 @@ import {
 } from "../services/reportScheduleService";
 import type { ReportAgent } from "../models/ReportSchedule";
 
-const agentSchema = z.enum(["robin", "tuck", "marian"]);
+const agentSchema = z.enum(["robin", "tuck", "marian", "jone"]);
 
 function parseAgent(value: unknown): ReportAgent {
   const parsed = agentSchema.safeParse(value);

@@ -276,6 +276,101 @@ export async function getCseUniverse(): Promise<CseLiveRow[]> {
 /** Minimum confidence before we treat a fuzzy name match as the right company. */
 const MIN_MATCH_SCORE = 0.6;
 
+export interface CseLookupCandidate {
+  name: string;
+  symbol: string;
+  score: number;
+}
+
+export interface CseLookupResult {
+  query: string;
+  matched: CseSnapshot | null;
+  candidates: CseLookupCandidate[];
+}
+
+function symbolRoot(symbol: string): string {
+  return String(symbol ?? "")
+    .trim()
+    .toUpperCase()
+    .split(".")[0];
+}
+
+function scoreSymbol(query: string, symbol: string): number {
+  const q = String(query ?? "").trim().toUpperCase();
+  const full = String(symbol ?? "").trim().toUpperCase();
+  const root = symbolRoot(full);
+  if (!q || !full) return 0;
+  if (q === full || q === root) return 1;
+  if (full.startsWith(q) || root.startsWith(q)) return 0.95;
+  return 0;
+}
+
+function topCandidates(
+  query: string,
+  rows: TradeSummaryRow[],
+  limit = 5,
+): CseLookupCandidate[] {
+  const scored = rows
+    .map((row) => {
+      const name = String(row.name ?? "");
+      const symbol = String(row.symbol ?? "");
+      const nameScore = scoreNames(query, name);
+      const symbolScore = scoreSymbol(query, symbol);
+      return {
+        name,
+        symbol,
+        score: Math.max(nameScore, symbolScore),
+      };
+    })
+    .filter((c) => c.score > 0.25)
+    .sort((a, b) => b.score - a.score);
+  return scored.slice(0, limit).map((c) => ({
+    ...c,
+    score: Number(c.score.toFixed(2)),
+  }));
+}
+
+/** Resolve one company/ticker to a live CSE snapshot, with close-match candidates. */
+export async function lookupCseEquity(query: string): Promise<CseLookupResult> {
+  const cleaned = String(query ?? "").trim();
+  if (!cleaned) {
+    return { query: cleaned, matched: null, candidates: [] };
+  }
+
+  let rows: TradeSummaryRow[];
+  try {
+    rows = await getTradeSummary();
+  } catch (err) {
+    logger.warn(
+      `[CSE] Could not fetch trade summary: ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+    );
+    return { query: cleaned, matched: null, candidates: [] };
+  }
+
+  const candidates = topCandidates(cleaned, rows);
+  const best = candidates[0];
+  if (!best || best.score < MIN_MATCH_SCORE) {
+    return { query: cleaned, matched: null, candidates };
+  }
+
+  const row = rows.find(
+    (r) =>
+      String(r.symbol ?? "") === best.symbol &&
+      String(r.name ?? "") === best.name,
+  );
+  if (!row) {
+    return { query: cleaned, matched: null, candidates };
+  }
+
+  return {
+    query: cleaned,
+    matched: rowToSnapshot(cleaned, row, best.score),
+    candidates,
+  };
+}
+
 /**
  * Resolve a list of company names to live CSE market snapshots. Returns one
  * entry per name that matched a listed equity with sufficient confidence;
@@ -305,7 +400,18 @@ export async function getCseSnapshots(
   for (const query of cleaned) {
     let best: TradeSummaryRow | null = null;
     let bestScore = 0;
+    const qUpper = query.trim().toUpperCase();
+
     for (const row of rows) {
+      const symbol = String(row.symbol ?? "").trim().toUpperCase();
+      if (symbol && (symbol === qUpper || symbol.startsWith(qUpper))) {
+        const symScore = symbol === qUpper ? 1 : 0.95;
+        if (symScore > bestScore) {
+          bestScore = symScore;
+          best = row;
+        }
+        continue;
+      }
       const score = scoreNames(query, String(row.name ?? ""));
       if (score > bestScore) {
         bestScore = score;

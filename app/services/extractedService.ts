@@ -15,6 +15,8 @@ export type PeriodSummary = {
   tableCount: number;
   model: string | null;
   generatedAt: string | null;
+  /** Present on quarterly summaries — which quarters have stored tables. */
+  availableQuarters?: string[];
 };
 
 export type YearNode = {
@@ -56,7 +58,7 @@ export async function countFinancialTables(): Promise<number> {
 }
 
 export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> {
-  const [registry, grouped] = await Promise.all([
+  const [registry, grouped, quarterMeta] = await Promise.all([
     Company.find({}).select({ slug: 1, name: 1, sector: 1, sector_detail: 1 }).lean(),
     FinancialTable.aggregate<{
       _id: {
@@ -66,6 +68,7 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
       };
       company_name: string;
       statements: string[];
+      quarters: (string | null)[];
       table_count: number;
       model: string | null;
       generated_at: string | null;
@@ -80,13 +83,43 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
           },
           company_name: { $first: "$company_name" },
           statements: { $addToSet: "$statement_key" },
+          quarters: { $addToSet: "$quarter" },
           table_count: { $sum: 1 },
           model: { $first: "$extraction_model" },
           generated_at: { $max: "$extracted_at" },
         },
       },
     ]),
+    FinancialTable.aggregate<{
+      _id: { company_slug: string; year: number | null };
+      quarters: (string | null)[];
+      report_keys: string[];
+      report_groups: (string | null)[];
+    }>([
+      { $match: { year: { $ne: null }, report_type: "quarterly" } },
+      {
+        $group: {
+          _id: { company_slug: "$company_slug", year: "$year" },
+          quarters: { $addToSet: "$quarter" },
+          report_keys: { $addToSet: "$report_key" },
+          report_groups: { $addToSet: "$report_group" },
+        },
+      },
+    ]),
   ]);
+
+  const quarterLookup = new Map<string, string[]>();
+  for (const row of quarterMeta) {
+    const year = row._id.year;
+    if (year == null) continue;
+    const key = `${row._id.company_slug}:${year}`;
+    const parsed = quartersFromMetaStrings(
+      ...(row.quarters ?? []),
+      ...(row.report_keys ?? []),
+      ...(row.report_groups ?? []),
+    );
+    if (parsed.length) quarterLookup.set(key, parsed);
+  }
 
   const displayNames = new Map<string, string>();
   const sectors = new Map<string, { sector: string | null; detail: string | null }>();
@@ -123,12 +156,25 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
     }
     const yearNode = companyNode.years.get(year)!;
     const statements = [...row.statements].sort();
+    let availableQuarters: string[] | undefined;
+    if (period === "Quarterly") {
+      const lookupKey = `${slug}:${year}`;
+      const fromLookup = quarterLookup.get(lookupKey);
+      const fromRow = sortQuarters(
+        [...new Set(row.quarters ?? [])]
+          .map((q) => normalizeQuarterLabel(q))
+          .filter((q): q is string => Boolean(q)),
+      );
+      availableQuarters =
+        fromLookup && fromLookup.length ? fromLookup : fromRow.length ? fromRow : undefined;
+    }
     const summary: PeriodSummary = {
       statements,
       statementCount: statements.length,
       tableCount: row.table_count,
       model: row.model ?? null,
       generatedAt: row.generated_at ?? null,
+      ...(availableQuarters?.length ? { availableQuarters } : {}),
     };
 
     if (period === "Annual") yearNode.annual = summary;
@@ -678,6 +724,64 @@ function quarterRank(quarter: string | null): number {
   return m ? Number(m[1]) : 0;
 }
 
+export function normalizeQuarterLabel(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  const t = String(raw).trim().toUpperCase();
+  const m = /Q?\s*([1-4])/.exec(t);
+  return m ? `Q${m[1]}` : null;
+}
+
+function sortQuarters(quarters: string[]): string[] {
+  return [...quarters].sort((a, b) => quarterRank(a) - quarterRank(b));
+}
+
+function quartersFromMetaStrings(...sources: (string | null | undefined)[]): string[] {
+  const out = new Set<string>();
+  for (const s of sources) {
+    if (!s) continue;
+    const fromLabel = normalizeQuarterLabel(s);
+    if (fromLabel) out.add(fromLabel);
+    const re = /\bQ\s*([1-4])\b/gi;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(String(s))) !== null) {
+      out.add(`Q${m[1]}`);
+    }
+  }
+  return sortQuarters([...out]);
+}
+
+const REPORT_YEAR_RE = /\b(19|20)\d{2}\b/;
+const REPORT_QUARTER_YEAR_RE = /\b(19|20)(\d{2})\s*Q\s*([1-4])\b/i;
+
+/** Parse year/quarter from report folder name — avoids mislabels from table headers. */
+function periodFromReportMeta(
+  reportType: ReportType,
+  reportKey: string,
+  reportGroup: string | null,
+  periodLabel: string | null,
+  storedYear: number | null,
+  storedQuarter: string | null,
+): { year: number | null; quarter: string | null } {
+  const sources = [reportKey, reportGroup ?? "", periodLabel ?? ""];
+  if (reportType === "quarterly") {
+    for (const s of sources) {
+      if (!s) continue;
+      const m = REPORT_QUARTER_YEAR_RE.exec(s);
+      if (m) {
+        return { year: Number(`${m[1]}${m[2]}`), quarter: `Q${m[3]}` };
+      }
+    }
+    return { year: storedYear, quarter: storedQuarter };
+  }
+
+  for (const s of sources) {
+    if (!s) continue;
+    const m = REPORT_YEAR_RE.exec(s);
+    if (m) return { year: Number(m[0]), quarter: null };
+  }
+  return { year: storedYear, quarter: storedQuarter };
+}
+
 /**
  * List every stored report ONE ROW PER REPORT (i.e. per `report_key`), so the
  * four quarters of a year stay distinct. Ordered Annual-first, then Quarterly,
@@ -742,13 +846,23 @@ export async function listStoredReports(): Promise<StoredReportCompany[]> {
     }
 
     const statements = [...row.statements].sort();
+    const reportKey = row._id.report_key;
+    const reportGroup = row.report_group ?? null;
+    const { year, quarter } = periodFromReportMeta(
+      reportType,
+      reportKey,
+      reportGroup,
+      row.period_label ?? null,
+      row.year ?? null,
+      row.quarter ?? null,
+    );
     byCompany.get(slug)!.reports.push({
-      reportKey: row._id.report_key,
+      reportKey,
       reportType,
       period,
-      year: row.year ?? null,
-      quarter: row.quarter ?? null,
-      reportGroup: row.report_group ?? null,
+      year,
+      quarter,
+      reportGroup,
       periodLabel: row.period_label ?? null,
       statements,
       statementCount: statements.length,
@@ -822,6 +936,7 @@ export async function getReportTables(
   let year: number | null = null;
   let quarter: string | null = null;
   let periodLabel: string | null = null;
+  let reportGroup: string | null = null;
 
   for (const doc of docs) {
     companyName = doc.company_name;
@@ -829,6 +944,7 @@ export async function getReportTables(
     year = year ?? doc.year ?? null;
     quarter = quarter ?? doc.quarter ?? null;
     periodLabel = periodLabel ?? doc.period_label ?? null;
+    reportGroup = reportGroup ?? doc.report_group ?? null;
     if (doc.extracted_at && (!generatedAt || doc.extracted_at > generatedAt)) {
       generatedAt = doc.extracted_at;
     }
@@ -858,6 +974,15 @@ export async function getReportTables(
     });
   }
 
+  const canonical = periodFromReportMeta(
+    reportType,
+    reportKey,
+    reportGroup,
+    periodLabel,
+    year,
+    quarter,
+  );
+
   return {
     company: companySlug,
     reportType,
@@ -866,9 +991,10 @@ export async function getReportTables(
       company: companyName ?? companySlug,
       model,
       generated_at: generatedAt,
-      year,
-      quarter,
+      year: canonical.year,
+      quarter: canonical.quarter,
       period_label: periodLabel,
+      report_group: reportGroup,
       source: "mongodb",
     },
     results,
@@ -879,19 +1005,34 @@ export async function getExtractedResults(
   companySlug: string,
   year: number,
   period: PeriodLabel,
+  quarter?: string | null,
 ): Promise<{
   company: string;
   year: number;
   period: PeriodLabel;
+  quarter: string | null;
   meta: Record<string, unknown> | null;
   results: Record<string, unknown>;
 }> {
   const reportType = reportTypeFromPeriod(period);
-  const docs = await FinancialTable.find({
+  const qNorm =
+    period === "Quarterly" ? normalizeQuarterLabel(quarter ?? null) : null;
+
+  const filter: Record<string, unknown> = {
     company_slug: companySlug,
     year,
     report_type: reportType,
-  })
+  };
+
+  if (period === "Quarterly" && qNorm) {
+    filter.$or = [
+      { quarter: qNorm },
+      { report_key: new RegExp(`\\b${qNorm}\\b`, "i") },
+      { report_group: new RegExp(`\\b${qNorm}\\b`, "i") },
+    ];
+  }
+
+  const docs = await FinancialTable.find(filter)
     .sort({ statement_key: 1, table_index: 1 })
     .lean();
 
@@ -942,12 +1083,14 @@ export async function getExtractedResults(
     company: companySlug,
     year,
     period,
+    quarter: qNorm,
     meta: {
       company: companyName ?? companySlug,
       model,
       generated_at: generatedAt,
       year,
       period,
+      quarter: qNorm,
       source: "mongodb",
     },
     results,

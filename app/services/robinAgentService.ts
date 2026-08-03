@@ -16,6 +16,11 @@ import {
   WEB_SEARCH_TOOL,
   dispatchWebSearchTool,
 } from "./webSearchAgentTool";
+import {
+  CSE_AGENT_TOOLS,
+  CSE_MARKET_QUERY_GUIDANCE,
+  dispatchCseTool,
+} from "./cseAgentTools";
 import { RESPONSE_STYLE_GUIDE } from "./responseStyle";
 import {
   SECTOR_DB_TOOLS,
@@ -28,6 +33,7 @@ import {
   INVESTMENT_SCREENING_TOOLS,
   dispatchInvestmentTool,
 } from "./investmentAgentTools";
+import { runCseChatPreflight } from "./cseSharePriceGuard";
 
 /* ────────────────────────────────────────────────────────────────────────── *
  * Robin — financial data-analysis agent (chat, like Sage)
@@ -255,6 +261,7 @@ export const FINANCIAL_DB_TOOLS = [
 ] as const;
 
 const TOOLS = [
+  ...CSE_AGENT_TOOLS,
   ...FINANCIAL_DB_TOOLS,
   ...NON_FINANCIAL_DB_TOOLS,
   WEB_SEARCH_TOOL,
@@ -927,6 +934,9 @@ export async function dispatchFinancialTool(
 }
 
 async function dispatchTool(name: string, args: unknown): Promise<unknown> {
+  const cse = await dispatchCseTool(name, args);
+  if (cse !== undefined) return cse;
+
   const financial = await dispatchFinancialTool(name, args);
   if (financial !== undefined) return financial;
 
@@ -967,6 +977,7 @@ function buildSystemPrompt(user: RobinChatInput["user"]): string {
     "  • Any calculation (percentages, growth, ratios, averages, etc.) — use the calculate tool for the exact result rather than doing the maths in your head.",
     "",
     "How to work:",
+    CSE_MARKET_QUERY_GUIDANCE,
     "  • For any question about a company's financial figures, USE THE TOOLS to look up real data before answering. Never guess or fabricate numbers.",
     "  • Typical financial flow: resolve the company (list_companies) → see what exists (company_overview) → pull the figure (search_line_items or get_statement).",
     SECTOR_QUERY_GUIDANCE,
@@ -1036,10 +1047,11 @@ function buildSystemPrompt(user: RobinChatInput["user"]): string {
     "  • If a metric is genuinely not found (found=false), say so for that specific year only; you may fall back to search_report_text for narrative passages.",
     "",
     "Web search (use it as the fallback before giving up — IMPORTANT):",
-    "  • Two cases call for web_search: (a) the user asks how an EXTERNAL event might affect a company (wars, geopolitical crises, pandemics, policy changes, global economic trends, commodity prices, competitor moves); and (b) a COMPANY-SPECIFIC fact or explanation the user wants is NOT in our database or report text — e.g. the reason behind a loss/profit drop, why results moved, or recent developments.",
-    "  • In BOTH cases, FIRST gather the company's profile and the relevant figures from the database (non_financial_overview + relevant metrics + the financial figure in question), THEN call web_search with that context so the analysis is specific to the company.",
-    "  • For case (b) you do NOT need to ask the user for permission first — search the web automatically once the stored sources fall short, then answer.",
-    "  • Clearly separate what comes from stored database/report data vs web search in your answer (e.g. add a short \"From public sources:\" note).",
+    "  • Three cases call for web_search: (a) the user asks how an EXTERNAL event might affect a company; (b) a COMPANY-SPECIFIC fact or explanation is NOT in our database or report text; (c) a GENERAL factual question outside our data (crude oil/Brent/WTI prices, gold, forex, USD/LKR, Fed rates, geopolitical news, global markets, macro trends, definitions, current events).",
+    "  • For (a) and (b), FIRST gather the company's profile and relevant figures from the database, THEN call web_search with company_context.",
+    "  • For (c), call web_search directly with a clear query — do NOT say you lack access without searching first.",
+    "  • You do NOT need to ask the user for permission first — search automatically once stored sources fall short or the question is clearly external.",
+    "  • Clearly separate what comes from stored database/report data vs web search (e.g. add a short **From web sources:** note).",
     "  • Do NOT use web_search for facts that ARE already in the database — always check the DB tools and report text first; web search is the fallback, not the first move.",
     "",
     "Qualitative / narrative questions (report text — RAG):",
@@ -1051,8 +1063,9 @@ function buildSystemPrompt(user: RobinChatInput["user"]): string {
     "  • When the user asks for a report or to create/download a PDF, produce a clean, well-structured one: a short **bold** title line, then a brief summary paragraph, then the supporting figures as Markdown tables and/or chart blocks, then a short closing note. Always ground every figure with the tools first.",
     "  • Such an answer can be downloaded as a PDF, so keep the structure tidy with **bold** labels, bullet points and tables — but never use # heading marks.",
     "",
-    "General chat:",
-    "  • If the user just chats or asks something general (not about a specific company), answer normally and conversationally without using the data tools.",
+    "General questions & small talk:",
+    "  • Greetings, small talk, and definitions you know well — reply warmly without tools.",
+    "  • Factual general questions needing current data (commodity prices, forex, world news, macro) — call web_search; never say you lack access without searching first.",
     "",
     RESPONSE_STYLE_GUIDE,
     "",
@@ -1113,7 +1126,9 @@ async function callOpenAI(messages: ChatMessage[]): Promise<OpenAIChoiceMessage>
 export async function runRobinChat(
   input: RobinChatInput,
 ): Promise<RobinChatOutput> {
-  const systemPrompt = buildSystemPrompt(input.user);
+  const preflight = await runCseChatPreflight(input.messages);
+  const systemPrompt =
+    buildSystemPrompt(input.user) + (preflight?.systemAppendix ?? "");
 
   const history: ChatMessage[] = [
     { role: "system", content: systemPrompt },
@@ -1122,7 +1137,14 @@ export async function runRobinChat(
       .map((m) => ({ role: m.role, content: m.content ?? "" })),
   ];
 
-  const events: ToolEvent[] = [];
+  const events: ToolEvent[] = [
+    ...(preflight?.toolEvents.map((e) => ({
+      tool: e.tool,
+      arguments: e.arguments,
+      result: e.result,
+      ok: e.ok,
+    })) ?? []),
+  ];
 
   for (let round = 0; round < MAX_TOOL_ROUNDS; round += 1) {
     const assistant = await callOpenAI(history);

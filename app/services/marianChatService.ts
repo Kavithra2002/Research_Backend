@@ -16,11 +16,16 @@ import {
   NON_FINANCIAL_DB_TOOLS,
   dispatchNonFinancialTool,
 } from "./nonFinancialAgentTools";
-import { WEB_SEARCH_TOOL, dispatchWebSearchTool } from "./webSearchAgentTool";
-import { TUCK_SECTIONS, fetchCseData } from "./tuckService";
+import { WEB_SEARCH_TOOL, WEB_SEARCH_GUIDANCE, dispatchWebSearchTool } from "./webSearchAgentTool";
+import {
+  CSE_AGENT_TOOLS,
+  CSE_MARKET_QUERY_GUIDANCE,
+  dispatchCseTool,
+} from "./cseAgentTools";
 import { RESPONSE_STYLE_GUIDE } from "./responseStyle";
 import { SECTOR_QUERY_GUIDANCE } from "./sectorAgentTools";
 import { BUY_RECOMMENDATION_GUIDANCE } from "./investmentAgentTools";
+import { runCseChatPreflight } from "./cseSharePriceGuard";
 
 /* ────────────────────────────────────────────────────────────────────────── *
  * Marian — Daily Market Wrap + company-intelligence agent (chat, like Tuck).
@@ -52,35 +57,9 @@ export interface MarianChatOutput {
 }
 
 const MAX_TOOL_ROUNDS = 8;
-const MAX_CSE_CHARS = 18000;
-const CSE_SECTION_IDS: string[] = TUCK_SECTIONS.map((s) => s.id);
-
-const GET_CSE_MARKET_DATA_TOOL = {
-  type: "function",
-  function: {
-    name: "get_cse_market_data",
-    description:
-      "Fetch LIVE market data from the Colombo Stock Exchange (CSE) for the requested sections. Use this for any question about today's market: the ASPI / S&P SL20 indices, overall market summary, top gainers, top losers, most active trades, or today's share prices. Returns raw CSE JSON to read figures from.",
-    parameters: {
-      type: "object",
-      properties: {
-        sections: {
-          type: "array",
-          items: { type: "string", enum: CSE_SECTION_IDS },
-          description:
-            "Which CSE data slices to fetch. Options: " +
-            TUCK_SECTIONS.map((s) => `'${s.id}' (${s.label})`).join(", ") +
-            ". Pick only the slices relevant to the question.",
-        },
-      },
-      required: ["sections"],
-      additionalProperties: false,
-    },
-  },
-} as const;
 
 const TOOLS = [
-  GET_CSE_MARKET_DATA_TOOL,
+  ...CSE_AGENT_TOOLS,
   ...FINANCIAL_DB_TOOLS,
   ...NON_FINANCIAL_DB_TOOLS,
   WEB_SEARCH_TOOL,
@@ -90,22 +69,8 @@ const TOOLS = [
 async function dispatchTool(name: string, args: unknown): Promise<unknown> {
   const a = (args ?? {}) as Record<string, unknown>;
 
-  if (name === "get_cse_market_data") {
-    const requested = Array.isArray(a.sections)
-      ? a.sections.map((s) => String(s)).filter((s) => CSE_SECTION_IDS.includes(s))
-      : [];
-    const sections = requested.length > 0 ? requested : CSE_SECTION_IDS;
-    const data = await fetchCseData(sections);
-    const json = JSON.stringify(data);
-    if (json.length > MAX_CSE_CHARS) {
-      return {
-        sections,
-        truncated: true,
-        data: `${json.slice(0, MAX_CSE_CHARS)}…(truncated)`,
-      };
-    }
-    return { sections, truncated: false, data };
-  }
+  const cse = await dispatchCseTool(name, a);
+  if (cse !== undefined) return cse;
 
   const financial = await dispatchFinancialTool(name, a);
   if (financial !== undefined) return financial;
@@ -140,13 +105,13 @@ function buildSystemPrompt(user: MarianChatInput["user"]): string {
     "  • Match the user's tone and language; keep answers clear, friendly and concise.",
     "",
     "Choosing the right tools:",
-    "  • For today's market / live prices / indices / gainers / losers / most active / a market wrap → call get_cse_market_data with the relevant sections.",
+    CSE_MARKET_QUERY_GUIDANCE,
     "  • For a company's reported FINANCIAL figures (revenue, profit, assets, equity, EPS, etc.) → use the database tools: list_companies → company_overview → search_line_items / get_statement.",
     "  • For NON-FINANCIAL questions (sector, briefing, employees, branches, group structure, subsidiaries, awards, sustainability, governance) → use list_non_financial_companies → non_financial_overview → get_non_financial_metric with the right keyword.",
     "  • For comparing the SAME line item across SEVERAL companies/years, use compare_companies in ONE call.",
     SECTOR_QUERY_GUIDANCE,
     BUY_RECOMMENDATION_GUIDANCE,
-    "  • For EXTERNAL / current-events impact analysis (wars, geopolitical crises, policy changes, global trends) → FIRST gather the company's profile from the database, THEN call web_search with that context.",
+    WEB_SEARCH_GUIDANCE,
     "  • For any calculation (percentages, growth, ratios, averages) use the calculate tool. For date/time use get_current_time. Never guess numbers or the date.",
     "",
     "Grounding (IMPORTANT — never fabricate):",
@@ -163,8 +128,8 @@ function buildSystemPrompt(user: MarianChatInput["user"]): string {
     "  • Only after the user confirms should you call the data tools again with the confirmed name.",
     "",
     "When report data is NOT in the database:",
-    "  • Do NOT invent it. Say: \"Sorry, I don't have that data with me right now. Would you like me to answer it by referring to the full report of that company?\"",
-    "  • Only if the user says yes, call refer_to_full_report (it searches the company's full report text via semantic/vector search).",
+    "  • Do NOT invent it. Try search_report_text / refer_to_full_report for company-specific narrative, then web_search if still missing.",
+    "  • For questions outside our stored data entirely (commodities, forex, global news, macro), call web_search directly.",
     "",
     "Non-financial company data (IMPORTANT):",
     "  • Single-year facts (sector briefings, employee counts, branch networks, group structure, subsidiaries, awards, sustainability) → use non_financial_overview then get_non_financial_metric, reading best_match.value.",
@@ -185,8 +150,9 @@ function buildSystemPrompt(user: MarianChatInput["user"]): string {
     "Daily Market Wrap & reports:",
     "  • When the user asks for a market wrap, daily summary, report, or to create/download a PDF, fetch the live CSE data first, then produce a clean, well-structured report: a short **bold** title line with the date, a brief overview paragraph, then the supporting figures as Markdown tables and/or chart blocks, then a short closing note.",
     "",
-    "General chat:",
-    "  • If the user just chats or asks something general (not about a specific company or the market), answer normally and conversationally without using the data tools.",
+    "General questions & small talk:",
+    "  • Greetings and casual chat — reply warmly without tools.",
+    "  • Factual general questions (crude oil prices, gold, forex, world news, macro trends, definitions) — call web_search; never say you lack access without searching first.",
     "",
     RESPONSE_STYLE_GUIDE,
     "",
@@ -243,7 +209,9 @@ async function callOpenAI(messages: ChatMessage[]): Promise<OpenAIChoiceMessage>
 export async function runMarianChat(
   input: MarianChatInput,
 ): Promise<MarianChatOutput> {
-  const systemPrompt = buildSystemPrompt(input.user);
+  const preflight = await runCseChatPreflight(input.messages);
+  const systemPrompt =
+    buildSystemPrompt(input.user) + (preflight?.systemAppendix ?? "");
 
   const history: ChatMessage[] = [
     { role: "system", content: systemPrompt },
@@ -252,7 +220,14 @@ export async function runMarianChat(
       .map((m) => ({ role: m.role, content: m.content ?? "" })),
   ];
 
-  const events: ToolEvent[] = [];
+  const events: ToolEvent[] = [
+    ...(preflight?.toolEvents.map((e) => ({
+      tool: e.tool,
+      arguments: e.arguments,
+      result: e.result,
+      ok: e.ok,
+    })) ?? []),
+  ];
 
   for (let round = 0; round < MAX_TOOL_ROUNDS; round += 1) {
     const assistant = await callOpenAI(history);

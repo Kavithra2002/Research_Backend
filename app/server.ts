@@ -11,6 +11,7 @@ import {
   startNewspaperScheduler,
   stopNewspaperScheduler,
 } from "./services/newspaperScheduler";
+import { refreshCseCompanyCatalog } from "./services/cseCompanyCatalogService";
 import { logger } from "./utils/logger";
 
 async function bootstrap() {
@@ -30,6 +31,15 @@ async function bootstrap() {
   const server = app.listen(env.port, () => {
     logger.info(`API server listening on http://localhost:${env.port}`);
     logger.info(`Health check available at http://localhost:${env.port}/api/health`);
+    void refreshCseCompanyCatalog()
+      .then((r) => {
+        logger.info(
+          `[CSE catalog] Startup refresh: ${r.companies.length} companies (${r.source}${r.stale ? ", stale" : ""}).`,
+        );
+      })
+      .catch((err) => {
+        logger.warn("[CSE catalog] Startup refresh failed.", err);
+      });
   });
 
   // Arm the daily market-report scheduler (Tuck agent).

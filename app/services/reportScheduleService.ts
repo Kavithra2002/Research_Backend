@@ -11,6 +11,7 @@ import {
   normalizeSections,
 } from "./marianMarketService";
 import { buildDailyMarketWrapPdfBuffer } from "./marianPdfService";
+import { buildJoneReportPdfFromPayload } from "./jonePdfService";
 import { getUserByUserId } from "./userService";
 import { sendReportEmail, sendReportPdfEmail } from "../utils/mailer";
 import { logger } from "../utils/logger";
@@ -266,6 +267,44 @@ async function generateForSchedule(
       subject: "Marian — Daily Market Wrap",
       title: "Daily Market Wrap",
       intro: "Please find today's Daily Market Wrap from Ambeon Securities, generated from live Colombo Stock Exchange data.",
+    };
+  }
+
+  if (doc.agent === "jone") {
+    const groupKind = String(config.groupKind ?? config.watchlistId ?? "watchlist");
+    const watchlistName = String(config.watchlistName ?? "");
+    const watchlistId = String(config.watchlistId ?? "");
+    const watchlistSymbols = Array.isArray(config.watchlistSymbols)
+      ? (config.watchlistSymbols as unknown[]).map(String)
+      : [];
+    if (!watchlistName || !watchlistId) {
+      return null;
+    }
+    if (
+      groupKind === "watchlist" &&
+      watchlistSymbols.length === 0
+    ) {
+      return null;
+    }
+
+    const pdf = await buildJoneReportPdfFromPayload({
+      groupKind:
+        groupKind === "top_gainers" || groupKind === "top_losers"
+          ? groupKind
+          : "watchlist",
+      watchlistId,
+      watchlistName,
+      watchlistSymbols,
+    });
+    const date = new Date().toISOString().slice(0, 10);
+    const safeName = watchlistName.replace(/[^a-z0-9-_]+/gi, "_");
+    return {
+      kind: "pdf",
+      pdf,
+      filename: `${safeName}_market_summary_${date}.pdf`,
+      subject: `John — ${watchlistName} Market Summary`,
+      title: `${watchlistName} Market Summary`,
+      intro: `Please find the live market summary for your My List group "${watchlistName}", generated from Colombo Stock Exchange data.`,
     };
   }
 

@@ -1,6 +1,6 @@
 import { Schema, model, type HydratedDocument } from "mongoose";
 
-export type ReportAgent = "robin" | "tuck" | "marian";
+export type ReportAgent = "robin" | "tuck" | "marian" | "jone";
 export type ReportFrequency = "once" | "daily" | "weekly" | "monthly";
 
 export interface ReportScheduleAttrs {
@@ -20,6 +20,7 @@ export interface ReportScheduleAttrs {
    *  • robin  → { companies: string[]; metrics: string[] }
    *  • tuck   → { sections: string[]; companies: string[] }
    *  • marian → { sections: string[] }
+   *  • jone   → { columns: string[]; watchlistId; watchlistName; watchlistSymbols: string[] }
    */
   config: Record<string, unknown>;
   /** Whether this schedule is active. */
@@ -31,7 +32,7 @@ export interface ReportScheduleAttrs {
 const reportScheduleSchema = new Schema<ReportScheduleAttrs>(
   {
     user_id: { type: String, required: true, index: true },
-    agent: { type: String, enum: ["robin", "tuck", "marian"], required: true },
+    agent: { type: String, enum: ["robin", "tuck", "marian", "jone"], required: true },
     time: { type: String, default: "09:00" },
     date: { type: String, default: "" },
     frequency: {

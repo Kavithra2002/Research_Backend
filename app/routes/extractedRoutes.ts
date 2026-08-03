@@ -10,6 +10,10 @@ import {
   type PeriodLabel,
 } from "../services/extractedService";
 import {
+  DEFAULT_SUMMARY_YEARS,
+  getYearlyStatementSummary,
+} from "../services/yearlySummaryService";
+import {
   countNonFinancialData,
   getNonFinancialData,
   listNonFinancialCompanies,
@@ -152,6 +156,46 @@ router.get("/non-financial-data", async (req, res, next) => {
   }
 });
 
+router.get("/yearly-summary", async (req, res, next) => {
+  try {
+    const company = String(req.query.company ?? "").trim();
+    const statementKey = String(
+      req.query.statement ?? req.query.statementKey ?? "income_statement",
+    ).trim();
+    const period = normalizePeriod(req.query.period);
+    const fromYear = Number(req.query.from ?? DEFAULT_SUMMARY_YEARS[0]);
+    const toYear = Number(
+      req.query.to ?? DEFAULT_SUMMARY_YEARS[DEFAULT_SUMMARY_YEARS.length - 1],
+    );
+
+    if (!company) {
+      return res.status(400).json({
+        error: "Missing required query param: company",
+      });
+    }
+
+    if (!Number.isFinite(fromYear) || !Number.isFinite(toYear)) {
+      return res.status(400).json({
+        error: "Invalid year range",
+        company,
+      });
+    }
+
+    const years: number[] = [];
+    for (let y = fromYear; y <= toYear; y += 1) years.push(y);
+
+    const payload = await getYearlyStatementSummary(
+      company,
+      statementKey,
+      period,
+      years,
+    );
+    res.json({ source: "mongodb", ...payload });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/data", async (req, res, next) => {
   try {
     const company = String(req.query.company ?? "").trim();
@@ -171,7 +215,13 @@ router.get("/data", async (req, res, next) => {
       });
     }
 
-    const payload = await getExtractedResults(company, year, period);
+    const quarterRaw = req.query.quarter;
+    const quarter =
+      typeof quarterRaw === "string" && quarterRaw.trim().length > 0
+        ? quarterRaw.trim()
+        : undefined;
+
+    const payload = await getExtractedResults(company, year, period, quarter);
     res.json(payload);
   } catch (err) {
     const status =

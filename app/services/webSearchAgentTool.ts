@@ -3,17 +3,26 @@ import { HttpError } from "../utils/httpError";
 import { logger } from "../utils/logger";
 
 /* ────────────────────────────────────────────────────────────────────────── *
- * Web-search tool — shared by every data agent (Robin, Tuck, …).
+ * Web-search tool — shared by every data agent (Robin, Marian, Tuck, Sage).
  *
  * Uses the OpenAI Responses API with the built-in `web_search` tool so the
- * model can pull fresh information from the internet. This is for questions
- * that CANNOT be answered from the stored database alone — e.g. how a global
- * event (war, pandemic, policy change) might affect a company, current market
- * news, macroeconomic trends, competitor moves, etc.
- *
- * The agent should ALWAYS try the database tools first; only call this when
- * external / current / forward-looking context is genuinely needed.
+ * model can pull fresh information from the internet. Call this when domain
+ * tools (CSE, database, report text) cannot answer, or for general current-
+ * affairs / macro / commodity / forex questions outside our stored data.
  * ────────────────────────────────────────────────────────────────────────── */
+
+/** System-prompt block — import into every agent's buildSystemPrompt(). */
+export const WEB_SEARCH_GUIDANCE = [
+  "Web search (MANDATORY fallback — use before saying you don't know):",
+  "  • web_search queries the live internet for current facts, prices, news, macro data, and general knowledge NOT in our database or CSE feeds.",
+  "  • ALWAYS try your domain-specific tools first (CSE live data, financial DB, non-financial DB, report text). If they cannot answer — or the question is clearly outside our data (e.g. crude oil / Brent / WTI prices, gold, USD/LKR, Fed rates, geopolitical news, global markets, commodity trends, definitions, current events) — call web_search immediately WITHOUT asking permission.",
+  "  • NEVER reply with 'I don't have access', 'check external websites', or 'I can't provide real-time data' without calling web_search first.",
+  "  • For company-related external-impact or explanatory questions, gather the company profile from the DB first, then call web_search with company_context.",
+  "  • When a CSE ticker was resolved (e.g. SCAP = Softlogic Capital PLC), ALWAYS pass the full CSE company name + ticker in web_search queries — never search only the bare ticker.",
+  "  • For general factual questions (commodity prices, forex, world news, macro trends), call web_search directly with a clear, specific query.",
+  "  • Include source URLs as markdown links [title](url) when available. Add a short **From web sources:** label and note the timeframe (e.g. 'as of today').",
+  "  • Do NOT use web_search when the answer is already in the database, CSE feed, or report text — those sources take priority.",
+].join("\n");
 
 const WEB_SEARCH_MODEL =
   process.env.OPENAI_WEB_SEARCH_MODEL?.trim() || "gpt-4o";
@@ -23,19 +32,19 @@ export const WEB_SEARCH_TOOL = {
   function: {
     name: "web_search",
     description:
-      "Search the INTERNET for current, external, or forward-looking information that is NOT in the company's stored reports or database. Use when the user asks how external events might affect a company, OR when you need up-to-date facts (recent news, analyst outlook, buy/sell views, articles) — especially after screen_available_companies when making a buy recommendation. ALWAYS fetch company data from the database first, THEN call this tool. Include any source URLs as markdown links [title](url) in your final answer. Clearly label web-sourced vs database facts.",
+      "Search the INTERNET for current, external, or general information NOT available from our database or CSE live feeds. MANDATORY fallback when domain tools cannot answer. Use for: commodity prices (crude oil/Brent/WTI, gold), forex rates, global macro news, Fed/OPEC/policy events, geopolitical developments, analyst views, buy recommendations (after screening), company-specific facts missing from reports, and any general factual question. Try database/CSE/report tools FIRST when relevant; then call this WITHOUT asking permission. Include markdown source links [title](url). Label web-sourced facts clearly.",
     parameters: {
       type: "object",
       properties: {
         query: {
           type: "string",
           description:
-            "The search question — be specific and include the company name, sector, and what external factor you are researching.",
+            "The search question — be specific (e.g. 'Brent crude oil price today June 2026', 'Dialog Axiata 2022 loss reason').",
         },
         company_context: {
           type: "string",
           description:
-            "Brief context about the company gathered from the database (sector, business lines, geography, key exposures) so the web search analysis is tailored.",
+            "Optional: brief company context from the database (sector, business lines, geography) to tailor company-related searches.",
         },
       },
       required: ["query"],
@@ -140,9 +149,10 @@ export async function runWebSearch(args: {
   }
 
   const instructions = [
-    "You are a research assistant helping a financial analyst.",
+    "You are a research assistant helping a financial analyst at a Sri Lankan securities firm.",
     "Search the web for current, factual information relevant to the user's question.",
     "Be concise but thorough. Focus on facts, recent developments, and credible sources.",
+    "For price/quote questions (crude oil, Brent, WTI, gold, forex, indices), lead with the latest figures and name the benchmark (e.g. Brent vs WTI).",
     "If the question is about how an external event affects a specific company, tailor your analysis to that company's sector, geography and business model using the company context provided.",
     "Structure your answer with short paragraphs and bullet points.",
     "When you find credible sources, include them as markdown links: [Source title](https://full-url) so the user can click and read.",
