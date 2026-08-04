@@ -35,3 +35,11 @@ reports/
 testing/
 app/assets/
 scripts/_nf_items*.json
+
+# Local reference PDFs / temp previews (keep on disk, do not commit)
+MaC Reports/
+tmp_fs_preview.json
+
+# Office lock / temp files
+**/~$*
+New_Updates/~$*
