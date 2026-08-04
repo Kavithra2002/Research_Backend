@@ -1,0 +1,248 @@
+{
+  "year": 2021,
+  "pdf_path": "E:\\AMBEON\\script\\backend\\Demo_Data\\Commercial Bank of Ceylon PLC\\Annual\\Annual report 2021\\369_1646645087138.pdf",
+  "db_rows": 104,
+  "excel_verify": {
+    "compared": 104,
+    "matches": 104,
+    "mismatches": 0,
+    "match_pct": 100.0
+  },
+  "pdf_compare": {
+    "compared": 101,
+    "matches": 73,
+    "mismatches": 28,
+    "pdf_lookup_miss": 2,
+    "match_pct": 72.3,
+    "mismatch_rows": [
+      {
+        "label": "Cash and cash equivalents as at January 01,",
+        "db": 51258271.0,
+        "pdf": 69335379.0,
+        "diff": -18077108.0
+      },
+      {
+        "label": "Derivative financial assets",
+        "db": 3245120.0,
+        "pdf": 3001574.0,
+        "diff": 243546.0
+      },
+      {
+        "label": "Diluted earnings per ordinary share (Rs.)",
+        "db": 19.41,
+        "pdf": 20.15,
+        "diff": -0.7399999999999984
+      },
+      {
+        "label": "Dividend paid to non-controlling interest",
+        "db": -15168.0,
+        "pdf": 227819.0,
+        "diff": -242987.0
+      },
+      {
+        "label": "Dividends received from investments in associate and subsidiaries",
+        "db": 0.0,
+        "pdf": -105911.0,
+        "diff": 105911.0
+      },
+      {
+        "label": "Due to subsidiaries",
+        "db": 0.0,
+        "pdf": 191517.0,
+        "diff": -191517.0
+      },
+      {
+        "label": "Earnings per share\nBasic earnings per ordinary share (Rs.)",
+        "db": 19.41,
+        "pdf": 20.15,
+        "diff": -0.7399999999999984
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+        "db": 385390598.0,
+        "pdf": 3001574.0,
+        "diff": 382389024.0
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 loans and advances to banks",
+        "db": 0.0,
+        "pdf": 3001574.0,
+        "diff": -3001574.0
+      },
+      {
+        "label": "Financial assets at amortised cost \u2013 loans and advances to other customers",
+        "db": 1029584075.0,
+        "pdf": 3001574.0,
+        "diff": 1026582501.0
+      },
+      {
+        "label": "Financial assets measured at fair value through other comprehensive income",
+        "db": 335953802.0,
+        "pdf": 3001574.0,
+        "diff": 332952228.0
+      },
+      {
+        "label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+        "db": 23436123.0,
+        "pdf": 3001574.0,
+        "diff": 20434549.0
+      },
+      {
+        "label": "Gross cash and cash equivalents as at December 31,",
+        "db": 69342992.0,
+        "pdf": 69335379.0,
+        "diff": 7613.0
+      },
+      {
+        "label": "Interest expense on subordinated liabilities",
+        "db": 3398554.0,
+        "pdf": 38303466.0,
+        "diff": -34904912.0
+      },
+      {
+        "label": "Interest paid on subordinated liabilities",
+        "db": -3422766.0,
+        "pdf": 38303466.0,
+        "diff": -41726232.0
+      },
+      {
+        "label": "Investments in subsidiaries",
+        "db": 0.0,
+        "pdf": 29042.0,
+        "diff": -29042.0
+      },
+      {
+        "label": "Less: Impairment charges on cash and cash equivalents",
+        "db": -7613.0,
+        "pdf": 69335379.0,
+        "diff": -69342992.0
+      },
+      {
+        "label": "Net assets value per ordinary share (Rs.)",
+        "db": 140.24,
+        "pdf": 297.0,
+        "diff": -156.76
+      },
+      {
+        "label": "Net increase/(decrease) in cash and cash equivalents",
+        "db": 18084721.0,
+        "pdf": 69335379.0,
+        "diff": -51250658.0
+      },
+      {
+        "label": "Non-cash items included in profit before tax",
+        "db": 30473593.0,
+        "pdf": 32957324.0,
+        "diff": -2483731.0
+      },
+      {
+        "label": "Non-controlling interest",
+        "db": 2077811.0,
+        "pdf": 227819.0,
+        "diff": 1849992.0
+      },
+      {
+        "label": "Operating profit after taxes on financial services",
+        "db": 32955428.0,
+        "pdf": 38800658.0,
+        "diff": -5845230.0
+      },
+      {
+        "label": "Proceeds from issue of subordinated liabilities",
+        "db": 8595470.0,
+        "pdf": 38303466.0,
+        "diff": -29707996.0
+      },
+      {
+        "label": "Purchase of intangible assets",
+        "db": -810454.0,
+        "pdf": 2272639.0,
+        "diff": -3083093.0
+      },
+      {
+        "label": "Redemption of subordinated liabilities",
+        "db": -9502140.0,
+        "pdf": 38303466.0,
+        "diff": -47805606.0
+      },
+      {
+        "label": "Share of (profit)/loss of associate, net of tax",
+        "db": -1896.0,
+        "pdf": 8404173.0,
+        "diff": -8406069.0
+      },
+      {
+        "label": "Total equity attributable to equity holders of the Bank",
+        "db": 167474717.0,
+        "pdf": 24062469.0,
+        "diff": 143412248.0
+      },
+      {
+        "label": "Transfer of FV losses reclassification of debt from FVTOCI to AC",
+        "db": 0.0,
+        "pdf": 335953802.0,
+        "diff": -335953802.0
+      }
+    ]
+  },
+  "db_empty_cells": 1,
+  "missing_vs_excel_filled": [],
+  "key_income_statement_rows": [
+    {
+      "label": "Gross income",
+      "db": 163675312.0,
+      "excel": 163675312.0,
+      "pdf": 163675312.0,
+      "db_vs_excel_ok": true,
+      "db_vs_pdf_ok": true
+    },
+    {
+      "label": "Interest income",
+      "db": 132818178.0,
+      "excel": 132818178.0,
+      "pdf": 132818178.0,
+      "db_vs_excel_ok": true,
+      "db_vs_pdf_ok": true
+    },
+    {
+      "label": "Less: Interest expense",
+      "db": 66401846.0,
+      "excel": 66401846.0,
+      "pdf": 66401846.0,
+      "db_vs_excel_ok": true,
+      "db_vs_pdf_ok": true
+    },
+    {
+      "label": "Net interest income",
+      "db": 66416332.0,
+      "excel": 66416332.0,
+      "pdf": 66416332.0,
+      "db_vs_excel_ok": true,
+      "db_vs_pdf_ok": true
+    },
+    {
+      "label": "Profit for the year",
+      "db": 24290288.0,
+      "excel": 24290288.0,
+      "pdf": 24290288.0,
+      "db_vs_excel_ok": true,
+      "db_vs_pdf_ok": true
+    },
+    {
+      "label": "Total assets",
+      "db": 1983491144.0,
+      "excel": 1983491144.0,
+      "pdf": 1983491144.0,
+      "db_vs_excel_ok": true,
+      "db_vs_pdf_ok": true
+    },
+    {
+      "label": "Total equity attributable to equity holders of the Bank",
+      "db": 167474717.0,
+      "excel": 167474717.0,
+      "pdf": 24062469.0,
+      "db_vs_excel_ok": true,
+      "db_vs_pdf_ok": false
+    }
+  ]
+}

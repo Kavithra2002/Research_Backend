@@ -1,10 +1,36 @@
 [
   {
-    "year": 2022,
-    "aligned_from_excel": 1,
+    "year": 2019,
+    "aligned_from_excel": 78,
     "aligned_pass2": 0,
     "verify": {
-      "year": 2022,
+      "year": 2019,
+      "compared": 104,
+      "matches": 104,
+      "mismatches": 0,
+      "match_pct": 100.0,
+      "mismatch_rows": []
+    }
+  },
+  {
+    "year": 2020,
+    "aligned_from_excel": 15,
+    "aligned_pass2": 0,
+    "verify": {
+      "year": 2020,
+      "compared": 104,
+      "matches": 104,
+      "mismatches": 0,
+      "match_pct": 100.0,
+      "mismatch_rows": []
+    }
+  },
+  {
+    "year": 2021,
+    "aligned_from_excel": 13,
+    "aligned_pass2": 0,
+    "verify": {
+      "year": 2021,
       "compared": 104,
       "matches": 104,
       "mismatches": 0,
