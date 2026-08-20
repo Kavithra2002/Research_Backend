@@ -1,11 +1,12 @@
 """
 annual_db_extractor.py
 ======================
-Fast annual DB run (~2 min per report):
+Annual DB run — same COMB pipeline as Commercial Bank, for any company:
 
   1. FS Description values from financial_tables
-  2. Note-table flags (which lines have notes)
-  3. Note page PNG captures (no table data extraction)
+  2. PDF statement extract (pdfplumber, OpenAI fallback)
+  3. Note page PNG captures
+  4. Note-table fill for the DB Notes dropdown
 
 Drivers and Ratios are not populated.
 """
@@ -42,11 +43,11 @@ def run_annual_db(
     years: list[int],
     *,
     company_slug: str = COMMERCIAL_BANK_SLUG,
-    skip_existing: bool = True,
+    skip_existing: bool = False,
     use_note_extract: bool = True,
-    force_note_capture: bool = False,
+    force_note_capture: bool = True,
     use_openai_notes: bool = False,
-    use_pdf_extract: bool = False,
+    use_pdf_extract: bool = True,
 ) -> int:
     if not years:
         emit({"type": "error", "message": "No years selected"})
@@ -81,7 +82,10 @@ def run_annual_db(
                     "totalSteps": len(years),
                 }
             )
-            emit_log(f"DB annual extraction for {year}…")
+            emit_log(
+                f"DB annual extraction for {year} "
+                f"(PDF statements + note tables)…"
+            )
             try:
                 result = extract_annual_comb(
                     db,
@@ -165,8 +169,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--years-stdin", action="store_true")
     ap.add_argument("--company-slug", default=COMMERCIAL_BANK_SLUG)
     ap.add_argument("--force", action="store_true", help="Re-extract filled cells")
+    ap.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help="Skip cells that already have a filled value",
+    )
     ap.add_argument("--no-note-extract", action="store_true")
     ap.add_argument("--force-note-capture", action="store_true")
+    ap.add_argument(
+        "--no-force-note-capture",
+        action="store_true",
+        help="Do not recapture note images/tables when they already exist",
+    )
     ap.add_argument(
         "--use-openai-notes",
         action="store_true",
@@ -175,7 +189,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument(
         "--use-pdf-extract",
         action="store_true",
-        help="Use PDF/OpenAI FS extraction (uses API credits when OpenAI fallback runs)",
+        help="Extract FS values from the annual report PDF (default)",
+    )
+    ap.add_argument(
+        "--no-pdf-extract",
+        action="store_true",
+        help="Skip PDF statement extract (financial_tables mapper only)",
     )
     args = ap.parse_args(argv)
 
@@ -195,11 +214,11 @@ def main(argv: list[str] | None = None) -> int:
     return run_annual_db(
         years,
         company_slug=args.company_slug,
-        skip_existing=not args.force,
+        skip_existing=bool(args.skip_existing) and not args.force,
         use_note_extract=not args.no_note_extract,
-        force_note_capture=args.force_note_capture,
+        force_note_capture=not args.no_force_note_capture,
         use_openai_notes=args.use_openai_notes,
-        use_pdf_extract=args.use_pdf_extract,
+        use_pdf_extract=not args.no_pdf_extract,
     )
 
 

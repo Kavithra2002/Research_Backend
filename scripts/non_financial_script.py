@@ -325,11 +325,11 @@ def resolve_api_key(cli_key: str | None) -> str | None:
 def resolve_model(cli_model: str | None) -> str:
     if cli_model and cli_model.strip():
         return cli_model.strip()
-    if os.environ.get("OPENAI_CHAT_MODEL"):
-        return os.environ["OPENAI_CHAT_MODEL"].strip()
+    if os.environ.get("OPENAI_EXTRACTION_MODEL"):
+        return os.environ["OPENAI_EXTRACTION_MODEL"].strip()
     env = _load_env_file(BACKEND_ENV)
-    val = env.get("OPENAI_CHAT_MODEL", "").strip()
-    return val or "gpt-4o-mini"
+    val = env.get("OPENAI_EXTRACTION_MODEL", "").strip()
+    return val or "gpt-5"
 
 
 def safe_company_slug(name: str) -> str:
@@ -762,15 +762,19 @@ def call_openai(
     )
 
     started = time.time()
-    completion = client.chat.completions.create(
-        model=model,
-        messages=[
+    create_kwargs: dict = {
+        "model": model,
+        "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt},
         ],
-        response_format={"type": "json_object"},
-        temperature=0.2,
-    )
+        "response_format": {"type": "json_object"},
+    }
+    if str(model).lower().startswith("gpt-5"):
+        create_kwargs["max_completion_tokens"] = 8192
+    else:
+        create_kwargs["temperature"] = 0.2
+    completion = client.chat.completions.create(**create_kwargs)
     elapsed = time.time() - started
     emit_log("info", f"OpenAI response received in {elapsed:.1f}s")
 
@@ -823,7 +827,7 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     ap.add_argument(
         "--model",
         default=None,
-        help="OpenAI model id (default: OPENAI_CHAT_MODEL or gpt-4o-mini).",
+        help="OpenAI model id (default: gpt-5).",
     )
     ap.add_argument(
         "--apikey",

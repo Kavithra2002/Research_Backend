@@ -301,16 +301,31 @@ def lookup_in_pdf_index(
                 return val
 
     # Operating-profit rows are often split across lines in PDF parses.
+    # Never let before↔after polarity siblings supply each other.
     if "operating profit" in nt and "before" in nt:
         for key, val in index.items():
-            if "operating profit" in key and "before" in key and "tax" in key:
+            if (
+                "operating profit" in key
+                and "before" in key
+                and "tax" in key
+                and "after" not in key
+            ):
                 return val
     if "operating profit" in nt and "after" in nt:
         for key, val in index.items():
-            if "operating profit" in key and "after" in key and "tax" in key:
+            if (
+                "operating profit" in key
+                and "after" in key
+                and "tax" in key
+                and "before" not in key
+            ):
                 return val
 
     for key, val in index.items():
+        from comb_note_extractor import labels_polarity_conflict
+
+        if labels_polarity_conflict(nt, key):
+            continue
         if nt in key or key in nt:
             return val
     return None

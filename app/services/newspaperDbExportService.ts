@@ -402,9 +402,9 @@ export async function buildFsWorkbookExport(
 }
 
 export function isQuarterlyDbAvailable(companySlug: string): boolean {
-  return companySlug.trim() === COMMERCIAL_BANK_SLUG;
+  return Boolean(companySlug.trim());
 }
 
 export function isCombPilotAvailable(companySlug: string): boolean {
-  return companySlug.trim() === COMMERCIAL_BANK_SLUG;
+  return Boolean(companySlug.trim());
 }

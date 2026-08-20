@@ -47,14 +47,8 @@ def main() -> int:
         )
 
         if args.view == "quarterly":
-            if slug and slug != COMMERCIAL_BANK_SLUG:
-                raise ValueError(
-                    "Quarterly view is only available for Commercial Bank of Ceylon PLC."
-                )
-            payload = build_quarterly_preview_data(
-                slug or COMMERCIAL_BANK_SLUG,
-                years=years,
-            )
+            target = slug or COMMERCIAL_BANK_SLUG
+            payload = build_quarterly_preview_data(target, years=years)
         elif args.view == "drivers":
             if not slug:
                 raise ValueError("company-slug is required for drivers view")

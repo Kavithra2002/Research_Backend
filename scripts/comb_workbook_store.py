@@ -142,6 +142,7 @@ def ensure_indexes(db) -> None:
             ("sheet", ASCENDING),
             ("label", ASCENDING),
             ("drivers_row", ASCENDING),
+            ("template_row", ASCENDING),
         ],
         unique=True,
         name="comb_workbook_unique",
@@ -275,6 +276,8 @@ def upsert_cells(db, docs: list[dict[str, Any]]) -> int:
         }
         if doc.get("sheet") == "Drivers" and doc.get("drivers_row") is not None:
             filt["drivers_row"] = doc["drivers_row"]
+        if doc.get("sheet") == "FS" and doc.get("template_row") is not None:
+            filt["template_row"] = doc["template_row"]
         ops.append(ReplaceOne(filt, doc, upsert=True))
     if ops:
         db[COMB_COLLECTION].bulk_write(ops, ordered=False)
@@ -333,6 +336,8 @@ class CombWorkbookStore:
             for doc in cursor:
                 if sheet == "Drivers" and doc.get("drivers_row") is not None:
                     index[f"row:{doc['drivers_row']}"] = doc
+                if sheet == "FS" and doc.get("template_row") is not None:
+                    index[f"row:{doc['template_row']}"] = doc
                 index[str(doc["label"])] = doc
             self._cache[key] = index
         return self._cache[key]
@@ -346,10 +351,15 @@ class CombWorkbookStore:
         report_type: str = "annual",
         quarter: str | None = None,
         drivers_row: int | None = None,
+        template_row: int | None = None,
     ) -> dict[str, Any] | None:
         index = self._load_sheet(sheet, year, report_type, quarter)
         if sheet == "Drivers" and drivers_row is not None:
             doc = index.get(f"row:{drivers_row}")
+            if doc:
+                return doc
+        if sheet == "FS" and template_row is not None:
+            doc = index.get(f"row:{template_row}")
             if doc:
                 return doc
         return index.get(label)
@@ -363,13 +373,27 @@ class CombWorkbookStore:
         report_type: str = "annual",
         quarter: str | None = None,
         drivers_row: int | None = None,
+        template_row: int | None = None,
+        entity: str = "group",
     ) -> float | None:
         doc = self._resolve_doc(
-            sheet, year, label, report_type=report_type, quarter=quarter, drivers_row=drivers_row
+            sheet,
+            year,
+            label,
+            report_type=report_type,
+            quarter=quarter,
+            drivers_row=drivers_row,
+            template_row=template_row,
         )
         if not doc:
             return None
-        val = doc.get("value")
+        if (entity or "group").lower() == "bank":
+            val = doc.get("value_bank")
+            if val is None:
+                return None
+            return float(val)
+        # Prefer explicit group field when present; fall back to legacy value.
+        val = doc.get("value_group", doc.get("value"))
         return float(val) if val is not None else None
 
     def lookup_status(
@@ -381,11 +405,18 @@ class CombWorkbookStore:
         report_type: str = "annual",
         quarter: str | None = None,
         drivers_row: int | None = None,
+        template_row: int | None = None,
     ) -> str:
         if not is_workbook_year(year):
             return STATUS_PENDING
         doc = self._resolve_doc(
-            sheet, year, label, report_type=report_type, quarter=quarter, drivers_row=drivers_row
+            sheet,
+            year,
+            label,
+            report_type=report_type,
+            quarter=quarter,
+            drivers_row=drivers_row,
+            template_row=template_row,
         )
         if not doc:
             return STATUS_PENDING
@@ -403,9 +434,16 @@ class CombWorkbookStore:
         report_type: str = "annual",
         quarter: str | None = None,
         drivers_row: int | None = None,
+        template_row: int | None = None,
     ) -> dict[str, Any] | None:
         return self._resolve_doc(
-            sheet, year, label, report_type=report_type, quarter=quarter, drivers_row=drivers_row
+            sheet,
+            year,
+            label,
+            report_type=report_type,
+            quarter=quarter,
+            drivers_row=drivers_row,
+            template_row=template_row,
         )
 
     def cell_meta(
@@ -417,9 +455,16 @@ class CombWorkbookStore:
         report_type: str = "annual",
         quarter: str | None = None,
         drivers_row: int | None = None,
+        template_row: int | None = None,
     ) -> dict[str, Any] | None:
         return self.lookup_doc(
-            year, label, sheet, report_type=report_type, quarter=quarter, drivers_row=drivers_row
+            year,
+            label,
+            sheet,
+            report_type=report_type,
+            quarter=quarter,
+            drivers_row=drivers_row,
+            template_row=template_row,
         )
 
     def notes_for(

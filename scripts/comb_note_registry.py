@@ -41,6 +41,16 @@ def _note_col_index(doc: dict) -> int | None:
 NOTE_REF_RE = re.compile(r"^\d{1,2}(?:\.\d{1,2})?$")
 PAGE_NO_RE = re.compile(r"^\d{2,3}$")
 NOTE_REF_EXTRACT_RE = re.compile(r"(\d{1,2}(?:\.\d{1,2})?)")
+_AMOUNT_CELL_RE = re.compile(
+    r"^[\(\-]?\d{1,3}(?:,\d{3})+(?:\.\d+)?\)?$|^[\(\-]?\d{5,}(?:\.\d+)?\)?$"
+)
+_YEAR_CELL_RE = re.compile(r"^(19|20)\d{2}$")
+_STATEMENT_PAGE_MARKERS = {
+    "income_statement": ("income statement", "statement of profit"),
+    "sofp": ("statement of financial position",),
+    "cash_flows": ("statement of cash flows",),
+    "oci": ("other comprehensive income",),
+}
 
 
 def _normalize_note_raw(note: str) -> str:
@@ -53,19 +63,54 @@ def _normalize_note_raw(note: str) -> str:
     return text
 
 
+def _is_plausible_note_ref(token: str) -> bool:
+    """True for COMB notes (12, 13.1), not Change % (21.82) or amounts."""
+    text = str(token or "").strip()
+    if not NOTE_REF_RE.match(text):
+        return False
+    if "." not in text:
+        try:
+            return 1 <= int(text) <= 80
+        except ValueError:
+            return False
+    left, right = text.split(".", 1)
+    try:
+        major = int(left)
+    except ValueError:
+        return False
+    if not (1 <= major <= 80):
+        return False
+    if len(right) >= 2:
+        # 21.82 / 2.07 / 11.00 are YoY Change % cells, not note numbers.
+        if right[0] == "0":
+            return False
+        try:
+            frac = int(right)
+        except ValueError:
+            return False
+        if frac == 0 or frac > 19:
+            return False
+    return True
+
+
 def _extract_note_ref_token(note: str) -> str | None:
     """Pull a note ref from free-form Note column text."""
     raw = _normalize_note_raw(note)
     if not raw:
         return None
     compact = raw.replace(" ", "")
-    if NOTE_REF_RE.match(compact):
+    # Amounts and years are not note numbers (e.g. 341,566,200 or 2023).
+    if _AMOUNT_CELL_RE.match(compact) or _YEAR_CELL_RE.match(compact):
+        return None
+    if "," in raw or raw.count("0") >= 4:
+        return None
+    if NOTE_REF_RE.match(compact) and _is_plausible_note_ref(compact):
         return compact
     match = NOTE_REF_EXTRACT_RE.search(raw)
     if not match:
         return None
     token = match.group(1)
-    return token if NOTE_REF_RE.match(token) else None
+    return token if _is_plausible_note_ref(token) else None
 
 
 def _detect_note_page_columns(rows: list[list[str]]) -> tuple[int | None, int | None]:
@@ -99,16 +144,18 @@ def _detect_note_page_columns(rows: list[list[str]]) -> tuple[int | None, int | 
 
 def _split_glued_note_page(note: str) -> tuple[str, int | None]:
     """
-    Recover note + page when OCR merged them (e.g. ``6.52`` -> note ``6``, page ``52``).
+    Recover note + page when OCR merged a 3-digit page (``12.302`` -> 12, 302).
+
+    Two-digit suffixes like ``21.82`` are Change % values, not page 82.
     """
     raw = str(note or "").replace(" ", "").strip()
-    match = re.fullmatch(r"(\d{1,2})\.(\d{2})", raw)
+    match = re.fullmatch(r"(\d{1,2})\.(\d{3})", raw)
     if not match:
         return raw, None
     suffix = int(match.group(2))
-    if suffix < 10:
-        return raw, None
-    return match.group(1), suffix
+    if 100 <= suffix <= 500:
+        return match.group(1), suffix
+    return raw, None
 
 
 def _parse_note_and_page(note_raw: str, page_raw: str | None = None) -> tuple[str | None, int | None]:
@@ -191,6 +238,75 @@ def _label_note_page_from_doc(doc: dict) -> dict[str, dict[str, Any]]:
     return out
 
 
+def _page_header_blob(rows: list[list[str]], n: int = 10) -> str:
+    parts: list[str] = []
+    for row in rows[:n]:
+        parts.extend(str(c) for c in row)
+    return " ".join(parts).lower()
+
+
+def _page_matches_statement_key(rows: list[list[str]], statement_key: str) -> bool:
+    blob = _page_header_blob(rows)
+    markers = _STATEMENT_PAGE_MARKERS.get(statement_key) or ()
+    return any(marker in blob for marker in markers)
+
+
+def _page_looks_like_statement_grid(
+    rows: list[list[str]],
+    note_ci: int | None,
+    page_ci: int | None,
+) -> bool:
+    """True when the page has a Note + 3-digit Page No. primary-statement grid."""
+    if note_ci is None or page_ci is None:
+        return False
+    blob = _page_header_blob(rows, 8)
+    if "note" not in blob or "page" not in blob:
+        return False
+    hits = 0
+    for row in rows[:55]:
+        if len(row) <= max(note_ci, page_ci):
+            continue
+        token = _extract_note_ref_token(str(row[note_ci]))
+        if not token:
+            continue
+        page_txt = str(row[page_ci]).strip()
+        if not PAGE_NO_RE.match(page_txt):
+            continue
+        try:
+            page_no = int(page_txt)
+        except ValueError:
+            continue
+        if page_no >= 100:
+            hits += 1
+    return hits >= 4
+
+
+def _note_info_quality(info: dict[str, Any]) -> int:
+    """Higher is better. Prefers real note+page pairs over Change % leftovers."""
+    score = 0
+    note = str(info.get("note_ref") or "")
+    if _is_plausible_note_ref(note):
+        score += 10
+    else:
+        score -= 20
+    try:
+        page_i = int(info["page_no"]) if info.get("page_no") is not None else None
+    except (TypeError, ValueError):
+        page_i = None
+    if page_i is not None and page_i >= 100:
+        score += 25
+    elif page_i is not None and 40 <= page_i <= 99:
+        score += 2
+    sk = str(info.get("statement_key") or "")
+    score += {
+        "income_statement": 6,
+        "sofp": 5,
+        "oci": 3,
+        "cash_flows": 2,
+    }.get(sk, 0)
+    return score
+
+
 def _label_note_from_doc(doc: dict) -> dict[str, str]:
     """Map normalized label -> note ref from one financial_tables document."""
     return {
@@ -235,17 +351,18 @@ def build_label_note_index(
     if pdf_path and pdf_path.exists():
         for nl, info in build_fs_label_note_index_from_pdf(pdf_path).items():
             existing = index.get(nl)
+            if existing and _note_info_quality(existing) > _note_info_quality(info):
+                continue
             if existing:
-                if info.get("page_no") and not existing.get("page_no"):
-                    existing["page_no"] = info["page_no"]
-                if info.get("note_ref") and not existing.get("note_ref"):
+                # Printed statement Note + Page No. columns win over OCR leftovers.
+                if info.get("note_ref"):
                     existing["note_ref"] = info["note_ref"]
-                if (
-                    info.get("page_no")
-                    and info.get("note_ref")
-                    and existing.get("note_ref") == info.get("note_ref")
-                ):
+                    if info.get("statement_key"):
+                        existing["statement_key"] = info["statement_key"]
+                if info.get("page_no"):
                     existing["page_no"] = info["page_no"]
+                if info.get("label"):
+                    existing["label"] = info["label"]
             else:
                 index[nl] = info
     return index
@@ -281,6 +398,8 @@ def build_fs_label_note_index_from_pdf(pdf_path: Path) -> dict[str, dict[str, An
                     rows = _words_table_rows(pdf.pages[page_num - 1])
                     if not rows:
                         continue
+                    if not _page_matches_statement_key(rows, statement_key):
+                        continue
                     note_ci, page_ci = _detect_note_page_columns(rows)
                     if note_ci is None:
                         note_ci = 1
@@ -288,10 +407,12 @@ def build_fs_label_note_index_from_pdf(pdf_path: Path) -> dict[str, dict[str, An
                         for row in rows[:25]:
                             if len(row) < 3:
                                 continue
-                            if NOTE_REF_RE.match(str(row[1]).strip()):
+                            if _is_plausible_note_ref(str(row[1]).strip()):
                                 if PAGE_NO_RE.match(str(row[2]).strip()):
                                     page_ci = 2
                                 break
+                    if not _page_looks_like_statement_grid(rows, note_ci, page_ci):
+                        continue
                     for row in rows:
                         if not row or not str(row[0]).strip():
                             continue
@@ -305,15 +426,19 @@ def build_fs_label_note_index_from_pdf(pdf_path: Path) -> dict[str, dict[str, An
                         if page_ci is not None and page_ci < len(row):
                             page_raw = str(row[page_ci]).strip()
                         note, page_no = _parse_note_and_page(note_raw, page_raw)
-                        if not note:
+                        if not note or not _is_plausible_note_ref(note):
                             continue
                         nl = norm_label(label)
-                        index[nl] = {
+                        info = {
                             "note_ref": note,
                             "page_no": page_no,
                             "statement_key": statement_key,
                             "label": label,
                         }
+                        prev = index.get(nl)
+                        if prev and _note_info_quality(prev) >= _note_info_quality(info):
+                            continue
+                        index[nl] = info
         except Exception:
             continue
     return index
@@ -413,7 +538,7 @@ def build_note_capture_plan(
         elif existing and not page_no:
             continue
         drv = drivers_by_ref.get(note_ref, {})
-        by_ref[note_ref] = {
+        candidate = {
             "parent_label": drv.get("parent_label") or fs_label,
             "fs_label": drv.get("fs_label") or fs_label,
             "parent_row": drv.get("parent_row"),
@@ -424,6 +549,9 @@ def build_note_capture_plan(
             "has_note_table": True,
             "note_statement_key": _note_statement_key(note_ref),
         }
+        if existing and _note_info_quality(existing) > _note_info_quality(candidate):
+            continue
+        by_ref[note_ref] = candidate
 
     plan = sorted(by_ref.values(), key=lambda item: str(item.get("note_ref") or ""))
 

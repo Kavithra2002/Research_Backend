@@ -149,6 +149,95 @@ def _strip_note_page_prefix(amounts: list[float]) -> list[float]:
     return amounts
 
 
+def _is_blank_amount_token(token: str) -> bool:
+    """True for dash / empty cells that must stay blank (not prior-year fallthrough)."""
+    t = (token or "").strip()
+    if not t:
+        return True
+    if t.lower() in {"n/a", "na", "nil", "-", ".", "..", "..."}:
+        return True
+    # PDF often emits U+FFFD or unicode dashes for blank year cells.
+    blank_chars = set("-–—−‐‒―.\ufffd_")
+    return bool(t) and all(ch in blank_chars for ch in t)
+
+
+def _year_header_x_centers(page: Any, year: int) -> list[float]:
+    """Left-to-right X centers for `year` column headers on a statement page."""
+    year_s = str(year)
+    try:
+        hits = page.search_for(year_s) or []
+    except Exception:
+        return []
+    xs: list[float] = []
+    for h in hits:
+        # Ignore isolated cover/title years near the extreme top-left.
+        if float(h.y0) < 60 and float(h.x0) < 250:
+            continue
+        xs.append((float(h.x0) + float(h.x1)) / 2.0)
+    xs.sort()
+    out: list[float] = []
+    for x in xs:
+        if not out or abs(x - out[-1]) > 20:
+            out.append(x)
+    return out
+
+
+def _fitz_row_tokens(
+    page: Any,
+    label_rect: Any,
+    *,
+    year: int,
+    is_mem: bool,
+    is_small: bool,
+    y_pad: float = 12.0,
+) -> list[tuple[float, float, float | None]]:
+    """
+    Amount-area tokens on the label row as (x_center, y_mid, value_or_None).
+
+    Blank/dash cells are kept as None so current-year blanks are not replaced
+    by the next numeric (prior-year) column.
+    """
+    words = page.get_text("words") or []
+    if not words:
+        return []
+    y0 = float(label_rect.y0) - 2.0
+    y1 = float(label_rect.y0) + float(y_pad)
+    x_min = max(180.0, float(label_rect.x0) + 80.0)
+    tokens: list[tuple[float, float, float | None]] = []
+    for w in sorted(words, key=lambda t: (t[1], t[0])):
+        wx0, wy0, wx1, wy1, token = w[0], w[1], w[2], w[3], w[4]
+        y_mid = (wy0 + wy1) / 2.0
+        if y_mid < y0 or y_mid > y1:
+            continue
+        if wx0 < x_min:
+            continue
+        x_mid = (float(wx0) + float(wx1)) / 2.0
+        raw = str(token or "")
+        if _is_blank_amount_token(raw):
+            tokens.append((x_mid, y_mid, None))
+            continue
+        if not re.search(r"\d", raw):
+            continue
+        v = parse_number(raw)
+        if v is None:
+            continue
+        if is_year_like_amount(v, report_year=year):
+            continue
+        if is_mem:
+            if abs(v) > 0:
+                tokens.append((x_mid, y_mid, v))
+            continue
+        if is_small:
+            if abs(v) < 10_000:
+                tokens.append((x_mid, y_mid, v))
+            continue
+        # Keep note/page-sized ints so prefix stripping still works for
+        # the legacy amounts path; column picker ignores them by x-band.
+        if abs(v) >= 1_000 or (abs(v) <= 80) or (40 <= abs(v) <= 600):
+            tokens.append((x_mid, y_mid, v))
+    return tokens
+
+
 def _fitz_row_amounts(
     page: Any,
     label_rect: Any,
@@ -158,39 +247,110 @@ def _fitz_row_amounts(
     is_small: bool,
 ) -> list[float]:
     """Collect numeric cells on the same visual row as a label hit (handles wrap)."""
-    words = page.get_text("words") or []
-    if not words:
-        return []
-    y0 = float(label_rect.y0) - 2.0
-    # Wrapped OCI labels put amounts on the last wrapped line (~15–25pt below).
-    y1 = float(label_rect.y0) + 28.0
-    x_min = max(180.0, float(label_rect.x0) + 80.0)
-    nums: list[float] = []
-    for w in sorted(words, key=lambda t: (t[1], t[0])):
-        wx0, wy0, _wx1, wy1, token = w[0], w[1], w[2], w[3], w[4]
-        y_mid = (wy0 + wy1) / 2.0
-        if y_mid < y0 or y_mid > y1:
-            continue
-        if wx0 < x_min:
-            continue
-        if not re.search(r"\d", token or ""):
-            continue
-        v = parse_number(token)
-        if v is None:
-            continue
-        if is_year_like_amount(v, report_year=year):
-            continue
-        if is_mem:
-            if abs(v) > 0:
-                nums.append(v)
-            continue
-        if is_small:
-            if abs(v) < 10_000:
-                nums.append(v)
-            continue
-        if abs(v) >= 1_000:
-            nums.append(v)
+    tokens = _fitz_row_tokens(
+        page, label_rect, year=year, is_mem=is_mem, is_small=is_small, y_pad=12.0
+    )
+    has_amount = any(
+        v is not None and abs(float(v)) >= 1_000 for _x, _y, v in tokens
+    )
+    if not tokens or (not has_amount and not is_mem and not is_small):
+        tokens = _fitz_row_tokens(
+            page, label_rect, year=year, is_mem=is_mem, is_small=is_small, y_pad=28.0
+        )
+    nums = [v for _x, _y, v in tokens if v is not None]
     return _strip_note_page_prefix(nums)
+
+
+def _fitz_pick_by_year_column(
+    page: Any,
+    label_rect: Any,
+    year: int,
+    *,
+    entity_column: str,
+    is_mem: bool,
+    is_small: bool,
+) -> tuple[bool, float | None]:
+    """
+    Pick GROUP/BANK current-year amount using year-header X columns.
+
+    Returns (used_columns, value). When used_columns is True, a blank/dash in
+    the target year column must stay None (do not steal the prior-year amount).
+    """
+    cy_xs = _year_header_x_centers(page, year)
+    if not cy_xs:
+        return False, None
+
+    entity = (entity_column or "group").lower()
+    if entity == "bank":
+        target_x = cy_xs[1] if len(cy_xs) >= 2 else cy_xs[0]
+    else:
+        target_x = cy_xs[0]
+
+    py_xs = _year_header_x_centers(page, year - 1)
+    anchors = sorted(cy_xs + [x for x in py_xs if all(abs(x - c) > 15 for c in cy_xs)])
+    # Half-gap band around the target year header.
+    left = target_x - 55.0
+    right = target_x + 55.0
+    if len(anchors) >= 2:
+        for i, ax in enumerate(anchors):
+            if abs(ax - target_x) <= 1.0:
+                if i > 0:
+                    left = (anchors[i - 1] + ax) / 2.0
+                else:
+                    left = ax - max(40.0, (anchors[i + 1] - ax) / 2.0)
+                if i + 1 < len(anchors):
+                    right = (ax + anchors[i + 1]) / 2.0
+                else:
+                    right = ax + max(40.0, (ax - anchors[i - 1]) / 2.0)
+                break
+
+    tokens = _fitz_row_tokens(
+        page, label_rect, year=year, is_mem=is_mem, is_small=is_small, y_pad=12.0
+    )
+    has_amount = any(
+        v is not None and abs(float(v)) >= 1_000 for _x, _y, v in tokens
+    )
+    if not tokens or (not has_amount and not is_mem and not is_small):
+        tokens = _fitz_row_tokens(
+            page, label_rect, year=year, is_mem=is_mem, is_small=is_small, y_pad=28.0
+        )
+
+    # Prefer the value line (large amounts) over the note/page line nearer
+    # the label text; fall back to nearest y-cluster when no big amounts.
+    label_y = float(label_rect.y0)
+    amount_ys = [
+        y for _x, y, v in tokens if v is not None and abs(float(v)) >= 1_000
+    ]
+    if amount_ys:
+        best_y = min(amount_ys, key=lambda y: abs(y - label_y))
+        tokens = [
+            (x, y, v) for x, y, v in tokens if abs(y - best_y) <= 3.0
+        ]
+    elif tokens:
+        best_dy = min(abs(y - label_y) for _x, y, _v in tokens)
+        tokens = [
+            (x, y, v) for x, y, v in tokens if abs(y - label_y) <= best_dy + 3.0
+        ]
+
+    in_band = [(x, v) for x, _y, v in tokens if left <= x <= right]
+    if not in_band:
+        # Column mapping known but this year cell has no token → blank.
+        return True, None
+
+    # Explicit blank/dash in the current-year column must stay blank.
+    if any(v is None for _x, v in in_band):
+        return True, None
+
+    nums = [v for _x, v in in_band if v is not None]
+    if not nums:
+        return True, None
+    if is_mem or is_small:
+        return True, nums[0]
+    # Ignore note/page-sized leftovers that landed in the band.
+    big = [v for v in nums if abs(v) >= 1_000]
+    if big:
+        return True, big[0]
+    return True, nums[0]
 
 
 def fitz_lookup_fs_value(
@@ -241,6 +401,30 @@ def fitz_lookup_fs_value(
                             except Exception:
                                 hits = []
                     for rect in hits:
+                        used_cols, col_val = _fitz_pick_by_year_column(
+                            page,
+                            rect,
+                            year,
+                            entity_column=entity_column,
+                            is_mem=is_mem,
+                            is_small=is_small,
+                        )
+                        if used_cols:
+                            # Year columns known: blank CY stays None.
+                            if col_val is None:
+                                return None
+                            if is_mem and not is_plausible_memorandum_count(
+                                label, col_val
+                            ):
+                                continue
+                            if (
+                                not is_mem
+                                and not is_small
+                                and abs(col_val) < 10_000
+                            ):
+                                continue
+                            return col_val
+
                         amounts = _fitz_row_amounts(
                             page,
                             rect,
@@ -277,8 +461,13 @@ def fitz_lookup_fs_value(
                         if entity_column.lower() == "bank":
                             if is_mem:
                                 return amounts[-1] if len(amounts) >= 2 else amounts[0]
-                            # GROUP CY, GROUP PY, %chg, BANK CY …
-                            return amounts[3] if len(amounts) >= 4 else amounts[-1]
+                            # With Change %: GROUP CY, PY, %, BANK CY, PY, %
+                            if len(amounts) >= 6:
+                                return amounts[3]
+                            # Without Change %: GROUP CY, PY, BANK CY, PY
+                            if len(amounts) >= 4:
+                                return amounts[2]
+                            return amounts[-1]
                         return amounts[0]
     return None
 
@@ -334,17 +523,16 @@ def build_annual_fs_pdf_index(
                     group_index, pdf_path, memo_pages, year, "group"
                 )
             result.by_section[statement_key] = group_index
-        # BANK column only needed for SoFP memorandum fallbacks.
-        if statement_key == "sofp":
-            bank_index = _best_plumber_index(
-                pdf_path, pages or memo_pages, statement_key, year, "bank"
-            )
-            if bank_index:
-                if memo_pages:
-                    bank_index = merge_memorandum_into_pdf_index(
-                        bank_index, pdf_path, memo_pages, year, "bank"
-                    )
-                result.by_section_bank[statement_key] = bank_index
+        # BANK for every statement so Entity toggle can switch main FS cells.
+        bank_index = _best_plumber_index(
+            pdf_path, pages or memo_pages, statement_key, year, "bank"
+        )
+        if bank_index:
+            if memo_pages:
+                bank_index = merge_memorandum_into_pdf_index(
+                    bank_index, pdf_path, memo_pages, year, "bank"
+                )
+            result.by_section_bank[statement_key] = bank_index
 
     return result
 
@@ -372,6 +560,25 @@ def is_suspicious_fs_value(
         return False
     if is_year_like_amount(value, report_year=report_year):
         return True
+    # Operating profit *after* taxes must not equal *before* when tax ≠ 0.
+    if values and "operating profit" in nl and "after" in nl and "tax" in nl:
+        before = None
+        tax = None
+        for lbl, val in values.items():
+            if val is None:
+                continue
+            kn = norm_label(lbl)
+            if "operating profit" in kn and "before" in kn and "tax" in kn:
+                before = float(val)
+            if kn.startswith("less") and "taxes on financial" in kn:
+                tax = float(val)
+        if (
+            before is not None
+            and tax is not None
+            and abs(tax) >= 1.0
+            and abs(float(value) - before) <= max(1.0, abs(before) * 1e-6)
+        ):
+            return True
     return is_suspicious_quarterly_value(label, value, values)
 
 
@@ -392,6 +599,19 @@ def _pdf_value_is_usable(
         return 0 < abs(float(pdf_val)) <= 1.0
     if is_year_like_amount(pdf_val, report_year=report_year):
         return False
+    # Reject PDF hits that merely clone a before↔after polarity sibling.
+    if values:
+        from comb_note_extractor import labels_polarity_conflict
+
+        for peer_lbl, peer_val in values.items():
+            if peer_val is None or peer_lbl == label:
+                continue
+            if not labels_polarity_conflict(label, peer_lbl):
+                continue
+            if abs(float(pdf_val) - float(peer_val)) <= max(
+                1.0, abs(float(peer_val)) * 1e-6
+            ):
+                return False
     return not is_suspicious_fs_value(
         label, pdf_val, values, report_year=report_year
     )
@@ -672,6 +892,21 @@ def strict_audit_filled_fs_against_pdf(
         ):
             stats["rejected_pdf"] += 1
             continue
+
+        # High-risk sibling rows (NCI vs equity holders, before vs after tax, etc.)
+        # must not be auto-overwritten by a fuzzy PDF hit — defer to AI confirm.
+        from comb_annual_fs_ai_confirm import ALWAYS_HIGH_RISK_LABELS
+
+        if nl in ALWAYS_HIGH_RISK_LABELS and not current_suspicious:
+            stats["mismatches"] += 1
+            stats["mismatch_labels"].append(lbl)
+            stats["deferred_ai"] = int(stats.get("deferred_ai") or 0) + 1
+            log(
+                f"    audit deferred {lbl!r}: table={current:,.4g} pdf={pdf_val:,.4g} "
+                f"(high-risk — AI confirm)"
+            )
+            continue
+
         stats["mismatches"] += 1
         stats["mismatch_labels"].append(lbl)
         values[lbl] = pdf_val

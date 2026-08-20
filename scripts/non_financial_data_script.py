@@ -262,7 +262,7 @@ def taxonomy_lookup() -> dict[str, dict[str, Any]]:
 def build_corpus(pages: list[tuple[int, str]], max_chars: int) -> str:
     """Concatenate page text (with page markers) up to ``max_chars``.
 
-    Annual reports are long; gpt-4o-mini accepts ~128k tokens so a generous
+    Annual reports are long; GPT-5 accepts a large context window so a generous
     character budget keeps most of the narrative/disclosure content while still
     fitting comfortably in context.
     """
@@ -387,16 +387,20 @@ def call_openai(
     )
 
     started = time.time()
-    completion = client.chat.completions.create(
-        model=model,
-        messages=[
+    create_kwargs: dict = {
+        "model": model,
+        "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt},
         ],
-        response_format={"type": "json_object"},
-        temperature=0.1,
-        max_tokens=4096,
-    )
+        "response_format": {"type": "json_object"},
+    }
+    if str(model).lower().startswith("gpt-5"):
+        create_kwargs["max_completion_tokens"] = 4096
+    else:
+        create_kwargs["temperature"] = 0.1
+        create_kwargs["max_tokens"] = 4096
+    completion = client.chat.completions.create(**create_kwargs)
     elapsed = time.time() - started
     nfs.emit_log("info", f"OpenAI response received in {elapsed:.1f}s")
 
@@ -570,7 +574,7 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     ap.add_argument("--pdf", type=Path, default=None,
                     help="Explicit path to the annual report PDF.")
     ap.add_argument("--model", default=None,
-                    help="OpenAI model id (default: OPENAI_CHAT_MODEL or gpt-4o-mini).")
+                    help="OpenAI model id (default: gpt-5).")
     ap.add_argument("--apikey", default=None,
                     help="OpenAI API key (else OPENAI_API_KEY env or backend/.env).")
     ap.add_argument("--out-dir", type=Path, default=None,

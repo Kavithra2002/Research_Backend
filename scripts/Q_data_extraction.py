@@ -47,7 +47,7 @@ JSON schema  (_results.json)
   "company"           : "ACL PLASTICS PLC",
   "period"            : "31st March 2016",
   "generated_at"      : "2025-01-01T12:00:00",
-  "model"             : "gpt-4o",
+  "model"             : "gpt-5",
   "api_status"        : "ok",
   "statements"        : {          // OpenAI verbatim output (step3 shape)
     "<stmt_key>" : {
@@ -78,7 +78,7 @@ Usage
     python Q_data_extraction.py --reports ../reports --out ../extracted
 
     # Explicit API key + cheaper model
-    python Q_data_extraction.py --reports ../reports --apikey sk-... --model gpt-4o-mini
+    python Q_data_extraction.py --reports ../reports --apikey sk-... --model gpt-5
 
     # Dry-run: rasterise images only, no API calls
     python Q_data_extraction.py --reports ../reports --dry-run
@@ -1381,7 +1381,7 @@ def _slug(name: str) -> str:
 def process_pdf(pdf_path: Path, output_dir: Path,
                 use_ocr: bool = True,
                 api_client = None,
-                model: str = "gpt-4o",
+                model: str = "gpt-5",
                 dry_run: bool = False,
                 # Optional path overrides — used by
                 # `process_quarterly_for_company` so the quarterly
@@ -1686,7 +1686,7 @@ def process_quarterly_for_company(
     pdf_path:    Path,
     testing_dir: Path,
     api_key:     str | None = None,
-    model:       str = "gpt-4o",
+    model:       str = "gpt-5",
     dry_run:     bool = False,
     use_ocr:     bool = True,
     force:       bool = False,
@@ -1780,7 +1780,7 @@ def _first_quarterly_pdf(company_dir: Path) -> Path | None:
 def run_reports_batch(reports_dir: Path, output_dir: Path,
                       use_ocr: bool = True,
                       api_key:  str | None = None,
-                      model:    str = "gpt-4o",
+                      model:    str = "gpt-5",
                       dry_run:  bool = False) -> list[dict]:
     """
     Walk every <reports>/<COMPANY>/Quarterly/ folder, take the FIRST
@@ -1923,8 +1923,8 @@ def main(argv: list[str] | None = None) -> None:
         help="OpenAI API key (else OPENAI_API_KEY env var or backend/.env)",
     )
     ap.add_argument(
-        "--model", default="gpt-4o",
-        help="OpenAI model name  (default: gpt-4o)",
+        "--model", default="gpt-5",
+        help="OpenAI model name  (default: gpt-5)",
     )
     ap.add_argument(
         "--dry-run", action="store_true",

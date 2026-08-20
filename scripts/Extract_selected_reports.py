@@ -38,7 +38,7 @@ Usage
 -----
     python Extract_selected_reports.py --items selections.json
     python Extract_selected_reports.py --items selections.json --dry-run
-    python Extract_selected_reports.py --items selections.json --model gpt-4o-mini
+    python Extract_selected_reports.py --items selections.json --model gpt-5
 """
 
 from __future__ import annotations
@@ -192,8 +192,8 @@ def main(argv: list[str] | None = None) -> int:
                     help="OpenAI API key (else OPENAI_API_KEY env or .env).")
     ap.add_argument("--option", choices=["1", "2"], default="1",
                     help="1 = core statements  2 = core + Notes  (default: 1).")
-    ap.add_argument("--model", default="gpt-4o",
-                    help="OpenAI model name (default: gpt-4o).")
+    ap.add_argument("--model", default="gpt-5",
+                    help="OpenAI model name (default: gpt-5).")
     ap.add_argument("--dpi", type=int, default=150,
                     help="Image render DPI (default: 150).")
     ap.add_argument("--dry-run", action="store_true",

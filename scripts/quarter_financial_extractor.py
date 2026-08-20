@@ -23,7 +23,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--no-upload", action="store_true")
-    ap.add_argument("--model", default="gpt-4o")
+    ap.add_argument("--model", default="gpt-5")
     ap.add_argument("--option", choices=["1", "2"], default="1")
     ap.add_argument("--apikey", default=None)
     ap.add_argument("--mongo-uri", default=None)

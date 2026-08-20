@@ -158,6 +158,39 @@ def _is_disqualified_note_page(low: str) -> bool:
     return any(marker in low for marker in _DISQUALIFIED_PAGE_MARKERS)
 
 
+def _page_is_primary_financial_statement(low: str) -> bool:
+    """True for income statement / SoFP / cash-flow / contents grids, not Notes."""
+    head = low[:1600]
+    if re.search(r"(?:^|\n)\s*\d{1,2}\.\s+[a-z]", head) and "accounting policy" in head:
+        return False
+    if re.search(r"(?:^|\n)\s*notes to the financial", head):
+        return False
+    stmt_titles = (
+        "income statement" in head,
+        "statement of financial position" in head,
+        "statement of cash flows" in head,
+        "statement of profit or loss" in head,
+    )
+    # Contents page lists several primary statements together.
+    if sum(bool(v) for v in stmt_titles) >= 2:
+        return True
+    # Income statement / SoFP grids always print Page No. beside Note.
+    if "page no" in head and "gross income" in head and "interest income" in head:
+        return True
+    if "page no" in head and "total assets" in head and "total liabilities" in head:
+        return True
+    if "page no" not in head:
+        return False
+    return bool(
+        re.search(
+            r"(?:^|\n)\s*(income statement|statement of financial position|"
+            r"statement of cash flows|statement of profit or loss)\b",
+            head,
+            re.I,
+        )
+    )
+
+
 def _score_note_page_text(text: str, low: str, note_ref: str, hint: str) -> int:
     """Prefer real Notes-to-FS pages with a numbered heading + financial table."""
     if _is_disqualified_note_page(low):
@@ -529,6 +562,13 @@ def _find_table_block_top(lines: list[dict[str, Any]], group_idx: int) -> int:
         if _line_is_group_bank_header(text):
             top = idx
             continue
+        if _line_is_simple_year_column_header(text) or _line_is_rs_unit_header(text):
+            top = idx
+            continue
+        if re.search(r"accounting policy", text, re.I):
+            break
+        if len(text) > 110 and not _line_has_big_numbers(text):
+            break
         break
     return top
 
@@ -666,7 +706,11 @@ def _split_total_values_idx(lines: list[dict[str, Any]], idx: int) -> int | None
     return None
 
 
-def _line_is_balance_closing_row(text: str) -> bool:
+def _line_is_balance_closing_row(
+    text: str,
+    lines: list[dict[str, Any]] | None = None,
+    idx: int | None = None,
+) -> bool:
     stripped = text.strip()
     if not re.match(r"^Balance as at\b", stripped, re.IGNORECASE):
         return False
@@ -678,6 +722,23 @@ def _line_is_balance_closing_row(text: str) -> bool:
         re.I,
     ):
         return False
+    # Opening b/f is often labelled "Balance as at December 31" of the prior year.
+    # Only treat it as the table end when no further movement rows follow.
+    if lines is not None and idx is not None:
+        for j in range(idx + 1, min(idx + 10, len(lines))):
+            nxt = str(lines[j].get("text") or "").strip()
+            if not nxt:
+                continue
+            if _is_note_section_heading_line(nxt):
+                break
+            if re.search(
+                r"(?i)profit for the year|dividends paid|adjustment for|"
+                r"adjusted balance as at january|other comprehensive income|"
+                r"unclaimed dividend|acquisition of subsidiary|"
+                r"reinstatement of non-controlling",
+                nxt,
+            ):
+                return False
     return True
 
 
@@ -709,7 +770,7 @@ def _line_is_table_end_at(
         return True
     if _line_is_split_total_at(lines, idx):
         return True
-    if _line_is_balance_closing_row(text):
+    if _line_is_balance_closing_row(text, lines, idx):
         return True
     if _line_is_net_book_value_row(text):
         return True
@@ -1089,6 +1150,33 @@ def _line_is_simple_year_column_header(text: str) -> bool:
     return not _line_has_big_numbers(text)
 
 
+def _line_is_rs_unit_header(text: str) -> bool:
+    compact = re.sub(r"\s+", " ", str(text or "")).strip()
+    return bool(
+        re.fullmatch(r"(?i)((rs\.?|lkr)(\s*'?0{3})?\s*){1,8}", compact)
+    )
+
+
+def _line_is_note_amount_table_header(
+    lines: list[dict[str, Any]], idx: int
+) -> bool:
+    """GROUP/BANK grids or simple two-year amount tables (NCI, reserves)."""
+    if _line_is_note_page_table_header(lines, idx):
+        return True
+    if idx < 0 or idx >= len(lines):
+        return False
+    text = lines[idx]["text"]
+    if _line_is_for_year_ended_header(text) or _line_is_amount_year_header(text):
+        return True
+    if _line_is_simple_year_column_header(text):
+        return True
+    if _line_is_rs_unit_header(text) and idx > 0 and _line_is_simple_year_column_header(
+        lines[idx - 1]["text"]
+    ):
+        return True
+    return False
+
+
 def _score_breakdown_table_candidate(
     lines: list[dict[str, Any]],
     group_idx: int,
@@ -1130,14 +1218,14 @@ def _find_breakdown_table_after(
                 break
             if idx > start_idx + 1 and _line_is_next_note_boundary(text, note_ref):
                 break
-            if _line_is_note_page_table_header(lines, idx):
+            if _line_is_note_amount_table_header(lines, idx):
                 return idx
 
     limit = min(start_idx + TABLE_HEADER_LOOKAHEAD, len(lines))
     best_idx: int | None = None
     best_score = -1
     for idx in range(start_idx, limit):
-        if not _line_is_note_page_table_header(lines, idx):
+        if not _line_is_note_amount_table_header(lines, idx):
             continue
         score = _score_breakdown_table_candidate(
             lines, idx, note_ref, title_hint
@@ -1281,6 +1369,26 @@ def _block_total_values(
     return group, bank
 
 
+def _block_contains_expected(
+    block: list[dict[str, Any]], expected: float | None
+) -> bool:
+    """True when any amount in the table matches the FS line (NCI profit, not closing balance)."""
+    if expected is None:
+        return False
+    for line in block:
+        for _x, val in _line_numeric_tokens(line):
+            if _values_close(val, expected):
+                return True
+        # Fallback when words were merged into the line text.
+        for token in re.findall(
+            r"[\(\-]?\d{1,3}(?:,\d{3})+(?:\.\d+)?\)?", str(line.get("text") or "")
+        ):
+            val = parse_number(token)
+            if val is not None and _values_close(val, expected):
+                return True
+    return False
+
+
 def _pages_with_note_heading(
     pdf_path: Path, note_ref: str, title_hint: str
 ) -> list[int]:
@@ -1290,18 +1398,31 @@ def _pages_with_note_heading(
     ref = re.escape(note_ref.strip())
     main_ref, sub_ref = _note_ref_parts(note_ref.strip())
     if sub_ref:
-        pat = re.compile(rf"(?:^|\n)\s*{ref}(?:\s+|\.\s+)[A-Za-z]", re.I)
+        pat = re.compile(rf"(?:^|\n)\s*{ref}(?:\s+|\.\s+)([^\n]+)", re.I)
     else:
         pat = re.compile(
-            rf"(?:^|\n)\s*{re.escape(main_ref)}(?:\.\d+)?\.?\s+[A-Za-z]", re.I
+            rf"(?:^|\n)\s*{re.escape(main_ref)}(?:\.\d+)?\.?\s+([^\n]+)",
+            re.I,
         )
+    tokens = _hint_tokens(title_hint)
     out: list[int] = []
     for i, text in enumerate(_fitz_page_texts(pdf_path)):
         low = text.lower()
         if not _is_notes_section_page(low) or _is_disqualified_note_page(low):
             continue
-        if pat.search(text):
-            out.append(i + 1)
+        if _page_is_primary_financial_statement(low):
+            continue
+        match = pat.search(text)
+        if not match:
+            continue
+        title_part = match.group(1) if match.lastindex else ""
+        if tokens:
+            hits = sum(1 for tok in tokens if tok in title_part.lower())
+            if hits < min(2, len(tokens)) and not all(
+                tok in low for tok in tokens[:2]
+            ):
+                continue
+        out.append(i + 1)
     return out
 
 
@@ -1349,9 +1470,29 @@ def locate_note_table_crops(
         if hub:
             extra.extend([hub, hub + 1])
     extra.extend(_pages_with_note_heading(pdf_path, note_ref, title_hint))
+    heading_pages = [
+        p
+        for p in extra
+        if isinstance(p, int) and p > 0
+    ]
     for p in extra:
         if isinstance(p, int) and p > 0 and p not in pages:
             pages.append(p)
+    texts = _fitz_page_texts(pdf_path)
+    filtered = [
+        p
+        for p in pages
+        if isinstance(p, int)
+        and 1 <= p <= len(texts)
+        and not _page_is_primary_financial_statement(texts[p - 1].lower())
+        and not _is_disqualified_note_page(texts[p - 1].lower())
+    ]
+    pages = filtered or [
+        p
+        for p in heading_pages
+        if 1 <= p <= len(texts)
+        and not _page_is_primary_financial_statement(texts[p - 1].lower())
+    ]
     if not pages:
         return []
 
@@ -1523,6 +1664,13 @@ def locate_note_table_crops(
             if "." in note_key and active_ref and active_ref != note_key:
                 continue
             lines = _group_page_lines(pdf_obj.pages[data_page - 1])
+            preview = " ".join(
+                ln["text"] for ln in lines[data_start_idx : data_start_idx + 8]
+            ).lower()
+            if "gross income" in preview and (
+                "interest income" in preview or "page no" in preview
+            ):
+                continue
             struct_score = _score_breakdown_table_candidate(
                 lines, data_start_idx, note_ref, title_hint
             )
@@ -1567,6 +1715,10 @@ def locate_note_table_crops(
 
             group_ok = _values_close(tot_group, expected_group)
             bank_ok = _values_close(tot_bank, expected_bank)
+            if not group_ok and expected_group is not None:
+                group_ok = _crops_contain_expected(pdf_obj, crops, expected_group)
+            if not bank_ok and expected_bank is not None:
+                bank_ok = _crops_contain_expected(pdf_obj, crops, expected_bank)
             value_score = 0.0
             if group_ok:
                 value_score += 10000.0
@@ -1710,9 +1862,11 @@ def _crop_region_has_table_header(pdf_page, crop: dict[str, Any]) -> bool:
     for idx, line in enumerate(lines):
         if float(line["bottom"]) < y0 or float(line["top"]) > y1:
             continue
-        if _line_is_note_page_table_header(lines, idx):
+        if _line_is_note_amount_table_header(lines, idx):
             return True
         if _line_is_for_year_ended_header(line["text"]):
+            return True
+        if _line_is_simple_year_column_header(line["text"]):
             return True
     return False
 
@@ -1771,6 +1925,26 @@ def validate_note_table_crops(
     return {"ok": not issues, "issues": issues}
 
 
+def _crops_contain_expected(pdf_obj, crops: list[dict[str, Any]], expected: float | None) -> bool:
+    if expected is None or not crops:
+        return False
+    for crop in crops:
+        page_num = int(crop.get("page") or 0)
+        if page_num < 1 or page_num > len(pdf_obj.pages):
+            continue
+        lines = _group_page_lines(pdf_obj.pages[page_num - 1])
+        y0 = float(crop.get("y0") or 0)
+        y1 = float(crop.get("y1") or 0)
+        block = [
+            ln
+            for ln in lines
+            if float(ln["bottom"]) >= y0 - 1 and float(ln["top"]) <= y1 + 1
+        ]
+        if _block_contains_expected(block, expected):
+            return True
+    return False
+
+
 def verify_note_table_crops(
     pdf_path: Path,
     crops: list[dict[str, Any]],
@@ -1821,8 +1995,12 @@ def verify_note_table_crops(
         g, b = _block_total_values(block, end_line, year)
         result["captured_group"] = g
         result["captured_bank"] = b
-        result["group_ok"] = _values_close(g, expected_group)
-        result["bank_ok"] = _values_close(b, expected_bank)
+        result["group_ok"] = _values_close(g, expected_group) or _crops_contain_expected(
+            pdf_obj, crops, expected_group
+        )
+        result["bank_ok"] = _values_close(b, expected_bank) or _crops_contain_expected(
+            pdf_obj, crops, expected_bank
+        )
         if expected_group is not None or expected_bank is not None:
             result["value_verified"] = bool(result["group_ok"] or result["bank_ok"])
         return result
@@ -1850,11 +2028,20 @@ def map_printed_page_to_pdf_page(pdf_path: Path, printed_page: int) -> int | Non
         page_map = {}
         texts = _fitz_page_texts(pdf_path)
         for i, text in enumerate(texts):
+            low = text.lower()
+            if _page_is_primary_financial_statement(low) or _is_disqualified_note_page(low):
+                continue
             m = re.search(
-                r"annual report\s+20\d{2}\s+(\d{1,4})\b",
+                r"annual report\s+20\d{2}[ \t]+(\d{2,3})\b",
                 text,
                 re.IGNORECASE,
             )
+            if not m:
+                m = re.search(
+                    r"(?:^|\n)\s*(\d{2,3})\s+commercial bank of ceylon",
+                    text,
+                    re.IGNORECASE,
+                )
             if not m:
                 # Common footer: bare page number alone on last non-empty line.
                 lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
@@ -1873,32 +2060,9 @@ def map_printed_page_to_pdf_page(pdf_path: Path, printed_page: int) -> int | Non
     if printed_page in page_map:
         return page_map[printed_page]
 
-    # Fallback: search for the printed page token with note-section boost.
-    target = str(int(printed_page))
-    best: tuple[int, int] | None = None
-    texts = _fitz_page_texts(pdf_path)
-    for i, text in enumerate(texts):
-        if not re.search(rf"\b{re.escape(target)}\b", text):
-            continue
-        score = 0
-        low = text.lower()
-        if "notes to" in low:
-            score += 40
-        elif _is_notes_section_page(low):
-            score += 25
-        if re.search(rf"\b{re.escape(target)}\b\s*$", text, re.MULTILINE):
-            score += 20
-        if re.search(
-            rf"annual report\s+20\d{{2}}\s+{re.escape(target)}\b",
-            text,
-            re.IGNORECASE,
-        ):
-            score += 30
-        if score == 0:
-            score = 5
-        if best is None or score > best[0]:
-            best = (score, i + 1)
-    return best[1] if best else None
+    # Do not search the body for a bare number — that matches the FS "Page No."
+    # column (e.g. Non-controlling interest → 243) and lands on the income statement.
+    return None
 
 
 def _full_scan_note_pages(
@@ -2047,10 +2211,15 @@ def find_note_pages_by_ref(
         if printed_page:
             hub = map_printed_page_to_pdf_page(pdf_path, int(printed_page))
             if hub:
-                # Always keep FS Page No. hub in the candidate list.
-                _rank_page(hub, base_score=500, force=True)
-                _rank_page(hub + 1, base_score=400, force=True)
-                _rank_page(hub - 1, base_score=200, force=True)
+                texts = _fitz_page_texts(pdf_path)
+                hub_low = (
+                    texts[hub - 1].lower() if 1 <= hub <= len(texts) else ""
+                )
+                if not _page_is_primary_financial_statement(hub_low):
+                    # Always keep FS Page No. hub in the candidate list.
+                    _rank_page(hub, base_score=500, force=True)
+                    _rank_page(hub + 1, base_score=400, force=True)
+                    _rank_page(hub - 1, base_score=200, force=True)
 
         ranked.sort(reverse=True)
         out: list[int] = []
@@ -2058,9 +2227,14 @@ def find_note_pages_by_ref(
         if printed_page:
             hub = map_printed_page_to_pdf_page(pdf_path, int(printed_page))
             if hub:
-                for p in (hub, hub + 1, hub - 1):
-                    if p > 0 and p not in out:
-                        out.append(p)
+                texts = _fitz_page_texts(pdf_path)
+                hub_low = (
+                    texts[hub - 1].lower() if 1 <= hub <= len(texts) else ""
+                )
+                if not _page_is_primary_financial_statement(hub_low):
+                    for p in (hub, hub + 1, hub - 1):
+                        if p > 0 and p not in out:
+                            out.append(p)
         for _, page_num in ranked:
             if page_num not in out:
                 out.append(page_num)
@@ -2745,9 +2919,14 @@ def capture_note_images_for_plan(
     if not pdf_path or not pdf_path.exists():
         return [{"ok": False, "reason": "pdf_not_found"}]
 
-    # Refresh plan with PDF Note/Page No. columns (authoritative printed pages).
-    plan = build_note_capture_plan(db, company_slug, year, pdf_path=pdf_path)
-    plan = [p for p in plan if p.get("has_note_table")]
+    incoming = [p for p in (plan or []) if p.get("has_note_table")]
+    if incoming:
+        # Honour a caller-filtered plan (e.g. income-statement notes only).
+        plan = incoming
+    else:
+        # Refresh plan with PDF Note/Page No. columns (authoritative printed pages).
+        plan = build_note_capture_plan(db, company_slug, year, pdf_path=pdf_path)
+        plan = [p for p in plan if p.get("has_note_table")]
 
     company_name = _resolve_company_display_name(db, company_slug)
     results: list[dict[str, Any]] = []

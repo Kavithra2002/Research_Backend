@@ -29,9 +29,23 @@ from comb_note_registry import _note_statement_key, build_note_capture_plan
 from comb_note_extractor import _index_table, norm_label
 from comb_reconcile import parse_number
 
-DEFAULT_MODEL = "gpt-4o"
+DEFAULT_MODEL = "gpt-5"
 MAX_PAGES_PER_NOTE = 3
 MAX_COMPLETION_TOKENS = 16384
+
+
+def openai_chat_token_kwargs(
+    model: str,
+    max_tokens: int = MAX_COMPLETION_TOKENS,
+    temperature: float | None = 0,
+) -> dict[str, Any]:
+    """GPT-5 rejects temperature and uses max_completion_tokens."""
+    if str(model or "").lower().startswith("gpt-5"):
+        return {"max_completion_tokens": max_tokens}
+    kwargs: dict[str, Any] = {"max_tokens": max_tokens}
+    if temperature is not None:
+        kwargs["temperature"] = temperature
+    return kwargs
 
 
 def resolve_api_key() -> str | None:
@@ -207,9 +221,8 @@ def extract_note_openai(
             resp = client.chat.completions.create(
                 model=model,
                 messages=[{"role": "user", "content": content}],
-                temperature=0,
-                max_tokens=MAX_COMPLETION_TOKENS,
                 response_format={"type": "json_object"},
+                **openai_chat_token_kwargs(model),
             )
             payload = _parse_json_content(resp.choices[0].message.content or "{}")
             lines = payload.get("lines") or []

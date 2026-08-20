@@ -1,15 +1,13 @@
 """
-Build comb_workbook_data using manifest + financial_tables (+ optional PDF note capture).
+Build comb_workbook_data using the COMB FS template for every company.
 
-Annual DB run (default, fast path ~2 min/report):
-  1. FS Description values from financial_tables (one index + light retry)
-  2. Note-table flags from manifest + Note column
-  3. Note page PNG captures (single PDF scan + single render pass)
+Annual DB run (same pipeline as Commercial Bank):
+  1. FS Description values from financial_tables
+  2. PDF statement tables (pdfplumber, OpenAI fallback when --use-pdf-extract)
+  3. Note + Page No. from statements, note page PNG captures
+  4. Note-table fill for the DB Notes dropdown (pdfplumber from crops)
 
-Drivers, Ratios, and multi-pass PDF verification are skipped.
-
-FS values: use --use-pdf-extract to read descriptions from the annual report PDF
-(pdfplumber first, OpenAI fallback). Cells are red only when absent from the report.
+Drivers and Ratios are not populated on this path.
 
 Usage:
     python extract_comb_data.py --pilot-2022
@@ -34,10 +32,15 @@ from comb_cell_status import (
 from comb_manifest import load_manifest
 from comb_fs_pdf_extract import (
     build_fs_pdf_index,
+    build_fs_section_by_row,
     build_fs_section_map,
     label_absent_in_pdf,
 )
-from comb_annual_fast import fast_extract_fs_values, load_existing_fs_cells
+from comb_annual_fast import (
+    fast_extract_fs_values,
+    fast_extract_fs_values_for_entity,
+    load_existing_fs_cells,
+)
 from comb_annual_fs_validate import validate_annual_fs_against_report
 from comb_annual_fs_pdf_verify import is_suspicious_fs_value
 from comb_note_capture import (
@@ -129,10 +132,11 @@ def _sync_note_sources_to_workbook(
         )
         if not cell:
             continue
-        if cell.get("note_source") == source:
+        if cell.get("note_source") == source and cell.get("note_ref") == note_ref:
             continue
         cell = dict(cell)
         cell["note_source"] = source
+        cell["note_ref"] = note_ref
         docs.append(cell)
     if docs:
         upsert_cells(db, docs)
@@ -313,16 +317,24 @@ def extract_annual_comb(
     pdf_path = resolve_annual_pdf(db, company_slug, year)
     entity_column = manifest.get("entity_column", "group")
     fs_sections = build_fs_section_map(manifest)
+    section_by_row = build_fs_section_by_row(manifest)
     pdf_index = None
 
     clear_workbook_sheets(db, company_slug, year, ["Drivers", "Ratios"])
 
     label_note_index = build_label_note_index(
-        db, company_slug, year, pdf_path=pdf_path
+        db,
+        company_slug,
+        year,
+        pdf_path=pdf_path,
     )
     fs_row_notes = build_fs_row_note_map(manifest, label_note_index)
     note_plan = build_note_capture_plan(
-        db, company_slug, year, manifest=manifest, pdf_path=pdf_path
+        db,
+        company_slug,
+        year,
+        manifest=manifest,
+        pdf_path=pdf_path,
     )
     plan_by_ref = {
         str(p["note_ref"]): p
@@ -344,6 +356,7 @@ def extract_annual_comb(
 
     existing_fs = load_existing_fs_cells(db, company_slug, year) if skip_existing else {}
     fs_values: dict[str, float | None] = {}
+    fs_values_bank: dict[str, float | None] = {}
     fs_skipped: set[str] = set()
     skipped_existing = 0
 
@@ -367,16 +380,36 @@ def extract_annual_comb(
                 existing_val = existing.get("value")
                 if not is_suspicious_fs_value(label, existing_val, fs_values):
                     fs_values[label] = existing_val
+                    fs_values_bank[label] = existing.get("value_bank")
                     fs_skipped.add(label)
                     skipped_existing += 1
                     continue
         labels_to_extract.append(label)
 
     if labels_to_extract:
-        extracted = fast_extract_fs_values(fs_ext, year, labels_to_extract)
+        # Prefer section-aware lookup when the same label appears in multiple statements.
+        sections_for_extract = {
+            lbl: fs_sections.get(lbl) for lbl in labels_to_extract if fs_sections.get(lbl)
+        }
+        extracted = fast_extract_fs_values(
+            fs_ext, year, labels_to_extract, sections=sections_for_extract
+        )
         fs_values.update(extracted)
+        bank_extracted = fast_extract_fs_values_for_entity(
+            fs_ext,
+            year,
+            labels_to_extract,
+            entity_column="bank",
+            sections=sections_for_extract,
+        )
+        fs_values_bank.update(bank_extracted)
 
-    if pdf_path and pdf_path.exists():
+    # Same PDF statement audit used for Commercial Bank: fill missing /
+    # suspicious FS cells from the annual report, then validate. Required so
+    # non-bank issuers are not stuck on the financial_tables label mapper.
+    comb_pdf_audit = bool(pdf_path and pdf_path.exists())
+
+    if comb_pdf_audit:
         pdf_index = build_fs_pdf_index(
             pdf_path,
             manifest,
@@ -385,28 +418,43 @@ def extract_annual_comb(
             use_openai=use_openai_notes or use_pdf_extract,
         )
         filled_from_pdf = 0
+        filled_bank_from_pdf = 0
         for label in labels_to_extract:
             current = fs_values.get(label)
             section = fs_sections.get(label)
-            if current is not None and not is_suspicious_fs_value(
+            if current is None or is_suspicious_fs_value(
                 label, current, fs_values
             ):
-                continue
-            pdf_val = pdf_index.lookup(label, section=section, entity_column=entity_column)
-            if pdf_val is None:
-                continue
-            if is_suspicious_fs_value(label, pdf_val, fs_values):
-                continue
-            fs_values[label] = pdf_val
-            filled_from_pdf += 1
+                pdf_val = pdf_index.lookup(
+                    label, section=section, entity_column=entity_column
+                )
+                if pdf_val is not None and not is_suspicious_fs_value(
+                    label, pdf_val, fs_values
+                ):
+                    fs_values[label] = pdf_val
+                    filled_from_pdf += 1
+            if fs_values_bank.get(label) is None:
+                pdf_bank = pdf_index.lookup(
+                    label, section=section, entity_column="bank"
+                )
+                if pdf_bank is not None and not is_suspicious_fs_value(
+                    label, pdf_bank, fs_values_bank
+                ):
+                    fs_values_bank[label] = pdf_bank
+                    filled_bank_from_pdf += 1
         if filled_from_pdf:
             print(
                 f"  [annual] FS PDF statement tables filled {filled_from_pdf} value(s)",
                 flush=True,
             )
+        if filled_bank_from_pdf:
+            print(
+                f"  [annual] FS PDF BANK columns filled {filled_bank_from_pdf} value(s)",
+                flush=True,
+            )
 
     validation_stats: dict[str, Any] = {}
-    if pdf_path and pdf_path.exists():
+    if comb_pdf_audit and pdf_path and pdf_path.exists():
         print(
             f"  [annual] Validate FS values against report for {year}…",
             flush=True,
@@ -421,6 +469,107 @@ def extract_annual_comb(
             pdf_index=pdf_index,
             log_fn=lambda msg: print(msg, flush=True),
         )
+        # After GROUP audit, fill any still-missing BANK cells from the PDF index.
+        if pdf_index is not None:
+            for label in fs_labels:
+                if fs_values_bank.get(label) is not None:
+                    continue
+                section = fs_sections.get(label)
+                pdf_bank = pdf_index.lookup(
+                    label, section=section, entity_column="bank"
+                )
+                if pdf_bank is not None and not is_suspicious_fs_value(
+                    label, pdf_bank, fs_values_bank
+                ):
+                    fs_values_bank[label] = pdf_bank
+
+    # Resolve duplicate FS labels (e.g. P&L vs SoFP "Non-controlling interest")
+    # into per-template-row values so both can be stored and AI-confirmed.
+    from collections import Counter
+
+    from comb_annual_fs_ai_confirm import ai_confirm_fs_labels
+
+    label_counts = Counter(str(r["label"]) for r in fs_data_rows)
+    dup_labels = {lbl for lbl, n in label_counts.items() if n > 1}
+    row_values: dict[int, float | None] = {}
+    row_values_bank: dict[int, float | None] = {}
+    if dup_labels:
+        print(
+            f"  [annual] Resolving {len(dup_labels)} duplicate FS label(s) by section…",
+            flush=True,
+        )
+        for row in fs_data_rows:
+            label = str(row["label"])
+            trow = int(row["row"])
+            section = section_by_row.get(trow) or fs_sections.get(label)
+            if label not in dup_labels:
+                row_values[trow] = fs_values.get(label)
+                row_values_bank[trow] = fs_values_bank.get(label)
+                continue
+            val = fs_ext.lookup(year, label, section=section)
+            bank_val = fs_ext.lookup(
+                year, label, entity_column="bank", section=section
+            )
+            if pdf_index is not None:
+                pdf_val = pdf_index.lookup(
+                    label, section=section, entity_column=entity_column
+                )
+                if pdf_val is not None and not is_suspicious_fs_value(
+                    label, pdf_val, fs_values
+                ):
+                    # Always prefer the section-specific PDF figure for duplicate
+                    # labels — table indexes often only keep one statement's row.
+                    val = pdf_val
+                pdf_bank = pdf_index.lookup(
+                    label, section=section, entity_column="bank"
+                )
+                if pdf_bank is not None:
+                    bank_val = pdf_bank
+            row_values[trow] = val
+            row_values_bank[trow] = bank_val
+            print(
+                f"    row {trow} [{section}] {label!r} = {val}",
+                flush=True,
+            )
+
+        # AI-confirm each duplicate occurrence only when still missing.
+        # Section-specific PDF/table values are authoritative for P&L vs SoFP
+        # siblings (AI row crops often land on the wrong statement page).
+        if comb_pdf_audit and pdf_path and pdf_path.exists():
+            for row in fs_data_rows:
+                label = str(row["label"])
+                if label not in dup_labels:
+                    continue
+                trow = int(row["row"])
+                if row_values.get(trow) is not None:
+                    continue
+                section = section_by_row.get(trow) or fs_sections.get(label)
+                single_sections = {label: section} if section else fs_sections
+                single_vals = {label: row_values.get(trow)}
+                single_vals, ai_dup = ai_confirm_fs_labels(
+                    db,
+                    company_slug,
+                    year,
+                    [label],
+                    single_vals,
+                    single_sections,
+                    pdf_index=pdf_index,
+                    pdf_mismatch_labels={label},
+                    double_confirm=True,
+                    log_fn=lambda msg: print(msg, flush=True),
+                )
+                if single_vals.get(label) is not None:
+                    row_values[trow] = single_vals.get(label)
+                if isinstance(validation_stats, dict):
+                    validation_stats.setdefault("duplicate_ai", []).append(
+                        {"row": trow, "label": label, "ai": ai_dup}
+                    )
+    else:
+        for row in fs_data_rows:
+            trow = int(row["row"])
+            label = str(row["label"])
+            row_values[trow] = fs_values.get(label)
+            row_values_bank[trow] = fs_values_bank.get(label)
 
     note_capture_summary: dict[str, Any] = {}
     if use_note_extract:
@@ -502,6 +651,30 @@ def extract_annual_comb(
                 flush=True,
             )
 
+        # Local note-table transcription for the DB Notes dropdown.
+        try:
+            from _fill_note_ui_from_pdf import fill_note_ui_for_company
+
+            fill_summary = fill_note_ui_for_company(
+                db,
+                company_slug,
+                [year],
+                force=force_note_capture,
+                pdf_path=pdf_path,
+            )
+            note_capture_summary["note_tables"] = fill_summary
+            filled_tables = int(fill_summary.get("filled") or 0)
+            print(
+                f"  [annual] Note tables filled for {year}: {filled_tables}",
+                flush=True,
+            )
+        except Exception as exc:
+            note_capture_summary["note_tables"] = {"ok": False, "error": str(exc)}
+            print(
+                f"  [annual] Note table fill failed for {year}: {exc}",
+                flush=True,
+            )
+
     note_refs_needed: set[str] = set()
     row_note_ref: dict[str, str | None] = {}
     row_has_notes: dict[str, bool] = {}
@@ -528,13 +701,19 @@ def extract_annual_comb(
 
     docs: list[dict[str, Any]] = []
     filled = missing = confirmed_absent = 0
+    confidence_map = (
+        ((validation_stats.get("ai_confirm") or {}).get("confidence") or {})
+        if isinstance(validation_stats, dict)
+        else {}
+    )
 
     for row in fs_data_rows:
         label = row["label"]
+        template_row = int(row["row"]) if row.get("row") is not None else None
         drivers_row = fs_links.get(label)
         note_ref = row_note_ref.get(label)
 
-        if label in fs_skipped:
+        if label in fs_skipped and template_row is None:
             existing = existing_fs.get(label)
             if existing:
                 existing = {
@@ -550,7 +729,16 @@ def extract_annual_comb(
                 docs.append(existing)
             continue
 
-        val = fs_values.get(label)
+        val = (
+            row_values.get(template_row)
+            if template_row is not None
+            else fs_values.get(label)
+        )
+        bank_val = (
+            row_values_bank.get(template_row)
+            if template_row is not None
+            else fs_values_bank.get(label)
+        )
         status = _status_after_pdf_check(
             label,
             val,
@@ -564,6 +752,14 @@ def extract_annual_comb(
         note_source_extra: dict[str, Any] = {}
         if note_ref and note_ref in note_sources:
             note_source_extra = {"note_source": note_sources[note_ref]}
+        conf = confidence_map.get(label)
+        if conf:
+            note_source_extra["confidence"] = conf
+        if template_row is not None:
+            note_source_extra["template_row"] = template_row
+            sec = section_by_row.get(template_row)
+            if sec:
+                note_source_extra["statement_section"] = sec
 
         docs.append(
             _cell_doc(
@@ -573,6 +769,8 @@ def extract_annual_comb(
                 label=label,
                 value=val,
                 status=status,
+                value_group=val,
+                value_bank=bank_val,
                 has_notes=row_has_notes.get(label, False),
                 drivers_row=drivers_row,
                 notes=[],

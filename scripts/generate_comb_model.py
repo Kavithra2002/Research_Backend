@@ -128,6 +128,8 @@ def _row_year_maps(
     report_type: str = "annual",
     quarter: str | None = None,
     drivers_row: int | None = None,
+    template_row: int | None = None,
+    entity: str = "group",
 ) -> tuple[dict[str, float | None], dict[str, str]]:
     values: dict[str, float | None] = {}
     statuses: dict[str, str] = {}
@@ -140,6 +142,8 @@ def _row_year_maps(
             report_type=report_type,
             quarter=quarter,
             drivers_row=drivers_row,
+            template_row=template_row,
+            entity=entity,
         )
         values[key] = display_value_for_year(year, raw)
         statuses[key] = store.lookup_status(
@@ -149,6 +153,7 @@ def _row_year_maps(
             report_type=report_type,
             quarter=quarter,
             drivers_row=drivers_row,
+            template_row=template_row,
         )
     return values, statuses
 
@@ -415,6 +420,30 @@ def _is_share_count_key(key: str) -> bool:
     )
 
 
+def _fs_label_match_ok(pattern: str, key: str) -> bool:
+    """
+    True when an index key may supply a value for a template/pattern label.
+
+    Allows exact matches and longer row labels that contain the pattern.
+    Rejects shorter sibling lines (e.g. SoFP 'subordinated liabilities' must
+    not fill cash-flow 'redemption of subordinated liabilities').
+    Also rejects before↔after (and similar) polarity siblings.
+    """
+    if not pattern or not key:
+        return False
+    if pattern == key:
+        return True
+    from comb_note_extractor import _label_similarity, labels_polarity_conflict
+
+    if labels_polarity_conflict(pattern, key):
+        return False
+    if pattern in key:
+        return True
+    if key in pattern:
+        return _label_similarity(pattern, key) >= 0.9
+    return False
+
+
 def _lookup_index_value(
     index: dict[str, float],
     template_label: str,
@@ -445,7 +474,7 @@ def _lookup_index_value(
             if not (per_share and (_is_share_count_key(np) or abs(float(v)) >= 1_000)):
                 return v
         for k, v in index.items():
-            if np in k or k in np:
+            if _fs_label_match_ok(np, k):
                 _consider(k, v)
     if best_val is not None:
         return best_val
@@ -456,7 +485,7 @@ def _lookup_index_value(
         if not (per_share and (_is_share_count_key(nt) or abs(float(v)) >= 1_000)):
             return v
     for k, v in index.items():
-        if nt in k or k in nt:
+        if _fs_label_match_ok(nt, k):
             _consider(k, v)
     return best_val
 
@@ -474,6 +503,7 @@ def find_value_col(doc: dict, year: int, entity_column: str = "group") -> int | 
     ]
     try:
         from comb_note_extractor import (
+            _entity_header_positions,
             find_annual_bank_body_col,
             find_annual_group_body_col,
             row_entity_year_col,
@@ -483,6 +513,12 @@ def find_value_col(doc: dict, year: int, entity_column: str = "group") -> int | 
             col = find_annual_bank_body_col(headers, body_rows, year)
         else:
             col = find_annual_group_body_col(headers, body_rows, year, entity_column)
+
+        group_ci, bank_ci = _entity_header_positions(headers)
+        # When GROUP/BANK banners exist, trust the entity picker — majority
+        # voting often collapses BANK onto the first (GROUP) amount column.
+        if col is not None and group_ci is not None and bank_ci is not None:
+            return col
 
         # Prefer per-row GROUP/BANK year columns (skips note + page no).
         sample_cols: list[int] = []
@@ -496,10 +532,6 @@ def find_value_col(doc: dict, year: int, entity_column: str = "group") -> int | 
             from collections import Counter
 
             col = Counter(sample_cols).most_common(1)[0][0]
-        elif col is not None:
-            pass
-        else:
-            col = None
         if col is not None:
             return col
     except Exception:
@@ -571,7 +603,8 @@ class DataExtractor:
     def __init__(self, db, company_slug: str):
         self.db = db
         self.company_slug = company_slug
-        self._year_cache: dict[int, dict[str, float]] = {}
+        self._year_cache: dict[tuple[int, str], dict[str, float]] = {}
+        self._section_cache: dict[tuple[int, str], dict[str, dict[str, float]]] = {}
 
     _ANCHOR_LABELS = frozenset(
         {
@@ -603,7 +636,8 @@ class DataExtractor:
 
     def _docs_for_year(self, year: int) -> list[dict]:
         docs: list[dict] = []
-        for stmt in ("income_statement", "sofp", "cash_flows", "ten_year_summary"):
+        stmts = ("income_statement", "sofp", "cash_flows", "oci", "ten_year_summary")
+        for stmt in stmts:
             docs.extend(
                 list(
                     self.db.financial_tables.find(
@@ -640,6 +674,24 @@ class DataExtractor:
             if sk not in best_score or q > best_score[sk]:
                 best_score[sk] = q
                 best_by_key[sk] = doc
+
+        # Missing statements: read the comparative column from next year's report
+        # (e.g. 2019 Group figures printed beside 2020 in the 2020 annual).
+        for stmt in stmts:
+            if stmt in best_by_key and best_score.get(stmt, -1) >= 0:
+                continue
+            for doc in self.db.financial_tables.find(
+                {
+                    "company_slug": self.company_slug,
+                    "report_type": "annual",
+                    "year": year + 1,
+                    "statement_key": stmt,
+                }
+            ):
+                q = self._doc_quality(doc, year)
+                if q > best_score.get(stmt, -1):
+                    best_score[stmt] = q
+                    best_by_key[stmt] = doc
         docs = list(best_by_key.values())
 
         def prio(d: dict) -> int:
@@ -652,9 +704,17 @@ class DataExtractor:
 
         return sorted(docs, key=prio, reverse=True)
 
-    def _ingest_doc(self, index: dict[str, float], doc: dict, year: int) -> None:
+    def _ingest_doc(
+        self,
+        index: dict[str, float],
+        doc: dict,
+        year: int,
+        entity_column: str = "group",
+        *,
+        section_indexes: dict[str, dict[str, float]] | None = None,
+    ) -> None:
         stmt = doc.get("statement_key") or ""
-        col = find_value_col(doc, year)
+        col = find_value_col(doc, year, entity_column)
         if col is None:
             return
 
@@ -668,31 +728,93 @@ class DataExtractor:
                 body_rows.append([str(c) for c in cells])
 
         headers = doc.get("header_rows") or []
-        from comb_note_extractor import index_label_values_from_rows
+        from comb_note_extractor import (
+            _entity_header_positions,
+            index_label_values_from_rows,
+        )
+
+        group_ci, bank_ci = _entity_header_positions(headers)
+        use_row_pick = not (group_ci is not None and bank_ci is not None)
+
+        section_index = None
+        if section_indexes is not None:
+            section_index = section_indexes.setdefault(stmt, {})
 
         for nl, scaled in index_label_values_from_rows(
             body_rows,
             col,
-            header_rows=headers,
-            year=year,
+            header_rows=headers if use_row_pick else None,
+            year=year if use_row_pick else None,
+            entity_column=entity_column,
             unit_scale=unit_scale,
         ).items():
-            if nl and nl not in index:
+            if not nl:
+                continue
+            if section_index is not None and nl not in section_index:
+                section_index[nl] = scaled
+            if nl not in index:
                 index[nl] = scaled
 
-    def index_for_year(self, year: int) -> dict[str, float]:
-        if year not in self._year_cache:
+    def index_for_year(
+        self, year: int, entity_column: str = "group"
+    ) -> dict[str, float]:
+        entity = (entity_column or "group").lower()
+        key = (year, entity)
+        if key not in self._year_cache:
             index: dict[str, float] = {}
+            section_indexes: dict[str, dict[str, float]] = {}
             for doc in self._docs_for_year(year):
-                self._ingest_doc(index, doc, year)
-            self._year_cache[year] = index
-        return self._year_cache[year]
+                self._ingest_doc(
+                    index,
+                    doc,
+                    year,
+                    entity_column=entity,
+                    section_indexes=section_indexes,
+                )
+            self._year_cache[key] = index
+            self._section_cache[key] = section_indexes
+        return self._year_cache[key]
 
-    def lookup(self, year: int, template_label: str) -> float | None:
-        index = self.index_for_year(year)
+    def index_for_year_section(
+        self,
+        year: int,
+        section: str,
+        entity_column: str = "group",
+    ) -> dict[str, float]:
+        """Label index limited to one statement section (income_statement / sofp / …)."""
+        self.index_for_year(year, entity_column=entity_column)
+        entity = (entity_column or "group").lower()
+        by_section = self._section_cache.get((year, entity)) or {}
+        if section in by_section:
+            return by_section[section]
+        for sk, idx in by_section.items():
+            if str(sk).startswith(section):
+                return idx
+        return {}
+
+    def lookup(
+        self,
+        year: int,
+        template_label: str,
+        entity_column: str = "group",
+        *,
+        section: str | None = None,
+    ) -> float | None:
         patterns = patterns_for_label(
             template_label, LABEL_ALIASES, "fs", default_to_label=True
         )
+        if section:
+            sec_index = self.index_for_year_section(
+                year, section, entity_column=entity_column
+            )
+            if sec_index:
+                hit = _lookup_index_value(sec_index, template_label, patterns)
+                if hit is not None:
+                    return hit
+                # Section was requested and has other rows — do not steal a
+                # sibling-statement value (P&L vs SoFP "Non-controlling interest").
+                return None
+        index = self.index_for_year(year, entity_column=entity_column)
         return _lookup_index_value(index, template_label, patterns)
 
 def strip_forecast_columns(ws, first_extra_col: int = 12) -> None:
@@ -839,13 +961,24 @@ def extract_template_labels(ws) -> list[tuple[int, str]]:
     return rows
 
 
+def _fs_note_labels_match(fs_label: str, parent_label: str) -> bool:
+    """True when a captured note belongs to this FS description."""
+    def key(value: str) -> str:
+        text = norm_label(value)
+        return re.sub(r"^less\s+", "", text)
+
+    left = key(fs_label)
+    right = key(parent_label)
+    return bool(left and right and left == right)
+
+
 def _ui_note_tables_index(
     db,
     company_slug: str,
     years: list[int],
-) -> dict[tuple[int, str], list[dict[str, Any]]]:
-    """Preload the small OpenAI-extracted note-table UI pilot."""
-    index: dict[tuple[int, str], list[dict[str, Any]]] = {}
+) -> dict[tuple[int, str], dict[str, Any]]:
+    """Preload OpenAI-extracted note tables for the DB Notes UI."""
+    index: dict[tuple[int, str], dict[str, Any]] = {}
     cursor = db.financial_tables.find(
         {
             "company_slug": company_slug,
@@ -856,6 +989,7 @@ def _ui_note_tables_index(
         {
             "year": 1,
             "statement_key": 1,
+            "parent_label": 1,
             "ui_extracted_tables": 1,
             "ui_extraction_method": 1,
             "ui_extraction_model": 1,
@@ -879,13 +1013,17 @@ def _ui_note_tables_index(
                 }
             )
         if enriched:
-            index[(year, statement_key)] = enriched
+            index[(year, statement_key)] = {
+                "tables": enriched,
+                "parent_label": str(doc.get("parent_label") or ""),
+            }
     return index
 
 
 def _note_tables_for_sources(
-    table_index: dict[tuple[int, str], list[dict[str, Any]]],
+    table_index: dict[tuple[int, str], dict[str, Any]],
     sources: dict[str, dict[str, Any]],
+    fs_label: str,
 ) -> dict[str, list[dict[str, Any]]]:
     by_year: dict[str, list[dict[str, Any]]] = {}
     for year_key, source in sources.items():
@@ -894,7 +1032,13 @@ def _note_tables_for_sources(
             year = int(year_key)
         except (TypeError, ValueError):
             continue
-        tables = table_index.get((year, statement_key))
+        entry = table_index.get((year, statement_key))
+        if not entry:
+            continue
+        parent_label = str(entry.get("parent_label") or "")
+        if parent_label and not _fs_note_labels_match(fs_label, parent_label):
+            continue
+        tables = entry.get("tables") or []
         if tables:
             by_year[year_key] = tables
     return by_year
@@ -941,12 +1085,17 @@ def build_fs_preview_data(
             continue
 
         label = str(item["label"])
-        values, statuses = _row_year_maps(store, "FS", label, year_list)
+        template_row = int(item["row"]) if item.get("row") is not None else None
+        values, statuses = _row_year_maps(
+            store, "FS", label, year_list, template_row=template_row
+        )
         note_meta = fs_note_links.get(label)
         note_source_by_year: dict[str, dict[str, Any]] = {}
         row_has_notes = False
         for year in year_list:
-            cell_doc = store.cell_meta(year, label, sheet="FS")
+            cell_doc = store.cell_meta(
+                year, label, sheet="FS", template_row=template_row
+            )
             if cell_doc:
                 if cell_doc.get("note_source"):
                     note_source_by_year[str(year)] = cell_doc["note_source"]
@@ -972,7 +1121,7 @@ def build_fs_preview_data(
             if note_source_by_year:
                 row_payload["note_source_by_year"] = note_source_by_year
                 note_tables_by_year = _note_tables_for_sources(
-                    ui_note_tables, note_source_by_year
+                    ui_note_tables, note_source_by_year, label
                 )
                 if note_tables_by_year:
                     row_payload["note_tables_by_year"] = note_tables_by_year
@@ -1039,11 +1188,23 @@ def build_notes_preview_data(
             continue
 
         label = str(item["label"])
-        values, statuses = _row_year_maps(store, "FS", label, year_list)
+        template_row = int(item["row"]) if item.get("row") is not None else None
+        values, statuses = _row_year_maps(
+            store, "FS", label, year_list, template_row=template_row
+        )
+        values_bank, _ = _row_year_maps(
+            store,
+            "FS",
+            label,
+            year_list,
+            template_row=template_row,
+            entity="bank",
+        )
         row_payload: dict[str, Any] = {
             "label": label,
             "kind": item["kind"],
             "values": values,
+            "values_bank": values_bank,
             "statuses": statuses,
             "row": item.get("row"),
         }
@@ -1067,7 +1228,7 @@ def build_notes_preview_data(
             if note_source_by_year:
                 row_payload["note_source_by_year"] = note_source_by_year
                 note_tables_by_year = _note_tables_for_sources(
-                    ui_note_tables, note_source_by_year
+                    ui_note_tables, note_source_by_year, label
                 )
                 if note_tables_by_year:
                     row_payload["note_tables_by_year"] = note_tables_by_year
@@ -1715,11 +1876,19 @@ def build_quarterly_preview_data(
     column_keys = [c["key"] for c in columns]
     template_validation = apply_quarterly_template_validation(rows, column_keys)
 
+    display_name = company_slug.replace("_", " ") if company_slug else "Commercial Bank of Ceylon PLC"
+    if company_slug:
+        sample = db.financial_tables.find_one(
+            {"company_slug": company_slug}, {"company_name": 1}
+        )
+        if sample and sample.get("company_name"):
+            display_name = str(sample["company_name"])
+
     client.close()
     return {
         "view": "quarterly",
         "company_slug": company_slug,
-        "company_name": "Commercial Bank of Ceylon PLC",
+        "company_name": display_name,
         "unit": "LKR '000 except per share data",
         "period_label": period_label,
         "columns": columns,

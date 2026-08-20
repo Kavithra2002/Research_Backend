@@ -31,7 +31,7 @@ Usage
     python Data_retrive.py --apikey sk-...
 
     # Cheaper / faster run
-    python Data_retrive.py --model gpt-4o-mini
+    python Data_retrive.py --model gpt-5
 
     # Process only a specific company sub-folder
     python Data_retrive.py --only company1
@@ -622,8 +622,8 @@ if __name__ == "__main__":
                     help="OpenAI API key (else OPENAI_API_KEY env or .env)")
     ap.add_argument("--option",   choices=["1", "2"], default="1",
                     help="1 = core statements  2 = core + Notes  (default: 1)")
-    ap.add_argument("--model",    default="gpt-4o",
-                    help="OpenAI model name  (default: gpt-4o)")
+    ap.add_argument("--model",    default="gpt-5",
+                    help="OpenAI model name  (default: gpt-5)")
     ap.add_argument("--dpi",      type=int, default=150,
                     help="Image render DPI  (default: 150)")
     ap.add_argument("--dry-run",  action="store_true",

@@ -29,7 +29,7 @@ Usage
 -----
     python Demo_run.py --items selections.json
     python Demo_run.py --items selections.json --dry-run
-    python Demo_run.py --items selections.json --model gpt-4o-mini --no-upload
+    python Demo_run.py --items selections.json --model gpt-5 --no-upload
 """
 
 from __future__ import annotations
@@ -217,8 +217,8 @@ def main(argv: list[str] | None = None) -> int:
                     help="OpenAI API key (else OPENAI_API_KEY env / .env).")
     ap.add_argument("--option", choices=["1", "2"], default="1",
                     help="1 = core statements  2 = core + Notes (default: 1).")
-    ap.add_argument("--model", default="gpt-4o",
-                    help="OpenAI model name (default: gpt-4o).")
+    ap.add_argument("--model", default="gpt-5",
+                    help="OpenAI model name (default: gpt-5).")
     ap.add_argument("--dpi", type=int, default=150, help="Render DPI (default 150).")
     ap.add_argument("--dry-run", action="store_true",
                     help="Render images but DON'T call OpenAI (no DB upload).")
@@ -571,6 +571,63 @@ def _attempt_one(
             "quarter": summary.get("quarter"),
             "error": (summary.get("error") or (summary.get("errors") or [None])[0]),
         }
+
+        if (
+            report_type == "annual"
+            and tables
+            and uploader is not None
+            and summary.get("year")
+        ):
+            try:
+                from extract_comb_data import extract_annual_comb
+
+                year = int(summary["year"])
+                comb_res = extract_annual_comb(
+                    uploader.db,
+                    company_key,
+                    year,
+                    use_note_extract=True,
+                    skip_existing=False,
+                )
+                db_event["cells_filled"] = comb_res.get("cells_filled")
+                db_event["notes_captured"] = (
+                    (comb_res.get("note_capture") or {}).get("groups_with_note_ref")
+                    if isinstance(comb_res.get("note_capture"), dict)
+                    else None
+                )
+                emit_log(
+                    f"COMB table for {year}: {comb_res.get('cells_filled', 0)} "
+                    f"cells filled, {comb_res.get('cells_missing', 0)} missing.",
+                    level="info",
+                )
+            except Exception as ex:
+                emit_log(f"COMB table extract failed for {label}: {ex}", level="warning")
+        elif (
+            report_type == "quarterly"
+            and tables
+            and uploader is not None
+            and summary.get("year")
+            and summary.get("quarter")
+        ):
+            try:
+                from extract_comb_data import extract_quarterly_comb
+
+                year = int(summary["year"])
+                quarter = str(summary["quarter"]).strip().upper()
+                q_res = extract_quarterly_comb(
+                    uploader.db, company_key, year, quarter
+                )
+                emit_log(
+                    f"COMB quarterly {quarter} {year}: "
+                    f"{q_res.get('cells_filled', 0)} cells filled, "
+                    f"{q_res.get('cells_missing', 0)} missing.",
+                    level="info",
+                )
+            except Exception as ex:
+                emit_log(
+                    f"COMB quarterly extract failed for {label}: {ex}",
+                    level="warning",
+                )
         # 0 tables means the extraction silently produced nothing useful —
         # treat it as retryable so a transient miss gets another chance.
         retryable = tables == 0

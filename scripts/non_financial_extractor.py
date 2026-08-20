@@ -21,7 +21,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--items-stdin", action="store_true", required=True)
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--model", default="gpt-4o")
+    ap.add_argument("--model", default="gpt-5")
     ap.add_argument("--apikey", default=None)
     args = ap.parse_args(argv)
 

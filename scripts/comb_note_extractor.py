@@ -43,13 +43,60 @@ _VAL_TOKEN_RE = re.compile(
     r")$"
 )
 _ANCHOR_TOKEN_RE = re.compile(r"\d{2,}")
+_REAL_AMOUNT_RE = re.compile(
+    r"\(?\-?\d{1,3}(?:,\d{3})+(?:\.\d+)?\)?|\(?\-?\d{5,}(?:\.\d+)?\)?"
+)
+_YEAR_TOKEN_RE = re.compile(r"^(?:19|20)\d{2}$")
+_NOTE_REF_RE = re.compile(
+    r"^\d{1,2}(?:\.\d{1,2})?(?:\s*\([a-z]\))?"
+    r"(?:\s*&\s*\d{1,2}(?:\.\d{1,2})?(?:\s*\([a-z]\))?)?$",
+    re.I,
+)
+_PAGE_REF_RE = re.compile(r"^\d{2,3}(?:\s*&\s*\d{2,3})?$")
+_CONTINUATION_START_RE = re.compile(
+    r"^(and|to|of|the|from|through|at|for|or|&)\b",
+    re.I,
+)
+_INCOMPLETE_LABEL_RE = re.compile(
+    r"(?:[-–—]|and|to|of|the|from|through|at|for)$",
+    re.I,
+)
+_WRAP_FRAGMENTS = {
+    "private limited",
+    "company plc",
+    "company limited",
+    "limited",
+    "plc",
+    "brokers private limited",
+    "development company plc",
+    "instruments",
+    "customers",
+    "other customers",
+    "other comprehensive income",
+    "comprehensive income",
+}
 
 
 def norm_label(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", (s or "").lower()).strip()
 
 
+def _demo_data_root() -> Path:
+    return Path(__file__).resolve().parent.parent / "Demo_Data"
+
+
+def _company_display_name(db, company_slug: str) -> str:
+    sample = db.financial_tables.find_one(
+        {"company_slug": company_slug},
+        {"company_name": 1},
+    )
+    if sample and sample.get("company_name"):
+        return str(sample["company_name"]).strip()
+    return company_slug.replace("_", " ").strip()
+
+
 def resolve_annual_pdf(db, company_slug: str, year: int) -> Path | None:
+    """Locate the annual PDF for any company (not only COMB)."""
     doc = db.financial_tables.find_one(
         {
             "company_slug": company_slug,
@@ -57,24 +104,40 @@ def resolve_annual_pdf(db, company_slug: str, year: int) -> Path | None:
             "report_type": "annual",
             "source_pdf": {"$exists": True, "$ne": ""},
         },
-        {"source_pdf": 1},
+        {"source_pdf": 1, "company_name": 1},
         sort=[("updated_at", -1)],
     )
     if doc and doc.get("source_pdf"):
-        p = Path(str(doc["source_pdf"]))
-        if p.exists():
-            return p
-    demo = (
-        Path(__file__).resolve().parent.parent
-        / "Demo_Data"
-        / "Commercial Bank of Ceylon PLC"
-        / "Annual"
-        / f"Annual report {year}"
-    )
-    if demo.exists():
-        pdfs = list(demo.glob("*.pdf"))
-        if pdfs:
-            return pdfs[0]
+        stored = Path(str(doc["source_pdf"]))
+        if stored.exists():
+            return stored
+
+    display = ""
+    if doc and doc.get("company_name"):
+        display = str(doc["company_name"]).strip()
+    if not display:
+        display = _company_display_name(db, company_slug)
+
+    demo_root = _demo_data_root()
+    folders = [
+        demo_root / display / "Annual" / f"Annual report {year}",
+        demo_root / display / "Annual" / f"Annual Report {year}",
+        demo_root / company_slug / "Annual" / f"Annual report {year}",
+        demo_root / company_slug / "Annual" / f"Annual Report {year}",
+    ]
+    for folder in folders:
+        if folder.is_dir():
+            pdfs = sorted(folder.glob("*.pdf"))
+            if pdfs:
+                return pdfs[0]
+
+    annual_root = demo_root / display / "Annual"
+    if annual_root.is_dir():
+        for folder in sorted(annual_root.iterdir(), reverse=True):
+            if folder.is_dir() and str(year) in folder.name:
+                pdfs = sorted(folder.glob("*.pdf"))
+                if pdfs:
+                    return pdfs[0]
     return None
 
 
@@ -110,7 +173,122 @@ def _is_val_token(tok: str) -> bool:
 
 
 def _is_anchor_token(tok: str) -> bool:
-    return bool(_ANCHOR_TOKEN_RE.search(tok.strip()))
+    """Column anchors are year headers and printed money amounts, not note/page refs."""
+    text = tok.strip().strip("()")
+    if _YEAR_TOKEN_RE.fullmatch(text):
+        return True
+    return bool(_REAL_AMOUNT_RE.search(tok.strip()))
+
+
+def _text_has_real_amount(text: str) -> bool:
+    return bool(_REAL_AMOUNT_RE.search(str(text or "")))
+
+
+def _is_note_or_page_text(text: str) -> bool:
+    raw = re.sub(r"\s+", " ", str(text or "")).strip()
+    if not raw:
+        return False
+    if raw in {"&", "and"}:
+        return True
+    if _NOTE_REF_RE.fullmatch(raw) or _PAGE_REF_RE.fullmatch(raw):
+        return True
+    if "&" in raw and re.fullmatch(r"[&\d.\s()a-z]+", raw, re.I):
+        return sum(ch.isalpha() for ch in raw) <= 3
+    return False
+
+
+def _effective_row_label(label: str) -> str:
+    text = re.sub(r"\s+", " ", str(label or "")).strip()
+    if not text or _is_note_or_page_text(text):
+        return ""
+    return text
+
+
+def _is_first_value_token(tok: str) -> bool:
+    """Left edge of note/page/amount columns; ignore dashes inside labels."""
+    text = tok.strip()
+    if text in {"-", "–", "—", "(", ")"}:
+        return False
+    if _YEAR_TOKEN_RE.fullmatch(text):
+        return True
+    if _is_note_or_page_text(text):
+        return True
+    if _text_has_real_amount(text):
+        return True
+    return bool(_VAL_TOKEN_RE.match(text))
+
+
+def _grid_row_has_amounts(row: list[str]) -> bool:
+    return any(_text_has_real_amount(c) for c in row[1:])
+
+
+def _merge_wrap_cell(prev: str, curr: str) -> str:
+    """Keep printed money over a note/page fragment when a wrap lands in one cell."""
+    left = str(prev or "").strip()
+    right = str(curr or "").strip()
+    if not left:
+        return right
+    if not right or right == left:
+        return left
+    left_amt = _text_has_real_amount(left)
+    right_amt = _text_has_real_amount(right)
+    if right_amt and not left_amt:
+        return right
+    if left_amt and not right_amt:
+        return left
+    return f"{left} {right}".strip()
+
+
+def _should_join_wrapped_row(prev: list[str], curr: list[str]) -> bool:
+    """True when curr is a wrapped label, note/page continuation, or orphan amount line."""
+    if not prev or not curr:
+        return False
+    prev_label = _effective_row_label(prev[0] if prev else "")
+    curr_label = _effective_row_label(curr[0] if curr else "")
+    if not prev_label:
+        return False
+    if _line_is_column_header(prev_label):
+        return False
+    prev_amt = _grid_row_has_amounts(prev)
+    curr_amt = _grid_row_has_amounts(curr)
+    prev_note = any(_is_note_or_page_text(c) for c in prev)
+    curr_note = any(_is_note_or_page_text(c) for c in curr)
+    if not curr_label and (curr_amt or curr_note):
+        return True
+    if not curr_label:
+        return False
+    continuation = bool(
+        _INCOMPLETE_LABEL_RE.search(prev_label)
+        or _CONTINUATION_START_RE.match(curr_label)
+        or curr_label[:1].islower()
+        or prev_label.endswith(("-", "–", "—"))
+        or curr_label.lower() in _WRAP_FRAGMENTS
+    )
+    if not prev_amt and curr_amt and (continuation or prev_note):
+        return True
+    if prev_amt and not curr_amt and continuation:
+        return True
+    if curr_amt and prev_amt and _INCOMPLETE_LABEL_RE.search(prev_label):
+        return True
+    if not prev_amt and not curr_amt and continuation:
+        return True
+    return False
+
+
+def _line_is_column_header(text: str) -> bool:
+    """True when a no-amount line is GROUP/BANK/unit headers, not a wrapped label."""
+    blob = re.sub(r"\s+", " ", str(text or "")).strip().upper()
+    if not blob:
+        return False
+    if "GROUP" in blob and ("BANK" in blob or "COMPANY" in blob):
+        return True
+    if re.fullmatch(r"(GROUP|BANK|COMPANY|NOTE|PAGE|PAGE NO\.?)", blob):
+        return True
+    if re.search(r"FOR THE YEAR ENDED|AS AT\b", blob):
+        return True
+    if re.fullmatch(r"(RS\.?|LKR)(\s*'?0{3})?", blob):
+        return True
+    return False
 
 
 def _words_table_rows(page) -> list[list[str]]:
@@ -181,9 +359,16 @@ def _words_table_rows(page) -> list[list[str]]:
 
         first_val_x0: float | None = None
         for w in ln:
-            if _is_val_token(w["text"]):
+            if _is_first_value_token(w["text"]):
                 first_val_x0 = float(w["x0"])
                 break
+
+        line_text = " ".join(w["text"] for w in ln).strip()
+        # Wrapped description lines have no numeric tokens. Putting them into
+        # the nearest amount column splits one PDF row into two extracted rows.
+        if first_val_x0 is None and line_text and not _line_is_column_header(line_text):
+            raw_rows.append([line_text] + [""] * n_cols)
+            continue
 
         row = [""] * (n_cols + 1)
         for phrase in phrases:
@@ -205,7 +390,60 @@ def _words_table_rows(page) -> list[list[str]]:
                 )
         if any(c.strip() for c in row):
             raw_rows.append(row)
-    return raw_rows
+    return _join_wrapped_grid_rows(raw_rows)
+
+
+def _join_wrapped_grid_rows(rows: list[list[str]]) -> list[list[str]]:
+    """Merge wrapped labels, note/page continuations, and orphan amount lines."""
+    if len(rows) < 2:
+        return rows
+    out: list[list[str]] = []
+    for row in rows:
+        row = [str(c) for c in row]
+        if not out:
+            out.append(row)
+            continue
+        prev = out[-1]
+        if not (prev[0] or "").strip():
+            for idx in range(1, len(prev)):
+                cell = str(prev[idx] or "").strip()
+                if sum(ch.isalpha() for ch in cell) >= 8:
+                    prev[0] = cell
+                    prev[idx] = ""
+                    break
+        if not (row[0] or "").strip():
+            for idx in range(1, len(row)):
+                cell = str(row[idx] or "").strip()
+                if sum(ch.isalpha() for ch in cell) >= 8 and not _is_note_or_page_text(
+                    cell
+                ):
+                    row[0] = cell
+                    row[idx] = ""
+                    break
+        prev_label = re.sub(
+            r"^\d{1,2}(?:\.\d+)?\s+(?=[A-Za-z(])", "", (prev[0] or "").strip()
+        )
+        label = re.sub(
+            r"^\d{1,2}(?:\.\d+)?\s+(?=[A-Za-z(])", "", (row[0] or "").strip()
+        )
+        if prev[0] != prev_label:
+            prev[0] = prev_label
+        if row[0] != label:
+            row[0] = label
+        if _should_join_wrapped_row(prev, row):
+            extra = _effective_row_label(label)
+            if extra:
+                prev[0] = re.sub(r"\s+", " ", (prev_label + " " + extra)).strip()
+            width = max(len(prev), len(row))
+            while len(prev) < width:
+                prev.append("")
+            while len(row) < width:
+                row.append("")
+            for idx in range(1, width):
+                prev[idx] = _merge_wrap_cell(prev[idx], row[idx])
+            continue
+        out.append(row)
+    return out
 
 
 def _split_header_body(rows: list[list[str]]) -> tuple[list[list[str]], list[list[str]]]:
@@ -370,14 +608,30 @@ def _is_change_column(header_rows: list[list[str]], ci: int) -> bool:
 
 
 def _is_note_ref_cell(cell: str) -> bool:
-    return bool(re.fullmatch(r"\d{1,2}(\.\d{1,2})?", str(cell).strip()))
+    text = str(cell).strip()
+    if re.fullmatch(r"\d{1,2}(\.\d{1,2})?", text):
+        return True
+    # e.g. "38.1 to 38.4" / "38.1-38.4"
+    return bool(
+        re.fullmatch(
+            r"\d{1,2}(\.\d{1,2})?\s*(?:to|-|–|—)\s*\d{1,2}(\.\d{1,2})?",
+            text,
+            re.IGNORECASE,
+        )
+    )
 
 
 def _is_likely_page_no_value(cell: str, value: float | None) -> bool:
     """Body tables often insert a page-number column between Note ref and amounts."""
+    raw = str(cell).strip()
+    if re.fullmatch(
+        r"\d{2,4}\s*(?:to|-|–|—)\s*\d{2,4}",
+        raw,
+        re.IGNORECASE,
+    ):
+        return True
     if value is None:
         return False
-    raw = str(cell).strip()
     if "," in raw or raw.startswith("("):
         return False
     return abs(value) < 1_000
@@ -440,6 +694,31 @@ def _group_year_order(header_rows: list[list[str]], entity_column: str = "group"
     return ordered
 
 
+def _amount_block_start_col(row: list[str]) -> int:
+    """
+    First year-amount column on a body row (after Note / Page No.).
+
+    Skips Note and Page metadata only — blank year cells stay in the amount
+    block so year_slot 0 can remain empty instead of sliding into prior year.
+    """
+    ci = 1
+    if len(row) <= ci:
+        return ci
+    # Note slot: blank placeholder and/or note reference.
+    if not str(row[ci]).strip():
+        ci += 1
+    if len(row) > ci and _is_note_ref_cell(str(row[ci])):
+        ci += 1
+    # Page slot: page number/range, or blank placeholder before year amounts.
+    if len(row) > ci and _is_likely_page_no_value(
+        str(row[ci]), parse_number(row[ci])
+    ):
+        ci += 1
+    elif len(row) > ci and not str(row[ci]).strip():
+        ci += 1
+    return ci
+
+
 def row_entity_year_col(
     row: list[str],
     header_rows: list[list[str]],
@@ -450,6 +729,7 @@ def row_entity_year_col(
     Body column for the GROUP/BANK amount for `year` on one row.
 
     Skips note-reference and page-number cells; never returns Note or Page No.
+    Blank current-year cells stay blank (do not steal the prior-year amount).
     """
     if not row:
         return None
@@ -459,37 +739,15 @@ def row_entity_year_col(
         return None
     year_slot = year_order.index(year_s)
 
-    ci = 1
-    if len(row) > ci and _is_note_ref_cell(str(row[ci])):
-        ci += 1
-    # Skip blank spacer cells (some totals omit Note / Page No.).
-    while len(row) > ci and not str(row[ci]).strip():
-        ci += 1
-    if len(row) > ci:
-        page_val = parse_number(row[ci])
-        if _is_likely_page_no_value(str(row[ci]), page_val):
-            ci += 1
-            while len(row) > ci and not str(row[ci]).strip():
-                ci += 1
-
+    ci = _amount_block_start_col(row)
     target = ci + year_slot
     if target >= len(row):
         return None
 
     val = parse_number(row[target])
     if val is None:
-        # Prefer the first non-page, non-year amount at/after the expected slot.
-        for ai in range(ci, len(row)):
-            if _is_change_column(header_rows, ai):
-                continue
-            candidate = parse_number(row[ai])
-            if candidate is None:
-                continue
-            if _is_likely_page_no_value(str(row[ai]), candidate):
-                continue
-            if _is_likely_year_header_value(candidate, year):
-                continue
-            return ai
+        # Keep blank year cells blank. Scanning forward would steal the next
+        # year column (e.g. GROUP 2021 into 2022 when 2022 is empty).
         return None
     if _is_likely_page_no_value(str(row[target]), val):
         return None
@@ -539,6 +797,92 @@ def body_column_offset(
     return body_start - header_start
 
 
+def _annual_cy_year_positions(
+    header_rows: list[list[str]],
+    year: int,
+) -> list[int]:
+    """Sorted unique non-Change columns whose header is the report year.
+
+    Ignores long title cells that merely mention the year (e.g. report cover
+    lines), which otherwise poison GROUP/BANK column ordering.
+    """
+    year_s = str(year)
+    year_positions: list[int] = []
+    year_cell_re = re.compile(
+        rf"^{year_s}(?:\s*(?:\n\s*)?(?:Rs\.?|LKR)?\s*'?0{{3}})?$",
+        re.IGNORECASE,
+    )
+    for hrow in header_rows:
+        for ci, cell in enumerate(hrow):
+            if _is_change_column(header_rows, ci):
+                continue
+            text = str(cell).strip()
+            if not text:
+                continue
+            compact = re.sub(r"\s+", " ", text)
+            if text == year_s or year_cell_re.match(compact):
+                year_positions.append(ci)
+                continue
+            # Allow short multi-line year+unit headers only.
+            if len(compact) <= 24 and re.fullmatch(
+                rf"{year_s}(?:\s+(?:Rs\.?|LKR)\s*'?0{{3}})?",
+                compact,
+                flags=re.IGNORECASE,
+            ):
+                year_positions.append(ci)
+    return sorted(set(year_positions))
+
+
+def _annual_entity_cy_header_col(
+    header_rows: list[list[str]],
+    year: int,
+    *,
+    entity: str,
+) -> int | None:
+    """
+    Current-year amount column for GROUP or BANK.
+
+    CSE annual FS tables list GROUP years then BANK years. Word-grid parses often
+    place the ``GROUP``/``BANK`` banner to the right of the first year pair, so
+    range checks alone can map GROUP → BANK. Prefer ordered CY columns when that
+    misalignment is detected.
+    """
+    entity = entity.lower()
+    group_ci, bank_ci = _entity_header_positions(header_rows)
+    cy_cols = _annual_cy_year_positions(header_rows, year)
+    if not cy_cols:
+        return None
+
+    # Standard two-entity layout: first CY = GROUP, second CY = BANK.
+    if (
+        group_ci is not None
+        and bank_ci is not None
+        and len(cy_cols) >= 2
+        and group_ci > cy_cols[0]
+    ):
+        return cy_cols[0] if entity == "group" else cy_cols[1]
+
+    if entity == "group":
+        if group_ci is not None and bank_ci is not None:
+            group_hits = [ci for ci in cy_cols if group_ci <= ci < bank_ci]
+        elif group_ci is not None:
+            group_hits = [ci for ci in cy_cols if ci >= group_ci]
+        else:
+            group_hits = cy_cols
+        if group_hits:
+            return min(group_hits)
+        return cy_cols[0]
+
+    # bank
+    if bank_ci is not None:
+        bank_hits = [ci for ci in cy_cols if ci >= bank_ci]
+        if bank_hits:
+            return min(bank_hits)
+    if len(cy_cols) >= 2:
+        return cy_cols[1]
+    return None
+
+
 def find_annual_group_body_col(
     header_rows: list[list[str]],
     body_rows: list[list[str]],
@@ -550,28 +894,7 @@ def find_annual_group_body_col(
 
     Never returns BANK, prior-year, or Change % columns.
     """
-    year_s = str(year)
-    group_ci, bank_ci = _entity_header_positions(header_rows)
-
-    header_col: int | None = None
-    year_positions: list[int] = []
-    for hrow in header_rows:
-        for ci, cell in enumerate(hrow):
-            if _is_change_column(header_rows, ci):
-                continue
-            text = str(cell).strip()
-            if text == year_s or re.search(rf"\b{year_s}\b", text):
-                year_positions.append(ci)
-
-    if year_positions:
-        if group_ci is not None and bank_ci is not None:
-            group_hits = [ci for ci in year_positions if group_ci <= ci < bank_ci]
-        elif group_ci is not None:
-            group_hits = [ci for ci in year_positions if ci >= group_ci]
-        else:
-            group_hits = year_positions
-        if group_hits:
-            header_col = min(group_hits)
+    header_col = _annual_entity_cy_header_col(header_rows, year, entity="group")
 
     if header_col is None:
         header_col = _entity_year_col(header_rows, body_rows, year, entity_column)
@@ -601,23 +924,7 @@ def find_annual_bank_body_col(
     Used when memorandum information rows have no GROUP figure.
     Never returns GROUP, prior-year, or Change % columns.
     """
-    year_s = str(year)
-    group_ci, bank_ci = _entity_header_positions(header_rows)
-
-    header_col: int | None = None
-    year_positions: list[int] = []
-    for hrow in header_rows:
-        for ci, cell in enumerate(hrow):
-            if _is_change_column(header_rows, ci):
-                continue
-            text = str(cell).strip()
-            if text == year_s or re.search(rf"\b{year_s}\b", text):
-                year_positions.append(ci)
-
-    if year_positions and bank_ci is not None:
-        bank_hits = [ci for ci in year_positions if ci >= bank_ci]
-        if bank_hits:
-            header_col = min(bank_hits)
+    header_col = _annual_entity_cy_header_col(header_rows, year, entity="bank")
 
     if header_col is None:
         header_col = _entity_year_col(header_rows, body_rows, year, "bank")
@@ -995,7 +1302,7 @@ def _entity_year_col(
         score = sum(1 for m in mags if m >= 1000) * 10 + (20 if median >= 10000 else 0)
         if entity == "group" and bank_ci is not None and ci >= bank_ci:
             score *= 0.3
-        if entity == "bank" and group_ci is not None and ci < bank_ci:
+        if entity == "bank" and bank_ci is not None and ci < bank_ci:
             score *= 0.3
         if score > best_score:
             best_score = score
@@ -1078,8 +1385,16 @@ def index_label_values_from_rows(
 
         row_col = value_col
         if header_rows and year is not None:
-            picked = row_entity_year_col(row, header_rows, year, entity_column)
-            if picked is not None:
+            year_order = _group_year_order(header_rows, entity_column)
+            if str(year) in year_order:
+                # Year headers are known — only take this row's year slot.
+                # Do not fall back to a fixed column: blank CY cells must stay
+                # blank (fixed col can land on the prior-year amount).
+                picked = row_entity_year_col(
+                    row, header_rows, year, entity_column
+                )
+                if picked is None:
+                    continue
                 row_col = picked
         if row_col is None:
             continue
@@ -1139,7 +1454,28 @@ def _label_tokens(s: str) -> set[str]:
     return {t for t in norm_label(s).split() if t and t not in stop}
 
 
+# Opposing tokens that must never fuzzy-match across sibling statement rows
+# (e.g. operating profit *before* vs *after* taxes on financial services).
+_LABEL_POLARITY_PAIRS: tuple[tuple[str, str], ...] = (
+    ("before", "after"),
+    ("basic", "diluted"),
+)
+
+
+def labels_polarity_conflict(a: str, b: str) -> bool:
+    """True when two labels differ only by opposing polarity words (before/after…)."""
+    ta, tb = set(norm_label(a).split()), set(norm_label(b).split())
+    if not ta or not tb:
+        return False
+    for left, right in _LABEL_POLARITY_PAIRS:
+        if (left in ta and right in tb) or (right in ta and left in tb):
+            return True
+    return False
+
+
 def _label_similarity(a: str, b: str) -> float:
+    if labels_polarity_conflict(a, b):
+        return 0.0
     ta, tb = _label_tokens(a), _label_tokens(b)
     if not ta or not tb:
         return 0.0
@@ -1170,6 +1506,8 @@ def map_labels_to_values(
         best_score = 0.0
         for nl, v in index.items():
             if nl in used_keys:
+                continue
+            if labels_polarity_conflict(en, nl):
                 continue
             if nl in en or en in nl:
                 score = 0.9

@@ -40,6 +40,74 @@ from extraction_aliases_store import patterns_for_label
 from generate_comb_model import DataExtractor, LABEL_ALIASES, norm_label
 
 
+OP_PROFIT_BEFORE_FS_TAX = "Operating profit before taxes on financial services"
+OP_PROFIT_AFTER_FS_TAX = "Operating profit after taxes on financial services"
+FS_TAX_ON_SERVICES = "Less: Taxes on financial services"
+
+
+def reconcile_operating_profit_fs_tax(
+    values: dict[str, float | None],
+    *,
+    log_fn: Callable[[str], None] | None = None,
+) -> tuple[dict[str, float | None], dict[str, Any]]:
+    """
+    Double-check operating profit before/after taxes on financial services.
+
+    Enforces: after ≈ before − tax. Fixes the common PDF fuzzy-match bug where
+    "after" is overwritten with the same amount as "before".
+    """
+    log = log_fn or (lambda msg: print(msg, flush=True))
+    stats: dict[str, Any] = {
+        "checked": False,
+        "corrected": False,
+        "from": None,
+        "to": None,
+        "expected": None,
+    }
+
+    before = values.get(OP_PROFIT_BEFORE_FS_TAX)
+    tax = values.get(FS_TAX_ON_SERVICES)
+    after = values.get(OP_PROFIT_AFTER_FS_TAX)
+    if before is None or tax is None:
+        return values, stats
+
+    expected = float(before) - float(tax)
+    stats["checked"] = True
+    stats["expected"] = expected
+
+    needs_fix = False
+    if after is None:
+        needs_fix = True
+    elif annual_values_match(after, before) and abs(float(tax)) >= 1.0:
+        # Classic bug: after cloned from before while tax is non-zero.
+        needs_fix = True
+    elif not annual_values_match(after, expected):
+        # Prefer arithmetic when before/tax are both present and after disagrees.
+        needs_fix = True
+
+    if not needs_fix:
+        return values, stats
+
+    if after is not None and annual_values_match(after, expected):
+        return values, stats
+
+    stats["corrected"] = True
+    stats["from"] = after
+    stats["to"] = expected
+    values[OP_PROFIT_AFTER_FS_TAX] = expected
+    if after is None:
+        log(
+            f"    [fs-tax-check] filled {OP_PROFIT_AFTER_FS_TAX!r} = {expected:,.0f} "
+            f"(before - tax)"
+        )
+    else:
+        log(
+            f"    [fs-tax-check] corrected {OP_PROFIT_AFTER_FS_TAX!r}: "
+            f"{after:,.0f} -> {expected:,.0f} (before - tax double-check)"
+        )
+    return values, stats
+
+
 def aggressive_fs_lookup(
     fs_ext: DataExtractor,
     year: int,
@@ -77,17 +145,21 @@ def aggressive_fs_lookup(
             if not label_cell:
                 continue
             nl = norm_label(label_cell)
-            if nt == nl or (len(nt) >= 8 and (nt in nl or nl in nt)):
-                from comb_note_extractor import row_entity_year_col
+            from generate_comb_model import _fs_label_match_ok
+            from comb_note_extractor import row_entity_year_col
 
-                row_col = (
-                    row_entity_year_col(cells, headers, year) if headers else col
-                )
-                pick = row_col if row_col is not None else col
-                if pick is not None and pick < len(cells):
-                    v = parse_number(cells[pick])
-                    if v is not None:
-                        return v
+            if not _fs_label_match_ok(nt, nl):
+                continue
+            if headers:
+                # Respect blank year slots — never fall back to a fixed
+                # column that may hold the prior-year amount.
+                pick = row_entity_year_col(cells, headers, year)
+            else:
+                pick = col
+            if pick is not None and pick < len(cells):
+                v = parse_number(cells[pick])
+                if v is not None:
+                    return v
     return None
 
 
@@ -254,6 +326,9 @@ def validate_and_retry_annual_fs_cells(
     values, s_b = verify_fs_values_from_tables(fs_ext, year, labels, values, log_fn=log)
     all_stats["table_verify"] = s_b
 
+    values, s_tax0 = reconcile_operating_profit_fs_tax(values, log_fn=log)
+    all_stats["fs_tax_check_early"] = s_tax0
+
     values, s_c = fill_memorandum_fs_values(
         fs_ext, year, labels, values, log_fn=log
     )
@@ -360,6 +435,27 @@ def validate_and_retry_annual_fs_cells(
     )
     all_stats["audit_final"] = s_h2
 
+    from comb_annual_fs_ai_confirm import run_release_fs_validation_gate
+
+    pdf_mismatch = set(
+        (s_h.get("mismatch_labels") or []) + (s_h2.get("mismatch_labels") or [])
+    )
+    values, gate = run_release_fs_validation_gate(
+        db,
+        company_slug,
+        year,
+        labels,
+        values,
+        fs_sections,
+        pdf_mismatch_labels=pdf_mismatch,
+        use_ai_confirm=True,
+        double_confirm=True,
+        log_fn=log,
+    )
+    all_stats["release_gate"] = gate
+    all_stats["fs_tax_check"] = (gate.get("fs_tax_check") or {}) if gate else {}
+    all_stats["ai_confirm"] = (gate.get("ai_confirm") or {}) if gate else {}
+
     return values, all_stats
 
 
@@ -375,13 +471,14 @@ def validate_annual_fs_against_report(
     log_fn: Callable[[str], None] | None = None,
 ) -> tuple[dict[str, float | None], dict[str, Any]]:
     """
-    Targeted annual FS validation (fast, safe):
+    Targeted annual FS validation (release path):
 
       A) Retry missing labels from financial_tables
       F) Re-check suspicious values against PDF
       G) Refill still-missing labels from PDF
-      H) Strict audit — flag mismatches
-      I) Targeted re-find for missing / mismatched labels only
+      H) Strict audit — flag mismatches (high-risk deferred)
+      I) Targeted re-find for missing / mismatched labels
+      J) Release gate — rule check → AI confirm (double vision)
 
     Builds the annual FS PDF index at most once and reuses it across steps.
     """
@@ -470,6 +567,29 @@ def validate_annual_fs_against_report(
         )
         all_stats["refind"] = s_i
 
+    # Release gate: rule check → AI confirm high-risk / deferred / missing cells.
+    from comb_annual_fs_ai_confirm import run_release_fs_validation_gate
+
+    pdf_mismatch = set(s_h.get("mismatch_labels") or [])
+    values, gate = run_release_fs_validation_gate(
+        db,
+        company_slug,
+        year,
+        labels,
+        values,
+        fs_sections,
+        pdf_index=shared_index,
+        pdf_mismatch_labels=pdf_mismatch,
+        use_ai_confirm=True,
+        double_confirm=True,
+        log_fn=log,
+    )
+    all_stats["release_gate"] = gate
+    s_tax = (gate.get("fs_tax_check") or {}) if isinstance(gate, dict) else {}
+    ai_stats = (gate.get("ai_confirm") or {}) if isinstance(gate, dict) else {}
+    all_stats["fs_tax_check"] = s_tax
+    all_stats["ai_confirm"] = ai_stats
+
     all_stats["still_missing"] = [
         lbl for lbl in labels if values.get(lbl) is None
     ]
@@ -478,8 +598,14 @@ def validate_annual_fs_against_report(
         + int(s_f.get("suspicious_corrected") or 0)
         + int(s_g.get("refilled") or 0)
         + int((all_stats.get("refind") or {}).get("refind_found") or 0)
+        + int(ai_stats.get("filled") or 0)
+        + (1 if s_tax.get("corrected") else 0)
     )
-    all_stats["corrected"] = int(s_f.get("suspicious_corrected") or 0) + int(
-        s_h.get("corrected") or 0
+    all_stats["corrected"] = (
+        int(s_f.get("suspicious_corrected") or 0)
+        + int(s_h.get("corrected") or 0)
+        + int(ai_stats.get("corrected") or 0)
+        + (1 if s_tax.get("corrected") else 0)
     )
+    all_stats["ai_confirmed"] = int(ai_stats.get("confirmed") or 0)
     return values, all_stats

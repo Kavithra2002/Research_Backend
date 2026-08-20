@@ -15,9 +15,9 @@ import {
 const router = Router();
 
 function requireCombPilot(company: string, res: import("express").Response): boolean {
-  if (company !== COMMERCIAL_BANK_SLUG) {
+  if (!isCombPilotAvailable(company)) {
     res.status(403).json({
-      error: "This view is only available for Commercial Bank of Ceylon PLC (2022 pilot).",
+      error: "Missing company for this view.",
     });
     return false;
   }
@@ -31,17 +31,13 @@ router.get("/preview", async (req, res, next) => {
       typeof req.query.company === "string" ? req.query.company.trim() : "";
 
     if (view === "quarterly") {
-      if (company && company !== COMMERCIAL_BANK_SLUG) {
-        return res.status(403).json({
-          error:
-            "Quarterly summary is only available for Commercial Bank of Ceylon PLC.",
-        });
-      }
-      const payload = await getDbQuarterlyPreview(company || COMMERCIAL_BANK_SLUG);
+      const payload = await getDbQuarterlyPreview(
+        company || COMMERCIAL_BANK_SLUG,
+      );
       return res.json(payload);
     }
 
-    if (view === "drivers" || view === "ratios" || view === "notes") {
+    if (view === "drivers" || view === "ratios") {
       if (!company) {
         return res
           .status(400)
@@ -51,9 +47,17 @@ router.get("/preview", async (req, res, next) => {
       const payload =
         view === "drivers"
           ? await getDbDriversPreview(company)
-          : view === "ratios"
-            ? await getDbRatiosPreview(company)
-            : await getDbNotesPreview(company);
+          : await getDbRatiosPreview(company);
+      return res.json(payload);
+    }
+
+    if (view === "notes") {
+      if (!company) {
+        return res
+          .status(400)
+          .json({ error: "Missing required query param: company" });
+      }
+      const payload = await getDbNotesPreview(company);
       return res.json(payload);
     }
 

@@ -33,7 +33,7 @@ Notes
     in a single message). This keeps context together for multi-page tables.
   • GPT-4o supports up to 20 images per request; large Notes sections are
     chunked into batches of 15 pages.
-  • Set --model gpt-4o-mini for a cheaper (but less accurate) run.
+  • Default model is gpt-5 for extraction accuracy.
 """
 
 from __future__ import annotations
@@ -395,7 +395,7 @@ def call_gpt4o(
     client:    "OpenAI",
     images_b64: list[str],
     prompt:    str,
-    model:     str = "gpt-4o",
+    model:     str = "gpt-5",
     retries:   int = 3,
     max_tokens: int = 16384,
 ) -> str:
@@ -614,7 +614,7 @@ def run_statements(
     captures_dir: str | Path,
     api_key: str | None,
     keys: list[str],
-    model: str = "gpt-4o",
+    model: str = "gpt-5",
     dry_run: bool = False,
     out_dir: str | Path | None = None,
     existing_results: dict[str, dict] | None = None,
@@ -681,7 +681,7 @@ def run(
     captures_dir:   str | Path,
     api_key:        str | None,
     option:         str  = "1",
-    model:          str  = "gpt-4o",
+    model:          str  = "gpt-5",
     dry_run:        bool = False,
     out_dir:        str | Path | None = None,
 ) -> dict[str, dict]:
@@ -785,8 +785,8 @@ if __name__ == "__main__":
                     help="OpenAI API key  (or set OPENAI_API_KEY env variable)")
     ap.add_argument("--option",     choices=["1","2"], default="1",
                     help="1=core statements only  2=core+Notes  (default: 1)")
-    ap.add_argument("--model",      default="gpt-4o",
-                    help="OpenAI model  (default: gpt-4o)")
+    ap.add_argument("--model",      default="gpt-5",
+                    help="OpenAI model  (default: gpt-5)")
     ap.add_argument("--dry-run",    action="store_true",
                     help="Print what would be sent — no API calls")
     ap.add_argument("--out",        type=Path, default=None,

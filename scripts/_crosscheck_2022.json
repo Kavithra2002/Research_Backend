@@ -1,10 +1,1071 @@
 {
-  "summary": {
-    "compared": 103,
-    "matches": 103,
-    "mismatches": 0,
-    "match_pct": 100.0,
-    "both_filled_mismatch": 0
+  "excel_path": "E:\\AMBEON\\script\\backend\\New_Updates\\COMB model - updated.xlsx",
+  "year": 2022,
+  "excel_meta": {
+    "year_col": 9,
+    "header_row": 4,
+    "label_col": 2,
+    "excel_labels": 108,
+    "db_labels": 104
   },
-  "mismatches": []
+  "summary": {
+    "compared": 107,
+    "matches": 98,
+    "mismatches": 9,
+    "both_filled_mismatch": 4,
+    "excel_has_db_missing": 5,
+    "db_has_excel_empty": 0,
+    "only_in_db": 0
+  },
+  "both_filled_mismatch": [
+    {
+      "label": "Due to subsidiaries",
+      "excel_label": "Due to subsidiaries",
+      "excel": 0.0,
+      "db": 45117068.0,
+      "status": "filled",
+      "match": false,
+      "diff": 45117068.0
+    },
+    {
+      "label": "Financial assets at amortised cost \u2013 loans and advances to banks",
+      "excel_label": "Financial assets at amortised cost \u2013 loans and advances to banks",
+      "excel": 0.0,
+      "db": 1155492527.0,
+      "status": "filled",
+      "match": false,
+      "diff": 1155492527.0
+    },
+    {
+      "label": "Investments in subsidiaries",
+      "excel_label": "Investments in subsidiaries",
+      "excel": 0.0,
+      "db": 57656.0,
+      "status": "filled",
+      "match": false,
+      "diff": 57656.0
+    },
+    {
+      "label": "Share of profit/(loss) of associate, net of tax",
+      "excel_label": "Share of (profit)/loss of associate, net of tax",
+      "excel": 3727.0,
+      "db": -3727.0,
+      "status": "filled",
+      "match": false,
+      "diff": -7454.0
+    }
+  ],
+  "excel_has_db_missing": [
+    {
+      "label": "Cash / total assets",
+      "excel_label": "Cash / total assets",
+      "excel": 0.06045458341913798,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Diluted earnings per ordinary share (Rs.)",
+      "excel_label": "Diluted earnings per ordinary share (Rs.)",
+      "excel": 19.21,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Dividends received from investments in associate and subsidiaries",
+      "excel_label": "Dividends received from investments in associate and subsidiaries",
+      "excel": 0.0,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Proceeds from issue of ordinary voting shares under employee share option plans",
+      "excel_label": "Proceeds from issue of ordinary voting shares under employee share option plans",
+      "excel": 0.0,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Redemption of subordinated liabilities",
+      "excel_label": "Redemption of subordinated liabilities",
+      "excel": 0.0,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    }
+  ],
+  "db_has_excel_empty": [],
+  "all_rows": [
+    {
+      "label": "(Gains)/losses on sale of property, plant and equipment",
+      "excel_label": "(Gains)/losses on sale of property, plant and equipment",
+      "excel": -20118.0,
+      "db": -20118.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Adjustments for:",
+      "excel_label": "Adjustments for:",
+      "excel": null,
+      "db": null,
+      "status": "missing_in_db",
+      "match": true,
+      "diff": null
+    },
+    {
+      "label": "Balances with Central Banks",
+      "excel_label": "Balances with Central Banks",
+      "excel": 78597120.0,
+      "db": 78597120.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Benefits paid on defined benefit plans",
+      "excel_label": "Benefits paid on defined benefit plans",
+      "excel": -780828.0,
+      "db": -780828.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Cash / total assets",
+      "excel_label": "Cash / total assets",
+      "excel": 0.06045458341913798,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Cash and cash equivalents",
+      "excel_label": "Cash and cash equivalents",
+      "excel": 151109490.0,
+      "db": 151109490.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Cash and cash equivalents as at January 01,",
+      "excel_label": "Cash and cash equivalents as at January 01,",
+      "excel": 69342992.0,
+      "db": 69342992.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Cash and cash equivalents as per Statement of Financial Position",
+      "excel_label": "Cash and cash equivalents as per Statement of Financial Position",
+      "excel": 151109490.0,
+      "db": 151109490.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Cash flows from financing activities",
+      "excel_label": "Cash flows from financing activities",
+      "excel": null,
+      "db": null,
+      "status": "missing_in_db",
+      "match": true,
+      "diff": null
+    },
+    {
+      "label": "Cash flows from investing activities",
+      "excel_label": "Cash flows from investing activities",
+      "excel": null,
+      "db": null,
+      "status": "missing_in_db",
+      "match": true,
+      "diff": null
+    },
+    {
+      "label": "Cash flows from operating activities Profit before income tax",
+      "excel_label": "Cash flows from operating activities Profit before income tax",
+      "excel": 24505038.0,
+      "db": 24505038.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Change in operating assets",
+      "excel_label": "Change in operating assets",
+      "excel": -463345077.0,
+      "db": -463345077.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Change in operating liabilities",
+      "excel_label": "Change in operating liabilities",
+      "excel": 430778836.0,
+      "db": 430778836.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Contingent liabilities and commitments",
+      "excel_label": "Contingent liabilities and commitments",
+      "excel": 555531537.0,
+      "db": 555531537.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Current tax liabilities",
+      "excel_label": "Current tax liabilities",
+      "excel": 24916074.0,
+      "db": 24916074.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Deferred tax assets",
+      "excel_label": "Deferred tax assets",
+      "excel": 30727213.0,
+      "db": 30727213.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Deferred tax liabilities",
+      "excel_label": "Deferred tax liabilities",
+      "excel": 437123.0,
+      "db": 437123.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Depreciation and amortisation",
+      "excel_label": "Depreciation and amortisation",
+      "excel": 3598371.0,
+      "db": 3598371.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Derivative financial assets",
+      "excel_label": "Derivative financial assets",
+      "excel": 8345091.0,
+      "db": 8345091.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Derivative financial liabilities",
+      "excel_label": "Derivative financial liabilities",
+      "excel": 2880667.0,
+      "db": 2880667.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Diluted earnings per ordinary share (Rs.)",
+      "excel_label": "Diluted earnings per ordinary share (Rs.)",
+      "excel": 19.21,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Dividend paid to non-controlling interest",
+      "excel_label": "Dividend paid to non-controlling interest",
+      "excel": -14365.0,
+      "db": -14365.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Dividend paid to shareholders",
+      "excel_label": "Dividend paid to shareholders",
+      "excel": -5343490.0,
+      "db": -5343490.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Dividends received from investments in associate and subsidiaries",
+      "excel_label": "Dividends received from investments in associate and subsidiaries",
+      "excel": 0.0,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Diviend per share",
+      "excel_label": "Diviend per share",
+      "excel": 4.5,
+      "db": 4.5,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Due to banks",
+      "excel_label": "Due to banks",
+      "excel": 64971170.0,
+      "db": 64971170.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Due to subsidiaries",
+      "excel_label": "Due to subsidiaries",
+      "excel": 0.0,
+      "db": 45117068.0,
+      "status": "filled",
+      "match": false,
+      "diff": 45117068.0
+    },
+    {
+      "label": "Earnings per share\nBasic earnings per ordinary share (Rs.)",
+      "excel_label": "Earnings per share\nBasic earnings per ordinary share (Rs.)",
+      "excel": 19.21,
+      "db": 19.21,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Fee and commission income",
+      "excel_label": "Fee and commission income",
+      "excel": 26191530.0,
+      "db": 26191530.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+      "excel_label": "Financial assets at amortised cost \u2013 debt and other financial instruments",
+      "excel": 761650234.0,
+      "db": 761650234.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Financial assets at amortised cost \u2013 loans and advances to banks",
+      "excel_label": "Financial assets at amortised cost \u2013 loans and advances to banks",
+      "excel": 0.0,
+      "db": 1155492527.0,
+      "status": "filled",
+      "match": false,
+      "diff": 1155492527.0
+    },
+    {
+      "label": "Financial assets at amortised cost \u2013 loans and advances to other customers",
+      "excel_label": "Financial assets at amortised cost \u2013 loans and advances to other customers",
+      "excel": 1155492527.0,
+      "db": 1155492527.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Financial assets measured at fair value through other comprehensive income",
+      "excel_label": "Financial assets measured at fair value through other comprehensive income",
+      "excel": 118652257.0,
+      "db": 118652257.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+      "excel_label": "Financial assets recognised through profit or loss \u2013 measured at fair value",
+      "excel": 24873057.0,
+      "db": 24873057.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Financial liabilities at amortised cost \u2013 due to depositors",
+      "excel_label": "Financial liabilities at amortised cost \u2013 due to depositors",
+      "excel": 1977743661.0,
+      "db": 1977743661.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Financial liabilities at amortised cost \u2013 other borrowings",
+      "excel_label": "Financial liabilities at amortised cost \u2013 other borrowings",
+      "excel": 16150356.0,
+      "db": 16150356.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Gross cash and cash equivalents as at December 31,",
+      "excel_label": "Gross cash and cash equivalents as at December 31,",
+      "excel": 151123519.0,
+      "db": 151123519.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Gross income",
+      "excel_label": "Gross income",
+      "excel": 280386944.0,
+      "db": 280386944.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Income tax paid",
+      "excel_label": "Income tax paid",
+      "excel": -11143271.0,
+      "db": -11143271.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Intangible assets",
+      "excel_label": "Intangible assets",
+      "excel": 4113200.0,
+      "db": 4113200.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Interest expense on subordinated liabilities",
+      "excel_label": "Interest expense on subordinated liabilities",
+      "excel": 4843571.0,
+      "db": 4843571.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Interest income",
+      "excel_label": "Interest income",
+      "excel": 222393079.0,
+      "db": 222393079.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Interest paid on subordinated liabilities",
+      "excel_label": "Interest paid on subordinated liabilities",
+      "excel": -4283280.0,
+      "db": -4283280.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Investment in associate",
+      "excel_label": "Investment in associate",
+      "excel": 55302.0,
+      "db": 55302.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Investment properties",
+      "excel_label": "Investment properties",
+      "excel": 80350.0,
+      "db": 80350.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Investments in subsidiaries",
+      "excel_label": "Investments in subsidiaries",
+      "excel": 0.0,
+      "db": 57656.0,
+      "status": "filled",
+      "match": false,
+      "diff": 57656.0
+    },
+    {
+      "label": "Less: Expenses",
+      "excel_label": "Less: Expenses",
+      "excel": null,
+      "db": null,
+      "status": "missing_in_db",
+      "match": true,
+      "diff": null
+    },
+    {
+      "label": "Less: Fee and commission expense",
+      "excel_label": "Less: Fee and commission expense",
+      "excel": 6022429.0,
+      "db": 6022429.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Less: Impairment charges and other losses",
+      "excel_label": "Less: Impairment charges and other losses",
+      "excel": 71924260.0,
+      "db": 71924260.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Less: Impairment charges on cash and cash equivalents",
+      "excel_label": "Less: Impairment charges on cash and cash equivalents",
+      "excel": -14029.0,
+      "db": -14029.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Less: Income tax expense/(reversal)",
+      "excel_label": "Less: Income tax expense/(reversal)",
+      "excel": 105566.0,
+      "db": 105566.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Less: Interest expense",
+      "excel_label": "Less: Interest expense",
+      "excel": 137727868.0,
+      "db": 137727868.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Less: Taxes on financial services",
+      "excel_label": "Less: Taxes on financial services",
+      "excel": 3921381.0,
+      "db": 3921381.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net assets value per ordinary share (Rs.)",
+      "excel_label": "Net assets value per ordinary share (Rs.)",
+      "excel": 168.47,
+      "db": 168.47,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net cash from/(used in) financing activities",
+      "excel_label": "Net cash from/(used in) financing activities",
+      "excel": -1696633.0,
+      "db": -1696633.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net cash from/(used in) investing activities",
+      "excel_label": "Net cash from/(used in) investing activities",
+      "excel": -5795029.0,
+      "db": -5795029.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net cash from/(used in) operating activities",
+      "excel_label": "Net cash from/(used in) operating activities",
+      "excel": 89272189.0,
+      "db": 89272189.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net fee and commission income",
+      "excel_label": "Net fee and commission income",
+      "excel": 20169101.0,
+      "db": 20169101.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net gains/(losses) from derecognition of financial assets",
+      "excel_label": "Net gains/(losses) from derecognition of financial assets",
+      "excel": 276884.0,
+      "db": 276884.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net gains/(losses) from trading",
+      "excel_label": "Net gains/(losses) from trading",
+      "excel": 35297450.0,
+      "db": 35297450.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net increase/(decrease) in cash and cash equivalents",
+      "excel_label": "Net increase/(decrease) in cash and cash equivalents",
+      "excel": 81780527.0,
+      "db": 81780527.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net interest income",
+      "excel_label": "Net interest income",
+      "excel": 84665211.0,
+      "db": 84665211.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net operating income",
+      "excel_label": "Net operating income",
+      "excel": 64712387.0,
+      "db": 64712387.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net other operating income",
+      "excel_label": "Net other operating income",
+      "excel": -3771999.0,
+      "db": -3771999.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Net unrealised gains/(losses) arising from translating the Financial Statements of foreign operations",
+      "excel_label": "Net unrealised gains/(losses) arising from translating the Financial Statements of foreign operations",
+      "excel": 18347815.0,
+      "db": 18347815.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Non-cash items included in profit before tax",
+      "excel_label": "Non-cash items included in profit before tax",
+      "excel": 91299070.0,
+      "db": 91299070.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Non-controlling interest",
+      "excel_label": "Non-controlling interest",
+      "excel": 4107408.0,
+      "db": 4107408.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Number of customer service centres",
+      "excel_label": "Number of customer service centres",
+      "excel": 289.0,
+      "db": 289.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Number of employees",
+      "excel_label": "Number of employees",
+      "excel": 5121.0,
+      "db": 5121.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Operating profit after taxes on financial services",
+      "excel_label": "Operating profit after taxes on financial services",
+      "excel": 24508765.0,
+      "db": 24508765.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Operating profit before taxes on financial services",
+      "excel_label": "Operating profit before taxes on financial services",
+      "excel": 28430146.0,
+      "db": 28430146.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Other assets",
+      "excel_label": "Other assets",
+      "excel": 40811211.0,
+      "db": 40811211.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Other items",
+      "excel_label": "Other items",
+      "excel": null,
+      "db": null,
+      "status": "extraction_failed",
+      "match": true,
+      "diff": null
+    },
+    {
+      "label": "Other liabilities",
+      "excel_label": "Other liabilities",
+      "excel": 40354877.0,
+      "db": 40354877.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Other operating expenses",
+      "excel_label": "Other operating expenses",
+      "excel": 12895587.0,
+      "db": 12895587.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Other reserves",
+      "excel_label": "Other reserves",
+      "excel": 131845571.0,
+      "db": 131845571.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Payment of lease liabilities/advance payment of right-of-use assets",
+      "excel_label": "Payment of lease liabilities/advance payment of right-of-use assets",
+      "excel": -2055498.0,
+      "db": -2055498.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Personnel expenses",
+      "excel_label": "Personnel expenses",
+      "excel": 19788283.0,
+      "db": 19788283.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Placements with banks",
+      "excel_label": "Placements with banks",
+      "excel": 96082937.0,
+      "db": 96082937.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Proceeds from issue of ordinary voting shares under employee share option plans",
+      "excel_label": "Proceeds from issue of ordinary voting shares under employee share option plans",
+      "excel": 0.0,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Proceeds from issue of subordinated liabilities",
+      "excel_label": "Proceeds from issue of subordinated liabilities",
+      "excel": 10000000.0,
+      "db": 10000000.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Proceeds from sale and maturity of financial investments",
+      "excel_label": "Proceeds from sale and maturity of financial investments",
+      "excel": 952369.0,
+      "db": 952369.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Proceeds from sale of property, plant and equipment",
+      "excel_label": "Proceeds from sale of property, plant and equipment",
+      "excel": 47856.0,
+      "db": 47856.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Profit attributable to:\nEquity holders of the Bank",
+      "excel_label": "Profit attributable to:\nEquity holders of the Bank",
+      "excel": 23811914.0,
+      "db": 23811914.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Profit before tax",
+      "excel_label": "Profit before tax",
+      "excel": 24505038.0,
+      "db": 24505038.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Profit for the year",
+      "excel_label": "Profit for the year",
+      "excel": 24399472.0,
+      "db": 24399472.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Property, plant and equipment and right-of-use assets",
+      "excel_label": "Property, plant and equipment and right-of-use assets",
+      "excel": 27446607.0,
+      "db": 27446607.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Purchase of financial investments",
+      "excel_label": "Purchase of financial investments",
+      "excel": -1200000.0,
+      "db": -1200000.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Purchase of intangible assets",
+      "excel_label": "Purchase of intangible assets",
+      "excel": -2224915.0,
+      "db": -2224915.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Purchase of property, plant and equipment",
+      "excel_label": "Purchase of property, plant and equipment",
+      "excel": -3370339.0,
+      "db": -3370339.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Redemption of subordinated liabilities",
+      "excel_label": "Redemption of subordinated liabilities",
+      "excel": 0.0,
+      "db": null,
+      "status": "extraction_failed",
+      "match": false,
+      "diff": null
+    },
+    {
+      "label": "Retained earnings",
+      "excel_label": "Retained earnings",
+      "excel": 6790304.0,
+      "db": 6790304.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Securities purchased under resale agreements",
+      "excel_label": "Securities purchased under resale agreements",
+      "excel": 1517308.0,
+      "db": 1517308.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Securities sold under repurchase agreements",
+      "excel_label": "Securities sold under repurchase agreements",
+      "excel": 97726435.0,
+      "db": 97726435.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Share of profit/(loss) of associate, net of tax",
+      "excel_label": "Share of (profit)/loss of associate, net of tax",
+      "excel": 3727.0,
+      "db": -3727.0,
+      "status": "filled",
+      "match": false,
+      "diff": -7454.0
+    },
+    {
+      "label": "Stated capital",
+      "excel_label": "Stated capital",
+      "excel": 58149621.0,
+      "db": 58149621.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Statutory reserves",
+      "excel_label": "Statutory reserves",
+      "excel": 12079670.0,
+      "db": 12079670.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Subordinated liabilities",
+      "excel_label": "Subordinated liabilities",
+      "excel": 61400967.0,
+      "db": 61400967.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Surcharge tax paid",
+      "excel_label": "Surcharge tax paid",
+      "excel": -5216574.0,
+      "db": -5216574.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Total assets",
+      "excel_label": "Total assets",
+      "excel": 2499553904.0,
+      "db": 2499553904.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Total equity",
+      "excel_label": "Total equity",
+      "excel": 212972574.0,
+      "db": 212972574.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Total equity attributable to equity holders of the Bank",
+      "excel_label": "Total equity attributable to equity holders of the Bank",
+      "excel": 208865166.0,
+      "db": 208865166.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Total liabilities",
+      "excel_label": "Total liabilities",
+      "excel": 2286581330.0,
+      "db": 2286581330.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Total liabilities and equity",
+      "excel_label": "Total liabilities and equity",
+      "excel": 2499553904.0,
+      "db": 2499553904.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Total operating expenses",
+      "excel_label": "Total operating expenses",
+      "excel": 36282241.0,
+      "db": 36282241.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Total operating income",
+      "excel_label": "Total operating income",
+      "excel": 136636647.0,
+      "db": 136636647.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    },
+    {
+      "label": "Transfer of FV losses reclassification of debt from FVTOCI to AC",
+      "excel_label": "Transfer of FV losses reclassification of debt from FVTOCI to AC",
+      "excel": 26481256.0,
+      "db": 26481256.0,
+      "status": "filled",
+      "match": true,
+      "diff": 0.0
+    }
+  ]
 }

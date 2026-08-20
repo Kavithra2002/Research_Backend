@@ -38,7 +38,7 @@ from comb_note_extractor import (
     map_labels_to_values,
     norm_label,
 )
-from comb_note_openai import DEFAULT_MODEL, MAX_COMPLETION_TOKENS, resolve_api_key
+from comb_note_openai import DEFAULT_MODEL, openai_chat_token_kwargs, resolve_api_key
 from comb_reconcile import parse_number
 from generate_comb_model import LABEL_ALIASES, norm_label as g_norm_label
 from extraction_aliases_store import merge_alias_map
@@ -121,14 +121,29 @@ CASH_FLOW_ALIASES: dict[str, list[str]] = {
 
 
 def build_fs_section_map(manifest: dict) -> dict[str, str]:
-    """Map each FS data label -> statement section key."""
-    section = "income_statement"
+    """Map each FS data label -> statement section key (last occurrence wins)."""
+    by_row = build_fs_section_by_row(manifest)
     out: dict[str, str] = {}
+    for row in manifest.get("fs", {}).get("rows") or []:
+        if row.get("kind") != "data":
+            continue
+        label = str(row.get("label") or "").strip()
+        rn = row.get("row")
+        if not label or rn is None:
+            continue
+        section = by_row.get(int(rn))
+        if section:
+            out[label] = section
+    return out
+
+
+def build_fs_section_by_row(manifest: dict) -> dict[int, str]:
+    """Map each FS template row number -> statement section key."""
+    section = "income_statement"
+    out: dict[int, str] = {}
     for row in manifest.get("fs", {}).get("rows") or []:
         kind = row.get("kind")
         label = str(row.get("label") or "").strip()
-        if not label:
-            continue
         if kind == "section":
             lu = label.upper()
             if "CASH FLOW" in lu:
@@ -140,9 +155,26 @@ def build_fs_section_map(manifest: dict) -> dict[str, str]:
             elif "INCOME" in lu:
                 section = "income_statement"
             continue
-        if kind == "data":
-            out[label] = section
+        if kind == "data" and row.get("row") is not None:
+            out[int(row["row"])] = section
     return out
+
+
+def fs_value_key(label: str, template_row: int | None = None) -> str:
+    """Stable dict key; disambiguates duplicate labels via template row."""
+    if template_row is None:
+        return label
+    return f"{label}::row::{int(template_row)}"
+
+
+def parse_fs_value_key(key: str) -> tuple[str, int | None]:
+    if "::row::" in key:
+        label, _, row_s = key.rpartition("::row::")
+        try:
+            return label, int(row_s)
+        except ValueError:
+            return key, None
+    return key, None
 
 
 def _search_terms_for_label(label: str) -> list[str]:
@@ -593,9 +625,8 @@ Rules:
             resp = client.chat.completions.create(
                 model=model,
                 messages=[{"role": "user", "content": content}],
-                temperature=0,
-                max_tokens=MAX_COMPLETION_TOKENS,
                 response_format={"type": "json_object"},
+                **openai_chat_token_kwargs(model),
             )
             payload = _parse_json_content(resp.choices[0].message.content or "{}")
             index: dict[str, float] = {}
@@ -654,6 +685,8 @@ class FsPdfIndex:
             best_key_len = -1
             label_nl = g_norm_label(label)
             per_share = "per share" in label_nl or "earnings per" in label_nl
+            from comb_note_extractor import _label_similarity, labels_polarity_conflict
+
             for nt in term_norms:
                 if len(nt) < 10:
                     continue
@@ -665,11 +698,20 @@ class FsPdfIndex:
                         or abs(float(v)) >= 1_000
                     ):
                         continue
+                    if labels_polarity_conflict(nt, k) or labels_polarity_conflict(
+                        label_nl, k
+                    ):
+                        continue
                     if k == nt:
                         return v
                     if nt in k:
                         ratio = len(nt) / max(len(k), 1)
                     elif k in nt:
+                        # Shorter index keys inside a longer template are usually
+                        # sibling lines (SoFP "subordinated liabilities" vs CF
+                        # "redemption of…"). Require near-full token overlap.
+                        if _label_similarity(nt, k) < 0.9:
+                            continue
                         ratio = len(k) / max(len(nt), 1)
                     else:
                         continue
@@ -763,18 +805,18 @@ def build_fs_pdf_index(
             result.pages_by_section[statement_key] = list(
                 dict.fromkeys([*(pages or []), *memo_pages])
             )
-        if statement_key == "sofp":
-            bank_index = _best_plumber_index(
-                pdf_path, pages or memo_pages, statement_key, year, "bank"
-            )
-            if bank_index:
-                from comb_annual_memorandum import merge_memorandum_into_pdf_index
+        # Always capture BANK alongside GROUP for Entity toggle on /db.
+        bank_index = _best_plumber_index(
+            pdf_path, pages or memo_pages, statement_key, year, "bank"
+        )
+        if bank_index:
+            from comb_annual_memorandum import merge_memorandum_into_pdf_index
 
-                if memo_pages:
-                    bank_index = merge_memorandum_into_pdf_index(
-                        bank_index, pdf_path, memo_pages, year, "bank"
-                    )
-                result.by_section_bank[statement_key] = bank_index
+            if memo_pages:
+                bank_index = merge_memorandum_into_pdf_index(
+                    bank_index, pdf_path, memo_pages, year, "bank"
+                )
+            result.by_section_bank[statement_key] = bank_index
 
     return result
 
