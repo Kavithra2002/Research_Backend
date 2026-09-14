@@ -1,14 +1,11 @@
 """
 annual_db_extractor.py
 ======================
-Annual DB run — same COMB pipeline as Commercial Bank, for any company:
+Annual DB run:
 
-  1. FS Description values from financial_tables
-  2. PDF statement extract (pdfplumber, OpenAI fallback)
-  3. Note page PNG captures
-  4. Note-table fill for the DB Notes dropdown
-
-Drivers and Ratios are not populated.
+  Commercial Bank — COMB template FS + PDF statement audit + wrap-join notes.
+  Other companies — native PDF tables (income statement, OCI, SoFP, cash
+  flows) with that issuer's own description rows, then note-table capture.
 """
 from __future__ import annotations
 
@@ -18,10 +15,13 @@ import sys
 import traceback
 from typing import Any
 
+from comb_note_extractor import resolve_annual_pdf
 from comb_workbook_store import ensure_indexes, get_db
 from extract_comb_data import extract_annual_comb
+from extract_native_annual import extract_native_annual
 from generate_comb_model import COMMERCIAL_BANK_SLUG
 from runner_common import configure_stdio, emit, emit_log
+from _fill_note_ui_from_pdf import fill_note_ui_for_company
 
 configure_stdio()
 
@@ -82,28 +82,44 @@ def run_annual_db(
                     "totalSteps": len(years),
                 }
             )
+            is_comb = company_slug == COMMERCIAL_BANK_SLUG
+            pipeline = (
+                "COMB template + wrap-join notes"
+                if is_comb
+                else "native statements + notes"
+            )
             emit_log(
-                f"DB annual extraction for {year} "
-                f"(PDF statements + note tables)…"
+                f"DB annual extraction for {year} ({pipeline})…"
             )
             try:
-                result = extract_annual_comb(
-                    db,
-                    company_slug,
-                    year,
-                    use_note_extract=use_note_extract,
-                    force_note_capture=force_note_capture,
-                    use_openai_notes=use_openai_notes,
-                    use_pdf_extract=use_pdf_extract,
-                    skip_existing=skip_existing,
-                )
+                if is_comb:
+                    result = extract_annual_comb(
+                        db,
+                        company_slug,
+                        year,
+                        use_note_extract=use_note_extract,
+                        force_note_capture=force_note_capture,
+                        use_openai_notes=use_openai_notes,
+                        use_pdf_extract=use_pdf_extract,
+                        skip_existing=skip_existing,
+                    )
+                else:
+                    result = extract_native_annual(
+                        db,
+                        company_slug,
+                        year,
+                        use_note_extract=use_note_extract,
+                        force_note_capture=force_note_capture,
+                        use_openai_notes=use_openai_notes,
+                        use_pdf_extract=use_pdf_extract,
+                        skip_existing=skip_existing,
+                    )
                 filled = int(result.get("cells_filled", 0) or 0)
                 missing = int(result.get("cells_missing", 0) or 0)
                 skipped = int(result.get("cells_skipped_existing", 0) or 0)
                 cells_filled += filled
                 cells_missing += missing
                 cells_skipped += skipped
-                ok += 1
                 validation = result.get("validation") or {}
                 if validation.get("recovered"):
                     emit_log(
@@ -121,6 +137,34 @@ def run_annual_db(
                         f"{validation['still_missing']} FS cell(s)",
                         level="warn",
                     )
+
+                # COMB wrap-join fill (native extract already fills notes).
+                if is_comb and use_note_extract:
+                    emit_log(
+                        f"  Wrap-join note tables for {year} "
+                        f"(same script as Commercial Bank)…"
+                    )
+                    pdf_path = resolve_annual_pdf(db, company_slug, year)
+                    note_fill = fill_note_ui_for_company(
+                        db,
+                        company_slug,
+                        [year],
+                        force=True,
+                        pdf_path=pdf_path,
+                    )
+                    emit_log(
+                        f"  Note tables: filled={note_fill.get('filled', 0)} "
+                        f"failed={note_fill.get('failed', 0)}"
+                    )
+                    result["note_tables"] = note_fill
+                elif not is_comb and result.get("note_tables"):
+                    note_fill = result["note_tables"]
+                    emit_log(
+                        f"  Note tables: planned={note_fill.get('notes_planned', 0)} "
+                        f"filled={note_fill.get('note_tables_filled', 0)}"
+                    )
+
+                ok += 1
                 emit(
                     {
                         "type": "stage-done",
@@ -132,6 +176,7 @@ def run_annual_db(
                         "cells_missing": missing,
                         "cells_skipped_existing": skipped,
                         "validation": validation,
+                        "note_tables": result.get("note_tables"),
                     }
                 )
             except Exception as exc:

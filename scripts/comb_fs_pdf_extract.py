@@ -81,6 +81,48 @@ STATEMENT_CONFIG: dict[str, dict[str, Any]] = {
     },
 }
 
+# Title-first scoring for non-bank issuers (holding companies, etc.).
+# COMB-specific terms such as "gross income" + "Page No." are omitted.
+GENERIC_TITLE_TERMS: dict[str, list[str]] = {
+    "income_statement": [
+        "statement of profit or loss",
+        "income statement",
+        "statement of profit and loss",
+    ],
+    "oci": [
+        "statement of other comprehensive income",
+        "other comprehensive income",
+    ],
+    "sofp": [
+        "statement of financial position",
+        "balance sheet",
+    ],
+    "cash_flows": [
+        "statement of cash flows",
+        "cash flow statement",
+    ],
+}
+
+GENERIC_PAGE_BOOST: dict[str, list[str]] = {
+    "income_statement": [
+        "profit for the year",
+        "profit for the period",
+        "revenue",
+        "gross profit",
+        "cost of sales",
+    ],
+    "oci": [
+        "items that will not be reclassified",
+        "items that may be reclassified",
+    ],
+    "sofp": ["total assets", "total equity", "total liabilities"],
+    "cash_flows": [
+        "cash flows from operating",
+        "net cash from",
+        "cash and cash equivalents",
+    ],
+}
+
 CASH_FLOW_ALIASES: dict[str, list[str]] = {
     "Gross cash and cash equivalents as at December 31,": [
         "gross cash and cash equivalents as at december 31",
@@ -218,20 +260,151 @@ def _fitz_texts_cached(pdf_path: Path) -> list[str]:
     return texts
 
 
+def _looks_like_toc(text: str) -> bool:
+    head = text[:1200]
+    if "table of contents" in head or re.search(r"\bcontents\b", head[:400]):
+        return True
+    listed = len(
+        re.findall(
+            r"statement of .{8,80}?\s+\d{2,3}\b",
+            text[:2500],
+            flags=re.I,
+        )
+    )
+    if listed >= 4:
+        return True
+    if text.count("|") >= 6 and "statement of" in text:
+        return True
+    return False
+
+
+def _amount_token_count(text: str) -> int:
+    return len(re.findall(r"\d{1,3}(?:,\d{3}){1,}", text))
+
+
+def statement_kind_from_text(text: str) -> str | None:
+    """Best-guess statement type from a page's printed text."""
+    t = (text or "").lower()
+    head = t[:900]
+    if "independent auditor" in head:
+        return None
+    if "notes to the" in head and "financial statements" in head:
+        return "notes"
+    if "statement of cash flows" in head or "cash flow statement" in head:
+        return "cash_flows"
+    if "statement of financial position" in head or re.search(
+        r"\bbalance sheet\b", head
+    ):
+        return "sofp"
+    if "statement of changes in equity" in head:
+        return "soce"
+    if re.search(r"statement of\s+(other\s+)?comprehensive income", head):
+        if "profit or loss" not in head:
+            return "oci"
+    if "other comprehensive income" in head and "profit or loss" not in head:
+        return "oci"
+    if "statement of profit or loss" in head or re.search(
+        r"\bincome statement\b", head
+    ):
+        return "income_statement"
+    return None
+
+
+def _notes_section_start(texts: list[str]) -> int | None:
+    """1-based page where the notes section heading begins."""
+    for i, raw in enumerate(texts):
+        t = raw.lower()
+        if _looks_like_toc(t):
+            continue
+        head = t[:600]
+        if "notes to the financial statements" in head or (
+            "notes to the" in head and "financial statements" in head
+        ):
+            return i + 1
+    return None
+
+
+def _looks_like_note_body(text: str) -> bool:
+    head = text[:500]
+    if re.search(r"\b\d{1,2}\.\s+[A-Z][A-Za-z].{8,}", head):
+        return True
+    if "summarised statement" in text or "summarized statement" in text:
+        return True
+    if "key audit matter" in head:
+        return True
+    return False
+
+
+def _generic_content_score(statement_key: str, text: str) -> int:
+    head = text[:2000]
+    score = 0
+    if statement_key == "income_statement":
+        if "revenue" in head and "cost of sales" in head:
+            score += 60
+        if "continuing operations" in head:
+            score += 12
+        if "gross profit" in head:
+            score += 15
+        if "total assets" in head and "revenue" not in head:
+            score -= 40
+    elif statement_key == "oci":
+        if re.search(r"statement of\s+(other\s+)?comprehensive income", head):
+            score += 50
+        if "profit" in head and "other comprehensive" in text[:3500]:
+            score += 25
+        if "revenue" in head and "cost of sales" in head:
+            score -= 40
+    elif statement_key == "sofp":
+        if "non-current assets" in head and (
+            "current assets" in text[:4000] or "total assets" in text
+        ):
+            score += 60
+        if re.search(r"\bassets\b", head[:400]) and "as at" in head:
+            score += 15
+        if "revenue" in head and "cost of sales" in head:
+            score -= 50
+        if "operating activities" in head:
+            score -= 25
+    elif statement_key == "cash_flows":
+        if "operating activities" in head and (
+            "investing activities" in text or "financing activities" in text
+        ):
+            score += 60
+        if "profit" in head and "before tax" in head:
+            score += 10
+        if "revenue" in head and "cost of sales" in head:
+            score -= 40
+        if "non-current assets" in head and "operating activities" not in head:
+            score -= 30
+    return score
+
+
 def find_statement_pages(
     pdf_path: Path,
     statement_key: str,
     *,
     max_pages: int = 6,
+    generic: bool = False,
 ) -> list[int]:
     if fitz is None:
         return []
     cfg = STATEMENT_CONFIG.get(statement_key, {})
-    title_terms = [t.lower() for t in cfg.get("title_terms") or []]
-    boost_terms = [t.lower() for t in cfg.get("page_boost") or []]
+    if generic:
+        title_terms = [
+            t.lower() for t in GENERIC_TITLE_TERMS.get(statement_key, [])
+        ]
+        boost_terms = [
+            t.lower() for t in GENERIC_PAGE_BOOST.get(statement_key, [])
+        ]
+    else:
+        title_terms = [t.lower() for t in cfg.get("title_terms") or []]
+        boost_terms = [t.lower() for t in cfg.get("page_boost") or []]
     hits: list[tuple[int, int]] = []
 
     texts = _fitz_texts_cached(pdf_path)
+    notes_start = _notes_section_start(texts) if generic else None
+    window_lo = (notes_start - 25) if notes_start else None
+    window_hi = (notes_start - 1) if notes_start else None
     for i, raw in enumerate(texts):
         text = raw.lower()
         score = 0
@@ -241,7 +414,62 @@ def find_statement_pages(
         for t in boost_terms:
             if t in text:
                 score += 6
-        if statement_key == "cash_flows":
+        if generic:
+            if _looks_like_toc(text):
+                score -= 80
+            if "independent auditor" in text[:500]:
+                score -= 70
+            if _looks_like_note_body(text):
+                score -= 45
+            amounts = _amount_token_count(text)
+            if amounts >= 10:
+                score += 25
+            elif amounts >= 4:
+                score += 10
+            elif amounts < 2:
+                score -= 15
+            score += _generic_content_score(statement_key, text)
+            page_num = i + 1
+            if notes_start:
+                if window_lo and window_lo <= page_num <= window_hi:
+                    score += 45
+                elif page_num >= notes_start:
+                    score -= 35
+            kind = statement_kind_from_text(text)
+            if kind == statement_key:
+                score += 35
+            elif kind and kind != statement_key:
+                score -= 40
+            if statement_key == "income_statement":
+                if (
+                    "other comprehensive income" in text
+                    and "profit or loss" not in text[:800]
+                    and "revenue" not in text[:1500]
+                ):
+                    score -= 55
+                if "total assets" in text and "revenue" not in text:
+                    score -= 40
+            elif statement_key == "oci":
+                if "revenue" in text and "cost of sales" in text:
+                    score -= 40
+            elif statement_key == "sofp":
+                year_hits = len(re.findall(r"\b20\d{2}\b", text))
+                if year_hits >= 6 and "statement of financial position" not in text:
+                    score -= 40
+                if (
+                    "financial highlights" in text
+                    or "five year" in text
+                    or "5 year" in text
+                ):
+                    score -= 30
+                if "associate" in text and "statement of financial position" in text:
+                    score -= 50
+                if "summarised financial" in text or "summarized financial" in text:
+                    score -= 40
+            elif statement_key == "cash_flows":
+                if "cash flows from operating activities" in text:
+                    score += 15
+        elif statement_key == "cash_flows":
             if "gross cash and cash equivalents as at december" in text:
                 score += 40
             if "cash flows from operating activities" in text:
@@ -283,6 +511,10 @@ def find_statement_pages(
 
     hits.sort(reverse=True)
     pages = [p for _, p in hits[:max_pages]]
+    if generic:
+        # Native extractor expands continuation pages itself so consecutive
+        # statements (P&L then OCI) are not merged.
+        return pages[:max_pages]
     # Include following pages for multi-page statements (P&L often runs
     # onto a 3rd page with EPS / OCI continuation lines).
     expand_extra = 2 if statement_key in {"income_statement", "oci"} else 1

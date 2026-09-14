@@ -613,6 +613,9 @@ class DataExtractor:
             "total liabilities",
             "profit before income tax",
             "net cash flows from operating activities",
+            "revenue",
+            "gross profit",
+            "total equity",
         }
     )
 

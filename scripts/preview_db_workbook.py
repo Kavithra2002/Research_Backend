@@ -21,6 +21,10 @@ from generate_comb_model import (
     build_quarterly_preview_data,
     build_ratios_preview_data,
 )
+from preview_native_statements import (
+    build_native_fs_preview,
+    build_native_notes_preview,
+)
 
 
 def main() -> int:
@@ -60,11 +64,17 @@ def main() -> int:
         elif args.view == "notes":
             if not slug:
                 raise ValueError("company-slug is required for notes view")
-            payload = build_notes_preview_data(slug, years=years)
+            if slug == COMMERCIAL_BANK_SLUG:
+                payload = build_notes_preview_data(slug, years=years)
+            else:
+                payload = build_native_notes_preview(slug, years=years)
         else:
             if not slug:
                 raise ValueError("company-slug is required for fs view")
-            payload = build_fs_preview_data(slug, years=years)
+            if slug == COMMERCIAL_BANK_SLUG:
+                payload = build_fs_preview_data(slug, years=years)
+            else:
+                payload = build_native_fs_preview(slug, years=years)
         print(json.dumps(payload), flush=True)
         return 0
     except Exception as exc:

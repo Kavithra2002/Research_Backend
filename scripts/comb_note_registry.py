@@ -27,14 +27,13 @@ def _note_col_index(doc: dict) -> int | None:
     rows = doc.get("rows") or []
     if not rows:
         return None
-    sample = rows[0].get("cells") if isinstance(rows[0], dict) else None
-    if not sample or len(sample) < 2:
-        return None
-    # Demo_run income statement: col 1 is Note when col 0 is label
-    if str(sample[1]).strip() and re.match(
-        r"^[\d\.]+$", str(sample[1]).strip().replace(" ", "")
-    ):
-        return 1
+    for row in rows[:20]:
+        sample = row.get("cells") if isinstance(row, dict) else None
+        if not sample or len(sample) < 2:
+            continue
+        token = str(sample[1]).strip().replace(" ", "")
+        if token and re.match(r"^[\d\.]+$", token) and _is_plausible_note_ref(token):
+            return 1
     return None
 
 
@@ -256,29 +255,45 @@ def _page_looks_like_statement_grid(
     note_ci: int | None,
     page_ci: int | None,
 ) -> bool:
-    """True when the page has a Note + 3-digit Page No. primary-statement grid."""
-    if note_ci is None or page_ci is None:
+    """True when the page has a Note column on a primary-statement grid."""
+    if note_ci is None:
         return False
     blob = _page_header_blob(rows, 8)
-    if "note" not in blob or "page" not in blob:
+    if "note" not in blob:
         return False
-    hits = 0
+    if page_ci is not None and "page" in blob:
+        hits = 0
+        for row in rows[:55]:
+            if len(row) <= max(note_ci, page_ci):
+                continue
+            token = _extract_note_ref_token(str(row[note_ci]))
+            if not token:
+                continue
+            page_txt = str(row[page_ci]).strip()
+            if not PAGE_NO_RE.match(page_txt):
+                continue
+            try:
+                page_no = int(page_txt)
+            except ValueError:
+                continue
+            if page_no >= 100:
+                hits += 1
+        if hits >= 4:
+            return True
+    # Holding-company statements often have a Note column but no Page No.
+    note_hits = 0
+    amount_hits = 0
     for row in rows[:55]:
-        if len(row) <= max(note_ci, page_ci):
+        if len(row) <= note_ci:
             continue
-        token = _extract_note_ref_token(str(row[note_ci]))
-        if not token:
-            continue
-        page_txt = str(row[page_ci]).strip()
-        if not PAGE_NO_RE.match(page_txt):
-            continue
-        try:
-            page_no = int(page_txt)
-        except ValueError:
-            continue
-        if page_no >= 100:
-            hits += 1
-    return hits >= 4
+        if _extract_note_ref_token(str(row[note_ci])):
+            note_hits += 1
+        for cell in row[note_ci + 1 :]:
+            v = parse_number(cell)
+            if v is not None and abs(v) >= 1_000:
+                amount_hits += 1
+                break
+    return note_hits >= 4 and amount_hits >= 4
 
 
 def _note_info_quality(info: dict[str, Any]) -> int:
@@ -349,7 +364,12 @@ def build_label_note_index(
                 index[nl] = {**info, "label": _original_label(doc, nl)}
 
     if pdf_path and pdf_path.exists():
-        for nl, info in build_fs_label_note_index_from_pdf(pdf_path).items():
+        from generate_comb_model import COMMERCIAL_BANK_SLUG
+
+        generic = company_slug != COMMERCIAL_BANK_SLUG
+        for nl, info in build_fs_label_note_index_from_pdf(
+            pdf_path, generic=generic
+        ).items():
             existing = index.get(nl)
             if existing and _note_info_quality(existing) > _note_info_quality(info):
                 continue
@@ -368,7 +388,11 @@ def build_label_note_index(
     return index
 
 
-def build_fs_label_note_index_from_pdf(pdf_path: Path) -> dict[str, dict[str, Any]]:
+def build_fs_label_note_index_from_pdf(
+    pdf_path: Path,
+    *,
+    generic: bool = False,
+) -> dict[str, dict[str, Any]]:
     """
     Authoritative Note + Page No. from annual report financial statement tables.
 
@@ -387,7 +411,9 @@ def build_fs_label_note_index_from_pdf(pdf_path: Path) -> dict[str, dict[str, An
         return index
 
     for statement_key in NOTE_STMT_PRIORITY:
-        pages = find_statement_pages(pdf_path, statement_key, max_pages=8)
+        pages = find_statement_pages(
+            pdf_path, statement_key, max_pages=8, generic=generic
+        )
         if not pages:
             continue
         try:
