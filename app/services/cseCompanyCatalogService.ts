@@ -128,40 +128,89 @@ async function loadCompaniesFromDatabase(): Promise<{
   };
 }
 
-/** Refresh from CSE when live data exists; always persists to MongoDB. */
-export async function refreshCseCompanyCatalog(): Promise<CseCatalogResult> {
-  try {
-    const liveRows = await fetchLiveTradeSummary();
-    const companies = normalizeCompanies(liveRows);
-    if (companies.length === 0) {
-      const cached = await loadCompaniesFromDatabase();
-      return {
-        companies: cached.companies,
-        source: "database",
-        syncedAt: cached.syncedAt?.toISOString() ?? null,
-        stale: cached.companies.length > 0,
-      };
-    }
+type SecurityCodeRow = TradeSummaryRow & {
+  active?: number | string | boolean;
+};
 
-    const syncedAt = await syncCompaniesToDatabase(companies);
-    return {
-      companies,
-      source: "live",
-      syncedAt: syncedAt.toISOString(),
-    };
-  } catch (err) {
-    logger.warn("[CSE catalog] Live refresh failed; using database cache.", err);
-    const cached = await loadCompaniesFromDatabase();
-    return {
-      companies: cached.companies,
-      source: "database",
-      syncedAt: cached.syncedAt?.toISOString() ?? null,
-      stale: true,
-    };
+/** Full listed universe from CSE. Includes names that have not traded today. */
+async function fetchListedSecurityCodes(): Promise<SecurityCodeRow[]> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    const res = await fetch(`${CSE_API}/allSecurityCode`, {
+      method: "GET",
+      headers: {
+        Origin: CSE_ORIGIN,
+        Referer: `${CSE_ORIGIN}/`,
+        "User-Agent": USER_AGENT,
+        Accept: "application/json, text/plain, */*",
+      },
+      signal: controller.signal,
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error(`CSE allSecurityCode responded ${res.status}`);
+    }
+    const data = (await res.json()) as unknown;
+    if (!Array.isArray(data)) return [];
+    return data.filter((row) => {
+      const item = row as SecurityCodeRow;
+      if (!item?.symbol || !item?.name) return false;
+      const active = item.active;
+      return active === undefined || active === 1 || active === "1" || active === true;
+    });
+  } finally {
+    clearTimeout(timer);
   }
 }
 
-/** List CSE companies: prefer live tradeSummary, fall back to MongoDB cache. */
+function databaseResult(
+  cached: { companies: CseCatalogCompany[]; syncedAt: Date | null },
+  stale: boolean,
+): CseCatalogResult {
+  return {
+    companies: cached.companies,
+    source: "database",
+    syncedAt: cached.syncedAt?.toISOString() ?? null,
+    stale,
+  };
+}
+
+/** Refresh the full CSE directory. A partial trade session must not replace it. */
+export async function refreshCseCompanyCatalog(): Promise<CseCatalogResult> {
+  try {
+    const directory = normalizeCompanies(await fetchListedSecurityCodes());
+    if (directory.length > 0) {
+      const syncedAt = await syncCompaniesToDatabase(directory);
+      return {
+        companies: directory,
+        source: "live",
+        syncedAt: syncedAt.toISOString(),
+      };
+    }
+  } catch (err) {
+    logger.warn("[CSE catalog] Directory refresh failed.", err);
+  }
+
+  try {
+    const traded = normalizeCompanies(await fetchLiveTradeSummary());
+    if (traded.length > 0) {
+      return {
+        companies: traded,
+        source: "live",
+        syncedAt: new Date().toISOString(),
+        stale: true,
+      };
+    }
+  } catch (err) {
+    logger.warn("[CSE catalog] Trade summary fallback failed.", err);
+  }
+
+  const cached = await loadCompaniesFromDatabase();
+  return databaseResult(cached, cached.companies.length > 0);
+}
+
+/** List every active CSE company, including names with no trade in this session. */
 export async function listCseCompanies(): Promise<CseCatalogResult> {
   return refreshCseCompanyCatalog();
 }

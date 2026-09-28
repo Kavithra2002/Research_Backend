@@ -10,11 +10,11 @@ from Demo_data_download_script import (
     quarter_label,
 )
 from get_report import safe_dir_name
-from get_report import fetch_financials, fetch_trade_summary, report_year, resolve_symbol
+from get_report import fetch_financials, fetch_listed_companies, report_year, resolve_symbol
 
 
 def list_cse_companies() -> list[dict[str, str]]:
-    rows = fetch_trade_summary()
+    rows = fetch_listed_companies()
     out: list[dict[str, str]] = []
     for row in rows:
         name = str(row.get("name") or "").strip()
@@ -27,7 +27,7 @@ def list_cse_companies() -> list[dict[str, str]]:
 
 
 def resolve_company(name: str, min_score: float = 0.78) -> dict[str, Any]:
-    rows = fetch_trade_summary()
+    rows = fetch_listed_companies()
     sym, official, score = resolve_symbol(name, rows)
     if not sym or score < min_score:
         return {
