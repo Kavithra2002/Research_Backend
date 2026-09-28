@@ -1,11 +1,11 @@
 """
 annual_db_extractor.py
 ======================
-Annual DB run:
+Annual DB run for the ticked years:
 
-  Commercial Bank — COMB template FS + PDF statement audit + wrap-join notes.
-  Other companies — native PDF tables (income statement, OCI, SoFP, cash
-  flows) with that issuer's own description rows, then note-table capture.
+  Extract each company's printed income statement, statement of comprehensive
+  income, statement of financial position, cash flow statement, and the notes
+  those statements point at.
 """
 from __future__ import annotations
 
@@ -15,13 +15,13 @@ import sys
 import traceback
 from typing import Any
 
+from datetime import datetime, timezone
+
 from comb_note_extractor import resolve_annual_pdf
 from comb_workbook_store import ensure_indexes, get_db
-from extract_comb_data import extract_annual_comb
-from extract_native_annual import extract_native_annual
 from generate_comb_model import COMMERCIAL_BANK_SLUG
+from printed_statements import default_output_path, extract_printed_report
 from runner_common import configure_stdio, emit, emit_log
-from _fill_note_ui_from_pdf import fill_note_ui_for_company
 
 configure_stdio()
 
@@ -37,6 +37,92 @@ def _parse_years(raw: str) -> list[int]:
         except ValueError:
             continue
     return sorted(set(out), reverse=True)
+
+
+def _company_name(db, company_slug: str) -> str:
+    doc = db.companies.find_one({"slug": company_slug}, {"name": 1})
+    if doc and doc.get("name"):
+        return str(doc["name"]).strip()
+    return company_slug.replace("_", " ").strip()
+
+
+def _store_printed(db, payload: dict) -> tuple[int, int]:
+    """Replace this company-year's annual tables with the printed extract."""
+    slug = str(payload["company_slug"])
+    year = int(payload["year"])
+    name = str(payload.get("company_name") or slug)
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    report_group = f"Annual Report {year}"
+    db.financial_tables.delete_many(
+        {"company_slug": slug, "year": year, "report_type": "annual"}
+    )
+    docs: list[dict] = []
+    filled = 0
+    missing = 0
+
+    def add_doc(statement_key: str, table: dict, title: str) -> None:
+        nonlocal filled
+        rows = table.get("rows") or []
+        filled += sum(1 for row in rows if row.get("style") == "data")
+        docs.append(
+            {
+                "company_slug": slug,
+                "company_name": name,
+                "year": year,
+                "report_type": "annual",
+                "report_group": report_group,
+                "report_key": report_group,
+                "quarter": None,
+                "period_label": None,
+                "statement_key": statement_key,
+                "statement_title": title,
+                "statement_label": title,
+                "table_index": 0,
+                "caption": None,
+                "preamble": "",
+                "footnotes": "",
+                "header_rows": table.get("header_rows") or [],
+                "rows": rows,
+                "row_count": len(rows),
+                "source_pdf": payload.get("source_pdf"),
+                "source_page": (table.get("pages") or [None])[0],
+                "source_pages": table.get("pages") or [],
+                "note_column": table.get("note_column"),
+                "unit": table.get("unit") or payload.get("unit") or "",
+                "extraction_model": "printed-statements",
+                "extraction_status": "ok" if table.get("ok", True) else "missing",
+                "extracted_at": now,
+                "uploaded_at": now,
+            }
+        )
+
+    for statement in payload.get("statements") or []:
+        if statement.get("ok"):
+            add_doc(
+                str(statement.get("key")),
+                statement,
+                str(statement.get("title") or statement.get("key")),
+            )
+        else:
+            missing += 1
+    seen_notes: set[str] = set()
+    for note in (payload.get("notes") or {}).values():
+        ref = str(note.get("note_ref") or "").strip()
+        if not ref or ref in seen_notes or not note.get("ok"):
+            continue
+        seen_notes.add(ref)
+        add_doc(f"note_{ref}", note, f"Note {ref} — {note.get('title') or ''}".strip(" —"))
+    if docs:
+        db.financial_tables.insert_many(docs)
+    db.companies.update_one(
+        {"slug": slug},
+        {
+            "$set": {"name": name, "updated_at": now},
+            "$setOnInsert": {"slug": slug, "created_at": now},
+        },
+        upsert=True,
+    )
+    return filled, missing
 
 
 def run_annual_db(
@@ -82,87 +168,42 @@ def run_annual_db(
                     "totalSteps": len(years),
                 }
             )
-            is_comb = company_slug == COMMERCIAL_BANK_SLUG
-            pipeline = (
-                "COMB template + wrap-join notes"
-                if is_comb
-                else "native statements + notes"
-            )
             emit_log(
-                f"DB annual extraction for {year} ({pipeline})…"
+                f"Printed statements for {year} "
+                f"(income, comprehensive income, financial position, cash flows, notes)…"
             )
             try:
-                if is_comb:
-                    result = extract_annual_comb(
-                        db,
-                        company_slug,
-                        year,
-                        use_note_extract=use_note_extract,
-                        force_note_capture=force_note_capture,
-                        use_openai_notes=use_openai_notes,
-                        use_pdf_extract=use_pdf_extract,
-                        skip_existing=skip_existing,
+                pdf_path = resolve_annual_pdf(db, company_slug, year)
+                if pdf_path is None or not pdf_path.exists():
+                    raise FileNotFoundError(
+                        f"Annual PDF not found for {company_slug} {year}"
                     )
-                else:
-                    result = extract_native_annual(
-                        db,
-                        company_slug,
-                        year,
-                        use_note_extract=use_note_extract,
-                        force_note_capture=force_note_capture,
-                        use_openai_notes=use_openai_notes,
-                        use_pdf_extract=use_pdf_extract,
-                        skip_existing=skip_existing,
-                    )
-                filled = int(result.get("cells_filled", 0) or 0)
-                missing = int(result.get("cells_missing", 0) or 0)
-                skipped = int(result.get("cells_skipped_existing", 0) or 0)
+                company_name = _company_name(db, company_slug)
+                emit_log(f"  Reading {pdf_path.name}")
+                payload = extract_printed_report(
+                    pdf_path,
+                    company_slug=company_slug,
+                    company_name=company_name,
+                    year=year,
+                )
+                out = default_output_path(company_slug, year)
+                out.parent.mkdir(parents=True, exist_ok=True)
+                out.write_text(
+                    json.dumps(payload, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+                filled, missing = _store_printed(db, payload)
                 cells_filled += filled
                 cells_missing += missing
+                skipped = 0
                 cells_skipped += skipped
-                validation = result.get("validation") or {}
-                if validation.get("recovered"):
+                for statement in payload.get("statements") or []:
                     emit_log(
-                        f"  Validation recovered {validation['recovered']} FS cell(s), "
-                        f"corrected {validation.get('corrected', 0)}"
+                        f"  {statement.get('title')}: "
+                        f"{len(statement.get('rows') or [])} rows "
+                        f"pages {statement.get('pages') or []}"
                     )
-                if validation.get("pdf_corrected"):
-                    emit_log(
-                        f"  PDF cross-check corrected {validation['pdf_corrected']} FS value(s) "
-                        f"against source annual report"
-                    )
-                if validation.get("still_missing"):
-                    emit_log(
-                        f"  Still missing after validation: "
-                        f"{validation['still_missing']} FS cell(s)",
-                        level="warn",
-                    )
-
-                # COMB wrap-join fill (native extract already fills notes).
-                if is_comb and use_note_extract:
-                    emit_log(
-                        f"  Wrap-join note tables for {year} "
-                        f"(same script as Commercial Bank)…"
-                    )
-                    pdf_path = resolve_annual_pdf(db, company_slug, year)
-                    note_fill = fill_note_ui_for_company(
-                        db,
-                        company_slug,
-                        [year],
-                        force=True,
-                        pdf_path=pdf_path,
-                    )
-                    emit_log(
-                        f"  Note tables: filled={note_fill.get('filled', 0)} "
-                        f"failed={note_fill.get('failed', 0)}"
-                    )
-                    result["note_tables"] = note_fill
-                elif not is_comb and result.get("note_tables"):
-                    note_fill = result["note_tables"]
-                    emit_log(
-                        f"  Note tables: planned={note_fill.get('notes_planned', 0)} "
-                        f"filled={note_fill.get('note_tables_filled', 0)}"
-                    )
+                emit_log(f"  Notes extracted: {len(payload.get('notes') or {})}")
 
                 ok += 1
                 emit(
@@ -175,8 +216,6 @@ def run_annual_db(
                         "cells_filled": filled,
                         "cells_missing": missing,
                         "cells_skipped_existing": skipped,
-                        "validation": validation,
-                        "note_tables": result.get("note_tables"),
                     }
                 )
             except Exception as exc:
