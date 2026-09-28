@@ -1,4 +1,4 @@
-"""MongoDB cache for the CSE listed-company catalog (tradeSummary)."""
+"""MongoDB cache for the full CSE listed-company directory (allSecurityCode)."""
 from __future__ import annotations
 
 from datetime import datetime, timezone

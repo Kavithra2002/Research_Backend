@@ -60,8 +60,23 @@ def _json_post(url: str, body: str, referer: str, timeout: int = 120) -> Any:
         return json.loads(resp.read().decode("utf-8"))
 
 
+def _json_get(url: str, referer: str, timeout: int = 120) -> Any:
+    req = urllib.request.Request(
+        url,
+        method="GET",
+        headers={
+            "Origin": CSE_ORIGIN,
+            "Referer": referer,
+            "User-Agent": USER_AGENT,
+            "Accept": "application/json, text/plain, */*",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return json.loads(resp.read().decode("utf-8"))
+
+
 def _fetch_live_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
-    """Live CSE tradeSummary rows (empty outside market hours)."""
+    """Live CSE tradeSummary rows (only names that have traded this session)."""
     url = f"{CSE_API}/tradeSummary"
     j = _json_post(url, "", referer=f"{CSE_ORIGIN}/", timeout=timeout)
     rows = j.get("reqTradeSummery") or j.get("reqTradeSummary") or []
@@ -70,13 +85,35 @@ def _fetch_live_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
     return [r for r in rows if isinstance(r, dict) and r.get("symbol") and r.get("name")]
 
 
-def fetch_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
-    """All listed equities with `name` and `symbol` (e.g. SAMP.N0000).
+def _fetch_all_security_codes(timeout: int = 120) -> list[dict[str, Any]]:
+    """Full CSE listed-security directory (includes names with no trade today)."""
+    url = f"{CSE_API}/allSecurityCode"
+    data = _json_get(url, referer=f"{CSE_ORIGIN}/", timeout=timeout)
+    if not isinstance(data, list):
+        return []
+    out: list[dict[str, Any]] = []
+    for row in data:
+        if not isinstance(row, dict):
+            continue
+        symbol = str(row.get("symbol") or "").strip()
+        name = str(row.get("name") or "").strip()
+        if not symbol or not name:
+            continue
+        active = row.get("active")
+        if active not in (None, 1, "1", True):
+            continue
+        out.append({"name": name, "symbol": symbol})
+    return out
 
-  Uses live CSE tradeSummary when available; otherwise falls back to the
-  MongoDB cache in ``cse_listed_companies`` (synced on last live fetch).
+
+def fetch_listed_companies(timeout: int = 120) -> list[dict[str, Any]]:
+    """Every active CSE listing, with `name` and `symbol`.
+
+    Uses ``allSecurityCode`` so companies that have not traded today still
+    resolve. Persists the full directory to MongoDB. Falls back to that cache
+    when CSE is unreachable.
     """
-    rows = _fetch_live_trade_summary(timeout=timeout)
+    rows = _fetch_all_security_codes(timeout=timeout)
     if rows:
         try:
             from cse_company_cache import save_trade_summary_to_db
@@ -84,6 +121,28 @@ def fetch_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
             save_trade_summary_to_db(rows)
         except Exception:
             pass
+        return rows
+
+    try:
+        from cse_company_cache import load_trade_summary_from_db
+
+        cached = load_trade_summary_from_db()
+        if cached:
+            return cached
+    except Exception:
+        pass
+    return []
+
+
+def fetch_trade_summary(timeout: int = 120) -> list[dict[str, Any]]:
+    """Today's traded equities from CSE tradeSummary.
+
+    This is not the full listed universe. It does not rewrite the MongoDB
+    company catalog (a partial session would delete names that have not traded).
+    When the session list is empty, falls back to the stored full directory.
+    """
+    rows = _fetch_live_trade_summary(timeout=timeout)
+    if rows:
         return rows
 
     try:
