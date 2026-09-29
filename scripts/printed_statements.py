@@ -111,20 +111,25 @@ def _page_texts(pdf_path: Path) -> list[str]:
 
 def _notes_section_page(texts: list[str]) -> int | None:
     """1-based page where numbered notes begin (not the contents list)."""
-    hits: list[int] = []
+    reporting: list[int] = []
+    headings: list[int] = []
     for idx, raw in enumerate(texts):
         head = raw[:2200]
         low = head.lower()
+        if "contents" in low[:500]:
+            continue
         if re.search(r"(?i)\b1\.\s+(reporting entity|corporate information)\b", head):
-            hits.append(idx + 1)
+            reporting.append(idx + 1)
             continue
         if "notes to the financial" in low[:700] and re.search(
             r"(?m)^\s*1\.\s+[A-Z]", head
         ):
-            if "contents" in low[:400]:
-                continue
-            hits.append(idx + 1)
-    return hits[-1] if hits else None
+            headings.append(idx + 1)
+    # The real notes open with "1. Reporting entity". A later annex can also
+    # mention "notes to the financial statements" and must not hide the statements.
+    if reporting:
+        return reporting[-1]
+    return headings[0] if headings else None
 
 
 def _classify_page(text: str) -> str | None:
