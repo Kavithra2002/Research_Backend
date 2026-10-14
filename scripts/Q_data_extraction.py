@@ -4,21 +4,17 @@ Q_data_extraction.py
 Extract financial statement tables from CSE quarterly-report PDFs and
 write structured JSON output.
 
-Primary extraction uses OpenAI GPT-4o Vision (same pipeline as
-Data_retrive.py / step3_send_to_openai.py): each detected statement page
-is rasterised to PNG, sent to the API with a verbatim transcription
-prompt, and saved in the step3 JSON shape.
-
-A local rule-based fallback (pdfplumber / camelot) is still run in
-parallel and stored under ``local_statements`` for comparison.
+Primary extraction uses the local rule-based pipeline (pdfplumber /
+camelot). OpenAI vision is disabled for now — results are stored under
+``statements`` (and mirrored in ``local_statements``).
 
 Technologies
 ------------
-  OpenAI GPT-4o  – verbatim table transcription from page images (primary)
-  pdfplumber     – page detection + local fallback extraction
-  PyMuPDF        – page rasterisation (PNG captures for API + viewer)
-  camelot-py     – stream-mode table detection (local fallback, optional)
+  pdfplumber     – page detection + local table extraction (primary)
+  PyMuPDF        – page rasterisation (PNG captures for viewer)
+  camelot-py     – stream-mode table detection (optional)
   pytesseract    – OCR fallback for garbled text layers
+  OpenAI         – disabled for now
 
 What is extracted
 -----------------
@@ -126,7 +122,8 @@ import pdfplumber
 
 import extraction_validation as val
 
-# ── OpenAI verbatim extraction (reused from step3_send_to_openai.py) ──────
+# OpenAI vision disabled — keep import optional for legacy helpers only.
+USE_OPENAI = False
 try:
     import step3_send_to_openai as _step3
     _STEP3_AVAILABLE = True
@@ -1562,47 +1559,34 @@ def process_pdf(pdf_path: Path, output_dir: Path,
 
     fitz_doc.close()
 
-    # ── OpenAI verbatim extraction per statement ─────────────────────────
-    api_results: dict[str, dict] = {}
-    use_api      = (api_client is not None) and (not dry_run)
-    api_status   = (
-        "ok"        if use_api else
-        "dry_run"   if dry_run else
-        "no_api_key"
+    # ── Local extract is primary (OpenAI disabled) ───────────────────────
+    use_api = bool(USE_OPENAI) and (api_client is not None) and (not dry_run)
+    api_status = (
+        "ok" if use_api else
+        "dry_run" if dry_run else
+        "local_only"
     )
+    api_results: dict[str, dict] = {}
 
-    for stmt_key, record in statements.items():
-        # Map the per-statement title (already in record) and find its images
-        title    = record.get("title") or stmt_key.replace("_", " ").title()
-        stmt_dir = captures_dir / stmt_key
-        if not stmt_dir.is_dir():
-            api_results[stmt_key] = {
-                "status": "no_capture_folder", "title": title}
-            continue
-
-        img_paths = sorted(stmt_dir.glob("page_*.png"))
-
-        if dry_run:
-            api_results[stmt_key] = {
-                "status": "dry_run",
-                "title":  title,
-                "pages":  [p.name for p in img_paths],
-            }
-            continue
-        if not use_api:
-            api_results[stmt_key] = {
-                "status": "no_api_key",
-                "title":  title,
-                "pages":  [p.name for p in img_paths],
-            }
-            continue
-
-        log.info("   [api] %s — %d image(s) → %s",
-                 stmt_key, len(img_paths), model)
-        api_results[stmt_key] = _extract_with_openai(
-            stmt_key=stmt_key, title=title,
-            img_paths=img_paths, client=api_client, model=model,
-        )
+    if use_api:
+        for stmt_key, record in statements.items():
+            title = record.get("title") or stmt_key.replace("_", " ").title()
+            stmt_dir = captures_dir / stmt_key
+            if not stmt_dir.is_dir():
+                api_results[stmt_key] = {
+                    "status": "no_capture_folder", "title": title}
+                continue
+            img_paths = sorted(stmt_dir.glob("page_*.png"))
+            log.info("   [api] %s — %d image(s) → %s",
+                     stmt_key, len(img_paths), model)
+            api_results[stmt_key] = _extract_with_openai(
+                stmt_key=stmt_key, title=title,
+                img_paths=img_paths, client=api_client, model=model,
+            )
+    else:
+        # Promote pdfplumber/camelot tables to the primary statements map.
+        log.info("   [local] OpenAI disabled — using pdfplumber/camelot tables")
+        api_results = dict(statements)
 
     # ── Validation + targeted re-extraction ─────────────────────────────
     validation_report: val.ValidationResult | None = None
@@ -1620,18 +1604,15 @@ def process_pdf(pdf_path: Path, output_dir: Path,
             company_slug=slug_override or slug,
         )
 
-    # ── Write per-company results JSON in the step3 verbatim shape ──────
+    # ── Write per-company results JSON ───────────────────────────────────
     result = {
         "company"        : company,
         "period"         : period,
         "source_pdf"     : pdf_path.name,
         "generated_at"   : datetime.now().isoformat(timespec="seconds"),
-        "model"          : model if use_api else None,
+        "model"          : model if use_api else "pdfplumber-local",
         "api_status"     : api_status,
-        # `statements` holds the OpenAI-extracted data (in step3 verbatim
-        # shape) keyed by our quarterly statement keys.  When the API is
-        # disabled this is empty / status-only and the local rule-based
-        # extraction is preserved under "local_statements".
+        # Primary payload used by db_uploader / Extracted Tables.
         "statements"     : api_results,
         "local_statements": statements,
     }
@@ -1649,7 +1630,7 @@ def process_pdf(pdf_path: Path, output_dir: Path,
         json.dumps({
             "company":      company,
             "source_pdf":   pdf_path.name,
-            "model":        model if use_api else None,
+            "model":        model if use_api else "pdfplumber-local",
             "api_status":   api_status,
             "statements":   sorted(api_results.keys()),
             "generated_at": datetime.now().isoformat(timespec="seconds"),
@@ -1658,7 +1639,12 @@ def process_pdf(pdf_path: Path, output_dir: Path,
         encoding="utf-8",
     )
 
-    n_ok_api = sum(1 for v in api_results.values() if v.get("status") == "ok")
+    n_ok_api = sum(
+        1
+        for v in api_results.values()
+        if (isinstance(v, dict) and v.get("status") == "ok")
+        or (isinstance(v, dict) and isinstance(v.get("rows"), list) and v.get("rows"))
+    )
 
     summary = {
         "file"           : pdf_path.name,
@@ -1726,9 +1712,9 @@ def process_quarterly_for_company(
         except Exception:
             pass
 
-    # Build the OpenAI client (if we have a key).
+    # OpenAI disabled — always run local pdfplumber/camelot extract.
     client = None
-    if api_key and _STEP3_AVAILABLE and not dry_run:
+    if USE_OPENAI and api_key and _STEP3_AVAILABLE and not dry_run:
         try:
             client = _step3.OpenAI(api_key=api_key)
         except Exception as e:
@@ -1740,7 +1726,7 @@ def process_quarterly_for_company(
         output_dir           = testing_dir,    # parent (unused due to overrides)
         use_ocr              = use_ocr,
         api_client           = client,
-        model                = model,
+        model                = model if USE_OPENAI else "pdfplumber-local",
         dry_run              = dry_run,
         company_dir_override = company_dir,
         slug_override        = company_key,

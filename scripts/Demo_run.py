@@ -68,18 +68,7 @@ BACKEND_DIR     = SCRIPT_DIR.parent
 DEMO_DEFAULT     = BACKEND_DIR / "Demo_Data"
 DEMO_CAPTURES_OUT = BACKEND_DIR / "Demo_Data_captures"
 
-_YEAR_RE = re.compile(r"(19|20)\d{2}")
-
-
-def _year_from_text(*sources: Any) -> int | None:
-    """Most-recent 4-digit reporting year found in any of the given strings."""
-    years: list[int] = []
-    for s in sources:
-        if not s:
-            continue
-        years += [int(m.group(0)) for m in _YEAR_RE.finditer(str(s))]
-    years = [y for y in years if 1990 <= y <= 2100]
-    return max(years) if years else None
+from runner_common import resolve_report_year as _year_from_text
 
 
 def _persist_captures(
@@ -214,14 +203,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--source", type=Path, default=DEMO_DEFAULT,
                     help=f"Demo data root (default: {DEMO_DEFAULT}).")
     ap.add_argument("--apikey", default=None,
-                    help="OpenAI API key (else OPENAI_API_KEY env / .env).")
+                    help="Ignored — OpenAI is disabled.")
     ap.add_argument("--option", choices=["1", "2"], default="1",
-                    help="1 = core statements  2 = core + Notes (default: 1).")
-    ap.add_argument("--model", default="gpt-5",
-                    help="OpenAI model name (default: gpt-5).")
+                    help="Ignored for annual; quarterly uses local extract.")
+    ap.add_argument("--model", default="pdfplumber-local",
+                    help="Ignored — local extract engines only.")
     ap.add_argument("--dpi", type=int, default=150, help="Render DPI (default 150).")
     ap.add_argument("--dry-run", action="store_true",
-                    help="Render images but DON'T call OpenAI (no DB upload).")
+                    help="Locate statements but skip MongoDB upload.")
     ap.add_argument("--force", action="store_true",
                     help="Re-extract even if results already exist.")
     ap.add_argument("--no-upload", action="store_true",
@@ -279,17 +268,9 @@ def main(argv: list[str] | None = None) -> int:
         "model": args.model,
     })
 
-    has_quarterly = any(
-        _is_quarterly_type(it.get("report_type", "")) for it in items
-    )
-    api_key = data_retrive._resolve_api_key(args.apikey)
-    # Annual uses local printed extract (no OpenAI). Quarterly still needs a key.
-    if has_quarterly and not args.dry_run and not api_key:
-        emit({"type": "error", "message": (
-            "OpenAI API key not found (required for quarterly extraction). "
-            "Pass --apikey, set OPENAI_API_KEY, or add it to backend/.env."
-        )})
-        return 1
+    # OpenAI disabled — annual + quarterly both use local PDF extractors.
+    api_key = None
+    emit_log("OpenAI disabled — using local PDF extractors only.")
 
     if not args.dry_run and not do_upload:
         emit({"type": "error", "message": (
