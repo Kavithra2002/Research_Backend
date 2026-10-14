@@ -9,10 +9,10 @@ per company:
 
   1. Copies the selected PDF(s) into ``testing/<company_key>/``.
   2. Runs the matching extraction pipeline:
-        • Annual    -> Data_retrive.process_company           (step1/2/3 + OpenAI)
+        • Annual    -> printed_statements (main FS only, local PDF, no OpenAI)
         • Quarterly -> Q_data_extraction.process_quarterly_for_company
-  3. Immediately UPLOADS the resulting ``*_results.json`` into MongoDB,
-     split table-by-table, via db_uploader.
+  3. Immediately UPLOADS results into MongoDB (printed FS tables for annual;
+     OpenAI JSON tables for quarterly).
 
 Progress is streamed to stdout as NDJSON so the Next.js API route
 (``/api/demo/run``) can relay it live to the browser — same protocol the
@@ -279,11 +279,15 @@ def main(argv: list[str] | None = None) -> int:
         "model": args.model,
     })
 
+    has_quarterly = any(
+        _is_quarterly_type(it.get("report_type", "")) for it in items
+    )
     api_key = data_retrive._resolve_api_key(args.apikey)
-    if not args.dry_run and not api_key:
+    # Annual uses local printed extract (no OpenAI). Quarterly still needs a key.
+    if has_quarterly and not args.dry_run and not api_key:
         emit({"type": "error", "message": (
-            "OpenAI API key not found. Pass --apikey, set OPENAI_API_KEY, "
-            "or add it to backend/.env."
+            "OpenAI API key not found (required for quarterly extraction). "
+            "Pass --apikey, set OPENAI_API_KEY, or add it to backend/.env."
         )})
         return 1
 
@@ -437,6 +441,114 @@ _RETRYABLE_STATUSES = {
 }
 
 
+def _attempt_annual_printed(
+    *,
+    company: str,
+    company_key: str,
+    src: Path,
+    group: str,
+    dry_run: bool,
+    do_upload: bool,
+) -> dict:
+    """Fast annual path: local printed FS tables only (no OpenAI / notes)."""
+    from annual_db_extractor import _store_printed
+    from comb_workbook_store import ensure_indexes, get_db
+    from printed_statements import default_output_path, extract_printed_report
+
+    year = _year_from_text(group, src.parent.name if src else None, src.name)
+    if year is None:
+        return {
+            "status": "crashed",
+            "error": "could not infer report year from path/group",
+            "retryable": False,
+        }
+
+    t0 = time.perf_counter()
+    emit_log(
+        f"Fast annual extract {company_key} {year} "
+        f"(main FS only — printed PDF, no OpenAI)…"
+    )
+    try:
+        payload = extract_printed_report(
+            src,
+            company_slug=company_key,
+            company_name=company,
+            year=year,
+            include_notes=False,
+        )
+    except Exception as ex:
+        traceback.print_exc(file=sys.stderr)
+        return {"status": "crashed", "error": str(ex), "retryable": True}
+
+    ok_stmts = [s for s in (payload.get("statements") or []) if s.get("ok")]
+    for statement in payload.get("statements") or []:
+        emit_log(
+            f"  {statement.get('title')}: "
+            f"{len(statement.get('rows') or [])} rows "
+            f"pages {statement.get('pages') or []}"
+        )
+
+    if dry_run:
+        elapsed = time.perf_counter() - t0
+        emit_log(f"Dry-run annual {year} finished in {elapsed:.1f}s")
+        return {"status": "ok", "error": None, "retryable": False}
+
+    out = default_output_path(company_key, year)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+    if not do_upload:
+        return {"status": "ok", "error": None, "retryable": False}
+
+    try:
+        db, client = get_db()
+        try:
+            ensure_indexes(db)
+            filled, missing = _store_printed(db, payload, include_notes=False)
+        finally:
+            client.close()
+    except Exception as ex:
+        return {
+            "status": "ok",
+            "error": f"db upload failed: {ex}",
+            "retryable": True,
+            "db_event": {
+                "type": "db-upload",
+                "company": company,
+                "companyKey": company_key,
+                "reportType": "annual",
+                "group": group,
+                "status": "error",
+                "error": str(ex),
+            },
+        }
+
+    elapsed = time.perf_counter() - t0
+    tables = len(ok_stmts)
+    emit_log(
+        f"Annual {year} stored in {elapsed:.1f}s "
+        f"({tables} statements, {filled} data rows, {missing} missing)."
+    )
+    return {
+        "status": "ok" if tables else "missing_statements",
+        "error": None if tables else "no main FS tables found",
+        # Printed extract is deterministic — retrying the same PDF won't help.
+        "retryable": False,
+        "db_event": {
+            "type": "db-upload",
+            "company": company,
+            "companyKey": company_key,
+            "reportType": "annual",
+            "group": group,
+            "status": "ok" if tables else "error",
+            "tables": tables,
+            "year": year,
+            "cells_filled": filled,
+            "cells_missing": missing,
+        },
+    }
+
+
 def _attempt_one(
     *, company: str, company_key: str, label: str, report_type: str,
     src: Path, group: str, args, api_key: str | None, uploader, do_upload: bool,
@@ -448,30 +560,31 @@ def _attempt_one(
     where `db_event` (if present) is the payload to emit on the FINAL
     attempt so the UI only ever sees one db-upload per report.
     """
+    if report_type == "annual":
+        return _attempt_annual_printed(
+            company=company,
+            company_key=company_key,
+            src=src,
+            group=group,
+            dry_run=bool(args.dry_run),
+            do_upload=do_upload,
+        )
+
     with tempfile.TemporaryDirectory(
         prefix=f"ambeon-demo-{company_key}-",
     ) as work_dir_str:
         work_dir = Path(work_dir_str)
         # ── Extraction (writes captures + results JSON inside work_dir) ────
         try:
-            if report_type == "quarterly":
-                if not _Q_AVAILABLE:
-                    return {"status": "skipped", "retryable": False,
-                            "error": "Q_data_extraction module not available"}
-                res = q_extraction.process_quarterly_for_company(
-                    company_key=company_key, pdf_path=src,
-                    testing_dir=work_dir, api_key=api_key,
-                    model=args.model, dry_run=bool(args.dry_run), force=True,
-                )
-                results = work_dir / company_key / f"{company_key}_quarterly_results.json"
-            else:
-                res = data_retrive.process_company(
-                    company=company_key, pdf_path=src, testing_dir=work_dir,
-                    api_key=api_key, option=args.option, model=args.model,
-                    dry_run=bool(args.dry_run), dpi=args.dpi, force=True,
-                    comb_mode=bool(getattr(args, "comb_extract", False)),
-                )
-                results = work_dir / company_key / f"{company_key}_results.json"
+            if not _Q_AVAILABLE:
+                return {"status": "skipped", "retryable": False,
+                        "error": "Q_data_extraction module not available"}
+            res = q_extraction.process_quarterly_for_company(
+                company_key=company_key, pdf_path=src,
+                testing_dir=work_dir, api_key=api_key,
+                model=args.model, dry_run=bool(args.dry_run), force=True,
+            )
+            results = work_dir / company_key / f"{company_key}_quarterly_results.json"
             status = res.get("status", "ok") if isinstance(res, dict) else "ok"
             err = res.get("error") if isinstance(res, dict) else None
             validation = (
@@ -573,38 +686,7 @@ def _attempt_one(
         }
 
         if (
-            report_type == "annual"
-            and tables
-            and uploader is not None
-            and summary.get("year")
-        ):
-            try:
-                from extract_comb_data import extract_annual_comb
-
-                year = int(summary["year"])
-                comb_res = extract_annual_comb(
-                    uploader.db,
-                    company_key,
-                    year,
-                    use_note_extract=True,
-                    skip_existing=False,
-                )
-                db_event["cells_filled"] = comb_res.get("cells_filled")
-                db_event["notes_captured"] = (
-                    (comb_res.get("note_capture") or {}).get("groups_with_note_ref")
-                    if isinstance(comb_res.get("note_capture"), dict)
-                    else None
-                )
-                emit_log(
-                    f"COMB table for {year}: {comb_res.get('cells_filled', 0)} "
-                    f"cells filled, {comb_res.get('cells_missing', 0)} missing.",
-                    level="info",
-                )
-            except Exception as ex:
-                emit_log(f"COMB table extract failed for {label}: {ex}", level="warning")
-        elif (
-            report_type == "quarterly"
-            and tables
+            tables
             and uploader is not None
             and summary.get("year")
             and summary.get("quarter")
