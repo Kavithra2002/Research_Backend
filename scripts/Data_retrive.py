@@ -84,7 +84,16 @@ REPORTS_DIR  = BACKEND_DIR / "reports"
 TESTING_DIR  = BACKEND_DIR / "testing"
 BACKEND_ENV  = BACKEND_DIR / ".env"
 
-MAX_VALIDATION_ROUNDS = 3
+# One gap-fill pass is enough for the slim main-FS annual set.
+MAX_VALIDATION_ROUNDS = 1
+
+# Capture / extract only these keys for annual option 1.
+ANNUAL_CAPTURE_KEYS = (
+    "income_statement",
+    "oci",
+    "sofp",
+    "cash_flows",
+)
 
 PDF_EXT = (".pdf", ".PDF")
 
@@ -397,6 +406,7 @@ def process_company(
             manifest_path = manifest_path,
             out_dir       = captures_dir,
             dpi           = dpi,
+            only_keys     = list(ANNUAL_CAPTURE_KEYS),
         )
     except Exception as e:
         traceback.print_exc()
