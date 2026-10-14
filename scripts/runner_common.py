@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -9,6 +10,43 @@ from typing import Any
 SCRIPT_DIR = Path(__file__).resolve().parent
 BACKEND_DIR = SCRIPT_DIR.parent
 DEMO_DATA_DIR = BACKEND_DIR / "Demo_Data"
+
+# Prefer years next to report wording; never pull years out of timestamp IDs
+# like ``369_1614941592096.pdf`` (that wrongly became 2096).
+_REPORT_YEAR_RE = re.compile(
+    r"(?i)(?:annual|quarterly|interim|report|year|fy)[^\d]{0,24}((?:19|20)\d{2})"
+)
+_STANDALONE_YEAR_RE = re.compile(r"(?<!\d)((?:19|20)\d{2})(?!\d)")
+
+
+def resolve_report_year(*sources: Any) -> int | None:
+    """Infer the reporting year from folder/group names, then filename.
+
+    Folder names like ``Annual report 2020`` win over PDF ids that happen to
+    contain digit runs such as ``…1592096.pdf``.
+    """
+    texts = [str(s).strip() for s in sources if s]
+    if not texts:
+        return None
+
+    for text in texts:
+        m = _REPORT_YEAR_RE.search(text)
+        if m:
+            year = int(m.group(1))
+            if 1990 <= year <= 2100:
+                return year
+
+    for text in texts:
+        years = [
+            int(y)
+            for y in _STANDALONE_YEAR_RE.findall(text)
+            if 1990 <= int(y) <= 2100
+        ]
+        if years:
+            # Prefer the year printed in a short folder label over a long path.
+            return max(years) if len(text) > 40 else years[-1]
+
+    return None
 
 
 def configure_stdio() -> None:

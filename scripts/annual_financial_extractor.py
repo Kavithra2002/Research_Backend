@@ -29,11 +29,10 @@ from runner_common import (
     emit_log,
     filter_items_by_kind,
     parse_items_payload,
+    resolve_report_year,
 )
 
 configure_stdio()
-
-_YEAR_RE = re.compile(r"(19|20)\d{2}")
 
 
 def _sanitize_company_key(name: str) -> str:
@@ -41,16 +40,6 @@ def _sanitize_company_key(name: str) -> str:
     s = re.sub(r'[\\/:*?"<>|]+', "_", s)
     s = re.sub(r"\s+", "_", s)
     return s.strip("._") or "company"
-
-
-def _year_from_text(*sources: Any) -> int | None:
-    years: list[int] = []
-    for s in sources:
-        if not s:
-            continue
-        years += [int(m.group(0)) for m in _YEAR_RE.finditer(str(s))]
-    years = [y for y in years if 1990 <= y <= 2100]
-    return max(years) if years else None
 
 
 def _resolve_src(source_root: Path, entry: dict[str, str]) -> Path:
@@ -210,7 +199,12 @@ def main(argv: list[str] | None = None) -> int:
         for entry in jobs:
             group = entry.get("group") or ""
             src = _resolve_src(source_root, entry)
-            year = _year_from_text(group, src.parent.name if src else None, src.name)
+            # Group / folder first, filename last (avoid timestamp IDs → fake years).
+            year = resolve_report_year(
+                group,
+                src.parent.name if src else None,
+                src.name if src else None,
+            )
             label = f"Annual {year}" if year else "Annual"
 
             emit(
