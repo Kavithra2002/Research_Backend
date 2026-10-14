@@ -113,26 +113,39 @@ def _page_texts(pdf_path: Path) -> list[str]:
 
 
 def _notes_section_page(texts: list[str]) -> int | None:
-    """1-based page where numbered notes begin (not the contents list)."""
+    """1-based page where FS numbered notes begin (not TOC / sustainability)."""
+    fs_note_heads: list[int] = []
     reporting: list[int] = []
-    headings: list[int] = []
     for idx, raw in enumerate(texts):
         head = raw[:2200]
         low = head.lower()
-        if "contents" in low[:500]:
+        if "contents" in low[:500] or "table of contents" in low[:700]:
             continue
-        if re.search(r"(?i)\b1\.\s+(reporting entity|corporate information)\b", head):
-            reporting.append(idx + 1)
+        # Sustainability "Basis of Preparation / 1. Reporting entity" must not
+        # steal the FS window (COMB 2025 put that near p145; real FS ~p311).
+        if "sustainability" in low[:900] and "notes to the financial" not in low[:500]:
             continue
-        if "notes to the financial" in low[:700] and re.search(
-            r"(?m)^\s*1\.\s+[A-Z]", head
+        if re.search(
+            r"(?i)^\s*notes to the financial statements\b",
+            head[:500],
+        ) or (
+            low.lstrip().startswith("notes to the financial")
+            or "\nnotes to the financial statements" in low[:700]
         ):
-            headings.append(idx + 1)
-    # The real notes open with "1. Reporting entity". A later annex can also
-    # mention "notes to the financial statements" and must not hide the statements.
+            fs_note_heads.append(idx + 1)
+            continue
+        if re.search(
+            r"(?i)\b(?:0?1|1)(?:\.|\s)\s*(?:reporting entity|corporate information)\b",
+            head,
+        ):
+            if "notes to the financial" in low[:900] or "financial statements" in low[:500]:
+                reporting.append(idx + 1)
+    # Prefer the first dedicated Notes-to-FS heading (usually right after cash flows).
+    if fs_note_heads:
+        return fs_note_heads[0]
     if reporting:
         return reporting[-1]
-    return headings[0] if headings else None
+    return None
 
 
 def _classify_page(text: str) -> str | None:
@@ -148,7 +161,17 @@ def _classify_page(text: str) -> str | None:
         or "key audit matter" in head
     ):
         return None
+    # Interim / investor digest tables are not the audited primary statements.
+    if (
+        "summary of interim" in head
+        or "interim financial statements" in head
+        or "investor information" in head[:500]
+        or "performance trends" in head[:500]
+    ):
+        return None
     if "financial performance" in head or "highlights" in head[:900]:
+        return None
+    if "sustainability" in head[:700] and "gross income" not in head:
         return None
     if "notes to the financial" in head[:500]:
         return "notes"
@@ -218,15 +241,55 @@ def _continues_statement(text: str, kind: str) -> bool:
     return len(_COMMA_AMT.findall(text)) >= 6
 
 
-def locate_statement_pages(texts: list[str]) -> dict[str, list[int]]:
+def _primary_statement_score(kind: str, text: str) -> int:
+    """Higher = more like the audited primary FS table (not digests)."""
+    low = (text or "").lower()
+    head = low[:2000]
+    amounts = len(_COMMA_AMT.findall(text or ""))
+    score = amounts
+    if "group" in head and "bank" in head:
+        score += 40
+    if "note" in head and "page" in head:
+        score += 15
+    if kind == "income_statement":
+        if "gross income" in head:
+            score += 80
+        if re.search(r"\bincome statement\b", head):
+            score += 50
+        if "interest income" in head and "interest expense" in low:
+            score += 30
+    elif kind == "oci":
+        if "statement of profit or loss and other comprehensive income" in head:
+            score += 90
+        elif "comprehensive income" in head:
+            score += 40
+    elif kind == "sofp":
+        if "statement of financial position" in head or "as at december" in head:
+            score += 70
+        if "total assets" in low and "total liabilities" in low:
+            score += 40
+        if "cash and cash equivalents" in head:
+            score += 20
+    elif kind == "cash_flows":
+        if "statement of cash flows" in head:
+            score += 80
+        if "operating activities" in head and "investing activities" in low:
+            score += 40
+    return score
+
+
+def _locate_in_range(
+    texts: list[str], window_lo: int, window_hi: int
+) -> dict[str, list[int]]:
+    """Locate primary FS pages inside an inclusive 1-based page window."""
     found: dict[str, list[int]] = {}
-    notes_at = _notes_section_page(texts)
-    window_lo = (notes_at - 20) if notes_at else 1
-    window_hi = (notes_at - 1) if notes_at else len(texts)
+    best_score: dict[str, int] = {}
     i = max(0, window_lo - 1)
-    while i < window_hi:
+    hi = min(len(texts), window_hi)
+    while i < hi:
         kind = _classify_page(texts[i])
-        if kind in STATEMENT_ORDER and kind not in found:
+        if kind in STATEMENT_ORDER:
+            score = _primary_statement_score(kind, texts[i])
             pages = [i + 1]
             j = i + 1
             while j < len(texts) and len(pages) < 3:
@@ -234,10 +297,37 @@ def locate_statement_pages(texts: list[str]) -> dict[str, list[int]]:
                     break
                 pages.append(j + 1)
                 j += 1
-            found[kind] = pages
+            if kind not in found or score > best_score.get(kind, -1):
+                found[kind] = pages
+                best_score[kind] = score
             i = max(j, i + 1)
             continue
         i += 1
+    return found
+
+
+def locate_statement_pages(texts: list[str]) -> dict[str, list[int]]:
+    notes_at = _notes_section_page(texts)
+    if notes_at:
+        # Wider window: long equity statements can sit 25+ pages before notes.
+        window_lo = max(1, notes_at - 40)
+        window_hi = notes_at - 1
+        found = _locate_in_range(texts, window_lo, window_hi)
+    else:
+        found = {}
+
+    # If notes detection failed (or pointed at sustainability), fall back to a
+    # full-document scan and keep the strongest primary-statement hits.
+    if len(found) < 3:
+        full = _locate_in_range(texts, 1, len(texts))
+        for kind, pages in full.items():
+            if kind not in found:
+                found[kind] = pages
+            else:
+                old = _primary_statement_score(kind, texts[found[kind][0] - 1])
+                new = _primary_statement_score(kind, texts[pages[0] - 1])
+                if new > old:
+                    found[kind] = pages
     return found
 
 
