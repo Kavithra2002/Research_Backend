@@ -162,7 +162,11 @@ def _table_row_count(data: Any) -> int:
 def statement_extraction_ok(entry: dict | None) -> bool:
     if not entry or not isinstance(entry, dict):
         return False
-    if entry.get("status") != "ok":
+    # Local pdfplumber shape (no status / data wrapper).
+    if isinstance(entry.get("rows"), list) and entry.get("rows"):
+        return True
+    status = entry.get("status")
+    if status is not None and status != "ok":
         return False
     data = entry.get("data")
     if not isinstance(data, dict):

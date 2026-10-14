@@ -181,16 +181,8 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
     else yearNode.quarterly = summary;
   }
 
-  // Include registry-only companies (no tables yet).
-  for (const c of registry) {
-    if (!byCompany.has(c.slug)) {
-      byCompany.set(c.slug, {
-        displayName: c.name,
-        years: new Map(),
-      });
-    }
-  }
-
+  // Only list companies that actually have extracted tables.
+  // Registry-only placeholders (0 stmts) clutter the Extracted Tables picker.
   const companies: ExtractedCompanyNode[] = [];
   for (const [slug, node] of byCompany) {
     const years: YearNode[] = [...node.years.entries()]
@@ -209,6 +201,8 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
 
     const hasAnnual = years.some((y) => y.annual != null);
     const hasQuarterly = years.some((y) => y.quarterly != null);
+    if (!hasAnnual && !hasQuarterly) continue;
+
     const availablePeriods: PeriodLabel[] = [];
     if (hasAnnual) availablePeriods.push("Annual");
     if (hasQuarterly) availablePeriods.push("Quarterly");
