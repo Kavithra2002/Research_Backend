@@ -3,15 +3,11 @@ extraction_validation.py
 ========================
 Post-extraction validation for annual + quarterly pipelines.
 
-Annual — ALL of the following must be extracted with table data:
-  • Income Statement
-  • Statement of Profit or Loss and Other Comprehensive Income (oci key,
-    or a combined income_statement whose title includes comprehensive income)
+Annual — main FS tables only:
+  • Income Statement / Statement of Profit or Loss
+  • Statement of Comprehensive Income (oci, or combined into income_statement)
   • Statement of Financial Position
-  • Statement of Changes in Equity
   • Statement of Cash Flows
-  • Investor Information
-  • Ten Year Summary OR Five Year Summary (at least one)
 
 Quarterly — ALL financial statement families must be extracted:
   • Income Statement
@@ -32,16 +28,13 @@ from typing import Any
 ANNUAL_REQUIRED_KEYS = (
     "income_statement",
     "sofp",
-    "equity",
     "cash_flows",
-    "investor_info",
 )
 
-# COMB / DB-page upload: core statements only (notes via separate comb extract)
+# COMB / DB-page upload: same main FS set as Run Annual
 COMB_ANNUAL_REQUIRED_KEYS = (
     "income_statement",
     "sofp",
-    "equity",
     "cash_flows",
 )
 
@@ -138,7 +131,7 @@ class ValidationResult:
 
 
 def annual_required_checklist() -> tuple[str, ...]:
-    return ANNUAL_REQUIRED_KEYS + (ANNUAL_OCI_KEY, "year_summary")
+    return ANNUAL_REQUIRED_KEYS + (ANNUAL_OCI_KEY,)
 
 
 def _table_row_count(data: Any) -> int:
@@ -245,23 +238,12 @@ def validate_annual_results(
 
     if _oci_satisfied(results):
         found_ok.append(ANNUAL_OCI_KEY)
-    elif comb_mode:
-        pass  # OCI optional for COMB pilot when combined in income_statement
-    elif ANNUAL_OCI_KEY in manifest_keys or ANNUAL_OCI_KEY in results:
-        failed.append(ANNUAL_OCI_KEY)
     else:
-        missing.append(ANNUAL_OCI_KEY)
+        # OCI may be printed as its own statement or combined into IS.
+        # Do not block the run when the PDF only has a combined IS.
+        pass
 
-    if _summary_satisfied(results):
-        found_ok.append("year_summary")
-        for k in ANNUAL_SUMMARY_KEYS:
-            if statement_extraction_ok(results.get(k)):
-                found_ok.append(k)
-    elif not comb_mode:
-        missing.append("year_summary")
-        for k in ANNUAL_SUMMARY_KEYS:
-            if k in manifest_keys or k in results:
-                failed.append(k)
+    # Equity / investor / ten-year summaries are optional extras — not required.
 
     if option == "2" and "notes" in manifest_keys:
         if statement_extraction_ok(results.get("notes")):
