@@ -3,9 +3,11 @@ annual_db_extractor.py
 ======================
 Annual DB run for the ticked years:
 
-  Extract each company's printed income statement, statement of comprehensive
-  income, statement of financial position, cash flow statement, and the notes
-  those statements point at.
+  Extract each company's printed main financial statements only:
+  income statement / statement of profit or loss, statement of comprehensive
+  income, statement of financial position, and statement of cash flows.
+
+  Note tables are skipped by default (pass --include-notes to capture them).
 """
 from __future__ import annotations
 
@@ -46,7 +48,9 @@ def _company_name(db, company_slug: str) -> str:
     return company_slug.replace("_", " ").strip()
 
 
-def _store_printed(db, payload: dict) -> tuple[int, int]:
+def _store_printed(
+    db, payload: dict, *, include_notes: bool = False
+) -> tuple[int, int]:
     """Replace this company-year's annual tables with the printed extract."""
     slug = str(payload["company_slug"])
     year = int(payload["year"])
@@ -105,13 +109,18 @@ def _store_printed(db, payload: dict) -> tuple[int, int]:
             )
         else:
             missing += 1
-    seen_notes: set[str] = set()
-    for note in (payload.get("notes") or {}).values():
-        ref = str(note.get("note_ref") or "").strip()
-        if not ref or ref in seen_notes or not note.get("ok"):
-            continue
-        seen_notes.add(ref)
-        add_doc(f"note_{ref}", note, f"Note {ref} — {note.get('title') or ''}".strip(" —"))
+    if include_notes:
+        seen_notes: set[str] = set()
+        for note in (payload.get("notes") or {}).values():
+            ref = str(note.get("note_ref") or "").strip()
+            if not ref or ref in seen_notes or not note.get("ok"):
+                continue
+            seen_notes.add(ref)
+            add_doc(
+                f"note_{ref}",
+                note,
+                f"Note {ref} — {note.get('title') or ''}".strip(" —"),
+            )
     if docs:
         db.financial_tables.insert_many(docs)
     db.companies.update_one(
@@ -130,8 +139,8 @@ def run_annual_db(
     *,
     company_slug: str = COMMERCIAL_BANK_SLUG,
     skip_existing: bool = False,
-    use_note_extract: bool = True,
-    force_note_capture: bool = True,
+    use_note_extract: bool = False,
+    force_note_capture: bool = False,
     use_openai_notes: bool = False,
     use_pdf_extract: bool = True,
 ) -> int:
@@ -170,7 +179,8 @@ def run_annual_db(
             )
             emit_log(
                 f"Printed statements for {year} "
-                f"(income, comprehensive income, financial position, cash flows, notes)…"
+                f"(income, comprehensive income, financial position, cash flows"
+                f"{', notes' if use_note_extract else ''})…"
             )
             try:
                 pdf_path = resolve_annual_pdf(db, company_slug, year)
@@ -185,6 +195,7 @@ def run_annual_db(
                     company_slug=company_slug,
                     company_name=company_name,
                     year=year,
+                    include_notes=use_note_extract,
                 )
                 out = default_output_path(company_slug, year)
                 out.parent.mkdir(parents=True, exist_ok=True)
@@ -192,7 +203,9 @@ def run_annual_db(
                     json.dumps(payload, ensure_ascii=False),
                     encoding="utf-8",
                 )
-                filled, missing = _store_printed(db, payload)
+                filled, missing = _store_printed(
+                    db, payload, include_notes=use_note_extract
+                )
                 cells_filled += filled
                 cells_missing += missing
                 skipped = 0
@@ -203,7 +216,10 @@ def run_annual_db(
                         f"{len(statement.get('rows') or [])} rows "
                         f"pages {statement.get('pages') or []}"
                     )
-                emit_log(f"  Notes extracted: {len(payload.get('notes') or {})}")
+                if use_note_extract:
+                    emit_log(f"  Notes extracted: {len(payload.get('notes') or {})}")
+                else:
+                    emit_log("  Notes skipped (main statements only)")
 
                 ok += 1
                 emit(
@@ -258,7 +274,16 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Skip cells that already have a filled value",
     )
-    ap.add_argument("--no-note-extract", action="store_true")
+    ap.add_argument(
+        "--no-note-extract",
+        action="store_true",
+        help="Skip note tables (default behaviour; kept for compatibility)",
+    )
+    ap.add_argument(
+        "--include-notes",
+        action="store_true",
+        help="Also extract note tables referenced by the main statements",
+    )
     ap.add_argument("--force-note-capture", action="store_true")
     ap.add_argument(
         "--no-force-note-capture",
@@ -299,8 +324,9 @@ def main(argv: list[str] | None = None) -> int:
         years,
         company_slug=args.company_slug,
         skip_existing=bool(args.skip_existing) and not args.force,
-        use_note_extract=not args.no_note_extract,
-        force_note_capture=not args.no_force_note_capture,
+        use_note_extract=bool(args.include_notes) and not args.no_note_extract,
+        force_note_capture=bool(args.force_note_capture)
+        and not args.no_force_note_capture,
         use_openai_notes=args.use_openai_notes,
         use_pdf_extract=not args.no_pdf_extract,
     )
