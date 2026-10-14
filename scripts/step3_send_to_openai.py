@@ -361,15 +361,40 @@ PROMPTS = {
     ),
 }
 
+# Main FS only for option 1 (keeps annual runs short / cheap).
 CORE_KEYS = [
-    "income_statement", "oci", "sofp", "equity", "cash_flows",
-    "shareholder_info", "investor_info", "ten_year_summary", "five_year_summary",
+    "income_statement",
+    "oci",
+    "sofp",
+    "cash_flows",
 ]
 
-STMT_ORDER = CORE_KEYS + ["notes"]
+# Optional extras — only used when explicitly requested via run_statements keys.
+OPTIONAL_KEYS = [
+    "equity",
+    "shareholder_info",
+    "investor_info",
+    "ten_year_summary",
+    "five_year_summary",
+]
+
+STMT_ORDER = CORE_KEYS + OPTIONAL_KEYS + ["notes"]
 
 MAX_IMGS_PER_CALL = 15   # stay well under GPT-4o's 20-image limit
 RETRY_DELAY       = 5    # seconds between retries
+
+
+def _is_quota_exhausted(exc: BaseException) -> bool:
+    text = str(exc).lower()
+    return any(
+        token in text
+        for token in (
+            "insufficient_quota",
+            "credit_balance_exhausted",
+            "you have no credits remaining",
+            "exceeded your current quota",
+        )
+    )
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -419,6 +444,9 @@ def call_gpt4o(
             return resp.choices[0].message.content or ""
         except Exception as e:
             print(f"      [warn] API error (attempt {attempt}/{retries}): {e}")
+            # Billing / quota errors never recover by retrying — fail immediately.
+            if _is_quota_exhausted(e):
+                raise
             if attempt < retries:
                 time.sleep(RETRY_DELAY * attempt)
             else:
