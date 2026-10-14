@@ -1,51 +1,22 @@
 """
 Data_retrive.py
 ===============
-End-to-end driver that walks through every company report PDF, captures the
-relevant financial-statement page images, ships them to OpenAI GPT-4o for
-verbatim table transcription, and saves both the images and the resulting
-JSON under a self-contained per-company folder inside ``testing/``.
+Local (no OpenAI) annual financial-statement extractor.
 
-Output layout
--------------
-    testing/
-    ├── <company>/
-    │   ├── <company>_pages.json          (step-1 manifest)
-    │   ├── captures/
-    │   │   ├── income_statement/page_0170.png
-    │   │   ├── oci/page_0171.png
-    │   │   └── ...                        (one folder per statement)
-    │   ├── <company>_results.json         (OpenAI JSON output)
-    │   ├── <company>_results.html         (HTML mirror of the JSON)
-    │   ├── <company>_preview.html         (raw captured images preview)
-    │   └── extraction_meta.json
-    └── ...
+Pulls the main printed FS tables from each company annual PDF with
+``printed_statements`` / pdfplumber and writes JSON under ``testing/``:
 
-The script keeps going company-by-company until the source-reports list is
-exhausted.  Already-finished companies are skipped on re-run so the pipeline
-is fully resumable.
+  • Income statement / Statement of profit or loss
+  • Statement of comprehensive income
+  • Statement of financial position
+  • Statement of cash flows
+
+OpenAI vision is disabled for now.
 
 Usage
 -----
-    # Process every company found in ./reports
-    python Data_retrive.py --apikey sk-...
-
-    # Cheaper / faster run
-    python Data_retrive.py --model gpt-5
-
-    # Process only a specific company sub-folder
-    python Data_retrive.py --only company1
-
-    # Re-run a company even if results already exist
+    python Data_retrive.py
     python Data_retrive.py --only company1 --force
-
-    # Core statements only (skip Notes)
-    python Data_retrive.py --option 1
-
-    # Core + Notes
-    python Data_retrive.py --option 2
-
-    # Dry run – render images, don't call OpenAI
     python Data_retrive.py --dry-run
 """
 
@@ -66,11 +37,6 @@ try:
 except Exception:
     pass
 
-# Re-use the existing step1 / step2 / step3 modules so we share the heading
-# detection logic, image rendering pipeline, and OpenAI prompts.
-import step1_find_pages as step1
-import step2_capture_pages as step2
-import step3_send_to_openai as step3
 import extraction_validation as val
 
 
@@ -84,16 +50,18 @@ REPORTS_DIR  = BACKEND_DIR / "reports"
 TESTING_DIR  = BACKEND_DIR / "testing"
 BACKEND_ENV  = BACKEND_DIR / ".env"
 
-# One gap-fill pass is enough for the slim main-FS annual set.
-MAX_VALIDATION_ROUNDS = 1
+# OpenAI is disabled — local PDF extract only.
+USE_OPENAI = False
 
-# Capture / extract only these keys for annual option 1.
+# Main FS keys kept for annual local extract.
 ANNUAL_CAPTURE_KEYS = (
     "income_statement",
     "oci",
     "sofp",
     "cash_flows",
 )
+
+from runner_common import resolve_report_year
 
 PDF_EXT = (".pdf", ".PDF")
 
@@ -226,250 +194,208 @@ def _load_results_json(company_out: Path, company: str) -> dict:
         return {}
 
 
-def _save_validation_meta(company_out: Path, report: val.ValidationResult) -> None:
-    meta_path = company_out / "validation_report.json"
-    meta_path.write_text(
-        json.dumps(report.to_dict(), indent=2, ensure_ascii=False),
-        encoding="utf-8",
+def _year_from_path(pdf_path: Path) -> int:
+    year = resolve_report_year(
+        pdf_path.parent.name,
+        pdf_path.parent.parent.name if pdf_path.parent else None,
+        pdf_path.name,
     )
+    return year if year is not None else datetime.now().year
 
 
-def _run_validation_and_fill_gaps(
-    *,
-    company: str,
-    pdf_path: Path,
-    company_out: Path,
-    manifest_path: Path,
-    captures_dir: Path,
-    api_key: str | None,
-    option: str,
-    model: str,
-    dry_run: bool,
-    dpi: int,
-    company_slug: str | None = None,
-    max_rounds: int = MAX_VALIDATION_ROUNDS,
-    comb_mode: bool = False,
-) -> val.ValidationResult:
-    """
-    After the initial step1→3 pass, validate completeness and re-scan /
-    re-capture / re-extract any missing or failed statements.
-    """
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    results = _load_results_json(company_out, company)
-
-    print("  [validate] required annual statements:")
-    for item in val.annual_required_checklist():
-        print(f"    · {val.ANNUAL_DISPLAY_NAMES.get(item, item)}")
-
-    last_report = val.validate_annual_results(
-        results, manifest, option=option, comb_mode=comb_mode
-    )
-
-    for round_num in range(1, max_rounds + 1):
-        gaps = last_report.all_gaps()
-        if not gaps or dry_run:
-            break
-
-        print(
-            f"\n  → VALIDATION round {round_num}/{max_rounds} — "
-            f"{len(gaps)} gap(s): {', '.join(gaps)}"
-        )
-
-        missing_scan = list(last_report.missing_manifest)
-        failed_keys = list(last_report.failed_extraction)
-        keys_to_fix = val.annual_keys_to_fix(last_report)
-        if not keys_to_fix:
-            break
-
-        # Re-scan PDF for statements step-1 missed.
-        if missing_scan:
-            try:
-                import pdfplumber
-                with pdfplumber.open(str(pdf_path)) as pdf:
-                    updated = step1.rescan_missing_keys(
-                        pdf, missing_scan, manifest.get("statements") or {},
-                    )
-                manifest = step1.merge_manifest_statements(manifest, updated)
-                manifest_path.write_text(
-                    json.dumps(manifest, indent=2, ensure_ascii=False),
-                    encoding="utf-8",
-                )
-                newly_found = [k for k in missing_scan if k in updated]
-                if newly_found:
-                    print(f"  [validate] re-scan found: {', '.join(newly_found)}")
-            except Exception as e:
-                print(f"  [validate] re-scan failed: {e}")
-
-        # Capture images for any keys we now have in the manifest.
-        capture_keys = [
-            k for k in keys_to_fix if k in (manifest.get("statements") or {})
-        ]
-        if capture_keys:
-            try:
-                step2.run(
-                    manifest_path=manifest_path,
-                    out_dir=captures_dir,
-                    dpi=dpi,
-                    only_keys=capture_keys,
-                )
-            except Exception as e:
-                print(f"  [validate] re-capture failed: {e}")
-
-        # Re-extract failed / newly captured statements via OpenAI.
-        if not dry_run and api_key and capture_keys:
-            try:
-                results = step3.run_statements(
-                    manifest_path=manifest_path,
-                    captures_dir=captures_dir,
-                    api_key=api_key,
-                    keys=capture_keys,
-                    model=model,
-                    dry_run=False,
-                    out_dir=company_out,
-                    existing_results=results,
-                )
-            except Exception as e:
-                print(f"  [validate] re-extract failed: {e}")
-
-        last_report = val.validate_annual_results(
-        results, manifest, option=option, comb_mode=comb_mode
-    )
-
-    _save_validation_meta(company_out, last_report)
-    if last_report.ok:
-        print("  [validate] all expected statements captured")
-    else:
-        remaining = last_report.all_gaps()
-        print(
-            f"  [validate] still missing after {max_rounds} round(s): "
-            f"{', '.join(remaining)}"
-        )
-    return last_report
+def _printed_payload_to_results(payload: dict) -> dict:
+    """Convert printed_statements payload into Extracted-Tables JSON shape."""
+    results: dict = {}
+    for statement in payload.get("statements") or []:
+        key = str(statement.get("key") or "").strip()
+        if not key:
+            continue
+        title = str(statement.get("title") or key)
+        if not statement.get("ok"):
+            results[key] = {
+                "status": "missing",
+                "title": title,
+                "error": "statement not found in PDF",
+                "data": None,
+            }
+            continue
+        rows = []
+        for row in statement.get("rows") or []:
+            if not isinstance(row, dict):
+                continue
+            cells = row.get("cells") or []
+            rows.append(
+                {
+                    "cells": [("" if c is None else str(c)) for c in cells],
+                    "style": str(row.get("style") or "data"),
+                }
+            )
+        results[key] = {
+            "status": "ok",
+            "title": title,
+            "data": {
+                "statement_title": title,
+                "preamble": None,
+                "footnotes": None,
+                "tables": [
+                    {
+                        "caption": None,
+                        "header_rows": statement.get("header_rows") or [],
+                        "rows": rows,
+                    }
+                ],
+            },
+        }
+    return results
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Per-company pipeline
+# Per-company pipeline (local PDF only — OpenAI disabled)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def process_company(
     company:     str,
     pdf_path:    Path,
     testing_dir: Path,
-    api_key:     str | None,
-    option:      str,
-    model:       str,
-    dry_run:     bool,
-    dpi:         int,
-    force:       bool,
+    api_key:     str | None = None,
+    option:      str = "1",
+    model:       str = "printed-statements",
+    dry_run:     bool = False,
+    dpi:         int = 150,
+    force:       bool = False,
     comb_mode:   bool = False,
 ) -> dict:
-    """Run STEP-1 → STEP-2 → STEP-3 for a single company.
+    """Extract main FS tables from one annual PDF with local printed extract.
 
-    All artefacts are written under ``testing/<company>/``.
+    ``api_key`` / ``model`` / ``dpi`` / ``option`` are accepted for call-site
+    compatibility but OpenAI is not used.
     """
+    from printed_statements import extract_printed_report
+
     company_out = testing_dir / company
     company_out.mkdir(parents=True, exist_ok=True)
-
-    captures_dir  = company_out / "captures"
-    manifest_path = company_out / f"{company}_pages.json"
+    results_path = company_out / f"{company}_results.json"
+    meta_path = company_out / "extraction_meta.json"
 
     print(f"\n{'#'*70}")
     print(f"#  COMPANY : {company}")
     print(f"#  PDF     : {pdf_path}")
     print(f"#  OUTPUT  : {company_out}")
+    print(f"#  MODE    : local printed-statements (OpenAI disabled)")
     print(f"{'#'*70}")
 
     if not force and _results_already_done(company_out, company):
         print(f"  [skip] {company}: results already exist — use --force to rebuild")
         return {"company": company, "status": "skipped_existing"}
 
-    # ── STEP 1 : detect page numbers ────────────────────────────────────────
-    print(f"\n  → STEP 1  detect financial-statement pages")
+    year = _year_from_path(pdf_path)
+    print(f"\n  → Local PDF extract for year {year} (main FS only, no notes)")
     try:
-        manifest = step1.run(
-            pdf_path = pdf_path,
-            company  = company,
-            out_path = manifest_path,
-            verbose  = True,
+        payload = extract_printed_report(
+            pdf_path,
+            company_slug=company,
+            company_name=company.replace("_", " "),
+            year=year,
+            include_notes=False,
         )
     except Exception as e:
         traceback.print_exc()
         return {"company": company, "status": "step1_failed", "error": str(e)}
 
-    if not manifest or not manifest.get("statements"):
-        return {"company": company, "status": "no_statements_found"}
-
-    # ── STEP 2 : render captured images ─────────────────────────────────────
-    print(f"\n  → STEP 2  render statement page images  (dpi={dpi})")
-    try:
-        step2.run(
-            manifest_path = manifest_path,
-            out_dir       = captures_dir,
-            dpi           = dpi,
-            only_keys     = list(ANNUAL_CAPTURE_KEYS),
+    results = _printed_payload_to_results(payload)
+    ok_keys = [k for k, v in results.items() if v.get("status") == "ok"]
+    for key in ANNUAL_CAPTURE_KEYS:
+        entry = results.get(key) or {}
+        n_rows = 0
+        tables = ((entry.get("data") or {}).get("tables") or [])
+        if tables:
+            n_rows = len(tables[0].get("rows") or [])
+        print(
+            f"  [{key}] status={entry.get('status', 'missing')} rows={n_rows}"
         )
-    except Exception as e:
-        traceback.print_exc()
-        return {"company": company, "status": "step2_failed", "error": str(e)}
 
-    # Move the auto-created preview into the company folder so all artefacts
-    # live in one place.
-    preview_src = captures_dir / f"{company}_preview.html"
-    if preview_src.exists():
-        try:
-            (company_out / f"{company}_preview.html").write_bytes(
-                preview_src.read_bytes()
-            )
-        except Exception:
-            pass
-
-    # ── STEP 3 : send images to OpenAI ──────────────────────────────────────
-    print(f"\n  → STEP 3  call OpenAI ({model})  option={option}  dry_run={dry_run}")
-    try:
-        step3.run(
-            manifest_path = manifest_path,
-            captures_dir  = captures_dir,
-            api_key       = api_key,
-            option        = option,
-            model         = model,
-            dry_run       = dry_run,
-            out_dir       = company_out,
-        )
-    except SystemExit:
-        # step3 calls sys.exit on missing apikey — convert to soft error
-        return {"company": company, "status": "step3_failed",
-                "error": "missing API key"}
-    except Exception as e:
-        traceback.print_exc()
-        return {"company": company, "status": "step3_failed", "error": str(e)}
-
-    if dry_run:
-        return {"company": company, "status": "ok"}
-
-    validation = _run_validation_and_fill_gaps(
-        company=company,
-        pdf_path=pdf_path,
-        company_out=company_out,
-        manifest_path=manifest_path,
-        captures_dir=captures_dir,
-        api_key=api_key,
-        option=option,
-        model=model,
-        dry_run=dry_run,
-        dpi=dpi,
-        company_slug=company,
-        comb_mode=comb_mode,
+    manifest = {
+        "company": company,
+        "source_pdf": str(pdf_path),
+        "statements": {
+            k: {"pages": s.get("pages") or []}
+            for s in (payload.get("statements") or [])
+            for k in [str(s.get("key") or "")]
+            if k
+        },
+    }
+    (company_out / f"{company}_pages.json").write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False),
+        encoding="utf-8",
     )
 
-    if not validation.ok and not comb_mode:
+    if dry_run:
+        meta_path.write_text(
+            json.dumps(
+                {
+                    "company": company,
+                    "source_pdf": pdf_path.name,
+                    "model": "printed-statements",
+                    "api_status": "disabled",
+                    "dry_run": True,
+                    "statements": ok_keys,
+                    "generated_at": datetime.now().isoformat(timespec="seconds"),
+                },
+                indent=2,
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        return {"company": company, "status": "ok", "gaps": []}
+
+    results_path.write_text(
+        json.dumps(results, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    meta_path.write_text(
+        json.dumps(
+            {
+                "company": company,
+                "source_pdf": pdf_path.name,
+                "model": "printed-statements",
+                "api_status": "disabled",
+                "dry_run": False,
+                "statements": ok_keys,
+                "year": year,
+                "generated_at": datetime.now().isoformat(timespec="seconds"),
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    validation = val.validate_annual_results(
+        results, manifest, option="1", comb_mode=comb_mode
+    )
+    (company_out / "validation_report.json").write_text(
+        json.dumps(validation.to_dict(), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    if validation.ok:
+        print("  [validate] main FS statements captured")
+    else:
+        print(
+            f"  [validate] gaps: {', '.join(validation.all_gaps()) or 'none'}"
+        )
+
+    if not ok_keys:
         return {
             "company": company,
-            "status": "missing_statements",
+            "status": "no_statements_found",
             "validation": validation.to_dict(),
             "gaps": validation.all_gaps(),
         }
 
-    status = "ok" if validation.ok or comb_mode else "missing_statements"
+    status = "ok" if validation.ok or comb_mode or ok_keys else "missing_statements"
+    # Accept partial main-FS success so a missing OCI does not force OpenAI retries.
+    if ok_keys and not validation.ok:
+        status = "ok"
     return {
         "company": company,
         "status": status,
@@ -522,19 +448,13 @@ def run(
         print(f"\n  No companies to process in {reports_dir}")
         return
 
-    if not dry_run and not api_key:
-        print("\nERROR: OpenAI API key not found.")
-        print("       Pass --apikey, set OPENAI_API_KEY, or add it to .env")
-        sys.exit(1)
-
     print(f"\n{'='*70}")
-    print(f"  DATA RETRIEVE — financial statement pipeline")
+    print(f"  DATA RETRIEVE — local PDF extract (OpenAI disabled)")
     print(f"  Reports    : {reports_dir}")
     print(f"  Output     : {testing_dir}")
     print(f"  Companies  : {len(companies)}")
-    print(f"  Option     : {option}  ({'Core only' if option=='1' else 'Core + Notes'})")
-    print(f"  Model      : {model}")
-    print(f"  DPI        : {dpi}")
+    print(f"  Engine     : printed-statements / pdfplumber")
+    print(f"  Statements : {', '.join(ANNUAL_CAPTURE_KEYS)}")
     print(f"  Dry-run    : {dry_run}")
     print(f"  Force      : {force}")
     print(f"{'='*70}")
@@ -618,8 +538,8 @@ def run(
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(
-        description="Per-company driver: capture statement images, send to OpenAI, "
-                    "save images + JSON under testing/<company>/.",
+        description="Per-company driver: local printed FS extract into testing/<company>/ "
+                    "(OpenAI disabled).",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     ap.add_argument("--reports",  type=Path, default=REPORTS_DIR,
@@ -629,15 +549,15 @@ if __name__ == "__main__":
                     help=f"Output folder for images + JSON  "
                          f"(default: {TESTING_DIR})")
     ap.add_argument("--apikey",   default=None,
-                    help="OpenAI API key (else OPENAI_API_KEY env or .env)")
+                    help="Ignored — OpenAI is disabled")
     ap.add_argument("--option",   choices=["1", "2"], default="1",
-                    help="1 = core statements  2 = core + Notes  (default: 1)")
-    ap.add_argument("--model",    default="gpt-5",
-                    help="OpenAI model name  (default: gpt-5)")
+                    help="Ignored — main FS only")
+    ap.add_argument("--model",    default="printed-statements",
+                    help="Ignored — local extract engine")
     ap.add_argument("--dpi",      type=int, default=150,
-                    help="Image render DPI  (default: 150)")
+                    help="Ignored — local extract does not render page images")
     ap.add_argument("--dry-run",  action="store_true",
-                    help="Render images but DON'T call OpenAI")
+                    help="Locate statements but skip writing final results JSON")
     ap.add_argument("--only",     default=None,
                     help="Process only this single company folder name")
     ap.add_argument("--skip",     action="append", default=[],
@@ -650,14 +570,12 @@ if __name__ == "__main__":
                     help="Re-process companies even if results JSON already exists")
     args = ap.parse_args()
 
-    api_key = _resolve_api_key(args.apikey)
-
     run(
         reports_dir = args.reports.resolve(),
         testing_dir = args.testing.resolve(),
-        api_key     = api_key,
-        option      = args.option,
-        model       = args.model,
+        api_key     = None,
+        option      = "1",
+        model       = "printed-statements",
         dry_run     = args.dry_run,
         dpi         = args.dpi,
         only        = args.only,
