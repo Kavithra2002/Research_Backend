@@ -1,6 +1,9 @@
 """
-Extract the primary financial statements as printed, plus the note tables
-those statements point at.
+Extract the primary financial statements as printed.
+
+By default only the main statements are captured (income / profit or loss,
+comprehensive income, financial position, cash flows). Pass ``--include-notes``
+to also pull the note tables those statements point at.
 
 Layouts differ by issuer:
   * Bank reports (Commercial Bank): ruled tables with Note, Page No.,
@@ -908,6 +911,7 @@ def extract_printed_report(
     company_slug: str,
     company_name: str,
     year: int,
+    include_notes: bool = False,
 ) -> dict[str, Any]:
     texts = _page_texts(pdf_path)
     located = locate_statement_pages(texts)
@@ -947,18 +951,19 @@ def extract_printed_report(
             extracted["ok"] = True
             statements.append(extracted)
 
-        notes_start = 1
-        for statement in statements:
-            for page in statement.get("pages") or []:
-                notes_start = max(notes_start, int(page) + 1)
-        headings = _index_note_headings(texts, notes_start)
         notes: dict[str, Any] = {}
-        for ref in _collect_note_refs(statements):
-            note = extract_note(pdf, texts, headings, ref, year=year)
-            if note:
-                notes[str(note.get("note_ref") or ref)] = note
-                if str(note.get("note_ref")) != ref:
-                    notes[ref] = note
+        if include_notes:
+            notes_start = 1
+            for statement in statements:
+                for page in statement.get("pages") or []:
+                    notes_start = max(notes_start, int(page) + 1)
+            headings = _index_note_headings(texts, notes_start)
+            for ref in _collect_note_refs(statements):
+                note = extract_note(pdf, texts, headings, ref, year=year)
+                if note:
+                    notes[str(note.get("note_ref") or ref)] = note
+                    if str(note.get("note_ref")) != ref:
+                        notes[ref] = note
 
     units = [s.get("unit") for s in statements if s.get("unit")]
     return {
@@ -978,12 +983,19 @@ def default_output_path(company_slug: str, year: int) -> Path:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Extract printed FS tables and notes")
+    parser = argparse.ArgumentParser(
+        description="Extract printed main FS tables (optionally notes)"
+    )
     parser.add_argument("--company-slug", required=True)
     parser.add_argument("--year", type=int, required=True)
     parser.add_argument("--pdf", default="")
     parser.add_argument("--company-name", default="")
     parser.add_argument("--out", default="")
+    parser.add_argument(
+        "--include-notes",
+        action="store_true",
+        help="Also extract note tables referenced by the main statements",
+    )
     args = parser.parse_args()
 
     pdf_path: Path | None
@@ -1005,6 +1017,7 @@ def main() -> int:
         company_slug=args.company_slug,
         company_name=name,
         year=args.year,
+        include_notes=bool(args.include_notes),
     )
     out = Path(args.out) if args.out else default_output_path(args.company_slug, args.year)
     out.parent.mkdir(parents=True, exist_ok=True)
