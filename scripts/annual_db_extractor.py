@@ -1,13 +1,16 @@
 """
 annual_db_extractor.py
 ======================
-Annual DB run for the ticked years:
+Run DB Annual — notes-only for the DB page.
 
-  Extract each company's printed main financial statements only:
-  income statement / statement of profit or loss, statement of comprehensive
-  income, statement of financial position, and statement of cash flows.
+Prerequisite: the company/year must already be extracted into Extracted Tables
+(``financial_tables`` via Run Annual). This runner:
 
-  Note tables are skipped by default (pass --include-notes to capture them).
+  1. Copies the same main FS (income, OCI, SoFP, cash flows) onto the DB page
+  2. Extracts only the note tables from the annual PDF
+  3. Writes printed JSON (notes live on the DB page only — never in Extracted Tables)
+
+It does **not** re-run OpenAI vision on the main financial statements.
 """
 from __future__ import annotations
 
@@ -18,11 +21,11 @@ import traceback
 from typing import Any
 
 from datetime import datetime, timezone
+from pathlib import Path
 
 from comb_note_extractor import resolve_annual_pdf
 from comb_workbook_store import ensure_indexes, get_db
 from generate_comb_model import COMMERCIAL_BANK_SLUG
-from printed_statements import default_output_path, extract_printed_report
 from runner_common import configure_stdio, emit, emit_log
 
 configure_stdio()
@@ -48,26 +51,75 @@ def _company_name(db, company_slug: str) -> str:
     return company_slug.replace("_", " ").strip()
 
 
+def _purge_note_docs(db, company_slug: str, year: int | None = None) -> int:
+    """Remove note_* rows from financial_tables (Extracted Tables is FS-only)."""
+    filt: dict[str, Any] = {
+        "company_slug": company_slug,
+        "statement_key": {"$regex": r"^note_", "$options": "i"},
+    }
+    if year is not None:
+        filt["year"] = int(year)
+    return int(db.financial_tables.delete_many(filt).deleted_count)
+
+
 def _store_printed(
-    db, payload: dict, *, include_notes: bool = False
+    db,
+    payload: dict,
+    *,
+    include_notes: bool = False,
+    replace_core: bool = True,
 ) -> tuple[int, int]:
-    """Replace this company-year's annual tables with the printed extract."""
+    """Optionally write main FS into financial_tables.
+
+    Notes are **never** written here — they stay in printed_statements JSON
+    for the DB page only. ``include_notes`` is accepted for CLI compatibility.
+    """
+    del include_notes  # notes must not land in Extracted Tables / financial_tables
     slug = str(payload["company_slug"])
     year = int(payload["year"])
     name = str(payload.get("company_name") or slug)
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     report_group = f"Annual Report {year}"
+    model = str(payload.get("extraction_model") or "extracted-tables")
+
+    # Always strip any leftover note_* docs for this year.
+    _purge_note_docs(db, slug, year)
+
+    if not replace_core:
+        db.companies.update_one(
+            {"slug": slug},
+            {
+                "$set": {"name": name, "updated_at": now},
+                "$setOnInsert": {"slug": slug, "created_at": now},
+            },
+            upsert=True,
+        )
+        return 0, 0
+
     db.financial_tables.delete_many(
-        {"company_slug": slug, "year": year, "report_type": "annual"}
+        {
+            "company_slug": slug,
+            "year": year,
+            "report_type": "annual",
+            "statement_key": {
+                "$in": ["income_statement", "oci", "sofp", "cash_flows"]
+            },
+        }
     )
     docs: list[dict] = []
     filled = 0
     missing = 0
 
-    def add_doc(statement_key: str, table: dict, title: str) -> None:
-        nonlocal filled
-        rows = table.get("rows") or []
+    for statement in payload.get("statements") or []:
+        if not statement.get("ok"):
+            missing += 1
+            continue
+        rows = statement.get("rows") or []
         filled += sum(1 for row in rows if row.get("style") == "data")
+        key = str(statement.get("key") or "")
+        if key.startswith("note_"):
+            continue
+        title = str(statement.get("title") or key)
         docs.append(
             {
                 "company_slug": slug,
@@ -78,49 +130,27 @@ def _store_printed(
                 "report_key": report_group,
                 "quarter": None,
                 "period_label": None,
-                "statement_key": statement_key,
+                "statement_key": key,
                 "statement_title": title,
                 "statement_label": title,
                 "table_index": 0,
                 "caption": None,
                 "preamble": "",
                 "footnotes": "",
-                "header_rows": table.get("header_rows") or [],
+                "header_rows": statement.get("header_rows") or [],
                 "rows": rows,
                 "row_count": len(rows),
                 "source_pdf": payload.get("source_pdf"),
-                "source_page": (table.get("pages") or [None])[0],
-                "source_pages": table.get("pages") or [],
-                "note_column": table.get("note_column"),
-                "unit": table.get("unit") or payload.get("unit") or "",
-                "extraction_model": "printed-statements",
-                "extraction_status": "ok" if table.get("ok", True) else "missing",
+                "source_page": (statement.get("pages") or [None])[0],
+                "source_pages": statement.get("pages") or [],
+                "note_column": statement.get("note_column"),
+                "unit": statement.get("unit") or payload.get("unit") or "",
+                "extraction_model": model,
+                "extraction_status": "ok",
                 "extracted_at": now,
                 "uploaded_at": now,
             }
         )
-
-    for statement in payload.get("statements") or []:
-        if statement.get("ok"):
-            add_doc(
-                str(statement.get("key")),
-                statement,
-                str(statement.get("title") or statement.get("key")),
-            )
-        else:
-            missing += 1
-    if include_notes:
-        seen_notes: set[str] = set()
-        for note in (payload.get("notes") or {}).values():
-            ref = str(note.get("note_ref") or "").strip()
-            if not ref or ref in seen_notes or not note.get("ok"):
-                continue
-            seen_notes.add(ref)
-            add_doc(
-                f"note_{ref}",
-                note,
-                f"Note {ref} — {note.get('title') or ''}".strip(" —"),
-            )
     if docs:
         db.financial_tables.insert_many(docs)
     db.companies.update_one(
@@ -139,15 +169,26 @@ def run_annual_db(
     *,
     company_slug: str = COMMERCIAL_BANK_SLUG,
     skip_existing: bool = False,
-    use_note_extract: bool = False,
+    use_note_extract: bool = True,
     force_note_capture: bool = False,
     use_openai_notes: bool = False,
     use_pdf_extract: bool = True,
+    api_key: str | None = None,
+    model: str = "gpt-5",
+    option: str = "1",
+    dpi: int = 150,
+    pdf_by_year: dict[int, Path] | None = None,
 ) -> int:
+    # Legacy flags kept for CLI compatibility with the live-extraction route.
+    del force_note_capture, use_openai_notes, use_pdf_extract, api_key, model, option, dpi
+    pdf_by_year = pdf_by_year or {}
+
     if not years:
         emit({"type": "error", "message": "No years selected"})
         emit({"type": "done", "ok": 0, "failed": 1})
         return 1
+
+    import db_page_sync as sync
 
     emit(
         {
@@ -156,8 +197,12 @@ def run_annual_db(
             "company_slug": company_slug,
             "years": years,
             "totalSteps": len(years),
-            "skipExisting": skip_existing,
+            "model": "notes-only",
+            "openai": False,
         }
+    )
+    emit_log(
+        "Run DB Annual: reuse Extracted Tables FS + extract note tables only"
     )
 
     db, client = get_db()
@@ -172,54 +217,121 @@ def run_annual_db(
                     "type": "stage-start",
                     "year": year,
                     "stage": "annual",
-                    "label": f"{year} · annual",
+                    "label": f"Annual report {year}",
                     "index": idx,
                     "totalSteps": len(years),
                 }
             )
-            emit_log(
-                f"Printed statements for {year} "
-                f"(income, comprehensive income, financial position, cash flows"
-                f"{', notes' if use_note_extract else ''})…"
-            )
             try:
-                pdf_path = resolve_annual_pdf(db, company_slug, year)
-                if pdf_path is None or not pdf_path.exists():
+                payload = sync.financial_tables_to_printed_payload(
+                    db,
+                    company_slug,
+                    year,
+                    include_mongo_notes=False,
+                )
+                if payload is None:
                     raise FileNotFoundError(
-                        f"Annual PDF not found for {company_slug} {year}"
+                        f"Before Run DB Annual you must run Run Annual "
+                        f"extraction for {company_slug} {year} so the main "
+                        f"FS tables are available on the Extracted Tables page."
                     )
-                company_name = _company_name(db, company_slug)
-                emit_log(f"  Reading {pdf_path.name}")
-                payload = extract_printed_report(
-                    pdf_path,
-                    company_slug=company_slug,
-                    company_name=company_name,
-                    year=year,
-                    include_notes=use_note_extract,
+
+                stmts_ok = sum(
+                    1 for s in (payload.get("statements") or []) if s.get("ok")
                 )
-                out = default_output_path(company_slug, year)
-                out.parent.mkdir(parents=True, exist_ok=True)
-                out.write_text(
-                    json.dumps(payload, ensure_ascii=False),
-                    encoding="utf-8",
+                if stmts_ok == 0:
+                    raise FileNotFoundError(
+                        f"Before Run DB Annual you must run Run Annual "
+                        f"extraction for {company_slug} {year} — Extracted "
+                        f"Tables has no usable Income / OCI / SoFP / Cash Flows."
+                    )
+
+                if not payload.get("company_name"):
+                    payload["company_name"] = _company_name(db, company_slug)
+
+                emit_log(
+                    f"  Reusing Extracted Tables FS for {year} "
+                    f"({stmts_ok} statement(s) — same tables as ET page)"
                 )
+
+                pdf_path = pdf_by_year.get(year)
+                if pdf_path is None or not Path(pdf_path).exists():
+                    src = payload.get("source_pdf")
+                    if src and Path(str(src)).exists():
+                        pdf_path = Path(str(src))
+                if pdf_path is None or not Path(pdf_path).exists():
+                    pdf_path = resolve_annual_pdf(db, company_slug, year)
+                if pdf_path is not None:
+                    pdf_path = Path(pdf_path)
+
+                if use_note_extract:
+                    if pdf_path is None or not pdf_path.exists():
+                        raise FileNotFoundError(
+                            f"Annual PDF not found for notes ({company_slug} {year})"
+                        )
+                    from printed_statements import (
+                        collect_note_refs,
+                        extract_notes_only,
+                    )
+
+                    note_refs = collect_note_refs(
+                        payload.get("statements") or []
+                    )
+                    emit_log(
+                        f"  Note refs from ET tables: "
+                        f"{', '.join(note_refs) if note_refs else '(none)'}"
+                    )
+                    emit_log(
+                        f"  Locating note pages + extracting Group/Company "
+                        f"note tables from {pdf_path.name}…"
+                    )
+                    payload["source_pdf"] = str(pdf_path)
+                    pdf_notes = extract_notes_only(
+                        pdf_path,
+                        payload.get("statements") or [],
+                        year=year,
+                    )
+                    # Normalize note tables for DB popup (Group/Company layout).
+                    for note in pdf_notes.values():
+                        if not isinstance(note, dict):
+                            continue
+                        pages = note.get("pages") or []
+                        if pages:
+                            emit_log(
+                                f"    Note {note.get('note_ref')}: "
+                                f"pages {pages} "
+                                f"({len(note.get('rows') or [])} rows)"
+                            )
+                    payload["notes"] = pdf_notes
+                elif skip_existing and (payload.get("notes") or {}):
+                    cells_skipped += len(payload.get("notes") or {})
+
+                out = sync.write_printed_payload(payload)
+                emit_log(f"  DB page file: {out}")
+
                 filled, missing = _store_printed(
-                    db, payload, include_notes=use_note_extract
+                    db,
+                    payload,
+                    include_notes=use_note_extract,
+                    replace_core=False,
                 )
                 cells_filled += filled
                 cells_missing += missing
-                skipped = 0
-                cells_skipped += skipped
+
                 for statement in payload.get("statements") or []:
                     emit_log(
                         f"  {statement.get('title')}: "
                         f"{len(statement.get('rows') or [])} rows "
-                        f"pages {statement.get('pages') or []}"
+                        f"ok={statement.get('ok')}"
                     )
-                if use_note_extract:
-                    emit_log(f"  Notes extracted: {len(payload.get('notes') or {})}")
-                else:
-                    emit_log("  Notes skipped (main statements only)")
+                note_n = len(payload.get("notes") or {})
+                if note_n:
+                    emit_log(f"  Notes available: {note_n}")
+                elif use_note_extract:
+                    emit_log(
+                        "  No note refs found on main FS — notes empty",
+                        level="warn",
+                    )
 
                 ok += 1
                 emit(
@@ -229,9 +341,11 @@ def run_annual_db(
                         "stage": "annual",
                         "label": f"Annual report {year}",
                         "ok": True,
+                        "company": company_slug,
                         "cells_filled": filled,
                         "cells_missing": missing,
-                        "cells_skipped_existing": skipped,
+                        "cells_skipped_existing": 0,
+                        "notes": note_n,
                     }
                 )
             except Exception as exc:
@@ -246,6 +360,7 @@ def run_annual_db(
                         "error": str(exc),
                     }
                 )
+                emit_log(str(exc), level="error")
                 emit_log(traceback.format_exc(), level="error")
 
         emit(
@@ -268,67 +383,104 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--years", default="")
     ap.add_argument("--years-stdin", action="store_true")
     ap.add_argument("--company-slug", default=COMMERCIAL_BANK_SLUG)
-    ap.add_argument("--force", action="store_true", help="Re-extract filled cells")
+    ap.add_argument("--force", action="store_true", help="Re-extract note tables")
     ap.add_argument(
         "--skip-existing",
         action="store_true",
-        help="Skip cells that already have a filled value",
+        help="Skip when notes already present (best-effort)",
     )
     ap.add_argument(
         "--no-note-extract",
         action="store_true",
-        help="Skip note tables (default behaviour; kept for compatibility)",
+        help="Only sync FS from Extracted Tables; skip note PDF extract",
     )
     ap.add_argument(
         "--include-notes",
         action="store_true",
-        help="Also extract note tables referenced by the main statements",
+        help="Extract note tables (UI default)",
     )
     ap.add_argument("--force-note-capture", action="store_true")
-    ap.add_argument(
-        "--no-force-note-capture",
-        action="store_true",
-        help="Do not recapture note images/tables when they already exist",
-    )
-    ap.add_argument(
-        "--use-openai-notes",
-        action="store_true",
-        help="Use OpenAI vision for note extraction (uses API credits)",
-    )
-    ap.add_argument(
-        "--use-pdf-extract",
-        action="store_true",
-        help="Extract FS values from the annual report PDF (default)",
-    )
-    ap.add_argument(
-        "--no-pdf-extract",
-        action="store_true",
-        help="Skip PDF statement extract (financial_tables mapper only)",
-    )
+    ap.add_argument("--no-force-note-capture", action="store_true")
+    ap.add_argument("--use-openai-notes", action="store_true")
+    ap.add_argument("--use-pdf-extract", action="store_true")
+    ap.add_argument("--no-pdf-extract", action="store_true")
+    ap.add_argument("--apikey", default=None)
+    ap.add_argument("--model", default="gpt-5")
+    ap.add_argument("--option", choices=["1", "2"], default="1")
+    ap.add_argument("--dpi", type=int, default=150)
     args = ap.parse_args(argv)
 
     years: list[int] = []
+    pdf_by_year: dict[int, Path] = {}
     if args.years_stdin:
         try:
             payload = json.load(sys.stdin)
             raw = payload.get("years") if isinstance(payload, dict) else payload
             if isinstance(raw, list):
                 years = sorted({int(y) for y in raw}, reverse=True)
+            items = payload.get("items") if isinstance(payload, dict) else None
+            if isinstance(items, list):
+                from runner_common import DEMO_DATA_DIR, resolve_report_year
+
+                for raw_item in items:
+                    if not isinstance(raw_item, dict):
+                        continue
+                    rel = raw_item.get("rel_path")
+                    company = str(raw_item.get("company") or "").strip()
+                    group = str(raw_item.get("group") or "").strip()
+                    file_name = str(raw_item.get("file_name") or "").strip()
+                    report_type = (
+                        str(raw_item.get("report_type") or "Annual").strip()
+                        or "Annual"
+                    )
+                    src: Path | None = None
+                    if rel:
+                        src = (DEMO_DATA_DIR / str(rel)).resolve()
+                    elif company and group and file_name:
+                        src = (
+                            DEMO_DATA_DIR
+                            / company
+                            / report_type
+                            / group
+                            / file_name
+                        ).resolve()
+                    if src is None or not src.exists():
+                        continue
+                    year = resolve_report_year(
+                        group, src.parent.name, src.name
+                    )
+                    if year is None:
+                        try:
+                            year = int(raw_item.get("year"))  # type: ignore[arg-type]
+                        except (TypeError, ValueError):
+                            year = None
+                    if year is not None:
+                        pdf_by_year[int(year)] = src
+                        if int(year) not in years:
+                            years.append(int(year))
+                years = sorted(set(years), reverse=True)
         except Exception as exc:
             emit({"type": "error", "message": f"Invalid years JSON: {exc!r}"})
             return 2
     else:
         years = _parse_years(args.years)
 
+    use_notes = bool(args.include_notes) and not bool(args.no_note_extract)
+
     return run_annual_db(
         years,
         company_slug=args.company_slug,
         skip_existing=bool(args.skip_existing) and not args.force,
-        use_note_extract=bool(args.include_notes) and not args.no_note_extract,
+        use_note_extract=use_notes,
         force_note_capture=bool(args.force_note_capture)
         and not args.no_force_note_capture,
         use_openai_notes=args.use_openai_notes,
         use_pdf_extract=not args.no_pdf_extract,
+        api_key=args.apikey,
+        model=args.model,
+        option=args.option,
+        dpi=args.dpi,
+        pdf_by_year=pdf_by_year,
     )
 
 

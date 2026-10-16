@@ -1,21 +1,19 @@
 """
 annual_financial_extractor.py
 =============================
-Fast annual financial statement extraction for Run Annual.
+Annual financial statement extraction for Run Annual.
 
-Extracts only the main printed FS tables (no OpenAI, no note tables):
-  • Income statement / Statement of profit or loss
-  • Statement of comprehensive income
-  • Statement of financial position
-  • Statement of cash flows
+When OPENAI_API_KEY is set (env / backend/.env / --apikey):
+  1. Find statement pages in the PDF
+  2. Capture those pages as images
+  3. Send captures to OpenAI vision for verbatim table extract
 
-Target: about one minute per annual report on a local PDF.
+Falls back to local printed_statements extract when no API key is available.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import time
 import traceback
@@ -36,6 +34,8 @@ configure_stdio()
 
 
 def _sanitize_company_key(name: str) -> str:
+    import re
+
     s = name.strip()
     s = re.sub(r'[\\/:*?"<>|]+', "_", s)
     s = re.sub(r"\s+", "_", s)
@@ -66,59 +66,134 @@ def _extract_one(
     year: int,
     dry_run: bool,
     no_upload: bool,
+    api_key: str | None,
+    model: str,
+    option: str,
+    dpi: int,
+    work_dir: Path,
+    include_notes: bool = True,
 ) -> dict[str, Any]:
-    from annual_db_extractor import _store_printed
-    from comb_workbook_store import ensure_indexes, get_db
-    from printed_statements import default_output_path, extract_printed_report
+    import Data_retrive as data_retrive
+    import db_uploader
 
     t0 = time.perf_counter()
+    resolved_key = data_retrive._resolve_api_key(api_key)
+    mode_label = (
+        f"OpenAI vision ({model})"
+        if resolved_key
+        else "local printed-statements (no API key)"
+    )
     emit_log(
-        f"Fast annual extract {company} {year} "
-        f"(income, OCI, SoFP, cash flows — no notes, no OpenAI)…"
+        f"Annual extract {company} {year} — {mode_label} "
+        f"(income / P&L, OCI, SoFP, cash flows"
+        f"{', notes' if include_notes else ''})…"
     )
-    payload = extract_printed_report(
-        pdf_path,
-        company_slug=company_slug,
-        company_name=company,
-        year=year,
-        include_notes=False,
+
+    res = data_retrive.process_company(
+        company=company_slug,
+        pdf_path=pdf_path,
+        testing_dir=work_dir,
+        api_key=resolved_key,
+        option=option,
+        model=model,
+        dry_run=dry_run,
+        dpi=dpi,
+        force=True,
     )
-    ok_stmts = [s for s in (payload.get("statements") or []) if s.get("ok")]
-    for statement in payload.get("statements") or []:
-        emit_log(
-            f"  {statement.get('title')}: "
-            f"{len(statement.get('rows') or [])} rows "
-            f"pages {statement.get('pages') or []} "
-            f"ok={statement.get('ok')}"
-        )
+    status = res.get("status", "error") if isinstance(res, dict) else "error"
+    ok = status in ("ok", "skipped_existing")
 
-    out = default_output_path(company_slug, year)
-    if not dry_run:
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-
+    tables = 0
     filled = missing = 0
-    if not dry_run and not no_upload:
-        db, client = get_db()
+    company_out = work_dir / company_slug
+    results_path = company_out / f"{company_slug}_results.json"
+    pages_json = company_out / f"{company_slug}_pages.json"
+
+    if not dry_run and not no_upload and results_path.exists():
         try:
-            ensure_indexes(db)
-            filled, missing = _store_printed(db, payload, include_notes=False)
-        finally:
-            client.close()
+            doc = json.loads(results_path.read_text(encoding="utf-8"))
+            summary = db_uploader.upload_results_data(
+                doc,
+                "annual",
+                company_slug=company_slug,
+                company_name=company,
+                report_group=f"Annual Report {year}",
+                source_pdf=str(pdf_path),
+                quiet=True,
+            )
+            tables = int(summary.get("tables") or 0)
+            filled = int(summary.get("cells_filled") or tables)
+            missing = int(summary.get("cells_missing") or 0)
+            keys = summary.get("statement_keys") or []
+            emit_log(
+                f"  DB upload: {tables} table(s) "
+                f"(status={summary.get('ok')}; keys={keys})"
+            )
+            dropped = summary.get("dropped_ok_keys") or []
+            if dropped:
+                emit_log(
+                    f"  DB upload dropped OK statements: {dropped}",
+                    level="error",
+                )
+                ok = False
+            errs = summary.get("errors") or []
+            if errs:
+                for e in errs:
+                    emit_log(f"  DB upload issue: {e}", level="error")
+                if not summary.get("ok", True):
+                    ok = False
+
+            # Same OpenAI payload → DB page (Group/Company + note refs).
+            try:
+                import db_page_sync as sync
+
+                accuracy = {}
+                acc_path = company_out / "accuracy_report.json"
+                if acc_path.exists():
+                    try:
+                        accuracy = json.loads(
+                            acc_path.read_text(encoding="utf-8")
+                        )
+                    except Exception:
+                        accuracy = {}
+                payload, printed_path = sync.sync_openai_annual_to_db_page(
+                    doc,
+                    company_slug=company_slug,
+                    company_name=company,
+                    year=year,
+                    source_pdf=pdf_path,
+                    pages_json=pages_json if pages_json.exists() else None,
+                    include_notes=include_notes,
+                    accuracy=accuracy if isinstance(accuracy, dict) else None,
+                )
+                note_n = len(payload.get("notes") or {})
+                emit_log(
+                    f"  DB page updated: {printed_path.name}"
+                    f" (statements={len(payload.get('statements') or [])}"
+                    f", notes={note_n})"
+                )
+            except Exception as exc:
+                emit_log(f"  DB page sync skipped: {exc}", level="warn")
+        except Exception as exc:
+            emit_log(f"  DB upload failed: {exc}", level="error")
+            ok = False
+            status = "error"
 
     elapsed = time.perf_counter() - t0
     emit_log(
         f"Done {company} {year} in {elapsed:.1f}s "
-        f"({len(ok_stmts)} statements, {filled} data rows)."
+        f"(status={status}, tables={tables})."
     )
     return {
-        "ok": len(ok_stmts) > 0,
+        "ok": ok and (tables > 0 or dry_run or no_upload),
         "year": year,
-        "tables": len(ok_stmts),
+        "tables": tables,
         "cells_filled": filled,
         "cells_missing": missing,
         "elapsed_s": round(elapsed, 2),
         "source_pdf": str(pdf_path),
+        "status": status,
+        "error": res.get("error") if isinstance(res, dict) else None,
     }
 
 
@@ -128,11 +203,27 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--no-upload", action="store_true")
-    ap.add_argument("--model", default="gpt-5", help="Ignored (local PDF extract).")
-    ap.add_argument("--option", choices=["1", "2"], default="1", help="Ignored.")
-    ap.add_argument("--apikey", default=None, help="Ignored (no OpenAI).")
+    ap.add_argument("--model", default="gpt-5", help="OpenAI vision model.")
+    ap.add_argument("--option", choices=["1", "2"], default="1")
+    ap.add_argument(
+        "--apikey",
+        default=None,
+        help="OpenAI API key (else OPENAI_API_KEY / backend/.env).",
+    )
+    ap.add_argument("--dpi", type=int, default=150)
     ap.add_argument("--mongo-uri", default=None)
     ap.add_argument("--db-name", default=None)
+    ap.add_argument(
+        "--include-notes",
+        action="store_true",
+        default=True,
+        help="Also extract note tables for DB page note links (default on).",
+    )
+    ap.add_argument(
+        "--no-notes",
+        action="store_true",
+        help="Skip note-table extract (faster; note links empty on DB page).",
+    )
     ap.add_argument(
         "--source",
         type=Path,
@@ -140,6 +231,7 @@ def main(argv: list[str] | None = None) -> int:
         help=f"Demo data root (default: {DEMO_DATA_DIR}).",
     )
     args = ap.parse_args(argv)
+    include_notes = bool(args.include_notes) and not bool(args.no_notes)
 
     try:
         raw = json.loads(sys.stdin.read())
@@ -152,7 +244,10 @@ def main(argv: list[str] | None = None) -> int:
         emit({"type": "error", "message": "No annual reports selected."})
         return 2
 
+    import Data_retrive as data_retrive
+
     source_root = args.source.resolve()
+    api_key = data_retrive._resolve_api_key(args.apikey)
     by_company: dict[str, list[dict[str, str]]] = {}
     order: list[str] = []
     for it in items:
@@ -171,14 +266,21 @@ def main(argv: list[str] | None = None) -> int:
             "sourceDir": str(source_root),
             "dryRun": bool(args.dry_run),
             "upload": not args.no_upload and not args.dry_run,
-            "model": "printed-statements",
-            "mode": "annual-fast",
+            "model": args.model if api_key else "printed-statements",
+            "mode": "annual-openai" if api_key else "annual-local",
         }
     )
-    emit_log(
-        "Run Annual uses local printed-statement extract "
-        "(main FS only — no OpenAI vision, no notes)."
-    )
+    if api_key:
+        emit_log(
+            f"Run Annual uses OpenAI vision on captured pages (model={args.model})."
+        )
+    else:
+        emit_log(
+            "OPENAI_API_KEY not set — Run Annual uses local printed extract.",
+            level="warning",
+        )
+
+    import tempfile
 
     ok = failed = 0
     for company_idx, company in enumerate(order, 1):
@@ -199,7 +301,6 @@ def main(argv: list[str] | None = None) -> int:
         for entry in jobs:
             group = entry.get("group") or ""
             src = _resolve_src(source_root, entry)
-            # Group / folder first, filename last (avoid timestamp IDs → fake years).
             year = resolve_report_year(
                 group,
                 src.parent.name if src else None,
@@ -247,14 +348,23 @@ def main(argv: list[str] | None = None) -> int:
                 continue
 
             try:
-                result = _extract_one(
-                    pdf_path=src,
-                    company=company,
-                    company_slug=company_key,
-                    year=year,
-                    dry_run=bool(args.dry_run),
-                    no_upload=bool(args.no_upload),
-                )
+                with tempfile.TemporaryDirectory(
+                    prefix=f"ambeon-annual-{company_key}-",
+                ) as work_dir_str:
+                    result = _extract_one(
+                        pdf_path=src,
+                        company=company,
+                        company_slug=company_key,
+                        year=year,
+                        dry_run=bool(args.dry_run),
+                        no_upload=bool(args.no_upload),
+                        api_key=api_key,
+                        model=args.model,
+                        option=args.option,
+                        dpi=args.dpi,
+                        work_dir=Path(work_dir_str),
+                        include_notes=include_notes,
+                    )
                 if result.get("ok"):
                     ok += 1
                     status = "ok"
@@ -269,7 +379,10 @@ def main(argv: list[str] | None = None) -> int:
                         "kind": label,
                         "status": status,
                         "group": group,
-                        "error": None if result.get("ok") else "no main FS tables found",
+                        "error": result.get("error"),
+                        "tables": result.get("tables"),
+                        "cells_filled": result.get("cells_filled"),
+                        "cells_missing": result.get("cells_missing"),
                     }
                 )
                 if not args.dry_run and not args.no_upload:
@@ -311,7 +424,6 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     emit({"type": "done", "ok": ok, "failed": failed})
-    emit({"type": "exit", "code": 0 if failed == 0 else 1})
     return 0 if failed == 0 else 1
 
 
