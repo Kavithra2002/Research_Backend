@@ -332,3 +332,155 @@ def quarterly_keys_for_missing_families(
     for fam in missing_families:
         out.extend(QUARTERLY_FAMILY_TO_BASE_KEYS.get(fam, []))
     return sorted(set(out))
+
+
+# ── Printed-statement layout double-check (before save) ───────────────────────
+
+_NOTE_CELL = re.compile(r"^\d{1,2}(?:\.\d{1,2})?$")
+_COMMA_AMT = re.compile(r"\(?-?\d{1,3}(?:,\d{3})+(?:\.\d+)?\)?")
+_YEAR_HDR = re.compile(r"^20\d{2}$")
+
+
+def _is_amount_cell(value: str) -> bool:
+    text = str(value or "").strip()
+    if not text:
+        return False
+    return bool(_COMMA_AMT.search(text) or re.fullmatch(r"[\(\-]?\d+\.\d+\)?", text))
+
+
+def _is_note_cell(value: str) -> bool:
+    return bool(_NOTE_CELL.fullmatch(str(value or "").strip()))
+
+
+def validate_printed_layout(
+    statement: dict[str, Any],
+    *,
+    report_year: int | None = None,
+) -> ValidationResult:
+    """Double-check that Note / year / label columns are not swapped."""
+    notes: list[str] = []
+    found_ok: list[str] = []
+    failed: list[str] = []
+
+    key = str(statement.get("key") or statement.get("title") or "statement")
+    rows = statement.get("rows") or []
+    headers = statement.get("header_rows") or []
+    if not isinstance(rows, list) or len(rows) < 3:
+        return ValidationResult(
+            ok=False,
+            report_type="printed",
+            failed_extraction=[key],
+            notes=[f"{key}: too few rows"],
+        )
+
+    data_rows = [
+        r
+        for r in rows
+        if isinstance(r, dict) and (r.get("style") or "data").lower() != "blank"
+    ]
+    labels = [str((r.get("cells") or [""])[0] or "").strip() for r in data_rows]
+    amount_labels = sum(
+        1 for lab in labels if _is_amount_cell(lab) and not re.search(r"[A-Za-z]", lab)
+    )
+    if labels and amount_labels / max(1, len(labels)) > 0.25:
+        failed.append(key)
+        notes.append(
+            f"{key}: {amount_labels}/{len(labels)} labels look like amounts "
+            "(columns likely shifted)"
+        )
+    else:
+        found_ok.append(f"{key}:labels")
+
+    note_col = statement.get("note_column")
+    if note_col is not None:
+        try:
+            note_idx = int(note_col)
+        except (TypeError, ValueError):
+            note_idx = 1
+        note_cells = [
+            str((r.get("cells") or [""] * (note_idx + 1))[note_idx] or "").strip()
+            for r in data_rows
+            if len(r.get("cells") or []) > note_idx
+        ]
+        nonempty = [c for c in note_cells if c]
+        bad_notes = [c for c in nonempty if not _is_note_cell(c) and _is_amount_cell(c)]
+        if nonempty and len(bad_notes) / max(1, len(nonempty)) > 0.3:
+            failed.append(key)
+            notes.append(
+                f"{key}: Note column holds amounts ({len(bad_notes)} cells) — misaligned"
+            )
+        else:
+            found_ok.append(f"{key}:notes")
+
+        # Amount columns must not be dominated by bare note refs.
+        amount_note_hits = 0
+        amount_cells = 0
+        for r in data_rows:
+            cells = r.get("cells") or []
+            for idx, cell in enumerate(cells):
+                if idx <= note_idx:
+                    continue
+                text = str(cell or "").strip()
+                if not text:
+                    continue
+                amount_cells += 1
+                if _is_note_cell(text) and not _is_amount_cell(text):
+                    amount_note_hits += 1
+        if amount_cells and amount_note_hits / amount_cells > 0.15:
+            failed.append(key)
+            notes.append(
+                f"{key}: {amount_note_hits} note-like tokens landed in year columns"
+            )
+        else:
+            found_ok.append(f"{key}:amounts")
+
+    if report_year and headers:
+        bottom = headers[-1] if headers else []
+        years = [int(c) for c in bottom if _YEAR_HDR.fullmatch(str(c).strip())]
+        bad_years = [y for y in years if abs(y - int(report_year)) > 2]
+        if bad_years:
+            failed.append(key)
+            notes.append(
+                f"{key}: suspicious year header(s) {bad_years} "
+                f"(report year {report_year})"
+            )
+        elif years:
+            found_ok.append(f"{key}:years")
+
+    return ValidationResult(
+        ok=len(failed) == 0,
+        report_type="printed",
+        found_ok=sorted(set(found_ok)),
+        failed_extraction=sorted(set(failed)),
+        notes=notes,
+    )
+
+
+def double_check_printed_payload(
+    payload: dict[str, Any],
+) -> ValidationResult:
+    """Run layout checks on every statement in a printed extract payload."""
+    report_year = payload.get("year")
+    try:
+        year = int(report_year) if report_year is not None else None
+    except (TypeError, ValueError):
+        year = None
+
+    all_notes: list[str] = []
+    all_ok: list[str] = []
+    all_failed: list[str] = []
+    for statement in payload.get("statements") or []:
+        if not isinstance(statement, dict) or not statement.get("ok"):
+            continue
+        vr = validate_printed_layout(statement, report_year=year)
+        all_notes.extend(vr.notes)
+        all_ok.extend(vr.found_ok)
+        all_failed.extend(vr.failed_extraction)
+
+    return ValidationResult(
+        ok=len(all_failed) == 0,
+        report_type="printed",
+        found_ok=sorted(set(all_ok)),
+        failed_extraction=sorted(set(all_failed)),
+        notes=all_notes,
+    )

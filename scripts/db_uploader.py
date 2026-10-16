@@ -80,6 +80,22 @@ TABLES_COLLECTION     = "financial_tables"
 
 REPORT_TYPES = ("annual", "quarterly")
 
+# Main FS keys that must never be deleted just because a later upload
+# omitted them (e.g. partial re-run / nested OCI under income).
+CORE_ANNUAL_STATEMENT_KEYS = (
+    "income_statement",
+    "oci",
+    "sofp",
+    "cash_flows",
+)
+CORE_QUARTERLY_FAMILIES = (
+    "income_statement",
+    "oci",
+    "sofp",
+    "cash_flows",
+    "equity",
+)
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # .env / connection
@@ -247,6 +263,57 @@ def _rows_from_step3_table(table: dict) -> tuple[list[list[str]], list[dict]]:
     return header_rows, norm_rows
 
 
+_OCI_CAPTION_HINT = re.compile(
+    r"other\s+comprehensive\s+income|"
+    r"profit\s+or\s+loss\s+and\s+other\s+comprehensive",
+    re.I,
+)
+_OCI_SECTION_HINT = re.compile(
+    r"items\s+that\s+(?:will\s+never|are\s+or\s+may)\s+be\s+reclassified|"
+    r"total\s+comprehensive\s+income|"
+    r"other\s+comprehensive\s+income",
+    re.I,
+)
+_PL_HINT = re.compile(
+    r"gross\s+income|interest\s+income|net\s+interest|"
+    r"operating\s+income|profit\s+before\s+tax|"
+    r"income\s+statement",
+    re.I,
+)
+
+
+def _table_looks_like_oci(
+    rows: list[dict],
+    *,
+    caption: str | None = None,
+    statement_title: str | None = None,
+) -> bool:
+    """True when a *nested* table under income_statement is really the OCI block.
+
+    Must be strict: a normal P&L can mention OCI once and must NOT be reclassified.
+    """
+    caption_blob = f"{caption or ''} {statement_title or ''}"
+    labels: list[str] = []
+    for r in rows[:30]:
+        if not isinstance(r, dict):
+            continue
+        cells = r.get("cells") or []
+        if cells:
+            labels.append(str(cells[0] or ""))
+    label_blob = " | ".join(labels)
+
+    # Strong P&L signal → never treat as OCI.
+    pl_hits = len(_PL_HINT.findall(label_blob + " " + caption_blob))
+    oci_hits = len(_OCI_SECTION_HINT.findall(label_blob))
+    if pl_hits >= 2 and oci_hits <= 1:
+        return False
+
+    if _OCI_CAPTION_HINT.search(caption or ""):
+        return True
+    # Need at least two OCI-specific row labels (not a single stray phrase).
+    return oci_hits >= 2
+
+
 def _rows_from_local_statement(stmt: dict) -> tuple[list[list[str]], list[dict]]:
     """Convert the local rule-based shape (columns + rows[{label, values}])
     into the unified header_rows + rows[{cells, style}] form."""
@@ -325,6 +392,20 @@ def iter_table_documents(
         if report_type == "quarterly" else None
     )
 
+    oci_stmt = statements.get("oci") if isinstance(statements, dict) else None
+    oci_already_ok = (
+        isinstance(oci_stmt, dict)
+        and (oci_stmt.get("status") in (None, "ok"))
+        and (
+            isinstance((oci_stmt.get("data") or {}).get("tables"), list)
+            and (oci_stmt.get("data") or {}).get("tables")
+            or isinstance(oci_stmt.get("rows"), list)
+            and oci_stmt.get("rows")
+        )
+    )
+    income_table_i = 0
+    oci_table_i = 0
+
     for statement_key, stmt in statements.items():
         if not isinstance(stmt, dict):
             continue
@@ -389,6 +470,36 @@ def iter_table_documents(
                 or (str(year) if year is not None else None)
                 or "default"
             )
+            # Trust the extractor key for the primary table.
+            # Only nested extras under income_statement (tables[1+]) may be
+            # reclassified as OCI — never drop income_statement itself.
+            out_key = statement_key
+            out_title = statement_title
+            out_label = statement_label
+            out_index = table_index
+            looks_oci = (
+                statement_key == "income_statement"
+                and table_index >= 1
+                and _table_looks_like_oci(
+                    rows, caption=caption, statement_title=statement_title
+                )
+            )
+            if looks_oci and oci_already_ok:
+                # Extra nested OCI duplicate — skip only this nested table.
+                continue
+            if looks_oci:
+                out_key = "oci"
+                out_title = "Statement of Other Comprehensive Income (OCI)"
+                out_label = out_title
+                out_index = oci_table_i
+                oci_table_i += 1
+            elif statement_key == "income_statement":
+                out_index = income_table_i
+                income_table_i += 1
+            elif statement_key == "oci":
+                out_index = oci_table_i
+                oci_table_i += 1
+
             yield {
                 "company_slug": company_slug,
                 "company_name": resolved_company_name,
@@ -398,10 +509,10 @@ def iter_table_documents(
                 "report_key": report_key,
                 "quarter": quarter,
                 "period_label": period,
-                "statement_key": statement_key,
-                "statement_title": statement_title,
-                "statement_label": statement_label,
-                "table_index": table_index,
+                "statement_key": out_key,
+                "statement_title": out_title,
+                "statement_label": out_label,
+                "table_index": out_index,
                 "caption": caption,
                 "preamble": preamble,
                 "footnotes": footnotes,
@@ -481,41 +592,91 @@ class MongoUploader:
         report_type: str,
         report_key: str,
         scopes: "set[tuple[int | None, str | None]]",
+        statement_keys: "set[str] | None" = None,
     ) -> int:
         """Delete stale tables before re-inserting a report.
 
-        Guarantees a single canonical set of tables per
-        ``(company_slug, report_type, year, quarter)`` so re-uploading the
-        same company/year — even under a *different* ``report_key`` (e.g. a
-        renamed report folder) — never leaves duplicate-year documents
-        behind. Also clears the same ``report_key`` to drop tables that no
-        longer exist in the new extraction (e.g. fewer statements).
-        """
-        # Always clear the SAME report_key (re-running a report replaces its
-        # own tables).  The (year, quarter) scope deletion is only meant to
-        # clean LEGACY duplicates that predate report_key — it must NEVER
-        # touch a sibling report that has its own distinct report_key, or a
-        # table whose derived year happens to match (e.g. a comparative-year
-        # column or a fallback year) would silently wipe another report's
-        # data.  We therefore restrict year-scope deletes to rows whose
-        # report_key is null/empty/missing.  ({"$in": [None, ""]} also matches
-        # documents that lack the field entirely.)
-        or_clauses: list[dict] = [{"report_key": report_key}]
-        for year, quarter in scopes:
-            or_clauses.append({
-                "year": year,
-                "quarter": quarter,
-                "report_key": {"$in": [None, ""]},
-            })
+        **Surgical by default:** only removes ``statement_key`` values that are
+        present in the new upload.  Core FS keys (income / OCI / SoFP / cash
+        flows) that are *not* in this upload are preserved so a partial re-run
+        cannot wipe Cash Flows (or any other core statement) that was already
+        stored for the same report.
 
-        result = self.db[TABLES_COLLECTION].delete_many(
-            {
+        Legacy rows with null/empty ``report_key`` in the same (year, quarter)
+        scopes are still cleaned for the same statement keys only.
+        """
+        keys = {str(k) for k in (statement_keys or ()) if k}
+        core = set(
+            CORE_ANNUAL_STATEMENT_KEYS
+            if report_type == "annual"
+            else CORE_QUARTERLY_FAMILIES
+        )
+
+        # Always replace keys we are about to write.  Non-core keys under the
+        # same report_key that vanished from the new extract are also dropped.
+        # Core keys NOT in this upload are intentionally kept.
+        if keys:
+            delete_keys = set(keys)
+            # Drop obsolete non-core extras for this report_key only.
+            extra_filter = {
                 "company_slug": company_slug,
                 "report_type": report_type,
-                "$or": or_clauses,
+                "report_key": report_key,
+                "statement_key": {"$nin": list(core | keys)},
             }
-        )
-        return int(getattr(result, "deleted_count", 0) or 0)
+        else:
+            # Backward-compat: no key list → old full report_key wipe
+            # (should be rare; callers should pass statement_keys).
+            delete_keys = None
+            extra_filter = None
+
+        deleted = 0
+        if delete_keys is None:
+            or_clauses: list[dict] = [{"report_key": report_key}]
+            for year, quarter in scopes:
+                or_clauses.append({
+                    "year": year,
+                    "quarter": quarter,
+                    "report_key": {"$in": [None, ""]},
+                })
+            result = self.db[TABLES_COLLECTION].delete_many(
+                {
+                    "company_slug": company_slug,
+                    "report_type": report_type,
+                    "$or": or_clauses,
+                }
+            )
+            deleted += int(getattr(result, "deleted_count", 0) or 0)
+        else:
+            key_list = sorted(delete_keys)
+            # Same report_key + statement keys being rewritten.
+            result = self.db[TABLES_COLLECTION].delete_many(
+                {
+                    "company_slug": company_slug,
+                    "report_type": report_type,
+                    "report_key": report_key,
+                    "statement_key": {"$in": key_list},
+                }
+            )
+            deleted += int(getattr(result, "deleted_count", 0) or 0)
+            # Legacy null report_key rows for the same keys / year scopes.
+            for year, quarter in scopes:
+                result = self.db[TABLES_COLLECTION].delete_many(
+                    {
+                        "company_slug": company_slug,
+                        "report_type": report_type,
+                        "year": year,
+                        "quarter": quarter,
+                        "report_key": {"$in": [None, ""]},
+                        "statement_key": {"$in": key_list},
+                    }
+                )
+                deleted += int(getattr(result, "deleted_count", 0) or 0)
+            if extra_filter is not None:
+                result = self.db[TABLES_COLLECTION].delete_many(extra_filter)
+                deleted += int(getattr(result, "deleted_count", 0) or 0)
+
+        return deleted
 
     def upsert_table(self, table_doc: dict) -> bool:
         """Upsert a single table document by its unique compound key."""
@@ -550,6 +711,31 @@ class MongoUploader:
 def _log(msg: str, *, quiet: bool) -> None:
     if not quiet:
         print(msg, flush=True)
+
+
+def _ok_statement_keys_in_doc(doc: dict) -> set[str]:
+    """Statement keys that extracted successfully and carry at least one table/row."""
+    statements, _meta = _statements_map(doc)
+    out: set[str] = set()
+    for key, stmt in statements.items():
+        if not isinstance(stmt, dict):
+            continue
+        status = stmt.get("status")
+        if status is not None and status != "ok":
+            continue
+        data = stmt.get("data")
+        if isinstance(data, dict) and isinstance(data.get("tables"), list):
+            for table in data["tables"]:
+                if not isinstance(table, dict):
+                    continue
+                rows = table.get("rows") or []
+                headers = table.get("header_rows") or []
+                if rows or headers:
+                    out.add(str(key))
+                    break
+        elif isinstance(stmt.get("rows"), list) and stmt.get("rows"):
+            out.add(str(key))
+    return out
 
 
 def upload_results_data(
@@ -589,6 +775,12 @@ def upload_results_data(
     if rg_years:
         fallback_year = max(rg_years)
 
+    # Canonical report folder label so re-runs share one report_key.
+    if report_group and fallback_year and report_type == "annual":
+        report_group = f"Annual Report {fallback_year}"
+
+    ok_keys_in_doc = _ok_statement_keys_in_doc(doc)
+
     table_docs = list(
         iter_table_documents(
             doc,
@@ -601,12 +793,30 @@ def upload_results_data(
         )
     )
 
+    # Force every table onto the folder year so UI year tabs never miss a
+    # statement due to a comparative header year.
+    if fallback_year is not None:
+        for td in table_docs:
+            td["year"] = fallback_year
+            if report_type == "annual":
+                td["report_key"] = report_group or td.get("report_key") or "default"
+
+    written_keys = {str(td.get("statement_key")) for td in table_docs}
+    dropped_ok = sorted(ok_keys_in_doc - written_keys)
+    if dropped_ok:
+        _log(
+            f"  [db] WARNING: extracted OK but not mapped to upload docs: "
+            f"{', '.join(dropped_ok)}",
+            quiet=quiet,
+        )
+
     if not table_docs:
         return {
             "ok": True,
             "tables": 0,
             "company_slug": slug,
             "note": "no usable tables found in results",
+            "dropped_ok_keys": dropped_ok,
         }
 
     resolved_name = company_name or table_docs[0].get("company_name") or slug
@@ -630,9 +840,8 @@ def upload_results_data(
     try:
         uploader.upsert_company(slug, resolved_name)
 
-        # Drop any stale tables for this report's (year, quarter) scope so the
-        # same company/year can never end up stored twice (e.g. when the
-        # source report folder was renamed, producing a new report_key).
+        # Surgical cleanup: only replace statement_keys present in THIS upload.
+        # Core FS keys omitted from this payload (e.g. cash_flows) are kept.
         report_key = table_docs[0].get("report_key") or "default"
         scopes = {
             (td.get("year"), td.get("quarter")) for td in table_docs
@@ -643,6 +852,7 @@ def upload_results_data(
                 report_type=report_type,
                 report_key=report_key,
                 scopes=scopes,
+                statement_keys=written_keys,
             )
         except Exception as ex:
             errors.append(f"cleanup failed: {ex}")
@@ -655,13 +865,41 @@ def upload_results_data(
                 errors.append(
                     f"{td.get('statement_key')}#{td.get('table_index')}: {ex}"
                 )
+
+        # Post-write verify: every OK core key from the results must exist now.
+        core = (
+            CORE_ANNUAL_STATEMENT_KEYS
+            if report_type == "annual"
+            else CORE_QUARTERLY_FAMILIES
+        )
+        expected_core = sorted(k for k in ok_keys_in_doc if k in core)
+        if expected_core and fallback_year is not None:
+            found = set(
+                uploader.db[TABLES_COLLECTION].distinct(
+                    "statement_key",
+                    {
+                        "company_slug": slug,
+                        "report_type": report_type,
+                        "year": fallback_year,
+                        "statement_key": {"$in": expected_core},
+                    },
+                )
+            )
+            missing_core = [k for k in expected_core if k not in found]
+            if missing_core:
+                msg = (
+                    "core statements extracted OK but missing after upload: "
+                    + ", ".join(missing_core)
+                )
+                errors.append(msg)
+                _log(f"  [db] ERROR: {msg}", quiet=quiet)
     finally:
         if own_uploader:
             uploader.close()
 
     _log(
         f"  [db] {slug} ({report_type}): upserted {written}/{len(table_docs)} "
-        f"table(s), removed {removed} stale",
+        f"table(s), removed {removed} stale; keys={sorted(written_keys)}",
         quiet=quiet,
     )
     return {
@@ -675,6 +913,8 @@ def upload_results_data(
         "report_group": report_group,
         "year": table_docs[0].get("year"),
         "quarter": table_docs[0].get("quarter"),
+        "statement_keys": sorted(written_keys),
+        "dropped_ok_keys": dropped_ok,
         "errors": errors,
     }
 
