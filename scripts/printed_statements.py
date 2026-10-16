@@ -112,14 +112,90 @@ def _page_texts(pdf_path: Path) -> list[str]:
         return [doc[i].get_text("text") or "" for i in range(len(doc))]
 
 
+# Ambeon 2024/25+ embeds a financial-section sidebar (titles + page numbers) on
+# every FS page. PyMuPDF emits that nav *before* the real statement title, so
+# naive TOC / auditor / notes checks reject the actual tables.
+_FS_NAV_LISTED = re.compile(
+    r"(?i)(?:financial calendar|independent auditor.?s?\s+report|"
+    r"income statement|statement of comprehensive income|"
+    r"statement of financial position|statement of changes in equity|"
+    r"statement of cash flows|notes to the financial statements)"
+    r"\s+\d{2,3}\b"
+)
+_FS_BODY_HEADING = re.compile(
+    r"(?m)^(?:INCOME STATEMENT|STATEMENT OF COMPREHENSIVE INCOME|"
+    r"STATEMENT OF FINANCIAL POSITION|STATEMENT OF CHANGES IN EQUITY|"
+    r"STATEMENT OF CASH FLOWS|NOTES TO THE FINANCIAL STATEMENTS)\b"
+)
+
+
+def _has_fs_section_nav(text: str) -> bool:
+    return len(_FS_NAV_LISTED.findall((text or "")[:2200])) >= 3
+
+
+def _page_body_for_classify(text: str) -> str:
+    """Drop repeated FS sidebar nav so classification sees the printed title.
+
+    Prefer the chrome line ``Annual Report YYYY/YY`` (always near the top).
+    Searching the whole page for ALL-CAPS titles is unsafe — footers sometimes
+    repeat ``STATEMENT OF CASH FLOWS`` and would truncate the real body.
+    """
+    raw = text or ""
+    if not _has_fs_section_nav(raw):
+        return raw
+    m2 = re.search(r"(?i)annual report\s+20\d{2}\s*/\s*\d{2}\s*", raw[:1000])
+    if m2:
+        return raw[m2.end() :]
+    m = _FS_BODY_HEADING.search(raw[:1200])
+    if m and m.start() > 60:
+        return raw[m.start() :]
+    return raw
+
+
+def _looks_like_note_body(body: str) -> bool:
+    """True when the page body is a numbered note, not a primary FS title."""
+    head = (body or "").lstrip()[:200]
+    if not head:
+        return False
+    if _FS_BODY_HEADING.match(head):
+        return False
+    if re.match(
+        r"(?i)^(?:income statement|statement of (?:profit|comprehensive|"
+        r"financial|cash|changes)|notes to the financial)",
+        head,
+    ):
+        return False
+    return bool(re.match(r"^\d{1,2}(?:\.\d+)?[\t .\-]", head))
+
+
+def _is_toc_only_page(text: str) -> bool:
+    """True for contents pages; false when a sidebar TOC rides on a real FS table."""
+    if not text:
+        return True
+    body = _page_body_for_classify(text)
+    amounts = len(_COMMA_AMT.findall(body))
+    if amounts >= 8:
+        return False
+    bl = body.lstrip()
+    if _FS_BODY_HEADING.match(bl) or re.match(
+        r"(?i)^(?:income statement|statement of |notes to the financial)",
+        bl[:120],
+    ):
+        return False
+    return _looks_like_toc(body) or _looks_like_toc(text)
+
+
 def _notes_section_page(texts: list[str]) -> int | None:
     """1-based page where FS numbered notes begin (not TOC / sustainability)."""
     fs_note_heads: list[int] = []
     reporting: list[int] = []
     for idx, raw in enumerate(texts):
-        head = raw[:2200]
+        body = _page_body_for_classify(raw)
+        head = body[:2200]
         low = head.lower()
         if "contents" in low[:500] or "table of contents" in low[:700]:
+            continue
+        if _is_toc_only_page(raw):
             continue
         # Sustainability "Basis of Preparation / 1. Reporting entity" must not
         # steal the FS window (COMB 2025 put that near p145; real FS ~p311).
@@ -150,9 +226,12 @@ def _notes_section_page(texts: list[str]) -> int | None:
 
 def _classify_page(text: str) -> str | None:
     """Primary statement printed on this page, if any."""
-    if not text or _looks_like_toc(text):
+    if not text or _is_toc_only_page(text):
         return None
-    low = text.lower()
+    body = _page_body_for_classify(text)
+    if _looks_like_note_body(body):
+        return None
+    low = body.lower()
     head = low[:1600]
     if (
         "independent auditor" in head
@@ -193,7 +272,7 @@ def _classify_page(text: str) -> str | None:
     if "statement of financial position" in head or re.search(r"\bbalance sheet\b", head):
         return "sofp"
 
-    amounts = len(_COMMA_AMT.findall(text))
+    amounts = len(_COMMA_AMT.findall(body))
     if amounts < 8:
         return None
     if (
@@ -231,22 +310,38 @@ def _classify_page(text: str) -> str | None:
 
 
 def _continues_statement(text: str, kind: str) -> bool:
-    if not text or _looks_like_toc(text):
+    if not text:
+        return False
+    body = _page_body_for_classify(text)
+    if _is_toc_only_page(text):
         return False
     other = _classify_page(text)
     if other and other != kind:
         return False
-    if "notes to the financial" in text.lower()[:400]:
+    if "notes to the financial" in body.lower()[:400]:
         return False
-    return len(_COMMA_AMT.findall(text)) >= 6
+    return len(_COMMA_AMT.findall(body)) >= 6
 
 
 def _primary_statement_score(kind: str, text: str) -> int:
     """Higher = more like the audited primary FS table (not digests)."""
-    low = (text or "").lower()
+    body = _page_body_for_classify(text or "")
+    low = body.lower()
     head = low[:2000]
-    amounts = len(_COMMA_AMT.findall(text or ""))
+    amounts = len(_COMMA_AMT.findall(body))
     score = amounts
+    bl = body.lstrip()
+    # Strongly prefer the audited primary title page over note / digest tables.
+    if kind == "income_statement" and re.match(r"(?i)^income statement\b", bl):
+        score += 200
+    elif kind == "oci" and re.match(
+        r"(?i)^statement of (?:profit or loss and )?comprehensive income\b", bl
+    ):
+        score += 200
+    elif kind == "sofp" and re.match(r"(?i)^statement of financial position\b", bl):
+        score += 200
+    elif kind == "cash_flows" and re.match(r"(?i)^statement of cash flows\b", bl):
+        score += 200
     if "group" in head and "bank" in head:
         score += 40
     if "note" in head and "page" in head:
@@ -331,6 +426,15 @@ def locate_statement_pages(texts: list[str]) -> dict[str, list[int]]:
     return found
 
 
+def _looks_page_ref(value: str) -> bool:
+    """True for a dedicated Page No. cell (not a note like 13.1 or an amount)."""
+    text = _clean(value)
+    if not text or _COMMA_AMT.search(text) or _looks_amount(text):
+        return False
+    # Page numbers are whole 2–3 digit ints; note refs may be "13.1".
+    return bool(re.fullmatch(_PAGE_REF, text)) and "." not in text
+
+
 def _split_leading(cell: str) -> tuple[str, str, str]:
     """Split a cell that may contain 'note page amount'."""
     text = _clean(cell)
@@ -345,6 +449,52 @@ def _split_leading(cell: str) -> tuple[str, str, str]:
     if re.fullmatch(_NOTE_REF, text) and not _COMMA_AMT.search(text):
         return text, "", ""
     return "", "", text
+
+
+def _peel_note_page(
+    rest: list[str],
+    *,
+    expect_note: bool = False,
+    expect_page: bool = False,
+) -> tuple[str, str, list[str]]:
+    """Peel Note (+ optional Page No.) off the leading amount cells.
+
+    Bank ruled tables are Label | Note | Page | amounts…, but pdfplumber often
+    leaves Note and Page as separate cells. Without peeling Page, the page
+    number lands in the first amount slot and later shifts every year column.
+    Empty Note/Page cells must still be consumed so amounts stay aligned.
+    """
+    if not rest:
+        return "", "", []
+    note, page, rem = _split_leading(rest[0])
+    amounts: list[str] = []
+    if note:
+        if rem:
+            amounts.append(rem)
+        leftover = [_clean(c) for c in rest[1:]]
+        if not page and leftover and (
+            _looks_page_ref(leftover[0]) or (expect_page and not leftover[0])
+        ):
+            page = leftover[0]
+            leftover = leftover[1:]
+        amounts.extend(leftover)
+        return note, page, amounts
+    # Dedicated empty Note column (row has no note ref).
+    if expect_note and (not rest[0] or rest[0].lower() in {"note", "-"}):
+        leftover = [_clean(c) for c in rest[1:]]
+        if expect_page and leftover and (
+            not leftover[0] or _looks_page_ref(leftover[0])
+        ):
+            page = leftover[0] if _looks_page_ref(leftover[0]) else ""
+            leftover = leftover[1:]
+        return "", page, leftover
+    # No note in first cell — still drop a lone page column when present.
+    if _looks_page_ref(rest[0]) and len(rest) > 1:
+        return "", _clean(rest[0]), [_clean(c) for c in rest[1:]]
+    if expect_page and (not rest[0] or _looks_page_ref(rest[0])):
+        page = rest[0] if _looks_page_ref(rest[0]) else ""
+        return "", page, [_clean(c) for c in rest[1:]]
+    return "", "", [_clean(c) for c in rest]
 
 
 def _section_like(label: str) -> bool:
@@ -363,24 +513,74 @@ def _section_like(label: str) -> bool:
     return False
 
 
+def _ruled_meta_columns(raw_rows: list[list[Any]]) -> tuple[bool, bool]:
+    """Detect whether the ruled grid has dedicated Note / Page columns."""
+    expect_note = False
+    expect_page = False
+    for raw in raw_rows[:6]:
+        cells = [_clean(c).lower() for c in raw]
+        blob = " ".join(cells)
+        if "note" in blob:
+            expect_note = True
+        if re.search(r"\bpage\b", blob):
+            expect_page = True
+    if expect_note or expect_page:
+        return expect_note, expect_page
+    # Infer from body: many short note refs in column 1.
+    note_hits = page_hits = 0
+    scanned = 0
+    for raw in raw_rows[1:40]:
+        cells = [_clean(c) for c in raw]
+        if len(cells) < 3 or not cells[0] or _has_comma_amount(cells[0]):
+            continue
+        scanned += 1
+        if cells[1] and re.fullmatch(_NOTE_REF, cells[1]):
+            note_hits += 1
+        if len(cells) > 2 and _looks_page_ref(cells[2]):
+            page_hits += 1
+    if scanned >= 4:
+        expect_note = note_hits >= max(2, scanned // 4)
+        expect_page = page_hits >= max(2, scanned // 4)
+    return expect_note, expect_page
+
+
 def _parse_ruled_rows(raw_rows: list[list[Any]]) -> list[dict[str, Any]]:
     parsed: list[dict[str, Any]] = []
     width = 0
+    expect_note, expect_page = _ruled_meta_columns(raw_rows)
     for raw in raw_rows:
         cells = [_clean(c) for c in raw]
         if not any(cells):
             continue
         label = cells[0] if cells else ""
-        note, page, amounts = "", "", []
-        rest = cells[1:]
-        if rest:
-            note, page, rem = _split_leading(rest[0])
-            if note:
-                if rem:
-                    amounts.append(rem)
-                amounts.extend(_clean(c) for c in rest[1:])
-            else:
-                amounts = [_clean(c) for c in rest]
+        # Skip header furniture rows.
+        low = label.lower()
+        if low in {"", "note", "page", "page no.", "page no"} and not any(
+            _has_comma_amount(c) for c in cells[1:]
+        ):
+            if any(c.lower() in {"note", "page", "page no.", "page no"} for c in cells):
+                continue
+        # If the label cell itself is an amount (column shift), recover text label.
+        if _has_comma_amount(label) and not re.search(r"[A-Za-z]", label):
+            for idx, cell in enumerate(cells):
+                if idx == 0:
+                    continue
+                if cell and re.search(r"[A-Za-z]", cell) and not _looks_amount(cell):
+                    label = cell
+                    cells = [cell] + cells[1:idx] + cells[idx + 1 :]
+                    break
+        note, page, amounts = _peel_note_page(
+            cells[1:],
+            expect_note=expect_note,
+            expect_page=expect_page,
+        )
+        # Drop leading note-like tokens that leaked into amounts (duplicate Note).
+        while amounts and re.fullmatch(_NOTE_REF, amounts[0]) and not _looks_amount(
+            amounts[0]
+        ):
+            if not note:
+                note = amounts[0]
+            amounts = amounts[1:]
         width = max(width, len(amounts))
         parsed.append(
             {"label": label, "note": note, "page": page, "amounts": amounts}
@@ -450,8 +650,19 @@ def _skip_ruled_row(label: str, note: str, amounts: list[str]) -> bool:
 
 
 def _entity_name(page_text: str) -> str:
-    low = page_text.lower()
-    if re.search(r"\bbank\b", low):
+    """Second entity next to Group: Company for holdings, Bank for banks."""
+    head = (page_text or "").lower()[:2000]
+    has_group = bool(re.search(r"\bgroup\b", head))
+    has_company = bool(re.search(r"\bcompany\b", head))
+    has_bank = bool(re.search(r"\bbank\b", head))
+    # Prefer Company when both Group and Company headers appear (Ambeon-style).
+    if has_group and has_company:
+        return "Company"
+    if has_group and has_bank:
+        return "Bank"
+    if has_company:
+        return "Company"
+    if has_bank:
         return "Bank"
     return "Company"
 
@@ -468,15 +679,34 @@ def _unit_label(page_text: str) -> str:
 
 
 def _years_from_text(page_text: str, fallback: int) -> tuple[int, int]:
-    years = [int(y) for y in re.findall(r"\b(20\d{2})\b", page_text[:2500])]
+    """Pick current/prior year headers near the report year.
+
+    Rejects timestamp fragments (e.g. 2096 from PDF ids) and years far from
+    the known report year so multi-year merges stay aligned.
+    """
+    lo = max(1990, fallback - 3)
+    hi = min(2100, fallback + 2)
+    years = [
+        int(y)
+        for y in re.findall(r"\b(20\d{2})\b", page_text[:2500])
+        if lo <= int(y) <= hi
+    ]
     uniq: list[int] = []
     for year in years:
         if year not in uniq:
             uniq.append(year)
+    if fallback not in uniq:
+        uniq.insert(0, fallback)
     if len(uniq) >= 2:
+        # Prefer (fallback, fallback-1) when both appear; else closest pair.
+        if fallback in uniq and (fallback - 1) in uniq:
+            return fallback, fallback - 1
         current, prior = uniq[0], uniq[1]
         if prior > current:
             current, prior = prior, current
+        # Guard: keep current within 1 year of the report year.
+        if abs(current - fallback) > 1:
+            return fallback, fallback - 1
         return current, prior
     return fallback, fallback - 1
 
@@ -494,14 +724,23 @@ def _build_ruled_headers(
     has_page: bool,
     has_change: bool,
     amount_count: int,
+    has_note: bool = True,
 ) -> list[list[str]]:
+    """Build headers that match body width: Label [| Note] [| Page] | amounts.
+
+    Always include BOTH current and prior year under Group and Company/Bank when
+    enough amount columns exist (standard comparative note tables).
+    """
+    note_cols = 1 if has_note else 0
+    page_cols = 1 if has_page else 0
+    prefix = [""] + (["Note"] if has_note else []) + (["Page"] if has_page else [])
+    prefix_pad = [""] * len(prefix)
+
     if has_page and has_change and amount_count >= 6:
         return [
-            ["", "", "", "Group", "", "", entity, "", ""],
-            [
-                "",
-                "Note",
-                "Page",
+            prefix_pad + ["Group", "", "", entity, "", ""],
+            prefix
+            + [
                 str(year),
                 str(prior),
                 "Change %",
@@ -512,23 +751,30 @@ def _build_ruled_headers(
         ]
     if has_page and amount_count >= 4:
         return [
-            ["", "", "", "Group", "", entity, ""],
-            ["", "Note", "Page", str(year), str(prior), str(year), str(prior)],
+            prefix_pad + ["Group", "", entity, ""],
+            prefix + [str(year), str(prior), str(year), str(prior)],
         ]
-    labels = ["", "Note"]
-    group = ["", ""]
-    # Pair remaining amounts as year, prior, [change] repeating.
-    rest = amount_count
+
+    # Default / note tables: Label [|Note] + Group(year,prior) + Entity(year,prior)
+    labels = list(prefix)
+    group = list(prefix_pad)
+    rest = max(0, int(amount_count))
     entities = ["Group", entity]
     slot = 0
     while rest > 0:
         who = entities[min(slot, len(entities) - 1)]
         take = 3 if has_change and rest >= 3 else min(2, rest)
+        # Prefer full year+prior pairs when we still have enough columns.
+        if not has_change and rest >= 2:
+            take = 2
         group.extend([who] + [""] * (take - 1))
         if take == 3:
             labels.extend([str(year), str(prior), "Change %"])
+        elif take == 2:
+            labels.extend([str(year), str(prior)])
         else:
-            labels.extend([str(year), str(prior)][:take])
+            # Single leftover column — still label as current year.
+            labels.append(str(year))
         rest -= take
         slot += 1
     return [group, labels]
@@ -557,6 +803,7 @@ def ruled_statement_from_pages(
     parsed = _parse_ruled_rows(raw_rows)
     has_page = sum(1 for row in parsed if row["page"]) >= 3
     has_change = _header_has_change(raw_rows)
+    has_note = any(bool(row.get("note")) for row in parsed)
     amount_count = max((len(row["amounts"]) for row in parsed), default=0)
     current, prior = _years_from_text(page_text, year)
     body: list[dict[str, Any]] = []
@@ -564,7 +811,7 @@ def ruled_statement_from_pages(
         if _skip_ruled_row(row["label"], row["note"], row["amounts"]):
             continue
         cells = [row["label"]]
-        if any(r["note"] or r["page"] for r in parsed):
+        if has_note:
             cells.append(row["note"])
         if has_page:
             cells.append(row["page"])
@@ -581,7 +828,7 @@ def ruled_statement_from_pages(
         )
     if len(body) < 6:
         return None
-    note_column = 1 if any(r.get("note_ref") for r in body) else None
+    note_column = 1 if has_note else None
     headers = _build_ruled_headers(
         entity=_entity_name(page_text),
         year=current,
@@ -589,6 +836,7 @@ def ruled_statement_from_pages(
         has_page=has_page,
         has_change=has_change,
         amount_count=amount_count,
+        has_note=has_note,
     )
     return {
         "header_rows": headers,
@@ -633,10 +881,58 @@ def _leading_section_rows(header_rows: list[list[str]]) -> list[dict[str, Any]]:
     return found
 
 
+def _realign_amount_labels(rows: list[list[str]]) -> list[list[str]]:
+    """When col 0 is mostly amounts, shift so the first text cell becomes the label."""
+    if len(rows) < 5:
+        return rows
+    sample = rows[: min(40, len(rows))]
+    amount_labels = sum(
+        1
+        for row in sample
+        if row and _has_comma_amount(row[0]) and not re.search(r"[A-Za-z]", row[0])
+    )
+    if amount_labels < max(3, len(sample) // 3):
+        return rows
+    fixed: list[list[str]] = []
+    for row in rows:
+        cells = list(row)
+        if not cells:
+            fixed.append(cells)
+            continue
+        if re.search(r"[A-Za-z]", cells[0]) and not _has_comma_amount(cells[0]):
+            fixed.append(cells)
+            continue
+        text_idx = next(
+            (
+                i
+                for i, c in enumerate(cells)
+                if c and re.search(r"[A-Za-z]", c) and not _looks_amount(c)
+            ),
+            None,
+        )
+        if text_idx is None:
+            # Pure numeric row with no label — drop (usually a shifted footer).
+            continue
+        label = cells[text_idx]
+        rest = [c for i, c in enumerate(cells) if i != text_idx]
+        # Prefer Label | Note | amounts order after the shift.
+        if rest and re.fullmatch(_NOTE_REF, rest[0]) and not _looks_amount(rest[0]):
+            fixed.append([label, *rest])
+        elif len(rest) >= 2 and re.fullmatch(_NOTE_REF, rest[1]) and not _looks_amount(
+            rest[1]
+        ):
+            fixed.append([label, rest[1], rest[0], *rest[2:]])
+        else:
+            fixed.append([label, *rest])
+    return fixed
+
+
 def _word_body_rows(header_rows: list[list[str]], body_rows: list[list[str]], year: int) -> dict[str, Any] | None:
     if len(body_rows) < 5:
         return None
+    body_rows = _realign_amount_labels([[_clean(c) for c in row] for row in body_rows])
     cleaned: list[dict[str, Any]] = _leading_section_rows(header_rows)
+    staged: list[dict[str, Any]] = []
     for row in body_rows:
         cells = [_clean(c) for c in row]
         if not any(cells):
@@ -645,6 +941,9 @@ def _word_body_rows(header_rows: list[list[str]], body_rows: list[list[str]], ye
         if _is_footer_blob(blob):
             continue
         label = cells[0]
+        # Skip rows whose "label" is still a bare amount after realignment.
+        if _has_comma_amount(label) and not re.search(r"[A-Za-z]", label):
+            continue
         if re.fullmatch(r"\d{2,3}", label) and not any(_has_comma_amount(c) for c in cells[1:]):
             continue
         if re.search(r"\bplc\b", label, re.I) and not any(_has_comma_amount(c) for c in cells):
@@ -659,13 +958,41 @@ def _word_body_rows(header_rows: list[list[str]], body_rows: list[list[str]], ye
             continue
         note = cells[1].strip() if len(cells) > 1 else ""
         note_ref = note if re.fullmatch(_NOTE_REF, note) else None
-        amounts = cells[2:] if note_ref or (len(cells) > 1 and cells[1] == "") else cells[1:]
-        style = _row_style(label, amounts, note_ref or "")
-        cleaned.append({"cells": cells, "note_ref": note_ref, "style": style})
+        amount_cells = (
+            cells[2:] if note_ref or (len(cells) > 1 and cells[1] == "") else cells[1:]
+        )
+        if note_ref and amount_cells and _looks_page_ref(amount_cells[0]):
+            amount_cells = amount_cells[1:]
+        staged.append(
+            {
+                "label": label,
+                "note_ref": note_ref,
+                "amounts": amount_cells,
+                "style": _row_style(label, amount_cells, note_ref or ""),
+            }
+        )
+    if len(staged) < 5:
+        return None
+    has_notes = any(r["note_ref"] for r in staged)
+    for item in staged:
+        cells = [item["label"]]
+        if has_notes:
+            cells.append(item["note_ref"] or "")
+        cells.extend(item["amounts"])
+        cleaned.append(
+            {
+                "cells": cells,
+                "note_ref": item["note_ref"],
+                "style": item["style"],
+            }
+        )
     if len(cleaned) < 5:
         return None
     width = max(len(r["cells"]) for r in cleaned)
-    note_column = 1 if any(r["note_ref"] for r in cleaned) else None
+    # Pad every row to width so Note/year columns stay aligned.
+    for row in cleaned:
+        row["cells"] = row["cells"] + [""] * (width - len(row["cells"]))
+    note_column = 1 if has_notes else None
     group = [""] * width
     years = [""] * width
     if note_column is not None and width > note_column:
@@ -805,12 +1132,31 @@ def _trim_note_rows(rows: list[dict[str, Any]], ref: str, headings: list[dict[st
     return kept
 
 
+def _is_note_header_echo_row(label: str, amounts: list[str]) -> bool:
+    """Drop repeated Group/Company/year header lines that land in the body."""
+    lab = (label or "").strip().lower()
+    if re.match(r"^(group|company|bank)$", lab) and not any(
+        _has_comma_amount(a) for a in amounts
+    ):
+        return True
+    joined = " ".join(str(a or "") for a in amounts).strip()
+    if not lab and re.fullmatch(r"(?:20\d{2}\s*){2,}", joined):
+        return True
+    if not lab and all(
+        (not str(a or "").strip()) or re.fullmatch(r"20\d{2}", str(a).strip())
+        for a in amounts
+    ):
+        return True
+    return False
+
+
 def _note_from_ruled(raw_rows: list[list[Any]], *, year: int, page_text: str) -> dict[str, Any] | None:
     parsed = _parse_ruled_rows(raw_rows)
     if len(parsed) < 3:
         return None
     has_page = sum(1 for row in parsed if row["page"]) >= 2
     has_change = _header_has_change(raw_rows)
+    has_note = any(bool(row.get("note")) for row in parsed)
     amount_count = max((len(row["amounts"]) for row in parsed), default=0)
     current, prior = _years_from_text(page_text, year)
     body: list[dict[str, Any]] = []
@@ -819,11 +1165,14 @@ def _note_from_ruled(raw_rows: list[list[Any]], *, year: int, page_text: str) ->
             continue
         if not row["label"] and not any(row["amounts"]):
             continue
+        if _is_note_header_echo_row(row["label"], row["amounts"]):
+            continue
         cells = [row["label"]]
-        if any(r["note"] for r in parsed):
+        if has_note:
             cells.append(row["note"])
         if has_page:
             cells.append(row["page"])
+        # Keep every amount column (current + prior × Group + Company/Bank).
         cells.extend(row["amounts"])
         body.append(
             {
@@ -842,19 +1191,32 @@ def _note_from_ruled(raw_rows: list[list[Any]], *, year: int, page_text: str) ->
             has_page=has_page,
             has_change=has_change,
             amount_count=amount_count,
+            has_note=has_note,
         ),
         "rows": body,
-        "note_column": 1 if any(r.get("note_ref") for r in body) else None,
+        "note_column": 1 if has_note else None,
         "unit": _unit_label(page_text),
     }
 
 
-def _note_from_words(pdf, pages: list[int], *, ref: str, title: str) -> dict[str, Any] | None:
+def _note_from_words(
+    pdf,
+    pages: list[int],
+    *,
+    ref: str,
+    title: str,
+    year: int | None = None,
+) -> dict[str, Any] | None:
     combined: list[list[str]] = []
+    page_text_bits: list[str] = []
     for page_num in pages:
         if page_num < 1 or page_num > len(pdf.pages):
             continue
         page = pdf.pages[page_num - 1]
+        try:
+            page_text_bits.append(page.extract_text() or "")
+        except Exception:
+            pass
         words = page.extract_words(use_text_flow=False) or []
         y0 = 0.0
         y1 = float(page.height)
@@ -892,6 +1254,7 @@ def _note_from_words(pdf, pages: list[int], *, ref: str, title: str) -> dict[str
     for row in body_rows:
         cells = [_clean(c) for c in row]
         label = cells[0] if cells else ""
+        amounts = cells[1:]
         blob = " ".join(cells)
         if label.lower().startswith("segment information"):
             break
@@ -901,14 +1264,17 @@ def _note_from_words(pdf, pages: list[int], *, ref: str, title: str) -> dict[str
             continue
         if not any(cells):
             continue
+        if _is_note_header_echo_row(label, amounts):
+            continue
         note = ""
         if len(cells) > 1 and re.fullmatch(_NOTE_REF, cells[1]):
             note = cells[1]
+            amounts = cells[2:]
         body.append(
             {
-                "cells": cells,
+                "cells": ([label, note] + amounts) if note else ([label] + amounts),
                 "note_ref": note or None,
-                "style": _row_style(label, cells[1:], note),
+                "style": _row_style(label, amounts, note),
             }
         )
     if len(body) < 1:
@@ -916,12 +1282,39 @@ def _note_from_words(pdf, pages: list[int], *, ref: str, title: str) -> dict[str
     matrix = _drop_empty_columns([r["cells"] for r in body])
     for row, cells in zip(body, matrix):
         row["cells"] = cells
-    headers = _drop_empty_columns([[_clean(c) for c in row] for row in header_rows if any(_clean(c) for c in row)])
+
+    page_text = "\n".join(page_text_bits)
+    has_note = any(r.get("note_ref") for r in body)
+    amount_count = max(
+        (
+            len(r["cells"]) - (2 if has_note else 1)
+            for r in body
+            if isinstance(r.get("cells"), list)
+        ),
+        default=0,
+    )
+    # Rebuild comparative headers so Group/Company × current+prior always align.
+    report_year = int(year) if year else _years_from_text(page_text, 2020)[0]
+    current, prior = _years_from_text(page_text, report_year)
+    headers = _build_ruled_headers(
+        entity=_entity_name(page_text),
+        year=current,
+        prior=prior,
+        has_page=False,
+        has_change=False,
+        amount_count=max(amount_count, 4 if amount_count >= 3 else amount_count),
+        has_note=has_note,
+    )
+    # Fall back to OCR headers only when rebuild produced nothing useful.
+    if not headers or max((len(h) for h in headers), default=0) < 3:
+        headers = _drop_empty_columns(
+            [[_clean(c) for c in row] for row in header_rows if any(_clean(c) for c in row)]
+        )
     return {
         "header_rows": headers,
         "rows": body,
-        "note_column": None,
-        "unit": "",
+        "note_column": 1 if has_note else None,
+        "unit": _unit_label(page_text),
     }
 
 
@@ -958,7 +1351,9 @@ def extract_note(
     if ruled_ok and ruled_rows:
         table = _note_from_ruled(ruled_rows, year=year, page_text=page_text)
     if table is None:
-        table = _note_from_words(pdf, pages, ref=resolved, title=title)
+        table = _note_from_words(
+            pdf, pages, ref=resolved, title=title, year=year
+        )
     if table is None:
         return {
             "note_ref": resolved,
@@ -982,17 +1377,112 @@ def extract_note(
 def _collect_note_refs(statements: list[dict[str, Any]]) -> list[str]:
     seen: list[str] = []
     for statement in statements:
+        note_col = statement.get("note_column")
         for row in statement.get("rows") or []:
             ref = str(row.get("note_ref") or "").strip()
-            if ref and ref not in seen:
+            if ref and re.fullmatch(_NOTE_REF, ref) and ref not in seen:
                 seen.append(ref)
-            for cell in row.get("cells") or []:
-                text = _clean(cell)
+                continue
+            cells = row.get("cells") or []
+            # Prefer explicit note column (usually index 1 after the label).
+            idx = note_col if isinstance(note_col, int) else 1
+            if isinstance(idx, int) and 0 <= idx < len(cells):
+                text = _clean(cells[idx])
                 if re.fullmatch(_NOTE_REF, text) and text not in seen:
-                    # Only the dedicated note column should add refs. Cells are
-                    # scanned below only when the row already marked a note.
-                    pass
+                    seen.append(text)
     return seen
+
+
+def collect_note_refs(statements: list[dict[str, Any]]) -> list[str]:
+    """Public: note numbers referenced by main FS tables (from Extracted Tables)."""
+    return _collect_note_refs(statements)
+
+
+def _repair_statement_columns(statement: dict[str, Any]) -> dict[str, Any]:
+    """Last-chance fix: peel note/page tokens out of amount slots."""
+    rows = statement.get("rows") or []
+    if not rows:
+        return statement
+    note_col = statement.get("note_column")
+    fixed_rows: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        cells = [_clean(c) for c in (row.get("cells") or [])]
+        if not cells:
+            fixed_rows.append(row)
+            continue
+        label = cells[0]
+        rest = cells[1:]
+        note, page, amounts = _peel_note_page(rest)
+        # Prefer existing note_ref when peel found nothing.
+        note_ref = note or (
+            str(row.get("note_ref") or "").strip()
+            if re.fullmatch(_NOTE_REF, str(row.get("note_ref") or "").strip())
+            else ""
+        )
+        while amounts and re.fullmatch(_NOTE_REF, amounts[0]) and not _looks_amount(
+            amounts[0]
+        ):
+            if not note_ref:
+                note_ref = amounts[0]
+            amounts = amounts[1:]
+        new_cells = [label]
+        if note_col is not None or note_ref:
+            new_cells.append(note_ref)
+        if page and statement.get("header_rows"):
+            # Keep page only when headers already advertise a Page column.
+            bottom = (statement.get("header_rows") or [[]])[-1]
+            if any(re.match(r"(?i)^page", str(c)) for c in bottom):
+                new_cells.append(page)
+        new_cells.extend(amounts)
+        fixed_rows.append(
+            {
+                **row,
+                "cells": new_cells,
+                "note_ref": note_ref or None,
+            }
+        )
+    statement = {**statement, "rows": fixed_rows}
+    if any(r.get("note_ref") for r in fixed_rows):
+        statement["note_column"] = 1
+    return statement
+
+
+def extract_notes_only(
+    pdf_path: Path,
+    statements: list[dict[str, Any]],
+    *,
+    year: int,
+) -> dict[str, Any]:
+    """Extract note tables referenced by already-extracted main FS statements.
+
+    Used by Run DB Annual: FS come from Extracted Tables; only notes are
+    pulled from the PDF for the DB page clickable note popups.
+    """
+    texts = _page_texts(pdf_path)
+    notes_start = 1
+    for statement in statements:
+        for page in statement.get("pages") or []:
+            try:
+                notes_start = max(notes_start, int(page) + 1)
+            except (TypeError, ValueError):
+                continue
+    notes: dict[str, Any] = {}
+    refs = _collect_note_refs(statements)
+    if not refs:
+        return notes
+    with pdfplumber.open(str(pdf_path)) as pdf:
+        headings = _index_note_headings(texts, notes_start)
+        for ref in refs:
+            note = extract_note(pdf, texts, headings, ref, year=year)
+            if not note:
+                continue
+            key = str(note.get("note_ref") or ref)
+            notes[key] = note
+            if key != ref:
+                notes[ref] = note
+    return notes
 
 
 def extract_printed_report(
@@ -1003,9 +1493,12 @@ def extract_printed_report(
     year: int,
     include_notes: bool = False,
 ) -> dict[str, Any]:
+    from extraction_validation import double_check_printed_payload
+
     texts = _page_texts(pdf_path)
     located = locate_statement_pages(texts)
     statements: list[dict[str, Any]] = []
+    notes: dict[str, Any] = {}
     with pdfplumber.open(str(pdf_path)) as pdf:
         for kind in STATEMENT_ORDER:
             pages = located.get(kind) or []
@@ -1041,22 +1534,11 @@ def extract_printed_report(
             extracted["ok"] = True
             statements.append(extracted)
 
-        notes: dict[str, Any] = {}
-        if include_notes:
-            notes_start = 1
-            for statement in statements:
-                for page in statement.get("pages") or []:
-                    notes_start = max(notes_start, int(page) + 1)
-            headings = _index_note_headings(texts, notes_start)
-            for ref in _collect_note_refs(statements):
-                note = extract_note(pdf, texts, headings, ref, year=year)
-                if note:
-                    notes[str(note.get("note_ref") or ref)] = note
-                    if str(note.get("note_ref")) != ref:
-                        notes[ref] = note
+    if include_notes:
+        notes = extract_notes_only(pdf_path, statements, year=year)
 
     units = [s.get("unit") for s in statements if s.get("unit")]
-    return {
+    payload: dict[str, Any] = {
         "company_slug": company_slug,
         "company_name": company_name,
         "year": year,
@@ -1065,6 +1547,22 @@ def extract_printed_report(
         "statements": statements,
         "notes": notes,
     }
+
+    # Double-check column placement before the payload is saved / uploaded.
+    check = double_check_printed_payload(payload)
+    if not check.ok:
+        repaired: list[dict[str, Any]] = []
+        for statement in statements:
+            if statement.get("ok"):
+                repaired.append(_repair_statement_columns(statement))
+            else:
+                repaired.append(statement)
+        payload["statements"] = repaired
+        check = double_check_printed_payload(payload)
+    payload["validation"] = check.to_dict()
+    if check.notes:
+        payload["validation_notes"] = list(check.notes)
+    return payload
 
 
 def default_output_path(company_slug: str, year: int) -> Path:
