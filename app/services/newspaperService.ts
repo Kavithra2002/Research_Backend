@@ -142,6 +142,8 @@ const THUMBNAIL_RETRY_MS = 7 * 24 * 60 * 60 * 1000;
 const STALE_AFTER_MS = 60 * 60 * 1000;
 const FEATURED_LIMIT = 8;
 const FEATURED_GEOPOLITICS_MIN = 4;
+/** Featured only considers stories within this window (matches Google News when:7d). */
+const FEATURED_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const FEED_LIMIT = 120;
 
 let lastRefreshAt: string | null = null;
@@ -476,8 +478,13 @@ function featuredScore(
     if (terms.some((t) => blob.includes(t))) score += weight;
   }
   const ageH = (Date.now() - publishedAt.getTime()) / (1000 * 60 * 60);
-  if (ageH <= 24) score += 2;
-  else if (ageH <= 72) score += 1;
+  // Recency dominates keywords so Featured stays current after refresh.
+  if (ageH <= 12) score += 12;
+  else if (ageH <= 24) score += 9;
+  else if (ageH <= 48) score += 6;
+  else if (ageH <= 72) score += 3;
+  else if (ageH <= 168) score += 1;
+  else score -= 20;
   return score;
 }
 
@@ -519,7 +526,10 @@ function isGeopoliticsRelevant(item: ScoredItem): boolean {
 
 /** Mix geopolitics/commodities headlines with other top market stories. */
 function pickFeaturedUrls(ranked: ScoredItem[]): Set<string> {
-  const byScore = [...ranked].sort((a, b) => b.score - a.score);
+  const cutoff = Date.now() - FEATURED_MAX_AGE_MS;
+  const recent = ranked.filter((i) => i.publishedAt.getTime() >= cutoff);
+  const pool = recent.length > 0 ? recent : ranked;
+  const byScore = [...pool].sort((a, b) => b.score - a.score);
   const geoPool = byScore.filter(isGeopoliticsRelevant);
   const otherPool = byScore.filter((i) => !isGeopoliticsRelevant(i));
 
@@ -658,6 +668,13 @@ export async function refreshNewspaperFeeds(): Promise<{
   const ranked = [...byUrl.values()];
   const featuredUrls = pickFeaturedUrls(ranked);
 
+  // Drop stale Featured flags — upserts only touch URLs in this refresh, so
+  // older DB rows would otherwise keep winning the Featured section forever.
+  await NewsItem.updateMany(
+    { featured: true },
+    { $set: { featured: false, updated_at: ts } },
+  );
+
   let inserted = 0;
   let updated = 0;
 
@@ -752,10 +769,90 @@ async function maybeBackgroundEnrich(): Promise<void> {
   await thumbnailEnrichInFlight;
 }
 
+function featuredSinceIso(): string {
+  return new Date(Date.now() - FEATURED_MAX_AGE_MS).toISOString();
+}
+
+/**
+ * If Featured still points at stale rows (or none), re-pick from recent DB
+ * items so the UI updates even before the next full RSS refresh.
+ */
+async function ensureRecentFeaturedSlots(): Promise<void> {
+  const since = featuredSinceIso();
+  const freshFeatured = await NewsItem.countDocuments({
+    featured: true,
+    published_at: { $gte: since },
+  });
+  if (freshFeatured >= Math.min(3, FEATURED_LIMIT)) return;
+
+  const recent = await NewsItem.find({ published_at: { $gte: since } })
+    .sort({ published_at: -1 })
+    .limit(FEED_LIMIT)
+    .lean();
+  if (recent.length === 0) return;
+
+  const scored: ScoredItem[] = recent.map((doc) => {
+    const publishedAt = new Date(doc.published_at);
+    const feedBias =
+      FEED_SOURCES.find((f) => f.id === doc.source_feed_id)?.featuredBias ?? 1;
+    return {
+      url: doc.url,
+      title: doc.title,
+      summary: doc.summary,
+      imageUrl: doc.image_url,
+      sourceName: doc.source_name,
+      publishedAt,
+      feed: {
+        id: doc.source_feed_id,
+        name: doc.source_name,
+        url: "",
+        category: doc.category,
+        featuredBias: feedBias,
+      },
+      type: doc.type,
+      youtubeId: doc.youtube_id,
+      score: featuredScore(
+        doc.title,
+        doc.summary,
+        publishedAt,
+        feedBias,
+        Boolean(doc.image_url || doc.youtube_id),
+      ),
+    };
+  });
+
+  const featuredUrls = pickFeaturedUrls(scored);
+  const ts = nowIso();
+  await NewsItem.updateMany(
+    { featured: true },
+    { $set: { featured: false, updated_at: ts } },
+  );
+
+  if (featuredUrls.size === 0) return;
+
+  await Promise.all(
+    scored
+      .filter((item) => featuredUrls.has(normalizeUrl(item.url)))
+      .map((item) =>
+        NewsItem.updateOne(
+          { url: normalizeUrl(item.url) },
+          {
+            $set: {
+              featured: true,
+              featured_score: item.score,
+              updated_at: ts,
+            },
+          },
+        ),
+      ),
+  );
+}
+
 export async function getNewspaperPayload(
   category?: string,
 ): Promise<NewspaperPayload> {
   await ensureNewspaperFresh();
+  await ensureRecentFeaturedSlots();
   void maybeBackgroundEnrich();
 
   const filter: Record<string, unknown> = {};
@@ -764,12 +861,17 @@ export async function getNewspaperPayload(
     filter.category = cat;
   }
 
+  const since = featuredSinceIso();
+
   const [docs, featuredDocs] = await Promise.all([
     NewsItem.find(filter)
       .sort({ published_at: -1 })
       .limit(FEED_LIMIT)
       .lean(),
-    NewsItem.find({ featured: true })
+    NewsItem.find({
+      featured: true,
+      published_at: { $gte: since },
+    })
       .sort({ featured_score: -1, published_at: -1 })
       .limit(FEATURED_LIMIT)
       .lean(),

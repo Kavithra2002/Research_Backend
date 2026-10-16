@@ -16,7 +16,15 @@ import { logger } from "../utils/logger";
  * Every figure is grounded in real CSE data; nothing is invented.
  * ────────────────────────────────────────────────────────────────────────── */
 
-const CSE_BASE = "https://www.cse.lk/api";
+const CSE_ORIGIN = "https://www.cse.lk";
+const CSE_BASE = `${CSE_ORIGIN}/api`;
+const CSE_USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+const CSE_TIMEOUT_MS = 15000;
+/** CSE chartData ids — same as Analytics (/api/analytics/index-chart). */
+const ASPI_CHART_ID = "1";
+const SNP_CHART_ID = "40";
 
 export type MarianSectionKind = "table" | "chart";
 
@@ -46,7 +54,7 @@ export const MARIAN_SECTIONS = [
     id: "returns",
     label: "Index returns (YTD / 1-month / 1-year)",
     kind: "table",
-    coverage: "none",
+    coverage: "full",
   },
   {
     id: "top_turnover",
@@ -83,13 +91,13 @@ export const MARIAN_SECTIONS = [
     id: "aspi_chart",
     label: "ASPI index trend (line)",
     kind: "chart",
-    coverage: "partial",
+    coverage: "full",
   },
   {
     id: "snp_chart",
     label: "S&P SL20 index trend (line)",
     kind: "chart",
-    coverage: "partial",
+    coverage: "full",
   },
   {
     id: "turnover_volume_chart",
@@ -134,18 +142,31 @@ export function normalizeSections(sections: unknown): string[] {
 
 /* ── CSE fetch ──────────────────────────────────────────────────────────── */
 
-async function callCSE(endpoint: string): Promise<unknown> {
+async function callCSE(
+  endpoint: string,
+  params: Record<string, string> = {},
+): Promise<unknown> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), CSE_TIMEOUT_MS);
   try {
+    const form = new URLSearchParams();
+    for (const [k, v] of Object.entries(params)) {
+      if (v) form.set(k, v);
+    }
     const res = await fetch(`${CSE_BASE}/${endpoint}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         Accept: "application/json, text/plain, */*",
-        "User-Agent":
-          "Mozilla/5.0 (compatible; AmbeonConsole/1.0; +https://www.cse.lk)",
+        Origin: CSE_ORIGIN,
+        Referer: `${CSE_ORIGIN}/`,
+        "User-Agent": CSE_USER_AGENT,
       },
-      body: "",
+      body: form.toString(),
+      signal: controller.signal,
+      cache: "no-store",
     });
+    if (!res.ok) return null;
     const text = await res.text();
     try {
       return JSON.parse(text);
@@ -154,11 +175,128 @@ async function callCSE(endpoint: string): Promise<unknown> {
     }
   } catch {
     return null;
+  } finally {
+    clearTimeout(timer);
   }
 }
 
 function num(v: unknown): number | null {
-  return typeof v === "number" && Number.isFinite(v) ? v : null;
+  if (v === null || v === undefined) return null;
+  const n = typeof v === "number" ? v : Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+type ChartPoint = { d: number; v: number };
+
+function normalizeChartPoints(raw: unknown): ChartPoint[] {
+  if (!raw) return [];
+  let list: unknown[] = [];
+  if (Array.isArray(raw)) {
+    if (raw.length > 0 && Array.isArray(raw[0])) {
+      const wrapped = raw[0] as { value?: unknown[] };
+      list = Array.isArray(wrapped?.value) ? wrapped.value : [];
+    } else {
+      list = raw;
+    }
+  } else if (typeof raw === "object") {
+    const obj = raw as { value?: unknown[] };
+    if (Array.isArray(obj.value)) list = obj.value;
+  }
+  const out: ChartPoint[] = [];
+  for (const item of list) {
+    if (!item || typeof item !== "object") continue;
+    const p = item as { d?: unknown; v?: unknown };
+    const d = num(p.d);
+    const v = num(p.v);
+    if (d === null || v === null) continue;
+    out.push({ d, v });
+  }
+  return out;
+}
+
+/** Keep PDF / markdown charts readable while preserving the live shape. */
+function downsampleChartPoints(points: ChartPoint[], maxPoints = 36): ChartPoint[] {
+  if (points.length <= maxPoints) return points;
+  const out: ChartPoint[] = [];
+  const last = points.length - 1;
+  for (let i = 0; i < maxPoints; i += 1) {
+    const idx = Math.round((i * last) / (maxPoints - 1));
+    out.push(points[idx]!);
+  }
+  return out;
+}
+
+function chartLabel(ms: number, mode: "time" | "date"): string {
+  const dt = new Date(ms);
+  if (mode === "time") {
+    return dt.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "Asia/Colombo",
+    });
+  }
+  return dt.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    timeZone: "Asia/Colombo",
+  });
+}
+
+function labeledChartSeries(
+  points: ChartPoint[],
+  liveValue: number | null,
+  mode: "time" | "date",
+): { label: string; value: number; time: number }[] {
+  const series = downsampleChartPoints(points).map((p) => ({
+    label: chartLabel(p.d, mode),
+    value: p.v,
+    time: p.d,
+  }));
+  if (liveValue !== null && series.length > 0) {
+    const last = series[series.length - 1]!;
+    // Prefer the live index tick over a slightly stale chart last point.
+    last.value = liveValue;
+    last.label = mode === "time" ? "Live" : last.label;
+  } else if (liveValue !== null && series.length === 0) {
+    series.push({
+      label: "Live",
+      value: liveValue,
+      time: Date.now(),
+    });
+  }
+  // Sparse labels so the PDF axis stays readable.
+  if (series.length > 8) {
+    const lastIdx = series.length - 1;
+    for (let i = 0; i < series.length; i += 1) {
+      const keep =
+        i === 0 ||
+        i === lastIdx ||
+        i === Math.floor(lastIdx / 2) ||
+        i === Math.floor(lastIdx / 4) ||
+        i === Math.floor((3 * lastIdx) / 4);
+      if (!keep) series[i]!.label = "";
+    }
+  }
+  return series;
+}
+
+function seriesPctChange(points: ChartPoint[], liveValue: number | null): number | null {
+  if (points.length === 0 && liveValue === null) return null;
+  const first = points[0]?.v;
+  const last = liveValue ?? points[points.length - 1]?.v;
+  if (first == null || last == null || first === 0) return null;
+  return ((last - first) / Math.abs(first)) * 100;
+}
+
+function ytdPctChange(yearPoints: ChartPoint[], liveValue: number | null): number | null {
+  if (yearPoints.length === 0) return null;
+  const year = new Date().getFullYear();
+  const prevYear = yearPoints.filter((p) => new Date(p.d).getFullYear() === year - 1);
+  const base = prevYear.at(-1)?.v ?? yearPoints[0]?.v;
+  const last = liveValue ?? yearPoints.at(-1)?.v;
+  if (base == null || last == null || base === 0) return null;
+  return ((last - base) / Math.abs(base)) * 100;
 }
 
 /** A single trade-summary row (only the fields we use). */
@@ -204,13 +342,48 @@ function toDailySummary(row: Record<string, unknown>): DailySummary {
     shareVolume: num(row.volumeOfTurnOverNumber),
     trades: num(row.marketTrades),
     asi: num(row.asi),
-    spsl20: num(row.spt) ?? num(row.spp),
+    // spp = S&P SL20 price index; spt is the total-return series — never use spt here.
+    spsl20: num(row.spp),
     per: num(row.per),
     pbv: num(row.pbv),
     dy: num(row.dy),
     foreignPurchase: fp,
     foreignSales: fs,
     foreignNet: fp !== null && fs !== null ? fp - fs : null,
+  };
+}
+
+/** Prefer live CSE ticks (same sources as Analytics) over the daily summary snapshot. */
+function applyLiveOverlay(
+  today: DailySummary | null,
+  aspi: Record<string, unknown> | undefined,
+  snp: Record<string, unknown> | undefined,
+  market: Record<string, unknown> | undefined,
+): DailySummary | null {
+  if (!today && !aspi && !snp && !market) return null;
+  const base: DailySummary = today ?? {
+    tradeDate: num(market?.tradeDate),
+    marketTurnover: null,
+    marketCap: null,
+    shareVolume: null,
+    trades: null,
+    asi: null,
+    spsl20: null,
+    per: null,
+    pbv: null,
+    dy: null,
+    foreignPurchase: null,
+    foreignSales: null,
+    foreignNet: null,
+  };
+  return {
+    ...base,
+    asi: num(aspi?.value) ?? base.asi,
+    spsl20: num(snp?.value) ?? base.spsl20,
+    marketTurnover: num(market?.tradeVolume) ?? base.marketTurnover,
+    shareVolume: num(market?.shareVolume) ?? base.shareVolume,
+    trades: num(market?.trades) ?? base.trades,
+    tradeDate: num(market?.tradeDate) ?? base.tradeDate,
   };
 }
 
@@ -327,17 +500,22 @@ function deriveContributors(
 /* ── Which raw CSE endpoints does a set of sections need? ─────────────────── */
 
 const ENDPOINT_FOR_SECTION: Record<string, string[]> = {
-  market_statistics: ["dailyMarketSummery", "aspiData", "snpData"],
+  market_statistics: [
+    "dailyMarketSummery",
+    "aspiData",
+    "snpData",
+    "marketSummery",
+  ],
   foreign_activity: ["dailyMarketSummery"],
-  returns: [],
+  returns: ["aspiData", "snpData"],
   top_turnover: ["tradeSummary"],
   top_volume: ["tradeSummary"],
   contributors: ["tradeSummary", "dailyMarketSummery"],
   crossings: ["tradeSummary"],
   dividends: [],
-  aspi_chart: ["dailyMarketSummery", "aspiData"],
-  snp_chart: ["dailyMarketSummery", "snpData"],
-  turnover_volume_chart: ["dailyMarketSummery"],
+  aspi_chart: ["aspiData"],
+  snp_chart: ["snpData"],
+  turnover_volume_chart: ["dailyMarketSummery", "marketSummery"],
   foreign_buying_chart: [],
   foreign_selling_chart: [],
 };
@@ -354,6 +532,9 @@ export interface MarianDataset {
 /**
  * Fetch every CSE slice the requested sections need (once each), then build a
  * compact per-section dataset with the league tables already derived.
+ *
+ * Uses the same live endpoints as Analytics (aspiData / snpData / marketSummery
+ * / tradeSummary / chartData) so report figures match the live dashboard.
  */
 export async function buildMarianDataset(
   sections: string[],
@@ -364,16 +545,80 @@ export async function buildMarianDataset(
   for (const id of wanted) {
     for (const e of ENDPOINT_FOR_SECTION[id] ?? []) endpoints.add(e);
   }
+  // Always pull the live ticks when any market-level section is requested so
+  // "Today" never lags behind Analytics.
+  const needsLive =
+    wanted.some((id) =>
+      [
+        "market_statistics",
+        "foreign_activity",
+        "returns",
+        "aspi_chart",
+        "snp_chart",
+        "turnover_volume_chart",
+        "contributors",
+      ].includes(id),
+    );
+  if (needsLive) {
+    endpoints.add("aspiData");
+    endpoints.add("snpData");
+    endpoints.add("marketSummery");
+    endpoints.add("dailyMarketSummery");
+  }
+
+  const needAspiChart =
+    wanted.includes("aspi_chart") || wanted.includes("returns");
+  const needSnpChart =
+    wanted.includes("snp_chart") || wanted.includes("returns");
+
   const endpointList = [...endpoints];
-  const results = await Promise.all(endpointList.map((e) => callCSE(e)));
+  const chartJobs: Array<Promise<unknown>> = [];
+  if (needAspiChart) {
+    chartJobs.push(
+      callCSE("chartData", { chartId: ASPI_CHART_ID, period: "1" }),
+      callCSE("chartData", { chartId: ASPI_CHART_ID, period: "3" }),
+      callCSE("chartData", { chartId: ASPI_CHART_ID, period: "5" }),
+    );
+  }
+  if (needSnpChart) {
+    chartJobs.push(
+      callCSE("chartData", { chartId: SNP_CHART_ID, period: "1" }),
+      callCSE("chartData", { chartId: SNP_CHART_ID, period: "3" }),
+      callCSE("chartData", { chartId: SNP_CHART_ID, period: "5" }),
+    );
+  }
+
+  const [endpointResults, chartResults] = await Promise.all([
+    Promise.all(endpointList.map((e) => callCSE(e))),
+    Promise.all(chartJobs),
+  ]);
+
   const raw: Record<string, unknown> = {};
   endpointList.forEach((e, i) => {
-    raw[e] = results[i];
+    raw[e] = endpointResults[i];
   });
 
-  // Daily summary: [[today], [prev]]
+  let aspiIntraday: ChartPoint[] = [];
+  let aspiMonth: ChartPoint[] = [];
+  let aspiYear: ChartPoint[] = [];
+  let snpIntraday: ChartPoint[] = [];
+  let snpMonth: ChartPoint[] = [];
+  let snpYear: ChartPoint[] = [];
+  let chartIdx = 0;
+  if (needAspiChart) {
+    aspiIntraday = normalizeChartPoints(chartResults[chartIdx++]);
+    aspiMonth = normalizeChartPoints(chartResults[chartIdx++]);
+    aspiYear = normalizeChartPoints(chartResults[chartIdx++]);
+  }
+  if (needSnpChart) {
+    snpIntraday = normalizeChartPoints(chartResults[chartIdx++]);
+    snpMonth = normalizeChartPoints(chartResults[chartIdx++]);
+    snpYear = normalizeChartPoints(chartResults[chartIdx++]);
+  }
+
+  // Daily summary: [[today], [prev]] — previous-day baseline + foreign flows.
   const dms = raw.dailyMarketSummery as unknown[][] | undefined;
-  const today =
+  const dailyToday =
     Array.isArray(dms) && Array.isArray(dms[0]) && dms[0][0]
       ? toDailySummary(dms[0][0] as Record<string, unknown>)
       : null;
@@ -382,17 +627,25 @@ export async function buildMarianDataset(
       ? toDailySummary(dms[1][0] as Record<string, unknown>)
       : null;
 
+  const aspi = raw.aspiData as Record<string, unknown> | undefined;
+  const snp = raw.snpData as Record<string, unknown> | undefined;
+  const market = raw.marketSummery as Record<string, unknown> | undefined;
+  const today = applyLiveOverlay(dailyToday, aspi, snp, market);
+
+  const liveAspi = num(aspi?.value) ?? today?.asi ?? null;
+  const liveSnp = num(snp?.value) ?? today?.spsl20 ?? null;
+
   const tradeRows =
     ((raw.tradeSummary as { reqTradeSummery?: TradeRow[] } | undefined)
-      ?.reqTradeSummery as TradeRow[] | undefined) ?? [];
+      ?.reqTradeSummery as TradeRow[] | undefined) ??
+    ((raw.tradeSummary as { reqTradeSummary?: TradeRow[] } | undefined)
+      ?.reqTradeSummary as TradeRow[] | undefined) ??
+    [];
   const derived = tradeRows.length > 0 ? deriveFromTradeSummary(tradeRows) : null;
   const contributors =
     derived && tradeRows.length > 0
       ? deriveContributors(derived.rows, prev?.asi ?? null, prev?.marketCap ?? null)
       : null;
-
-  const aspi = raw.aspiData as Record<string, unknown> | undefined;
-  const snp = raw.snpData as Record<string, unknown> | undefined;
 
   const data: Record<string, unknown> = {};
   const unavailable: string[] = [];
@@ -410,22 +663,34 @@ export async function buildMarianDataset(
           {
             today,
             previous: prev,
-            liveAspi: aspi ? { value: num(aspi.value), changePercent: num(aspi.percentage) } : null,
-            liveSnp: snp ? { value: num(snp.value), changePercent: num(snp.percentage) } : null,
-            note: "Turnover & market cap are in LKR. PE = market PER, PBV = price-to-book.",
+            liveAspi: aspi
+              ? {
+                  value: num(aspi.value),
+                  change: num(aspi.change),
+                  changePercent: num(aspi.percentage),
+                }
+              : null,
+            liveSnp: snp
+              ? {
+                  value: num(snp.value),
+                  change: num(snp.change),
+                  changePercent: num(snp.percentage),
+                }
+              : null,
+            note: "Today figures are live CSE ticks (same feed as Analytics). Turnover & market cap are in LKR.",
           },
-          Boolean(today),
+          Boolean(today?.asi || today?.marketTurnover),
         );
         break;
       case "foreign_activity":
         set(
           id,
           {
-            today: today
+            today: dailyToday
               ? {
-                  buying: today.foreignPurchase,
-                  selling: today.foreignSales,
-                  net: today.foreignNet,
+                  buying: dailyToday.foreignPurchase,
+                  selling: dailyToday.foreignSales,
+                  net: dailyToday.foreignNet,
                 }
               : null,
             previous: prev
@@ -435,23 +700,44 @@ export async function buildMarianDataset(
                   net: prev.foreignNet,
                 }
               : null,
-            note: "Market-level foreign equity flows in LKR. Per-company foreign buying/selling is not exposed by the CSE feed.",
+            note: "Market-level foreign equity flows in LKR from the CSE daily summary. Per-company foreign buying/selling is not exposed by the feed.",
           },
-          Boolean(today?.foreignPurchase !== null || today?.foreignSales !== null),
+          Boolean(
+            dailyToday?.foreignPurchase !== null ||
+              dailyToday?.foreignSales !== null,
+          ),
         );
         break;
-      case "returns":
-        // Index YTD / 1-month / 1-year returns are not exposed by the CSE feed.
-        // Rendered as a placeholder table (dashes) to mirror the original layout.
+      case "returns": {
+        const aspiReturns = {
+          ytd: ytdPctChange(aspiYear, liveAspi),
+          oneMonth: seriesPctChange(aspiMonth, liveAspi),
+          oneYear: seriesPctChange(aspiYear, liveAspi),
+        };
+        const snpReturns = {
+          ytd: ytdPctChange(snpYear, liveSnp),
+          oneMonth: seriesPctChange(snpMonth, liveSnp),
+          oneYear: seriesPctChange(snpYear, liveSnp),
+        };
+        const present =
+          aspiReturns.ytd !== null ||
+          aspiReturns.oneMonth !== null ||
+          aspiReturns.oneYear !== null ||
+          snpReturns.ytd !== null ||
+          snpReturns.oneMonth !== null ||
+          snpReturns.oneYear !== null;
         set(
           id,
           {
-            available: false,
-            note: "Index YTD / 1-month / 1-year returns are not available from the live CSE feed.",
+            available: present,
+            aspi: aspiReturns,
+            snp: snpReturns,
+            note: "Computed from live CSE chartData (same series as Analytics index charts), anchored to the live index tick.",
           },
-          false,
+          present,
         );
         break;
+      }
       case "top_turnover":
         set(id, derived?.topTurnover, Boolean(derived?.topTurnover?.length));
         break;
@@ -471,8 +757,6 @@ export async function buildMarianDataset(
         );
         break;
       case "dividends":
-        // Dividend announcements are not exposed by the live CSE feed.
-        // Rendered as a placeholder table (dashes) to mirror the original layout.
         set(
           id,
           {
@@ -494,32 +778,40 @@ export async function buildMarianDataset(
           Boolean(derived?.crossings?.length),
         );
         break;
-      case "aspi_chart":
+      case "aspi_chart": {
+        const points = labeledChartSeries(aspiIntraday, liveAspi, "time");
         set(
           id,
           {
-            points: [
-              prev ? { label: "Prev. day", value: prev.asi } : null,
-              today ? { label: "Today", value: today.asi ?? (aspi ? num(aspi.value) : null) } : null,
-            ].filter(Boolean),
-            note: "Only today and the previous day are available from the daily summary; a longer 5-day index history is NOT exposed by the feed.",
+            points,
+            liveValue: liveAspi,
+            changePercent: num(aspi?.percentage),
+            note:
+              points.length > 2
+                ? "Intraday ASPI from CSE chartData (same live feed as Analytics)."
+                : "Live ASPI tick; intraday history was unavailable from the feed.",
           },
-          Boolean(today?.asi || aspi?.value),
+          points.length > 0,
         );
         break;
-      case "snp_chart":
+      }
+      case "snp_chart": {
+        const points = labeledChartSeries(snpIntraday, liveSnp, "time");
         set(
           id,
           {
-            points: [
-              prev ? { label: "Prev. day", value: prev.spsl20 } : null,
-              today ? { label: "Today", value: today.spsl20 ?? (snp ? num(snp.value) : null) } : null,
-            ].filter(Boolean),
-            note: "Only today and the previous day are available; a longer history is NOT exposed by the feed.",
+            points,
+            liveValue: liveSnp,
+            changePercent: num(snp?.percentage),
+            note:
+              points.length > 2
+                ? "Intraday S&P SL20 from CSE chartData (same live feed as Analytics)."
+                : "Live S&P SL20 tick; intraday history was unavailable from the feed.",
           },
-          Boolean(today?.spsl20 || snp?.value),
+          points.length > 0,
         );
         break;
+      }
       case "turnover_volume_chart":
         set(
           id,
@@ -540,13 +832,12 @@ export async function buildMarianDataset(
                   }
                 : null,
             ].filter(Boolean),
-            note: "Only today and the previous day are available from the feed.",
+            note: "Today turnover/volume use the live marketSummery tick; previous day from the CSE daily summary.",
           },
           Boolean(today?.marketTurnover),
         );
         break;
       case "foreign_buying_chart":
-        // Per-company foreign buying is not exposed by the live CSE feed.
         set(
           id,
           {

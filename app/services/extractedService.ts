@@ -42,6 +42,20 @@ function prettifyCompanyName(slug: string) {
   return slug.replace(/_+/g, " ").replace(/\s+/g, " ").trim();
 }
 
+/** Notes belong on the DB page only — never list them on Extracted Tables. */
+function isNoteStatementKey(key: string | null | undefined): boolean {
+  return Boolean(key && /^note_/i.test(String(key)));
+}
+
+function mainFsStatementKeys(keys: string[]): string[] {
+  return keys.filter((k) => !isNoteStatementKey(k)).sort();
+}
+
+/** Exclude note_* docs from Extracted Tables queries. */
+const EXCLUDE_NOTES_MATCH = {
+  statement_key: { $not: { $regex: "^note_", $options: "i" } },
+} as const;
+
 function periodFromReportType(reportType: string): PeriodLabel | null {
   const t = reportType.toLowerCase();
   if (t === "annual") return "Annual";
@@ -73,7 +87,7 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
       model: string | null;
       generated_at: string | null;
     }>([
-      { $match: { year: { $ne: null } } },
+      { $match: { year: { $ne: null }, ...EXCLUDE_NOTES_MATCH } },
       {
         $group: {
           _id: {
@@ -96,7 +110,13 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
       report_keys: string[];
       report_groups: (string | null)[];
     }>([
-      { $match: { year: { $ne: null }, report_type: "quarterly" } },
+      {
+        $match: {
+          year: { $ne: null },
+          report_type: "quarterly",
+          ...EXCLUDE_NOTES_MATCH,
+        },
+      },
       {
         $group: {
           _id: { company_slug: "$company_slug", year: "$year" },
@@ -155,7 +175,7 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
       companyNode.years.set(year, { annual: null, quarterly: null });
     }
     const yearNode = companyNode.years.get(year)!;
-    const statements = [...row.statements].sort();
+    const statements = mainFsStatementKeys(row.statements ?? []);
     let availableQuarters: string[] | undefined;
     if (period === "Quarterly") {
       const lookupKey = `${slug}:${year}`;
@@ -171,7 +191,7 @@ export async function listExtractedCompanies(): Promise<ExtractedCompanyNode[]> 
     const summary: PeriodSummary = {
       statements,
       statementCount: statements.length,
-      tableCount: row.table_count,
+      tableCount: statements.length,
       model: row.model ?? null,
       generatedAt: row.generated_at ?? null,
       ...(availableQuarters?.length ? { availableQuarters } : {}),
@@ -796,6 +816,7 @@ export async function listStoredReports(): Promise<StoredReportCompany[]> {
       model: string | null;
       generated_at: string | null;
     }>([
+      { $match: { ...EXCLUDE_NOTES_MATCH } },
       {
         $group: {
           _id: {
@@ -839,7 +860,7 @@ export async function listStoredReports(): Promise<StoredReportCompany[]> {
       byCompany.set(slug, { displayName, reports: [] });
     }
 
-    const statements = [...row.statements].sort();
+    const statements = mainFsStatementKeys(row.statements ?? []);
     const reportKey = row._id.report_key;
     const reportGroup = row.report_group ?? null;
     const { year, quarter } = periodFromReportMeta(
@@ -860,7 +881,7 @@ export async function listStoredReports(): Promise<StoredReportCompany[]> {
       periodLabel: row.period_label ?? null,
       statements,
       statementCount: statements.length,
-      tableCount: row.table_count,
+      tableCount: statements.length,
       model: row.model ?? null,
       generatedAt: row.generated_at ?? null,
     });
@@ -913,6 +934,7 @@ export async function getReportTables(
     company_slug: companySlug,
     report_type: reportType,
     report_key: reportKey,
+    ...EXCLUDE_NOTES_MATCH,
   })
     .sort({ statement_key: 1, table_index: 1 })
     .lean();
@@ -933,6 +955,7 @@ export async function getReportTables(
   let reportGroup: string | null = null;
 
   for (const doc of docs) {
+    if (isNoteStatementKey(doc.statement_key)) continue;
     companyName = doc.company_name;
     model = model ?? doc.extraction_model ?? null;
     year = year ?? doc.year ?? null;
@@ -1026,6 +1049,8 @@ export async function getExtractedResults(
     ];
   }
 
+  Object.assign(filter, EXCLUDE_NOTES_MATCH);
+
   const docs = await FinancialTable.find(filter)
     .sort({ statement_key: 1, table_index: 1 })
     .lean();
@@ -1042,6 +1067,7 @@ export async function getExtractedResults(
   let companyName: string | null = null;
 
   for (const doc of docs) {
+    if (isNoteStatementKey(doc.statement_key)) continue;
     companyName = doc.company_name;
     model = model ?? doc.extraction_model ?? null;
     if (doc.extracted_at && (!generatedAt || doc.extracted_at > generatedAt)) {

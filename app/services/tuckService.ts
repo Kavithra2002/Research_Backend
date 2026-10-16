@@ -68,13 +68,17 @@ async function callCSE(endpoint: string): Promise<unknown> {
     const res = await fetch(`${CSE_BASE}/${endpoint}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         Accept: "application/json, text/plain, */*",
+        Origin: "https://www.cse.lk",
+        Referer: "https://www.cse.lk/",
         "User-Agent":
           "Mozilla/5.0 (compatible; AmbeonConsole/1.0; +https://www.cse.lk)",
       },
       body: "",
+      cache: "no-store",
     });
+    if (!res.ok) return null;
     const text = await res.text();
     try {
       return JSON.parse(text);

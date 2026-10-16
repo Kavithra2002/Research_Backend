@@ -324,6 +324,7 @@ export function buildDailyMarketWrapPdfBuffer(
       doc.setDrawColor(c[0], c[1], c[2]);
       doc.setFillColor(c[0], c[1], c[2]);
       doc.setLineWidth(1);
+      const showDots = o.categories.length <= 12;
       let prev: { x: number; y: number } | null = null;
       o.line.values.forEach((v, i) => {
         if (typeof v !== "number") {
@@ -333,7 +334,7 @@ export function buildDailyMarketWrapPdfBuffer(
         const px = x0 + padL + slot * (i + 0.5);
         const py = useRight ? yR(v) : yL(v);
         if (prev) doc.line(prev.x, prev.y, px, py);
-        doc.circle(px, py, 1.3, "F");
+        if (showDots) doc.circle(px, py, 1.3, "F");
         prev = { x: px, y: py };
       });
       if (useRight) {
@@ -435,17 +436,26 @@ export function buildDailyMarketWrapPdfBuffer(
     );
   }
   if (requested.has("returns")) {
+    const ret = asObj(data.returns);
+    const aspiR = asObj(ret.aspi);
+    const snpR = asObj(ret.snp);
+    const fmtRet = (v: unknown): string => {
+      const n = numOrNull(v);
+      return n === null ? "-" : pctStr(n);
+    };
     sectionBand(L, "Return");
     miniTable(
       L,
       ["", "YTD", "1-month", "1-year"],
       [
-        ["ASPI", "-", "-", "-"],
-        ["S&P SL20", "-", "-", "-"],
+        ["ASPI", fmtRet(aspiR.ytd), fmtRet(aspiR.oneMonth), fmtRet(aspiR.oneYear)],
+        ["S&P SL20", fmtRet(snpR.ytd), fmtRet(snpR.oneMonth), fmtRet(snpR.oneYear)],
       ],
       { align: ["left", "right", "right", "right"], minRowH: 16, gap: 4 },
     );
-    note(L, "Index YTD / 1-month / 1-year returns are not available from the live CSE feed.");
+    if (!has("returns")) {
+      note(L, "Index returns were unavailable from the live CSE chart feed.");
+    }
   }
 
   /* Top 10 turnover / volume side by side */
@@ -520,7 +530,8 @@ export function buildDailyMarketWrapPdfBuffer(
       categories: pts.map((p) => String(p.label ?? "")),
       line: { name: title, values: pts.map((p) => numOrNull(p.value)), color },
     });
-    note(R, "Only today & previous day are available; longer history is not exposed by the feed.");
+    const caveat = typeof c.note === "string" ? c.note : "";
+    if (caveat && pts.length <= 2) note(R, caveat);
   };
   if (has("aspi_chart")) indexLine("aspi_chart", "ASPI Index Trend", NAVY);
   if (has("snp_chart")) indexLine("snp_chart", "S&P SL20 Index Trend", BLUE);
