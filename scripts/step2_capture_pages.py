@@ -108,10 +108,20 @@ STMT_COLORS = {
 
 _OWN_HEADING: dict[str, re.Pattern] = {
     "income_statement":  re.compile(
-        r"(?:income\s+statement|statement\s+of\s+profit(?:\s+or\s+loss)?)",
+        r"(?:"
+        r"income\s+statement|"
+        r"statement\s+of\s+profit\s+or\s+loss|"
+        r"statement\s+of\s+profit\s+and\s+loss|"
+        r"statement\s+of\s+profit|"
+        r"profit\s+(?:and|&)\s+loss\s+statement|"
+        r"profit\s+or\s+loss\s+statement"
+        r")",
         re.I),
     "oci":               re.compile(
-        r"statement\s+of\s+(?:other\s+)?comprehensive\s+income", re.I),
+        r"(?:statement\s+of\s+(?:profit\s+or\s+loss\s+and\s+)?"
+        r"(?:other\s+)?comprehensive\s+income|"
+        r"other\s+comprehensive\s+income)",
+        re.I),
     "sofp":              re.compile(
         r"(?:statement\s+of\s+financial\s+position|balance\s+sheet)", re.I),
     "equity":            re.compile(
@@ -183,6 +193,8 @@ _BLOCKING_HEADINGS_RE = re.compile(
 # one of these and it isn't the current statement, skip the page.
 _ANY_STMT_HEADING_RE = re.compile(
     r"\bincome\s+statement\b|"
+    r"\bstatement\s+of\s+profit\s+(?:or|and)\s+loss\b|"
+    r"\bstatement\s+of\s+profit\b|"
     r"\bstatement\s+of\s+(?:other\s+)?comprehensive\s+income\b|"
     r"\bstatement\s+of\s+financial\s+position\b|"
     r"\bstatement\s+of\s+changes\s+in\s+equity\b|"
@@ -193,6 +205,13 @@ _ANY_STMT_HEADING_RE = re.compile(
     r"\b(?:ten|five|10|5)[\s\-]year\s+(?:summary|achievements?|highlights?)\b|"
     r"\bdecade\s+at\s+a\s+glance\b",
     re.I,
+)
+
+# Core FS: only skip capture when the page is *clearly* a different section
+# (blocking narrative heading, or another statement's title at the top).
+# Weak/doubtful topic checks must not drop OCI / Income / SoFP pages.
+_CORE_CAPTURE_KEYS = frozenset(
+    {"income_statement", "oci", "sofp", "cash_flows", "equity"}
 )
 
 
@@ -208,6 +227,26 @@ def _top_block(text: str, n: int = 6) -> str:
 # ─────────────────────────────────────────────────────────────────────────────
 # Topic + table confirmation
 # ─────────────────────────────────────────────────────────────────────────────
+
+def _clearly_wrong_topic(text: str, key: str) -> bool:
+    """True only when the page is obviously not this statement."""
+    if not text:
+        return True
+    top = _top_block(text, 8)
+    if _BLOCKING_HEADINGS_RE.search(top):
+        return True
+    own_re = _OWN_HEADING.get(key)
+    if own_re is None:
+        return False
+    # Another known statement title at the top, and ours is absent.
+    if _ANY_STMT_HEADING_RE.search(top) and not own_re.search(top):
+        if not _has_prominent_heading(text, own_re):
+            # Soft OCI under combined P&L is still OK.
+            if key == "oci" and step1.page_has_oci_section(text):
+                return False
+            return True
+    return False
+
 
 def _topic_confirmed(text: str, key: str) -> bool:
     """The page's TOPIC matches `key` (heading is at the top of the page)."""
@@ -231,6 +270,16 @@ def _topic_confirmed(text: str, key: str) -> bool:
         if not _has_prominent_heading(text, own_re):
             return False
         return True
+
+    # Income ≡ Statement of Profit or Loss (permanent alias).
+    if key == "income_statement":
+        return _has_prominent_heading(text, own_re)
+
+    # OCI often starts mid-page under a combined P&L + OCI statement.
+    if key == "oci":
+        if step1.page_has_oci_section(text):
+            return True
+        return _has_prominent_heading(text, own_re)
 
     return _has_prominent_heading(text, own_re)
 
@@ -484,28 +533,37 @@ def run(manifest_path: str | Path,
 
     print(f"\n  [{company}]  capturing ...", end="", flush=True)
 
-    # Pre-read page dims & full text for cheap filtering.
+    ordered_keys  = [k for k in STMT_ORDER if k in stmts]
+    if only_keys:
+        only_set = set(only_keys)
+        ordered_keys = [k for k in ordered_keys if k in only_set]
+
+    # Only read dims/text for pages we may capture (not all 500+ PDF pages).
+    needed_indices: set[int] = set()
+    for key in ordered_keys:
+        info = stmts.get(key) or {}
+        for idx in info.get("pdf_indices_0based") or []:
+            try:
+                needed_indices.add(int(idx))
+            except (TypeError, ValueError):
+                continue
+
     page_dims:  dict[int, tuple[float, float]] = {}
     page_texts: dict[int, str]                 = {}
     try:
         with pdfplumber.open(pdf_path) as _pdf:
-            # Strip repeating page chrome (nav breadcrumbs / footers) so it
-            # cannot trip the blocking-heading filters or hide real titles.
             header_set = step1.compute_running_headers(_pdf)
-            for i, pg in enumerate(_pdf.pages):
+            for i in sorted(needed_indices):
+                if i < 0 or i >= len(_pdf.pages):
+                    continue
+                pg = _pdf.pages[i]
                 page_dims[i] = (float(pg.width), float(pg.height))
                 try:
                     txt = pg.extract_text() or ""
                 except Exception:
                     txt = ""
                 txt = step1.strip_running_headers(txt, header_set)
-                # Also strip multi-section navigation breadcrumbs (e.g. CTC
-                # 2023-2025) that cram "Risk Management"/"Governance" into a
-                # ribbon at the top of statement pages and would otherwise
-                # trip the blocking-heading filters below.
                 txt = step1.strip_nav_breadcrumbs(txt)
-                # We need more than 8 lines now — heading might sit a bit
-                # lower on some report templates.
                 page_texts[i] = "\n".join(txt.split("\n")[:18])
     except Exception:
         pass
@@ -515,13 +573,11 @@ def run(manifest_path: str | Path,
     skipped_topic      = 0
     skipped_no_table   = 0
     skipped_notes      = 0
-
-    ordered_keys  = [k for k in STMT_ORDER if k in stmts]
-    if only_keys:
-        only_set = set(only_keys)
-        ordered_keys = [k for k in ordered_keys if k in only_set]
     skipped_notes = sum(stmts[k].get("page_count", 0)
                         for k in stmts if k not in ALLOWED_KEYS)
+
+    # Collect render jobs after topic/table filters, then render in parallel.
+    render_jobs: list[tuple[str, int, Path]] = []
 
     for key in ordered_keys:
         info    = stmts[key]
@@ -537,15 +593,22 @@ def run(manifest_path: str | Path,
             page_1   = idx_0 + 1
             pg_txt   = page_texts.get(idx_0, "")
 
-            # ── 1. Topic confirmation (the critical fix) ──────────────────
+            # ── 1. Topic confirmation ─────────────────────────────────────
+            # Core FS (Income/OCI/SoFP/Cash): trust STEP1 unless the page is
+            # *clearly* wrong (notes / directors / different statement title).
+            # Weak "doubtful topic" must not drop OCI/Income captures.
             if is_first:
-                if not _topic_confirmed(pg_txt, key):
-                    # The very first page doesn't actually have the right
-                    # heading — that means step 1 picked a wrong page.  We
-                    # skip the entire statement to avoid mis-captures.
+                if key in _CORE_CAPTURE_KEYS:
+                    if _clearly_wrong_topic(pg_txt, key):
+                        skipped_topic += len(indices)
+                        break
+                    topic_ok = True
+                elif not _topic_confirmed(pg_txt, key):
+                    # Non-core: keep strict topic gate.
                     skipped_topic += len(indices)
                     break
-                topic_ok = True
+                else:
+                    topic_ok = True
             else:
                 # Continuation: either the same statement's heading repeats
                 # (rare "Contd." pages) OR no different-section heading at
@@ -574,20 +637,51 @@ def run(manifest_path: str | Path,
                 prev_confirmed = True
                 continue
 
-            # ── 3. Render the full page ──────────────────────────────────
+            # ── 3. Queue full-page render (parallelized below) ───────────
             img_path = stmt_dir / f"page_{page_1:04d}.png"
-            if not img_path.exists():
-                png = render_full_page(pdf_path, idx_0, dpi=dpi)
-                if not png:
-                    prev_confirmed = True
-                    continue
-                img_path.write_bytes(png)
-
             saved.append(img_path)
-            saved_total += 1
+            if not img_path.exists():
+                render_jobs.append((key, idx_0, img_path))
             prev_confirmed = True
 
         img_map[key] = saved
+
+    if render_jobs:
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        try:
+            from extraction_timing import CAPTURE_PARALLEL_WORKERS as _workers
+        except Exception:
+            _workers = 4
+
+        def _render_one(job: tuple[str, int, Path]) -> tuple[Path, bool]:
+            _key, idx_0, img_path = job
+            if img_path.exists():
+                return img_path, True
+            png = render_full_page(pdf_path, idx_0, dpi=dpi)
+            if not png:
+                return img_path, False
+            img_path.write_bytes(png)
+            return img_path, True
+
+        with ThreadPoolExecutor(max_workers=max(1, min(_workers, len(render_jobs)))) as pool:
+            futures = [pool.submit(_render_one, job) for job in render_jobs]
+            for fut in as_completed(futures):
+                path, ok = fut.result()
+                if ok:
+                    saved_total += 1
+                else:
+                    # Drop failed renders from img_map folders.
+                    for key, paths in img_map.items():
+                        img_map[key] = [p for p in paths if p != path or p.exists()]
+    else:
+        saved_total = sum(len(v) for v in img_map.values())
+
+    # Recount existing + newly written images.
+    saved_total = sum(
+        1 for paths in img_map.values() for p in paths if p.exists()
+    )
+    for key in list(img_map.keys()):
+        img_map[key] = [p for p in img_map[key] if p.exists()]
 
     preview_path = out_dir / f"{company}_preview.html"
     build_preview(manifest, img_map, preview_path)

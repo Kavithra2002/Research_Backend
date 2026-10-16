@@ -1,15 +1,14 @@
 """
 db_comb_run.py
 ==============
-Developer test runner for COMB DB-page data capture into MongoDB.
+Developer test runner for COMB / DB-page capture into MongoDB
+(``Run DB all``).
 
-Streams NDJSON progress events for the DB page Run button
-(``/api/db/run``).
+Runs annual then quarterly OpenAI vision extractors with accuracy
+recheck for the selected years. Accuracy beats speed — 1–2 minutes
+per report is acceptable.
 
-Input
------
-    python db_comb_run.py --years 2022,2021
-    echo '{"years":[2022]}' | python db_comb_run.py --years-stdin
+Streams NDJSON progress events for the DB page Run button.
 """
 
 from __future__ import annotations
@@ -17,7 +16,6 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-import traceback
 from typing import Any
 
 try:
@@ -26,15 +24,10 @@ try:
 except Exception:
     pass
 
-from extract_comb_data import (
-    extract_annual_comb,
-    extract_quarterly_comb,
-)
 from generate_comb_model import (
     COMMERCIAL_BANK_SLUG,
     QUARTERLY_PILOT_QUARTERS,
 )
-from comb_workbook_store import ensure_indexes, get_db
 
 
 def emit(obj: dict[str, Any]) -> None:
@@ -62,13 +55,6 @@ def _parse_years(raw: str) -> list[int]:
     return sorted(set(out), reverse=True)
 
 
-def _steps_for_year(year: int) -> list[tuple[str, str | None]]:
-    steps: list[tuple[str, str | None]] = [("annual", None)]
-    for q in QUARTERLY_PILOT_QUARTERS:
-        steps.append(("quarterly", q))
-    return steps
-
-
 def run_capture(
     years: list[int],
     *,
@@ -76,168 +62,95 @@ def run_capture(
     use_note_extract: bool = True,
     force_note_capture: bool = False,
     use_openai_notes: bool = False,
-    use_pdf_extract: bool = False,
+    use_pdf_extract: bool = True,
+    api_key: str | None = None,
+    model: str = "gpt-5",
+    force: bool = False,
 ) -> int:
+    del force_note_capture, use_openai_notes  # reserved / legacy flags
+
     if not years:
         emit({"type": "error", "message": "No years selected"})
         emit({"type": "done", "ok": 0, "failed": 1, "cells_filled": 0, "cells_missing": 0})
         return 1
 
-    all_steps: list[tuple[int, str, str | None]] = []
-    for year in years:
-        for stage, quarter in _steps_for_year(year):
-            all_steps.append((year, stage, quarter))
+    import annual_db_extractor as annual_db
+    import quarter_db_extractor as quarter_db
 
-    total_steps = len(all_steps)
     emit(
         {
             "type": "start",
+            "mode": "db-all",
             "company_slug": company_slug,
             "years": years,
-            "totalSteps": total_steps,
+            "totalSteps": len(years) * (1 + len(QUARTERLY_PILOT_QUARTERS)),
+            "model": model,
+            "openai": True,
         }
     )
+    emit_log(
+        f"Run DB all: notes-only annual (from Extracted Tables) + quarterly "
+        f"for {len(years)} year(s) (model={model})"
+    )
 
-    db, client = get_db()
-    ensure_indexes(db)
+    # ── Annual (Extracted FS + notes → DB page) ────────────────────────
+    emit_log("── Annual DB extract (notes only) ──")
+    rc_annual = annual_db.run_annual_db(
+        years,
+        company_slug=company_slug,
+        skip_existing=not force,
+        use_note_extract=use_note_extract,
+        use_pdf_extract=use_pdf_extract,
+        api_key=api_key,
+        model=model,
+    )
 
-    ok = 0
-    failed = 0
-    cells_filled = 0
-    cells_missing = 0
-    done_steps = 0
-    seen_years: set[int] = set()
+    # ── Quarterly (refresh + COMB map → DB page) ───────────────────────
+    steps: list[tuple[int, str]] = [
+        (year, q) for year in years for q in QUARTERLY_PILOT_QUARTERS
+    ]
+    emit_log(f"── Quarterly DB extract ({len(steps)} period(s)) ──")
+    rc_quarter = quarter_db.run_quarter_db(
+        steps,
+        company_slug=company_slug,
+        skip_existing=not force,
+        api_key=api_key,
+        model=model,
+    )
 
-    try:
-        for year in years:
-            if year not in seen_years:
-                seen_years.add(year)
-                emit(
-                    {
-                        "type": "year-start",
-                        "year": year,
-                        "index": years.index(year) + 1,
-                        "totalYears": len(years),
-                    }
-                )
-
-            for stage, quarter in _steps_for_year(year):
-                label = f"{year} · {stage}" + (f" {quarter}" if quarter else "")
-                emit(
-                    {
-                        "type": "stage-start",
-                        "year": year,
-                        "stage": stage,
-                        "quarter": quarter,
-                        "label": label,
-                        "done": done_steps,
-                        "totalSteps": total_steps,
-                    }
-                )
-                emit_log(f"Capturing {label}…")
-
-                try:
-                    if stage == "annual":
-                        result = extract_annual_comb(
-                            db,
-                            company_slug,
-                            year,
-                            use_note_extract=use_note_extract,
-                            force_note_capture=force_note_capture,
-                            use_openai_notes=use_openai_notes,
-                            use_pdf_extract=use_pdf_extract,
-                        )
-                    else:
-                        result = extract_quarterly_comb(
-                            db,
-                            company_slug,
-                            year,
-                            quarter or "Q1",
-                        )
-                    step_ok = bool(result.get("ok", True))
-                    filled = int(result.get("cells_filled", 0) or 0)
-                    missing = int(result.get("cells_missing", 0) or 0)
-                    cells_filled += filled
-                    cells_missing += missing
-                    if step_ok:
-                        ok += 1
-                    else:
-                        failed += 1
-                    done_steps += 1
-                    emit(
-                        {
-                            "type": "stage-done",
-                            "year": year,
-                            "stage": stage,
-                            "quarter": quarter,
-                            "label": label,
-                            "ok": step_ok,
-                            "cells_filled": filled,
-                            "cells_missing": missing,
-                            "done": done_steps,
-                            "totalSteps": total_steps,
-                        }
-                    )
-                    emit_log(
-                        f"  {label}: {filled} filled, {missing} missing"
-                        + ("" if step_ok else " (issues)")
-                    )
-                except Exception as exc:
-                    failed += 1
-                    done_steps += 1
-                    emit(
-                        {
-                            "type": "stage-done",
-                            "year": year,
-                            "stage": stage,
-                            "quarter": quarter,
-                            "ok": False,
-                            "error": str(exc),
-                            "done": done_steps,
-                            "totalSteps": total_steps,
-                        }
-                    )
-                    emit_log(f"  {label} failed: {exc}", level="error")
-
-            emit({"type": "year-done", "year": year})
-
-        emit(
-            {
-                "type": "done",
-                "ok": ok,
-                "failed": failed,
-                "cells_filled": cells_filled,
-                "cells_missing": cells_missing,
-                "years": years,
-            }
-        )
-        return 0 if failed == 0 else 1
-    except Exception as exc:
-        emit({"type": "error", "message": str(exc)})
-        emit_log(traceback.format_exc(), level="error")
-        emit(
-            {
-                "type": "done",
-                "ok": ok,
-                "failed": failed + 1,
-                "cells_filled": cells_filled,
-                "cells_missing": cells_missing,
-            }
-        )
-        return 1
-    finally:
-        client.close()
+    failed = (0 if rc_annual == 0 else 1) + (0 if rc_quarter == 0 else 1)
+    emit(
+        {
+            "type": "done",
+            "ok": 2 - failed,
+            "failed": failed,
+            "years": years,
+            "annual_rc": rc_annual,
+            "quarterly_rc": rc_quarter,
+        }
+    )
+    return 0 if failed == 0 else 1
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="COMB DB-page capture for selected years")
+    ap = argparse.ArgumentParser(
+        description="DB-page capture (annual + quarterly) with OpenAI accuracy recheck"
+    )
     ap.add_argument("--years", default="", help="Comma-separated years, e.g. 2022,2021")
     ap.add_argument("--years-stdin", action="store_true", help="Read years JSON from stdin")
     ap.add_argument("--company-slug", default=COMMERCIAL_BANK_SLUG)
     ap.add_argument("--no-note-extract", action="store_true")
+    ap.add_argument(
+        "--include-notes",
+        action="store_true",
+        help="Extract note tables (default on unless --no-note-extract)",
+    )
     ap.add_argument("--force-note-capture", action="store_true")
     ap.add_argument("--use-openai-notes", action="store_true")
     ap.add_argument("--use-pdf-extract", action="store_true")
+    ap.add_argument("--force", action="store_true", help="Re-extract even if cells filled")
+    ap.add_argument("--apikey", default=None, help="OpenAI API key")
+    ap.add_argument("--model", default="gpt-5", help="OpenAI vision model")
     args = ap.parse_args()
 
     years: list[int] = []
@@ -253,14 +166,20 @@ def main() -> int:
     elif args.years.strip():
         years = _parse_years(args.years)
 
-    use_pdf_extract = args.use_pdf_extract
+    use_notes = not bool(args.no_note_extract)
+    if args.include_notes:
+        use_notes = True
+
     return run_capture(
         years,
         company_slug=args.company_slug.strip() or COMMERCIAL_BANK_SLUG,
-        use_note_extract=not args.no_note_extract,
+        use_note_extract=use_notes,
         force_note_capture=args.force_note_capture,
         use_openai_notes=args.use_openai_notes,
-        use_pdf_extract=use_pdf_extract,
+        use_pdf_extract=args.use_pdf_extract or True,
+        api_key=args.apikey,
+        model=args.model,
+        force=args.force,
     )
 
 

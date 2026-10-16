@@ -173,9 +173,15 @@ def _is_val_token(tok: str) -> bool:
 
 
 def _is_anchor_token(tok: str) -> bool:
-    """Column anchors are year headers and printed money amounts, not note/page refs."""
+    """Column anchors: years, money amounts, and dedicated Note / Page cells.
+
+    Note/page refs must anchor their own columns. If they are omitted, they snap
+    to the nearest year/amount column and values shift across the grid.
+    """
     text = tok.strip().strip("()")
     if _YEAR_TOKEN_RE.fullmatch(text):
+        return True
+    if _is_note_or_page_text(text):
         return True
     return bool(_REAL_AMOUNT_RE.search(tok.strip()))
 

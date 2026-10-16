@@ -135,6 +135,10 @@ B. COLUMNS AND ROW-WIDTH (THE MOST IMPORTANT RULE)
    that cell - never put a value into the Note slot. Never drop the Note
    slot just because one row is missing the note.
    - Note refs look like: "4", "17", "23.1", "(Note 34.1)" - keep verbatim.
+6b. Cell[0] is ALWAYS the row LABEL (words like "Profit for the year").
+    NEVER put an amount in cell[0]. NEVER put a Group/Bank value in the
+    Note column. If you cannot read a label, use "" for cell[0] — do not
+    shift amounts left. Percentage / change columns stay in their own cells.
 
 ============================================================
 C. HEADERS (multi-line and grouped/span headers)
@@ -458,27 +462,77 @@ def call_gpt4o(
 # JSON extraction from model response
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _balanced_json_slice(text: str, open_ch: str, close_ch: str) -> str | None:
+    """Cut the first balanced {...} or [...] block from messy model text."""
+    start = text.find(open_ch)
+    if start < 0:
+        return None
+    depth = 0
+    in_str = False
+    esc = False
+    for i in range(start, len(text)):
+        ch = text[i]
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+            continue
+        if ch == open_ch:
+            depth += 1
+        elif ch == close_ch:
+            depth -= 1
+            if depth == 0:
+                return text[start : i + 1]
+    return None
+
+
+def _repair_json_text(text: str) -> str:
+    """Cheap local fixes — no extra API call."""
+    t = text.strip()
+    # Smart quotes → ASCII
+    t = (
+        t.replace("\u201c", '"')
+        .replace("\u201d", '"')
+        .replace("\u2018", "'")
+        .replace("\u2019", "'")
+    )
+    # Trailing commas before } or ]
+    t = re.sub(r",(\s*[}\]])", r"\1", t)
+    return t
+
+
 def extract_json(raw: str) -> dict | list | None:
-    """Extract the first valid JSON object or array from a model response."""
-    # Remove markdown code fences
-    cleaned = re.sub(r"```(?:json)?", "", raw).replace("```", "").strip()
+    """Extract JSON from a model response; repair locally if needed (no retry)."""
+    if not raw or not str(raw).strip():
+        return None
 
-    # Try parsing the whole thing
-    try:
-        return json.loads(cleaned)
-    except json.JSONDecodeError:
-        pass
+    cleaned = re.sub(r"```(?:json)?", "", str(raw)).replace("```", "").strip()
 
-    # Try finding the first {...} or [...]
+    candidates: list[str] = [cleaned]
+    for open_ch, close_ch in (("{", "}"), ("[", "]")):
+        sliced = _balanced_json_slice(cleaned, open_ch, close_ch)
+        if sliced and sliced not in candidates:
+            candidates.append(sliced)
+    # Legacy greedy fallback
     for pat in (r"\{[\s\S]+\}", r"\[[\s\S]+\]"):
         m = re.search(pat, cleaned)
-        if m:
-            try:
-                return json.loads(m.group())
-            except json.JSONDecodeError:
-                pass
+        if m and m.group() not in candidates:
+            candidates.append(m.group())
 
-    return None   # couldn't parse — return None and store raw
+    for cand in candidates:
+        for attempt in (cand, _repair_json_text(cand)):
+            try:
+                return json.loads(attempt)
+            except json.JSONDecodeError:
+                continue
+
+    return None
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -539,7 +593,9 @@ def process_statement(
             print(f"    [warn] Could not parse JSON - storing raw response")
             all_results.append({"status": "parse_failed", "raw_response": raw[:2000]})
 
-        time.sleep(1)  # brief pause between calls
+        # Only pause between multi-batch note calls (core FS is usually 1 batch).
+        if len(batches) > 1 and b_idx + 1 < len(batches):
+            time.sleep(0.35)
 
     # Merge batch results
     if len(all_results) == 1:
@@ -555,6 +611,20 @@ def process_statement(
             if merged_notes:
                 result = {"title": "Notes to the Financial Statements",
                           "notes": merged_notes}
+
+    # Do not report status=ok when the only content is a parse failure —
+    # keep-best merge and accuracy gates treat parse_failed as empty.
+    if (
+        isinstance(result, dict)
+        and result.get("status") == "parse_failed"
+        and "tables" not in result
+        and "notes" not in result
+    ):
+        return {
+            "status": "parse_failed",
+            "data": result,
+            "raw_response": result.get("raw_response"),
+        }
 
     return {"status": "ok", "data": result}
 
@@ -634,6 +704,53 @@ def build_results_html(company: str, results: dict) -> str:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Parallel statement extract (4 main FS at once — accuracy unchanged)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _run_statement_jobs_parallel(
+    jobs: list[tuple[str, list[Path]]],
+    *,
+    stmts: dict,
+    client: "OpenAI | None",
+    model: str,
+    dry_run: bool,
+) -> dict[str, dict]:
+    """Run process_statement for each job; parallel when >1 and not dry-run."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    try:
+        from extraction_timing import OPENAI_PARALLEL_WORKERS as _workers
+    except Exception:
+        _workers = 4
+
+    if not jobs:
+        return {}
+
+    if dry_run or len(jobs) == 1 or client is None:
+        out: dict[str, dict] = {}
+        for key, img_paths in jobs:
+            res = process_statement(key, img_paths, client, model, dry_run)
+            res["title"] = (stmts.get(key) or {}).get("title", key)
+            out[key] = res
+        return out
+
+    out = {}
+    workers = max(1, min(_workers, len(jobs)))
+
+    def _one(key: str, img_paths: list[Path]) -> tuple[str, dict]:
+        res = process_statement(key, img_paths, client, model, dry_run)
+        res["title"] = (stmts.get(key) or {}).get("title", key)
+        return key, res
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futs = [pool.submit(_one, key, paths) for key, paths in jobs]
+        for fut in as_completed(futs):
+            key, res = fut.result()
+            out[key] = res
+    return out
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Main runner
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -647,10 +764,16 @@ def run_statements(
     out_dir: str | Path | None = None,
     existing_results: dict[str, dict] | None = None,
     write_outputs: bool = True,
+    keep_best: bool = True,
+    keep_best_log=None,
 ) -> dict[str, dict]:
     """
     Extract ONLY the given statement keys.  Merges into *existing_results*
     when provided.  Returns the combined results dict.
+
+    When *keep_best* is True (default), a newer extract replaces the prior
+    entry only if it has more usable rows — empty/parse-failed never wipes
+    a good first try.
     """
     manifest_path = Path(manifest_path).resolve()
     captures_dir = Path(captures_dir).resolve()
@@ -671,6 +794,7 @@ def run_statements(
         client = OpenAI(api_key=api_key)
 
     results: dict[str, dict] = dict(existing_results or {})
+    jobs: list[tuple[str, list[Path]]] = []
 
     for key in keys:
         if key not in stmts:
@@ -688,9 +812,22 @@ def run_statements(
             continue
 
         print(f"  [{key}]  re-extracting {len(img_paths)} page image(s) …")
-        res = process_statement(key, img_paths, client, model, dry_run)
-        res["title"] = stmts[key].get("title", key)
-        results[key] = res
+        jobs.append((key, img_paths))
+
+    fresh = _run_statement_jobs_parallel(
+        jobs, stmts=stmts, client=client, model=model, dry_run=dry_run
+    )
+    if keep_best and (existing_results or fresh):
+        try:
+            import extraction_accuracy as acc
+
+            results = acc.merge_results_keep_best(
+                results, fresh, log=keep_best_log
+            )
+        except Exception:
+            results.update(fresh)
+    else:
+        results.update(fresh)
 
     if write_outputs:
         json_out = out_dir / f"{company}_results.json"
@@ -744,6 +881,7 @@ def run(
         client = OpenAI(api_key=api_key)
 
     results: dict[str, dict] = {}
+    jobs: list[tuple[str, list[Path]]] = []
 
     for key in keys:
         if key not in stmts:
@@ -762,10 +900,14 @@ def run(
             print(f"  [{key}]  No PNG files in {stmt_dir} — skipping")
             continue
 
-        res = process_statement(key, img_paths, client, model, dry_run)
-        # Store title from manifest
-        res["title"] = stmts[key].get("title", key)
-        results[key] = res
+        jobs.append((key, img_paths))
+
+    print(f"  Parallel OpenAI extract: {len(jobs)} statement(s)")
+    results.update(
+        _run_statement_jobs_parallel(
+            jobs, stmts=stmts, client=client, model=model, dry_run=dry_run
+        )
+    )
 
     json_out = out_dir / f"{company}_results.json"
     json_out.write_text(

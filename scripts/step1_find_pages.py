@@ -71,8 +71,17 @@ STMT_DEFS: list[tuple[str, str, re.Pattern]] = [
     (
         "income_statement",
         "Income Statement / Statement of Profit or Loss",
+        # Permanent alias: Income Statement ≡ Statement of Profit or Loss
+        # (and Profit and Loss). Used for TOC, heading scan, and confirm.
         re.compile(
-            r"(?:income\s+statement|statement\s+of\s+profit(?:\s+or\s+loss)?)",
+            r"(?:"
+            r"income\s+statement|"
+            r"statement\s+of\s+profit\s+or\s+loss|"
+            r"statement\s+of\s+profit\s+and\s+loss|"
+            r"statement\s+of\s+profit|"
+            r"profit\s+(?:and|&)\s+loss\s+statement|"
+            r"profit\s+or\s+loss\s+statement"
+            r")",
             re.I,
         ),
     ),
@@ -80,7 +89,9 @@ STMT_DEFS: list[tuple[str, str, re.Pattern]] = [
         "oci",
         "Statement of Other Comprehensive Income (OCI)",
         re.compile(
-            r"statement\s+of\s+(?:other\s+)?comprehensive\s+income",
+            r"(?:statement\s+of\s+(?:profit\s+or\s+loss\s+and\s+)?"
+            r"(?:other\s+)?comprehensive\s+income|"
+            r"other\s+comprehensive\s+income)",
             re.I,
         ),
     ),
@@ -195,6 +206,8 @@ _BLOCKING_HEADINGS_RE = re.compile(
 # continuation.
 _ANY_STMT_HEADING_RE = re.compile(
     r"\bincome\s+statement\b|"
+    r"\bstatement\s+of\s+profit\s+(?:or|and)\s+loss\b|"
+    r"\bstatement\s+of\s+profit\b|"
     r"\bstatement\s+of\s+(?:other\s+)?comprehensive\s+income\b|"
     r"\bstatement\s+of\s+financial\s+position\b|"
     r"\bstatement\s+of\s+changes\s+in\s+equity\b|"
@@ -258,14 +271,18 @@ def _norm_header_line(line: str) -> str:
 
 
 def compute_running_headers(pdf, threshold: float = 0.5,
-                            min_pages: int = 5, edge_lines: int = 4) -> set[str]:
+                            min_pages: int = 5, edge_lines: int = 4,
+                            sample_cap: int = 24) -> set[str]:
     """Return the set of normalised lines that recur on >= `threshold`
-    fraction of pages (and on at least `min_pages` pages).
+    fraction of *sampled* pages (and on at least `min_pages` pages).
 
     Only the first `edge_lines` and last 3 lines of each page are
     considered — that's where page chrome lives.  Lines that are clean
     statement titles are never treated as chrome, so a repeated real
     heading is preserved.
+
+    Large annuals (400–600 pp) sample evenly instead of extracting every
+    page — same chrome signal, much faster STEP 1.
     """
     from collections import Counter
 
@@ -273,8 +290,15 @@ def compute_running_headers(pdf, threshold: float = 0.5,
     if n < max(4, min_pages):
         return set()
 
+    if n <= sample_cap:
+        indices = list(range(n))
+    else:
+        step = max(1, n // sample_cap)
+        indices = list(range(0, n, step))[:sample_cap]
+
     counter: Counter = Counter()
-    for page in pdf.pages:
+    for i in indices:
+        page = pdf.pages[i]
         try:
             txt = page.extract_text() or ""
         except Exception:
@@ -292,7 +316,8 @@ def compute_running_headers(pdf, threshold: float = 0.5,
                 seen_on_page.add(norm)
                 counter[norm] += 1
 
-    cutoff = max(min_pages, int(n * threshold))
+    sample_n = max(1, len(indices))
+    cutoff = max(min_pages, int(sample_n * threshold))
     headers: set[str] = set()
     for norm, count in counter.items():
         if count < cutoff:
@@ -302,6 +327,90 @@ def compute_running_headers(pdf, threshold: float = 0.5,
             continue
         headers.add(norm)
     return headers
+
+
+# Main FS keys for option-1 / DB annual early-stop (accuracy-critical set).
+CORE_FS_KEYS = (
+    "income_statement",
+    "oci",
+    "sofp",
+    "cash_flows",
+)
+
+
+# If TOC/anchor page is wrong, the real table is almost always within ±5 pages.
+MISSING_SCAN_RADIUS = 5
+
+
+def _scan_order_for_missing(
+    n: int,
+    anchors: list[int],
+    *,
+    radius: int = MISSING_SCAN_RADIUS,
+) -> list[int]:
+    """ONLY search ±radius pages around known anchors / TOC hints.
+
+    Never walk half the PDF — if the statement is not in this window it was
+    not near the TOC page and a wider crawl wastes minutes without helping.
+    """
+    seen: set[int] = set()
+    order: list[int] = []
+
+    def _add(i: int) -> None:
+        if 0 <= i < n and i not in seen:
+            seen.add(i)
+            order.append(i)
+
+    if not anchors:
+        return order
+
+    # Expand each anchor independently (±radius), nearest pages first.
+    for a in sorted(set(anchors)):
+        _add(a)
+        for d in range(1, max(1, radius) + 1):
+            _add(a - d)
+            _add(a + d)
+    return order
+
+
+_OCI_SECTION_RE = re.compile(
+    r"(?:other\s+comprehensive\s+income|"
+    r"statement\s+of\s+profit\s+or\s+loss\s+and\s+"
+    r"(?:other\s+)?comprehensive\s+income|"
+    r"statement\s+of\s+comprehensive\s+income)",
+    re.I,
+)
+_AMOUNT_HINT_RE = re.compile(r"\d{1,3}(?:,\d{3}){2,}")
+
+# Equity / SoFP / Cash titles must never be soft-claimed as OCI just because
+# the word "comprehensive income" appears in a column or note cell.
+_OCI_CONFLICT_TITLE_RE = re.compile(
+    r"\bstatement\s+of\s+changes\s+in\s+equity\b|"
+    r"\bstatement\s+of\s+financial\s+position\b|"
+    r"\bbalance\s+sheet\b|"
+    r"\bstatement\s+of\s+cash\s+flows?\b|"
+    r"\bnotes?\s+to\s+(?:the\s+)?(?:consolidated\s+)?financial\s+statements?\b",
+    re.I,
+)
+
+
+def page_has_oci_section(text: str) -> bool:
+    """True when a page carries a real OCI / Comprehensive Income statement.
+
+    Rejects Equity / SoFP / Cash Flows pages that merely mention OCI in cells.
+    """
+    if not text or not _OCI_SECTION_RE.search(text):
+        return False
+    top = "\n".join(_top_lines(text, 8))
+    if _OCI_CONFLICT_TITLE_RE.search(top):
+        return False
+    # Prefer a real OCI / Comprehensive Income heading near the top.
+    if has_prominent_heading(text, _OWN_HEADING["oci"]):
+        return True
+    # Soft: OCI block under a combined P&L+OCI page (not a conflicting title).
+    if re.search(r"other\s+comprehensive\s+income", text[:2500], re.I):
+        return bool(_AMOUNT_HINT_RE.search(text))
+    return False
 
 
 def _is_clean_statement_title(norm_line: str) -> bool:
@@ -599,33 +708,144 @@ def _extract_toc_pairs(txt: str) -> list[tuple[str, int, str]]:
     return out
 
 
+_FS_TOC_HEADING_RE = re.compile(
+    r"financial\s+statements?\s*[–\-]?\s*table\s+of\s+contents|"
+    r"\bB\s*[–\-]\s*financial\s+statements\b",
+    re.I,
+)
+
+
+def _is_financial_statements_toc(txt: str) -> bool:
+    """True for the detailed FS TOC (Income / SoFP / Cash Flows with page nos.)."""
+    if not txt:
+        return False
+    low = txt.lower()
+    if _FS_TOC_HEADING_RE.search(low):
+        return True
+    has_income = bool(
+        re.search(r"\bincome\s+statement\b|\bstatement\s+of\s+profit\b", low)
+    )
+    has_cash = bool(re.search(r"\bcash\s+flows?\b", low))
+    has_pos = bool(
+        re.search(r"\bfinancial\s+position\b|\bbalance\s+sheet\b", low)
+    )
+    if has_income and has_cash and has_pos:
+        return len(_extract_toc_pairs(txt)) >= 3
+    return False
+
+
+def _find_financial_statements_toc_pages(
+    pdf,
+    toc_so_far: dict[str, list[int]],
+) -> list[int]:
+    """Locate the mid-report FS TOC (e.g. printed p.306) — not only front matter."""
+    n = len(pdf.pages)
+    found: list[int] = []
+    seen: set[int] = set()
+
+    def _consider(i: int) -> None:
+        if i < 0 or i >= n or i in seen:
+            return
+        seen.add(i)
+        txt = _safe_text(pdf.pages[i])
+        if _is_financial_statements_toc(txt):
+            found.append(i)
+
+    # Jump near printed FS page numbers already known from the front TOC.
+    # Offset is usually 0–8; FS TOC sits a few pages before Income Statement.
+    seed_printed: list[int] = []
+    for key in ("income_statement", "sofp", "oci", "cash_flows", "equity"):
+        seed_printed.extend(toc_so_far.get(key) or [])
+    for printed in sorted(set(seed_printed)):
+        for off_guess in range(0, 9):
+            base = printed - 1 + off_guess
+            for d in range(-12, 3):
+                _consider(base + d)
+
+    # If still nothing, probe a narrow band where bank FS TOCs usually sit.
+    if not found and n > 80:
+        start = max(0, int(n * 0.45))
+        end = min(n, int(n * 0.65))
+        step = max(1, (end - start) // 40)
+        for i in range(start, end, step):
+            _consider(i)
+            if len(found) >= 2:
+                break
+
+    return found
+
+
+def _plausible_toc_page(pg: int, n_pages: int) -> bool:
+    """Reject years / note refs mistaken for TOC page numbers."""
+    if pg < 1:
+        return False
+    # Printed page cannot exceed PDF length by more than a small offset.
+    if pg > n_pages + 30:
+        return False
+    # Calendar years are never FS TOC pages.
+    if 1900 <= pg <= 2100:
+        return False
+    return True
+
+
 def scan_toc(pdf, scan_limit: int = 60) -> dict[str, list[int]]:
     toc: dict[str, list[int]] = {k: [] for k, _, _ in STMT_DEFS}
+    n_pages = len(pdf.pages)
 
     toc_pages: list[int] = []
-    for i in range(min(len(pdf.pages), scan_limit)):
+    for i in range(min(n_pages, scan_limit)):
         txt = _safe_text(pdf.pages[i])
         if _looks_like_toc(txt):
             toc_pages.append(i)
 
     if not toc_pages:
-        toc_pages = list(range(0, min(len(pdf.pages), 12)))
+        toc_pages = list(range(0, min(n_pages, 12)))
 
     for i in toc_pages:
         txt = _safe_text(pdf.pages[i])
         for key, pg, _ in _extract_toc_pairs(txt):
-            toc[key].append(pg)
+            if _plausible_toc_page(pg, n_pages):
+                toc[key].append(pg)
 
-    # Dedupe while preserving order.
+    # Mid-report "Financial statements – Table of contents" (e.g. Cash Flows 318).
+    # Front-matter TOC often omits or mis-lists these pages.
+    for i in _find_financial_statements_toc_pages(pdf, toc):
+        txt = _safe_text(pdf.pages[i])
+        for key, pg, _ in _extract_toc_pairs(txt):
+            if _plausible_toc_page(pg, n_pages):
+                toc[key].append(pg)
+
+    # Dedupe; keep order (front TOC first, then FS TOC — confirmation ranks).
     for k in toc:
         seen, out = set(), []
         for p in toc[k]:
-            if p not in seen:
+            if p not in seen and _plausible_toc_page(p, n_pages):
                 seen.add(p)
                 out.append(p)
         toc[k] = out
 
     return toc
+
+
+def _rank_toc_printed_pages(
+    printed_list: list[int],
+    *,
+    cluster: list[int],
+) -> list[int]:
+    """Order TOC candidates: nearest to the FS page cluster first (e.g. ~307–318)."""
+    uniq = []
+    seen = set()
+    for p in printed_list:
+        if p not in seen:
+            seen.add(p)
+            uniq.append(p)
+    if not uniq:
+        return []
+    if cluster:
+        center = sorted(cluster)[len(cluster) // 2]
+        return sorted(uniq, key=lambda p: (abs(p - center), -p))
+    # No cluster yet — prefer mid/high printed pages over front-matter noise (e.g. 29).
+    return sorted(uniq, key=lambda p: (0 if p >= 100 else 1, abs(p - 300)))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -700,6 +920,31 @@ def is_statement_first_page(text: str, key: str) -> bool:
     if other_match and not own_re.search(top_block):
         return False
 
+    # Income ≡ Statement of Profit or Loss. Keep pure P&L pages.
+    # Only reject when the PAGE TITLE is OCI / Comprehensive Income
+    # (not when "other comprehensive income" appears later in the body).
+    if key == "income_statement":
+        if has_prominent_heading(text, _OWN_HEADING["oci"]):
+            # Combined "P&L and OCI" title may still be the income table
+            # when it also says Profit or Loss / Income Statement.
+            has_pl = bool(
+                re.search(
+                    r"\bincome\s+statement\b|"
+                    r"\bstatement\s+of\s+profit\s+(?:or|and)\s+loss\b|"
+                    r"\bstatement\s+of\s+profit\b",
+                    top_block,
+                    re.I,
+                )
+            )
+            if not has_pl:
+                return False
+        elif re.search(
+            r"^\s*statement\s+of\s+(?:other\s+)?comprehensive\s+income\b",
+            top_block,
+            re.I | re.M,
+        ):
+            return False
+
     return True
 
 
@@ -729,11 +974,12 @@ def _continuation_ok(page_txt: str, key: str) -> bool:
 # ─────────────────────────────────────────────────────────────────────────────
 
 _MAX_CONT: dict[str, int] = {
+    # Core FS: at most ~3 continuation pages after the start page.
     "income_statement":  3,
     "oci":               3,
     "sofp":              3,
-    "equity":            4,
-    "cash_flows":        4,
+    "equity":            3,
+    "cash_flows":        3,
     "shareholder_info":  8,
     "investor_info":     8,
     "ten_year_summary":  8,
@@ -742,36 +988,96 @@ _MAX_CONT: dict[str, int] = {
 }
 
 
-def find_all_statement_pages(pdf) -> tuple[dict[str, dict], int]:
+def find_all_statement_pages(
+    pdf,
+    only_keys: list[str] | tuple[str, ...] | None = None,
+    *,
+    openai_toc: dict[str, list[int]] | None = None,
+) -> tuple[dict[str, dict], int]:
     global _RUNNING_HEADERS
 
     # Detect repeating page chrome (nav breadcrumbs, footers) so it cannot
     # hide real headings or trip the blocking-heading filters.  Recomputed
     # per-PDF so it never leaks between reports.
-    _RUNNING_HEADERS = compute_running_headers(pdf)
+    # Core-only option-1 runs skip the expensive full-PDF chrome sample —
+    # TOC ±5 confirmation is enough and saves minutes on 500+ page annuals.
+    if only_keys and all(k in CORE_FS_KEYS for k in only_keys):
+        _RUNNING_HEADERS = set()
+    else:
+        _RUNNING_HEADERS = compute_running_headers(pdf)
 
-    n   = len(pdf.pages)
+    n = len(pdf.pages)
+    # Local TOC as fallback / offset seed; OpenAI TOC (when provided) wins.
     toc = scan_toc(pdf)
+    if openai_toc:
+        for key, pages in openai_toc.items():
+            if key not in toc:
+                toc[key] = []
+            # Put OpenAI numbers first so confirmation prefers them.
+            merged: list[int] = []
+            seen: set[int] = set()
+            for p in list(pages or []) + list(toc.get(key) or []):
+                try:
+                    ip = int(p)
+                except (TypeError, ValueError):
+                    continue
+                if ip not in seen and _plausible_toc_page(ip, n):
+                    seen.add(ip)
+                    merged.append(ip)
+            toc[key] = merged
     off = discover_offset(pdf, toc)
+
+    want = [k for k, *_ in STMT_DEFS]
+    if only_keys:
+        only_set = set(only_keys)
+        want = [k for k in want if k in only_set] or want
 
     result: dict[str, dict] = {}
 
-    # ── Pass 1: TOC-anchored detection ──────────────────────────────────────
-    for key, title, _ in STMT_DEFS:
-        printed_list = sorted(set(toc.get(key, [])))
+    # Cluster of FS printed pages from TOC (guides which TOC candidate is real).
+    fs_cluster: list[int] = []
+    for ck in CORE_FS_KEYS:
+        fs_cluster.extend(
+            p for p in (toc.get(ck) or []) if _plausible_toc_page(p, n)
+        )
+    if len(fs_cluster) >= 3:
+        med = sorted(fs_cluster)[len(fs_cluster) // 2]
+        fs_cluster = [p for p in fs_cluster if abs(p - med) <= 80]
+
+    # ── Pass 1: TOC-anchored detection (exact TOC page first) ───────────────
+    # Prefer the exact TOC page (delta 0), then ±1, ±2, … — do not wander.
+    deltas = [0]
+    for d in range(1, MISSING_SCAN_RADIUS + 1):
+        deltas.extend((d, -d))
+
+    for key in want:
+        title = _KEY_TITLE[key]
+        printed_list = _rank_toc_printed_pages(
+            list(toc.get(key) or []),
+            cluster=fs_cluster,
+        )
         if not printed_list:
             continue
 
         best_idx: int | None = None
+        best_printed: int | None = None
         for printed in printed_list:
             idx0 = printed - 1 + off
-            for delta in range(-4, 8):
+            for delta in deltas:
                 cand = idx0 + delta
                 if not (0 <= cand < n):
                     continue
                 txt = _safe_text(pdf.pages[cand])
+                hit = False
                 if is_statement_first_page(txt, key):
+                    hit = True
+                elif key == "oci" and page_has_oci_section(txt):
+                    # Only accept soft OCI hits near the FS cluster / this TOC page.
+                    if abs(delta) <= 1:
+                        hit = True
+                if hit:
                     best_idx = cand
+                    best_printed = printed
                     break
             if best_idx is not None:
                 break
@@ -779,24 +1085,44 @@ def find_all_statement_pages(pdf) -> tuple[dict[str, dict], int]:
         if best_idx is not None:
             result[key] = {
                 "title":              title,
-                "printed_pages":      [best_idx + 1 - off],
+                "printed_pages":      [best_printed if best_printed is not None else best_idx + 1 - off],
                 "pdf_indices_0based": [best_idx],
                 "pdf_pages_1based":   [best_idx + 1],
                 "page_count":         1,
                 "confirmed":          True,
             }
 
-    # ── Pass 2: heading-scan fallback for the still-missing statements ──────
-    missing = [k for k, *_ in STMT_DEFS if k not in result]
+    # Early-stop: when every requested key is TOC-confirmed, skip gap scan.
+    missing = [k for k in want if k not in result]
     if missing:
-        for i in range(n):
+        # ── Pass 2: ONLY ±5 around TOC hints + already-found anchors ─────
+        anchors: list[int] = []
+        for info in result.values():
+            anchors.extend(info.get("pdf_indices_0based") or [])
+        for key in list(missing):
+            for printed in toc.get(key, []) or []:
+                try:
+                    anchors.append(int(printed) - 1 + off)
+                except (TypeError, ValueError):
+                    continue
+        # OCI usually sits on / next to the income statement pages.
+        if "oci" in missing and "income_statement" in result:
+            anchors.extend(result["income_statement"].get("pdf_indices_0based") or [])
+
+        for i in _scan_order_for_missing(n, anchors):
             if not missing:
                 break
             txt = _safe_text(pdf.pages[i])
             if not txt:
                 continue
             for key in list(missing):
-                if not is_statement_first_page(txt, key):
+                hit = False
+                if is_statement_first_page(txt, key):
+                    hit = True
+                elif key == "oci" and page_has_oci_section(txt):
+                    # Soft OCI only when the page is not another FS title.
+                    hit = True
+                if not hit:
                     continue
                 title = _KEY_TITLE[key]
                 result[key] = {
@@ -810,15 +1136,62 @@ def find_all_statement_pages(pdf) -> tuple[dict[str, dict], int]:
                 missing.remove(key)
                 break
 
-    # ── Pass 3: extend each statement to its real continuation pages ─────────
+    # ── Pass 2b: wrong TOC often lands ±6–10 away from real FS cluster.
+    # Once any core statement is found, re-anchor and recover Income / OCI /
+    # SoFP that sat just outside the first ±5 window (e.g. P&L one page
+    # before SoFP when TOC pointed at Notes).
+    missing = [k for k in want if k not in result]
+    if missing and any(k in result for k in CORE_FS_KEYS):
+        cluster_anchors: list[int] = []
+        for ck in CORE_FS_KEYS:
+            if ck in result:
+                cluster_anchors.extend(
+                    result[ck].get("pdf_indices_0based") or []
+                )
+        # Prefer pages just before the earliest FS page (Income / P&L).
+        if cluster_anchors:
+            earliest = min(cluster_anchors)
+            for back in range(1, 6):
+                cluster_anchors.append(earliest - back)
+        for i in _scan_order_for_missing(
+            n, cluster_anchors, radius=max(MISSING_SCAN_RADIUS, 8)
+        ):
+            if not missing:
+                break
+            txt = _safe_text(pdf.pages[i])
+            if not txt:
+                continue
+            for key in list(missing):
+                if not is_statement_first_page(txt, key):
+                    if not (key == "oci" and page_has_oci_section(txt)):
+                        continue
+                title = _KEY_TITLE[key]
+                result[key] = {
+                    "title":              title,
+                    "printed_pages":      [i + 1 - off],
+                    "pdf_indices_0based": [i],
+                    "pdf_pages_1based":   [i + 1],
+                    "page_count":         1,
+                    "confirmed":          False,
+                }
+                missing.remove(key)
+                break
+
+    # ── Pass 3: extend ~3 pages only while the same table continues ────────
     for key, info in result.items():
         start_idx = info["pdf_indices_0based"][0]
-        max_cont  = _MAX_CONT.get(key, 4)
+        max_cont  = _MAX_CONT.get(key, 3)
         indices   = [start_idx]
 
         for nxt in range(start_idx + 1, min(n, start_idx + 1 + max_cont)):
             nxt_txt = _safe_text(pdf.pages[nxt])
             if not _continuation_ok(nxt_txt, key):
+                break
+            # OCI continuation: next page must still look like OCI / amounts.
+            if key == "oci" and not (
+                page_has_oci_section(nxt_txt)
+                or _AMOUNT_HINT_RE.search(nxt_txt or "")
+            ):
                 break
             indices.append(nxt)
 
@@ -852,14 +1225,24 @@ def rescan_missing_keys(
     if not want:
         return result
 
-    for i in range(n):
+    anchors = [
+        idx
+        for info in result.values()
+        for idx in (info.get("pdf_indices_0based") or [])
+    ]
+    if "oci" in want and "income_statement" in result:
+        anchors.extend(result["income_statement"].get("pdf_indices_0based") or [])
+    for i in _scan_order_for_missing(n, anchors):
         if not want:
             break
         txt = _safe_text(pdf.pages[i])
         if not txt:
             continue
         for key in list(want):
-            if not is_statement_first_page(txt, key):
+            hit = (key == "oci" and page_has_oci_section(txt)) or is_statement_first_page(
+                txt, key
+            )
+            if not hit:
                 continue
             title = _KEY_TITLE[key]
             result[key] = {
@@ -878,7 +1261,7 @@ def rescan_missing_keys(
             continue
         info = result[key]
         start_idx = info["pdf_indices_0based"][0]
-        max_cont = _MAX_CONT.get(key, 4)
+        max_cont = _MAX_CONT.get(key, 3)
         indices = [start_idx]
         for nxt in range(start_idx + 1, min(n, start_idx + 1 + max_cont)):
             nxt_txt = _safe_text(pdf.pages[nxt])
@@ -910,28 +1293,85 @@ def merge_manifest_statements(
 
 def run(pdf_path: str | Path, company: str,
         out_path: str | Path | None = None,
-        verbose: bool = True) -> dict:
+        verbose: bool = True,
+        only_keys: list[str] | tuple[str, ...] | None = None,
+        reuse_manifest: bool = True,
+        api_key: str | None = None,
+        model: str = "gpt-5") -> dict:
 
     pdf_path = Path(pdf_path).resolve()
+    if out_path is None:
+        out_path = pdf_path.parent / f"{pdf_path.stem}_pages.json"
+    out_path = Path(out_path)
+
+    # Reuse a fresh page map when the same PDF was already scanned.
+    if reuse_manifest and out_path.exists():
+        try:
+            cached = json.loads(out_path.read_text(encoding="utf-8"))
+            stmts = cached.get("statements") or {}
+            same_pdf = Path(str(cached.get("source_pdf") or "")).resolve() == pdf_path
+            need = list(only_keys) if only_keys else list(CORE_FS_KEYS)
+            if same_pdf and all(k in stmts for k in need):
+                if verbose:
+                    print(
+                        f"\n[{company}]  {pdf_path.name} ...  "
+                        f"reusing cached page map ({len(stmts)} stmt(s))"
+                    )
+                    print(f"    -> {out_path}")
+                return cached
+        except Exception:
+            pass
 
     if verbose:
         print(f"\n[{company}]  {pdf_path.name} ...", end="", flush=True)
 
+    openai_toc: dict[str, list[int]] | None = None
+    toc_source = "local"
+
     try:
         with pdfplumber.open(str(pdf_path)) as pdf:
-            n_pages          = len(pdf.pages)
-            page_map, offset = find_all_statement_pages(pdf)
+            n_pages = len(pdf.pages)
+            # Prefer OpenAI vision on TOC page image(s) for exact page numbers.
+            if api_key:
+                try:
+                    import toc_openai as toc_ai
+
+                    openai_toc = toc_ai.openai_read_toc_page_numbers(
+                        pdf_path,
+                        pdf,
+                        api_key=api_key,
+                        model=model,
+                        log=lambda msg, level="info": print(
+                            f"\n  [toc-openai{'!' if level == 'warn' else ''}] {msg}"
+                        )
+                        if verbose
+                        else None,
+                    )
+                    if openai_toc:
+                        toc_source = "openai"
+                except Exception as exc:
+                    if verbose:
+                        print(f"\n  [toc-openai!] skipped: {exc}")
+                    openai_toc = None
+
+            page_map, offset = find_all_statement_pages(
+                pdf,
+                only_keys=only_keys,
+                openai_toc=openai_toc,
+            )
     except Exception as e:
         print(f"  ERROR: {e}")
         return {}
 
-    all_keys = [k for k, *_ in STMT_DEFS]
-    found    = [k for k in all_keys if k in page_map]
-    missing  = [k for k in all_keys if k not in page_map]
+    track_keys = list(only_keys) if only_keys else [k for k, *_ in STMT_DEFS]
+    found    = [k for k in track_keys if k in page_map]
+    missing  = [k for k in track_keys if k not in page_map]
 
     if verbose:
-        print(f"  {len(found)} found / {len(missing)} not found  "
-              f"({n_pages} pages, offset {offset})")
+        print(
+            f"  {len(found)} found / {len(missing)} not found  "
+            f"({n_pages} pages, offset {offset}, toc={toc_source})"
+        )
         for k in found:
             info = page_map[k]
             pgs  = info["pdf_pages_1based"]
@@ -940,7 +1380,7 @@ def run(pdf_path: str | Path, company: str,
             conf = "TOC" if info["confirmed"] else "scan"
             print(f"    OK  [{conf}]  {info['title']}  ->  {rng}")
         for k in missing:
-            title = _KEY_TITLE[k]
+            title = _KEY_TITLE.get(k, k)
             print(f"    --  {title}")
 
     manifest = {
@@ -950,11 +1390,11 @@ def run(pdf_path: str | Path, company: str,
         "page_offset":     offset,
         "generated_at":    datetime.now().isoformat(timespec="seconds"),
         "statements":      page_map,
+        "only_keys":       list(track_keys),
+        "toc_source":      toc_source,
+        "openai_toc":      openai_toc or {},
     }
 
-    if out_path is None:
-        out_path = pdf_path.parent / f"{pdf_path.stem}_pages.json"
-    out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False),
@@ -982,6 +1422,15 @@ if __name__ == "__main__":
                     help="Output JSON path  (default: <pdf_stem>_pages.json)")
     ap.add_argument("--quiet",   action="store_true",
                     help="Suppress all terminal output")
+    ap.add_argument("--apikey", default=None, help="OpenAI API key for TOC vision")
+    ap.add_argument("--model", default="gpt-5", help="OpenAI model for TOC vision")
     args = ap.parse_args()
 
-    run(args.pdf, args.company, args.out, verbose=not args.quiet)
+    run(
+        args.pdf,
+        args.company,
+        args.out,
+        verbose=not args.quiet,
+        api_key=args.apikey,
+        model=args.model,
+    )
