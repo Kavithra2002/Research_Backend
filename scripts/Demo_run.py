@@ -9,10 +9,9 @@ per company:
 
   1. Copies the selected PDF(s) into ``testing/<company_key>/``.
   2. Runs the matching extraction pipeline:
-        • Annual    -> printed_statements (main FS only, local PDF, no OpenAI)
-        • Quarterly -> Q_data_extraction.process_quarterly_for_company
-  3. Immediately UPLOADS results into MongoDB (printed FS tables for annual;
-     OpenAI JSON tables for quarterly).
+        • Annual    -> Data_retrive (step1 find → step2 capture → step3 OpenAI)
+        • Quarterly -> Q_data_extraction (capture pages → OpenAI vision)
+  3. Immediately UPLOADS OpenAI-extracted tables into MongoDB.
 
 Progress is streamed to stdout as NDJSON so the Next.js API route
 (``/api/demo/run``) can relay it live to the browser — same protocol the
@@ -203,11 +202,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--source", type=Path, default=DEMO_DEFAULT,
                     help=f"Demo data root (default: {DEMO_DEFAULT}).")
     ap.add_argument("--apikey", default=None,
-                    help="Ignored — OpenAI is disabled.")
+                    help="OpenAI API key (else OPENAI_API_KEY env / backend/.env).")
     ap.add_argument("--option", choices=["1", "2"], default="1",
-                    help="Ignored for annual; quarterly uses local extract.")
-    ap.add_argument("--model", default="pdfplumber-local",
-                    help="Ignored — local extract engines only.")
+                    help="1=core statements only  2=core+notes.")
+    ap.add_argument("--model", default="gpt-5",
+                    help="OpenAI vision model (default: gpt-5).")
     ap.add_argument("--dpi", type=int, default=150, help="Render DPI (default 150).")
     ap.add_argument("--dry-run", action="store_true",
                     help="Locate statements but skip MongoDB upload.")
@@ -268,9 +267,14 @@ def main(argv: list[str] | None = None) -> int:
         "model": args.model,
     })
 
-    # OpenAI disabled — annual + quarterly both use local PDF extractors.
-    api_key = None
-    emit_log("OpenAI disabled — using local PDF extractors only.")
+    api_key = data_retrive._resolve_api_key(args.apikey)
+    if api_key:
+        emit_log(f"OpenAI enabled — model {args.model} (captured pages → vision extract).")
+    else:
+        emit_log(
+            "OPENAI_API_KEY not set — falling back to local PDF extractors.",
+            level="warning",
+        )
 
     if not args.dry_run and not do_upload:
         emit({"type": "error", "message": (
@@ -541,7 +545,8 @@ def _attempt_one(
     where `db_event` (if present) is the payload to emit on the FINAL
     attempt so the UI only ever sees one db-upload per report.
     """
-    if report_type == "annual":
+    # Annual without an API key keeps the fast local printed path.
+    if report_type == "annual" and not api_key:
         return _attempt_annual_printed(
             company=company,
             company_key=company_key,
@@ -557,15 +562,29 @@ def _attempt_one(
         work_dir = Path(work_dir_str)
         # ── Extraction (writes captures + results JSON inside work_dir) ────
         try:
-            if not _Q_AVAILABLE:
-                return {"status": "skipped", "retryable": False,
-                        "error": "Q_data_extraction module not available"}
-            res = q_extraction.process_quarterly_for_company(
-                company_key=company_key, pdf_path=src,
-                testing_dir=work_dir, api_key=api_key,
-                model=args.model, dry_run=bool(args.dry_run), force=True,
-            )
-            results = work_dir / company_key / f"{company_key}_quarterly_results.json"
+            if report_type == "annual":
+                res = data_retrive.process_company(
+                    company=company_key,
+                    pdf_path=src,
+                    testing_dir=work_dir,
+                    api_key=api_key,
+                    option=str(getattr(args, "option", "1") or "1"),
+                    model=args.model,
+                    dry_run=bool(args.dry_run),
+                    dpi=int(getattr(args, "dpi", 150) or 150),
+                    force=True,
+                )
+                results = work_dir / company_key / f"{company_key}_results.json"
+            else:
+                if not _Q_AVAILABLE:
+                    return {"status": "skipped", "retryable": False,
+                            "error": "Q_data_extraction module not available"}
+                res = q_extraction.process_quarterly_for_company(
+                    company_key=company_key, pdf_path=src,
+                    testing_dir=work_dir, api_key=api_key,
+                    model=args.model, dry_run=bool(args.dry_run), force=True,
+                )
+                results = work_dir / company_key / f"{company_key}_quarterly_results.json"
             status = res.get("status", "ok") if isinstance(res, dict) else "ok"
             err = res.get("error") if isinstance(res, dict) else None
             validation = (
@@ -655,6 +674,15 @@ def _attempt_one(
             }
 
         tables = summary.get("tables", 0) or 0
+        if summary.get("dropped_ok_keys"):
+            log.warning(
+                "DB upload dropped OK statements for %s: %s",
+                company_key,
+                summary.get("dropped_ok_keys"),
+            )
+        if summary.get("errors"):
+            for err in summary.get("errors") or []:
+                log.warning("DB upload issue for %s: %s", company_key, err)
         db_event = {
             "type": "db-upload", "company": company, "companyKey": company_key,
             "reportType": report_type, "group": group,

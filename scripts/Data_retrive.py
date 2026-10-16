@@ -1,23 +1,28 @@
 """
 Data_retrive.py
 ===============
-Local (no OpenAI) annual financial-statement extractor.
+Annual financial-statement extractor.
 
-Pulls the main printed FS tables from each company annual PDF with
-``printed_statements`` / pdfplumber and writes JSON under ``testing/``:
+Pipeline (when OPENAI_API_KEY is set):
+  1. step1_find_pages   — locate statement pages in the PDF
+  2. step2_capture_pages — render those pages to PNG captures
+  3. step3_send_to_openai — OpenAI vision verbatim table extract
+
+Falls back to local ``printed_statements`` / pdfplumber when no API key
+is available.
+
+Writes JSON under ``testing/<company>/``:
 
   • Income statement / Statement of profit or loss
   • Statement of comprehensive income
   • Statement of financial position
   • Statement of cash flows
 
-OpenAI vision is disabled for now.
-
 Usage
 -----
     python Data_retrive.py
     python Data_retrive.py --only company1 --force
-    python Data_retrive.py --dry-run
+    python Data_retrive.py --dry-run --apikey sk-...
 """
 
 from __future__ import annotations
@@ -50,10 +55,10 @@ REPORTS_DIR  = BACKEND_DIR / "reports"
 TESTING_DIR  = BACKEND_DIR / "testing"
 BACKEND_ENV  = BACKEND_DIR / ".env"
 
-# OpenAI is disabled — local PDF extract only.
-USE_OPENAI = False
+# Prefer OpenAI vision on captured statement pages when a key is available.
+USE_OPENAI = True
 
-# Main FS keys kept for annual local extract.
+# Main FS keys kept for annual extract.
 ANNUAL_CAPTURE_KEYS = (
     "income_statement",
     "oci",
@@ -250,26 +255,19 @@ def _printed_payload_to_results(payload: dict) -> dict:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Per-company pipeline (local PDF only — OpenAI disabled)
+# Per-company pipeline
 # ─────────────────────────────────────────────────────────────────────────────
 
-def process_company(
-    company:     str,
-    pdf_path:    Path,
+def _process_company_printed(
+    company: str,
+    pdf_path: Path,
     testing_dir: Path,
-    api_key:     str | None = None,
-    option:      str = "1",
-    model:       str = "printed-statements",
-    dry_run:     bool = False,
-    dpi:         int = 150,
-    force:       bool = False,
-    comb_mode:   bool = False,
+    *,
+    dry_run: bool = False,
+    force: bool = False,
+    comb_mode: bool = False,
 ) -> dict:
-    """Extract main FS tables from one annual PDF with local printed extract.
-
-    ``api_key`` / ``model`` / ``dpi`` / ``option`` are accepted for call-site
-    compatibility but OpenAI is not used.
-    """
+    """Fallback: local printed_statements extract (no OpenAI)."""
     from printed_statements import extract_printed_report
 
     company_out = testing_dir / company
@@ -281,7 +279,7 @@ def process_company(
     print(f"#  COMPANY : {company}")
     print(f"#  PDF     : {pdf_path}")
     print(f"#  OUTPUT  : {company_out}")
-    print(f"#  MODE    : local printed-statements (OpenAI disabled)")
+    print(f"#  MODE    : local printed-statements (no API key)")
     print(f"{'#'*70}")
 
     if not force and _results_already_done(company_out, company):
@@ -313,6 +311,36 @@ def process_company(
         print(
             f"  [{key}] status={entry.get('status', 'missing')} rows={n_rows}"
         )
+
+    # Layout accuracy gate (no capture re-extract without OpenAI).
+    try:
+        import extraction_accuracy as acc
+
+        needs = acc.keys_needing_reextract(payload, report_year=year)
+        (company_out / "accuracy_report.json").write_text(
+            json.dumps(
+                {
+                    "ok": len(needs) == 0,
+                    "remaining": needs,
+                    "notes": [
+                        "Local printed extract — set OPENAI_API_KEY to "
+                        "re-extract wrong/missing values from page captures."
+                    ],
+                },
+                indent=2,
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        if needs:
+            print("  [accuracy] layout/value issues (no OpenAI re-extract):")
+            for key, reasons in needs.items():
+                for r in reasons:
+                    print(f"    ! {r}")
+        else:
+            print("  [accuracy] printed layout looks consistent")
+    except Exception as e:
+        print(f"  [warn] accuracy check skipped: {e}")
 
     manifest = {
         "company": company,
@@ -393,7 +421,6 @@ def process_company(
         }
 
     status = "ok" if validation.ok or comb_mode or ok_keys else "missing_statements"
-    # Accept partial main-FS success so a missing OCI does not force OpenAI retries.
     if ok_keys and not validation.ok:
         status = "ok"
     return {
@@ -401,6 +428,221 @@ def process_company(
         "status": status,
         "validation": validation.to_dict(),
         "gaps": validation.all_gaps() if not validation.ok else [],
+    }
+
+
+def process_company(
+    company:     str,
+    pdf_path:    Path,
+    testing_dir: Path,
+    api_key:     str | None = None,
+    option:      str = "1",
+    model:       str = "gpt-5",
+    dry_run:     bool = False,
+    dpi:         int = 150,
+    force:       bool = False,
+    comb_mode:   bool = False,
+) -> dict:
+    """Extract main FS tables from one annual PDF.
+
+    With an OpenAI key: step1 find pages → step2 capture → step3 vision extract.
+    Without a key: local printed_statements fallback.
+    """
+    resolved_key = _resolve_api_key(api_key) if USE_OPENAI else None
+    if not resolved_key or not USE_OPENAI:
+        if USE_OPENAI and not resolved_key:
+            print("  [warn] OPENAI_API_KEY not set — using local printed extract")
+        return _process_company_printed(
+            company,
+            pdf_path,
+            testing_dir,
+            dry_run=dry_run,
+            force=force,
+            comb_mode=comb_mode,
+        )
+
+    import time
+
+    import extraction_timing as timing
+    import step1_find_pages as step1
+    import step2_capture_pages as step2
+    import step3_send_to_openai as step3
+
+    company_out = testing_dir / company
+    company_out.mkdir(parents=True, exist_ok=True)
+    pages_json = company_out / f"{company}_pages.json"
+    captures_dir = company_out / "captures"
+    results_path = company_out / f"{company}_results.json"
+    t_all = time.monotonic()
+
+    print(f"\n{'#'*70}")
+    print(f"#  COMPANY : {company}")
+    print(f"#  PDF     : {pdf_path}")
+    print(f"#  OUTPUT  : {company_out}")
+    print(f"#  MODE    : OpenAI vision (step1 → step2 → step3)")
+    print(f"#  MODEL   : {model}")
+    print(f"#  TARGET  : ~{timing.TARGET_SECONDS:.0f}s typical / {timing.MAX_SECONDS:.0f}s max")
+    print(f"{'#'*70}")
+
+    if not force and _results_already_done(company_out, company):
+        print(f"  [skip] {company}: results already exist — use --force to rebuild")
+        return {"company": company, "status": "skipped_existing"}
+
+    # STEP 1 — locate statement pages (core FS only for option 1)
+    print("\n  → STEP 1: find statement pages")
+    t1 = time.monotonic()
+    try:
+        only = list(ANNUAL_CAPTURE_KEYS) if option == "1" else None
+        manifest = step1.run(
+            pdf_path=pdf_path,
+            company=company,
+            out_path=pages_json,
+            verbose=True,
+            only_keys=only,
+            reuse_manifest=not force,
+            api_key=resolved_key,
+            model=model,
+        )
+    except Exception as e:
+        traceback.print_exc()
+        return {"company": company, "status": "step1_failed", "error": str(e)}
+    timing.log_timing("STEP 1", t1)
+
+    if not manifest or not (manifest.get("statements") or {}):
+        return {
+            "company": company,
+            "status": "no_statements_found",
+            "error": "step1 found no financial statement pages",
+        }
+
+    # STEP 2 — render page images (needed pages only, parallel)
+    print("\n  → STEP 2: capture statement page images")
+    t2 = time.monotonic()
+    try:
+        cap = step2.run(
+            manifest_path=pages_json,
+            out_dir=captures_dir,
+            dpi=dpi,
+            only_keys=list(ANNUAL_CAPTURE_KEYS) if option == "1" else None,
+        )
+    except Exception as e:
+        traceback.print_exc()
+        return {"company": company, "status": "step2_failed", "error": str(e)}
+    timing.log_timing("STEP 2", t2)
+
+    img_map = (cap or {}).get("img_map") or {}
+    n_imgs = sum(len(v) for v in img_map.values())
+    print(f"  [step2] {n_imgs} page image(s) across {len(img_map)} statement(s)")
+    if n_imgs == 0 and not dry_run:
+        return {
+            "company": company,
+            "status": "step2_failed",
+            "error": "no page images captured for OpenAI",
+        }
+
+    if dry_run:
+        print("  [dry-run] skipping OpenAI step3")
+        return {"company": company, "status": "ok", "gaps": []}
+
+    # STEP 3 — OpenAI vision extract (parallel per statement)
+    print("\n  → STEP 3: OpenAI vision extract from captures")
+    t3 = time.monotonic()
+    try:
+        results = step3.run(
+            manifest_path=pages_json,
+            captures_dir=captures_dir,
+            api_key=resolved_key,
+            option=option,
+            model=model,
+            dry_run=False,
+            out_dir=company_out,
+        )
+    except Exception as e:
+        traceback.print_exc()
+        return {"company": company, "status": "step3_failed", "error": str(e)}
+    timing.log_timing("STEP 3", t3)
+
+    if not isinstance(results, dict):
+        results = {}
+
+    # STEP 3b — one accuracy gate; re-extract only wrong/missing keys.
+    print("\n  → STEP 3b: accuracy recheck (re-extract bad statements if needed)")
+    t3b = time.monotonic()
+    try:
+        import extraction_accuracy as acc
+
+        year = _year_from_path(pdf_path)
+        results, accuracy = acc.accuracy_pass_annual(
+            results=results,
+            manifest_path=pages_json,
+            captures_dir=captures_dir,
+            api_key=resolved_key,
+            model=model,
+            report_year=year,
+            max_rounds=timing.DEFAULT_ACCURACY_ROUNDS,
+            log=lambda msg, level="info": print(
+                f"  [accuracy{'!' if level == 'warn' else ''}] {msg}"
+            ),
+        )
+        results_path.write_text(
+            json.dumps(results, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        (company_out / "accuracy_report.json").write_text(
+            json.dumps(accuracy, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+    except Exception as e:
+        print(f"  [warn] accuracy recheck failed: {e}")
+    timing.log_timing("STEP 3b accuracy", t3b)
+    timing.log_timing("TOTAL report", t_all)
+
+    ok_keys = [
+        k for k, v in results.items()
+        if isinstance(v, dict) and v.get("status") == "ok"
+    ]
+    for key in ANNUAL_CAPTURE_KEYS:
+        entry = results.get(key) or {}
+        n_rows = 0
+        tables = ((entry.get("data") or {}).get("tables") or [])
+        if tables:
+            n_rows = len(tables[0].get("rows") or [])
+        print(
+            f"  [{key}] status={entry.get('status', 'missing')} rows={n_rows}"
+        )
+
+    validation = val.validate_annual_results(
+        results, manifest, option=option, comb_mode=comb_mode
+    )
+    (company_out / "validation_report.json").write_text(
+        json.dumps(validation.to_dict(), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    if validation.ok:
+        print("  [validate] main FS statements captured via OpenAI")
+    else:
+        print(
+            f"  [validate] gaps: {', '.join(validation.all_gaps()) or 'none'}"
+        )
+
+    if not ok_keys and not results_path.exists():
+        return {
+            "company": company,
+            "status": "no_statements_found",
+            "validation": validation.to_dict(),
+            "gaps": validation.all_gaps(),
+        }
+
+    status = "ok" if validation.ok or comb_mode or ok_keys else "missing_statements"
+    if ok_keys and not validation.ok:
+        status = "ok"
+    return {
+        "company": company,
+        "status": status,
+        "validation": validation.to_dict(),
+        "gaps": validation.all_gaps() if not validation.ok else [],
+        "model": model,
+        "api_status": "ok",
     }
 
 
@@ -449,7 +691,7 @@ def run(
         return
 
     print(f"\n{'='*70}")
-    print(f"  DATA RETRIEVE — local PDF extract (OpenAI disabled)")
+    print(f"  DATA RETRIEVE — OpenAI vision extract (step1→2→3)")
     print(f"  Reports    : {reports_dir}")
     print(f"  Output     : {testing_dir}")
     print(f"  Companies  : {len(companies)}")
@@ -538,8 +780,8 @@ def run(
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(
-        description="Per-company driver: local printed FS extract into testing/<company>/ "
-                    "(OpenAI disabled).",
+        description="Per-company driver: find/capture pages → OpenAI table extract "
+                    "into testing/<company>/.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     ap.add_argument("--reports",  type=Path, default=REPORTS_DIR,
@@ -549,15 +791,15 @@ if __name__ == "__main__":
                     help=f"Output folder for images + JSON  "
                          f"(default: {TESTING_DIR})")
     ap.add_argument("--apikey",   default=None,
-                    help="Ignored — OpenAI is disabled")
+                    help="OpenAI API key (else OPENAI_API_KEY env / backend/.env)")
     ap.add_argument("--option",   choices=["1", "2"], default="1",
-                    help="Ignored — main FS only")
-    ap.add_argument("--model",    default="printed-statements",
-                    help="Ignored — local extract engine")
+                    help="1=core statements only  2=core+notes")
+    ap.add_argument("--model",    default="gpt-5",
+                    help="OpenAI model (default: gpt-5)")
     ap.add_argument("--dpi",      type=int, default=150,
-                    help="Ignored — local extract does not render page images")
+                    help="Page render DPI for captures (default 150)")
     ap.add_argument("--dry-run",  action="store_true",
-                    help="Locate statements but skip writing final results JSON")
+                    help="Locate/capture pages but skip OpenAI calls")
     ap.add_argument("--only",     default=None,
                     help="Process only this single company folder name")
     ap.add_argument("--skip",     action="append", default=[],
@@ -573,9 +815,9 @@ if __name__ == "__main__":
     run(
         reports_dir = args.reports.resolve(),
         testing_dir = args.testing.resolve(),
-        api_key     = None,
-        option      = "1",
-        model       = "printed-statements",
+        api_key     = _resolve_api_key(args.apikey),
+        option      = args.option,
+        model       = args.model,
         dry_run     = args.dry_run,
         dpi         = args.dpi,
         only        = args.only,

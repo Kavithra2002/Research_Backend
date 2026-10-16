@@ -4,17 +4,17 @@ Q_data_extraction.py
 Extract financial statement tables from CSE quarterly-report PDFs and
 write structured JSON output.
 
-Primary extraction uses the local rule-based pipeline (pdfplumber /
-camelot). OpenAI vision is disabled for now — results are stored under
-``statements`` (and mirrored in ``local_statements``).
+Pages are located and captured locally (pdfplumber / camelot / PyMuPDF),
+then OpenAI vision verbatim-extracts tables from those captures into
+``statements`` (local tables kept under ``local_statements``).
 
 Technologies
 ------------
-  pdfplumber     – page detection + local table extraction (primary)
-  PyMuPDF        – page rasterisation (PNG captures for viewer)
+  pdfplumber     – page detection + local table extraction
+  PyMuPDF        – page rasterisation (PNG captures for OpenAI)
   camelot-py     – stream-mode table detection (optional)
   pytesseract    – OCR fallback for garbled text layers
-  OpenAI         – disabled for now
+  OpenAI         – enabled (OPENAI_API_KEY / --apikey)
 
 What is extracted
 -----------------
@@ -122,11 +122,12 @@ import pdfplumber
 
 import extraction_validation as val
 
-# OpenAI vision disabled — keep import optional for legacy helpers only.
-USE_OPENAI = False
+# OpenAI vision: send captured statement page images for verbatim table extract.
+USE_OPENAI = True
 try:
     import step3_send_to_openai as _step3
     _STEP3_AVAILABLE = True
+    _STEP3_IMPORT_ERROR = ""
 except Exception as _step3_err:
     _step3 = None  # type: ignore
     _STEP3_AVAILABLE = False
@@ -1185,7 +1186,15 @@ def _extract_with_openai(
     return {"status": "ok", "title": title, "data": parsed}
 
 
-MAX_QUARTERLY_VALIDATION_ROUNDS = 3
+try:
+    from extraction_timing import DEFAULT_ACCURACY_ROUNDS as _ACC_ROUNDS
+    from extraction_timing import OPENAI_PARALLEL_WORKERS as _Q_WORKERS
+except Exception:
+    _ACC_ROUNDS = 1
+    _Q_WORKERS = 4
+
+# One accuracy/layout recheck round by default (re-extract failing keys only).
+MAX_QUARTERLY_VALIDATION_ROUNDS = max(1, int(_ACC_ROUNDS) + 1)
 
 
 def _stmt_rule_for_base(base_key: str) -> tuple[str, str, str] | None:
@@ -1305,38 +1314,81 @@ def _validate_and_fill_quarterly_gaps(
     company_slug: str | None = None,
     max_rounds: int = MAX_QUARTERLY_VALIDATION_ROUNDS,
 ) -> tuple[dict[str, dict], val.ValidationResult]:
-    """Validate quarterly extraction and retry failed / missing families."""
+    """Validate quarterly extraction and retry failed / missing / bad layout."""
     result_doc = {"statements": api_results}
     log.info("   [validate] required quarterly families: %s",
              ", ".join(val.QUARTERLY_REQUIRED_FAMILIES))
 
     last_report = val.validate_quarterly_results(result_doc)
+    accuracy_notes: list[str] = []
+    reextracted: list[str] = []
 
     for round_num in range(1, max_rounds + 1):
-        if last_report.ok or dry_run or api_client is None:
+        if dry_run or api_client is None:
             break
 
-        gaps = last_report.all_gaps()
-        if not gaps:
+        gaps = last_report.all_gaps() if not last_report.ok else []
+
+        # Layout / value accuracy gate vs captures (Note/year placement etc.).
+        layout_keys: list[str] = []
+        try:
+            import extraction_accuracy as acc
+
+            needs = acc.keys_needing_reextract(
+                {"statements": api_results},
+                required_keys=tuple(api_results.keys()) or val.QUARTERLY_REQUIRED_FAMILIES,
+            )
+            layout_keys = sorted(needs.keys())
+            for key, reasons in needs.items():
+                for r in reasons:
+                    log.warning("   [accuracy] %s", r)
+                    accuracy_notes.append(r)
+        except Exception as exc:
+            log.warning("   [accuracy] layout check skipped: %s", exc)
+
+        if not gaps and not layout_keys:
+            log.info("   [validate] families + layout accuracy OK")
             break
 
         log.info(
-            "   [validate] round %d/%d — gaps: %s",
-            round_num, max_rounds, ", ".join(gaps),
+            "   [validate] round %d/%d — gaps=%s layout_retry=%s",
+            round_num,
+            max_rounds,
+            ", ".join(gaps) or "none",
+            ", ".join(layout_keys) or "none",
         )
 
-        # Retry failed API extractions first.
-        for key in list(last_report.failed_extraction):
+        # Retry failed API extractions + layout failures.
+        retry_keys = sorted(
+            set(last_report.failed_extraction or []) | set(layout_keys)
+        )
+        for key in retry_keys:
             stmt_dir = captures_dir / key
             if not stmt_dir.is_dir():
                 continue
             img_paths = sorted(stmt_dir.glob("page_*.png"))
+            if not img_paths:
+                continue
             title = (api_results.get(key) or {}).get("title") or key
-            log.info("   [validate] re-extract %s (%d images)", key, len(img_paths))
-            api_results[key] = _extract_with_openai(
+            log.info(
+                "   [accuracy] re-extract %s (%d images) — accuracy over speed",
+                key,
+                len(img_paths),
+            )
+            prior = api_results.get(key) if isinstance(api_results.get(key), dict) else None
+            incoming = _extract_with_openai(
                 stmt_key=key, title=title,
                 img_paths=img_paths, client=api_client, model=model,
             )
+            try:
+                import extraction_accuracy as acc
+
+                api_results[key] = acc.prefer_better_entry(
+                    prior, incoming, key=key, log=lambda m, _l="info": log.info("   %s", m)
+                )
+            except Exception:
+                api_results[key] = incoming
+            reextracted.append(key)
 
         # Re-scan PDF for missing statement families.
         if last_report.missing_manifest:
@@ -1357,12 +1409,39 @@ def _validate_and_fill_quarterly_gaps(
                     stmt_key=stmt_key, title=title,
                     img_paths=img_paths, client=api_client, model=model,
                 )
+                reextracted.append(stmt_key)
 
         last_report = val.validate_quarterly_results({"statements": api_results})
+
+    remaining_layout: dict[str, list[str]] = {}
+    try:
+        import extraction_accuracy as acc
+
+        remaining_layout = acc.keys_needing_reextract(
+            {"statements": api_results},
+            required_keys=tuple(api_results.keys())
+            or tuple(val.QUARTERLY_REQUIRED_FAMILIES),
+        )
+    except Exception:
+        remaining_layout = {}
 
     meta_path = company_dir / "validation_report_quarterly.json"
     meta_path.write_text(
         json.dumps(last_report.to_dict(), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    accuracy_path = company_dir / "accuracy_report_quarterly.json"
+    accuracy_path.write_text(
+        json.dumps(
+            {
+                "ok": bool(last_report.ok) and not remaining_layout,
+                "reextracted": sorted(set(reextracted)),
+                "remaining": remaining_layout,
+                "notes": accuracy_notes[-40:],
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
         encoding="utf-8",
     )
     return api_results, last_report
@@ -1405,7 +1484,27 @@ def process_pdf(pdf_path: Path, output_dir: Path,
 
     Returns the summary dict (also saved to disk).
     """
-    log.info("── Processing: %s", pdf_path.name)
+    import time as _time
+
+    try:
+        from extraction_timing import MAX_SECONDS as _MAX_S
+        from extraction_timing import TARGET_SECONDS as _TGT_S
+        from extraction_timing import log_timing as _log_timing
+    except Exception:
+        _MAX_S, _TGT_S = 180, 150
+
+        def _log_timing(label: str, t0: float, log_fn=None) -> float:
+            secs = max(0.0, _time.monotonic() - t0)
+            log.info("[timing] %s: %.1fs", label, secs)
+            return secs
+
+    t_all = _time.monotonic()
+    log.info(
+        "── Processing: %s  (target ~%.0fs / max %.0fs)",
+        pdf_path.name,
+        _TGT_S,
+        _MAX_S,
+    )
 
     # ── Metadata ────────────────────────────────────────────────────────
     company, period = extract_company_and_period(str(pdf_path))
@@ -1559,7 +1658,7 @@ def process_pdf(pdf_path: Path, output_dir: Path,
 
     fitz_doc.close()
 
-    # ── Local extract is primary (OpenAI disabled) ───────────────────────
+    # ── OpenAI vision on captures (falls back to local tables) ───────────
     use_api = bool(USE_OPENAI) and (api_client is not None) and (not dry_run)
     api_status = (
         "ok" if use_api else
@@ -1569,6 +1668,9 @@ def process_pdf(pdf_path: Path, output_dir: Path,
     api_results: dict[str, dict] = {}
 
     if use_api:
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
+        jobs: list[tuple[str, str, list]] = []
         for stmt_key, record in statements.items():
             title = record.get("title") or stmt_key.replace("_", " ").title()
             stmt_dir = captures_dir / stmt_key
@@ -1579,13 +1681,30 @@ def process_pdf(pdf_path: Path, output_dir: Path,
             img_paths = sorted(stmt_dir.glob("page_*.png"))
             log.info("   [api] %s — %d image(s) → %s",
                      stmt_key, len(img_paths), model)
-            api_results[stmt_key] = _extract_with_openai(
-                stmt_key=stmt_key, title=title,
-                img_paths=img_paths, client=api_client, model=model,
+            jobs.append((stmt_key, title, img_paths))
+
+        def _job(item: tuple[str, str, list]) -> tuple[str, dict]:
+            sk, title, imgs = item
+            return sk, _extract_with_openai(
+                stmt_key=sk, title=title,
+                img_paths=imgs, client=api_client, model=model,
             )
+
+        if len(jobs) <= 1:
+            for item in jobs:
+                sk, res = _job(item)
+                api_results[sk] = res
+        else:
+            workers = max(1, min(_Q_WORKERS, len(jobs)))
+            log.info("   [api] parallel OpenAI extract (%d workers)", workers)
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                futs = [pool.submit(_job, item) for item in jobs]
+                for fut in as_completed(futs):
+                    sk, res = fut.result()
+                    api_results[sk] = res
     else:
         # Promote pdfplumber/camelot tables to the primary statements map.
-        log.info("   [local] OpenAI disabled — using pdfplumber/camelot tables")
+        log.info("   [local] using pdfplumber/camelot tables (no OpenAI client)")
         api_results = dict(statements)
 
     # ── Validation + targeted re-extraction ─────────────────────────────
@@ -1664,6 +1783,7 @@ def process_pdf(pdf_path: Path, output_dir: Path,
             summary["gaps"] = validation_report.all_gaps()
     log.info("   ✓ %d statement(s) detected, %d via OpenAI → %s",
              len(statements), n_ok_api, results_path)
+    _log_timing("TOTAL quarterly report", t_all, log=lambda m: log.info("%s", m))
     return summary
 
 
@@ -1712,21 +1832,27 @@ def process_quarterly_for_company(
         except Exception:
             pass
 
-    # OpenAI disabled — always run local pdfplumber/camelot extract.
+    # Prefer OpenAI verbatim extract from captured pages when a key is set.
+    resolved_key = api_key or resolve_api_key(None)
     client = None
-    if USE_OPENAI and api_key and _STEP3_AVAILABLE and not dry_run:
+    if USE_OPENAI and resolved_key and _STEP3_AVAILABLE and not dry_run:
         try:
-            client = _step3.OpenAI(api_key=api_key)
+            client = _step3.OpenAI(api_key=resolved_key)
+            log.info("   OpenAI client ready (model=%s)", model)
         except Exception as e:
-            log.warning("Could not init OpenAI client: %s", e)
+            log.warning("Could not init OpenAI client: %s — falling back to local", e)
             client = None
+    elif USE_OPENAI and not resolved_key:
+        log.warning(
+            "   OPENAI_API_KEY not set — using local pdfplumber/camelot only"
+        )
 
     summary = process_pdf(
         pdf_path             = pdf_path,
         output_dir           = testing_dir,    # parent (unused due to overrides)
         use_ocr              = use_ocr,
         api_client           = client,
-        model                = model if USE_OPENAI else "pdfplumber-local",
+        model                = model if client else "pdfplumber-local",
         dry_run              = dry_run,
         company_dir_override = company_dir,
         slug_override        = company_key,
