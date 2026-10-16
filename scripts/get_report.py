@@ -238,22 +238,43 @@ def _year_from_ms(ms: Any) -> int | None:
         return None
 
 
+def _plausible_report_year(year: int) -> bool:
+    """Reject timestamp fragments (e.g. 2096 from PDF ids) and far-future years."""
+    now = datetime.now(tz=timezone.utc).year
+    return 1990 <= year <= now + 1
+
+
 def _year_hint_from_text(text: str) -> int | None:
     if not text:
         return None
     m = re.search(r"(20\d{2})\s*/\s*(20\d{2})", text)
     if m:
         try:
-            return int(m.group(2))
+            y = int(m.group(2))
+            if _plausible_report_year(y):
+                return y
         except ValueError:
             pass
-    nums = [int(x) for x in re.findall(r"\b(19\d{2}|20\d{2})\b", text)]
+    # Prefer years next to report wording over raw digit runs in file ids.
+    m = re.search(
+        r"(?i)(?:annual|quarterly|interim|report|year|fy)[^\d]{0,24}((?:19|20)\d{2})",
+        text,
+    )
+    if m:
+        y = int(m.group(1))
+        if _plausible_report_year(y):
+            return y
+    nums = [
+        int(x)
+        for x in re.findall(r"\b(19\d{2}|20\d{2})\b", text)
+        if _plausible_report_year(int(x))
+    ]
     return max(nums) if nums else None
 
 
 def report_year(entry: dict[str, Any]) -> int | None:
     y = _year_from_ms(entry.get("manualDate"))
-    if y:
+    if y and _plausible_report_year(y):
         return y
     return _year_hint_from_text(str(entry.get("fileText") or ""))
 

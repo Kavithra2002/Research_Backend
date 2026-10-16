@@ -47,6 +47,7 @@ Usage
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import time
 import urllib.error
@@ -54,6 +55,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+from Demo_data_download_script import quarter_label
 from get_report import (
     _entry_sort_ms,
     cdn_url,
@@ -156,6 +158,70 @@ def _entry_basename(entry: dict[str, Any]) -> str:
             return base
     y = report_year(entry) or "unknown"
     return f"{rid}_{y}.pdf"
+
+
+def _friendly_report_label(
+    kind: str,
+    year: int | None,
+    quarter: int | None = None,
+) -> str:
+    """User-facing name shown on the Reports page."""
+    if kind == "annual":
+        return f"Annual report {year}" if year else "Annual report"
+    if quarter and year:
+        return f"Quarter {int(quarter):02d} - {year}"
+    if year:
+        return f"Quarterly report {year}"
+    return "Quarterly report"
+
+
+def _load_report_index(folder: Path) -> dict[str, Any]:
+    path = folder / "index.json"
+    if not path.exists():
+        return {"files": {}}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"files": {}}
+    files = data.get("files")
+    if not isinstance(files, dict):
+        files = {}
+    return {"files": files}
+
+
+def _save_report_index(folder: Path, index: dict[str, Any]) -> None:
+    path = folder / "index.json"
+    path.write_text(
+        json.dumps(index, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _index_entry_meta(
+    entry: dict[str, Any],
+    kind: str,
+) -> dict[str, Any]:
+    if kind == "annual":
+        year = report_year(entry)
+        return {
+            "kind": "annual",
+            "year": year,
+            "quarter": None,
+            "label": _friendly_report_label("annual", year),
+            "file_text": str(entry.get("fileText") or ""),
+        }
+    ql = quarter_label(entry)
+    year = ql[0] if ql else report_year(entry)
+    quarter = ql[1] if ql else None
+    if quarter == 0:
+        quarter = None
+    return {
+        "kind": "quarterly",
+        "year": year,
+        "quarter": quarter,
+        "label": _friendly_report_label("quarterly", year, quarter),
+        "file_text": str(entry.get("fileText") or ""),
+    }
 
 
 def _download_entry(
@@ -296,6 +362,8 @@ def process_folder(
         elif outcome == "failed":
             bucket["failed"] += 1
 
+    index = _load_report_index(folder)
+
     if kind in ("annual", "both"):
         annual = fin.get("infoAnnualData") or []
         if not isinstance(annual, list):
@@ -306,6 +374,9 @@ def process_folder(
         for e in picked_a:
             outcome = _download_entry(e, annual_dir, pause_s, dry_run)
             _tally(summary["annual"], outcome)
+            if outcome in ("saved", "exists", "would-download"):
+                fname = _entry_basename(e)
+                index["files"][fname] = _index_entry_meta(e, "annual")
 
     if kind in ("quarterly", "both"):
         quarterly = fin.get("infoQuarterlyData") or []
@@ -317,6 +388,13 @@ def process_folder(
         for e in picked_q:
             outcome = _download_entry(e, quarterly_dir, pause_s, dry_run)
             _tally(summary["quarterly"], outcome)
+            if outcome in ("saved", "exists", "would-download"):
+                fname = _entry_basename(e)
+                index["files"][fname] = _index_entry_meta(e, "quarterly")
+
+    if not dry_run and index.get("files"):
+        _save_report_index(folder, index)
+        print(f"  index  : {len(index['files'])} labelled file(s)")
 
     summary["status"] = "ok"
     return summary
