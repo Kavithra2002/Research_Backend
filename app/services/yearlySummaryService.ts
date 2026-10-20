@@ -6,12 +6,14 @@ function reportTypeFromPeriod(period: PeriodLabel): "annual" | "quarterly" {
   return period === "Quarterly" ? "quarterly" : "annual";
 }
 
-export const DEFAULT_SUMMARY_YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+export const DEFAULT_SUMMARY_YEARS = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
 
 export type YearlySummaryRow = {
   label: string;
   style: string;
   values: Record<string, string | null>;
+  /** True when this line exists only in older years (not in the newest reference year). */
+  priorYearsOnly?: boolean;
 };
 
 export type YearlySummaryPayload = {
@@ -23,6 +25,8 @@ export type YearlySummaryPayload = {
   years: number[];
   rows: YearlySummaryRow[];
   yearsWithData: number[];
+  /** Newest year whose row list defines the main (non-prior) block. */
+  referenceYear?: number | null;
 };
 
 type TableDoc = {
@@ -51,6 +55,77 @@ function normLabel(label: string): string {
     .replace(/\s+/g, " ")
     .replace(/[:\-–—]+/g, " ")
     .trim();
+}
+
+/** Stronger key used to align near-identical line items across years. */
+function canonicalizeLabel(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/[/\\|]/g, " ")
+    // Treat common presentation variants as the same line.
+    .replace(/\breversals?\b/g, "expense")
+    .replace(/\bexpenses\b/g, "expense")
+    .replace(/\blosses\b/g, "loss")
+    .replace(/\b(lkr|rs\.?|of|the|a|an|for|from|to|and|&|at|in|on|with)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function labelTokens(label: string): Set<string> {
+  const raw = canonicalizeLabel(label)
+    .split(" ")
+    .filter((t) => t.length > 1);
+  return new Set(raw);
+}
+
+function tokenJaccard(a: Set<string>, b: Set<string>): number {
+  if (a.size === 0 || b.size === 0) return 0;
+  let inter = 0;
+  for (const t of a) if (b.has(t)) inter += 1;
+  const union = a.size + b.size - inter;
+  return union === 0 ? 0 : inter / union;
+}
+
+type YearEntry = { label: string; value: string; style: string };
+
+/**
+ * Map an older-year label onto a newest-year row key when wording differs
+ * but the line is clearly the same (e.g. "Operating Profit" vs "Operating Profit/(Loss)").
+ */
+function matchToReferenceKey(
+  label: string,
+  referenceKeys: string[],
+  referenceMeta: Map<string, YearEntry>,
+  alreadyMapped: Set<string>,
+): string | null {
+  const exact = normLabel(label);
+  if (referenceMeta.has(exact) && !alreadyMapped.has(exact)) return exact;
+
+  const canon = canonicalizeLabel(label);
+  if (canon) {
+    for (const key of referenceKeys) {
+      if (alreadyMapped.has(key)) continue;
+      if (canonicalizeLabel(referenceMeta.get(key)!.label) === canon) return key;
+    }
+  }
+
+  const tokens = labelTokens(label);
+  let bestKey: string | null = null;
+  let bestScore = 0;
+  for (const key of referenceKeys) {
+    if (alreadyMapped.has(key)) continue;
+    const score = tokenJaccard(tokens, labelTokens(referenceMeta.get(key)!.label));
+    if (score > bestScore) {
+      bestScore = score;
+      bestKey = key;
+    }
+  }
+  // High enough to merge "Income Tax Expense" ↔ "Income Tax Reversal/(Expenses)"
+  // but avoid merging unrelated lines.
+  if (bestKey != null && bestScore >= 0.72) return bestKey;
+  return null;
 }
 
 function entityHeaderPositions(
@@ -286,10 +361,7 @@ export async function getYearlyStatementSummary(
     byYear.set(y, list);
   }
 
-  const valuesByYear = new Map<
-    number,
-    Map<string, { label: string; value: string; style: string }>
-  >();
+  const valuesByYear = new Map<number, Map<string, YearEntry>>();
   const yearsWithData: number[] = [];
 
   for (const year of years) {
@@ -302,39 +374,113 @@ export async function getYearlyStatementSummary(
     yearsWithData.push(year);
   }
 
+  // Newest year with data defines the main row list (same shape as Detail).
+  const yearsDesc = [...years].sort((a, b) => b - a);
   const referenceYear =
-    [...years].reverse().find((y) => valuesByYear.has(y)) ?? null;
+    yearsDesc.find((y) => valuesByYear.has(y)) ?? null;
 
-  const rowOrder: Array<{ key: string; label: string; style: string }> = [];
-  const seenKeys = new Set<string>();
-
-  if (referenceYear != null) {
-    const refMap = valuesByYear.get(referenceYear)!;
-    for (const [key, entry] of refMap) {
-      rowOrder.push({ key, label: entry.label, style: entry.style });
-      seenKeys.add(key);
-    }
+  const refMap =
+    referenceYear != null ? valuesByYear.get(referenceYear)! : new Map();
+  const referenceKeys = [...refMap.keys()];
+  const mainRows: Array<{ key: string; label: string; style: string }> = [];
+  for (const [key, entry] of refMap) {
+    mainRows.push({ key, label: entry.label, style: entry.style });
   }
 
-  for (const year of years) {
+  // Remap every year's values onto reference keys when labels are near-matches.
+  const alignedByYear = new Map<number, Map<string, YearEntry>>();
+  const priorOnlyOrder: Array<{ key: string; label: string; style: string }> =
+    [];
+  const priorOnlySeen = new Set<string>();
+
+  for (const year of yearsDesc) {
     const yearMap = valuesByYear.get(year);
     if (!yearMap) continue;
-    for (const [key, entry] of yearMap) {
-      if (seenKeys.has(key)) continue;
-      rowOrder.push({ key, label: entry.label, style: entry.style });
-      seenKeys.add(key);
+
+    const aligned = new Map<string, YearEntry>();
+    const claimedRefKeys = new Set<string>();
+
+    for (const [rawKey, entry] of yearMap) {
+      if (year === referenceYear) {
+        aligned.set(rawKey, entry);
+        continue;
+      }
+
+      const matched = matchToReferenceKey(
+        entry.label,
+        referenceKeys,
+        refMap,
+        claimedRefKeys,
+      );
+
+      if (matched != null) {
+        claimedRefKeys.add(matched);
+        // Prefer first (newest-year wording already on the row); keep value.
+        if (!aligned.has(matched)) aligned.set(matched, { ...entry, label: refMap.get(matched)!.label });
+        continue;
+      }
+
+      // Truly absent from newest year — fold into an existing prior-only
+      // row when wording is a near-match, else append at the bottom.
+      let priorKey: string | null = null;
+      for (const existing of priorOnlyOrder) {
+        const existingLabel = existing.label;
+        const existingCanon = canonicalizeLabel(existingLabel);
+        const entryCanon = canonicalizeLabel(entry.label);
+        if (
+          existingCanon &&
+          entryCanon &&
+          (existingCanon === entryCanon ||
+            tokenJaccard(labelTokens(existingLabel), labelTokens(entry.label)) >=
+              0.72)
+        ) {
+          priorKey = existing.key;
+          break;
+        }
+      }
+      if (priorKey == null) {
+        priorKey = `prior:${rawKey}`;
+        if (!priorOnlySeen.has(priorKey)) {
+          priorOnlySeen.add(priorKey);
+          priorOnlyOrder.push({
+            key: priorKey,
+            label: entry.label,
+            style: entry.style,
+          });
+        }
+      }
+      aligned.set(priorKey, entry);
     }
+
+    alignedByYear.set(year, aligned);
   }
 
-  const summaryRows: YearlySummaryRow[] = rowOrder.map(({ key, label, style }) => {
+  if (referenceYear != null) {
+    alignedByYear.set(referenceYear, refMap);
+  }
+
+  const buildValues = (key: string): Record<string, string | null> => {
     const values: Record<string, string | null> = {};
     for (const year of years) {
-      const yearKey = String(year);
-      const entry = valuesByYear.get(year)?.get(key);
-      values[yearKey] = entry?.value ?? null;
+      values[String(year)] = alignedByYear.get(year)?.get(key)?.value ?? null;
     }
-    return { label, style, values };
-  });
+    return values;
+  };
+
+  const summaryRows: YearlySummaryRow[] = [
+    ...mainRows.map(({ key, label, style }) => ({
+      label,
+      style,
+      values: buildValues(key),
+      priorYearsOnly: false,
+    })),
+    ...priorOnlyOrder.map(({ key, label, style }) => ({
+      label,
+      style,
+      values: buildValues(key),
+      priorYearsOnly: true,
+    })),
+  ];
 
   const statementTitle =
     (docs[0] as { statement_title?: string | null } | undefined)
@@ -349,6 +495,7 @@ export async function getYearlyStatementSummary(
     years,
     rows: summaryRows,
     yearsWithData,
+    referenceYear,
   };
 }
 
