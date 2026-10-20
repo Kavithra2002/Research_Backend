@@ -88,7 +88,8 @@ def object_key(*parts: str) -> str:
 
 
 def updated_report_key(company: str, report_type: str, file_name: str) -> str:
-    return object_key(UPDATED_REPORTS_PREFIX, company, report_type, file_name)
+    """R2/object key for System-scan CSE downloads (matches local folder name)."""
+    return object_key(NEWLY_UPLOADED_PREFIX, company, report_type, file_name)
 
 
 def upload_file(local_path: Path, key: str) -> None:

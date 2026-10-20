@@ -32,6 +32,13 @@ function toStringArray(v: unknown): string[] | undefined {
   return out.length > 0 ? out : undefined;
 }
 
+function newlyUploadedOutDir(): string {
+  const fromEnv = process.env.NEWLY_UPLOADED_DIR?.trim();
+  if (fromEnv) return path.resolve(fromEnv);
+  // Node backend cwd is normally backend/
+  return path.resolve(process.cwd(), "newly_uploaded_report");
+}
+
 // --- /api/system/extract ---
 function startExtractScan(body: Record<string, unknown>) {
   if (extractState.active) {
@@ -39,7 +46,7 @@ function startExtractScan(body: Record<string, unknown>) {
     finalize(extractState, 1);
   }
 
-  const args: string[] = [];
+  const args: string[] = ["--out", newlyUploadedOutDir()];
   const date = typeof body.date === "string" ? body.date : undefined;
   if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
     args.push("--date", date);

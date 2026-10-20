@@ -5,11 +5,8 @@ Scan all CSE (Colombo Stock Exchange) listed companies and download every
 report that was uploaded TODAY (annual, quarterly/interim, and any other
 report categories returned by the public CSE `financials` API).
 
-Output layout (local dev):
-    ./newly_uploaded_report/<company name>/<report type>/<id>_<year>.pdf
-
-When STORAGE_DRIVER=r2, each PDF is also uploaded to R2:
-    updated_reports/<company name>/<report type>/<id>_<year>.pdf
+Output layout (local + R2):
+    newly_uploaded_report/<company name>/<report type>/<id>_<year>.pdf
 
 Progress is emitted as NDJSON to stdout so a parent process (such as the
 Next.js API route) can stream live progress to the UI. Each line is a JSON
