@@ -179,9 +179,19 @@ def run_annual_db(
     dpi: int = 150,
     pdf_by_year: dict[int, Path] | None = None,
 ) -> int:
-    # Legacy flags kept for CLI compatibility with the live-extraction route.
-    del force_note_capture, use_openai_notes, use_pdf_extract, api_key, model, option, dpi
+    del force_note_capture, use_pdf_extract, option  # reserved / legacy
+    # Prefer OpenAI note capture+extract whenever a key is available.
+    use_openai_notes = bool(use_openai_notes)
     pdf_by_year = pdf_by_year or {}
+    resolved_key = None
+    try:
+        import extraction_accuracy as acc
+
+        resolved_key = acc.resolve_api_key(api_key)
+    except Exception:
+        resolved_key = api_key.strip() if api_key else None
+    if resolved_key:
+        use_openai_notes = True
 
     if not years:
         emit({"type": "error", "message": "No years selected"})
@@ -197,12 +207,17 @@ def run_annual_db(
             "company_slug": company_slug,
             "years": years,
             "totalSteps": len(years),
-            "model": "notes-only",
-            "openai": False,
+            "model": model if (resolved_key and use_openai_notes) else "notes-pdfplumber",
+            "openai": bool(resolved_key and use_openai_notes),
         }
     )
     emit_log(
-        "Run DB Annual: reuse Extracted Tables FS + extract note tables only"
+        "Run DB Annual: reuse Extracted Tables FS; "
+        + (
+            f"capture note pages + OpenAI vision extract (model={model})"
+            if resolved_key and use_openai_notes
+            else "local PDF note extract (no API key)"
+        )
     )
 
     db, client = get_db()
@@ -269,10 +284,7 @@ def run_annual_db(
                         raise FileNotFoundError(
                             f"Annual PDF not found for notes ({company_slug} {year})"
                         )
-                    from printed_statements import (
-                        collect_note_refs,
-                        extract_notes_only,
-                    )
+                    from printed_statements import collect_note_refs
 
                     note_refs = collect_note_refs(
                         payload.get("statements") or []
@@ -281,28 +293,52 @@ def run_annual_db(
                         f"  Note refs from ET tables: "
                         f"{', '.join(note_refs) if note_refs else '(none)'}"
                     )
-                    emit_log(
-                        f"  Locating note pages + extracting Group/Company "
-                        f"note tables from {pdf_path.name}…"
-                    )
                     payload["source_pdf"] = str(pdf_path)
-                    pdf_notes = extract_notes_only(
-                        pdf_path,
-                        payload.get("statements") or [],
-                        year=year,
-                    )
-                    # Normalize note tables for DB popup (Group/Company layout).
-                    for note in pdf_notes.values():
-                        if not isinstance(note, dict):
-                            continue
-                        pages = note.get("pages") or []
-                        if pages:
-                            emit_log(
-                                f"    Note {note.get('note_ref')}: "
-                                f"pages {pages} "
-                                f"({len(note.get('rows') or [])} rows)"
-                            )
+
+                    def _note_log(msg: str, level: str = "info") -> None:
+                        emit_log(msg, level=level)
+
+                    if resolved_key and use_openai_notes:
+                        from db_note_openai import extract_notes_openai_for_statements
+
+                        pdf_notes = extract_notes_openai_for_statements(
+                            pdf_path,
+                            payload.get("statements") or [],
+                            year=year,
+                            company_slug=company_slug,
+                            api_key=resolved_key,
+                            model=model,
+                            dpi=dpi,
+                            log=_note_log,
+                        )
+                    else:
+                        from printed_statements import extract_notes_only
+
+                        emit_log(
+                            f"  Local PDF note extract from {pdf_path.name} "
+                            "(set OPENAI_API_KEY for capture + vision)…"
+                        )
+                        pdf_notes = extract_notes_only(
+                            pdf_path,
+                            payload.get("statements") or [],
+                            year=year,
+                        )
+                        for note in pdf_notes.values():
+                            if not isinstance(note, dict):
+                                continue
+                            pages = note.get("pages") or []
+                            if pages:
+                                emit_log(
+                                    f"    Note {note.get('note_ref')}: "
+                                    f"pages {pages} "
+                                    f"({len(note.get('rows') or [])} rows)"
+                                )
                     payload["notes"] = pdf_notes
+                    payload["extraction_model"] = (
+                        "extracted-tables+openai-notes"
+                        if resolved_key and use_openai_notes
+                        else "extracted-tables+pdf-notes"
+                    )
                 elif skip_existing and (payload.get("notes") or {}):
                     cells_skipped += len(payload.get("notes") or {})
 
