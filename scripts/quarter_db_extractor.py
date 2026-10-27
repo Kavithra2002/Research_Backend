@@ -200,6 +200,22 @@ def _openai_refresh_quarterly(
             source_pdf=str(pdf_path),
             quiet=True,
         )
+        try:
+            import capture_store
+
+            n_caps = capture_store.save_pipeline_captures(
+                company=company_name,
+                period="Quarterly",
+                year=year,
+                src_caps=work / company_slug / "captures_quarterly",
+            )
+            if n_caps:
+                emit_log(
+                    f"  Saved {n_caps} capture image(s) → "
+                    f"Demo_Data_captures/{company_name}/Quarterly/{year}"
+                )
+        except Exception as exc:
+            emit_log(f"  Capture save failed: {exc}", level="warning")
         return {
             "ok": bool(summary.get("ok")),
             "status": status,
