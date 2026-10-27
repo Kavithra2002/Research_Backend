@@ -48,6 +48,7 @@ except Exception:
 
 import step1_find_pages as step1
 import step2_capture_pages as step2
+import capture_store
 
 
 SCRIPT_DIR   = Path(__file__).resolve().parent
@@ -120,6 +121,9 @@ def capture_one_report(
         if not manifest or not manifest.get("statements"):
             return {"status": "no_statements", "images": 0}
 
+        # Drop the previous pages for this year so a rerun replaces them.
+        capture_store.clear_main_statement_dirs(year_dir)
+
         # STEP 2 — render the confirmed statement pages straight into the
         # final year directory (one subfolder per statement_key).
         res = step2.run(
@@ -144,6 +148,11 @@ def capture_one_report(
                 sub.rmdir()
             except Exception:
                 pass
+
+    if total:
+        capture_store.write_capture_index(
+            year_dir, company=company, period="Annual", year=year,
+        )
 
     return {"status": "ok", "images": total,
             "statements": {k: len(v) for k, v in img_map.items() if v}}
