@@ -179,6 +179,24 @@ def _extract_one(
             ok = False
             status = "error"
 
+    if not dry_run:
+        try:
+            import capture_store
+
+            n_caps = capture_store.save_pipeline_captures(
+                company=company,
+                period="Annual",
+                year=year,
+                src_caps=company_out / "captures",
+            )
+            if n_caps:
+                emit_log(
+                    f"  Saved {n_caps} capture image(s) → "
+                    f"Demo_Data_captures/{company}/Annual/{year}"
+                )
+        except Exception as exc:
+            emit_log(f"  Capture save failed: {exc}", level="warning")
+
     elapsed = time.perf_counter() - t0
     emit_log(
         f"Done {company} {year} in {elapsed:.1f}s "
