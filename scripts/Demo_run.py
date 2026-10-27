@@ -36,7 +36,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import shutil
 import sys
 import tempfile
 import time
@@ -62,12 +61,13 @@ except Exception as _q_err:  # pragma: no cover
     _Q_IMPORT_ERROR = str(_q_err)
 
 
+import capture_store
+from runner_common import resolve_report_year as _year_from_text
+
 SCRIPT_DIR      = Path(__file__).resolve().parent
 BACKEND_DIR     = SCRIPT_DIR.parent
 DEMO_DEFAULT     = BACKEND_DIR / "Demo_Data"
-DEMO_CAPTURES_OUT = BACKEND_DIR / "Demo_Data_captures"
-
-from runner_common import resolve_report_year as _year_from_text
+DEMO_CAPTURES_OUT = capture_store.DEMO_CAPTURES_OUT
 
 
 def _persist_captures(
@@ -79,12 +79,15 @@ def _persist_captures(
     src: Path,
     work_dir: Path,
 ) -> int:
-    """Copy rendered statement page images out of the throwaway work dir into
-    the persistent ``Demo_Data_captures`` tree so the Comparison page can show
-    this report's capture pages.
+    """Replace this report year's page images in the fixed capture folder.
 
-    Layout written (matches the capture API):
+    Layout (stable link the Comparison page reads after a restart)::
+
         Demo_Data_captures/<company>/<Annual|Quarterly>/<year>/<stmt>/page_*.png
+        Demo_Data_captures/<company>/<Annual|Quarterly>/<year>/index.json
+
+    A rerun deletes the previous main-statement images for that year and
+    writes the new captures in their place.
     """
     period = "Quarterly" if report_type == "quarterly" else "Annual"
     captures_name = (
@@ -94,27 +97,66 @@ def _persist_captures(
     if not src_caps.is_dir():
         return 0
 
-    year = _year_from_text(group, src.parent.name if src else None)
+    year = _year_from_text(
+        group,
+        src.parent.name if src else None,
+        src.name if src else None,
+    )
     if year is None:
         return 0
 
-    dest_root = DEMO_CAPTURES_OUT / company / period / str(year)
-    copied = 0
-    for stmt_dir in src_caps.iterdir():
-        if not stmt_dir.is_dir():
-            continue
-        pngs = sorted(stmt_dir.glob("*.png"))
-        if not pngs:
-            continue
-        dest_dir = dest_root / stmt_dir.name
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        for png in pngs:
-            try:
-                shutil.copy2(png, dest_dir / png.name)
-                copied += 1
-            except Exception:
-                pass
+    dest_root = capture_store.year_capture_dir(company, period, year)
+    copied = capture_store.install_capture_tree(dest_root, src_caps)
+    if copied:
+        capture_store.write_capture_index(
+            dest_root, company=company, period=period, year=year,
+        )
     return copied
+
+
+def _persist_printed_captures(
+    *,
+    company: str,
+    year: int,
+    pdf_path: Path,
+    statements: list,
+    dpi: int = 150,
+) -> int:
+    """Render the printed statement pages into the same fixed year folder."""
+    import step2_capture_pages as step2
+
+    grouped: dict[str, list[tuple[str, bytes]]] = {}
+    for stmt in statements or []:
+        if not isinstance(stmt, dict):
+            continue
+        key = str(stmt.get("key") or "").strip()
+        if not key or key.lower().startswith("note_"):
+            continue
+        pages: list[int] = []
+        for raw in stmt.get("pages") or []:
+            try:
+                page_no = int(raw)
+            except (TypeError, ValueError):
+                continue
+            if page_no >= 1 and page_no not in pages:
+                pages.append(page_no)
+        blobs: list[tuple[str, bytes]] = []
+        for page_no in pages:
+            png = step2.render_full_page(str(pdf_path), page_no - 1, dpi=dpi)
+            if png:
+                blobs.append((f"page_{page_no:04d}.png", png))
+        if blobs:
+            grouped[key] = blobs
+    if not grouped:
+        return 0
+
+    dest_root = capture_store.year_capture_dir(company, "Annual", year)
+    written = capture_store.install_rendered_statements(dest_root, grouped)
+    if written:
+        capture_store.write_capture_index(
+            dest_root, company=company, period="Annual", year=year,
+        )
+    return written
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -472,6 +514,24 @@ def _attempt_annual_printed(
             f"{len(statement.get('rows') or [])} rows "
             f"pages {statement.get('pages') or []}"
         )
+
+    if not dry_run:
+        try:
+            n_caps = _persist_printed_captures(
+                company=company,
+                year=year,
+                pdf_path=src,
+                statements=payload.get("statements") or [],
+            )
+            if n_caps:
+                emit_log(
+                    f"Saved {n_caps} capture image(s) for annual {year}."
+                )
+        except Exception as ex:
+            emit_log(
+                f"Capture persist failed for annual {year}: {ex}",
+                level="warning",
+            )
 
     if dry_run:
         elapsed = time.perf_counter() - t0
